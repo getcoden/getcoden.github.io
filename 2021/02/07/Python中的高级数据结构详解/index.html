@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="数据结构 &amp;emsp;&amp;emsp;数据结构的概念很好理解，就是用来将数据组织在一起的结构。换句话说，数据结构是用来存储一系列关联数据的东西。在 Python 中有四种内建的数据结构，分别是 List、Tuple、Dictionary 以及 Set。大部分的应用程序不需要其他类型的数据结构，但若是真需要也有很多高级数据结构可供选择，例如 Collection、Array、Heapq、Bisect、W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中的高级数据结构详解">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/07/Python%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="数据结构 &amp;emsp;&amp;emsp;数据结构的概念很好理解，就是用来将数据组织在一起的结构。换句话说，数据结构是用来存储一系列关联数据的东西。在 Python 中有四种内建的数据结构，分别是 List、Tuple、Dictionary 以及 Set。大部分的应用程序不需要其他类型的数据结构，但若是真需要也有很多高级数据结构可供选择，例如 Collection、Array、Heapq、Bisect、W">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-06T16:53:16.000Z">
+<meta property="article:modified_time" content="2021-02-11T01:41:24.210Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/02/07/Python%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python中的高级数据结构详解 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/07/Python%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python中的高级数据结构详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-06 16:53:16" itemprop="dateCreated datePublished" datetime="2021-02-06T16:53:16Z">2021-02-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-11 01:41:24" itemprop="dateModified" datetime="2021-02-11T01:41:24Z">2021-02-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>数据结构</p>
+<p>&emsp;&emsp;数据结构的概念很好理解，就是用来将数据组织在一起的结构。换句话说，数据结构是用来存储一系列关联数据的东西。在 Python 中有四种内建的数据结构，分别是 List、Tuple、Dictionary 以及 Set。大部分的应用程序不需要其他类型的数据结构，但若是真需要也有很多高级数据结构可供选择，例如 Collection、Array、Heapq、Bisect、Weakref、Copy 以及 Pprint。本文将介绍这些数据结构的用法，看看它们是如何帮助我们的应用程序的。</p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;关于四种内建数据结构的使用方法很简单，并且网上有很多参考资料，因此本文将不会讨论它们。</p>
+<ol>
+<li>Collections</li>
+</ol>
+<p>&emsp;&emsp;collections 模块包含了内建类型之外的一些有用的工具，例如 Counter、defaultdict、OrderedDict、deque 以及 nametuple。其中 Counter、deque 以及 defaultdict 是最常用的类。</p>
+<p>1.1 Counter()</p>
+<p>&emsp;&emsp;如果你想统计一个单词在给定的序列中一共出现了多少次，诸如此类的操作就可以用到 Counter。来看看如何统计一个 list 中出现的 item 次数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">li &#x3D; [&quot;Dog&quot;, &quot;Cat&quot;, &quot;Mouse&quot;, 42, &quot;Dog&quot;, 42, &quot;Cat&quot;, &quot;Dog&quot;]</span><br><span class="line"></span><br><span class="line">a &#x3D; Counter(li)</span><br><span class="line"></span><br><span class="line">print a # Counter(&#123;&#39;Dog&#39;: 3, 42: 2, &#39;Cat&#39;: 2, &#39;Mouse&#39;: 1&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>若要统计一个 list 中不同单词的数目，可以这么用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">li &#x3D; [&quot;Dog&quot;, &quot;Cat&quot;, &quot;Mouse&quot;, 42, &quot;Dog&quot;, 42, &quot;Cat&quot;, &quot;Dog&quot;]</span><br><span class="line"></span><br><span class="line">a &#x3D; Counter(li)</span><br><span class="line"></span><br><span class="line">print a # Counter(&#123;&#39;Dog&#39;: 3, 42: 2, &#39;Cat&#39;: 2, &#39;Mouse&#39;: 1&#125;)</span><br><span class="line"></span><br><span class="line">print len(set(li)) # 4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果需要对结果进行分组，可以这么做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">li &#x3D; [&quot;Dog&quot;, &quot;Cat&quot;, &quot;Mouse&quot;,&quot;Dog&quot;,&quot;Cat&quot;, &quot;Dog&quot;]</span><br><span class="line"></span><br><span class="line">a &#x3D; Counter(li)</span><br><span class="line"></span><br><span class="line">print a # Counter(&#123;&#39;Dog&#39;: 3, &#39;Cat&#39;: 2, &#39;Mouse&#39;: 1&#125;)</span><br><span class="line"></span><br><span class="line">print &quot;&#123;0&#125; : &#123;1&#125;&quot;.format(a.values(),a.keys())  # [1, 3, 2] : [&#39;Mouse&#39;, &#39;Dog&#39;, &#39;Cat&#39;]</span><br><span class="line"></span><br><span class="line">print(a.most_common(3)) # [(&#39;Dog&#39;, 3), (&#39;Cat&#39;, 2), (&#39;Mouse&#39;, 1)]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>以下的代码片段找出一个字符串中出现频率最高的单词，并打印其出现次数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">string &#x3D; &quot;&quot;&quot;   Lorem ipsum dolor sit amet, consectetur</span><br><span class="line"></span><br><span class="line">    adipiscing elit. Nunc ut elit id mi ultricies</span><br><span class="line"></span><br><span class="line">    adipiscing. Nulla facilisi. Praesent pulvinar,</span><br><span class="line"></span><br><span class="line">    sapien vel feugiat vestibulum, nulla dui pretium orci,</span><br><span class="line"></span><br><span class="line">    non ultricies elit lacus quis ante. Lorem ipsum dolor</span><br><span class="line"></span><br><span class="line">    sit amet, consectetur adipiscing elit. Aliquam</span><br><span class="line"></span><br><span class="line">    pretium ullamcorper urna quis iaculis. Etiam ac massa</span><br><span class="line"></span><br><span class="line">    sed turpis tempor luctus. Curabitur sed nibh eu elit</span><br><span class="line"></span><br><span class="line">    mollis congue. Praesent ipsum diam, consectetur vitae</span><br><span class="line"></span><br><span class="line">    ornare a, aliquam a nunc. In id magna pellentesque</span><br><span class="line"></span><br><span class="line">    tellus posuere adipiscing. Sed non mi metus, at lacinia</span><br><span class="line"></span><br><span class="line">    augue. Sed magna nisi, ornare in mollis in, mollis</span><br><span class="line"></span><br><span class="line">    sed nunc. Etiam at justo in leo congue mollis.</span><br><span class="line"></span><br><span class="line">    Nullam in neque eget metus hendrerit scelerisque</span><br><span class="line"></span><br><span class="line">    eu non enim. Ut malesuada lacus eu nulla bibendum</span><br><span class="line"></span><br><span class="line">    id euismod urna sodales.  &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">words &#x3D; re.findall(r&#39;\w+&#39;, string) #This finds words in the document</span><br><span class="line"></span><br><span class="line">lower_words &#x3D; [word.lower() for word in words] #lower all the words</span><br><span class="line"></span><br><span class="line">word_counts &#x3D; Counter(lower_words) #counts the number each time a word appears</span><br><span class="line"></span><br><span class="line">print word_counts</span><br><span class="line"></span><br><span class="line"># Counter(&#123;&#39;elit&#39;: 5, &#39;sed&#39;: 5, &#39;in&#39;: 5, &#39;adipiscing&#39;: 4, &#39;mollis&#39;: 4, &#39;eu&#39;: 3, </span><br><span class="line"></span><br><span class="line"># &#39;id&#39;: 3, &#39;nunc&#39;: 3, &#39;consectetur&#39;: 3, &#39;non&#39;: 3, &#39;ipsum&#39;: 3, &#39;nulla&#39;: 3, &#39;pretium&#39;:</span><br><span class="line"></span><br><span class="line"># 2, &#39;lacus&#39;: 2, &#39;ornare&#39;: 2, &#39;at&#39;: 2, &#39;praesent&#39;: 2, &#39;quis&#39;: 2, &#39;sit&#39;: 2, &#39;congue&#39;: 2, &#39;amet&#39;: 2, </span><br><span class="line"></span><br><span class="line"># &#39;etiam&#39;: 2, &#39;urna&#39;: 2, &#39;a&#39;: 2, &#39;magna&#39;: 2, &#39;lorem&#39;: 2, &#39;aliquam&#39;: 2, &#39;ut&#39;: 2, &#39;ultricies&#39;: 2, &#39;mi&#39;: 2, </span><br><span class="line"></span><br><span class="line"># &#39;dolor&#39;: 2, &#39;metus&#39;: 2, &#39;ac&#39;: 1, &#39;bibendum&#39;: 1, &#39;posuere&#39;: 1, &#39;enim&#39;: 1, &#39;ante&#39;: 1, &#39;sodales&#39;: 1, &#39;tellus&#39;: 1,</span><br><span class="line"></span><br><span class="line"># &#39;vitae&#39;: 1, &#39;dui&#39;: 1, &#39;diam&#39;: 1, &#39;pellentesque&#39;: 1, &#39;massa&#39;: 1, &#39;vel&#39;: 1, &#39;nullam&#39;: 1, &#39;feugiat&#39;: 1, &#39;luctus&#39;: 1, </span><br><span class="line"></span><br><span class="line"># &#39;pulvinar&#39;: 1, &#39;iaculis&#39;: 1, &#39;hendrerit&#39;: 1, &#39;orci&#39;: 1, &#39;turpis&#39;: 1, &#39;nibh&#39;: 1, &#39;scelerisque&#39;: 1, &#39;ullamcorper&#39;: 1,</span><br><span class="line"></span><br><span class="line"># &#39;eget&#39;: 1, &#39;neque&#39;: 1, &#39;euismod&#39;: 1, &#39;curabitur&#39;: 1, &#39;leo&#39;: 1, &#39;sapien&#39;: 1, &#39;facilisi&#39;: 1, &#39;vestibulum&#39;: 1, &#39;nisi&#39;: 1, </span><br><span class="line"></span><br><span class="line"># &#39;justo&#39;: 1, &#39;augue&#39;: 1, &#39;tempor&#39;: 1, &#39;lacinia&#39;: 1, &#39;malesuada&#39;: 1&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>1.2 Deque</p>
+<p>　　Deque 是一种由队列结构扩展而来的双端队列 (double-ended queue)，队列元素能够在队列两端添加或删除。因此它还被称为头尾连接列表 (head-tail linked list)，尽管叫这个名字的还有另一个特殊的数据结构实现。</p>
+<p>　　Deque 支持线程安全的，经过优化的 append 和 pop 操作，在队列两端的相关操作都能够达到近乎 O (1) 的时间复杂度。虽然 list 也支持类似的操作，但是它是对定长列表的操作表现很不错，而当遇到 pop (0) 和 insert (0, v) 这样既改变了列表的长度又改变其元素位置的操作时，其复杂度就变为 O (n) 了。</p>
+<p>　　来看看相关的比较结果：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">from collections import deque</span><br><span class="line"> </span><br><span class="line">num &#x3D; 100000</span><br><span class="line"> </span><br><span class="line">def append(c):</span><br><span class="line">    for i in range(num):</span><br><span class="line">        c.append(i)</span><br><span class="line"> </span><br><span class="line">def appendleft(c):</span><br><span class="line">    if isinstance(c, deque):</span><br><span class="line">        for i in range(num):</span><br><span class="line">            c.appendleft(i)</span><br><span class="line">    else:</span><br><span class="line">        for i in range(num):</span><br><span class="line">            c.insert(0, i)</span><br><span class="line">def pop(c):</span><br><span class="line">    for i in range(num):</span><br><span class="line">        c.pop()</span><br><span class="line"> </span><br><span class="line">def popleft(c):</span><br><span class="line">    if isinstance(c, deque):</span><br><span class="line">        for i in range(num):</span><br><span class="line">            c.popleft()</span><br><span class="line">    else:</span><br><span class="line">        for i in range(num):</span><br><span class="line">            c.pop(0)</span><br><span class="line"> </span><br><span class="line">for container in [deque, list]:</span><br><span class="line">    for operation in [append, appendleft, pop, popleft]:</span><br><span class="line">        c &#x3D; container(range(num))</span><br><span class="line">        start &#x3D; time.time()</span><br><span class="line">        operation(c)</span><br><span class="line">        elapsed &#x3D; time.time() - start</span><br><span class="line">        print &quot;Completed &#123;0&#125;&#x2F;&#123;1&#125; in &#123;2&#125; seconds: &#123;3&#125; ops&#x2F;sec&quot;.format(</span><br><span class="line">              container.__name__, operation.__name__, elapsed, num &#x2F; elapsed)</span><br><span class="line"> </span><br><span class="line"># Completed deque&#x2F;append in 0.0250000953674 seconds: 3999984.74127 ops&#x2F;sec</span><br><span class="line"># Completed deque&#x2F;appendleft in 0.0199999809265 seconds: 5000004.76838 ops&#x2F;sec</span><br><span class="line"># Completed deque&#x2F;pop in 0.0209999084473 seconds: 4761925.52225 ops&#x2F;sec</span><br><span class="line"># Completed deque&#x2F;popleft in 0.0199999809265 seconds: 5000004.76838 ops&#x2F;sec</span><br><span class="line"># Completed list&#x2F;append in 0.0220000743866 seconds: 4545439.17637 ops&#x2F;sec</span><br><span class="line"># Completed list&#x2F;appendleft in 21.3209998608 seconds: 4690.21155917 ops&#x2F;sec</span><br><span class="line"># Completed list&#x2F;pop in 0.0240001678467 seconds: 4166637.52682 ops&#x2F;sec</span><br><span class="line"># Completed list&#x2F;popleft in 4.01799988747 seconds: 24888.0046791 ops&#x2F;sec</span><br></pre></td></tr></table></figure>
+<p>另一个例子是执行基本的队列操作：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from collections import deque</span><br><span class="line">q &#x3D; deque(range(5))</span><br><span class="line">q.append(5)</span><br><span class="line">q.appendleft(6)</span><br><span class="line">print q</span><br><span class="line">print q.pop()</span><br><span class="line">print q.popleft()</span><br><span class="line">print q.rotate(3)</span><br><span class="line">print q</span><br><span class="line">print q.rotate(-1)</span><br><span class="line">print q</span><br><span class="line"> </span><br><span class="line"># deque([6, 0, 1, 2, 3, 4, 5])</span><br><span class="line"># 5</span><br><span class="line"># 6</span><br><span class="line"># None</span><br><span class="line"># deque([2, 3, 4, 0, 1])</span><br><span class="line"># None</span><br><span class="line"># deque([3, 4, 0, 1, 2])</span><br></pre></td></tr></table></figure>
+<p>译者注:rotate 是队列的旋转操作，Right rotate (正参数) 是将右端的元素移动到左端，而 Left rotate (负参数) 则相反。</p>
+<p>1.3 Defaultdict</p>
+<p>　　这个类型除了在处理不存在的键的操作之外与普通的字典完全相同。当查找一个不存在的键操作发生时，它的 default_factory 会被调用，提供一个默认的值，并且将这对键值存储下来。其他的参数同普通的字典方法 dict () 一致，一个 defaultdict 的实例同内建 dict 一样拥有同样地操作。</p>
+<p>　　defaultdict 对象在当你希望使用它存放追踪数据的时候很有用。举个例子，假定你希望追踪一个单词在字符串中的位置，那么你可以这么做：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"> </span><br><span class="line">s &#x3D; &quot;the quick brown fox jumps over the lazy dog&quot;</span><br><span class="line"> </span><br><span class="line">words &#x3D; s.split()</span><br><span class="line">location &#x3D; defaultdict(list)</span><br><span class="line">for m, n in enumerate(words):</span><br><span class="line">    location[n].append(m)</span><br><span class="line"> </span><br><span class="line">print location</span><br><span class="line"> </span><br><span class="line"># defaultdict(&lt;type &#39;list&#39;&gt;, &#123;&#39;brown&#39;: [2], &#39;lazy&#39;: [7], &#39;over&#39;: [5], &#39;fox&#39;: [3],</span><br><span class="line"># &#39;dog&#39;: [8], &#39;quick&#39;: [1], &#39;the&#39;: [0, 6], &#39;jumps&#39;: [4]&#125;)</span><br></pre></td></tr></table></figure>
+<p>是选择 lists 或 sets 与 defaultdict 搭配取决于你的目的，使用 list 能够保存你插入元素的顺序，而使用 set 则不关心元素插入顺序，它会帮助消除重复元素。<br>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"> </span><br><span class="line">s &#x3D; &quot;the quick brown fox jumps over the lazy dog&quot;</span><br><span class="line"> </span><br><span class="line">words &#x3D; s.split()</span><br><span class="line">location &#x3D; defaultdict(set)</span><br><span class="line">for m, n in enumerate(words):</span><br><span class="line">    location[n].add(m)</span><br><span class="line"> </span><br><span class="line">print location</span><br><span class="line"> </span><br><span class="line"># defaultdict(&lt;type &#39;set&#39;&gt;, &#123;&#39;brown&#39;: set([2]), &#39;lazy&#39;: set([7]),</span><br><span class="line"># &#39;over&#39;: set([5]), &#39;fox&#39;: set([3]), &#39;dog&#39;: set([8]), &#39;quick&#39;: set([1]),</span><br><span class="line"># &#39;the&#39;: set([0, 6]), &#39;jumps&#39;: set([4])&#125;)</span><br></pre></td></tr></table></figure>
+<p>另一种创建 multidict 的方法：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s &#x3D; &quot;the quick brown fox jumps over the lazy dog&quot;</span><br><span class="line">d &#x3D; &#123;&#125;</span><br><span class="line">words &#x3D; s.split()</span><br><span class="line"> </span><br><span class="line">for key, value in enumerate(words):</span><br><span class="line">    d.setdefault(key, []).append(value)</span><br><span class="line">print d</span><br><span class="line"> </span><br><span class="line"># &#123;0: [&#39;the&#39;], 1: [&#39;quick&#39;], 2: [&#39;brown&#39;], 3: [&#39;fox&#39;], 4: [&#39;jumps&#39;], 5: [&#39;over&#39;], 6: [&#39;the&#39;], 7: [&#39;lazy&#39;], 8: [&#39;dog&#39;]&#125;</span><br></pre></td></tr></table></figure>
+<p>一个更复杂的例子：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Example(dict):</span><br><span class="line">    def __getitem__(self, item):</span><br><span class="line">        try:</span><br><span class="line">            return dict.__getitem__(self, item)</span><br><span class="line">        except KeyError:</span><br><span class="line">            value &#x3D; self[item] &#x3D; type(self)()</span><br><span class="line">            return value</span><br><span class="line"> </span><br><span class="line">a &#x3D; Example()</span><br><span class="line"> </span><br><span class="line">a[1][2][3] &#x3D; 4</span><br><span class="line">a[1][3][3] &#x3D; 5</span><br><span class="line">a[1][2][&#39;test&#39;] &#x3D; 6</span><br><span class="line"> </span><br><span class="line">print a # &#123;1: &#123;2: &#123;&#39;test&#39;: 6, 3: 4&#125;, 3: &#123;3: 5&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Array<br>　　array 模块定义了一个很像 list 的新对象类型，不同之处在于它限定了这个类型只能装一种类型的元素。array 元素的类型是在创建并使用的时候确定的。</li>
+</ol>
+<p>　　如果你的程序需要优化内存的使用，并且你确定你希望在 list 中存储的数据都是同样类型的，那么使用 array 模块很合适。举个例子，如果需要存储一千万个整数，如果用 list，那么你至少需要 160MB 的存储空间，然而如果使用 array，你只需要 40MB。但虽然说能够节省空间，array 上几乎没有什么基本操作能够比在 list 上更快。</p>
+<p>　　在使用 array 进行计算的时候，需要特别注意那些创建 list 的操作。例如，使用列表推导式 (list comprehension) 的时候，会将 array 整个转换为 list，使得存储空间膨胀。一个可行的替代方案是使用生成器表达式创建新的 array。看代码：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import array</span><br><span class="line"> </span><br><span class="line">a &#x3D; array.array(&quot;i&quot;, [1,2,3,4,5])</span><br><span class="line">b &#x3D; array.array(a.typecode, (2*x for x in a))</span><br></pre></td></tr></table></figure>
+<p>　　因为使用 array 是为了节省空间，所以更倾向于使用 in-place 操作。一种更高效的方法是使用 enumerate：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import array</span><br><span class="line"> </span><br><span class="line">a &#x3D; array.array(&quot;i&quot;, [1,2,3,4,5])</span><br><span class="line">for i, x in enumerate(a):</span><br><span class="line">    a[i] &#x3D; 2*x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>　对于较大的 array，这种 in-place 修改能够比用生成器创建一个新的 array 至少提升 15% 的速度。</p>
+<p>　　那么什么时候使用 array 呢？是当你在考虑计算的因素之外，还需要得到一个像 C 语言里一样统一元素类型的数组时。</p>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import array</span><br><span class="line">from timeit import Timer</span><br><span class="line"> </span><br><span class="line">def arraytest():</span><br><span class="line">    a &#x3D; array.array(&quot;i&quot;, [1, 2, 3, 4, 5])</span><br><span class="line">    b &#x3D; array.array(a.typecode, (2 * x for x in a))</span><br><span class="line"> </span><br><span class="line">def enumeratetest():</span><br><span class="line">    a &#x3D; array.array(&quot;i&quot;, [1, 2, 3, 4, 5])</span><br><span class="line">    for i, x in enumerate(a):</span><br><span class="line">        a[i] &#x3D; 2 * x</span><br><span class="line"> </span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    m &#x3D; Timer(&quot;arraytest()&quot;, &quot;from __main__ import arraytest&quot;)</span><br><span class="line">    n &#x3D; Timer(&quot;enumeratetest()&quot;, &quot;from __main__ import enumeratetest&quot;)</span><br><span class="line"> </span><br><span class="line">    print m.timeit() # 5.22479210582</span><br><span class="line">    print n.timeit() # 4.34367196717</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>3.Heapq</p>
+<p>　　heapq 模块使用一个用堆实现的优先级队列。堆是一种简单的有序列表，并且置入了堆的相关规则。</p>
+<p>　　堆是一种树形的数据结构，树上的子节点与父节点之间存在顺序关系。二叉堆 (binary heap) 能够用一个经过组织的列表或数组结构来标识，在这种结构中，元素 N 的子节点的序号为 2<em>N+1 和 2</em>N+2 (下标始于 0)。简单来说，这个模块中的所有函数都假设序列是有序的，所以序列中的第一个元素 (seq [0]) 是最小的，序列的其他部分构成一个二叉树，并且 seq [i] 节点的子节点分别为 seq [2<em>i+1] 以及 seq [2</em>i+2]。当对序列进行修改时，相关函数总是确保子节点大于等于父节点。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"> </span><br><span class="line">heap &#x3D; []</span><br><span class="line"> </span><br><span class="line">for value in [20, 10, 30, 50, 40]:</span><br><span class="line">    heapq.heappush(heap, value)</span><br><span class="line"> </span><br><span class="line">while heap:</span><br><span class="line">    print heapq.heappop(heap)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>　　heapq 模块有两个函数 nlargest () 和 nsmallest ()，顾名思义，让我们来看看它们的用法。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"> </span><br><span class="line">nums &#x3D; [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]</span><br><span class="line">print(heapq.nlargest(3, nums)) # Prints [42, 37, 23]</span><br><span class="line">print(heapq.nsmallest(3, nums)) # Prints [-4, 1, 2]</span><br></pre></td></tr></table></figure>
+<p>两个函数也能够通过一个键参数使用更为复杂的数据结构，例如：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"> </span><br><span class="line">portfolio &#x3D; [</span><br><span class="line">&#123;&#39;name&#39;: &#39;IBM&#39;, &#39;shares&#39;: 100, &#39;price&#39;: 91.1&#125;,</span><br><span class="line">&#123;&#39;name&#39;: &#39;AAPL&#39;, &#39;shares&#39;: 50, &#39;price&#39;: 543.22&#125;,</span><br><span class="line">&#123;&#39;name&#39;: &#39;FB&#39;, &#39;shares&#39;: 200, &#39;price&#39;: 21.09&#125;,</span><br><span class="line">&#123;&#39;name&#39;: &#39;HPQ&#39;, &#39;shares&#39;: 35, &#39;price&#39;: 31.75&#125;,</span><br><span class="line">&#123;&#39;name&#39;: &#39;YHOO&#39;, &#39;shares&#39;: 45, &#39;price&#39;: 16.35&#125;,</span><br><span class="line">&#123;&#39;name&#39;: &#39;ACME&#39;, &#39;shares&#39;: 75, &#39;price&#39;: 115.65&#125;</span><br><span class="line">]</span><br><span class="line">cheap &#x3D; heapq.nsmallest(3, portfolio, key&#x3D;lambda s: s[&#39;price&#39;])</span><br><span class="line">expensive &#x3D; heapq.nlargest(3, portfolio, key&#x3D;lambda s: s[&#39;price&#39;])</span><br><span class="line"> </span><br><span class="line">print cheap</span><br><span class="line"> </span><br><span class="line"># [&#123;&#39;price&#39;: 16.35, &#39;name&#39;: &#39;YHOO&#39;, &#39;shares&#39;: 45&#125;,</span><br><span class="line"># &#123;&#39;price&#39;: 21.09, &#39;name&#39;: &#39;FB&#39;, &#39;shares&#39;: 200&#125;, &#123;&#39;price&#39;: 31.75, &#39;name&#39;: &#39;HPQ&#39;, &#39;shares&#39;: 35&#125;]</span><br><span class="line"> </span><br><span class="line">print expensive</span><br><span class="line"> </span><br><span class="line"># [&#123;&#39;price&#39;: 543.22, &#39;name&#39;: &#39;AAPL&#39;, &#39;shares&#39;: 50&#125;, &#123;&#39;price&#39;: 115.65, &#39;name&#39;: &#39;ACME&#39;,</span><br><span class="line"># &#39;shares&#39;: 75&#125;, &#123;&#39;price&#39;: 91.1, &#39;name&#39;: &#39;IBM&#39;, &#39;shares&#39;: 100&#125;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>　　来看看如何实现一个根据给定优先级进行排序，并且每次 pop 操作都返回优先级最高的元素的队列例子。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"> </span><br><span class="line">class Item:</span><br><span class="line">    def __init__(self, name):</span><br><span class="line">        self.name &#x3D; name</span><br><span class="line"> </span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &#39;Item(&#123;!r&#125;)&#39;.format(self.name)</span><br><span class="line"> </span><br><span class="line">class PriorityQueue:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self._queue &#x3D; []</span><br><span class="line">        self._index &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    def push(self, item, priority):</span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index +&#x3D; 1</span><br><span class="line"> </span><br><span class="line">    def pop(self):</span><br><span class="line">        return heapq.heappop(self._queue)[-1]</span><br><span class="line"> </span><br><span class="line">q &#x3D; PriorityQueue()</span><br><span class="line">q.push(Item(&#39;foo&#39;), 1)</span><br><span class="line">q.push(Item(&#39;bar&#39;), 5)</span><br><span class="line">q.push(Item(&#39;spam&#39;), 4)</span><br><span class="line">q.push(Item(&#39;grok&#39;), 1)</span><br><span class="line"> </span><br><span class="line">print q.pop() # Item(&#39;bar&#39;)</span><br><span class="line">print q.pop() # Item(&#39;spam&#39;)</span><br><span class="line">print q.pop() # Item(&#39;foo&#39;)</span><br><span class="line">print q.pop() # Item(&#39;grok&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Bisect</li>
+</ol>
+<p>　　bisect 模块能够提供保持 list 元素序列的支持。它使用了二分法完成大部分的工作。它在向一个 list 插入元素的同时维持 list 是有序的。在某些情况下，这比重复的对一个 list 进行排序更为高效，并且对于一个较大的 list 来说，对每步操作维持其有序也比对其排序要高效。</p>
+<p>　　假设你有一个 range 集合：</p>
+<p>复制代码代码如下:</p>
+<p><code>a = [(0, 100), (150, 220), (500, 1000)]</code></p>
+<p>　　如果我想添加一个 range (250, 400)，我可能会这么做：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import bisect</span><br><span class="line"> </span><br><span class="line">a &#x3D; [(0, 100), (150, 220), (500, 1000)]</span><br><span class="line"> </span><br><span class="line">bisect.insort_right(a, (250,400))</span><br><span class="line"> </span><br><span class="line">print a # [(0, 100), (150, 220), (250, 400), (500, 1000)]</span><br></pre></td></tr></table></figure>
+<p>　　我们可以使用 bisect () 函数来寻找插入点：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import bisect</span><br><span class="line"> </span><br><span class="line">a &#x3D; [(0, 100), (150, 220), (500, 1000)]</span><br><span class="line"> </span><br><span class="line">bisect.insort_right(a, (250,400))</span><br><span class="line">bisect.insort_right(a, (399, 450))</span><br><span class="line">print a # [(0, 100), (150, 220), (250, 400), (500, 1000)]</span><br><span class="line"> </span><br><span class="line">print bisect.bisect(a, (550, 1200)) # 5</span><br></pre></td></tr></table></figure>
+<p>　　<code>bisect (sequence, item) =&gt; index 返回元素应该的插入点，但序列并不被修改。</code></p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import bisect</span><br><span class="line"> </span><br><span class="line">a &#x3D; [(0, 100), (150, 220), (500, 1000)]</span><br><span class="line"> </span><br><span class="line">bisect.insort_right(a, (250,400))</span><br><span class="line">bisect.insort_right(a, (399, 450))</span><br><span class="line">print a # [(0, 100), (150, 220), (250, 400), (500, 1000)]</span><br><span class="line"> </span><br><span class="line">print bisect.bisect(a, (550, 1200)) # 5</span><br><span class="line">bisect.insort_right(a, (550, 1200))</span><br><span class="line">print a # [(0, 100), (150, 220), (250, 400), (399, 450), (500, 1000), (550, 1200)]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>新元素被插入到第 5 的位置。</p>
+<ol start="5">
+<li>Weakref</li>
+</ol>
+<p>　　weakref 模块能够帮助我们创建 Python 引用，却不会阻止对象的销毁操作。这一节包含了 weak reference 的基本用法，并且引入一个代理类。</p>
+<p>　　在开始之前，我们需要明白什么是 strong reference。strong reference 是一个对对象的引用次数、生命周期以及销毁时机产生影响的指针。strong reference 如你所见，就是当你将一个对象赋值给一个变量的时候产生的：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b &#x3D; a</span><br></pre></td></tr></table></figure>
+<p>　　在这种情况下，这个列表有两个 strong reference，分别是 a 和 b。在这两个引用都被释放之前，这个 list 不会被销毁。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Foo(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.obj &#x3D; None</span><br><span class="line">        print &#39;created&#39;</span><br><span class="line"> </span><br><span class="line">    def __del__(self):</span><br><span class="line">        print &#39;destroyed&#39;</span><br><span class="line"> </span><br><span class="line">    def show(self):</span><br><span class="line">        print self.obj</span><br><span class="line"> </span><br><span class="line">    def store(self, obj):</span><br><span class="line">        self.obj &#x3D; obj</span><br><span class="line"> </span><br><span class="line">a &#x3D; Foo() # created</span><br><span class="line">b &#x3D; a</span><br><span class="line">del a</span><br><span class="line">del b # destroyed</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>　Weak reference 则是对对象的引用计数器不会产生影响。当一个对象存在 weak reference 时，并不会影响对象的撤销。这就说，如果一个对象仅剩下 weak reference，那么它将会被销毁。</p>
+<p>　　你可以使用 weakref.ref 函数来创建对象的 weak reference。这个函数调用需要将一个 strong reference 作为第一个参数传给函数，并且返回一个 weak reference。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import weakref</span><br><span class="line">&gt;&gt;&gt; a &#x3D; Foo()</span><br><span class="line">created</span><br><span class="line">&gt;&gt;&gt; b &#x3D; weakref.ref(a)</span><br><span class="line">&gt;&gt;&gt; b</span><br></pre></td></tr></table></figure>
+<p>　　一个临时的 strong reference 可以从 weak reference 中创建，即是下例中的 b ()：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D;&#x3D; b()</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; b().show()</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+<p>　　请注意当我们删除 strong reference 的时候，对象将立即被销毁。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; del a</span><br><span class="line">destroyed</span><br></pre></td></tr></table></figure>
+<p>　　如果试图在对象被摧毁之后通过 weak reference 使用对象，则会返回 None：</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b() is None</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>若是使用 weakref.proxy，就能提供相对于 weakref.ref 更透明的可选操作。同样是使用一个 strong reference 作为第一个参数并且返回一个 weak reference，proxy 更像是一个 strong reference，但当对象不存在时会抛出异常。<br>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; Foo()</span><br><span class="line">created</span><br><span class="line">&gt;&gt;&gt; b &#x3D; weakref.proxy(a)</span><br><span class="line">&gt;&gt;&gt; b.store(&#39;fish&#39;)</span><br><span class="line">&gt;&gt;&gt; b.show()</span><br><span class="line">fish</span><br><span class="line">&gt;&gt;&gt; del a</span><br><span class="line">destroyed</span><br><span class="line">&gt;&gt;&gt; b.show()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&quot;, line 1, in ?</span><br><span class="line">ReferenceError: weakly-referenced object no longer exists</span><br></pre></td></tr></table></figure>
+<p>完整的例子：<br>　　引用计数器是由 Python 的垃圾回收器使用的，当一个对象的应用计数器变为 0，则其将会被垃圾回收器回收。</p>
+<p>　　最好将 weak reference 用于开销较大的对象，或避免循环引用 (虽然垃圾回收器经常干这种事情)。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import weakref</span><br><span class="line">import gc</span><br><span class="line"> </span><br><span class="line">class MyObject(object):</span><br><span class="line">    def my_method(self):</span><br><span class="line">        print &#39;my_method was called!&#39;</span><br><span class="line"> </span><br><span class="line">obj &#x3D; MyObject()</span><br><span class="line">r &#x3D; weakref.ref(obj)</span><br><span class="line"> </span><br><span class="line">gc.collect()</span><br><span class="line">assert r() is obj #r() allows you to access the object referenced: it&#39;s there.</span><br><span class="line"> </span><br><span class="line">obj &#x3D; 1 #Let&#39;s change what obj references to</span><br><span class="line">gc.collect()</span><br><span class="line">assert r() is None #There is no object left: it was gc&#39;ed.</span><br></pre></td></tr></table></figure>
+<p>　　提示：只有 library 模块中定义的 class instances、functions、methods、sets、frozen sets、files、generators、type objects 和 certain object types (例如 sockets、arrays 和 regular expression patterns) 支持 weakref。内建函数以及大部分内建类型如 lists、dictionaries、strings 和 numbers 则不支持。</p>
+<ol start="6">
+<li>Copy()</li>
+</ol>
+<p>　　通过 shallow 或 deep copy 语法提供复制对象的函数操作。</p>
+<p>　　shallow 和 deep copying 的不同之处在于对于混合型对象的操作 (混合对象是包含了其他类型对象的对象，例如 list 或其他类实例)。</p>
+<ol>
+<li>对于 shallow copy 而言，它创建一个新的混合对象，并且将原对象中其他对象的引用插入新对象。</li>
+<li>对于 deep copy 而言，它创建一个新的对象，并且递归地复制源对象中的其他对象并插入新的对象中。</li>
+</ol>
+<p>　　普通的赋值操作知识简单的将心变量指向源对象。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import copy</span><br><span class="line"> </span><br><span class="line">a &#x3D; [1,2,3]</span><br><span class="line">b &#x3D; [4,5]</span><br><span class="line"> </span><br><span class="line">c &#x3D; [a,b]</span><br><span class="line"> </span><br><span class="line"># Normal Assignment</span><br><span class="line">d &#x3D; c</span><br><span class="line"> </span><br><span class="line">print id(c) &#x3D;&#x3D; id(d)          # True - d is the same object as c</span><br><span class="line">print id(c[0]) &#x3D;&#x3D; id(d[0])    # True - d[0] is the same object as c[0]</span><br><span class="line"> </span><br><span class="line"># Shallow Copy</span><br><span class="line">d &#x3D; copy.copy(c)</span><br><span class="line"> </span><br><span class="line">print id(c) &#x3D;&#x3D; id(d)          # False - d is now a new object</span><br><span class="line">print id(c[0]) &#x3D;&#x3D; id(d[0])    # True - d[0] is the same object as c[0]</span><br><span class="line"> </span><br><span class="line"># Deep Copy</span><br><span class="line">d &#x3D; copy.deepcopy(c)</span><br><span class="line"> </span><br><span class="line">print id(c) &#x3D;&#x3D; id(d)          # False - d is now a new object</span><br><span class="line">print id(c[0]) &#x3D;&#x3D; id(d[0])    # False - d[0] is now a new object</span><br></pre></td></tr></table></figure>
+<p>shallow copy (copy ()) 操作创建一个新的容器，其包含的引用指向原对象中的对象。</p>
+<p>deep copy (deepcopy ()) 创建的对象包含的引用指向复制出来的新对象。</p>
+<p>　　复杂的例子：</p>
+<p>　　假定我有两个类，名为 Manager 和 Graph，每个 Graph 包含了一个指向其 manager 的引用，而每个 Manager 有一个指向其管理的 Graph 的集合，现在我们有两个任务需要完成：</p>
+<p>　　1) 复制一个 graph 实例，使用 deepcopy，但其 manager 指向为原 graph 的 manager。</p>
+<p>　　2) 复制一个 manager，完全创建新 manager，但拷贝原有的所有 graph。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import weakref, copy</span><br><span class="line"> </span><br><span class="line">class Graph(object):</span><br><span class="line">    def __init__(self, manager&#x3D;None):</span><br><span class="line">        self.manager &#x3D; None if manager is None else weakref.ref(manager)</span><br><span class="line">    def __deepcopy__(self, memodict):</span><br><span class="line">        manager &#x3D; self.manager()</span><br><span class="line">        return Graph(memodict.get(id(manager), manager))</span><br><span class="line"> </span><br><span class="line">class Manager(object):</span><br><span class="line">    def __init__(self, graphs&#x3D;[]):</span><br><span class="line">        self.graphs &#x3D; graphs</span><br><span class="line">        for g in self.graphs:</span><br><span class="line">            g.manager &#x3D; weakref.ref(self)</span><br><span class="line"> </span><br><span class="line">a &#x3D; Manager([Graph(), Graph()])</span><br><span class="line">b &#x3D; copy.deepcopy(a)</span><br><span class="line"> </span><br><span class="line">if [g.manager() is b for g in b.graphs]:</span><br><span class="line">    print True # True</span><br><span class="line"> </span><br><span class="line">if copy.deepcopy(a.graphs[0]).manager() is a:</span><br><span class="line">    print True # True</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>Pprint()</li>
+</ol>
+<p>Pprint 模块能够提供比较优雅的数据结构打印方式，如果你需要打印一个结构较为复杂，层次较深的字典或是 JSON 对象时，使用 Pprint 能够提供较好的打印结果。</p>
+<p>假定你需要打印一个矩阵，当使用普通的 print 时，你只能打印出普通的列表，不过如果使用 pprint，你就能打出漂亮的矩阵结构</p>
+<p>如果</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pprint</span><br><span class="line"> </span><br><span class="line">matrix &#x3D; [ [1,2,3], [4,5,6], [7,8,9] ]</span><br><span class="line">a &#x3D; pprint.PrettyPrinter(width&#x3D;20)</span><br><span class="line">a.pprint(matrix)</span><br><span class="line"> </span><br><span class="line"># [[1, 2, 3],</span><br><span class="line">#  [4, 5, 6],</span><br><span class="line">#  [7, 8, 9]]</span><br></pre></td></tr></table></figure>
+<p>额外的知识</p>
+<p>一些基本的数据结构</p>
+<ol>
+<li>单链链表</li>
+</ol>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.data &#x3D; None</span><br><span class="line">        self.nextNode &#x3D; None</span><br><span class="line"> </span><br><span class="line">    def set_and_return_Next(self):</span><br><span class="line">        self.nextNode &#x3D; Node()</span><br><span class="line">        return self.nextNode</span><br><span class="line"> </span><br><span class="line">    def getNext(self):</span><br><span class="line">        return self.nextNode</span><br><span class="line"> </span><br><span class="line">    def getData(self):</span><br><span class="line">        return self.data</span><br><span class="line"> </span><br><span class="line">    def setData(self, d):</span><br><span class="line">        self.data &#x3D; d</span><br><span class="line"> </span><br><span class="line">class LinkedList:</span><br><span class="line">    def buildList(self, array):</span><br><span class="line">        self.head &#x3D; Node()</span><br><span class="line">        self.head.setData(array[0])</span><br><span class="line">        self.temp &#x3D; self.head</span><br><span class="line">        for i in array[1:]:</span><br><span class="line">            self.temp &#x3D; self.temp.set_and_return_Next()</span><br><span class="line">            self.temp.setData(i)</span><br><span class="line">            self.tail &#x3D; self.temp</span><br><span class="line">        return self.head</span><br><span class="line">    def printList(self):</span><br><span class="line">        tempNode &#x3D; self.head</span><br><span class="line">        while(tempNode!&#x3D;self.tail):</span><br><span class="line">            print(tempNode.getData())</span><br><span class="line">            tempNode &#x3D; tempNode.getNext()</span><br><span class="line">        print(self.tail.getData())</span><br><span class="line">myArray &#x3D; [3, 5, 4, 6, 2, 6, 7, 8, 9, 10, 21]</span><br><span class="line"> </span><br><span class="line">myList &#x3D; LinkedList()</span><br><span class="line">myList.buildList(myArray)</span><br><span class="line">myList.printList()</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>用 Python 实现的普林姆算法</li>
+</ol>
+<p>　　译者注：普林姆算法 (Prims Algorithm) 是图论中，在加权连通图中搜索最小生成树的算法。</p>
+<p>复制代码代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line">from heapq import heapify, heappop, heappush</span><br><span class="line"> </span><br><span class="line">def prim( nodes, edges ):</span><br><span class="line">    conn &#x3D; defaultdict( list )</span><br><span class="line">    for n1,n2,c in edges:</span><br><span class="line">        conn[ n1 ].append( (c, n1, n2) )</span><br><span class="line">        conn[ n2 ].append( (c, n2, n1) )</span><br><span class="line"> </span><br><span class="line">    mst &#x3D; []</span><br><span class="line">    used &#x3D; set( nodes[ 0 ] )</span><br><span class="line">    usable_edges &#x3D; conn[ nodes[0] ][:]</span><br><span class="line">    heapify( usable_edges )</span><br><span class="line"> </span><br><span class="line">    while usable_edges:</span><br><span class="line">        cost, n1, n2 &#x3D; heappop( usable_edges )</span><br><span class="line">        if n2 not in used:</span><br><span class="line">            used.add( n2 )</span><br><span class="line">            mst.append( ( n1, n2, cost ) )</span><br><span class="line"> </span><br><span class="line">            for e in conn[ n2 ]:</span><br><span class="line">                if e[ 2 ] not in used:</span><br><span class="line">                    heappush( usable_edges, e )</span><br><span class="line">    return mst</span><br><span class="line"> </span><br><span class="line">#test</span><br><span class="line">nodes &#x3D; list(&quot;ABCDEFG&quot;)</span><br><span class="line">edges &#x3D; [ (&quot;A&quot;, &quot;B&quot;, 7), (&quot;A&quot;, &quot;D&quot;, 5),</span><br><span class="line">          (&quot;B&quot;, &quot;C&quot;, 8), (&quot;B&quot;, &quot;D&quot;, 9), (&quot;B&quot;, &quot;E&quot;, 7),</span><br><span class="line">      (&quot;C&quot;, &quot;E&quot;, 5),</span><br><span class="line">      (&quot;D&quot;, &quot;E&quot;, 15), (&quot;D&quot;, &quot;F&quot;, 6),</span><br><span class="line">      (&quot;E&quot;, &quot;F&quot;, 8), (&quot;E&quot;, &quot;G&quot;, 9),</span><br><span class="line">      (&quot;F&quot;, &quot;G&quot;, 11)]</span><br><span class="line"> </span><br><span class="line">print &quot;prim:&quot;, prim( nodes, edges )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/06/Python%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="Python中的数据结构">
+                  <i class="fa fa-chevron-left"></i> Python中的数据结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/11/vscode%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/" rel="next" title="vscode备份插件">
+                  vscode备份插件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

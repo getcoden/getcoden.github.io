@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="大体上把 Python 中的数据类型分为如下几类： 123Number（数字）                  包括 int,long,float,complex   String（字符串）                例如：hello,&quot;hello&quot;,hello   Bool（布尔）                    包括 True、False    Python 中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中的几种数据类型">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/06/Python%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="大体上把 Python 中的数据类型分为如下几类： 123Number（数字）                  包括 int,long,float,complex   String（字符串）                例如：hello,&quot;hello&quot;,hello   Bool（布尔）                    包括 True、False    Python 中">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-06T09:51:07.000Z">
+<meta property="article:modified_time" content="2021-02-11T08:55:40.776Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/02/06/Python%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python中的几种数据类型 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8"><span class="nav-number">1.</span> <span class="nav-text">-- coding: utf-8 --</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-%E5%9B%9B%E7%A7%8D%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B-int-long-float-complex-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">python 四种数值类型 (int,long,float,complex) 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-%E6%94%AF%E6%8C%81%E5%9B%9B%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Python 支持四种不同的数值类型：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">数字类型转换：</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/06/Python%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python中的几种数据类型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-06 09:51:07" itemprop="dateCreated datePublished" datetime="2021-02-06T09:51:07Z">2021-02-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-11 08:55:40" itemprop="dateModified" datetime="2021-02-11T08:55:40Z">2021-02-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>大体上把 Python 中的数据类型分为如下几类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Number（数字）                  包括 int,long,float,complex   </span><br><span class="line">String（字符串）                例如：hello,&quot;hello&quot;,hello   </span><br><span class="line">Bool（布尔）                    包括 True、False   </span><br></pre></td></tr></table></figure>
+<p>Python 中的数据结构分为如下几类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List（列表）                    例如：[1,2,3],[1,2,3,[1,2,3],4]   </span><br><span class="line">Dictionary（字典）              例如：&#123;1:&quot;nihao&quot;,2:&quot;hello&quot;&#125;   </span><br><span class="line">Tuple（元组）                   例如：(1,2,3,abc) </span><br><span class="line">set （集合）</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>由于 Python 中认为所有的东西都是对象，所以 Python 不用像其它一些高级语言那样主动声明一个变量的类型。</p>
+<p>例如我要给一个变量 i 赋值 100，python 的实现 ：</p>
+<p><code>i=100</code>  </p>
+<p>C# 的实现：</p>
+<p><code>int i = 100;</code>  </p>
+<p>下面一一简单介绍这几种数据类型</p>
+<p>数字类型</p>
+<p>int 和 long</p>
+<p>之所以要把 int 和 long 放在一起的原因是 python3.x 之后已经不区分 int 和 long, 统一用 int。python2.x 还是区分的。下面我以 Python2.7 为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;i &#x3D; 10  </span><br><span class="line">t&gt;&gt;&gt;ype(i)  </span><br><span class="line">&lt;type &#39;int&#39;&gt;  </span><br><span class="line">  </span><br><span class="line">&gt;&gt;&gt;i&#x3D;10000000000  </span><br><span class="line">&gt;&gt;&gt;type(i)  </span><br><span class="line">&lt;type &#39;long&#39;&gt; </span><br></pre></td></tr></table></figure>
+<p>那么为什么 10 就是 int,10000000000 就是 long 呢，当然这就和 int 的最大值有关了，int 类型的最大值为 231-1，即 2147483647，也可以用 sys.maxint。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;2**31-1  </span><br><span class="line">2147483647L  </span><br><span class="line">&gt;&gt;&gt;sys.maxint  </span><br><span class="line">2147483647 </span><br></pre></td></tr></table></figure>
+<p>为什么用上面的方法求的值就是 long 型的呢（数字后面加‘L’表示是 long 型），因为 2**31 的值为 2147483648, 这个值是一个 long 型，用一个 long 型减去 1，结果还是一个 long, 但实际上 int 型的最大值就是 2147483647</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;type(2147483647)  </span><br><span class="line">&lt;type &#39;int&#39;&gt;  </span><br><span class="line">&gt;&gt;&gt;type(2147483648)  </span><br><span class="line">&lt;type &#39;long&#39;&gt;  </span><br></pre></td></tr></table></figure>
+<p>float 类型</p>
+<p>float 类型和其它语言的 float 基本一致，浮点数，说白了，就是带小数点的数，精度与机器相关。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;i &#x3D; 10000.1212  </span><br><span class="line">&gt;&gt;&gt;type(i)  </span><br><span class="line">&lt;type &#39;float&#39;&gt;  </span><br></pre></td></tr></table></figure>
+<p>complex：复数类型，具体含义及用法可自行查看相关文档。</p>
+<p>字符串类型</p>
+<p>字符串的声明有三种方式：单引号、双引号和三引号（包括三个单引号或三个双引号）。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;str1 &#x3D; &#39;hello world&#39;  </span><br><span class="line">&gt;&gt;&gt;str2 &#x3D; &quot;hello world&quot;  </span><br><span class="line">&gt;&gt;&gt;str3 &#x3D; &#39;&#39;&#39;hello world&#39;&#39;&#39;  </span><br><span class="line">&gt;&gt;&gt;str4 &#x3D; &quot;&quot;&quot;hello world&quot;&quot;&quot;  </span><br><span class="line">&gt;&gt;&gt;print str1  </span><br><span class="line">hello world  </span><br><span class="line">&gt;&gt;&gt;print str2  </span><br><span class="line">hello world  </span><br><span class="line">&gt;&gt;&gt;print str3  </span><br><span class="line">hello world  </span><br><span class="line">&gt;&gt;&gt;print str4  </span><br><span class="line">hello world </span><br></pre></td></tr></table></figure>
+<p>Python 中的字符串有两种数据类型：str 类型和 unicode 类型。str 类型采用的 ASCII 编码，也就是说它无法表示中文。unicode 类型采用 unicode 编码，能够表示任意字符，包括中文及其它语言。并且 python 中不存在像 c 语言中的 char 类型，就算是单个字符也是字符串类型。字符串默认采用的 ASCII 编码，如果要显示声明为 unicode 类型的话，需要在字符串前面加上 ‘u’ 或者 ‘U’。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;str1 &#x3D; &quot;hello&quot;  </span><br><span class="line">&gt;&gt;&gt;print str1  </span><br><span class="line">hello  </span><br><span class="line">&gt;&gt;&gt;str2 &#x3D; u&quot;中国&quot;  </span><br><span class="line">&gt;&gt;&gt;print str2  </span><br><span class="line">中国 </span><br></pre></td></tr></table></figure>
+<p>由于项目中经常出现对字符串的操作，而且由于字符串编码问题出现的问题很多，下面，来说一下关于字符串的编码问题。在与 python 打交道的过程中经常会碰到 ASCII、Unicode 和 UTF-8 三种编码。具体的介绍请参见这篇文章。我简单的理解就是，ASCII 编码适用英文字符，Unicode 适用于非英文字符（例如中文、韩文等），而 utf-8 则是一种储存和传送的格式，是对 Uncode 字符的再编码（以 8 位为单位编码）。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">u &#x3D; u&#39; 汉&#39;  </span><br><span class="line">print repr(u) # u&#39;\u6c49&#39;  </span><br><span class="line">s &#x3D; u.encode(&#39;UTF-8&#39;)  </span><br><span class="line">print repr(s) # &#39;\xe6\xb1\x89&#39;  </span><br><span class="line">u2 &#x3D; s.decode(&#39;UTF-8&#39;)  </span><br><span class="line">print repr(u2) # u&#39;\u6c49&#39;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">解释：声明 unicode 字符串” 汉 “，它的 unicode 编码为”\u6c49“，经过 utf-8 编码转换后，它的编码变成”\xe6\xb1\x89“。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">对于编码的经验总结：</span><br><span class="line"></span><br><span class="line">1. 在 python 文件头声明编码格式 ；</span><br><span class="line"></span><br><span class="line">&#96;#-*- coding: utf-8 -*- &#96;</span><br><span class="line"></span><br><span class="line">2. 将字符串统一声明为 unicode 类型，即在字符串前加 u 或者 U;</span><br><span class="line"></span><br><span class="line">3. 对于文件读写的操作，建议适用 codecs.open () 代替内置的 open ()，遵循一个原则，用哪种格式写，就用哪种格式读；</span><br><span class="line"></span><br><span class="line">假设在一个以 ANSI 格式保存的文本文件中有 “中国汉字” 几个字，如果直接用以下代码，并且要在 GUI 上或者在一个 IDE 中打印出来（例如在 sublime text 中，或者在 pydev 中打印），就会出现乱码或者异常，因为 codecs 会依据文本本身的编码格式读取内容：</span><br></pre></td></tr></table></figure>
+<p>f = codecs.open(“d:/test.txt”)<br>content = f.read()<br>f.close()<br>print content  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">改用如下方法即可（只对中文起作用）：</span><br></pre></td></tr></table></figure>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>import codecs  </p>
+<p>f = codecs.open(“d:/test.txt”)<br>content = f.read()<br>f.close()  </p>
+<p>if isinstance(content,unicode):<br>    print content.encode(‘utf-8’)<br>    print “utf-8”<br>else:<br>    print content.decode(‘gbk’).encode(‘utf-8’)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">列表类型</span><br><span class="line"></span><br><span class="line">列表是一种可修改的集合类型，其元素可以是数字、string 等基本类型，也可以是列表、元组、字典等集合对象，甚至可以是自定义的类型。其定义方式如下：</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>nums = [1,2,3,4]<br>type(nums)<br>&lt;type ‘list’&gt;<br>print nums<br>[1, 2, 3, 4]<br>strs = [“hello”,”world”]<br>print strs<br>[‘hello’, ‘world’]<br>lst = [1,”hello”,False,nums,strs]<br>type(lst)<br>&lt;type ‘list’&gt;<br>print lst<br>[1, ‘hello’, False, [1, 2, 3, 4], [‘hello’, ‘world’]]  </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">用索引的方式访问列表元素，索引从 0 开始，支持负数索引，-1 为最后一个.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>lst = [1,2,3,4,5]<br>print lst[0]<br>1<br>print lst[-1]<br>5<br>print lst[-2]<br>4 </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">支持分片操作，可访问一个区间内的元素，支持不同的步长，可利用分片进行数据插入与复制操作</span><br></pre></td></tr></table></figure>
+<p>nums = [1,2,3,4,5]<br>print nums[0:3]  #[1, 2, 3] # 前三个元素  </p>
+<p>print nums[3:]   #[4, 5]    # 后两个元素  </p>
+<p>print nums[-3:]  #[3, 4, 5] # 后三个元素 不支持 nums [-3:0]  </p>
+<p>numsclone = nums[:]    </p>
+<p>print numsclone    #[1, 2, 3, 4, 5]  复制操作  </p>
+<p>print nums[0:4:2]   #[1, 3]    步长为 2  </p>
+<p>nums[3:3] = [“three”,”four”]   #[1, 2, 3, ‘three’, ‘four’, 4, 5]  在 3 和 4 之间插入  </p>
+<p>nums[3:5] = []    #[1, 2, 3, 4, 5] 将第 4 和第 5 个元素替换为 [] 即删除 [“three”,”four”] </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">支持加法和乘法操作</span><br></pre></td></tr></table></figure>
+<p>lst1 = [“hello”,”world”]<br>lst2 = [‘good’,’time’]<br>print lst1+lst2  #[‘hello’, ‘world’, ‘good’, ‘time’]  </p>
+<p>print lst1*5  #[‘hello’, ‘world’, ‘hello’, ‘world’, ‘hello’, ‘world’, ‘hello’, ‘world’, ‘hello’, ‘world’] </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">列表所支持的方法，可以用如下方式查看列表支持的公共方法：</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>[x for x in dir([]) if not x.startswith(“__”)]<br>[‘append’, ‘count’, ‘extend’, ‘index’, ‘insert’, ‘pop’, ‘remove’, ‘reverse’, ‘sort’] </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96; </span><br><span class="line">def compare(x,y):  </span><br><span class="line">    return 1 if x&gt;y else -1  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">#【append】  在列表末尾插入元素  </span><br><span class="line">lst &#x3D; [1,2,3,4,5]  </span><br><span class="line">lst.append(6)   </span><br><span class="line">print lst     #[1, 2, 3, 4, 5, 6]  </span><br><span class="line">lst.append(&quot;hello&quot;)  </span><br><span class="line">print lst     #[1, 2, 3, 4, 5, 6]  </span><br><span class="line">  </span><br><span class="line">#【pop】  删除一个元素，并返回此元素的值 支持索引 默认为最后一个  </span><br><span class="line">x &#x3D; lst.pop()  </span><br><span class="line">print x,lst     #hello [1, 2, 3, 4, 5, 6]  # 默认删除最后一个元素  </span><br><span class="line">x &#x3D; lst.pop(0)  </span><br><span class="line">print x,lst     #1 [2, 3, 4, 5, 6]  删除第一个元素  </span><br><span class="line">  </span><br><span class="line">#【count】  返回一个元素出现的次数  </span><br><span class="line">print lst.count(2)    #1     </span><br><span class="line">  </span><br><span class="line">#【extend】  扩展列表  此方法与 “+” 操作的不同在于此方法改变原有列表，而 “+” 操作会产生一个新列表  </span><br><span class="line">lstextend &#x3D; [&quot;hello&quot;,&quot;world&quot;]  </span><br><span class="line">lst.extend(lstextend)  </span><br><span class="line">print lst           #[2, 3, 4, 5, 6, &#39;hello&#39;, &#39;world&#39;]  在 lst 的基础上扩展了 lstextend 进来   </span><br><span class="line">  </span><br><span class="line">#【index】  返回某个值第一次出现的索引位置，如果未找到会抛出异常  </span><br><span class="line">print lst.index(&quot;hello&quot;)  #5      </span><br><span class="line">  </span><br><span class="line">#print lst.index (&quot;kitty&quot;) #ValueError: &#39;kitty&#39; is not in list  出现异常  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">#【remove】 移除列表中的某个元素，如果待移除的项不存在，会抛出异常  无返回值  </span><br><span class="line">lst.remove(&quot;hello&quot;)  </span><br><span class="line">print lst     #[2, 3, 4, 5, 6, &#39;world&#39;]  &quot;hello&quot; 被移除  </span><br><span class="line">  </span><br><span class="line">#lst.remove(&quot;kitty&quot;)         #ValueError: list.remove(x): x not in list  </span><br><span class="line">  </span><br><span class="line">#【reverse】  意为反转 没错 就是将列表元素倒序排列，无返回值  </span><br><span class="line">print lst        #[2, 3, 4, 5, 6, &#39;world&#39;]  </span><br><span class="line">lst.reverse()   </span><br><span class="line">print lst        #[2, 3, 4, 5, 6, &#39;world&#39;]  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">#【sort】 排序  </span><br><span class="line">print lst    #由于上面的反转 目前排序为 [&#39;world&#39;, 6, 5, 4, 3, 2]  </span><br><span class="line">lst.sort()    </span><br><span class="line">print lst    #排序后  [2, 3, 4, 5, 6, &#39;world&#39;]  </span><br><span class="line">  </span><br><span class="line">nums &#x3D; [10,5,4,2,3]  </span><br><span class="line">print nums     #[10,5,4,2,3]  </span><br><span class="line">nums.sort(compare)  </span><br><span class="line">print nums     #[2, 3, 4, 5, 10]  </span><br></pre></td></tr></table></figure>
+<p>列表转换为迭代器。</p>
+<p>所谓的迭代器就是具有 next 方法（这个方法在调用时不需要任何参数）的对象。在调用 next 方法时，迭代器会返回它的下一个值。如果 next 方法被调用，但迭代器没有值可以返回，就会引发一个 StopIteration 异常。迭代器相对于列表的优势在于，使用迭代器不必一次性将列表加入内存，而可以依次访问列表的数据。</p>
+<p>依然用上面的方法查看迭代器的公共方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst &#x3D; [1,2,3,4,5]  </span><br><span class="line">lstiter &#x3D; iter(lst)  </span><br><span class="line">&gt;&gt;&gt;print [x for x in dir(numiter) if not x.startswith(&quot;__&quot;)]  </span><br><span class="line">&#39;next&#39;]  </span><br></pre></td></tr></table></figure>
+<p>没错，只有 next 一个方法，对于一个迭代器，可以这样操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lst &#x3D; [1,2,3,4,5]  </span><br><span class="line">lstiter &#x3D; iter(lst)  </span><br><span class="line">  </span><br><span class="line">for i in range(len(lst)):  </span><br><span class="line">    print lstiter.next()  #依次打印  </span><br><span class="line">    1  </span><br><span class="line">    2  </span><br><span class="line">    3  </span><br><span class="line">    4  </span><br><span class="line">    5 </span><br></pre></td></tr></table></figure>
+<p>元组类型</p>
+<p>元组类型和列表一样，也是一种序列，与列表不同的是，元组是不可修改的。元组的声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lst &#x3D; (0,1,2,2,2)  </span><br><span class="line">lst1&#x3D;(&quot;hello&quot;,)  </span><br><span class="line">lst2 &#x3D; (&quot;hello&quot;)  </span><br><span class="line">print type(lst1)    #&lt;type &#39;tuple&#39;&gt;  只有一个元素的情况下后面要加逗号 否则就是 str 类型  </span><br><span class="line">print type(lst2)    #&lt;type &#39;str&#39;&gt;</span><br></pre></td></tr></table></figure>
+<p>字典类型</p>
+<p>字典类型是一种键值对的集合，类似于 C# 中的 Dictionary&lt;object,object&gt; 或 js 中的 json 对象。其初始化方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dict1 &#x3D; &#123;&#125;  </span><br><span class="line">print type(dict1)      #&lt;type &#39;dict&#39;&gt;  声明一个空字典  </span><br><span class="line">  </span><br><span class="line">dict2 &#x3D; &#123;&quot;name&quot;:&quot;kitty&quot;,&quot;age&quot;:18&#125;   #直接声明字典类型  </span><br><span class="line">  </span><br><span class="line">dict3 &#x3D; dict([(&quot;name&quot;,&quot;kitty&quot;),(&quot;age&quot;,18)])  #利用 dict 函数将列表转换成字典  </span><br><span class="line">  </span><br><span class="line">dict4 &#x3D; dict(name&#x3D;&#39;kitty&#39;,age&#x3D;18)           #利用 dict 函数通过关键字参数转换为字典  </span><br><span class="line">  </span><br><span class="line">dict5 &#x3D; &#123;&#125;.fromkeys([&quot;name&quot;,&quot;age&quot;])      #利用 fromkeys 函数将 key 值列表生成字典，对应的值为 None   &#123;&#39;age&#39;: None, &#39;name&#39;: None&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>字典基本的操作方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#【添加元素】    </span><br><span class="line">dict1 &#x3D; &#123;&#125;  </span><br><span class="line">dict1[&quot;mykey&quot;] &#x3D; &quot;hello world&quot;     #直接给一个不存在的键值对赋值 即时添加新元素  </span><br><span class="line">  </span><br><span class="line">dict1[(&#39;my&#39;,&#39;key&#39;)] &#x3D; &quot;this key is a tuple&quot;   #字典的键可以是任何一中不可变类型，例如数字、字符串、元组等  </span><br><span class="line">  </span><br><span class="line">#【键值对个数】  </span><br><span class="line">print len(dict1)  </span><br><span class="line">  </span><br><span class="line">#【检查是否含有键】  </span><br><span class="line">print &quot;mykey&quot; in dict1         #True  检查是否含有键为 mykey 的键值对  </span><br><span class="line">print &quot;hello&quot; in dict1         #False  </span><br><span class="line">  </span><br><span class="line">#【删除】  </span><br><span class="line">del dict1[&quot;mykey&quot;]           #删除键为 mykey 的键值对  </span><br></pre></td></tr></table></figure>
+<p>继续利用上面的方法查看字典的所有公共方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[x for x in dir(&#123;&#125;) if not x.startswith(&quot;__&quot;)]  </span><br><span class="line">[&#39;clear&#39;, &#39;copy&#39;, &#39;fromkeys&#39;, &#39;get&#39;, &#39;has_key&#39;, &#39;items&#39;, &#39;iteritems&#39;, &#39;iterkeys&#39;, &#39;itervalues&#39;,  </span><br><span class="line"> &#39;keys&#39;, &#39;pop&#39;, &#39;popitem&#39;, &#39;setdefault&#39;, &#39;update&#39;, &#39;values&#39;, &#39;viewitems&#39;, &#39;viewkeys&#39;, &#39;viewvalues&#39;] </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">dict.clear ()                          删除字典中所有元素  </span><br><span class="line">  </span><br><span class="line">dict.copy ()                          返回字典 (浅复制) 的一个副本  </span><br><span class="line">  </span><br><span class="line">dict.get(key,default&#x3D;None)     对字典 dict 中的键 key, 返回它对应的值 value，如果字典中不存在此键，则返回 default 的值 (注意，参数 default 的默认值为 None)  </span><br><span class="line">  </span><br><span class="line">dict.has_key (key)                 如果键 (key) 在字典中存在，返回 True，否则返回 False. 在 Python2.2 版本引入 in 和 not in 后，此方法几乎已废弃不用了，但仍提供一个 可工作的接口。  </span><br><span class="line">  </span><br><span class="line">dict.items ()                         返回一个包含字典中 (键， 值) 对元组的列表  </span><br><span class="line">  </span><br><span class="line">dict.keys ()                          返回一个包含字典中键的列表  </span><br><span class="line">  </span><br><span class="line">dict.values ()                        返回一个包含字典中所有值的列表  </span><br><span class="line">  </span><br><span class="line">dict.iter ()                            方法 iteritems (), iterkeys (), itervalues () 与它们对应的非迭代方法一样，不同的是它们返回一个迭代器，而不是一个列表。  </span><br><span class="line">  </span><br><span class="line">dict.pop (key [, default])         和方法 get () 相似，如果字典中 key 键存在，删除并返回 dict [key]，如果 key 键不存在，且没有给出 default 的值，引发 KeyError 异常。  </span><br><span class="line">  </span><br><span class="line">dict.setdefault(key,default&#x3D;None)  和方法 set () 相似，如果字典中不存在 key 键，由 dict [key]&#x3D;default 为它赋值。  </span><br><span class="line">  </span><br><span class="line">dict.setdefault(key,default&#x3D;None)   和方法 set () 相似，如果字典中不存在 key 键，由 dict [key]&#x3D;default 为它赋值。 </span><br></pre></td></tr></table></figure>
+<p>布尔类型</p>
+<p>布尔类型即 True 和 False, 和其它语言中的布尔类型基本一致。下面列出典型的布尔值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print bool(0)   #False  </span><br><span class="line">print bool(1)   #True  </span><br><span class="line">print bool(-1)  #True  </span><br><span class="line">  </span><br><span class="line">print bool([])  #False  </span><br><span class="line">print bool(())  #False  </span><br><span class="line">print bool(&#123;&#125;)  #False  </span><br><span class="line">print bool(&#39;&#39;)  #False  </span><br><span class="line">print bool(None) #False  </span><br></pre></td></tr></table></figure>
+<h2 id="python-四种数值类型-int-long-float-complex-介绍"><a href="#python-四种数值类型-int-long-float-complex-介绍" class="headerlink" title="python 四种数值类型 (int,long,float,complex) 介绍"></a>python 四种数值类型 (int,long,float,complex) 介绍</h2><p>Python 支持四种不同的数值类型，包括 int（整数）long（长整数）float（浮点实际值）complex （复数）</p>
+<p>数字数据类型存储数值。他们是不可改变的数据类型，这意味着改变数字数据类型的结果，在一个新分配的对象的值。</p>
+<p>Number 对象被创建，当你给他们指派一个值。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var1 &#x3D; 1</span><br><span class="line">var2 &#x3D; 10</span><br></pre></td></tr></table></figure>
+<p>您也可以删除数字对象的参考，使用 del 语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">del 语句的语法是：</span><br><span class="line"></span><br><span class="line">del var1[,var2[,var3[....,varN]]]]</span><br></pre></td></tr></table></figure>
+<p>你可以使用 del 语句删除单个对象或多个对象。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">del var</span><br><span class="line">del var_a, var_b</span><br></pre></td></tr></table></figure>
+<h4 id="Python-支持四种不同的数值类型："><a href="#Python-支持四种不同的数值类型：" class="headerlink" title="Python 支持四种不同的数值类型："></a>Python 支持四种不同的数值类型：</h4><ul>
+<li><strong>int</strong>（符号整数）：通常被称为是整数或整数，没有小数点的正或负整数。</li>
+<li><strong>long</strong>（长整数）：或渴望，无限大小的整数，这样写整数和一个大写或小写的 L。</li>
+<li><strong>float</strong>（浮点实际值）：彩车，代表实数，小数除以整数部分和小数部分的书面。花车也可能是在科学记数法与 E 或指示的 10 次方 é（2.5e2= 2.5×102=250）。</li>
+<li><strong>complex</strong>  （复数）：+ BJ 的形式，其中 a，b 是彩车和 J（或 J）表示 - 1 的平方根（这是一个虚数）。 a 是真正的数字部分，b 是虚部。复数不使用 Python 编程。</li>
+</ul>
+<p>下面是一些数字的例子：</p>
+<table>
+<thead>
+<tr>
+<th align="center">int</th>
+<th align="center">long</th>
+<th align="center">float</th>
+<th align="center">complex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">10</td>
+<td align="center">51924361L</td>
+<td align="center">0.0</td>
+<td align="center">3.14j</td>
+</tr>
+<tr>
+<td align="center">100</td>
+<td align="center">-0x19323L</td>
+<td align="center">15.20</td>
+<td align="center">45.j</td>
+</tr>
+<tr>
+<td align="center">-786</td>
+<td align="center">0122L</td>
+<td align="center">-21.9</td>
+<td align="center">9.322e-36j</td>
+</tr>
+<tr>
+<td align="center">080</td>
+<td align="center">0xDEFABCECBDAECBFBAEl</td>
+<td align="center">32.3+e18</td>
+<td align="center">.876j</td>
+</tr>
+<tr>
+<td align="center">-0490</td>
+<td align="center">535633629843L</td>
+<td align="center">-90.</td>
+<td align="center">-.6545+0J</td>
+</tr>
+<tr>
+<td align="center">-0x260</td>
+<td align="center">-052318172735L</td>
+<td align="center">-32.54e100</td>
+<td align="center">3e+26J</td>
+</tr>
+<tr>
+<td align="center">0x69</td>
+<td align="center">-4721885298529L</td>
+<td align="center">70.2-E12</td>
+<td align="center">4.53e-7j</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Python 允许你使用长 L 的小写，但建议您只使用一个大写字母 L，以避免与数字 1 混淆。python 长整数显示一个大写字母 L。</li>
+<li>一个复杂的数字组成的有序对一个真正的浮点数字 + BJ，其中 a 是实部和 b 是复数的虚部表示。</li>
+</ul>
+<h3 id="数字类型转换："><a href="#数字类型转换：" class="headerlink" title="数字类型转换："></a><strong>数字类型转换：</strong></h3><ul>
+<li><p>Python 的数字转换内部包含一个共同的评价类型的混合型的表达。但有时，你需要明确强迫一个数字从一个类型到另一个运算符或函数的参数，以满足要求。</p>
+</li>
+<li><p><strong>int</strong> 类型（X）转换 X 到一个普通整数。</p>
+</li>
+<li><p><strong>long</strong>（X）转换 X 到一个长整数。</p>
+</li>
+<li><p><strong>float</strong> 类型（X）转换 X 到浮点数字。</p>
+</li>
+<li><p><strong>complex</strong> （x）的转换与真正的第 X 部和虚部为零的 x 到一个复杂的数量。 类型复杂（X，Y）转换 x 和 y 的第 X 部和虚部Ÿ复数。 x 和 y 是数值表达式 内置数功能：</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/06/%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95%E8%AF%BB%E5%8F%96excel%E4%B8%AD%E7%9A%84%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8Csheet%E8%A1%A8%E6%A0%BC%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/" rel="prev" title="不同方法读取excel中的多个不同sheet表格性能比较">
+                  <i class="fa fa-chevron-left"></i> 不同方法读取excel中的多个不同sheet表格性能比较
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/06/Python%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="Python中的数据结构">
+                  Python中的数据结构 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

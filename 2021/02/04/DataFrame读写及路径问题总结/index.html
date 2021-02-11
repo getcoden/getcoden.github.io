@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="一、路径问题在写代码前一定要先导入相关的库12import pandas as pdimport os  1、导入文件data &#x3D; pd.read_excel(&quot;D:\\PycharmProjects\\hellow\\excel\\招生信息.xlsx&quot;)     # 打开原始工作表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DataFrame读写及路径问题总结">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/04/DataFrame%E8%AF%BB%E5%86%99%E5%8F%8A%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="一、路径问题在写代码前一定要先导入相关的库12import pandas as pdimport os  1、导入文件data &#x3D; pd.read_excel(&quot;D:\\PycharmProjects\\hellow\\excel\\招生信息.xlsx&quot;)     # 打开原始工作表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225541.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225808.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225916.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203230209.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203230509.png">
+<meta property="article:published_time" content="2021-02-03T21:46:39.000Z">
+<meta property="article:modified_time" content="2021-02-11T01:50:31.460Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python库之Pandas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225541.png">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/02/04/DataFrame%E8%AF%BB%E5%86%99%E5%8F%8A%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>DataFrame读写及路径问题总结 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、路径问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%86%99%E4%BB%A3%E7%A0%81%E5%89%8D%E4%B8%80%E5%AE%9A%E8%A6%81%E5%85%88%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3%E7%9A%84%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">在写代码前一定要先导入相关的库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%AF%BC%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、导入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%8E%B7%E5%8F%96%E5%B7%A5%E4%BD%9C%E8%A1%A8%E8%A1%8C%E6%95%B0%E5%88%97%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、获取工作表行数列数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、获取指定工作表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E5%B7%A5%E4%BD%9C%E8%96%84%E4%B8%AD%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、获取指定工作薄中所有工作表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%A1%A8%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%88%97"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、获取所有工作表中指定列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%89%B9%E9%87%8F%E8%AF%BB%E5%8F%96-Excel-%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">二、批量读取 Excel 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%AF%BB%E5%8F%96%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%A4%9A%E4%B8%AA-Excel-%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">1、读取同一个文件夹下的多个 Excel 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%AF%BB%E5%8F%96%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E5%86%85%E7%9A%84-Excel-%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">2、读取同一个文件夹下的多个不同文件内的 Excel 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-%E5%AF%B9-excel-%E6%93%8D%E4%BD%9C%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%80%E5%88%97%EF%BC%8C%E6%9F%90%E4%B8%80%E8%A1%8C%E7%9A%84%E5%80%BC%EF%BC%8C%E5%AF%B9%E6%9F%90%E4%B8%80%E5%88%97%E4%BF%A1%E6%81%AF%E7%AD%9B%E9%80%89"><span class="nav-number">3.</span> <span class="nav-text">python 对 excel 操作获取某一列，某一行的值，对某一列信息筛选</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E6%9F%90%E4%B8%80%E8%A1%8C%EF%BC%8C%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%80%BC"><span class="nav-number">3.0.1.</span> <span class="nav-text">获得某一行，某一列的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E4%BF%A1%E6%81%AF%E8%BF%9B%E8%A1%8C%E7%AD%9B%E9%80%89"><span class="nav-number">3.0.2.</span> <span class="nav-text">对某一列的信息进行筛选</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-%E4%B8%8B-pandas-%E5%BA%93%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%8C%87%E5%AE%9A%E8%A1%8C%E6%88%96%E5%88%97%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">python 下 pandas 库中读取指定行或列数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A0%B9%E6%8D%AE-index-%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. 根据 index 查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B7%B2%E7%9F%A5%E6%95%B0%E6%8D%AE%E5%9C%A8%E7%AC%AC%E5%87%A0%E8%A1%8C%E6%89%BE%E5%88%B0%E6%83%B3%E8%A6%81%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. 已知数据在第几行找到想要的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A0%B9%E6%8D%AE%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2%E6%89%BE%E5%88%B0%E6%8C%87%E5%AE%9A%E8%A1%8C%E6%95%B0%E6%8D%AE"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. 根据条件查询找到指定行数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%89%BE%E5%87%BA%E6%8C%87%E5%AE%9A%E5%88%97"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. 找出指定列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%89%BE%E5%87%BA%E6%8C%87%E5%AE%9A%E7%9A%84%E8%A1%8C%E5%92%8C%E6%8C%87%E5%AE%9A%E7%9A%84%E5%88%97"><span class="nav-number">4.0.5.</span> <span class="nav-text">5. 找出指定的行和指定的列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%9C%A8%E8%A7%84%E5%AE%9A%E8%8C%83%E5%9B%B4%E5%86%85%E6%89%BE%E5%87%BA%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">4.0.6.</span> <span class="nav-text">6. 在规定范围内找出符合条件的数据</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/04/DataFrame%E8%AF%BB%E5%86%99%E5%8F%8A%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DataFrame读写及路径问题总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-03 21:46:39" itemprop="dateCreated datePublished" datetime="2021-02-03T21:46:39Z">2021-02-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-11 01:50:31" itemprop="dateModified" datetime="2021-02-11T01:50:31Z">2021-02-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一、路径问题"><a href="#一、路径问题" class="headerlink" title="一、路径问题"></a>一、路径问题</h2><h3 id="在写代码前一定要先导入相关的库"><a href="#在写代码前一定要先导入相关的库" class="headerlink" title="在写代码前一定要先导入相关的库"></a>在写代码前一定要先导入相关的库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os </span><br></pre></td></tr></table></figure>
+<h4 id="1、导入文件"><a href="#1、导入文件" class="headerlink" title="1、导入文件"></a>1、导入文件</h4><p><code>data = pd.read_excel(&quot;D:\\PycharmProjects\\hellow\\excel\\招生信息.xlsx&quot;)     # 打开原始工作表</code></p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;文件目录采用双斜线替换了反斜线，避免了因为误识别文件目录为转义符导致的错误，类似解决错误转义符出错的方法如下。<br><br><br>（1）路径前加‘r’<br><br><br>（2）替换为双斜线<br><br><br>（3）替换为正斜线</p>
+<p>注意：在 read_excel 时一定是读取原文件路径，大部分程序出错都是因为读取路径的问题</p>
+<h4 id="2、获取工作表行数列数"><a href="#2、获取工作表行数列数" class="headerlink" title="2、获取工作表行数列数"></a>2、获取工作表行数列数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lens &#x3D; data.shape[1]  # 获取行数 shape[1]获取列数</span><br><span class="line">rows &#x3D; data.shape[0]  # 获取行数 shape[0]获取行数</span><br></pre></td></tr></table></figure>
+<h4 id="3、获取指定工作表"><a href="#3、获取指定工作表" class="headerlink" title="3、获取指定工作表"></a>3、获取指定工作表</h4><p><code>data = pd.read_excel(r&quot;D:\excel\招生信息.xlsx&quot;,sheetname=&#39;sheet名&#39;) </code></p>
+<h4 id="4、获取指定工作薄中所有工作表"><a href="#4、获取指定工作薄中所有工作表" class="headerlink" title="4、获取指定工作薄中所有工作表"></a>4、获取指定工作薄中所有工作表</h4><p><code>data = pd.read_excel(r&quot;D:\excel\招生信息.xlsx&quot;,sheetname=None) </code></p>
+<h4 id="5、获取所有工作表中指定列"><a href="#5、获取所有工作表中指定列" class="headerlink" title="5、获取所有工作表中指定列"></a>5、获取所有工作表中指定列</h4><p><code>data = pd.read_excel(r&quot;D:\excel\招生信息.xlsx&quot;,sheetname=None，usecols=[&#39;A1&#39;,&#39;A2&#39;,....]) </code></p>
+<h2 id="二、批量读取-Excel-文件"><a href="#二、批量读取-Excel-文件" class="headerlink" title="二、批量读取 Excel 文件"></a>二、批量读取 Excel 文件</h2><h3 id="1、读取同一个文件夹下的多个-Excel-文件"><a href="#1、读取同一个文件夹下的多个-Excel-文件" class="headerlink" title="1、读取同一个文件夹下的多个 Excel 文件"></a>1、读取同一个文件夹下的多个 Excel 文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dir &#x3D; r&#39;D:\jupyter notebook\test&#39; </span><br><span class="line">filenames &#x3D; os.listdir(dir)</span><br><span class="line">dfs &#x3D; []</span><br><span class="line">for filename in filenames:</span><br><span class="line">   print(&#39;正在处理第&#39;) + str(index+1) + &#39;个表格&#39;）</span><br><span class="line">   # print(&#39;需要合并的文件为:&#39;,dir + filename)    # 为第二种写法</span><br><span class="line">   dfs.append(pd.read_excel(dir + &#39;\\&#39; + filename))</span><br><span class="line">   # dfs.append(pd.read_excel(os.path.join(dir,filename)))  # 为第二种写法</span><br><span class="line">   index +&#x3D;1</span><br><span class="line">df &#x3D; pd.concat(dfs)</span><br><span class="line">df.to_excel(&#39;&#39;dir + &#39;\\&#39; + total.xlsx&#39;&#39;,index &#x3D; False)</span><br><span class="line">print(&#39;合并后的数据大小为:&#39;,df.shape)</span><br><span class="line">print(&#39;合并完成&#39;)</span><br></pre></td></tr></table></figure>
+<h3 id="2、读取同一个文件夹下的多个不同文件内的-Excel-文件"><a href="#2、读取同一个文件夹下的多个不同文件内的-Excel-文件" class="headerlink" title="2、读取同一个文件夹下的多个不同文件内的 Excel 文件"></a>2、读取同一个文件夹下的多个不同文件内的 Excel 文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">file_paths &#x3D; r&#39;D:\jupyter notebook\test&#39; </span><br><span class="line">file_list &#x3D; []</span><br><span class="line">dfs &#x3D; []</span><br><span class="line">for root,dirs,files in os.walk(file_paths):</span><br><span class="line">   print(root,dirs,files)   # 输出看看就会明白都是些什么信息了</span><br><span class="line">   for file in files:</span><br><span class="line">      file_path &#x3D; os.path.join(root,file)  # 使用os.path.join(dirpath, name)得到全路径</span><br><span class="line">      file_list.append(file_path)</span><br><span class="line">      df &#x3D; pd.read_excel(file_path)  # 将excel转换成DataFrame</span><br><span class="line">      dfs.append(df)</span><br><span class="line">df &#x3D; pd.concat(dfs,axis &#x3D; 1)  # 将多个DataFrame合并为一个</span><br></pre></td></tr></table></figure>
+<h2 id="python-对-excel-操作获取某一列，某一行的值，对某一列信息筛选"><a href="#python-对-excel-操作获取某一列，某一行的值，对某一列信息筛选" class="headerlink" title="python 对 excel 操作获取某一列，某一行的值，对某一列信息筛选"></a>python 对 excel 操作获取某一列，某一行的值，对某一列信息筛选</h2><p>以下为<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43245453/article/details/90747259">转载文章</a><br>向大神学习</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">path &#x3D; &#39;G:\动力系\新建文件夹\什么.xls&#39;</span><br><span class="line">data &#x3D; pd.read_excel(path,None)#读取数据,设置None可以生成一个字典，字典中的key值即为sheet名字，此时不用使用DataFram，会报错</span><br><span class="line">print(data.keys())#查看sheet的名字</span><br><span class="line">for sh_name in data.keys():</span><br><span class="line">    print(&#39;sheet_name的名字是：&#39;,sh_name)</span><br><span class="line">    sh_data &#x3D; pd.DataFrame(pd.read_excel(path,sh_name))#获得每一个sheet中的内容</span><br><span class="line">    print(sh_data)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225541.png" alt="20210203225541"></p>
+</div>
+
+<h4 id="获得某一行，某一列的值"><a href="#获得某一行，某一列的值" class="headerlink" title="获得某一行，某一列的值"></a>获得某一行，某一列的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">path &#x3D; &#39;G:\动力系\新建文件夹\什么.xls&#39;</span><br><span class="line">data &#x3D; pd.DataFrame(pd.read_excel(path))#读取数据,设置None可以生成一个字典，字典中的key值即为sheet名字，此时不用使用DataFram，会报错</span><br><span class="line">print(data.index)#获取行的索引名称</span><br><span class="line">print(data.columns)#获取列的索引名称</span><br><span class="line">print(data[&#39;姓名&#39;])#获取列名为姓名这一列的内容</span><br><span class="line">print(data.loc[0])#获取行名为0这一行的内容</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225808.png" alt="20210203225808"></p>
+</div>
+
+<h4 id="对某一列的信息进行筛选"><a href="#对某一列的信息进行筛选" class="headerlink" title="对某一列的信息进行筛选"></a>对某一列的信息进行筛选</h4><p>筛选使用的是 data.loc [列名称 = 提取的信息]</p>
+<p>假如我要提取院系下面的动力，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">path &#x3D; &#39;G:\动力系\新建文件夹\什么.xls&#39;</span><br><span class="line">data &#x3D; pd.DataFrame(pd.read_excel(path))#读取数据,设置None可以生成一个字典，字典中的key值即为sheet名字，此时不用使用DataFram，会报错</span><br><span class="line">result &#x3D; data.loc[data[&#39;院系&#39;] &#x3D;&#x3D; &#39;动力&#39;]#获取列明为院系，内容为动力的内容</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203225916.png" alt="20210203225916"></p>
+</div>
+
+<h2 id="python-下-pandas-库中读取指定行或列数据"><a href="#python-下-pandas-库中读取指定行或列数据" class="headerlink" title="python 下 pandas 库中读取指定行或列数据"></a>python 下 pandas 库中读取指定行或列数据</h2><p>关键！！！！使用 loc 函数来查找。<br>话不多说，直接演示：<br>有以下名为 try.xlsx 表：[此文为转载，出处在CSDN上，具体忘记了，表示感谢]</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203230209.png" alt="20210203230209"></p>
+</div>
+
+<h4 id="1-根据-index-查询"><a href="#1-根据-index-查询" class="headerlink" title="1. 根据 index 查询"></a>1. 根据 index 查询</h4><p>条件：首先导入的数据必须的有 index<br>或者自己添加吧，方法简单，读取 excel 文件时直接加 index_col<br>代码示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd                      #导入pandas库</span><br><span class="line"></span><br><span class="line">excel_file &#x3D; &#39;.&#x2F;try.xlsx&#39;               #导入excel数据</span><br><span class="line">data &#x3D; pd.read_excel(excel_file, index_col&#x3D;&#39;姓名&#39;)        </span><br><span class="line">#这个的index_col就是index，可以选择任意字段作为索引index，读入数据</span><br><span class="line">print(data.loc[&#39;李四&#39;])</span><br></pre></td></tr></table></figure>
+<p>打印结果就是:<br><br><br>部门 B<br><br><br>工资 6600<br><br><br>Name: 李四，dtype: object<br><br><br>（注意点：索引）</p>
+<h4 id="2-已知数据在第几行找到想要的数据"><a href="#2-已知数据在第几行找到想要的数据" class="headerlink" title="2. 已知数据在第几行找到想要的数据"></a>2. 已知数据在第几行找到想要的数据</h4><p>假如我们的表中，有某个员工的工资数据为空了，那我们怎么找到自己想要的数据呢。<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in data.columns:</span><br><span class="line">    for j in range(len(data)):</span><br><span class="line">        if (data[i].isnull())[j]:</span><br><span class="line">            bumen &#x3D; data.iloc[j, [0]]                             #找出缺失值所在的部门</span><br><span class="line">            data[i][j] &#x3D; charuzhi(bumen)</span><br></pre></td></tr></table></figure>
+<p>原理很简单，首先检索全部的数据，然后我们可以用 pandas 中的 iloc 函数。上面的 iloc [j, [2]] 中 j 是具体的位置，【0】是你要得到的数据所在的 column</p>
+<h4 id="3-根据条件查询找到指定行数据"><a href="#3-根据条件查询找到指定行数据" class="headerlink" title="3. 根据条件查询找到指定行数据"></a>3. 根据条件查询找到指定行数据</h4><p>例如查找 A 部门所有成员的的姓名和工资或者工资低于 3000 的人：<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;根据条件查询某行数据&quot;&quot;&quot;</span><br><span class="line">import pandas as pd            #导入pandas库</span><br><span class="line"></span><br><span class="line">excel_file &#x3D; &#39;.&#x2F;try.xlsx&#39;        #导入文件</span><br><span class="line">data &#x3D; pd.read_excel(excel_file)      #读入数据</span><br><span class="line"></span><br><span class="line">print(data.loc[data[&#39;部门&#39;] &#x3D;&#x3D; &#39;A&#39;, [&#39;姓名&#39;, &#39;工资&#39;]])     #部门为A，打印姓名和工资</span><br><span class="line">print(data.loc[data[&#39;工资&#39;] &lt; 3000, [&#39;姓名&#39;,&#39;工资&#39;]])    #查找工资小于3000的人</span><br></pre></td></tr></table></figure>
+<p>结果如下:</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210203230509.png" alt="20210203230509"></p>
+</div>
+若要把这些数据独立生成 excel 文件或者 csv 文件：
+添加以下代码:
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;导出为excel或csv文件&quot;&quot;&quot;</span><br><span class="line">dataframe_1 &#x3D; data.loc[data[&#39;部门&#39;] &#x3D;&#x3D; &#39;A&#39;, [&#39;姓名&#39;, &#39;工资&#39;]]</span><br><span class="line">dataframe_2 &#x3D; data.loc[data[&#39;工资&#39;] &lt; 3000, [&#39;姓名&#39;, &#39;工资&#39;]]</span><br><span class="line">dataframe_1.to_excel(&#39;dataframe_1.xlsx&#39;)</span><br><span class="line">dataframe_2.to_excel(&#39;dataframe_2.xlsx&#39;)</span><br></pre></td></tr></table></figure>
+<h4 id="4-找出指定列"><a href="#4-找出指定列" class="headerlink" title="4. 找出指定列"></a>4. 找出指定列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data[&#39;columns&#39;]  #columns即你需要的字段名称即可</span><br><span class="line">#注意这列的columns不能是index的名称</span><br><span class="line">#如果要打印index的话就data.index</span><br><span class="line">data.columns  #与上面的一样</span><br></pre></td></tr></table></figure>
+<p>以上全过程用到的库：<br>pandas，xlrd , openpyxl</p>
+<h4 id="5-找出指定的行和指定的列"><a href="#5-找出指定的行和指定的列" class="headerlink" title="5. 找出指定的行和指定的列"></a>5. 找出指定的行和指定的列</h4><p>主要使用的就是函数 iloc</p>
+<p><code>data.iloc[:,:2]  #即全部行，前两列的数据</code></p>
+<p>逗号前是行，逗号后是列的范围，很容易理解</p>
+<h4 id="6-在规定范围内找出符合条件的数据"><a href="#6-在规定范围内找出符合条件的数据" class="headerlink" title="6. 在规定范围内找出符合条件的数据"></a>6. 在规定范围内找出符合条件的数据</h4><p><code>data.iloc[:10,:][data.工资&gt;6000]</code></p>
+<p>这样即可找出前 11 行里工资大于 6000 的所有人的信息了</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%BA%93%E4%B9%8BPandas/" rel="tag"># Python库之Pandas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/02/%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%96%84%E7%9A%84%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%A1%A8/" rel="prev" title="合并文件夹内所有工作薄的所有工作表">
+                  <i class="fa fa-chevron-left"></i> 合并文件夹内所有工作薄的所有工作表
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/04/Pandas%E6%93%8D%E4%BD%9CExcel%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B/" rel="next" title="Pandas操作Excel的四种类型">
+                  Pandas操作Excel的四种类型 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

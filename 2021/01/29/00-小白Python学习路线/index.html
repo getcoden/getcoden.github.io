@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="学前须知：Python 是一种解释型、面向对象、动态数据类型  Python 由 Guido van Rossum 于 1989 年底发明，第一个公开发行版发行于 1991 年。   像 Perl 语言一样，Python 源代码同样遵循 GPL (GNU General Public License) 协议。  Python 是一种解释型语言： 这就说明开发过程中没有了编译这个环节。类似于 PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="00.小白Python学习路线">
+<meta property="og:url" content="https://getcoden.github.io/2021/01/29/00-%E5%B0%8F%E7%99%BDPython%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="学前须知：Python 是一种解释型、面向对象、动态数据类型  Python 由 Guido van Rossum 于 1989 年底发明，第一个公开发行版发行于 1991 年。   像 Perl 语言一样，Python 源代码同样遵循 GPL (GNU General Public License) 协议。  Python 是一种解释型语言： 这就说明开发过程中没有了编译这个环节。类似于 PHP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/%E4%BD%A0%E6%87%82%E6%88%91%E7%9A%84%E6%84%8F%E6%80%9D%E5%90%A7.png">
+<meta property="article:published_time" content="2021-01-29T12:13:01.000Z">
+<meta property="article:modified_time" content="2021-01-29T05:47:01.944Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/%E4%BD%A0%E6%87%82%E6%88%91%E7%9A%84%E6%84%8F%E6%80%9D%E5%90%A7.png">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/01/29/00-%E5%B0%8F%E7%99%BDPython%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>00.小白Python学习路线 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%A1%AE%E5%AE%9A%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">一、确定学习目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Python-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">二、Python 基础知识学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%8E%8C%E6%8F%A1-Python-%E7%9A%84%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%EF%BC%8C%E5%88%A4%E6%96%AD%E3%80%81%E5%BE%AA%E7%8E%AF%E7%9A%84%E7%9B%B8%E5%85%B3%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">三、掌握 Python 的条件语句，判断、循环的相关执行语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%9F%A5%E8%AF%86"><span class="nav-number">4.</span> <span class="nav-text">四、面对对象知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E8%B7%B5"><span class="nav-number">5.</span> <span class="nav-text">五、实践</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/29/00-%E5%B0%8F%E7%99%BDPython%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          00.小白Python学习路线
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-29 12:13:01 / 修改时间：05:47:01" itemprop="dateCreated datePublished" datetime="2021-01-29T12:13:01Z">2021-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>学前须知：Python 是一种解释型、面向对象、动态数据类型</p>
+<ul>
+<li>Python 由 Guido van Rossum 于 1989 年底发明，第一个公开发行版发行于 1991 年。</li>
+</ul>
+<ul>
+<li><p>像 Perl 语言一样，Python 源代码同样遵循 GPL (GNU General Public License) 协议。</p>
+</li>
+<li><p>Python 是一种解释型语言： 这就说明开发过程中没有了编译这个环节。类似于 PHP 和 Perl 语言。</p>
+</li>
+<li><p>Python 是面向对象语言: 这就说明 Python 支持面向对象的风格或代码封装在对象的编程技术。</p>
+</li>
+<li><p>Python 是交互式语言： 这就说明你可以在一个 Python 提示符 &gt;&gt;&gt; 后直接执行代码。</p>
+</li>
+<li><p>Python 是初学者的语言：Python 对初级程序员而言，是一种伟大的语言，它支持广泛的应用程序开发，从简单的文字处理到浏览器再到游戏。</p>
+</li>
+</ul>
+<p>准备：在学习之前，我们首先要思考一个问题，怎么写代码，用什么写？所以，初学者我推荐 Python3.6 版本，这是最成熟的版本之一，一些功能库基本上都会兼容。编译软件使用 Pycharm。</p>
+<pre><code>0 基础小白怎么学 Python 呢？
+</code></pre>
+<h3 id="一、确定学习目标"><a href="#一、确定学习目标" class="headerlink" title="一、确定学习目标"></a>一、确定学习目标</h3><p>&emsp;&emsp;任何人，无论是学习一个新东西的时候，都首先要确定一个方向，不然就像无头苍蝇样，胡乱碰撞。只有确定了学习方向，才能一直朝着这个方向走，才能在学习中进步，才能体会 Python 给你带来的快乐。</p>
+<div align =center>
+
+
+</div>
+
+<h3 id="二、Python-基础知识学习"><a href="#二、Python-基础知识学习" class="headerlink" title="二、Python 基础知识学习"></a>二、Python 基础知识学习</h3><ul>
+<li><p>a. 首先了解 Python 是什么，它都能做些什么？</p>
+</li>
+<li><p>b. 需要知道什么是变量、算法、解释器</p>
+</li>
+<li><p>c Python 的基本数据类型</p>
+</li>
+<li><p>d 列表和元组的操作方法</p>
+</li>
+<li><p>e 字符串操作方法</p>
+</li>
+<li><p>f 基本的字典操作方法</p>
+</li>
+</ul>
+<div align =center>
+
+
+</div>
+
+
+<h3 id="三、掌握-Python-的条件语句，判断、循环的相关执行语句"><a href="#三、掌握-Python-的条件语句，判断、循环的相关执行语句" class="headerlink" title="三、掌握 Python 的条件语句，判断、循环的相关执行语句"></a>三、掌握 Python 的条件语句，判断、循环的相关执行语句</h3><ul>
+<li><p>条件、判断语句：if、else、elif</p>
+</li>
+<li><p>循环语句：while、for</p>
+</li>
+<li><p>判断结束语句：continue、break</p>
+</li>
+</ul>
+<h3 id="四、面对对象知识"><a href="#四、面对对象知识" class="headerlink" title="四、面对对象知识"></a>四、面对对象知识</h3><ul>
+<li><p>类 (Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</p>
+</li>
+<li><p>类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</p>
+</li>
+<li><p>数据成员：类变量或者实例变量，用于处理类及其实例对象的相关的数据。</p>
+</li>
+<li><p>方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</p>
+</li>
+<li><p>局部变量：定义在方法中的变量，只作用于当前实例的类。</p>
+</li>
+<li><p>实例变量：在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。</p>
+</li>
+<li><p>继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个 Dog 类型的对象派生自 Animal 类，这是模拟 “是一个（is-a）” 关系（例图，Dog 是一个 Animal）。</p>
+</li>
+<li><p>实例化：创建一个类的实例，类的具体对象。</p>
+</li>
+<li><p>方法：类中定义的函数。</p>
+</li>
+<li><p>对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</p>
+</li>
+</ul>
+<div align =center>
+
+
+</div>
+
+
+<h3 id="五、实践"><a href="#五、实践" class="headerlink" title="五、实践"></a>五、实践</h3><p>&emsp;&emsp;学习到了这个阶段了，一定要多动手实践，学了不去用，不去实操，时间过去一个月、两个月或许还记得，但时间长了，也就慢慢的忘了。在项目实践过程中出现问题，查找和处理过程中遇到的错误和异常，遇到问题多上网搜索，也可以参考公众号内的一些文章，在成功的解决了这些问题之后，你就得到一种特别的满足，特别的开心，这也是你学习 Python 给你带来的动力。</p>
+<div align =center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/%E4%BD%A0%E6%87%82%E6%88%91%E7%9A%84%E6%84%8F%E6%80%9D%E5%90%A7.png" alt="你懂我的意思吧"></p>
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/29/02-2%E6%95%B0%E5%80%BC%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="02.2数值和字符串">
+                  <i class="fa fa-chevron-left"></i> 02.2数值和字符串
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/30/%E6%B2%A1%E6%9C%89%E7%97%9B%E8%8B%A6%E4%BD%A0%E5%B0%B1%E4%B8%80%E6%97%A0%E6%89%80%E8%8E%B7/" rel="next" title="没有痛苦你就一无所获">
+                  没有痛苦你就一无所获 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

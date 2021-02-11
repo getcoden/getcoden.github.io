@@ -23,16 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bitcoder">
-<meta property="og:url" content="https://getcoden.github.io/archives/2021/02/index.html">
+<meta name="description" content="12345678import osimport pandas as pd# 遍历某目录下的Excel文件名字，加入列表list1 &#x3D; []for file in os.listdir(document_path):        if file.endswith(&quot;xlsx&quot;) or file.endswith(&quot;xls&quot;):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遍历目录下的所有文件及文件里的sheet">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/02/%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E9%87%8C%E7%9A%84sheet/index.html">
 <meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="12345678import osimport pandas as pd# 遍历某目录下的Excel文件名字，加入列表list1 &#x3D; []for file in os.listdir(document_path):        if file.endswith(&quot;xlsx&quot;) or file.endswith(&quot;xls&quot;):">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-02T10:47:50.000Z">
+<meta property="article:modified_time" content="2021-02-02T02:51:36.845Z">
 <meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python库之Pandas">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://getcoden.github.io/archives/2021/02/">
+<link rel="canonical" href="https://getcoden.github.io/2021/02/02/%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E9%87%8C%E7%9A%84sheet/">
 
 
 <script class="page-configurations">
@@ -40,11 +45,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>归档 | Bitcoder</title>
+<title>遍历目录下的所有文件及文件里的sheet | Bitcoder</title>
   
 
 
@@ -170,7 +175,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -183,6 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#list1-%E5%88%97%E8%A1%A8%E5%A4%A7%E6%A6%82%E6%98%AF%E8%BF%99%E6%A0%B7-%E2%80%98a-xlsx%E2%80%99-%E2%80%98b-xlsx%E2%80%99-%E2%80%98c-xls%E2%80%99%E2%80%A6-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8F%AF%E4%BB%A5%E7%94%A8%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%88%96%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E8%AF%BB%E5%8F%96"><span class="nav-number">1.</span> <span class="nav-text">list1 列表大概是这样 [‘a.xlsx’,‘b.xlsx’,‘c.xls’…], 接下来可以用相对路径或绝对路径读取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas-%E8%AF%BB%E5%8F%96-Excel-%E6%96%87%E4%BB%B6%E4%B8%8B%E7%9A%84-sheet"><span class="nav-number"></span> <span class="nav-text">pandas 读取 Excel 文件下的 sheet</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -253,232 +259,100 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 28 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/02/%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E9%87%8C%E7%9A%84sheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          遍历目录下的所有文件及文件里的sheet
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-02-02 10:47:50 / 修改时间：02:51:36" itemprop="dateCreated datePublished" datetime="2021-02-02T10:47:50Z">2021-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"># 遍历某目录下的Excel文件名字，加入列表</span><br><span class="line">list1 &#x3D; []</span><br><span class="line">for file in os.listdir(document_path):</span><br><span class="line">        if file.endswith(&quot;xlsx&quot;) or file.endswith(&quot;xls&quot;):</span><br><span class="line">            list1.append(file)</span><br></pre></td></tr></table></figure>
+<h4 id="list1-列表大概是这样-‘a-xlsx’-‘b-xlsx’-‘c-xls’…-接下来可以用相对路径或绝对路径读取"><a href="#list1-列表大概是这样-‘a-xlsx’-‘b-xlsx’-‘c-xls’…-接下来可以用相对路径或绝对路径读取" class="headerlink" title="list1 列表大概是这样 [‘a.xlsx’,‘b.xlsx’,‘c.xls’…], 接下来可以用相对路径或绝对路径读取"></a>list1 列表大概是这样 [‘a.xlsx’,‘b.xlsx’,‘c.xls’…], 接下来可以用相对路径或绝对路径读取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 相对路径读取,即代码与文件同目录才可以</span><br><span class="line">for i in list1:</span><br><span class="line">	pd.read_excel(i）</span><br><span class="line"># 绝对路径读取</span><br><span class="line">for i in list1:</span><br><span class="line">	excel_path &#x3D; os.path.join(document_path,i)</span><br><span class="line">	pd.read_excel(excel_path)</span><br></pre></td></tr></table></figure>
+<h3 id="pandas-读取-Excel-文件下的-sheet"><a href="#pandas-读取-Excel-文件下的-sheet" class="headerlink" title="pandas 读取 Excel 文件下的 sheet"></a>pandas 读取 Excel 文件下的 sheet</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">writer &#x3D; pd.ExcelFile(&#39;.&#x2F;a.xlsx&#39;)</span><br><span class="line">sheet_len &#x3D; len(writer.sheet_names)</span><br><span class="line"># 指定下标读取</span><br><span class="line">for i in range(0,sheet_len):</span><br><span class="line">    df &#x3D; pd.read_excel(writer,sheetname&#x3D;i)</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-10T18:39:10Z"
-              content="2021-02-10">
-          02-10
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/11/vscode%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">vscode备份插件</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%BA%93%E4%B9%8BPandas/" rel="tag"># Python库之Pandas</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/02/Python-pip%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/" rel="prev" title="Python-pip配置国内镜像源">
+                  <i class="fa fa-chevron-left"></i> Python-pip配置国内镜像源
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/02/%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%96%84%E7%9A%84%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%A1%A8/" rel="next" title="合并文件夹内所有工作薄的所有工作表">
+                  合并文件夹内所有工作薄的所有工作表 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-06T16:53:16Z"
-              content="2021-02-06">
-          02-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/07/Python%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/" itemprop="url">
-            <span itemprop="name">Python中的高级数据结构详解</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-06T10:28:00Z"
-              content="2021-02-06">
-          02-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/06/Python%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url">
-            <span itemprop="name">Python中的数据结构</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-06T09:51:07Z"
-              content="2021-02-06">
-          02-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/06/Python%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">Python中的几种数据类型</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-06T07:44:18Z"
-              content="2021-02-06">
-          02-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/06/%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95%E8%AF%BB%E5%8F%96excel%E4%B8%AD%E7%9A%84%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8Csheet%E8%A1%A8%E6%A0%BC%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/" itemprop="url">
-            <span itemprop="name">不同方法读取excel中的多个不同sheet表格性能比较</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-05T12:42:50Z"
-              content="2021-02-05">
-          02-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/05/Pandas%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E6%9D%A1%E4%BB%B6%E6%A0%BC%E5%BC%8F/" itemprop="url">
-            <span itemprop="name">Pandas设置单元格条件格式</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-05T12:30:18Z"
-              content="2021-02-05">
-          02-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/05/Pandas%E6%8E%92%E5%BA%8F%E7%AE%80%E5%8D%95%E6%8E%92%E5%A4%8D%E6%9D%82%E6%8E%92/" itemprop="url">
-            <span itemprop="name">Pandas排序简单排复杂排</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-04T07:53:09Z"
-              content="2021-02-04">
-          02-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/04/Pandas%E7%AD%9B%E9%80%89%E7%9A%84%E5%85%B7%E4%BD%93%E5%BA%94%E7%94%A8/" itemprop="url">
-            <span itemprop="name">Pandas筛选的具体应用</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-04T07:03:30Z"
-              content="2021-02-04">
-          02-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/04/Pandas%E7%9A%84%E5%90%88%E5%B9%B6%E5%8F%8A%E6%8B%BC%E6%8E%A5%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">Pandas的合并及拼接问题</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-02-03T23:58:58Z"
-              content="2021-02-03">
-          02-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/04/Pandas%E6%95%B4%E7%90%86%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE/" itemprop="url">
-            <span itemprop="name">Pandas整理表格数据</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/02/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/02/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+
+
+
 
 
 <script>
