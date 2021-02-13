@@ -1540,6 +1540,37 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python学习之路</title>
+    <url>/2021/02/14/Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</url>
+    <content><![CDATA[<p>&emsp;&emsp;本文源自知乎网文，有学习的同感，故抄来以此鞭策自己。感谢原作者</p>
+<p>&emsp;&emsp;首先不要觉着编程难，只要你认识 26 个英文字母，有一点点小学或初中的词汇量就完全没问题！！要在心理上对自己有信心，不就是个编程嘛，搞他！！抄我也得把他抄下来！！</p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;作为过来人建议从最最基础的语法命令开始，能让自己有一个小小的成就感就行，不要贪大，比如打印显示出一句话都能有满满的成就感，从小小的成就感中一点点得体会编程的乐趣，这样心理的抵触感和恐惧会慢慢的消失，伴随而来的就是好奇与探索的欲望，久而久之就会去研究 python 的语法去掌握它。这个小小的成就感非常非常重要！！</p>
+<p>&emsp;&emsp;总是有评论区知友问我，不知道如何从 0 入手来获得这种小小的成就感？这里统一回复一下：对于小白来说，有个人引导会比自学要高效的多，尤其容易坚持不下去的小伙伴。可以试试下面这个入门课程，不用本地安装 Python 环境，能直接在网页上敲代码，还有大牛老师的直播课带着入门，能少走很多弯路！只要跟着老师一行行的敲代码，坚持下来会发现其实学 Python 非常容易！</p>
+<p>&emsp;&emsp;如果你学完了上面的基础训课程，接下来，可以给自己设立个小目标，来学以致用，比如要用 Python 解决工作或学习中的一个重复复制粘贴的小问题！经过自己查找搜索发现 Python 可以用爬虫解决我这个问题，那就搞他！！</p>
+<p>&emsp;&emsp;站在巨人的肩膀上，先去搜一搜有没有几行代码的小爬虫案例，肯定有的，就拿最简单的，爬百度首页，不管是啥，先一把梭，照着代码敲一遍，然后运行，肯定能出来东西，不管是正确结果还是报错，先跑一遍再说！！</p>
+<p>&emsp;&emsp;精读代码，滤清思路，照葫芦画瓢，先看看都用了哪些第三方包，爬虫的话觉对是 requests 库了，顾名思义，就是发送请求接受请求的库，如果还不明白就是把这个库想象成你的浏览器，现在他是另一种浏览器了，只是没有界面。不用鼠标点击访问网页，而是用另一种方式，请求和响应，看明白响应的 HTML 代码咋解析呀，网上一搜，就有了另一个库 bs4，以此类推，然后试着用这个代码去请求一下自己的那个目标网址试试看看都返回啥。</p>
+<p>&emsp;&emsp;学习过程中，缺啥补啥！哪里不会补哪里！后面你就会了解到 python 除了可以写爬虫，还可以做网站，可以做数据分析，期间就会遇到更底层的困难，emmm 做网络应该更了解一些网络协议，类似 http 协议，以及握手挥手原理，数据请求原理等。</p>
+<p>&emsp;&emsp;同时就还需要抓包工具的使用配置，json 等数据格式的学习，html 的学习，js 的学习，总之会发现自己遇到的困难一个接一个，需要的前置知识需要一个坑一个坑的去填，这些应该比较痛苦，但是其乐无穷。</p>
+<p>&emsp;&emsp;基础要精通，勤加练习，多看书！python 本身语法学习中还会在面向对象这个概念中卡住，因为之前的语法都是面向过程，写个函数封装起来就完事了，后来遇到面向对象，思路就要转变一下了，三大特性，类的概念，继承，对象，多态，封装，以及各种魔法函数，需要大量练习和理解。</p>
+<p>&emsp;&emsp;后来基本的书籍已经满足不了自己了，就去看流畅的 python ，cookbook 等书籍，发现 python 还有很多的特性需要掌握，实在是学无止境。<br>&emsp;&emsp;这些还是 python 语法本身，后面的 python 爬虫就要学习除了网络协议，抓包，以及各种 requests 库，还要学习提高速度多线程，多进程，分布式的抓取，另外还会需要代理 ip，伪登录，等难题。</p>
+<p>&emsp;&emsp;在抓数据上已经费了老劲了，接下来就要存数据，数据库得学习一下 mysql sql 语句 mongodb ，redis 都得学习下。</p>
+<p>&emsp;&emsp;好不容易存好了数据，就要去分析了，numpy pandas 就又要学习各种函数去学习，于是就又找了一本利用 python 进行数据分析的书。<br>&emsp;&emsp;使劲看完之后，分析数据也差不多了，就要考虑数据展示了，matplotlib seaborn echart 就要学习了 js 语言也要学习了，于是折腾一波，就可以做出基本的数据图表了。</p>
+<p>&emsp;&emsp;然后又希望展示到网站，让同事看，于是就又要学习 django flask 这样的网络框架，一顿猛学之后基本就可以展示了。后来发现自己需要优化一下网站，性能更高，耦合度更小一些，要做成前后端分离的形式，于是又去学了 restful 的开发方式和 vue 框架，实现前后端分离。</p>
+<p>&emsp;&emsp;后面发现自己的数据分析深度不太够，于是又恶补了一些统计学的知识，于是又进了统计学到机器学习到深度学习的深坑，于是自然语言处理，计算机视觉，这些依靠神经网络的技术也就入门了，当然这些需要一点点的死磕，从线性代数到手写神经网络，到应用框架一步步理解其原理，是最有乐趣的。</p>
+<p>&emsp;&emsp;总之小白学 Python 方法总比困难多！你要问我最大的困难是什么？我的答案是如何高度保持持续进取学习应用的好奇心与耐心是最困难的。<br>&emsp;&emsp;编程是一个全新的世界，就像学英语，打开了英语世界，那么编程就是打开了全新的编程世界，日常那些重复的问题、报表等，都变得苍白无力！困难与乐趣同在！</p>
+<p>&emsp;&emsp;最后！记录，搜索，基础，这三个很重要！！找个地方写博客记录自己学习历程很重要，解决了任何问题都记录下来，比如这个知乎专栏啥的，不会的问题多搜索答案，肯定能搜到！，反复练习基础语法，理解基础知识，看书，看视频都可以！</p>
+<p>&emsp;&emsp;加油吧！人生没有无意义的努力，现在的付出，将来一定会有回报，说不定什么时候就用到了</p>
+]]></content>
+      <categories>
+        <category>文章阅读</category>
+      </categories>
+      <tags>
+        <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vscode备份插件</title>
     <url>/2021/02/11/vscode%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<h3 id="安装-Settings-Sync"><a href="#安装-Settings-Sync" class="headerlink" title="安装 Settings Sync"></a>安装 Settings Sync</h3><p>vscode 插件中心直接搜索安装即可。</p>
@@ -1838,6 +1869,97 @@ Ctil + Alt + E 从文件夹中选择图片
       </categories>
       <tags>
         <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将本地项目上传到Github</title>
+    <url>/2021/02/14/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/u014135752/article/details/79951802">本文来源</a></p>
+<p>首先你需要一个 github 账号，所有还没有的话先去注册吧！</p>
+<p><a href="https://github.com/">https://github.com/</a></p>
+<p>我们使用 git 需要先安装 git 工具，这里给出下载地址，下载后一路直接安装即可：</p>
+<p><a href="https://git-for-windows.github.io/">https://git-for-windows.github.io/</a></p>
+<ol>
+<li>进入 Github 首页，点击 New repository 新建一个项目</li>
+</ol>
+<a id="more"></a>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160444.png" alt="20210213160444"></p>
+</div>
+
+<ol start="2">
+<li>填写相应信息后点击 create 即可 </li>
+</ol>
+<p>Repository name: 仓库名称</p>
+<p>Description (可选): 仓库描述介绍</p>
+<p>Public, Private : 仓库权限（公开共享，私有或指定合作者）</p>
+<p>Initialize this repository with a README: 添加一个 README.md</p>
+<p>gitignore: 不需要进行版本管理的仓库类型，对应生成文件.gitignore</p>
+<p>license: 证书类型，对应生成文件 LICENSE</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160533.png" alt="20210213160533"></p>
+</div>
+
+<ol start="3">
+<li>点击 Clone or dowload 会出现一个地址，copy 这个地址备用。</li>
+</ol>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160640.png" alt="20210213160640"></p>
+</div>
+
+<ol start="4">
+<li>接下来就到本地操作了，首先右键你的项目，如果你之前安装 git 成功的话，右键会出现两个新选项，分别为 Git Gui Here,Git Bash Here, 这里我们选择 Git Bash Here，进入如下界面，Test_Bluetooth 即为我的项目名。</li>
+</ol>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160729.png" alt="20210213160729"></p>
+</div>
+
+<ol start="5">
+<li>接下来输入如下代码（关键步骤），把 github 上面的仓库克隆到本地</li>
+</ol>
+<p>git clone <a href="https://github.com/CKTim/BlueTooth.git%EF%BC%88https://github.com/CKTim/BlueTooth.git">https://github.com/CKTim/BlueTooth.git（https://github.com/CKTim/BlueTooth.git</a> 替换成你之前复制的地址）</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160753.png" alt="20210213160753"></p>
+</div>
+
+<ol start="6">
+<li>这个步骤以后你的本地项目文件夹下面就会多出个文件夹，该文件夹名即为你 github 上面的项目名，如图我多出了个 Test 文件夹，我们把本地项目文件夹下的所有文件（除了新多出的那个文件夹不用），其余都复制到那个新多出的文件夹下</li>
+</ol>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160827.png" alt="20210213160827"></p>
+</div>
+
+<ol start="7">
+<li>接着继续输入命令 cd Test，进入 Test 文件夹</li>
+</ol>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213160852.png" alt="20210213160852"></p>
+</div>
+
+<ol start="8">
+<li>接下来依次输入以下代码即可完成其他剩余操作：</li>
+</ol>
+<p>git add .        （注：别忘记后面的.，此操作是把 Test 文件夹下面的文件都添加进来）</p>
+<p>git commit  -m  ” 提交信息”  （注：“提交信息” 里面换成你需要，如 “first commit”）</p>
+<p>git push -u origin master   （注：此操作目的是把本地仓库 push 到 github 上面，此步骤需要你输入帐号和密码）</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210213161016.png" alt="20210213161016"></p>
+</div>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>

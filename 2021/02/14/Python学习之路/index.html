@@ -22,23 +22,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Python的历史 1989年圣诞节：Guido von Rossum开始写Python语言的编译器。 1991年2月：第一个Python编译器（同时也是解释器）诞生，它是用C语言实现的（后面），可以调用C语言的库函数。在最早的版本中，Python已经提供了对“类”，“函数”，“异常处理”等构造块的支持，还有对列表、字典等核心数据类型，同时支持以模块为基础来构造应用程序。 1994年1月：Pyth">
+<meta name="description" content="&amp;emsp;&amp;emsp;本文源自知乎网文，有学习的同感，故抄来以此鞭策自己。感谢原作者 &amp;emsp;&amp;emsp;首先不要觉着编程难，只要你认识 26 个英文字母，有一点点小学或初中的词汇量就完全没问题！！要在心理上对自己有信心，不就是个编程嘛，搞他！！抄我也得把他抄下来！！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="01.初识Python">
-<meta property="og:url" content="https://getcoden.github.io/2021/01/26/01.%E5%88%9D%E8%AF%86Python/index.html">
+<meta property="og:title" content="Python学习之路">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/14/Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/index.html">
 <meta property="og:site_name" content="Bitcoder">
-<meta property="og:description" content="Python的历史 1989年圣诞节：Guido von Rossum开始写Python语言的编译器。 1991年2月：第一个Python编译器（同时也是解释器）诞生，它是用C语言实现的（后面），可以调用C语言的库函数。在最早的版本中，Python已经提供了对“类”，“函数”，“异常处理”等构造块的支持，还有对列表、字典等核心数据类型，同时支持以模块为基础来构造应用程序。 1994年1月：Pyth">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;本文源自知乎网文，有学习的同感，故抄来以此鞭策自己。感谢原作者 &amp;emsp;&amp;emsp;首先不要觉着编程难，只要你认识 26 个英文字母，有一点点小学或初中的词汇量就完全没问题！！要在心理上对自己有信心，不就是个编程嘛，搞他！！抄我也得把他抄下来！！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://getcoden.github.io/2021/01/26/01.%E5%88%9D%E8%AF%86Python/res/python-idle.png">
-<meta property="article:published_time" content="2021-01-26T05:23:56.000Z">
-<meta property="article:modified_time" content="2021-01-28T08:45:01.878Z">
+<meta property="article:published_time" content="2021-02-13T16:15:16.000Z">
+<meta property="article:modified_time" content="2021-02-13T08:21:02.286Z">
 <meta property="article:author" content="Bitcode">
-<meta property="article:tag" content="Python基础">
+<meta property="article:tag" content="文章阅读">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://getcoden.github.io/2021/01/26/01.%E5%88%9D%E8%AF%86Python/res/python-idle.png">
 
 
-<link rel="canonical" href="https://getcoden.github.io/2021/01/26/01.%E5%88%9D%E8%AF%86Python/">
+<link rel="canonical" href="https://getcoden.github.io/2021/02/14/Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
 
 
 <script class="page-configurations">
@@ -50,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>01.初识Python | Bitcoder</title>
+<title>Python学习之路 | Bitcoder</title>
   
 
 
@@ -176,7 +174,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -189,7 +187,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">Python的历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">Python的优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E7%9A%84%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F"><span class="nav-number">3.</span> <span class="nav-text">Python的应用领域</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Python%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">安装Python解释器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number"></span> <span class="nav-text">Python开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IDLE-%E8%87%AA%E5%B8%A6%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">IDLE - 自带的集成开发工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Visual-Studio-Code-%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">Visual Studio Code - 更好的交互式编程工具</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -271,7 +268,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/26/01.%E5%88%9D%E8%AF%86Python/">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/14/Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -284,7 +281,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          01.初识Python
+          Python学习之路
         </h1>
 
         <div class="post-meta-container">
@@ -294,23 +291,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2021-01-26 05:23:56" itemprop="dateCreated datePublished" datetime="2021-01-26T05:23:56Z">2021-01-26</time>
+      <time title="创建时间：2021-02-13 16:15:16 / 修改时间：08:21:02" itemprop="dateCreated datePublished" datetime="2021-02-13T16:15:16Z">2021-02-13</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-28 08:45:01" itemprop="dateModified" datetime="2021-01-28T08:45:01Z">2021-01-28</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
         </span>
     </span>
 
@@ -324,39 +315,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h4 id="Python的历史"><a href="#Python的历史" class="headerlink" title="Python的历史"></a>Python的历史</h4><ol>
-<li>1989年圣诞节：Guido von Rossum开始写Python语言的编译器。</li>
-<li>1991年2月：第一个Python编译器（同时也是解释器）诞生，它是用C语言实现的（后面），可以调用C语言的库函数。在最早的版本中，Python已经提供了对“类”，“函数”，“异常处理”等构造块的支持，还有对列表、字典等核心数据类型，同时支持以模块为基础来构造应用程序。</li>
-<li>1994年1月：Python 1.0正式发布。</li>
-<li>2000年10月16日：Python 2.0发布，增加了完整的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8)">垃圾回收</a>，提供了对<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unicode">Unicode</a>的支持。与此同时，Python的整个开发过程更加透明，社区对开发进度的影响逐渐扩大，生态圈开始慢慢形成。</li>
-<li>2008年12月3日：Python 3.0发布，它并不完全兼容之前的Python代码，不过因为目前还有不少公司在项目和运维中使用Python 2.x版本，所以Python 3.x的很多新特性后来也被移植到Python 2.6/2.7版本中。</li>
-</ol>
-<p>目前我们使用的Python 3.7.x的版本是在2018年发布的，Python的版本号分为三段，形如A.B.C。其中A表示大版本号，一般当整体重写，或出现不向后兼容的改变时，增加A；B表示功能更新，出现新功能时增加B；C表示小的改动（例如：修复了某个Bug），只要有修改就增加C。如果对Python的历史感兴趣，可以阅读名为<a target="_blank" rel="noopener" href="http://www.cnblogs.com/vamei/archive/2013/02/06/2892628.html">《Python简史》</a>的网络文章。</p>
-<h4 id="Python的优缺点"><a href="#Python的优缺点" class="headerlink" title="Python的优缺点"></a>Python的优缺点</h4><p>Python的优点很多，简单的可以总结为以下几点。</p>
-<ol>
-<li>简单明了，学习曲线低，比很多编程语言都容易上手。</li>
-<li>开放源代码，拥有强大的社区和生态圈，尤其是在数据分析和机器学习领域。</li>
-<li>解释型语言，天生具有平台可移植性，代码可以工作于不同的操作系统。</li>
-<li>对两种主流的编程范式（面向对象编程和函数式编程）都提供了支持。</li>
-<li>代码规范程度高，可读性强，适合有代码洁癖和强迫症的人群。</li>
-</ol>
-<p>Python的缺点主要集中在以下几点。</p>
-<ol>
-<li>执行效率稍低，对执行效率要求高的部分可以由其他语言（如：C、C++）编写。</li>
-<li>代码无法加密，但是现在很多公司都不销售卖软件而是销售服务，这个问题会被弱化。</li>
-<li>在开发时可以选择的框架太多（如Web框架就有100多个），有选择的地方就有错误。</li>
-</ol>
-<h4 id="Python的应用领域"><a href="#Python的应用领域" class="headerlink" title="Python的应用领域"></a>Python的应用领域</h4><p>目前Python在Web应用后端开发、云基础设施建设、DevOps、网络数据采集（爬虫）、自动化测试、数据分析、机器学习等领域都有着广泛的应用。</p>
-<h3 id="安装Python解释器"><a href="#安装Python解释器" class="headerlink" title="安装Python解释器"></a>安装Python解释器</h3><p>想要开始Python编程之旅，首先得在自己使用的计算机上安装Python解释器环境，下面将以安装官方的Python解释器为例，讲解如何在不同的操作系统上安装Python环境。官方的Python解释器是用C语言实现的，也是使用最为广泛的Python解释器，通常称之为CPython。除此之外，Python解释器还有Java语言实现的Jython、C#语言实现的IronPython以及PyPy、Brython、Pyston等版本，有兴趣的读者可以自行了解。</p>
-<h3 id="Python开发工具"><a href="#Python开发工具" class="headerlink" title="Python开发工具"></a>Python开发工具</h3><h4 id="IDLE-自带的集成开发工具"><a href="#IDLE-自带的集成开发工具" class="headerlink" title="IDLE - 自带的集成开发工具"></a>IDLE - 自带的集成开发工具</h4><p>IDLE是安装Python环境时自带的集成开发工具，如下图所示。但是由于IDLE的用户体验并不是那么好所以很少在实际开发中被采用。</p>
-<p><img src="./res/python-idle.png"></p>
-<h4 id="Visual-Studio-Code-更好的交互式编程工具"><a href="#Visual-Studio-Code-更好的交互式编程工具" class="headerlink" title="Visual Studio Code - 更好的交互式编程工具"></a>Visual Studio Code - 更好的交互式编程工具</h4><p>Visual Studio Code（简称 VS Code ）是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系统的 免费代码编辑器，它支持 测试，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和 代码重构等。该编辑器支持用户个性化配置，例如改变主题颜色、键盘快捷方式等各种属性和参数，同时还在编辑器中内置了扩展程序管理的功能。</p>
-<p>在 2019 年的 Stack Overflow 组织的开发者调研中，VS Code 被认为是最受开发者欢迎的开发环境，据调查 87317 名受访者中有 50.7% 的受访者声称正在使用 VS Code。</p>
-<p>Visual Studio Code 具备了现代文本编辑器所具有的功能，例如更改字符编码、更换换行符、语法高亮、支持正则表达式、安装扩展、创建 snippet 等。</p>
-<p>此外 Visual Studio Code 还支持扩展程序。通过安装扩展程序，Code 可以支持更多新的语言、界面主题、测试器，以及更多的增值服务。Visual Studio Code 的扩展程序运行于独立的进程中，以保证编辑器的运行速度不受干扰。</p>
-<p>Visual Studio Code 支持多种编程语言，集成终端，可以在编辑器中运行脚本、编译软件、调试脚本、设置断点、做版本管理。</p>
-<p>可以在命令面板中（快捷键 Ctrl+Shift+P）搜索和输入命令，从而实现指定功能，例如安装扩展、设置属性等、调用扩展的命令。</p>
-<p>在控制面板做的设置都会自动保存到 json，也可以直接修改 json 文件，方便备份或部署。</p>
+        <p>&emsp;&emsp;本文源自知乎网文，有学习的同感，故抄来以此鞭策自己。感谢原作者</p>
+<p>&emsp;&emsp;首先不要觉着编程难，只要你认识 26 个英文字母，有一点点小学或初中的词汇量就完全没问题！！要在心理上对自己有信心，不就是个编程嘛，搞他！！抄我也得把他抄下来！！</p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;作为过来人建议从最最基础的语法命令开始，能让自己有一个小小的成就感就行，不要贪大，比如打印显示出一句话都能有满满的成就感，从小小的成就感中一点点得体会编程的乐趣，这样心理的抵触感和恐惧会慢慢的消失，伴随而来的就是好奇与探索的欲望，久而久之就会去研究 python 的语法去掌握它。这个小小的成就感非常非常重要！！</p>
+<p>&emsp;&emsp;总是有评论区知友问我，不知道如何从 0 入手来获得这种小小的成就感？这里统一回复一下：对于小白来说，有个人引导会比自学要高效的多，尤其容易坚持不下去的小伙伴。可以试试下面这个入门课程，不用本地安装 Python 环境，能直接在网页上敲代码，还有大牛老师的直播课带着入门，能少走很多弯路！只要跟着老师一行行的敲代码，坚持下来会发现其实学 Python 非常容易！</p>
+<p>&emsp;&emsp;如果你学完了上面的基础训课程，接下来，可以给自己设立个小目标，来学以致用，比如要用 Python 解决工作或学习中的一个重复复制粘贴的小问题！经过自己查找搜索发现 Python 可以用爬虫解决我这个问题，那就搞他！！</p>
+<p>&emsp;&emsp;站在巨人的肩膀上，先去搜一搜有没有几行代码的小爬虫案例，肯定有的，就拿最简单的，爬百度首页，不管是啥，先一把梭，照着代码敲一遍，然后运行，肯定能出来东西，不管是正确结果还是报错，先跑一遍再说！！</p>
+<p>&emsp;&emsp;精读代码，滤清思路，照葫芦画瓢，先看看都用了哪些第三方包，爬虫的话觉对是 requests 库了，顾名思义，就是发送请求接受请求的库，如果还不明白就是把这个库想象成你的浏览器，现在他是另一种浏览器了，只是没有界面。不用鼠标点击访问网页，而是用另一种方式，请求和响应，看明白响应的 HTML 代码咋解析呀，网上一搜，就有了另一个库 bs4，以此类推，然后试着用这个代码去请求一下自己的那个目标网址试试看看都返回啥。</p>
+<p>&emsp;&emsp;学习过程中，缺啥补啥！哪里不会补哪里！后面你就会了解到 python 除了可以写爬虫，还可以做网站，可以做数据分析，期间就会遇到更底层的困难，emmm 做网络应该更了解一些网络协议，类似 http 协议，以及握手挥手原理，数据请求原理等。</p>
+<p>&emsp;&emsp;同时就还需要抓包工具的使用配置，json 等数据格式的学习，html 的学习，js 的学习，总之会发现自己遇到的困难一个接一个，需要的前置知识需要一个坑一个坑的去填，这些应该比较痛苦，但是其乐无穷。</p>
+<p>&emsp;&emsp;基础要精通，勤加练习，多看书！python 本身语法学习中还会在面向对象这个概念中卡住，因为之前的语法都是面向过程，写个函数封装起来就完事了，后来遇到面向对象，思路就要转变一下了，三大特性，类的概念，继承，对象，多态，封装，以及各种魔法函数，需要大量练习和理解。</p>
+<p>&emsp;&emsp;后来基本的书籍已经满足不了自己了，就去看流畅的 python ，cookbook 等书籍，发现 python 还有很多的特性需要掌握，实在是学无止境。<br>&emsp;&emsp;这些还是 python 语法本身，后面的 python 爬虫就要学习除了网络协议，抓包，以及各种 requests 库，还要学习提高速度多线程，多进程，分布式的抓取，另外还会需要代理 ip，伪登录，等难题。</p>
+<p>&emsp;&emsp;在抓数据上已经费了老劲了，接下来就要存数据，数据库得学习一下 mysql sql 语句 mongodb ，redis 都得学习下。</p>
+<p>&emsp;&emsp;好不容易存好了数据，就要去分析了，numpy pandas 就又要学习各种函数去学习，于是就又找了一本利用 python 进行数据分析的书。<br>&emsp;&emsp;使劲看完之后，分析数据也差不多了，就要考虑数据展示了，matplotlib seaborn echart 就要学习了 js 语言也要学习了，于是折腾一波，就可以做出基本的数据图表了。</p>
+<p>&emsp;&emsp;然后又希望展示到网站，让同事看，于是就又要学习 django flask 这样的网络框架，一顿猛学之后基本就可以展示了。后来发现自己需要优化一下网站，性能更高，耦合度更小一些，要做成前后端分离的形式，于是又去学了 restful 的开发方式和 vue 框架，实现前后端分离。</p>
+<p>&emsp;&emsp;后面发现自己的数据分析深度不太够，于是又恶补了一些统计学的知识，于是又进了统计学到机器学习到深度学习的深坑，于是自然语言处理，计算机视觉，这些依靠神经网络的技术也就入门了，当然这些需要一点点的死磕，从线性代数到手写神经网络，到应用框架一步步理解其原理，是最有乐趣的。</p>
+<p>&emsp;&emsp;总之小白学 Python 方法总比困难多！你要问我最大的困难是什么？我的答案是如何高度保持持续进取学习应用的好奇心与耐心是最困难的。<br>&emsp;&emsp;编程是一个全新的世界，就像学英语，打开了英语世界，那么编程就是打开了全新的编程世界，日常那些重复的问题、报表等，都变得苍白无力！困难与乐趣同在！</p>
+<p>&emsp;&emsp;最后！记录，搜索，基础，这三个很重要！！找个地方写博客记录自己学习历程很重要，解决了任何问题都记录下来，比如这个知乎专栏啥的，不会的问题多搜索答案，肯定能搜到！，反复练习基础语法，理解基础知识，看书，看视频都可以！</p>
+<p>&emsp;&emsp;加油吧！人生没有无意义的努力，现在的付出，将来一定会有回报，说不定什么时候就用到了</p>
 
     </div>
 
@@ -366,21 +344,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+              <a href="/tags/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" rel="tag"># 文章阅读</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/01/26/02.%E8%AF%AD%E8%A8%80%E5%85%83%E7%B4%A0/" rel="prev" title="02.语言元素">
-                  <i class="fa fa-chevron-left"></i> 02.语言元素
+                <a href="/2021/02/14/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github/" rel="prev" title="将本地项目上传到Github">
+                  <i class="fa fa-chevron-left"></i> 将本地项目上传到Github
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/01/27/%E5%88%9B%E5%BB%BAMarkdown%E6%96%87%E7%AB%A0%E5%9B%BE%E5%BA%8A/" rel="next" title="创建Markdown文章图床">
-                  创建Markdown文章图床 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
