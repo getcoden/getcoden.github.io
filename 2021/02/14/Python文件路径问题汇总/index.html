@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="Python 中 os.listdir () 函数用法123import osos.listdir()  语法格式：  os.listdir(path)  1、参数  path—- 需要列出的目录路径  2、返回值  返回指定路径下的文件和文件夹列表。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python文件路径问题汇总">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/14/Python%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="Python 中 os.listdir () 函数用法123import osos.listdir()  语法格式：  os.listdir(path)  1、参数  path—- 需要列出的目录路径  2、返回值  返回指定路径下的文件和文件夹列表。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210214151032.png">
+<meta property="article:published_time" content="2021-02-14T14:56:53.000Z">
+<meta property="article:modified_time" content="2021-02-14T11:18:17.213Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210214151032.png">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/02/14/Python%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python文件路径问题汇总 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-%E4%B8%AD-os-listdir-%E5%87%BD%E6%95%B0%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Python 中 os.listdir () 函数用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#listdir-%E5%AE%8C%E6%95%B4%E8%B7%AF%E5%BE%84"><span class="nav-number">2.</span> <span class="nav-text">listdir 完整路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-%E4%B8%AD%E7%9A%84-os-listdir-os-listdir-os-listdir-os-listdir-path-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">python 中的 os.listdir (),os.listdir (.),os.listdir (..),os.listdir (path) 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97-os-%E4%B8%AD%E7%9A%84-walk-%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">模块 os 中的 walk () 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="nav-number">4.1.</span> <span class="nav-text">1、导入模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">2、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97-os-%E4%B8%AD%E7%9A%84-walk-%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E7%9A%84%E6%96%87%E4%BB%B6%E3%80%82"><span class="nav-number">4.2.1.</span> <span class="nav-text">模块 os 中的 walk () 函数可以遍历文件夹下所有的文件。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E5%AD%90%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%EF%BC%88os-path-join-%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">获得所有子文件路径（os.path.join 使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AF%E5%A4%A7%E9%87%8F%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">4.3.1.</span> <span class="nav-text">接下来是大量的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E7%BB%BC%E5%90%88%E4%BE%8B%E5%AD%90"><span class="nav-number">4.3.2.</span> <span class="nav-text">1、综合例子</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/14/Python%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python文件路径问题汇总
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-14 14:56:53 / 修改时间：11:18:17" itemprop="dateCreated datePublished" datetime="2021-02-14T14:56:53Z">2021-02-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Python-中-os-listdir-函数用法"><a href="#Python-中-os-listdir-函数用法" class="headerlink" title="Python 中 os.listdir () 函数用法"></a>Python 中 os.listdir () 函数用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">os.listdir() </span><br></pre></td></tr></table></figure>
+<p>语法格式：</p>
+<blockquote>
+<p>os.listdir(path)</p>
+</blockquote>
+<p>1、参数</p>
+<blockquote>
+<p>path—- 需要列出的目录路径</p>
+</blockquote>
+<p>2、返回值</p>
+<blockquote>
+<p>返回指定路径下的文件和文件夹列表。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>实例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"> </span><br><span class="line">path &#x3D; r&#39;D:\APK\data1&#39;</span><br><span class="line">file_list &#x3D;os.listdir(path)</span><br><span class="line"></span><br><span class="line">print(file_list)</span><br></pre></td></tr></table></figure>
+<p>运行结果：1、2 为文件夹，123.txt 为文件</p>
+<p><code>[&#39;Iris-setosa.xlsx&#39;, &#39;Iris-versicolor.xlsx&#39;, &#39;Iris-virginica.xlsx&#39;, &#39;文件夹 1&#39;, &#39;文件夹 2&#39;]</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 输出所有文件和文件夹</span><br><span class="line">for filename in file_list:</span><br><span class="line">    print(filename)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210214151032.png" alt="20210214151032"> </p>
+</div>
+
+<h2 id="listdir-完整路径"><a href="#listdir-完整路径" class="headerlink" title="listdir 完整路径"></a>listdir 完整路径</h2><ul>
+<li>列表推导式写法</li>
+</ul>
+<p><code>filenames=[os.path.join(file_folder, file) for file in os.listdir(file_folder)]</code></p>
+<ul>
+<li>for循环写法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for filename in file_list:</span><br><span class="line">    filedir &#x3D; os.path.join(path,filename)</span><br><span class="line">    print(filedir)</span><br></pre></td></tr></table></figure>
+运行结果:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\APK\data1\Iris-setosa.xlsx</span><br><span class="line">D:\APK\data1\Iris-versicolor.xlsx</span><br><span class="line">D:\APK\data1\Iris-virginica.xlsx</span><br><span class="line">D:\APK\data1\文件夹 1</span><br><span class="line">D:\APK\data1\文件夹 2</span><br></pre></td></tr></table></figure>
+<h2 id="python-中的-os-listdir-os-listdir-os-listdir-os-listdir-path-的区别"><a href="#python-中的-os-listdir-os-listdir-os-listdir-os-listdir-path-的区别" class="headerlink" title="python 中的 os.listdir (),os.listdir (.),os.listdir (..),os.listdir (path) 的区别"></a>python 中的 os.listdir (),os.listdir (.),os.listdir (..),os.listdir (path) 的区别</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. 为空时，默认为当前路径，返回当前路径下的文件名和文件夹名：</span><br><span class="line"></span><br><span class="line">os.listdir()</span><br><span class="line"></span><br><span class="line">2. 返回当前目录下的文件名和文件夹名:</span><br><span class="line"></span><br><span class="line">os.listdir(.)</span><br><span class="line"></span><br><span class="line">3. 当前上一级目录下的文件名和文件夹名:</span><br><span class="line"></span><br><span class="line">os.listdir(..)</span><br><span class="line"></span><br><span class="line">4. 某一具体目录下的文件名和文件夹名：</span><br><span class="line"></span><br><span class="line">os.listdir(path)</span><br></pre></td></tr></table></figure>
+<h2 id="模块-os-中的-walk-函数"><a href="#模块-os-中的-walk-函数" class="headerlink" title="模块 os 中的 walk () 函数"></a>模块 os 中的 walk () 函数</h2><p>python 中 os.walk 是一个简单易用的文件、目录遍历器，可以帮助我们高效的处理文件、目录方面的事情。</p>
+<h3 id="1、导入模块"><a href="#1、导入模块" class="headerlink" title="1、导入模块"></a>1、导入模块</h3><p>要使用 os.walk, 首先要载入该函数</p>
+<p>可以使用以下两种方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">from os import walk</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用"><a href="#2、使用" class="headerlink" title="2、使用"></a>2、使用</h3><p>os.walk 的函数声明为:</p>
+<p><code>walk(top, topdown=True, οnerrοr=None, followlinks=False)</code></p>
+<p>参数:</p>
+<blockquote>
+<p>top 是你所要便利的目录的地址</p>
+</blockquote>
+<p>topdown 为真，则优先遍历 top 目录，否则优先遍历 top 的子目录 (默认为开启)</p>
+<p>onerror 需要一个 callable 对象，当 walk 需要异常时，会调用</p>
+<p>followlinks 如果为真，则会遍历目录下的快捷方式 (linux 下是 symbolic link) 实际所指的目录 (默认关闭)</p>
+<p>os.walk 的返回值是一个生成器 (generator), 也就是说我们需要不断的遍历它，来获得所有的内容。</p>
+<p>每次遍历的对象都是返回的是一个三元组 (root,dirs,files)</p>
+<ul>
+<li>root 所指的是当前正在遍历的这个文件夹的本身的地址</li>
+<li>dirs 是一个 list ，内容是该文件夹中所有的目录的名字 (不包括子目录)</li>
+<li>files 同样是 list , 内容是该文件夹中所有的文件 (不包括子目录)</li>
+<li>如果 topdown 参数为真，walk 会遍历 top 文件夹，与 top 文件夹中每一个子目录。</li>
+</ul>
+<h4 id="模块-os-中的-walk-函数可以遍历文件夹下所有的文件。"><a href="#模块-os-中的-walk-函数可以遍历文件夹下所有的文件。" class="headerlink" title="模块 os 中的 walk () 函数可以遍历文件夹下所有的文件。"></a>模块 os 中的 walk () 函数可以遍历文件夹下所有的文件。</h4><p><code>os.walk(top, topdown=Ture, onerror=None, followlinks=False)</code></p>
+<p>该函数可以得到一个三元 tupple (dirpath, dirnames, filenames).</p>
+<p>参数含义：</p>
+<ul>
+<li><p>dirpath：string，代表目录的路径；</p>
+</li>
+<li><p>dirnames：list，包含了当前 dirpath 路径下所有的子目录名字（不包含目录路径）；</p>
+</li>
+<li><p>filenames：list，包含了当前 dirpath 路径下所有的非目录子文件的名字（不包含目录路径）。</p>
+</li>
+<li><p>注意，dirnames 和 filenames 均不包含路径信息，如需完整路径，可使用 os.path.join (dirpath, dirnames)</p>
+</li>
+</ul>
+<p>代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-  </span><br><span class="line"></span><br><span class="line">import os </span><br><span class="line"></span><br><span class="line">def file_name(file_dir):  </span><br><span class="line">  for root, dirs, files in os.walk(file_dir): </span><br><span class="line">    print(root) #当前目录路径 </span><br><span class="line">    print(dirs) #当前路径下所有子目录 </span><br><span class="line">    print(files) #当前路径下所有非目录子文件</span><br></pre></td></tr></table></figure>
+<p>当需要特定类型的文件时，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*- </span><br><span class="line"></span><br><span class="line">import os </span><br><span class="line"></span><br><span class="line">def file_name(file_dir):  </span><br><span class="line">  L&#x3D;[]  </span><br><span class="line">  for root, dirs, files in os.walk(file_dir): </span><br><span class="line">    for file in files: </span><br><span class="line">      if os.path.splitext(file)[1] &#x3D;&#x3D; &#39;.jpeg&#39;: </span><br><span class="line">        L.append(os.path.join(root, file)) </span><br><span class="line">  return L</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line">import os</span><br><span class="line">mypath &#x3D; &quot;C:\\Users\\LiLong\\Desktop\\tt&quot;</span><br><span class="line"></span><br><span class="line">for root , dirs, files in os.walk(mypath):</span><br><span class="line">    print(root)</span><br><span class="line">    print(dirs)</span><br><span class="line">    print(files)</span><br><span class="line">print(&#39;..................................................&#39;)    </span><br><span class="line">for root,dirs,files in os.walk(mypath):</span><br><span class="line">    print(root)</span><br><span class="line">    for dr in dirs:</span><br><span class="line">        print(dr)</span><br><span class="line">    for name in files:</span><br><span class="line">        if name.endswith(&quot;.txt&quot;):</span><br><span class="line">            print(os.path.join(root, name))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path &#x3D; &#39;&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#39;</span><br><span class="line">for root,dirs,files in os.walk(path):</span><br><span class="line">        print root,dirs,files</span><br></pre></td></tr></table></figure>
+<p>输出为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort [&#39;test&#39;] [&#39;nameout.txt&#39;, &#39;namelist.txt&#39;, &#39;namesorttest.py&#39;]</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;test [] [&#39;nameout.txt&#39;, &#39;name2.txt&#39;, &#39;namelist.txt&#39;, &#39;namesort.py&#39;]</span><br></pre></td></tr></table></figure>
+<h3 id="获得所有子文件路径（os-path-join-使用）"><a href="#获得所有子文件路径（os-path-join-使用）" class="headerlink" title="获得所有子文件路径（os.path.join 使用）"></a>获得所有子文件路径（os.path.join 使用）</h3><p>由于 os.walk 获得的并不是路径，所以需要将其内容进行连接得到路径。</p>
+<p>这时使用 python 自带函数 os.path.join, 其语法为：</p>
+<p><code>os.path.join(path1[, path2[, ...]])</code></p>
+<p>其中嵌套的 [] 表示写在最前面的是高级目录，后面的是低级的，也就是按参数排列顺序拼接。</p>
+<p>举例：</p>
+<p><code>os.path.join(&quot;home&quot;, &quot;me&quot;, &quot;mywork&quot;)</code></p>
+<p>在 Linux 系统上会返回 home/me/mywork</p>
+<p>在 Windows 系统上会返回 home\me\mywork</p>
+<blockquote>
+<p>可能大家已经注意到了，此函数并不是简单的字符串连接函数，你不需要在输入的参数字符串中加入分隔符，函数会根据你的系统自动加入对应的分隔符，这也是这个函数存在的意义所在。</p>
+</blockquote>
+<p>所以我们正好使用 os.path.join() 来处理上面生成的遍历结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path &#x3D; &#39;&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#39;</span><br><span class="line">for root,dirs,files in os.walk(path):</span><br><span class="line">        for file in files:</span><br><span class="line">                print(os.path.join(root,file))</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;nameout.txt</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;namelist.txt</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;namesorttest.py</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;test&#x2F;nameout.txt</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;test&#x2F;name2.txt</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;test&#x2F;namelist.txt</span><br><span class="line">&#x2F;home&#x2F;jhxie&#x2F;Workspace&#x2F;namesort&#x2F;test&#x2F;namesort.py</span><br></pre></td></tr></table></figure>
+<h4 id="接下来是大量的例子"><a href="#接下来是大量的例子" class="headerlink" title="接下来是大量的例子"></a>接下来是大量的例子</h4><p>Python– 遍历文件夹下所有文件和目录的方法（os.walk (rootdir) 函数返回一个三元素元祖）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import os.path</span><br><span class="line"></span><br><span class="line"># This folder is custom</span><br><span class="line">rootdir &#x3D; &#39;&#x2F;Users&#x2F;macbookpro&#x2F;Desktop&#x2F;test&#39;</span><br><span class="line">for parent, dirnames, filename in os.walk(rootdir):</span><br><span class="line">    # Case1: traversal the directories</span><br><span class="line">    for dirname in dirnames:</span><br><span class="line">        print(&quot;Parent folder:&quot;, parent)</span><br><span class="line">        print(&quot;Dirname:&quot;, filename)</span><br><span class="line">    # Case2: traversal the files</span><br><span class="line">    for filename in filenames:</span><br><span class="line">        print(&quot;Parent folder:&quot;, parent)</span><br><span class="line">        print(&quot;Filename:&quot;, filename)</span><br></pre></td></tr></table></figure>
+<p>解释说明：os.walk (rootdir) 函数返回一个三元素元祖，其中 parent 是父目录，dirnames 是所有文件夹名字（不包含路径），filenames 是所有文件的名字（不包含路径）</p>
+<p>以上，case1、case2 分别演示了遍历该文件夹下（/Users/macbookpro/Desktop/test）的所有目录、文件的方法</p>
+<h4 id="1、综合例子"><a href="#1、综合例子" class="headerlink" title="1、综合例子"></a>1、综合例子</h4><p>简单的例子</p>
+<p>保持目录 a 的目录结构，在 b 中创建对应的文件夹，并把 a 中所有的文件加上后缀 _bak</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">Root &#x3D; &#39;a&#39;</span><br><span class="line">Dest &#x3D; &#39;b&#39;</span><br><span class="line"></span><br><span class="line">for (root, dirs, files) in os.walk(Root):</span><br><span class="line">    new_root &#x3D; root.replace(Root, Dest, 1)</span><br><span class="line">    if not os.path.exists(new_root):</span><br><span class="line">        os.mkdir(new_root)</span><br><span class="line">    </span><br><span class="line">    for d in dirs:</span><br><span class="line">        d &#x3D; os.path.join(new_root, d)</span><br><span class="line">        if not os.path.exists(d):</span><br><span class="line">            os.mkdir(d)</span><br><span class="line">    </span><br><span class="line">    for f in files:</span><br><span class="line">        # 把文件名分解为 文件名.扩展名</span><br><span class="line">        # 在这里可以添加一个 filter，过滤掉不想复制的文件类型，或者文件名</span><br><span class="line">        (shotname, extension) &#x3D; os.path.splitext(f)</span><br><span class="line">        # 原文件的路径</span><br><span class="line">        old_path &#x3D; os.path.join(root, f)</span><br><span class="line">        new_name &#x3D; shotname + &#39;_bak&#39; + extension</span><br><span class="line">        # 新文件的路径</span><br><span class="line">        new_path &#x3D; os.path.join(new_root, new_name)</span><br><span class="line">        try:</span><br><span class="line">            # 复制文件</span><br><span class="line">            open(new_path, &#39;wb&#39;).write(open(old_path, &#39;rb&#39;).read())</span><br><span class="line">        except IOError as e:</span><br><span class="line">            print(e)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/14/Python%E7%BB%9F%E8%AE%A1list%E4%B8%AD%E5%90%84%E5%85%83%E7%B4%A0%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" rel="prev" title="Python统计list中各元素出现的次数">
+                  <i class="fa fa-chevron-left"></i> Python统计list中各元素出现的次数
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/" rel="next" title="Python遍历文件实例">
+                  Python遍历文件实例 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

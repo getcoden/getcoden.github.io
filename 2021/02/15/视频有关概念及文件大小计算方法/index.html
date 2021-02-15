@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="编码率 &#x2F; 比特率直接与文件体积有关。且编码率与编码格式配合是否合适，直接关系到视频文件是否清晰。  在视频编码领域，比特率常翻译为编码率，单位是 Kbps，例如 800Kbps  其中， 1K&#x3D;1024 1M&#x3D;1024K  b 为 比特（bit） 这个就是电脑文件大小的计量单位，1KB&#x3D;8Kb，区分大小写，B 代表字节 (Byte) s 为 秒（second） p 为 每（per）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视频有关概念及文件大小计算方法">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/15/%E8%A7%86%E9%A2%91%E6%9C%89%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="编码率 &#x2F; 比特率直接与文件体积有关。且编码率与编码格式配合是否合适，直接关系到视频文件是否清晰。  在视频编码领域，比特率常翻译为编码率，单位是 Kbps，例如 800Kbps  其中， 1K&#x3D;1024 1M&#x3D;1024K  b 为 比特（bit） 这个就是电脑文件大小的计量单位，1KB&#x3D;8Kb，区分大小写，B 代表字节 (Byte) s 为 秒（second） p 为 每（per）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210215115042.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210215120502.png">
+<meta property="article:published_time" content="2021-02-15T03:48:08.930Z">
+<meta property="article:modified_time" content="2021-02-15T04:56:34.296Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="视频工具使用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210215115042.png">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/02/15/%E8%A7%86%E9%A2%91%E6%9C%89%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>视频有关概念及文件大小计算方法 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%83%8F%E7%B4%A0%E5%8F%8A%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">像素及显示问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%83%8F%E7%B4%A0"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、像素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、分辨率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89-%E5%AF%86%E5%BA%A6"><span class="nav-number">1.0.3.</span> <span class="nav-text">三  密度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%81%E7%8E%87%EF%BC%88Bitrate%EF%BC%89%E3%80%81%E5%B8%A7%E7%8E%87%EF%BC%88FPS%EF%BC%89%E3%80%81%E5%88%86%E8%BE%A8%E7%8E%87%E5%92%8C%E6%B8%85%E6%99%B0%E5%BA%A6%E7%9A%84%E8%81%94%E7%B3%BB%E4%B8%8E%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">码率（Bitrate）、帧率（FPS）、分辨率和清晰度的联系与区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E7%A0%81%E7%8E%87%E3%80%81%E5%B8%A7%E7%8E%87%E5%92%8C%E5%88%86%E8%BE%A8%E7%8E%87%E5%88%B0%E5%BA%95%E5%93%AA%E4%B8%80%E4%B8%AA%E5%BD%B1%E5%93%8D%E7%94%B5%E5%BD%B1%E7%9A%84%E6%B8%85%E6%99%B0%E5%BA%A6"><span class="nav-number">2.0.1.</span> <span class="nav-text">视频码率、帧率和分辨率到底哪一个影响电影的清晰度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%A0%81%E7%8E%87%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">1. 码率计算公式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F-%E7%A0%81%E7%8E%87-x-%E6%97%B6%E9%95%BF-1411-2-Kbps-x-3-x-60-47-s-1411-2Kbps-x-227s-38102-4Kb"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">2. 文件大小 &#x3D; 码率 x 时长 &#x3D; 1411.2 Kbps x (3 x 60 + 47 )s &#x3D; 1411.2Kbps x 227s &#x3D;38102.4Kb</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD%E3%80%81%E5%B8%A7%E7%8E%87%EF%BC%88FPS%EF%BC%89"><span class="nav-number">2.0.2.</span> <span class="nav-text">带宽、帧率（FPS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GOP%EF%BC%88Group-of-picture%EF%BC%89"><span class="nav-number">2.0.3.</span> <span class="nav-text">GOP（Group of picture）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%BC%96%E7%A0%81%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.0.4.</span> <span class="nav-text">常见编码模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E6%B8%85%E8%A7%86%E9%A2%91"><span class="nav-number">2.0.5.</span> <span class="nav-text">高清视频</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%99%B0%E5%BA%A6"><span class="nav-number">2.0.6.</span> <span class="nav-text">清晰度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%80%E4%B8%AA%E8%A7%86%E9%A2%91%E6%B5%81%E7%9A%84%E6%95%B0%E6%8D%AE%E9%87%8F%EF%BC%9A"><span class="nav-number">2.0.7.</span> <span class="nav-text">关于一个视频流的数据量：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E7%9A%84%E7%94%BB%E8%B4%A8%E6%98%AF%E5%88%86%E8%BE%A8%E7%8E%87%E3%80%81%E5%B8%A7%E7%8E%87%E5%92%8C%E7%A0%81%E7%8E%87%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B9%B3%E8%A1%A1%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">好的画质是分辨率、帧率和码率三者之间的平衡：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/15/%E8%A7%86%E9%A2%91%E6%9C%89%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          视频有关概念及文件大小计算方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-15 03:48:08 / 修改时间：04:56:34" itemprop="dateCreated datePublished" datetime="2021-02-15T03:48:08Z">2021-02-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">视频工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>编码率 / 比特率直接与文件体积有关。且编码率与编码格式配合是否合适，直接关系到视频文件是否清晰。 </p>
+<p>在视频编码领域，比特率常翻译为编码率，单位是 Kbps，例如 800Kbps </p>
+<p>其中， 1K=1024 1M=1024K </p>
+<p>b 为 比特（bit） 这个就是电脑文件大小的计量单位，1KB=8Kb，区分大小写，B 代表字节 (Byte) s 为 秒（second） p 为 每（per） </p>
+<a id="more"></a>
+
+<p>以 800kbps 来编码表示经过编码后的数据每秒钟需要用 800K 比特来表示。 </p>
+<p>1MB=8Mb=1024KB=8192Kb </p>
+<p>Windows 系统文件大小经常用 B (字节) 为单位表示，但网络运营商则用 b (比特)，也就是为什么 2Mb 速度宽带在电脑上显示速度最快只有约 256KB 的原因，网络运营商宣传网速的时候省略了计量单位。  </p>
+<p>视频文件体积：(音频码率 + 视频码率) x 时长 / 8</p>
+<p>or</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210215115042.png" alt="20210215115042"></p>
+</div>
+
+<p>例：有一个 1.5 小时（5400 秒）的影片，希望转换后文件大小刚好为 700M </p>
+<p>计算方法如下： </p>
+<blockquote>
+<p>700×8÷5400×1024≈1061Kbps </p>
+</blockquote>
+<p>当然不经过压缩文件的计算公式又不同：</p>
+<p>声音为，数据量（位 / 秒）= (采样频率（Hz）* 采样位数（bit）* 声道数)</p>
+<p>其中，单声道的声道数为 1，立体声的声道数为 2。</p>
+<p>数据量 * 时间 / 8＝文件总字节</p>
+<p>例如:  </p>
+<p>CD 即为未经压缩的音频文件，采样 44.1k,16 位，双声道。</p>
+<p>数据量＝44.1<em>16</em>2=1411kb/1024=1.38Mb, 一般的 MP3 压缩后为 128kbps</p>
+<p>如果以一张 CD 放一个小时计算的话，CD 总量＝1.38*3600/8=621MB, 当然 CD 大约放 1 小时多点，顶多也就 700MB。</p>
+<p>图象应该是，数据量（位 / 秒）= (画面尺寸 * 彩色位数（bit）* 帧数)</p>
+<blockquote>
+<p>数据量 * 时间 / 8＝文件总字节 </p>
+</blockquote>
+<p>例如 :<br>2 分钟，25 帧 / 秒，640×480 分辨率，24 位真彩色数字视频的不压缩的数据量约为，数据量<br>＝640x480x24*25=184320Kb=180Mb, 而 VCD、MKV 标准编码率 (加上音频) 分别为 1152Kbps 和 30Mbps (1080p 高清)</p>
+<p>2 分钟文件字节＝180Mbx120/8=2700000KB=2636.71875MB＝2.57GB，而压缩后一部 90 分钟高质量 DVD 电影可以达到 9GB。 </p>
+<h2 id="像素及显示问题"><a href="#像素及显示问题" class="headerlink" title="像素及显示问题"></a>像素及显示问题</h2><p>大概主要牵扯到 3 个概念：像素、分辨率、密度。</p>
+<h4 id="一、像素"><a href="#一、像素" class="headerlink" title="一、像素"></a>一、像素</h4><p>我们常说的像素，一般就是指图像含有多少个像素点。我们就以 720P、1080P 为例：</p>
+<p>1080P 的实际像素是 1920*1280, 相乘结果是 2073600，即有 2073600 个像素点， 也就是常说的 1080P 为 200 万像素</p>
+<p>720P 实际像素是 1280×720， 相乘结果 921600，即有 921600 个像素点，也就是常说的 720P 为 100 万像素</p>
+<p>图像占用空间大小计算公式：</p>
+<p>图像像素 * 图像位深 / 8 = 占用字节</p>
+<p>如果一张图片像素为 1024*1024， 位深 32 位，则图片占用空间大小为：</p>
+<blockquote>
+<p>1024<em>1024</em>32/8 = 4194304 byte = 4096KB.</p>
+</blockquote>
+<h4 id="二、分辨率"><a href="#二、分辨率" class="headerlink" title="二、分辨率"></a>二、分辨率</h4><p>分辨率常指的是设备输出分辨率或叫屏幕分辨率，即屏幕上横竖有多少个容器点，每个容器点用于容纳一个像素。</p>
+<p>例如 iPhone 5s, 它的分辨率为 1136<em>640，用它看 1080P, 其实只能看到 1136</em>640 多个像素点，不能发挥 1080P 的优势，</p>
+<p>很多细节被忽略。</p>
+<h4 id="三-密度"><a href="#三-密度" class="headerlink" title="三  密度"></a>三  密度</h4><p>每英寸包括多少个像素点，单位 PPI (Pixels Per Inch)。屏幕 PPI 计算方式：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210215120502.png" alt="20210215120502"></p>
+</div>
+比如 iPhone 5s 屏幕分辨率为: 1136*640,  尺寸为 4 英寸，则 PPI 为 (1136*1136+640*640)/4, 开根号，大概就是 325。
+
+<p>PPI 超过 300 就可以算是视网模屏了，肉眼已经分辨不出像素点来。</p>
+<p>假设我有 A、B 两部手机，两者屏幕的宽度分辨率都是 320*640，但 A 的尺寸为 3.5 英寸，B 的宽度为 7 英寸，那么显然是 A 手机的密度大，</p>
+<p>所有 A 的图像看起来更清晰，而 B 的看起来要模糊些，图像也要大些。</p>
+<h2 id="码率（Bitrate）、帧率（FPS）、分辨率和清晰度的联系与区别"><a href="#码率（Bitrate）、帧率（FPS）、分辨率和清晰度的联系与区别" class="headerlink" title="码率（Bitrate）、帧率（FPS）、分辨率和清晰度的联系与区别"></a>码率（Bitrate）、帧率（FPS）、分辨率和清晰度的联系与区别</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/pc9319/article/details/79621352?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">转自</a></p>
+<h4 id="视频码率、帧率和分辨率到底哪一个影响电影的清晰度"><a href="#视频码率、帧率和分辨率到底哪一个影响电影的清晰度" class="headerlink" title="视频码率、帧率和分辨率到底哪一个影响电影的清晰度"></a>视频码率、帧率和分辨率到底哪一个影响电影的清晰度</h4><p>码率：影响体积，与体积成正比：码率越大，体积越大；码率越小，体积越小。</p>
+<p>码率就是数据传输时单位时间传送的数据位数 , 一般我们用的单位是 kbps 即千位每秒。也就是取样率（并不等同与采样率，采样率的单位是 Hz，表示每秒采样的次数），单位时间内取样率越大，精度就越高，处理出来的文件就越接近原始文件，但是文件体积与取样率是成正比的，所以几乎所有的编码格式重视的都是如何用最低的码率达到最少的失真，围绕这个核心衍生出来 cbr（固定码率）与 vbr（可变码率）， “码率” 就是失真度，码率越高越清晰，反之则画面粗糙而多马赛克。</p>
+<p>下面是通过一个 wav 文件的采样率来计算码率和文件大小，通过 MediaInfo 工具显示的文件信息如下：</p>
+<p>概要</p>
+<p>完整名称                            :audio\wav\adele-rolling_in_the_deep.wav</p>
+<p>文件格式                            : Wave</p>
+<p>文件大小                            : 38.3 MiB</p>
+<p>长度                                   : 3 分 47 秒</p>
+<p>平均混合码率                    : 1 411 Kbps</p>
+<p>音频</p>
+<p>ID                                        : 0</p>
+<p>文件格式                            : PCM</p>
+<p>格式设置 ,Endianness      : Little</p>
+<p>编码设置 ID                         : 1</p>
+<p>编码设置 ID/ 提示信息        : Microsoft</p>
+<p>长度                                     : 3 分 47 秒</p>
+<p>码率                                     : 1 411.2 Kbps</p>
+<p>声道                                    : 2 声道</p>
+<p>采样率                                : 44.1 KHz</p>
+<p>位深度                                : 16 位</p>
+<p>大小                                    : 38.3 MiB (100%)</p>
+<h5 id="1-码率计算公式："><a href="#1-码率计算公式：" class="headerlink" title="1. 码率计算公式："></a>1. 码率计算公式：</h5><p>码率 = 采样率 x 位深度 x 声道</p>
+<p>所以，上面文件的码率 = 44.1Khz x 16 位 x 2 声道 = 1411.2 Kbps</p>
+<h5 id="2-文件大小-码率-x-时长-1411-2-Kbps-x-3-x-60-47-s-1411-2Kbps-x-227s-38102-4Kb"><a href="#2-文件大小-码率-x-时长-1411-2-Kbps-x-3-x-60-47-s-1411-2Kbps-x-227s-38102-4Kb" class="headerlink" title="2. 文件大小 = 码率 x 时长 = 1411.2 Kbps x (3 x 60 + 47 )s = 1411.2Kbps x 227s =38102.4Kb"></a>2. 文件大小 = 码率 x 时长 = 1411.2 Kbps x (3 x 60 + 47 )s = 1411.2Kbps x 227s =38102.4Kb</h5><p>38102.4 Kb /1024 Kb/M = 37.2M</p>
+<p>近似等于 mediainfo 工具显示的文件大小 38.3M。</p>
+<p>注：此计算公式对未压缩的 wav 格式文件有效，不适用于 mp3 等被压缩的文件。</p>
+<p>通常来说，一个视频文件包括了画面及声音，例如一个 RMVB 的视频文件，里面包含了视频信息和音频信息，音频及视频都有各自不同的采样方式和比特率，也就是说，同一个视频文件音频和视频的比特率并不是一样的。而我们所说的一个视频文件码流率大小，一般是指视频文件中音频及视频信息码流率的总和。</p>
+<p>以国内最流行，大家最熟悉的 RMVB 视频文件为例，RMVB 中的 VB，指的是 VBR，即 Variable BitRate 的缩写，中文含义是可变比特率，它表示 RMVB 采用的是动态编码的方式，把较高的采样率用于复杂的动态画面 (歌舞、飞车、战争、动作等)，而把较低的采样率用于静态画面，合理利用资源，达到画质与体积可兼得的效果。</p>
+<p>帧率（FPS） ：影响画面流畅度，与画面流畅度成正比：帧率越大，画面越流畅；帧率越小，画面越有跳动感。如果码率为变量，则帧率也会影响体积，帧率越高，每秒钟经过的画面越多，需要的码率也越高，体积也越大。<br>帧率就是在 1 秒钟时间里传输的图片的帧数，也可以理解为图形处理器每秒钟能够刷新几次。每秒显示的图片数影响画面流畅度，与画面流畅度成正比：帧率越大，画面越流畅；帧率越小，画面越有跳动感。由于人类眼睛的特殊生理结构，如果所看画面之帧率高于 16 的时候，就会认为是连贯的，此现象称之为视觉暂留。并且当帧速达到一定数值后，再增长的话，人眼也不容易察觉到有明显的流畅度提升了。</p>
+<p>分辨率：影响图像大小，与图像大小成正比：分辨率越高，图像越大；分辨率越低，图像越小。</p>
+<h4 id="带宽、帧率（FPS）"><a href="#带宽、帧率（FPS）" class="headerlink" title="带宽、帧率（FPS）"></a>带宽、帧率（FPS）</h4><p>例如在 ADSL 线路上传输图像，上行带宽只有 512Kbps，但要传输 4 路 CIF 分辨率的图像。按照常规，CIF 分辨率建议码率是 512Kbps，那么照此计算就只能传一路，降低码率势必会影响图像质量。那么为了确保图像质量，就必须降低帧率，这样一来，即便降低码率也不会影响图像质量，但在图像的连贯性上会有影响。</p>
+<h4 id="GOP（Group-of-picture）"><a href="#GOP（Group-of-picture）" class="headerlink" title="GOP（Group of picture）"></a>GOP（Group of picture）</h4><p>关键帧的周期，也就是两个 IDR 帧之间的距离，一个帧组的最大帧数，一般而言，每一秒视频至少需要使用 1 个关键帧。增加关键帧个数可改善质量，但是同时增加带宽和网络负载。</p>
+<p>需要说明的是，通过提高 GOP 值来提高图像质量是有限度的，在遇到场景切换的情况时，H.264 编码器会自动强制插入一个 I 帧，此时实际的 GOP 值被缩短了。另一方面，在一个 GOP 中，P、B 帧是由 I 帧预测得到的，当 I 帧的图像质量比较差时，会影响到一个 GOP 中后续 P、B 帧的图像质量，直到下一个 GOP 开始才有可能得以恢复，所以 GOP 值也不宜设置过大。</p>
+<p>同时，由于 P、B 帧的复杂度大于 I 帧，所以过多的 P、B 帧会影响编码效率，使编码效率降低。另外，过长的 GOP 还会影响 Seek 操作的响应速度，由于 P、B 帧是由前面的 I 或 P 帧预测得到的，所以 Seek 操作需要直接定位，解码某一个 P 或 B 帧时，需要先解码得到本 GOP 内的 I 帧及之前的 N 个预测帧才可以，GOP 值越长，需要解码的预测帧就越多，seek 响应的时间也越长。</p>
+<h4 id="常见编码模式："><a href="#常见编码模式：" class="headerlink" title="常见编码模式："></a>常见编码模式：</h4><p>VBR（Variable Bitrate）动态比特率也就是没有固定的比特率，压缩软件在压缩时根据音频数据即时确定使用什么比特率，这是以质量为前提兼顾文件大小的方式，推荐编码模式；</p>
+<p>ABR（Average Bitrate）平均比特率是 VBR 的一种插值参数。LAME 针对 CBR 不佳的文件体积比和 VBR 生成文件大小不定的特点独创了这种编码模式。ABR 在指定的文件大小内，以每 50 帧（30 帧约 1 秒）为一段，低频和不敏感频率使用相对低的流量，高频和大动态表现时使用高流量，可以做为 VBR 和 CBR 的一种折衷选择。</p>
+<p>CBR（Constant Bitrate）常数比特率指文件从头到尾都是一种位速率。相对于 VBR 和 ABR 来讲，它压缩出来的文件体积很大，而且音质相对于 VBR 和 ABR 不会有明显的提高。</p>
+<h4 id="高清视频"><a href="#高清视频" class="headerlink" title="高清视频"></a>高清视频</h4><p>目前的 720P 以及 1080P 采用了很多种编码，例如主流的 MPEG2，VC-1 以及 H.264，还有 Divx 以及 Xvid，至于封装格式更多到令人发指，ts、mkv、wmv 以及蓝光专用等等。</p>
+<p>720 和 1080 代表视频流的分辨率，前者 1280<em>720，后者 1920</em>1080，不同的编码需要不同的系统资源，大概可以认为是 H.264&gt;VC-1&gt;MPEG2。</p>
+<p>VC-1 是最后被认可的高清编码格式，不过因为有微软的后台，所以这种编码格式不能小窥。相对于 MPEG2，VC-1 的压缩比更高，但相对于 H.264 而言，编码解码的计算则要稍小一些，目前来看，VC-1 可能是一个比较好的平衡，辅以微软的支持，应该是一只不可忽视的力量。一般来说，VC-1 多为 “.wmv” 后缀，但这都不是绝对的，具体的编码格式还是要通过软件来查询。</p>
+<p>总的来说，从压缩比上来看，H.264 的压缩比率更高一些，也就是同样的视频，通过 H.264 编码算法压出来的视频容量要比 VC-1 的更小，但是 VC-1 格式的视频在解码计算方面则更小一些，一般通过高性能的 CPU 就可以很流畅的观看高清视频。相信这也是目前 NVIDIA Geforce 8 系列显卡不能完全解码 VC-1 视频的主要原因。</p>
+<p>PS&amp;TS 是两种视频或影片封装格式，常用于高清片。扩展名分别为 VOB/EVO 和 TS 等；其文件编码一般用 MPEG2/VC-1/H.264</p>
+<p>高清，英文为 “High Definition”，即指 “高分辨率”。高清电视 (HDTV)，是由美国电影电视工程师协会确定的高清晰度电视标准格式。现在的大屏幕液晶电视机，一般都支持 1080i 和 720P，而一些俗称的 “全高清”(Full HD)，则是指支持 1080P 输出的电视机。</p>
+<p>目前的高清视频编码格式主要有 H.264、VC-1、MPEG-2、MPEG-4、DivX、XviD、WMA-HD 以及 X264。事实上，现在网络上流传的高清视频主要以两类文件的方式存在：一类是经过 MPEG-2 标准压缩，以 tp 和 ts 为后缀的视频流文件 ; 一类是经过 WMV-HD(WindowsMedia Video HighDefinition) 标准压缩过的 wmv 文件，还有少数文件后缀为 avi 或 mpg，其性质与 wmv 是一样的。真正效果好的高清视频更多地以 H.264 与 VC-1 这两种主流的编码格式流传。</p>
+<p>一般来说，H.264 格式以 “.avi”、“.mkv” 以及 “.ts” 封装比较常见。</p>
+<h4 id="清晰度"><a href="#清晰度" class="headerlink" title="清晰度"></a>清晰度</h4><p>在码率一定的情况下，分辨率与清晰度成反比关系：分辨率越高，图像越不清晰，分辨率越低，图像越清晰。</p>
+<p>在分辨率一定的情况下，码率与清晰度成正比关系，码率越高，图像越清晰；码率越低，图像越不清晰。</p>
+<p>在码率一定的情况下，分辨率在一定范围内取值都将是清晰的；同样地，在分辨率一定的情况下，码率在一定范围内取值都将是清晰的。</p>
+<p>在视频压缩的过程中， I 帧是帧内图像数据压缩，是独立帧。而 P 帧则是参考 I 帧进行帧间图像数据压缩，不是独立帧。在压缩后的视频中绝大多数都是 P 帧，故视频质量主要由 P 帧表现出来。由于 P 帧不是独立帧，而只是保存了与邻近的 I 帧的差值，故实际上并不存在分辨率的概念，应该看成一个二进制差值序列。而该二进制序列在使用熵编码压缩技术时会使用量化参数进行有损压缩，视频的质量直接由量化参数决定，而量化参数会直接影响到压缩比和码率。</p>
+<p>视频质量可以通过主观和客观方式来表现，主观方式就是通常人们提到的视频清晰度，而客观参数则是量化参数或者压缩比或者码率。在视频源一样，压缩算法也一样的前提下比较，量化参数，压缩比和码率之间是有直接的比例关系的。</p>
+<p>分辨率的变化又称为重新采样。由高分辨率变成低分辨率称为下采样，由于采样前数据充足，只需要尽量保留更多的信息量，一般可以获得相对较好的结果。而由低分辨率变成高分辨率称为上采样，由于需要插值等方法来补充（猜测）缺少的像素点，故必然会带有失真，这就是一种视频质量（清晰度）的损失。</p>
+<h4 id="关于一个视频流的数据量："><a href="#关于一个视频流的数据量：" class="headerlink" title="关于一个视频流的数据量："></a>关于一个视频流的数据量：</h4><p>码率如果为 10Mb/s，代表 1 秒钟有 10M bit 的视频数据，对于 YUV422 格式的 1080P 视频而言，一帧图像是 1920x1080x2x8/1024/1024 = 31.64Mbit，1 秒钟 30 帧图像的话，则有 949.2Mb/s，可见其数据量之大，不压缩根本无法网上传播，所以一定要经过视频压缩处理，不要以为 1080P 的视频就一定是高清的，清晰度还跟视频码率密切相关，对于 1080P 的视频而言，蓝光视频的码率是 20Mb/s，一般下载的视频码率大都是 10Mb/s，一些 IPCamera/ 无人机的码率是 2～8Mb/s，而很多视频网站的码率甚至低于 5M/s，其实有时还不如高码率的 720P 清晰。</p>
+<h3 id="好的画质是分辨率、帧率和码率三者之间的平衡："><a href="#好的画质是分辨率、帧率和码率三者之间的平衡：" class="headerlink" title="好的画质是分辨率、帧率和码率三者之间的平衡："></a>好的画质是分辨率、帧率和码率三者之间的平衡：</h3><p>码率不是越大越好</p>
+<p>如果不做码率大小上的限制，那么分辨率越高，画质越细腻；帧率越高，视频也越流畅，但相应的码率也会很大，因为每秒钟需要用更多的数据来承载较高的清晰度和流畅度。这对云服务厂商而言这是好事（收入跟流量呈正比），但对您可能意味着更多的费用开支。</p>
+<p>帧率不要超过 24</p>
+<p>如果限定一个码率，比如 800kbps，那么帧率越高，编码器就必须加大对单帧画面的压缩比，也就是通过降低画质来承载足够多的帧数。如果视频源来自摄像头，24FPS 已经是肉眼极限，所以一般 20 帧的 FPS 就已经可以达到很好的用户体验了。</p>
+<p>有些玩过 3D 游戏的朋友可能会说，游戏的帧率越高越流畅。这里要注意一定不要混淆场景：游戏追求高帧率的目的是为了尽可能让 3D 模型渲染出来的运动效果更加接近真实运动轨迹，所以帧率越高越好。但对摄像头而言，它要采集的目标是真实世界的物体，真实世界本来就没有刷新率的说法，所以这个理论不适用。</p>
+<p>分辨率不盲目攀高</p>
+<p>如果限定一个码率，比如 800kbps，那么分辨率越高就会让编码器越 “为难 “ ，可以想象，它必须拆东墙补西墙，通过减少色彩信息或者引入马赛克这种 “鱼目混珠” 的手段来承载足够多的像素点。所以，同样的是 2G 的一个电影文件，1080p 画质的版本可能不如 720p 画质的版本看起来更清晰。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>帧率：FPS（每秒钟要多少帧画面）；   以及 Gop（表示多少秒一个 I 帧）</p>
+<p> 码率：编码器每秒编出的数据大小，单位是 kbps，比如 800kbps 代表编码器每秒产生 800kb（或 100KB）的数据。</p>
+<p> 分辨率：单位英寸中所包含的像素点数； VGA：Video Graphics Array（视频图像分辨率）</p>
+<p> 三者的对应直播质量的影响因素：</p>
+<p> 帧率：影响</p>
+<p> 画面流畅度，与画面流畅度成正比：帧率越大，画面越流畅；帧率越小，画面越有跳动感。如果码率为变量，则帧率也会影响体积，帧率越高，每秒钟经过的画面越多，需要的码率也越高，体积也越大。帧率就是在 1 秒钟时间里传输的图片的帧数，也可以理解为图形处理器每秒钟能够刷新几次。</p>
+<p> 分辨率：影响图像大小，与图像大小成正比：分辨率越高，图像越大；分辨率越低，图像越小。</p>
+<p> 清晰度</p>
+<p> 在码率一定的情况下，分辨率与清晰度成反比关系：分辨率越高，图像越不清晰，分辨率越低，图像越清晰。</p>
+<p> 在分辨率一定的情况下，码率与清晰度成正比关系，码率越高，图像越清晰；码率越低，图像越不清晰。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 视频工具使用</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/" rel="prev" title="Python遍历文件实例">
+                  <i class="fa fa-chevron-left"></i> Python遍历文件实例
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D/" rel="next" title="计算机存储单位">
+                  计算机存储单位 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

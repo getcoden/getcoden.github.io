@@ -197,20 +197,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -253,6 +253,558 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/02/%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%96%84%E7%9A%84%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/02/%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%96%84%E7%9A%84%E6%89%80%E6%9C%89%E5%B7%A5%E4%BD%9C%E8%A1%A8/" class="post-title-link" itemprop="url">合并文件夹内所有工作薄的所有工作表</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-02 11:50:27" itemprop="dateCreated datePublished" datetime="2021-02-02T11:50:27Z">2021-02-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-11 01:50:44" itemprop="dateModified" datetime="2021-02-11T01:50:44Z">2021-02-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="这是第一个"><a href="#这是第一个" class="headerlink" title="这是第一个"></a>这是第一个</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># 这个是最完善的一个，值得借鉴</span><br><span class="line"># 导入库</span><br><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.DataFrame()</span><br><span class="line">path_str &#x3D; r&#39;D:\jupyter notebook\test&#39;</span><br><span class="line"></span><br><span class="line">for excel_str in os.listdir(path_str):</span><br><span class="line">    print(&#39;需要合并的文件:&#39;, path_str + excel_str)</span><br><span class="line"></span><br><span class="line">    new_path &#x3D; os.path.join(path_str, excel_str)</span><br><span class="line">    if os.path.isfile(new_path):</span><br><span class="line">        excel &#x3D; pd.ExcelFile(new_path)</span><br><span class="line">        for sheet in excel.sheet_names:</span><br><span class="line"></span><br><span class="line">            sheet_excel &#x3D; excel.parse(sheet)</span><br><span class="line">            sheet_excel[&#39;test&#39;] &#x3D; excel_str.split(&#39;.&#39;)[0]  # 将原工作簿名作为合并后工作表的列</span><br><span class="line">            df &#x3D; pd.concat([df, sheet_excel])</span><br><span class="line"></span><br><span class="line"># 导出到原文件夹</span><br><span class="line"></span><br><span class="line"># if os.path.exists(new_str):</span><br><span class="line">#     os.remove(new_str)</span><br><span class="line">new_str &#x3D; os.path.join(path_str, &#39;合并文件.xlsx&#39;)</span><br><span class="line">df.to_excel(new_str, index&#x3D;False)</span><br><span class="line">print(&#39;合并后数据的大小:&#39;, df.shape)</span><br><span class="line">print(&#39;合并工作已完成，请到原文件夹内查看结果！&#39;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="这是第二个"><a href="#这是第二个" class="headerlink" title="这是第二个"></a>这是第二个</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 合并同一文件夹下工作薄名相似的所有工作表，这是最完整的一个</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import datetime as dt</span><br><span class="line"></span><br><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line"># runDir &#x3D; r&#39;D:\jupyter notebook\test\11.xlsx&#39;</span><br><span class="line"># if os.getcwd()!&#x3D;runDir:</span><br><span class="line">#     os.chdir(runDir)</span><br><span class="line">files &#x3D; glob.glob(&#39;11*.xlsx&#39;)</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">for each in files:</span><br><span class="line">    sheets &#x3D; pd.ExcelFile(each).sheet_names</span><br><span class="line"></span><br><span class="line">    for sheet in sheets:</span><br><span class="line">        df &#x3D; df.append(pd.read_excel(each, sheet, index_col&#x3D;0))</span><br><span class="line"></span><br><span class="line">df.to_excel(r&#39;D:\jupyter notebook\test\1111.xlsx&#39;, index&#x3D;False)</span><br><span class="line">print(&#39;数据大小为:&#39;, df.shape)</span><br></pre></td></tr></table></figure>
+<h3 id="这是合并一个工作薄内的所有工作表"><a href="#这是合并一个工作薄内的所有工作表" class="headerlink" title="这是合并一个工作薄内的所有工作表"></a>这是合并一个工作薄内的所有工作表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.ExcelFile(&#39;your_file&#39;)</span><br><span class="line"></span><br><span class="line">df_new &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">for name in df.sheet_names:  # 获取每个Sheet的名称</span><br><span class="line">    # 循环读取每个Sheet表内容，同时设置某列为字符串，避免长数字文本被识别为数字</span><br><span class="line">    df_pre &#x3D; df.parse(sheet_name&#x3D;name, dtype&#x3D;&#123;&#39;columns_name&#39;: str&#125;)</span><br><span class="line">    df_new &#x3D; df_new.append(df_pre)</span><br><span class="line"></span><br><span class="line">df_new.to_excel(&#39;your_newfile&#39;)</span><br></pre></td></tr></table></figure>
+<h3 id="这是简单高效的方法"><a href="#这是简单高效的方法" class="headerlink" title="这是简单高效的方法"></a>这是简单高效的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Folder_Path &#x3D; r&#39;D:\jupyter notebook\test&#39;</span><br><span class="line">file_list &#x3D; os.listdir(Folder_Path)</span><br><span class="line"></span><br><span class="line">dfs &#x3D; []</span><br><span class="line">for item in file_list:</span><br><span class="line">    print(&#39;需要合并的文件为:&#39;, Folder_Path+item)</span><br><span class="line">    dfs.append(pd.read_excel(Folder_Path + &#39;\\&#39; + item))</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.concat(dfs, sort&#x3D;False)</span><br><span class="line">df.to_excel(r&#39;D:\jupyter notebook\test\test.xlsx&#39;, index&#x3D;False)</span><br><span class="line">print(&#39;合并后的数据大小为:&#39;, df.shape)</span><br><span class="line">print(&#39;合并完成&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 这个带进度表</span><br><span class="line"></span><br><span class="line">dir &#x3D; &#39;test&#x2F;&#39;</span><br><span class="line">filenames &#x3D; os.listdir(dir)</span><br><span class="line">index &#x3D; 0</span><br><span class="line">dfs &#x3D; []</span><br><span class="line">for name in filenames:</span><br><span class="line">    print(&#39;正在处理第&#39; + str(index+1) + &#39;个表格&#39;)</span><br><span class="line">    dfs.append(pd.read_excel(os.path.join(dir, name)))</span><br><span class="line">    index +&#x3D; 1</span><br><span class="line">df &#x3D; pd.concat(dfs)</span><br><span class="line">df.to_excel(&#39;test&#x2F;total.xlsx&#39;, index&#x3D;False)</span><br></pre></td></tr></table></figure>
+<h3 id="这是一个更高级的用函数来写多功能的"><a href="#这是一个更高级的用函数来写多功能的" class="headerlink" title="这是一个更高级的用函数来写多功能的"></a>这是一个更高级的用函数来写多功能的</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import xlrd</span><br><span class="line">import xlsxwriter</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_file_list(dir, file_type_list&#x3D;[&#39;txt&#39;, &#39;csv&#39;, &#39;xlsx&#39;, &#39;xls&#39;], file_list&#x3D;[]):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    获取指定文件夹下指定类型文件路径</span><br><span class="line">    :param dir: 文件夹路径</span><br><span class="line">    :param file_type_list: 文件类型</span><br><span class="line">    :param file_list: 文件列表</span><br><span class="line">    :return:</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    for root, _, files in os.walk(dir):</span><br><span class="line">        for file in files:</span><br><span class="line">            file_type &#x3D; file[file.rfind(&#39;.&#39;) + 1:]</span><br><span class="line">            if file_type in file_type_list:</span><br><span class="line">                file_list.append(os.path.join(root, file))</span><br><span class="line">    return file_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def merge_xlsx_files(file_dir_path, out_file_path,</span><br><span class="line">                     file_type_list&#x3D;[&#39;txt&#39;, &#39;csv&#39;, &#39;xlsx&#39;, &#39;xls&#39;],</span><br><span class="line">                     out_file_name&#x3D;&#39;result.xlsx&#39;):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    合并目录下指定类型的文件</span><br><span class="line">    :param file_dir_path: 文件夹路径</span><br><span class="line">    :param out_file_path:  输出文件夹路径</span><br><span class="line">    :param file_type_list: 需要合并的文件类型</span><br><span class="line">    :param out_file_name:  输出文件名称</span><br><span class="line">    :return:</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    file_paths &#x3D; get_file_list(file_dir_path, file_type_list)</span><br><span class="line">    if not os.path.exists(out_file_path):</span><br><span class="line">        os.makedirs(out_file_path)</span><br><span class="line">    dfs &#x3D; []</span><br><span class="line">    for file in file_paths:</span><br><span class="line">        print(f&#39;file&#x3D;&#123;file&#125;&#39;)</span><br><span class="line">        dfs.append(pd.read_excel(file))</span><br><span class="line">    df &#x3D; pd.concat(dfs)</span><br><span class="line">    df.to_excel(os.path.join(out_file_path, out_file_name), index&#x3D;False)</span><br><span class="line">    print(f&#39;out_file_path&#x3D;&#123;out_file_path&#125;&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    file_dir_path &#x3D; os.path.join(sys.path[0], r&#39;D:\jupyter notebook\test&#39;)</span><br><span class="line">    out_file_path &#x3D; os.path.join(sys.path[0], r&#39;D:\jupyter notebook\test&#39;)</span><br><span class="line">    merge_xlsx_files(file_dir_path, out_file_path, [&#39;xls&#39;])</span><br></pre></td></tr></table></figure>
+<h3 id="这个是带用弹窗保存的"><a href="#这个是带用弹窗保存的" class="headerlink" title="这个是带用弹窗保存的"></a>这个是带用弹窗保存的</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># python pandas合并多个excel(xls和xlsx)文件（弹窗选择文件夹和保存文件）</span><br><span class="line"></span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import filedialog</span><br><span class="line">import os</span><br><span class="line">import pandas as pd</span><br><span class="line">import glob</span><br><span class="line"></span><br><span class="line">root &#x3D; tk.Tk()</span><br><span class="line">root.withdraw()</span><br><span class="line"></span><br><span class="line"># 选择文件夹位置</span><br><span class="line">filelocation &#x3D; os.path.normpath(</span><br><span class="line">    filedialog.askdirectory(initialdir&#x3D;os.getcwd()))</span><br><span class="line">lst &#x3D; []</span><br><span class="line"></span><br><span class="line"># 读取文件夹下所有文件（xls和xlsx都读取）</span><br><span class="line">for i in glob.glob(filelocation + &quot;\\\\&quot; + &quot;*.*&quot;):</span><br><span class="line">    if os.path.splitext(i)[1] in [&quot;.xls&quot;, &quot;.xlsx&quot;]:</span><br><span class="line">        lst.append(pd.read_excel(i))</span><br><span class="line"></span><br><span class="line"># 保存合并后的excel文件</span><br><span class="line">writer &#x3D; pd.ExcelWriter(filedialog.asksaveasfilename(title&#x3D;&quot;保存&quot;, initialdir&#x3D;filelocation,</span><br><span class="line">                                                     defaultextension&#x3D;&quot;xlsx&quot;, filetypes&#x3D;[(&quot;Excel 工作簿&quot;, &quot;*.xlsx&quot;), (&quot;Excel 97-2003 工作簿&quot;, &quot;*.xls&quot;)]))</span><br><span class="line">pd.concat(lst).to_excel(writer, &#39;all&#39;, index&#x3D;False)</span><br><span class="line">writer.save()</span><br><span class="line"></span><br><span class="line">print(&#39;\n%d个文件已经合并成功！&#39; % len(lst))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/02/%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E9%87%8C%E7%9A%84sheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/02/%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E9%87%8C%E7%9A%84sheet/" class="post-title-link" itemprop="url">遍历目录下的所有文件及文件里的sheet</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-02 10:47:50 / 修改时间：02:51:36" itemprop="dateCreated datePublished" datetime="2021-02-02T10:47:50Z">2021-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"># 遍历某目录下的Excel文件名字，加入列表</span><br><span class="line">list1 &#x3D; []</span><br><span class="line">for file in os.listdir(document_path):</span><br><span class="line">        if file.endswith(&quot;xlsx&quot;) or file.endswith(&quot;xls&quot;):</span><br><span class="line">            list1.append(file)</span><br></pre></td></tr></table></figure>
+<h4 id="list1-列表大概是这样-‘a-xlsx’-‘b-xlsx’-‘c-xls’…-接下来可以用相对路径或绝对路径读取"><a href="#list1-列表大概是这样-‘a-xlsx’-‘b-xlsx’-‘c-xls’…-接下来可以用相对路径或绝对路径读取" class="headerlink" title="list1 列表大概是这样 [‘a.xlsx’,‘b.xlsx’,‘c.xls’…], 接下来可以用相对路径或绝对路径读取"></a>list1 列表大概是这样 [‘a.xlsx’,‘b.xlsx’,‘c.xls’…], 接下来可以用相对路径或绝对路径读取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 相对路径读取,即代码与文件同目录才可以</span><br><span class="line">for i in list1:</span><br><span class="line">	pd.read_excel(i）</span><br><span class="line"># 绝对路径读取</span><br><span class="line">for i in list1:</span><br><span class="line">	excel_path &#x3D; os.path.join(document_path,i)</span><br><span class="line">	pd.read_excel(excel_path)</span><br></pre></td></tr></table></figure>
+<h3 id="pandas-读取-Excel-文件下的-sheet"><a href="#pandas-读取-Excel-文件下的-sheet" class="headerlink" title="pandas 读取 Excel 文件下的 sheet"></a>pandas 读取 Excel 文件下的 sheet</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">writer &#x3D; pd.ExcelFile(&#39;.&#x2F;a.xlsx&#39;)</span><br><span class="line">sheet_len &#x3D; len(writer.sheet_names)</span><br><span class="line"># 指定下标读取</span><br><span class="line">for i in range(0,sheet_len):</span><br><span class="line">    df &#x3D; pd.read_excel(writer,sheetname&#x3D;i)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/02/Python-pip%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/02/Python-pip%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/" class="post-title-link" itemprop="url">Python-pip配置国内镜像源</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-02 10:22:13 / 修改时间：04:07:30" itemprop="dateCreated datePublished" datetime="2021-02-02T10:22:13Z">2021-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="推荐的国内镜像站"><a href="#推荐的国内镜像站" class="headerlink" title="推荐的国内镜像站"></a>推荐的国内镜像站</h3><blockquote>
+<p>个人推荐清华大学 pypi 镜像站 (<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)%EF%BC%8C%E6%AF%8F%E4%BA%94%E5%88%86%E9%92%9F%E5%90%8C%E6%AD%A5%E4%B8%80%E6%AC%A1%EF%BC%8C%E8%B5%84%E6%BA%90%E4%B8%B0%E5%AF%8C%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E5%BE%88%E5%BF%AB">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)，每五分钟同步一次，资源丰富，下载速度很快</a><br>清华大学：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>阿里云：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>豆瓣：<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></p>
+</blockquote>
+<h3 id="临时使用国内镜像源进行-pip-安装"><a href="#临时使用国内镜像源进行-pip-安装" class="headerlink" title="临时使用国内镜像源进行 pip 安装"></a>临时使用国内镜像源进行 pip 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; numpy</span><br><span class="line"># 如果上一个提示不受信任，就使用这个，此参数“--trusted-host”表示信任</span><br><span class="line">pip install -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;--trusted-host pypi.douban.com  </span><br></pre></td></tr></table></figure>
+<h3 id="永久使用国内镜像源进行-pip-安装"><a href="#永久使用国内镜像源进行-pip-安装" class="headerlink" title="永久使用国内镜像源进行 pip 安装"></a>永久使用国内镜像源进行 pip 安装</h3><p>1.进入相应目录下 C 盘 -&gt;Users / 用户 -&gt;xxx-&gt; 新建 pip 文件夹</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210202102603.png" alt="20210202102603"></p>
+</div>
+
+<p>2.进入 pip 文件夹 -&gt; 新建 pip.ini 文件</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210202103008.png" alt="20210202103008"></p>
+</div>
+
+<p>3.进入 pip.ini 文件，并添加配置如下：（清华源）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn  # trusted-host 此参数是为了避免麻烦，否则使用的时候可能会提示不受信任</span><br></pre></td></tr></table></figure>
+<p>4.修改完成后保存，启动 cmd，使用 “pip install xxx”(xxx 为你要下载的包名)，即可默认使用国内源下载。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#我下载的是python的numpy函数库</span><br><span class="line">  pip install numpy</span><br><span class="line">&#x3D;&#x3D;》报错解决</span><br><span class="line">#此命令有可能报错：文件拒绝访问，需要以管理员权限运行cmd窗口</span><br><span class="line">#或者下载失败，可能是被他人挤占导致失败，可以再次输入命令重试即可</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210202103312.png" alt="20210202103312"></p>
+</div>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/01/01-pandas%E4%B8%AD%E5%88%A9%E7%94%A8groupby%E5%88%86%E7%BB%84%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0excel%E4%B8%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/01/01-pandas%E4%B8%AD%E5%88%A9%E7%94%A8groupby%E5%88%86%E7%BB%84%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0excel%E4%B8%AD/" class="post-title-link" itemprop="url">01-pandas中利用groupby分组导入数据到excel中</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-01 11:51:42 / 修改时间：04:02:07" itemprop="dateCreated datePublished" datetime="2021-02-01T11:51:42Z">2021-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.read_table(read_file, header&#x3D;0, dtype&#x3D;str, sep&#x3D;&#39;\t&#39;)</span><br><span class="line">res_file &#x3D; fileDir + r&#39;\filename.xlsx&#39;</span><br><span class="line">writer &#x3D; pd.ExcelWriter(res_file)</span><br><span class="line">groupby_df &#x3D; df.groupby([&#39;colname&#39;])</span><br><span class="line"></span><br><span class="line">for i in groupby_df:</span><br><span class="line">    i[1].to_excel(writer, index&#x3D;False, sheet_name&#x3D;i[0])</span><br><span class="line"></span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+<h3 id="使用-pandas-dataframe-toexcel-groupby-ExcelWriter-拆分-Excel-总表到分表，按某列的值分类到分表的-Python-方法"><a href="#使用-pandas-dataframe-toexcel-groupby-ExcelWriter-拆分-Excel-总表到分表，按某列的值分类到分表的-Python-方法" class="headerlink" title="使用 pandas.dataframe.toexcel, groupby, ExcelWriter 拆分 Excel 总表到分表，按某列的值分类到分表的 Python 方法"></a>使用 pandas.dataframe.toexcel, groupby, ExcelWriter 拆分 Excel 总表到分表，按某列的值分类到分表的 Python 方法</h3><p>首先，我们先读取总表， 其中 dtype 可以指定某列读取的格式.</p>
+<p>读取 2020-07-27 的格式日期时，输出到 Excel 文件日期会变为 2020-07-27  00:00:00 格式</p>
+<p>我们可以使用 date_parse 参数指定处理函数， 如果格式复杂且有错误，这是一个好办法.</p>
+<p>也可以使用 datetime 中的 strftime 和 strptime 来处理，</p>
+<p>上诉两种办法都需要指定一个函数，也可以使用 lambda</p>
+<p>我这里不想处理日期格式，选择用字符串类型来读取。想要了解的可以参考别的文章，或者我可能勤奋以后会写 (大概率不会)</p>
+<p>dtype 参数可以指定某列使用你想要的类型来读取</p>
+<p><code>data = pandas.read_excel(&quot;总表.xls&quot;, dtype=&#123;&quot;日期&quot;: str&#125;)</code></p>
+<p>如果我们想要按照部门来分类,写入分表, 下面这种写法会覆盖原来的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data_departments &#x3D; data.groupby(&quot;部门&quot;)</span><br><span class="line">for department, data_department in data_departments:</span><br><span class="line">    data_department.to_excel(&quot;分类后的表.xls&quot;, department)</span><br></pre></td></tr></table></figure>
+<p>要想达到分表的效果且不会覆盖， 我们可以使用 pandas.ExcelWriter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data_departments&#x3D; data.groupby(&quot;部门&quot;)</span><br><span class="line"> </span><br><span class="line">writer1 &#x3D; pandas.ExcelWriter(&quot;分类后的表.xls&quot;)</span><br><span class="line"> </span><br><span class="line">for department, data_department in data_departments:</span><br><span class="line">    data_department.to_excel(writer1, department)</span><br><span class="line"> </span><br><span class="line">writer1.save()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201115903.png" alt="20210201115903"></p>
+<p>如果我们想要按字段内容生成多个 Excel 表， 可以直接这样做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data_departments&#x3D; data.groupby(&quot;地区&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">for department, data_department in data_departments:</span><br><span class="line">    data_department.to_excel(f&quot;&#123;department&#125;.xls&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201115943.png" alt="20210201115943"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/" class="post-title-link" itemprop="url">Pandas groupby 保存到 dataFrame</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-01 10:46:21" itemprop="dateCreated datePublished" datetime="2021-02-01T10:46:21Z">2021-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-06 00:58:05" itemprop="dateModified" datetime="2021-02-06T00:58:05Z">2021-02-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
+<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
+<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
+<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
+<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
+<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
+<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
+<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
+<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
+<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
+<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
+<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
+<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
+<p>下面以一组数据为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
+</div>
+
+<p>下面按 key 进行分组:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
+<p>可以使用循环对分组后的结果进行遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
+</div>
+
+<ul>
+<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>通过循环，对 value 进行拼接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
+</div>
+
+<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果可以看到数据变为有序：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
+</div>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/30/%E6%B2%A1%E6%9C%89%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83%E5%8B%A4%E5%A5%8B%E9%83%BD%E6%98%AF%E6%89%AF%E6%B7%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/30/%E6%B2%A1%E6%9C%89%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83%E5%8B%A4%E5%A5%8B%E9%83%BD%E6%98%AF%E6%89%AF%E6%B7%A1/" class="post-title-link" itemprop="url">没有深度思考勤奋都是扯淡</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-29 17:19:04 / 修改时间：11:49:40" itemprop="dateCreated datePublished" datetime="2021-01-29T17:19:04Z">2021-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>&emsp;&emsp;在今天去看我们周遭的信息环境，不得不说移动互联网的普及让人对信息的摄取广度有了延展，却因此限制了我们摄取信息的深度。我们日常的视野中，总是充斥着碎片化信息之 “过” 的问题——即 99% 的东西，与我们一点关系都没有，或者说在 “浅尝辄止，浮于表面” 的思考模式下对我们没有任何价值。<br>&emsp;&emsp;麦克卢汉曾说：我们创造了工具，工具反过来塑造我们。放到现在来看，也是一样的：一旦你习惯了 “低成本、高回报” 的刺激，你就很难去做那些 “高投入” 的事情，因此成为“低效勤奋者”——看起来每天忙碌，到头来却一无所获。<br>&emsp;&emsp;为什么？因为战术上你很勤奋，实际上却刻意回避了真正困难却更有价值的部分——战略思维与战略决策。而这种 “战略思维懒惰” 的行为，最终会导致你战略决策失误，陷入了低成长的陷阱。<br>&emsp;&emsp;其实，人生最大的悲哀，莫过于将一辈子的聪明，都耗费在肢体的勤奋上。要想成为真正的 “高成长人群”，防止你与预期 “背道而驰”，就要学会并保持深度思考的能力。今天这篇文章，希望能对你有所启发。<br>&emsp;&emsp;许多人宁愿做 “低效勤奋者”也不愿意深度思考。以下这个故事，人们常常用来说明执行力的问题。其实是只知其一，不知其二。<br>&emsp;&emsp;张三和李四同时受雇于一家店铺，拿着同样的薪水。 一段时间后，张三升职加薪，李四却没有，于是李四找老板理论。老板对他说：“李四，你现在帮我到集市上去一下，看看今天早上有什么卖的。”不一会儿，李四从集市回来，向老板汇报：“只有一个农民拉了一车土豆在卖。” 老板问：“有多少？” 李四不知道，于是赶紧又跑到集市上，然后回来告诉老板：“一共 40 袋土豆。” 老板又问他：“价格呢？” 李四说：“您没有叫我打听价格啊。”<br>&emsp;&emsp;于是老板让李四先坐下休息，并把张三叫来，吩咐他说去做同一件事。 张三回来，向老板汇报：“今天集市上只有一个农民在卖土豆，一共 40 袋，价格是两毛五分钱一斤。我看了一下，这些土豆的质量不错，价格也便宜，根据我们以往的销量，40 袋土豆在一个星期左右就可以全部卖掉，一定能赚钱。”<br>&emsp;&emsp;此时老板转向了李四，说：“现在你知道为什么张三的薪水比你高了吧？”<br>&emsp;&emsp;从执行力角度看，是李四做事没有责任心；但再深入地分析，他的思维方式存在问题，他有两个方面不如张三：一是不愿多动脑筋深入思考，二是釆取低级思考方式，很多方面想不到。伯特兰 · 罗素说：“许多人宁愿死，也不愿思考，事实上他们也确实至死都没有思考。”观察我们身边不少看似勤奋的人，却混得不行，为什么？因为他们是 “低效勤奋者”。“低效勤奋者” 有两个特征：不愿深入思考，釆取低级思考。这就导致他们做事效率低，效能低，成长慢。“低效勤奋者” 之所以不愿深入思考与釆取低级思考，是因为这些人不会深度思考。学渣与学霸之间的差别就在于深度思考。普通员工与卓越员工之间的差别也在于深度思考。小老板与大老板之间的差别更在于深度思考。<br>&emsp;&emsp;从 “被动学习” 向“主动学习”升级深度思考，首先是从 “被动学习” 向“主动学习”升级。大多数人从学校开始，就习惯了被学校和老师的教学计划牵着鼻子走；到了工作单位后，被上级的指令与监督驱使着行动。这就是所谓的被动学习与被动思考。本文开头故事中的李四就是这么一个人。釆取这种被动的学习与工作方式的人，亦步亦趋，跟着别人的思维走，既没有偷着懒，一样的累得像狗；又做什么都做不好，做不到位，内心充满压力感。而主动学习不是这样的。我注意到那些学校中的一些学霸，他们有自己的学习计划与学习节奏，以自学为主。在他们眼里，学校统一的学习计划与老师，只是其中之一的辅助途径。我见过一位高中学霸，高一就学完了全部高中课程。我年轻时刚参加工作，就很纳闷：为什么我的上司文化程度不如我，但他批评我时，总能看到我看不到的问题，想出我想不到的办法。有同事解释说，因为领导比我经验丰富。我就不服这个邪，于是，我决定变被动为主动：首先，我强迫自己重视并安心本职工作。其次，在了解工作职责和部门目标的基础上制定自己的较高目标、专业能力体系化学习计划与工作计划。然后，自己找问题，并带着问题在部门內外、行业內外进行广泛的学习与专注思考。这个时候，关键是能够投入业余时间用在学习与工作上。这样一来，经过一段时间，我很快找到了感觉，看问题、想办法、做事情，都能踩到点子上了。在我负责的工作范围内，我所掌握的信息、知识与我的见解，都能走在领导的前面。这样不但使绩效明显提升，博得上司的赏识，而且自己也感到对工作有了发自内心的兴趣，还心情舒畅，不像过去一样有压力了。<br>&emsp;&emsp;人生最大的思想误区认为战略短板可以用战术的勤奋来弥补。<br>&emsp;&emsp;在前几年大众创业的热潮中，我认识的一位老乡，他三十来岁，也按奈不住心潮澎湃，说老子决定不打工了，创业当老板去。他拿出准备结婚买房的钱，加上找众多亲朋好友众筹的款子，共逾百万，开了一家餐馆。我是偶然去吃饭碰上他的。吃完之后，他问我，餐馆办得怎么样？我实话实说，你这个啊有两个战略上的问题：一个是地段偏僻了，另一个是菜品虽然有特色，口味也挺好，但根据我对周边人群的了解，你这定位有点不精准，高不成低不就。这老乡听了有点不高兴，跟我大谈什么工匠精神，要精益求精创一流莱品。最后他说，这地段偏是偏了点，但租金便宜，我可以把省下的资金，用来作广告，搞宣传，打响牌子，还是划算的。后来听说他在广告与促销上做了很大努力与很多动作，如微信宣传，店內有奖促销，优惠促销，派人在路口撒广告传单，到附近小区与写字楼贴广告。可以讲，凡营销教课书上提到的促销招术，他都几乎用了一遍。但最终还是无力回天，半年后便停业倒闭了。我发现，不少人有一个盲目的自信，以为战略上的短板，可以用正确的战术和增加战术资源投入，来弥补，来挽救。这实质上是在用战术上的勤奋，来掩盖战略上的懒惰。战术上你很勤奋，实际上却刻意回避了真正困难却更有价值的部分——战略思维与战略决策。而这种 “战略思维懒惰” 的行为，最终会导致你战略决策失误，结果可能是一失足成千古恨。前面所讲的选择 “低成长区” 还是选择“高成长区”，这都属于战术层面的思考，这些你选择对了，做对了，也还是不够的。比战术层面的深度思考更重要的，是战略层面的深度思考。你必须把决定事业全局与长久成败的战略决策视为头等大事，在战略上多学习，多动脑子，多花时间，多选择，多比较，不怕麻烦，力戒 “战略思维懒惰”。要能 “忍、等、准”，有耐心，时刻准备，创造机会，但勿因急躁而轻举妄动。如果你是公司老板，就须选择一个好的行业，好的商业模式，把握好机会，使机遇同自己的核心能力、关键资源、价值观相匹配。然后，制定公司的发展战略规划。<br>&emsp;&emsp;如果你是职场人士，在注重选好行业、公司平台时，更要选好职业，并且使这些选择与自己的专业、特质潜能、价值观相适合。然后，根据环境和公司未来发展趋势、未来机会制定自己的长远职业发展计划与新能力学习计划。<br>&emsp;&emsp;人生最大的悲伤，莫过于将一辈子的聪明都耗费在战术上。当你抬头一看，你精益求精的事情，它们所在的职业或行业己经衰落，或社会价值与个人价值都很低微，或前进的战略大方向错了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -852,883 +1404,8 @@ Out[23]: 16
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/29/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%9F%A5%E7%9C%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/29/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%9F%A5%E7%9C%8B/" class="post-title-link" itemprop="url">Markdown基本语法查看</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-01-28 16:05:36 / 修改时间：09:01:40" itemprop="dateCreated datePublished" datetime="2021-01-28T16:05:36Z">2021-01-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/191d1e21f7ed/">1. Markdown 基本语法含流程图的创建</a></p>
-<p><a target="_blank" rel="noopener" href="http://markdown.p2hp.com/basic-syntax/index.html">2. 基本语法 官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ebe52d2d468f">3. Markdown语法大全(超级版)</a></p>
-<pre><code>表头|表头|表头
-:--|:--:|:--:
-内容|内容|内容
-内容|内容|内容
-
-第二行分割表头和内容。
-- 有一个就行，为了对齐，多加了几个
-文字默认居左
--两边加：表示文字居中
--右边加：表示文字居右
-</code></pre>
-<p>效果如下：</p>
-<table>
-<thead>
-<tr>
-<th align="center">姓名</th>
-<th align="center">技能</th>
-<th align="center">排行</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">刘备</td>
-<td align="center">哭</td>
-<td align="center">大哥</td>
-</tr>
-<tr>
-<td align="center">关羽</td>
-<td align="center">打</td>
-<td align="center">二哥</td>
-</tr>
-<tr>
-<td align="center">张飞</td>
-<td align="center">骂</td>
-<td align="center">三弟</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8Bpandas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8Bpandas/" class="post-title-link" itemprop="url">数据分析之pandas</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-01-28 07:09:18 / 修改时间：08:01:52" itemprop="dateCreated datePublished" datetime="2021-01-28T07:09:18Z">2021-01-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>&emsp;&emsp;最近开始学习使用Python的Pandas库处理工作中的一些重复性劳动，发现它真是个好东西，用起来真是太高效了。由于一直都处于零散的学习状态，现在对这些知识进行一个简单的总结，以便于形成知识体系。个人认为知识只有形成了体系才能灵活的应用。</p>
-<h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><p>series 类似一维数组，他由一组数据及数据对应的标签组成。说是类似数组，但其实和数组是有区别的，主要是由于 Series 的索引的存在。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from pandas import Series, DataFrame</span><br><span class="line">import pandas as pd</span><br></pre></td></tr></table></figure>
-<p><code>obj = Series([1,2,3,4])# 创建一个Series对象，如果不声明索引，则默认的索引是0到N-1(N是数据的长度)</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.index 代表Series对象的索引，我们可以手动声明索引</span><br><span class="line">obj.values 代表Series对象的值，此时才相当于数组，即为python中的list</span><br></pre></td></tr></table></figure>
-<p>我们可以手动声明 series 的索引</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj2&#x3D; Series([1,2,3,4], index&#x3D;[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;])</span><br><span class="line">obj2[&#39;c&#39;]#通过索引获取元素的值</span><br></pre></td></tr></table></figure>
-<p>判断是否缺失数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj2.isnull() #使用series对象的方法，返回series，值为True或False</span><br><span class="line">pd.isnull(obj2) # 使用pandas的方法</span><br><span class="line">pd.notnull(obj2)</span><br></pre></td></tr></table></figure>
-<p>series 对象本身及其索引都有一个 name 属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sdata &#x3D; &#123;&#39;ohino&#39;: 3500, &#39;texas&#39;: 7100, &#39;utah&#39;: 500&#125;</span><br><span class="line">obj &#x3D; Series(sdata)</span><br><span class="line">obj.name &#x3D; &#39;population&#39;</span><br><span class="line">obj.index.name &#x3D; &#39;state&#39;</span><br></pre></td></tr></table></figure>
-<h2 id="Series-总结"><a href="#Series-总结" class="headerlink" title="Series 总结"></a>Series 总结</h2><p>Series 可以看成是一个定长的有序字典，可以认为字典的 key 值即为对应的 Series 的值的索引。</p>
-<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><p>Dataframe 是一种表格型的数据结构，可以看成 Series 组成的字典，最常用的构建方法是传入一个由登场列表或者 numpy 数组组成的字典。DataFrame 会自动加上索引。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; &#123;‘state’: [&#39;ohio&#39;,&#39;ohio&#39;,&#39;ohio&#39;], &#39;year&#39;: [2001, 2002, 2003], &#39;pop&#39;: [1.5, 1.6, 1.7]&#125;</span><br><span class="line">frame &#x3D; DataFrame(data, columns&#x3D;[&#39;year&#39;, &#39;state&#39;,&#39;pop&#39;])</span><br></pre></td></tr></table></figure>
-<p>获取元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame[&#39;state&#39;]#获取Series，返回的Series与原来的DataFrame有相同的索引。而且其name属性已经被设置为该columns的值，即为state</span><br><span class="line">frame.state # 也可以使用属性的方式获取series</span><br></pre></td></tr></table></figure>
-<p>当需要获取一行元素时，使用位置或者名称的方式进行获取。<br><code>frame.ix[2] #获取第三行数据，此时仍为series，只是columns的值变成了索引</code></p>
-<p>另一种常见的数据形式是嵌套字典，外层的字典的键作为列，内层字典的键作为行索引，内层字典的键会被合并，排序，形成最终的索引，也可以指定索引</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frame.values #以二维数组的方式返回DataFrame中的数据</span><br><span class="line">frame.index.name #设置索引的名字</span><br><span class="line">frame.columns.name #设置columns的名字</span><br></pre></td></tr></table></figure>
-<h2 id="DataFrame-切片"><a href="#DataFrame-切片" class="headerlink" title="DataFrame 切片"></a>DataFrame 切片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">obj[val]# 选取DataFrame的单个列或者一组列</span><br><span class="line">obj.ix[val] # 选取DataFrame的单个行或者一组行</span><br><span class="line">obj.ix[:,val] #选取单个列或者列子集</span><br><span class="line">obj.ix[val1, val2] #同时选取行和列</span><br></pre></td></tr></table></figure>
-<h2 id="DataFrame-和-Series-之间的运算"><a href="#DataFrame-和-Series-之间的运算" class="headerlink" title="DataFrame 和 Series 之间的运算"></a>DataFrame 和 Series 之间的运算</h2><p>默认情况下，DataFrame 和 Series 之间的算术运算会将 Series 的索引匹配到 DataFrame 的列，然后沿着行一直向下传播</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame &#x3D; DataFrame(np.arange(12.).reshape((4,3)), columns&#x3D;list(&#39;bde&#39;), index&#x3D;[&#39;Utah&#39;, &#39;Ohio&#39;, &#39;Texas&#39;, &#39;Oregon&#39;])</span><br><span class="line">series &#x3D; frame.ix[0]</span><br></pre></td></tr></table></figure>
-<p><code>frame - series = DataFrame(&#123;&#39;b&#39;:[0,3,6,9],&#39;d&#39;:[0,3,6,9],&#39;e&#39;:[0,3,6,9]&#125;, index=[&#39;Utah&#39;, &#39;Ohio&#39;, &#39;Texas&#39;, &#39;Oregon&#39;])</code></p>
-<p>是因为逐行传播的原因，frame 每一行的元素都会减去 series 的对应值。</p>
-<p>如果某个索引值在 DataFrame 的列或者 Series 的索引中找不到，则参与运算的两个对象就会被重新索引形成并集</p>
-<p><a target="_blank" rel="noopener" href="http://www.airghc.top/2017/04/27/python/">转自</a></p>
-<p>这位兄弟的总结太好了，谢谢。我只是来学习的，学习用Markdown语法写作，真是太好了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/28/%E5%A6%82%E4%BD%95%E5%85%8B%E6%9C%8D%E7%B4%A7%E5%BC%A0%E6%83%85%E7%BB%AA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/28/%E5%A6%82%E4%BD%95%E5%85%8B%E6%9C%8D%E7%B4%A7%E5%BC%A0%E6%83%85%E7%BB%AA/" class="post-title-link" itemprop="url">如何克服紧张情绪</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-01-28 07:02:03 / 修改时间：09:01:38" itemprop="dateCreated datePublished" datetime="2021-01-28T07:02:03Z">2021-01-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>&emsp;&emsp;紧张情绪总是伴随着我们的成长，并随着成长逐渐增加，我们会发现以前会逃避的东西，现在逃不掉了。所以这个问题急需解决，有一篇不错，搬了过来，准备随时学习用。</p>
-<p><a target="_blank" rel="noopener" href="http://www.360doc.com/content/10/0731/17/601194_42756242.shtml">转自</a></p>
-<p>&emsp;&emsp;《抓住让人瞩目的机会：当众讲话让掌声响起》作者为北京卡耐基学校校长黄久凌先生十年潜心研究语言魅力的成果，是符合中国社会语境的当众讲话艺术结晶。本文系我从该书中节选，通过自己在文字和文章结构上重新修改编排整理而就，使之更具针对性和操作性。标题系自己提的。</p>
-<p>&emsp;&emsp;当众讲话总是伴随着一个人的职业发展悄悄地来到人们面前。因为当众讲话是与我们职业发展联系最密切的一种讲话形式。职场中，很多场合都需要当众讲话：求职面试、竞聘职位、工作述职、汇报说明、总结报告、发表意见、主持活动、商务谈判、宣传产品、激励员工、接受采访、会议发言等。当众讲话是一个人在职场上必备的基本技能，也是管理者对人管理的必要工具。英国前首相邱吉尔曾说过一句经典的话：“你能对着多少人当众讲话，你的事业就会有多大！” 可见，当众讲话是一门不可不学的一课。学习当众讲话对表达能力的提高、个性的改善、社交能力的提升都有很大作用。可是，绝大多数人对于当众讲话都感到紧张恐怖。看来，紧张是绝大部分讲话者面对听众时首先遇到的最大障碍。所以，我们一定要突破当众讲话让我们感觉到紧张的心理障碍.</p>
-<p>&emsp;&emsp;美国成人教育家戴尔・卡耐基先生毕生都在训练成人有效地说话。他认为，成人学习当众讲话，最大的障碍便是紧张。他说：“我一生几乎都在致力于帮助人们克服登台的恐惧，增强勇气和自信。”。<br>&emsp;&emsp;何谓紧张？紧张首先是人应对恶劣环境的一种本能反应。人的身体向来就会对外在的刺激保持警觉，一旦感到不利于自己的情况发生，就会出现紧张反应，比如肌肉绷紧、心跳加快、手心出汗等，这些反应不用大脑思考，是人的本能，表明人体的紧急预案已经启动，它会让人大脑兴奋、精神集中、创新能力增强，使人的潜能发挥有了可能，所以，许多专家认为紧张、压力是激发潜能的有利因素.  而紧张不见得是件坏事，适度紧张不但无害，还会起到积极的作用。对于当众讲话来说，适度紧张会让我们重视听众，重视我们的表达方式，不会懈怠。只要你在乎听众，想给听众留下好印象，自然就会重视你的讲话，不会完全放松。我们前面提到的很多演讲家终身没有消除演讲的紧张也是这个道理，这样反而会增强表达的效果 。<br>&emsp;&emsp;很多人不了解这个事实，往往以为别人讲话都不紧张，而天底下只有自己讲话紧张，当众讲话也会紧张，远不止我们这些普通人。只有 “紧张” 和 “过度紧张” 才是我们真正要调整和突破的。因此我们没有必要去担心轻微、适度的紧张，只有过分紧张造成了思维停滞言辞不畅，我们才需要把它降低到一定程度，让它成为一种助力而不是阻力。</p>
-<p>&emsp;&emsp;下面列出人们在讲话时怀有不同程度的紧张度及其表现：</p>
-<table>
-<thead>
-<tr>
-<th align="left">表现紧张程度</th>
-<th align="center">心理状态</th>
-<th align="center">身体表现</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">不紧张</td>
-<td align="center">毫不在乎</td>
-<td align="center">松懈</td>
-</tr>
-<tr>
-<td align="left">适度紧张</td>
-<td align="center">感到压力不够轻松</td>
-<td align="center">重视，会经常思考</td>
-</tr>
-<tr>
-<td align="left">紧张</td>
-<td align="center">畏惧担心</td>
-<td align="center">惴惴不安 过分关注，心神不宁，睡不好觉，上台时心跳加快、脸红、出汗、表情僵硬</td>
-</tr>
-<tr>
-<td align="left">过度紧张</td>
-<td align="center">恐惧害怕</td>
-<td align="center">做恶梦、头痛、胃不舒服、胸闷、呼吸困难、当场晕倒等</td>
-</tr>
-</tbody></table>
-<p>&emsp;&emsp;从而，我们可以更清楚地看出，只有 “紧张” 和 “过度紧张” 才是我们真正要调整和突破的。因此我们没有必要去担心轻微、适度的紧张，只有过分紧张造成了思维停滞言辞不畅，我们才需要把它降低到一定程度，让它成为一种助力而不是阻力。</p>
-<p>&emsp;&emsp;那么，当众讲话紧张的根源在哪里？既然紧张是人的一种反应式行为，那这种紧张到底是对什么做出的反应呢？有很多学者提出了自己的看法，以下是两位专家的观点。</p>
-<p>&emsp;&emsp;一位是美国魅力学校校长都兰博士，他认为，产生怯场紧张的原因主要有以下几个方面：</p>
-<pre><code>    1.害怕做得没有想得那么好。
-
-    2.准备得不太充分。
-
-    3.害怕人们 (听众) 反应不佳。
-
-    4.早期有失败的经历。
-
-    5.没有充分进入角色 (可能是由于 1，2，3 或 4)。
-</code></pre>
-<p>&emsp;&emsp;谈到紧张怯场的原因时，都是由于出现了害怕的感觉，让人产生了紧张。无外乎就是害怕 “自我形象不好”，“怕出丑”、“怕丢脸”、“怕没面子”。有了这种害怕心理，才会导致紧张出现。人类害怕的原理，明确地讲，我把它归结为 6 个字 “有需求，没把握”。很多人经历过高考，高考的时候一般都会特别紧张害怕，为什么呢？首先看这个人有没有需求。有啊，想考上大学，有的人还想考上好大学。但有把握吗？一般来讲都不会有十足的把握，万一发挥失常，万一考试那天发烧拉肚子，万一题目超出了自己复习的范围…… 很多偶然情况可能出现。这样，人就没有把握了。人一旦感觉到对事情没有把握，不安全感就会产生，所以大部分人高考会紧张。但也有人高考不紧张，什么人呢？一类是学习特别好的，保送都不去，一定要自己考，非清华、北大这样的学校不上。这样的学生有需求，但他们把握性很大，因此考试不会紧张。还有一类人是学习特别差的，知道自己怎么也考不上，“是妈妈让我考的”，不得不参加。这是连需求都没有的人，还紧张什么呢？  所以心理学上有一句话 “压力总是伴随着需要而产生”。无欲则刚啊，没有需求了，人还有什么担心和害怕的？<br>我们再看看当众讲话紧张是不是也因为 “有需求，没把握”?</p>
-<p>&emsp;&emsp;我们私下讲话的时候很放松，可一旦站起来对一群人讲话，就不一样了，心理发生了变化，产生了展示自己的需要。私下讲话的时候，这种需求不能说没有，但非常小。而一站起来，给别人看的心理就产生了，想要表现得好，想要说得好，想让大家特别是领导认可，谁都会有这样的心理，很正常。但你有没有把握表现好呢？有些人讲话机会多，成功的经验多，把握比较大，但好多人在当众讲话方面缺乏锻炼，没有经验，没有充分的把握好好表现，出现紧张自然就不奇怪了。</p>
-<p>&emsp;&emsp;所以，我说当众讲话的紧张就是源于 “有需求，没把握” 而产生的害怕心理。因此，克服当众讲话的紧张就要从这两个方面来解决。</p>
-<p>&emsp;&emsp;事情有那么重大吗？　首先我们谈一谈需求，看看能不能把人的需求给降下来。需求没了，人就不紧张了，需求低了，紧张程度就小了。有人说不可能，谁站起来不想展示自己啊，这种需求是正常的，不可能降低。但我说可以，这个需求还是可以降低的。我通过 6 个方法来帮大家试着把需求降下来。</p>
-<p>&emsp;&emsp;第 1 个方法：看轻结果。美国有一个著名的高空走钢索表演者叫瓦伦达，他走钢索以距离长、离地面高而出名，是美国观众公认的一流杂技表演艺术家。他走钢索非常有经验，一生做过很多次出色表演，但在最后一次重要演出中，他意外地从 70 米高空坠落身亡。事故发生后记者去采访瓦伦达妻子，没想到瓦伦达的妻子说：“我就觉得他这次要出事，因为他在表演前不停地对我说：‘这次表演实在太重要了，一定不能有一丁点儿失误，更不可以失败。’而这之前的任何一次表演，他根本不紧张，只是一心想着走钢丝的每一个技术细节，从不在意结果。” 后来，心理学家把不专注于事情本身，而是一再考虑做这件事情可能会带来的后果、患得患失的心态，叫做 “瓦伦达心态”。</p>
-<p>&emsp;&emsp;在一次重要的国际田径比赛中，一名国内跳高运动员面临着冲击金牌的最后一跳。教练对她说：“好好跳，只要跳过这两厘米，你的房子就到手了。” 结果她硬是没跳过那 “两厘米”，“房子” 也泡了汤。在洛杉矶奥运会上，受了伤的跳水王子洛加尼斯也面临着争夺金牌的最后一跳，但他的教练只轻松地对他说：：“你妈妈在家里等着你呢，跳完这一轮，你就可以回家吃她做的小甜饼了。” 洛加尼斯微微一笑，从容跳入水中。他以自己优美的姿态征服了所有裁判及在场的观众，赢得了久久的掌声。他最终获得了金牌，既回家和妈妈一道品尝了小甜饼，也得到了政府奖励。中外两个教练，同样是用语言去激励运动员，因为 “说法” 不同而导致截然不同的结局。</p>
-<p>&emsp;&emsp;让人考虑后果、患得患失的 “瓦伦达心态” 只会让人紧张加剧。我们目前的文化非常在乎事情结果，总是以结果论成败，以成败论英雄。其后果是越想得到就越不容易得到，越怕失败就越容易失败。结果需要我们去关注，但关注过度了，就会把结果看得太重，做事就会受到影响。</p>
-<p>&emsp;&emsp;一次我给中关村一家知名企业做产品发布指导。该公司召开产品发布会，由市场部杨经理来介绍产品。她紧张得不得了：“我们研发部门花了半年的心血研究的产品，要是我给介绍砸了就全完了，怎么对得起他们呀。” 我说，我先了解一下你们是怎么发布新产品的吧。</p>
-<p>&emsp;&emsp;我了解后知道了他们的新产品是制作电视节目用的非线性编辑系统，是用电脑编辑节目的一套工具，产品发布就是现场演示用这套系统编辑好的一组节目，杨经理在中间要穿插做一些补充介绍。我知道了这些情况之后，对杨经理说：“杨经理，你知道你在产品发布中充当什么角色吗？你充当的角色不是主讲人，而是解说员。解说是什么性质呢？就像赵忠祥老师主持《动物世界》，他是在屏幕后面的人，根本不需要出现，《动物世界》里有哪一集赵老师会露脸？他的工作只是大家在看不懂的时候说上一两句，让大家看得懂，大家能看懂的时候，赵老师还不能说话，否则会影响观众看节目。你所做的事性质和赵老师做的一样，发布会上应该是产品当主角，充分表现，当客户看不明白的时候，才需要你说上几句，而客户能看明白时，你就不用说话。所以，有产品自身的演示作为保证，你不用把你讲话的作用看得太重了。反倒是你表现得过分了，客户都看你而不看产品，才是你介绍的失败呢。其实你们的产品到底符合不符合客户的要求，到底能不能对客户的工作发挥作用，这才是能否成功的根本，不会因为你说了几句动听的话客户就抢着买。所以，你的讲话跟发布会的效果有关系，但不是百分之百，也就只占 5%~10% 吧”。杨经理听我这么一说，松了一口气：“黄老师，那我就轻松多了。</p>
-<p>&emsp;&emsp;我们经常听到一句话叫 “这件事具有重大的现实意义和深远的历史意义”，形容我们做的事有很重要的意义。我国的 “嫦娥” 卫星发回第一张月球照片时，我看电视报道时就听到了这句话，评论嫦娥工程意义重大而深远。这件事确实意义重大，但我们的发言、讲话有那么大意义吗？  往往很多情况只是走个过场和有个形式。所以，下次你觉得你讲话的意义非常重大时，和 “嫦娥” 工程比一比，想想你的讲话有那么大的现实意义和深远的历史意义吗？因此，第一点，要客观评价你讲话的作用与意义，把结果看轻而不是盲目放大。</p>
-<p>&emsp;&emsp;第 2 个方法：放下自我。　中国有一位音乐家叫陈其钢，他说自己是个内向的人，不太习惯在公众面前讲话。2002 年北京第 5 届国际音乐节上他要展现音乐作品《蝶恋花》，这次展现的方式与以往不同，采用 “音乐会现场解说” 的特殊表现形式，由他自己亲自登台讲解。演奏是他的长项，但对着观众讲话陈其钢心里就打鼓了，感觉很紧张。但他意外想到了一个方法立刻调整了紧张的心情，是什么方法呢？</p>
-<p>他说：“有时候我想，音乐会台上有一百多位音乐家在拉琴，好像是一百多只猴子在那里搞表演，台下有一千多名观众，也就是一千多只猴子在看表演，这些猴子在看的时候还会鼓掌。这次更特别的是，还有两只猴子在说话。猴子们在一起玩，所以没必要那么认真。” 咦，你看，大家都不是人了，还有必要那么一本正经吗？<br>&emsp;&emsp;王朔被称为最有风格的作家之一，他有一句名言：“我是流氓我怕谁？” 我称陈其钢、王朔这种调整心态的方法就是不把自己当人的方法。当然，我们普通人谁也不能像陈其钢那样把自己当猴子，像王朔那样把自己比喻成流氓，但很多时候，我们做人确实太过认真了。我们现在的教育只有一种不变的方式，即只教大家做人要认真。其实，要知道任何事物没有变化就是死的东西，没有变化的做人方式也迟早会出问题。我们很多的紧张是由于 “太认真” 才出现的，人在很多时候会孔雀开屏 —— 自作多情，太把自己当回事了。其实，做人应持有 “既认真， 又不认真” 的心态，是最重要的。在这里，我们先需要了解的是放下自我，不要太把自己当回事。</p>
-<p>&emsp;&emsp;第 3 个方法：允许犯错。要允许自己犯错误，因为，我们不是学校里专职的老师，更不是职业演讲家，又不是天天以讲话为职业，话讲不好是正常的。讲话中遇到讲错话，不要觉得沮丧。因为我们每个人都要允许自己有一个成长的过程，要学会随时随地给自己一个恰当的定位，任何事物的发展都是从小到大、由弱变强的，要允许自己在缺少经验和技能生疏的情况下讲不好，允许自己犯错误，这是再正常不过的事情了。</p>
-<p>&emsp;&emsp;第 4 个方法：允许失败，这又是非常重要的一点。“一定要成功，绝不能失败”，我们经常听到这句振奋人心的话。但大家想一想，这句话现实吗？成功和失败是一对孪生子，任何事情的结果可能成功也可能失败，概率差不多，基本上是各占一半，这是天地运行的自然法则决定的。就像地球不管怎么转，我们这一半现在是白天，地球另一半就绝对是黑夜。既然知道事物有两面性，为什么一到事情的成败上，我们就要求只能成功，不能失败？运动员是不是也要懂得这一点？</p>
-<p>&emsp;&emsp;刘翔连续创造了 4 年的辉煌，对于对抗激烈、新人层出不穷的世界短跑赛场，有这样的骄人战绩真让人惊叹不已。我发现，刘翔的成功首先是做人的成功，印证了 “做事先做人” 的道理。他取得的惊人成绩与他拥有良好的心态、极高的心理素质是有关系的。请看：</p>
-<p>&emsp;&emsp;在 2007 年 8 月第 11 届世界田径锦标赛上，刘翔凭实力是有机会夺得金牌的，而且他的世界级金牌就差世锦赛这一块，得到了就享有 “大满贯” 的称号。他很想得到这个冠军，全国人民也很希望他得到，压力来了。但刘翔在赛前新闻发布会上却说：“我尽力去跑，但跑出什么成绩现在还不好说，要看当时的状态，拿不到冠军，能拿到第二名、第三名也是不错的。” 我看出他不是嘴上说说而已，是发自真心这么说，是从心里对结果有一个现实的期待，也让全国人民对结果有了一个现实的期待。在这样的心态下，人才会真的放下负担，才会把更多的精力用在做事上。最后的结果刘翔不是第二名、第三名，他拿到了冠军，实现了大满贯的愿望。中国人民的自豪感又被狠狠地激发了一次。而在 2008 年北京奥运会上，刘翔又被全国人民寄予了很大的希望要卫冕奥运会冠军。但刘翔经过努力之后最终因伤退赛。我觉得这又表现了他良好的心理素质。一件事经过尝试之后要允许自己勇于放弃，要允许自己失败，说起来，这不仅不是失败，而是一个人智慧的表现，不把这样的事看成失败，人就不会失落沮丧。</p>
-<p>&emsp;&emsp;第 5 个方法：允许丢脸。 大家熟知的香港凤凰卫视的节目主持人窦文涛，有 “名嘴”、“铁嘴” 之雅号，嘴巴着实厉害。但是窦文涛小时候嘴巴并不灵巧，虽然爱说话，但是说不好，结结巴巴，有点口吃。上初中的时候有一次老师跟他说：“窦文涛，学校组织演讲比赛，我看你挺爱说的，你来参加吧。”“哟，演讲怎么讲？”“就像写作文一样，你写篇稿子，上台背出来就行了。”“那好吧。” 窦文涛犹犹豫豫地答应了。回去开始写演讲稿，接着就开始背。背的时候自己还发明了一套方法，把每个自然段的第一个字作为关键字记住，一想到这个字这一段就倒背如流地背下来了，效率很高。他让妈妈考他，妈妈只要任意提其中一个关键字，他就可以把这段背下来。演讲会那天，窦文涛一上台，哎，怎么感觉跟家里不一样？家里没人，但这里台下一千多人黑压压的一大片。他当时有点慌，赶紧背第一段吧。第一段背完之后就想第二段的第一个字，想起来了，第二段也背下来了，还挺顺利。这时就想第三段的第一个字，麻烦了，这第三段的第一个字是什么呢？想不出来了，也没有妈妈在旁边提字。一紧张，整个脑袋空白，什么都没有了。再一看，台下开始交头接耳，开始议论上了。窦文涛站在台上足足半分钟，一句话也没有说，他越来越害怕，最后突然感觉裤子湿了：“坏了，尿裤子了。” 结果全校师生看着窦文涛尿湿了裤子跑下台。第二天窦文涛来上学，也觉得挺难为情，好像全校女生都在看他。老师来找他：“窦文涛，你昨天虽然没朗诵完，但是前面两段朗诵得还是不错的，能背下来一定能拿个名次。你知道吗？这一次我们学校的演讲比赛是为区里的演讲比赛做选拔的，根据你昨天的表现，我们决定让你到区里参加演讲比赛。” 窦文涛还会答应吗？没想到他竟答应得很痛快。为什么呢？在窦文涛的回忆里，他说：“我昨天当众尿了裤子，丢人已经丢到家了，还能有比这个更丢脸的事情吗？自己觉得无所谓了，所以答应得很痛快：“去！” 这一去还真拿了个名次回来” 他说：“从此之后我就有点变化了，反正已经不要脸了，还有什么所谓呢？  卸下这个包袱之后，我觉得自己还行，也能经常在这种场合露露脸。 中国人传统上都比较内向，大家一起听你说话的机会很难得，要珍惜每一次当众说话、当众表演的机会，就让自己积累挫折、积累出丑的经验，这样才能放下自我。这次出丑了吧，你们笑话我吧，我就不要脸了一分；下次又出丑了。我就不要脸了二分；等我全不要脸了，我就进入自由王国、无我的状态。所谓的‘自我’就是脸面、自尊心、虚荣心等诸如此类的东西构成的，当这些东西全被摧毁的时候，你突然发现你获得了一切。”  面子是怎么挣来的？面子是通过丢面子挣来的。你能说窦文涛今天成名不要感谢那次当众尿裤子吗？窦文涛从尿裤子慢慢地练成了主持人，现在他说起小时候尿裤子的事情不仅不觉得没有面子，还觉得是件有面子的事。小时候多笨啊，而现在他是名嘴、铁嘴，主持的节目谁都爱看，多有面子啊。所以丢面子本来就是一件正常的事，是走向成功必须付出的代价，是挣面子的开始啊。所以，要发自内心地接受自己也会有没面子的时候。</p>
-<p>&emsp;&emsp;第 6 个方法：允许紧张。要接受紧张而不是控制紧张。紧张的表现本来就是正常的，是应该的，要正确对待它。可是我们很多人认为紧张不正常，为了不想让人看出自己紧张，就拼命掩饰，刻意控制，故作镇定，结果不仅紧张控制不住，反而因为掩饰紧张加重了心理负担，变得更加紧张了。不要跟紧张对抗，它就是身体对外在环境的一种应急反应，说明你的身体正常。如果上台紧张了，不妨在讲话前跟听众坦然承认：“今天看到这么多专家、领导在座，我真的感觉有点紧张。” 这样说，放弃了掩饰的心理，接下来你的表现反倒自然了。一旦我们允许紧张出现，最大的好处就是人会变得真实。因为人人都会紧张，你紧张了大家认为你很真实，但要是刻意控制，听众就会感觉你好像故意在隐藏着什么而让人不踏实，不安全。听众觉得不安全了就会防备你，而展示了最真实的自我，听众就容易接受你，而刻意掩饰就会做作虚假。所以，不要想着去控制紧张，紧张就随它去吧。以上是我谈的如何克服紧张。哦，现在似乎不能叫 “克服” 了，而应该叫 “调适”。调适紧张的第一个方面就是降低需求，有 6 个方法，我们一起总结一下：</p>
-<p>　　1.看轻结果</p>
-<p>　　2.放下自我</p>
-<p>　　3.允许犯错</p>
-<p>　　4.允许失败</p>
-<p>　　5.允许丢脸</p>
-<p>　　6.允许紧张</p>
-<p>&emsp;&emsp;附注：我推荐此文，缘于一位名叫 chsdyt 的馆友对此文的评论，它使我很感动，也使我很钦佩这位馆友能学以致用。但愿更多人能受惠。下面是这位馆友的评论：</p>
-<p>&emsp;&emsp;“非常感谢此篇文章的分享者！通过阅读到它，让我跨出克服当众发言紧张的第一步。真的如它所说，心中有了那 6 个方法，顿感心理轻松不少。就是，何必呢？何必把事情、把自己看的那么重？- 看轻结果、放下自我。犯点错怕啥呢？不是不会吗？就是会的人也难免犯错。紧张那是必然的。紧张就紧张吧。失败就失败吧。一开始就成功它也不可能啊。是不是？丢点脸怕啥，就怕连丢脸的勇气都没有。所以呢，允许自己犯错、允许自己失败、允许自己丢脸、允许自己紧张。当对自己宽容些了以后呢？发现自己的心里竟是前所未有的轻松。敢去做（当众发言）这件事情了！<br>&emsp;&emsp;终于跨出这一步了！<br>&emsp;&emsp;现在的我当众发言已经不紧张、不害怕了。从容不迫！连自己也没想到呢。呵呵。真好！”</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/27/%E5%88%9B%E5%BB%BAMarkdown%E6%96%87%E7%AB%A0%E5%9B%BE%E5%BA%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/27/%E5%88%9B%E5%BB%BAMarkdown%E6%96%87%E7%AB%A0%E5%9B%BE%E5%BA%8A/" class="post-title-link" itemprop="url">创建Markdown文章图床</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-27 06:03:54" itemprop="dateCreated datePublished" datetime="2021-01-27T06:03:54Z">2021-01-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-28 08:10:47" itemprop="dateModified" datetime="2021-01-28T08:10:47Z">2021-01-28</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="VSCode-Github-Picgo-jsDelivr-搭建稳定快速高效图床"><a href="#VSCode-Github-Picgo-jsDelivr-搭建稳定快速高效图床" class="headerlink" title="VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床"></a><center>VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床</center></h1><p>&emsp;&emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub 和 jsDelivr 又是知名大厂，不怕他删库跑路。</p>
-<h4 id="这是转载的，感谢作者！"><a href="#这是转载的，感谢作者！" class="headerlink" title="这是转载的，感谢作者！"></a>这是转载的，感谢作者！</h4><h2 id="新建-Github-仓库"><a href="#新建-Github-仓库" class="headerlink" title="新建 Github 仓库"></a>新建 Github 仓库</h2><h4 id="1-创建新仓库，必须是-public"><a href="#1-创建新仓库，必须是-public" class="headerlink" title="1.创建新仓库，必须是 public"></a>1.创建新仓库，必须是 public</h4><div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/00.png" alt="00"></p>
-</div>
-
-<h4 id="2-进入个人设置页面，选择开发者设置"><a href="#2-进入个人设置页面，选择开发者设置" class="headerlink" title="2.进入个人设置页面，选择开发者设置"></a>2.进入个人设置页面，选择开发者设置</h4><div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/11.png" alt="11"></p>
-</div>
-
-<h4 id="3-选择-Personal-access-tokens，选择生成新-token，此-token-是图床上传时验证身份用的"><a href="#3-选择-Personal-access-tokens，选择生成新-token，此-token-是图床上传时验证身份用的" class="headerlink" title="3.选择 Personal access tokens，选择生成新 token，此 token 是图床上传时验证身份用的"></a>3.选择 Personal access tokens，选择生成新 token，此 token 是图床上传时验证身份用的</h4><div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/22.png" alt="22"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/33.png" alt="33"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/44.png" alt="44"></p>
-</div>
-
-<h4 id="4-添加描述，然后将-repo-选上"><a href="#4-添加描述，然后将-repo-选上" class="headerlink" title="4.添加描述，然后将 repo 选上"></a>4.添加描述，然后将 repo 选上</h4><div align = center>
-
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/55.png" alt="55"></p>
-</div>
-
-
-<h4 id="5-将生成的字符串保存，关闭页面后将再也无法看到这个字符串了"><a href="#5-将生成的字符串保存，关闭页面后将再也无法看到这个字符串了" class="headerlink" title="5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了"></a>5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了</h4><div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/66.png" alt="66"></p>
-</div>
-
-
-<h2 id="picgo-设置"><a href="#picgo-设置" class="headerlink" title="picgo 设置"></a>picgo 设置</h2><p>打开软件，安装相关插件</p>
-<div align =center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/0.png" alt="0"></p>
-</div>
-
-
-<br/>
-1.vscode 右下角选择设置
-
-<br> 
-
-
-<br/>
-
-<div align=center>
-<![1](https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/1.png)
-
-
-
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png" alt="3"></p>
-</div>
-
-<br/>
-
-<p>2.打开扩展里的 picgo</p>
-<div align =center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/2.png" alt="2"></p>
-</div>
-
-
-<p>3.具体设置为：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png" alt="3"></p>
-</div>
-
-<h4 id="具体设置为"><a href="#具体设置为" class="headerlink" title="具体设置为:"></a>具体设置为:</h4><p>1.current 设置为 GitHub</p>
-<p>2.Branch 是我们仓库的分支，默认为 master</p>
-<p>3.custom url 使我们图片上传的连接，有两种方式可以使用</p>
-<ul>
-<li><p>1.原生方式</p>
-<ul>
-<li><p>1.使用 GitHub 原生连接，格式为 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/[%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]/[%E5%88%86%E6%94%AF%E5%90%8D]">https://raw.githubusercontent.com/[用户名]/[仓库名]/[分支名]</a></p>
-</li>
-<li><p>2.我的例子 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/leiyu1997/PicBed/master">https://raw.githubusercontent.com/leiyu1997/PicBed/master</a></p>
-</li>
-<li><p>3.原生方式有一个弊端就是国内速度比较感人。</p>
-</li>
-</ul>
-</li>
-<li><p>2.cdn 加速方式</p>
-<ul>
-<li><p>1.格式为 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/[%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]@[%E5%88%86%E6%94%AF%E5%90%8D]">https://cdn.jsdelivr.net/gh/[用户名]/[仓库名]@[分支名]</a></p>
-</li>
-<li><p>2.我的例子 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/leiyu1997/PicBed@master">https://cdn.jsdelivr.net/gh/leiyu1997/PicBed@master</a></p>
-</li>
-<li><p>3.cdn 加速的优点是国内访问速度比较快</p>
-</li>
-</ul>
-</li>
-</ul>
-<br/>
-Ctil + Alt + U 图片在剪贴板上
-
-
-<br/> 
-Ctil + Alt + E 从文件夹中选择图片
-
-<h3 id="接下来就是愉快的写作过程了，如丝般顺滑。啧啧！"><a href="#接下来就是愉快的写作过程了，如丝般顺滑。啧啧！" class="headerlink" title="接下来就是愉快的写作过程了，如丝般顺滑。啧啧！"></a>接下来就是愉快的写作过程了，如丝般顺滑。啧啧！</h3><!--  这是一种注释
-&ensp;&ensp; 等待
-<br/>
-&emsp;等等
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;等等-->
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/26/01.%E5%88%9D%E8%AF%86Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/26/01.%E5%88%9D%E8%AF%86Python/" class="post-title-link" itemprop="url">01.初识Python</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-26 05:23:56" itemprop="dateCreated datePublished" datetime="2021-01-26T05:23:56Z">2021-01-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-28 08:45:01" itemprop="dateModified" datetime="2021-01-28T08:45:01Z">2021-01-28</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="Python的历史"><a href="#Python的历史" class="headerlink" title="Python的历史"></a>Python的历史</h4><ol>
-<li>1989年圣诞节：Guido von Rossum开始写Python语言的编译器。</li>
-<li>1991年2月：第一个Python编译器（同时也是解释器）诞生，它是用C语言实现的（后面），可以调用C语言的库函数。在最早的版本中，Python已经提供了对“类”，“函数”，“异常处理”等构造块的支持，还有对列表、字典等核心数据类型，同时支持以模块为基础来构造应用程序。</li>
-<li>1994年1月：Python 1.0正式发布。</li>
-<li>2000年10月16日：Python 2.0发布，增加了完整的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8)">垃圾回收</a>，提供了对<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unicode">Unicode</a>的支持。与此同时，Python的整个开发过程更加透明，社区对开发进度的影响逐渐扩大，生态圈开始慢慢形成。</li>
-<li>2008年12月3日：Python 3.0发布，它并不完全兼容之前的Python代码，不过因为目前还有不少公司在项目和运维中使用Python 2.x版本，所以Python 3.x的很多新特性后来也被移植到Python 2.6/2.7版本中。</li>
-</ol>
-<p>目前我们使用的Python 3.7.x的版本是在2018年发布的，Python的版本号分为三段，形如A.B.C。其中A表示大版本号，一般当整体重写，或出现不向后兼容的改变时，增加A；B表示功能更新，出现新功能时增加B；C表示小的改动（例如：修复了某个Bug），只要有修改就增加C。如果对Python的历史感兴趣，可以阅读名为<a target="_blank" rel="noopener" href="http://www.cnblogs.com/vamei/archive/2013/02/06/2892628.html">《Python简史》</a>的网络文章。</p>
-<h4 id="Python的优缺点"><a href="#Python的优缺点" class="headerlink" title="Python的优缺点"></a>Python的优缺点</h4><p>Python的优点很多，简单的可以总结为以下几点。</p>
-<ol>
-<li>简单明了，学习曲线低，比很多编程语言都容易上手。</li>
-<li>开放源代码，拥有强大的社区和生态圈，尤其是在数据分析和机器学习领域。</li>
-<li>解释型语言，天生具有平台可移植性，代码可以工作于不同的操作系统。</li>
-<li>对两种主流的编程范式（面向对象编程和函数式编程）都提供了支持。</li>
-<li>代码规范程度高，可读性强，适合有代码洁癖和强迫症的人群。</li>
-</ol>
-<p>Python的缺点主要集中在以下几点。</p>
-<ol>
-<li>执行效率稍低，对执行效率要求高的部分可以由其他语言（如：C、C++）编写。</li>
-<li>代码无法加密，但是现在很多公司都不销售卖软件而是销售服务，这个问题会被弱化。</li>
-<li>在开发时可以选择的框架太多（如Web框架就有100多个），有选择的地方就有错误。</li>
-</ol>
-<h4 id="Python的应用领域"><a href="#Python的应用领域" class="headerlink" title="Python的应用领域"></a>Python的应用领域</h4><p>目前Python在Web应用后端开发、云基础设施建设、DevOps、网络数据采集（爬虫）、自动化测试、数据分析、机器学习等领域都有着广泛的应用。</p>
-<h3 id="安装Python解释器"><a href="#安装Python解释器" class="headerlink" title="安装Python解释器"></a>安装Python解释器</h3><p>想要开始Python编程之旅，首先得在自己使用的计算机上安装Python解释器环境，下面将以安装官方的Python解释器为例，讲解如何在不同的操作系统上安装Python环境。官方的Python解释器是用C语言实现的，也是使用最为广泛的Python解释器，通常称之为CPython。除此之外，Python解释器还有Java语言实现的Jython、C#语言实现的IronPython以及PyPy、Brython、Pyston等版本，有兴趣的读者可以自行了解。</p>
-<h3 id="Python开发工具"><a href="#Python开发工具" class="headerlink" title="Python开发工具"></a>Python开发工具</h3><h4 id="IDLE-自带的集成开发工具"><a href="#IDLE-自带的集成开发工具" class="headerlink" title="IDLE - 自带的集成开发工具"></a>IDLE - 自带的集成开发工具</h4><p>IDLE是安装Python环境时自带的集成开发工具，如下图所示。但是由于IDLE的用户体验并不是那么好所以很少在实际开发中被采用。</p>
-<p><img src="./res/python-idle.png"></p>
-<h4 id="Visual-Studio-Code-更好的交互式编程工具"><a href="#Visual-Studio-Code-更好的交互式编程工具" class="headerlink" title="Visual Studio Code - 更好的交互式编程工具"></a>Visual Studio Code - 更好的交互式编程工具</h4><p>Visual Studio Code（简称 VS Code ）是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系统的 免费代码编辑器，它支持 测试，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和 代码重构等。该编辑器支持用户个性化配置，例如改变主题颜色、键盘快捷方式等各种属性和参数，同时还在编辑器中内置了扩展程序管理的功能。</p>
-<p>在 2019 年的 Stack Overflow 组织的开发者调研中，VS Code 被认为是最受开发者欢迎的开发环境，据调查 87317 名受访者中有 50.7% 的受访者声称正在使用 VS Code。</p>
-<p>Visual Studio Code 具备了现代文本编辑器所具有的功能，例如更改字符编码、更换换行符、语法高亮、支持正则表达式、安装扩展、创建 snippet 等。</p>
-<p>此外 Visual Studio Code 还支持扩展程序。通过安装扩展程序，Code 可以支持更多新的语言、界面主题、测试器，以及更多的增值服务。Visual Studio Code 的扩展程序运行于独立的进程中，以保证编辑器的运行速度不受干扰。</p>
-<p>Visual Studio Code 支持多种编程语言，集成终端，可以在编辑器中运行脚本、编译软件、调试脚本、设置断点、做版本管理。</p>
-<p>可以在命令面板中（快捷键 Ctrl+Shift+P）搜索和输入命令，从而实现指定功能，例如安装扩展、设置属性等、调用扩展的命令。</p>
-<p>在控制面板做的设置都会自动保存到 json，也可以直接修改 json 文件，方便备份或部署。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/26/02.%E8%AF%AD%E8%A8%80%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/26/02.%E8%AF%AD%E8%A8%80%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">02.语言元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-26 05:23:56" itemprop="dateCreated datePublished" datetime="2021-01-26T05:23:56Z">2021-01-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-28 08:45:13" itemprop="dateModified" datetime="2021-01-28T08:45:13Z">2021-01-28</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="指令和程序"><a href="#指令和程序" class="headerlink" title="指令和程序"></a>指令和程序</h4><p>计算机的硬件系统通常由五大部件构成，包括：运算器、控制器、存储器、输入设备和输出设备。其中，运算器和控制器放在一起就是我们通常所说的中央处理器，它的功能是执行各种运算和控制指令以及处理计算机软件中的数据。我们通常所说的程序实际上就是指令的集合，我们程序就是将一系列的指令按照某种方式组织到一起，然后通过这些指令去控制计算机做我们想让它做的事情。今天我们大多数时候使用的计算机，虽然它们的元器件做工越来越精密，处理能力越来越强大，但究其本质来说仍然属于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%AF%C2%B7%E8%AF%BA%E4%BC%8A%E6%9B%BC%E7%BB%93%E6%9E%84">“冯·诺依曼结构”</a>的计算机。“冯·诺依曼结构”有两个关键点，一是指出要将存储设备与中央处理器分开，二是提出了将数据以二进制方式编码。二进制是一种“逢二进一”的计数法，跟我们人类使用的“逢十进一”的计数法没有实质性的区别，人类因为有十根手指所以使用了十进制（因为在数数时十根手指用完之后就只能进位了，当然凡事都有例外，玛雅人可能是因为长年光着脚的原因把脚趾头也算上了，于是他们使用了二十进制的计数法，在这种计数法的指导下玛雅人的历法就与我们平常使用的历法不一样，而按照玛雅人的历法，2012年是上一个所谓的“太阳纪”的最后一年，而2013年则是新的“太阳纪”的开始，后来这件事情被以讹传讹的方式误传为”2012年是玛雅人预言的世界末日“这种荒诞的说法，今天我们可以大胆的猜测，玛雅文明之所以发展缓慢估计也与使用了二十进制有关）。对于计算机来说，二进制在物理器件上来说是最容易实现的（高电压表示1，低电压表示0），于是在“冯·诺依曼结构”的计算机都使用了二进制。虽然我们并不需要每个程序员都能够使用二进制的思维方式来工作，但是了解二进制以及它与我们生活中的十进制之间的转换关系，以及二进制与八进制和十六进制的转换关系还是有必要的。如果你对这一点不熟悉，可以自行使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6">维基百科</a>或者<a target="_blank" rel="noopener" href="https://baike.baidu.com/">百度百科</a>科普一下。</p>
-<blockquote>
-<p><strong>说明</strong>：近期关于<strong>量子计算机</strong>的研究已经被推倒了风口浪尖，量子计算机基于量子力学进行运算，使用量子瞬移的方式来传递信息。2018年6月，Intel宣布开发出新款量子芯片并通过了在接近绝对零度环境下的测试；2019年，IBM和Google都推出了自己的量子计算机。</p>
-</blockquote>
-<h3 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h3><p>在程序设计中，变量是一种存储数据的载体。计算机中的变量是实际存在的数据或者说是存储器中存储数据的一块内存空间，变量的值可以被读取和修改，这是所有计算和控制的基础。计算机能处理的数据有很多种类型，除了数值之外还可以处理文本、图形、音频、视频等各种各样的数据，那么不同的数据就需要定义不同的存储类型。Python中的数据类型很多，而且也允许我们自定义新的数据类型（这一点在后面会讲到），我们先介绍几种常用的数据类型。</p>
-<ul>
-<li>整型：Python中可以处理任意大小的整数（Python 2.x中有<code>int</code>和<code>long</code>两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如<code>0b100</code>，换算成十进制是4）、八进制（如<code>0o100</code>，换算成十进制是64）、十进制（<code>100</code>）和十六进制（<code>0x100</code>，换算成十进制是256）的表示法。</li>
-<li>浮点型：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如<code>123.456</code>）之外还支持科学计数法（如<code>1.23456e2</code>）。</li>
-<li>字符串型：字符串是以单引号或双引号括起来的任意文本，比如<code>&#39;hello&#39;</code>和<code>&quot;hello&quot;</code>,字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</li>
-<li>布尔型：布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在Python中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>）。</li>
-<li>复数型：形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的<code>i</code>换成了<code>j</code>。实际上，这个类型并不常用，大家了解一下就可以了。</li>
-</ul>
-<h4 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h4><p>对于每个变量我们需要给它取一个名字，就如同我们每个人都有属于自己的响亮的名字一样。在Python中，变量命名需要遵循以下这些必须遵守硬性规则和强烈建议遵守的非硬性规则。</p>
-<ul>
-<li>硬性规则：<ul>
-<li>变量名由字母（广义的Unicode字符，不包括特殊字符）、数字和下划线构成，数字不能开头。</li>
-<li>大小写敏感（大写的<code>a</code>和小写的<code>A</code>是两个不同的变量）。</li>
-<li>不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。</li>
-</ul>
-</li>
-<li>PEP 8要求：<ul>
-<li>用小写字母拼写，多个单词用下划线连接。</li>
-<li>受保护的实例属性用单个下划线开头（后面会讲到）。</li>
-<li>私有的实例属性用两个下划线开头（后面会讲到）。</li>
-</ul>
-</li>
-</ul>
-<p>当然，作为一个专业的程序员，给变量（事实上应该是所有的标识符）命名时做到见名知意也是非常重要的。</p>
-<h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h4><p>下面通过几个例子来说明变量的类型和变量使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">使用变量保存数据并进行加减乘除运算</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">a = <span class="number">321</span></span><br><span class="line">b = <span class="number">12</span></span><br><span class="line">print(a + b)    <span class="comment"># 333</span></span><br><span class="line">print(a - b)    <span class="comment"># 309</span></span><br><span class="line">print(a * b)    <span class="comment"># 3852</span></span><br><span class="line">print(a / b)    <span class="comment"># 26.75</span></span><br></pre></td></tr></table></figure>
-<p>在Python中可以使用<code>type</code>函数对变量的类型进行检查。程序设计中函数的概念跟数学上函数的概念是一致的，数学上的函数相信大家并不陌生，它包括了函数名、自变量和因变量。如果暂时不理解这个概念也不要紧，我们会在后续的章节中专门讲解函数的定义和使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">使用type()检查变量的类型</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">a = <span class="number">100</span></span><br><span class="line">b = <span class="number">12.345</span></span><br><span class="line">c = <span class="number">1</span> + <span class="number">5j</span></span><br><span class="line">d = <span class="string">&#x27;hello, world&#x27;</span></span><br><span class="line">e = <span class="literal">True</span></span><br><span class="line">print(<span class="built_in">type</span>(a))    <span class="comment"># &lt;class &#x27;int&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(b))    <span class="comment"># &lt;class &#x27;float&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(c))    <span class="comment"># &lt;class &#x27;complex&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(d))    <span class="comment"># &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(e))    <span class="comment"># &lt;class &#x27;bool&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以使用Python中内置的函数对变量类型进行转换。</p>
-<ul>
-<li><code>int()</code>：将一个数值或字符串转换成整数，可以指定进制。</li>
-<li><code>float()</code>：将一个字符串转换成浮点数。</li>
-<li><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码。</li>
-<li><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。</li>
-<li><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</li>
-</ul>
-<p>下面的代码通过键盘输入两个整数来实现对两个整数的算术运算。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">使用input()函数获取键盘输入(字符串)</span></span><br><span class="line"><span class="string">使用int()函数将输入的字符串转换成整数</span></span><br><span class="line"><span class="string">使用print()函数输出带占位符的字符串</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;a = &#x27;</span>))</span><br><span class="line">b = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;b = &#x27;</span>))</span><br><span class="line">print(<span class="string">&#x27;%d + %d = %d&#x27;</span> % (a, b, a + b))</span><br><span class="line">print(<span class="string">&#x27;%d - %d = %d&#x27;</span> % (a, b, a - b))</span><br><span class="line">print(<span class="string">&#x27;%d * %d = %d&#x27;</span> % (a, b, a * b))</span><br><span class="line">print(<span class="string">&#x27;%d / %d = %f&#x27;</span> % (a, b, a / b))</span><br><span class="line">print(<span class="string">&#x27;%d // %d = %d&#x27;</span> % (a, b, a // b))</span><br><span class="line">print(<span class="string">&#x27;%d %% %d = %d&#x27;</span> % (a, b, a % b))</span><br><span class="line">print(<span class="string">&#x27;%d ** %d = %d&#x27;</span> % (a, b, a ** b))</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>说明</strong>：上面的print函数中输出的字符串使用了占位符语法，其中<code>%d</code>是整数的占位符，<code>%f</code>是小数的占位符，<code>%%</code>表示百分号（因为百分号代表了占位符，所以带占位符的字符串中要表示百分号必须写成<code>%%</code>），字符串之后的<code>%</code>后面跟的变量值会替换掉占位符然后输出到终端中，运行上面的程序，看看程序执行结果就明白啦。</p>
-</blockquote>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符，运算符的优先级指的是多个运算符同时出现时，先做什么运算然后再做什么运算。除了我们之前已经用过的赋值运算符和算术运算符，我们稍后会陆续讲到其他运算符的使用。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>[]</code> <code>[:]</code></td>
-<td>下标，切片</td>
-</tr>
-<tr>
-<td><code>**</code></td>
-<td>指数</td>
-</tr>
-<tr>
-<td><code>~</code> <code>+</code> <code>-</code></td>
-<td>按位取反, 正负号</td>
-</tr>
-<tr>
-<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
-<td>乘，除，模，整除</td>
-</tr>
-<tr>
-<td><code>+</code> <code>-</code></td>
-<td>加，减</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
-<td>右移，左移</td>
-</tr>
-<tr>
-<td><code>&amp;</code></td>
-<td>按位与</td>
-</tr>
-<tr>
-<td><code>^</code> <code>|</code></td>
-<td>按位异或，按位或</td>
-</tr>
-<tr>
-<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
-<td>小于等于，小于，大于，大于等于</td>
-</tr>
-<tr>
-<td><code>==</code> <code>!=</code></td>
-<td>等于，不等于</td>
-</tr>
-<tr>
-<td><code>is</code>  <code>is not</code></td>
-<td>身份运算符</td>
-</tr>
-<tr>
-<td><code>in</code> <code>not in</code></td>
-<td>成员运算符</td>
-</tr>
-<tr>
-<td><code>not</code> <code>or</code> <code>and</code></td>
-<td>逻辑运算符</td>
-</tr>
-<tr>
-<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> `</td>
-<td>=<code> </code>^=<code> </code>&gt;&gt;=<code> </code>&lt;&lt;=`</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>说明：</strong> 在实际开发中，如果搞不清楚运算符的优先级，可以使用括号来确保运算的执行顺序。</p>
-</blockquote>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>赋值运算符应该是最为常见的运算符，它的作用是将右边的值赋给左边的变量。下面的例子演示了赋值运算符和复合赋值运算符的使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">赋值运算符和复合赋值运算符</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">a += b        <span class="comment"># 相当于：a = a + b</span></span><br><span class="line">a *= a + <span class="number">2</span>    <span class="comment"># 相当于：a = a * (a + 2)</span></span><br><span class="line">print(a)      <span class="comment"># 算一下这里会输出什么</span></span><br></pre></td></tr></table></figure>
-<h3 id="比较运算符和逻辑运算符"><a href="#比较运算符和逻辑运算符" class="headerlink" title="比较运算符和逻辑运算符"></a>比较运算符和逻辑运算符</h3><p>比较运算符有的地方也称为关系运算符，包括<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>，我相信没有什么好解释的，大家一看就能懂，唯一需要提醒的是比较相等用的是<code>==</code>，请注意这个地方是两个等号，因为<code>=</code>是赋值运算符，我们在上面刚刚讲到过，<code>==</code>才是比较相等的比较运算符。比较运算符会产生布尔值，要么是<code>True</code>要么是<code>False</code>。</p>
-<p>逻辑运算符有三个，分别是<code>and</code>、<code>or</code>和<code>not</code>。<code>and</code>字面意思是“而且”，所以<code>and</code>运算符会连接两个布尔值，如果两个布尔值都是<code>True</code>，那么运算的结果就是<code>True</code>；左右两边的布尔值有一个是<code>False</code>，最终的运算结果就是<code>False</code>。相信大家已经想到了，如果<code>and</code>左边的布尔值是<code>False</code>，不管右边的布尔值是什么，最终的结果都是<code>False</code>，所以在做运算的时候右边的值会被跳过（短路处理），这也就意味着在<code>and</code>运算符左边为<code>False</code>的情况下，右边的表达式根本不会执行。<code>or</code>字面意思是“或者”，所以<code>or</code>运算符也会连接两个布尔值，如果两个布尔值有任意一个是<code>True</code>，那么最终的结果就是<code>True</code>。当然，<code>or</code>运算符也是有短路功能的，在它左边的布尔值为<code>True</code>的情况下，右边的表达式根本不会执行。<code>not</code>运算符的后面会跟上一个布尔值，它的作用是得到与该布尔值相反的值，也就是说，后面的布尔值如果是<code>True</code>运算结果就是<code>False</code>，而后面的布尔值如果是<code>False</code>则运算结果就是<code>True</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">比较运算符和逻辑运算符的使用</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">flag0 = <span class="number">1</span> == <span class="number">1</span></span><br><span class="line">flag1 = <span class="number">3</span> &gt; <span class="number">2</span></span><br><span class="line">flag2 = <span class="number">2</span> &lt; <span class="number">1</span></span><br><span class="line">flag3 = flag1 <span class="keyword">and</span> flag2</span><br><span class="line">flag4 = flag1 <span class="keyword">or</span> flag2</span><br><span class="line">flag5 = <span class="keyword">not</span> (<span class="number">1</span> != <span class="number">2</span>)</span><br><span class="line">print(<span class="string">&#x27;flag0 =&#x27;</span>, flag0)    <span class="comment"># flag0 = True</span></span><br><span class="line">print(<span class="string">&#x27;flag1 =&#x27;</span>, flag1)    <span class="comment"># flag1 = True</span></span><br><span class="line">print(<span class="string">&#x27;flag2 =&#x27;</span>, flag2)    <span class="comment"># flag2 = False</span></span><br><span class="line">print(<span class="string">&#x27;flag3 =&#x27;</span>, flag3)    <span class="comment"># flag3 = False</span></span><br><span class="line">print(<span class="string">&#x27;flag4 =&#x27;</span>, flag4)    <span class="comment"># flag4 = True</span></span><br><span class="line">print(<span class="string">&#x27;flag5 =&#x27;</span>, flag5)    <span class="comment"># flag5 = False</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>说明</strong>：比较运算符的优先级高于赋值运算符，所以<code>flag0 = 1 == 1</code>先做<code>1 == 1</code>产生布尔值<code>True</code>，再将这个值赋值给变量<code>flag0</code>。<code>print</code>函数可以输出多个值，多个值之间可以用<code>,</code>进行分隔，输出的内容之间默认以空格分开。</p>
-</blockquote>
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：华氏温度转换为摄氏温度。"><a href="#练习1：华氏温度转换为摄氏温度。" class="headerlink" title="练习1：华氏温度转换为摄氏温度。"></a>练习1：华氏温度转换为摄氏温度。</h4><blockquote>
-<p>提示：华氏温度到摄氏温度的转换公式为：$C=(F - 32) \div 1.8$。</p>
-</blockquote>
-<p>参考答案：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">将华氏温度转换为摄氏温度</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">f = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入华氏温度: &#x27;</span>))</span><br><span class="line">c = (f - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line">print(<span class="string">&#x27;%.1f华氏度 = %.1f摄氏度&#x27;</span> % (f, c))</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>说明</strong>：在使用<code>print</code>函数输出时，也可以对字符串内容进行格式化处理，上面<code>print</code>函数中的字符串<code>%1.f</code>是一个占位符，稍后会由一个<code>float</code>类型的变量值替换掉它。同理，如果字符串中有<code>%d</code>，后面可以用一个<code>int</code>类型的变量值替换掉它，而<code>%s</code>会被字符串的值替换掉。除了这种格式化字符串的方式外，还可以用下面的方式来格式化字符串，其中<code>&#123;f:.1f&#125;</code>和<code>&#123;c:.1f&#125;</code>可以先看成是<code>&#123;f&#125;</code>和<code>&#123;c&#125;</code>，表示输出时会用变量<code>f</code>和变量<code>c</code>的值替换掉这两个占位符，后面的<code>:.1f</code>表示这是一个浮点数，小数点后保留1位有效数字。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">f&#x27;<span class="subst">&#123;f:<span class="number">.1</span>f&#125;</span>华氏度 = <span class="subst">&#123;c:<span class="number">.1</span>f&#125;</span>摄氏度&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="练习2：输入圆的半径计算计算周长和面积。"><a href="#练习2：输入圆的半径计算计算周长和面积。" class="headerlink" title="练习2：输入圆的半径计算计算周长和面积。"></a>练习2：输入圆的半径计算计算周长和面积。</h4><p>参考答案：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">输入半径计算圆的周长和面积</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">radius = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入圆的半径: &#x27;</span>))</span><br><span class="line">perimeter = <span class="number">2</span> * <span class="number">3.1416</span> * radius</span><br><span class="line">area = <span class="number">3.1416</span> * radius * radius</span><br><span class="line">print(<span class="string">&#x27;周长: %.2f&#x27;</span> % perimeter)</span><br><span class="line">print(<span class="string">&#x27;面积: %.2f&#x27;</span> % area)</span><br></pre></td></tr></table></figure>
-<h4 id="练习3：输入年份判断是不是闰年。"><a href="#练习3：输入年份判断是不是闰年。" class="headerlink" title="练习3：输入年份判断是不是闰年。"></a>练习3：输入年份判断是不是闰年。</h4><p>参考答案：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">输入年份 如果是闰年输出True 否则输出False</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">year = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入年份: &#x27;</span>))</span><br><span class="line"><span class="comment"># 如果代码太长写成一行不便于阅读 可以使用\对代码进行折行</span></span><br><span class="line">is_leap = year % <span class="number">4</span> == <span class="number">0</span> <span class="keyword">and</span> year % <span class="number">100</span> != <span class="number">0</span> <span class="keyword">or</span> \</span><br><span class="line">          year % <span class="number">400</span> == <span class="number">0</span></span><br><span class="line">print(is_leap)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>说明</strong>：比较运算符会产生布尔值，而逻辑运算符<code>and</code>和<code>or</code>会对这些布尔值进行组合，最终也是得到一个布尔值，闰年输出<code>True</code>，平年输出<code>False</code>。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
