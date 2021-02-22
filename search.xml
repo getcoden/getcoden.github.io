@@ -163,7 +163,7 @@
   </entry>
   <entry>
     <title>01-pandas中利用groupby分组导入数据到excel中</title>
-    <url>/2021/02/01/01-pandas%E4%B8%AD%E5%88%A9%E7%94%A8groupby%E5%88%86%E7%BB%84%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0excel%E4%B8%AD/</url>
+    <url>/2021/02/01/01-Pandas%E4%B8%AD%E5%88%A9%E7%94%A8groupby%E5%88%86%E7%BB%84%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0excel%E4%B8%AD/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.read_table(read_file, header&#x3D;0, dtype&#x3D;str, sep&#x3D;&#39;\t&#39;)</span><br><span class="line">res_file &#x3D; fileDir + r&#39;\filename.xlsx&#39;</span><br><span class="line">writer &#x3D; pd.ExcelWriter(res_file)</span><br><span class="line">groupby_df &#x3D; df.groupby([&#39;colname&#39;])</span><br><span class="line"></span><br><span class="line">for i in groupby_df:</span><br><span class="line">    i[1].to_excel(writer, index&#x3D;False, sheet_name&#x3D;i[0])</span><br><span class="line"></span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
 <h3 id="使用-pandas-dataframe-toexcel-groupby-ExcelWriter-拆分-Excel-总表到分表，按某列的值分类到分表的-Python-方法"><a href="#使用-pandas-dataframe-toexcel-groupby-ExcelWriter-拆分-Excel-总表到分表，按某列的值分类到分表的-Python-方法" class="headerlink" title="使用 pandas.dataframe.toexcel, groupby, ExcelWriter 拆分 Excel 总表到分表，按某列的值分类到分表的 Python 方法"></a>使用 pandas.dataframe.toexcel, groupby, ExcelWriter 拆分 Excel 总表到分表，按某列的值分类到分表的 Python 方法</h3><p>首先，我们先读取总表， 其中 dtype 可以指定某列读取的格式.</p>
 <p>读取 2020-07-27 的格式日期时，输出到 Excel 文件日期会变为 2020-07-27  00:00:00 格式</p>
@@ -754,6 +754,45 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Pandas在github上获取原始数据集</title>
+    <url>/2021/02/16/Pandas%E5%9C%A8github%E4%B8%8A%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%9B%86/</url>
+    <content><![CDATA[<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>GitHub repository 的文件地址后面直接加？raw=true</code></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>1、文本类文件，小文件 (txt,xml,gif) 可以直接展示；</p>
+<p>2、压缩文件会提示下载，这就可以通过 github 升级程序。</p>
+<p>Sample：</p>
+<p>在github的文件地址后面直接加上(？raw=true)</p>
+<p>zip 提示 save</p>
+<p><a href="https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/raw.zip?raw=true">https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/raw.zip?raw=true</a></p>
+<p>txt</p>
+<p><a href="https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/rawTxt.txt?raw=true">https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/rawTxt.txt?raw=true</a></p>
+<p>Pandas读取github上的数据集:</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210216122500.png" alt="20210216122500"></p>
+</div>
+
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在数据分析的过程里，你已经体会到 Python 生态系统的强大了吧？</p>
+<p>数据采集、整理、可视化、统计分析…… 一直到深度学习，都有相应的 Python 包支持。</p>
+<p>但是你会发现，没有任何一个 Python 软件包，是全能的。</p>
+<p>这是一种非常好的设计思维 —— 用优秀的工具，做专业的事儿；用许多优秀工具组成的系统，来有条不紊地处理复杂问题。</p>
+<p>所以，在这个过程中，你大概率会经常遇到数据的交换问题。</p>
+<p>有时候，是把分析结果存起来，下次读取回来继续使用。</p>
+<p>更重要的时候，是把一个工具的分析结果导出，导入到另一个工具包中。</p>
+<p>这些数据存取的功能，几乎分布在每一个 Python 数据科学软件包之内。</p>
+<p>但是，其中有一个最重要的枢纽，那就是 Pandas 。</p>
+<p>不止一次跟你提起过，学好 Pandas 的重要性。</p>
+<p>很多情况下，看似复杂的数据整理与可视化，Pandas 只需要一行语句就能搞定。</p>
+<p>回顾我们的教程里，也曾使用过各种不同的格式读取数据到 Pandas 进行处理。</p>
+<p>然而，当你需要自己独立面对软件包的格式要求时，也许仅仅是因为不了解如何正确生成或读取某种格式，结果导致出错，甚至会使你丧失探索的信心与兴趣。</p>
+]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pandas排序简单排复杂排</title>
     <url>/2021/02/05/Pandas%E6%8E%92%E5%BA%8F%E7%AE%80%E5%8D%95%E6%8E%92%E5%A4%8D%E6%9D%82%E6%8E%92/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">lists &#x3D; pd.read_excel(&quot;..&#x2F;007&#x2F;List.xlsx&quot;)</span><br><span class="line"></span><br><span class="line"># 按指定的一列排序</span><br><span class="line">lists.sort_values(by&#x3D;&quot;Price&quot;,inplace&#x3D;True,ascending&#x3D;False)</span><br><span class="line"></span><br><span class="line"># 指定多列排序(注意：对Worthy列升序，再对Price列降序)，ascending不指定的话，默认是True升序</span><br><span class="line">lists.sort_values(by&#x3D;[&quot;Worthy&quot;,&quot;Price&quot;],inplace&#x3D;True,ascending&#x3D;[True,False])</span><br><span class="line"></span><br><span class="line">print(lists)</span><br></pre></td></tr></table></figure>
@@ -1141,6 +1180,32 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pip第三方库备份与恢复</title>
+    <url>/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</url>
+    <content><![CDATA[<p><code>pip list    //查看当前环境中安装的库</code></p>
+<h3 id="导出当前环境-pip-安装的包表"><a href="#导出当前环境-pip-安装的包表" class="headerlink" title="导出当前环境 pip 安装的包表"></a>导出当前环境 pip 安装的包表</h3><p><code>pip freeze &gt; requirements.txt</code></p>
+<p>导出的路径为:</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217114531.png" alt="20210217114531"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217114951.png" alt="20210217114951"></p>
+</div>
+
+<h3 id="根据导出的-pip-安装包表安装-pip-包"><a href="#根据导出的-pip-安装包表安装-pip-包" class="headerlink" title="根据导出的 pip 安装包表安装 pip 包"></a>根据导出的 pip 安装包表安装 pip 包</h3><p><code>pip install -r requirements.txt</code></p>
+<p>在进行恢复前，先修改pip安装源为国内源，之后进行安装时速度会快很多，键入命令后等待一会即可完成安装。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1788,8 +1853,8 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>vscode备份插件</title>
-    <url>/2021/02/11/vscode%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/</url>
+    <title>VsCode备份插件</title>
+    <url>/2021/02/11/VsCode%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<h3 id="安装-Settings-Sync"><a href="#安装-Settings-Sync" class="headerlink" title="安装 Settings Sync"></a>安装 Settings Sync</h3><p>vscode 插件中心直接搜索安装即可。</p>
 <div align = center>
 
@@ -1847,6 +1912,175 @@ Out[23]: 16
 <p>首次下载或上传时，欢迎页面将自动打开，您可以在其中配置 “设置同步”。</p>
 <p>选择下载后，下载后。设置同步将向您显示摘要，其中包含要下载的每个文件和扩展名的列表。</p>
 <p>将打开新的弹出窗口，使您可以重新启动代码以应用设置。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VsCode快捷键及小技巧</title>
+    <url>/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<ul>
+<li>「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png" alt="20210217131854"></p>
+</div>
+
+<hr>
+<a id="more"></a>
+
+<ul>
+<li>「Ctrl + D」当选中文本时直接按「Ctrl + D」，可直接同时选中其他相同文本（按一次 ‘D’，选中一个，可按住不放），可进行同时编辑，界面如下：</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png" alt="20210217131911"></p>
+</div>
+
+<hr>
+<ul>
+<li><p>「Ctrl + E」当前文件内按「Ctrl + E」, 输入文件名可快速打开其他文件</p>
+<br>
+</li>
+<li><p>「F2」重命名一个变量</p>
+<br>
+- 选中一个变量，然后按 F2，弹出一个小窗口，在里面输入内容后按回车，所有该变量都会被重命名。（注意：在 js 文件中，如果这个变量没有用 var 或者 const 或者 let 声明，会无法重命名）
+
+</li>
+</ul>
+<hr>
+<ul>
+<li>「按住 alt，用鼠标左键点击」可以出现多个光标，输入的代码可以在光标处同时增加</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif" alt="20191007144725963"></p>
+</div>
+
+<hr>
+<ul>
+<li>「按 shift+alt，再使用鼠标拖动」可以出现竖直的列光标，同时可以选中多列</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif" alt="tuodong"></p>
+</div>
+
+<hr>
+<h2 id="VS-Code-使用技巧整理"><a href="#VS-Code-使用技巧整理" class="headerlink" title="VS Code 使用技巧整理"></a>VS Code 使用技巧整理</h2><h4 id="一、多光标插入功能"><a href="#一、多光标插入功能" class="headerlink" title="一、多光标插入功能"></a>一、多光标插入功能</h4><p>Alt + 鼠标左键，添加多光标输入</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png" alt="20210217133338"></p>
+</div>
+
+<hr>
+<h4 id="二、自由多行选择"><a href="#二、自由多行选择" class="headerlink" title="二、自由多行选择"></a>二、自由多行选择</h4><p>Alt 键 + 鼠标左键拖动选择各行的部分内容</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png" alt="20210217133415"></p>
+</div>
+
+<hr>
+<h4 id="三、列选择"><a href="#三、列选择" class="headerlink" title="三、列选择"></a>三、列选择</h4><p>Shift+Alit + 鼠标左键拖动，选中拖动的区域内容</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png" alt="20210217133842"></p>
+</div>
+
+<hr>
+<h4 id="四、将自动高亮的变量、字符一次性替换："><a href="#四、将自动高亮的变量、字符一次性替换：" class="headerlink" title="四、将自动高亮的变量、字符一次性替换："></a>四、将自动高亮的变量、字符一次性替换：</h4><p>双击变量，右键‘更改所有匹配项’。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png" alt="20210217134125"></p>
+</div>
+
+<hr>
+<p>或者</p>
+<p>双击变量，Ctrl+F2</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png" alt="20210217134138"></p>
+</div>
+
+
+
+<ul>
+<li><p>格式调整</p>
+<ul>
+<li>代码行缩进 Ctrl+[， Ctrl+]</li>
+<li>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]</li>
+<li>Ctrl+C Ctrl+V 如果不选中，默认复制或剪切一整行</li>
+<li>代码格式化：Shift+Alt+F，或 Ctrl+Shift+P 后输入 format code</li>
+<li>修剪空格 Ctrl+Shift+X</li>
+<li>上下移动一行： Alt+Up 或 Alt+Down</li>
+<li>向上向下复制一行： Shift+Alt+Up 或 Shift+Alt+Down</li>
+<li>在当前行下边插入一行 Ctrl+Enter</li>
+<li>在当前行上方插入一行 Ctrl+Shift+Enter</li>
+</ul>
+<br>
+</li>
+<li><p>光标相关</p>
+<ul>
+<li>移动到行首：Home</li>
+<li>移动到行尾：End</li>
+<li>移动到文件结尾：Ctrl+End</li>
+<li>移动到文件开头：Ctrl+Home</li>
+<li>移动到后半个括号 Ctrl+Shift+]</li>
+<li>选中当前行 Ctrl+i（双击）</li>
+<li>选择从光标到行尾 Shift+End</li>
+<li>选择从行首到光标处 Shift+Home</li>
+<li>删除光标右侧的所有字 Ctrl+Delete</li>
+<li>Shrink/expand selection： Shift+Alt+Left 和 Shift+Alt+Right</li>
+<li>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click 添加 cursor 或者 Ctrl   - +Alt+Down 或 Ctrl+Alt+Up</li>
+<li>同时选中所有匹配的 Ctrl+Shift+L</li>
+<li>Ctrl+D 下一个匹配的也被选中 (被我自定义成删除当前行了，见下边 Ctrl+Shift+K)</li>
+<li>回退上一个光标操作 Ctrl+U</li>
+</ul>
+<br>
+</li>
+<li><p>构代码</p>
+<ul>
+<li>跳转到定义处：F12</li>
+<li>定义处缩略图：只看一眼而不跳转过去 Alt+F12</li>
+<li>列出所有的引用：Shift+F12</li>
+<li>同时修改本文件中所有匹配的：Ctrl+F12</li>
+<li>重命名：比如要修改一个方法名，可以选中后按 F2，输入新的名字，回车，会发现所有的文件 - 都修改过了。</li>
+<li>跳转到下一个 Error 或 Warning：当有多个错误时可以按 F8 逐个跳转</li>
+<li>查看 diff 在 explorer 里选择文件右键 Set file to compare，然后需要对比的文件上右    - 键选择 Compare with ‘file_name_you_chose’.</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<ul>
+<li><p>查找替换</p>
+<ul>
+<li>查找 Ctrl+F</li>
+<li>查找替换 Ctrl+H</li>
+<li>整个文件夹中查找 Ctrl+Shift+F<br>
+</li>
+</ul>
+</li>
+<li><p>显示相关</p>
+<ul>
+<li>全屏:F11</li>
+<li>zoomIn/zoomOut：Ctrl + =/Ctrl + -</li>
+<li>侧边栏显 / 隐：Ctrl+B</li>
+<li>预览 markdown Ctrl+Shift+V<br>
+</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>自动保存：File -&gt; AutoSave ，或者 Ctrl+Shift+P，输入 auto</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>工具使用</category>
@@ -2214,6 +2448,110 @@ Ctil + Alt + E 从文件夹中选择图片
       </tags>
   </entry>
   <entry>
+    <title>学习Python必须要养成的几个习惯</title>
+    <url>/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/</url>
+    <content><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/296731634">源自知乎</a>感谢作者，以此来鞭策及督促自己学习。</p>
+<p>首先，我就是从零基础开始学的 Python，在学习 Python 前，首先你要具备以下条件。</p>
+<p>1、能够坚持学下去的精神<br>2、一台电脑</p>
+<p>没错，就只要这两点，就可以学会 Python，因为 Python 本身设计的目的就是简单易上手，换句话来说，学会 Python，有手就行。</p>
+<a id="more"></a>
+
+<p>对于小白来说，有个人引导会比自学要高效的多，尤其容易坚持不下去的小伙伴。</p>
+<p>但有句话也说的好，师傅领进门，修行看个人。学习 Python 是需要一个 “师傅” 带你入门的。Python 的初步学习十分简单。</p>
+<p>在学习完这些 Python 的基础课程之后，你已经对编程的世界有了初步的认识，不过在你进一步向更深处学习 Python 之前，你需要再审视一下你的学习之路，想想你能把 Python 用在生活中的哪里。</p>
+<blockquote>
+<p>你或许可以通过新学的 Python 去完成一些重复性的任务。<br>你或许可以靠 Python 提高工作效率。<br>你或许可以用 Python 赚点外快。<br>你又或许可以直接转行成为一名程序员。<br>如果你一时间想不到 Python 的用武之地，你不妨先放下 Python，等到生活中需要 Python 去解决一些问题的时候在重新回来学习 Python。<br>如果你打算继续深入，先做到以下两点。<br>找到一个适合自己的 IDE。好的 IDE，可以帮助你很快完成任务。<br>明确方向。这决定你会在 Python 这条路上走多远。</p>
+</blockquote>
+<p>最后，努力学习，学以致用。生活中可以用到 Python 的位置远比你想象的多得多，等到你学会 Python 之后你会发现生活中有很多的问题都是可以通过 Python 来帮助你快速解决的。</p>
+<p>学编程最需要的就是耐心！现在大家想学编程太方便了，跟着教程满天飞。刚开始入门的时候有高手带，往往能有事半功倍的效果，尤其是自己不知道怎么找资料，怎么去配置编程环境什么的时候。有人手把手教的话，入门就高效很多了。</p>
+<p>还是想先泼点冷水！不要被市面上的各种 Python 培训广告冲昏了头脑：</p>
+<p>① 学完 Python，并不能立马拿一两万的工资，甚至可能找不到工作！</p>
+<p>②Python 也没有那么简单，不是有手就行！</p>
+<p>③别想着 1 个月、2 个月就能学会，你至少得腾出半年时间全职学习！</p>
+<p>如果你还是执意要学 Python，那么好，接下来我们看看怎么学。Python 作为一门脚本语言，难度上相较于其他语言略微简单点。但对于没有计算机基础的人来说，可能最开始配置 Python 编译环境都能让他望而却步。这里推荐一个无需安装配置的在线编程平台（新手可以先在线写一段时间的代码，适应下）</p>
+<p>1、Python 学习路线图</p>
+<p>学习一定不是盲目的，只有先明确了要学哪些东西，怎么学，才能更高效地去学 Python。</p>
+<p>这是 Python 的整个知识体系图谱，对于新手来说，没必要学那么多。先把 Python 基础和进阶知识吃透，才是入门的关键。后续你是往前端开发深造，还是去新潮时髦的大数据、人工智能，就全凭自己的兴趣。但我相信这时候的你，应该不会像现在这么迷茫。</p>
+<p>2、关于如何学 Python</p>
+<p>其实网上的 Python 课程很多，都是比较有体系的。学 Python 入门和进阶的知识，用网课完全足够。但 Python 本质上是对一门语言工具的运用，实战比理论更重要。</p>
+<p>我们在学习的时候一定要多敲、多练、多思考！！！</p>
+<p>写代码不只是跟着视频课或者照着书本写完就行的，我们要理清每行代码的逻辑。刚开始学，最好对每一句代码都加以注释，帮助我们理清逻辑，加深印象。</p>
+<p>同时，学完一个知识点后应该多去找对应的案例来练习，做到理论与实战的深度结合。</p>
+<p>3、Python 学习资源</p>
+<p>Python 书籍：</p>
+<p>《零基础入门学习Python》</p>
+<p>《Think Python 2e 中译版》</p>
+<p>《Python+Cookbook》第三版中文v3.0.0</p>
+<p>《Python数据科学手册》</p>
+<p>《Python知识手册-v2.2》</p>
+<p>学习网站：</p>
+<p><a href="http://www.pythontutor.com/visualize.html#mode=edit">在线工具Python代码运行原理过程演示</a></p>
+<p>最后，自学 Python 最重要的就是心态。我们在学习过程中必然会遇到很多难题，可能自己想破脑袋都无法解决。这都是正常的，千万别急着否定自己，怀疑自己。找一个靠谱点的师兄，没事知乎一下，其实这些难题也就迎刃而解了。</p>
+<p>在学习 Python 的过程中需要养成几个好习惯。</p>
+<p>下面我给大家分享几条：</p>
+<blockquote>
+<p>缩进</p>
+</blockquote>
+<p>由于跟其他编程语言的区别性，缩进在 python 编程中显得十分重要；在 Python 的代码块中必须使用相同数目的行首缩进空格数，否则会造成脚本运行错误，提示你格式不正确之类的信息。因此，在使用 python 语言写脚本的时候，保证缩进的一致性相当重要。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210218211018.png" alt="20210218211018"></p>
+</div>
+
+<blockquote>
+<p>空格</p>
+</blockquote>
+<p>虽然在 python 编程过程中，空行并不是 Python 语法的必需部分，但是，保持函数之间或类的方法之间用空行分隔，可以使得代码看起来更加清晰明了，也有利于后期的代码维护或重构。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210218211111.png" alt="20210218211111"></p>
+</div>
+
+<blockquote>
+<p>注释</p>
+</blockquote>
+<p>注释相对经常使用编程语言的人来说应该不是很陌生吧，主要因为注释不仅使得阅读代码的人容易理解，也让代码作者更好地定位代码函数等。python 跟其它语言一样，注释在一些该注释的地方，可以让效率事半功倍。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210218211352.png" alt="20210218211352"></p>
+</div>
+
+<blockquote>
+<p>源代码</p>
+</blockquote>
+<p>python 作为完全开源的语言，代码对于任何人都可以随意浏览。这种方式可以更好地帮助人们发现有利精简扼要的代码，在很多方面可以省去不必要的时间，因为觉得合适可以直接拿过来使用或者简单修改。经常看一下好的源代码，不仅会让你学习别人的编程方式，还在另一方面大大的帮助你更好地学习。</p>
+<blockquote>
+<p>编程思想</p>
+</blockquote>
+<p>使用任何一门编程语言，都需要保持很好的编程思想，对 python 来说也是一样的。学会创造使用适合自己的编程思想是至关重要的，因此，去多读一些讲解编程思想之类的书籍来充实自己吧。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210218211449.png" alt="20210218211449"></p>
+</div>
+
+<blockquote>
+<p>多实践</p>
+</blockquote>
+<p>学习任何一门编程语言都需要多做多写多看，通过不同的项目，来让自己得到更好的锻炼，相信是一件很棒的事情。在业余时间，经常的去敲写一些代码，也是很有意思的。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210218211542.png" alt="20210218211542"></p>
+</div>
+
+<p>兴趣<br>兴趣是成功的一半，兴趣促使你更好地去使用学习编程语言，而不单单为了忙碌的工作。很多创造出编程语言的人来说，正时因为兴趣的使然，才成就了如此好的一些编程语言。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210218211606.png" alt="20210218211606"></p>
+</div>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>将本地项目上传到Github</title>
     <url>/2021/02/14/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/u014135752/article/details/79951802">本文来源</a></p>
@@ -2306,7 +2644,7 @@ Ctil + Alt + E 从文件夹中选择图片
   </entry>
   <entry>
     <title>数据分析之pandas</title>
-    <url>/2021/01/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8Bpandas/</url>
+    <url>/2021/01/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BPandas/</url>
     <content><![CDATA[<p>&emsp;&emsp;最近开始学习使用Python的Pandas库处理工作中的一些重复性劳动，发现它真是个好东西，用起来真是太高效了。由于一直都处于零散的学习状态，现在对这些知识进行一个简单的总结，以便于形成知识体系。个人认为知识只有形成了体系才能灵活的应用。</p>
 <h2 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h2><p>series 类似一维数组，他由一组数据及数据对应的标签组成。说是类似数组，但其实和数组是有区别的，主要是由于 Series 的索引的存在。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from pandas import Series, DataFrame</span><br><span class="line">import pandas as pd</span><br></pre></td></tr></table></figure>

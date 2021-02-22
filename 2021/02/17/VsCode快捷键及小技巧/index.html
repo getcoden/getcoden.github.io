@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VsCode快捷键及小技巧">
+<meta property="og:url" content="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png">
+<meta property="article:published_time" content="2021-02-17T13:15:32.000Z">
+<meta property="article:modified_time" content="2021-02-17T06:24:38.936Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="工具使用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>VsCode快捷键及小技巧 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">VS Code 使用技巧整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E5%85%A5%E5%8A%9F%E8%83%BD"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、多光标插入功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%87%AA%E7%94%B1%E5%A4%9A%E8%A1%8C%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、自由多行选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%97%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、列选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B0%86%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E7%9A%84%E5%8F%98%E9%87%8F%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%80%E6%AC%A1%E6%80%A7%E6%9B%BF%E6%8D%A2%EF%BC%9A"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、将自动高亮的变量、字符一次性替换：</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VsCode快捷键及小技巧
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-17 13:15:32 / 修改时间：06:24:38" itemprop="dateCreated datePublished" datetime="2021-02-17T13:15:32Z">2021-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <ul>
+<li>「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png" alt="20210217131854"></p>
+</div>
+
+<hr>
+<a id="more"></a>
+
+<ul>
+<li>「Ctrl + D」当选中文本时直接按「Ctrl + D」，可直接同时选中其他相同文本（按一次 ‘D’，选中一个，可按住不放），可进行同时编辑，界面如下：</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png" alt="20210217131911"></p>
+</div>
+
+<hr>
+<ul>
+<li><p>「Ctrl + E」当前文件内按「Ctrl + E」, 输入文件名可快速打开其他文件</p>
+<br>
+</li>
+<li><p>「F2」重命名一个变量</p>
+<br>
+- 选中一个变量，然后按 F2，弹出一个小窗口，在里面输入内容后按回车，所有该变量都会被重命名。（注意：在 js 文件中，如果这个变量没有用 var 或者 const 或者 let 声明，会无法重命名）
+
+</li>
+</ul>
+<hr>
+<ul>
+<li>「按住 alt，用鼠标左键点击」可以出现多个光标，输入的代码可以在光标处同时增加</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif" alt="20191007144725963"></p>
+</div>
+
+<hr>
+<ul>
+<li>「按 shift+alt，再使用鼠标拖动」可以出现竖直的列光标，同时可以选中多列</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif" alt="tuodong"></p>
+</div>
+
+<hr>
+<h2 id="VS-Code-使用技巧整理"><a href="#VS-Code-使用技巧整理" class="headerlink" title="VS Code 使用技巧整理"></a>VS Code 使用技巧整理</h2><h4 id="一、多光标插入功能"><a href="#一、多光标插入功能" class="headerlink" title="一、多光标插入功能"></a>一、多光标插入功能</h4><p>Alt + 鼠标左键，添加多光标输入</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png" alt="20210217133338"></p>
+</div>
+
+<hr>
+<h4 id="二、自由多行选择"><a href="#二、自由多行选择" class="headerlink" title="二、自由多行选择"></a>二、自由多行选择</h4><p>Alt 键 + 鼠标左键拖动选择各行的部分内容</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png" alt="20210217133415"></p>
+</div>
+
+<hr>
+<h4 id="三、列选择"><a href="#三、列选择" class="headerlink" title="三、列选择"></a>三、列选择</h4><p>Shift+Alit + 鼠标左键拖动，选中拖动的区域内容</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png" alt="20210217133842"></p>
+</div>
+
+<hr>
+<h4 id="四、将自动高亮的变量、字符一次性替换："><a href="#四、将自动高亮的变量、字符一次性替换：" class="headerlink" title="四、将自动高亮的变量、字符一次性替换："></a>四、将自动高亮的变量、字符一次性替换：</h4><p>双击变量，右键‘更改所有匹配项’。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png" alt="20210217134125"></p>
+</div>
+
+<hr>
+<p>或者</p>
+<p>双击变量，Ctrl+F2</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png" alt="20210217134138"></p>
+</div>
+
+
+
+<ul>
+<li><p>格式调整</p>
+<ul>
+<li>代码行缩进 Ctrl+[， Ctrl+]</li>
+<li>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]</li>
+<li>Ctrl+C Ctrl+V 如果不选中，默认复制或剪切一整行</li>
+<li>代码格式化：Shift+Alt+F，或 Ctrl+Shift+P 后输入 format code</li>
+<li>修剪空格 Ctrl+Shift+X</li>
+<li>上下移动一行： Alt+Up 或 Alt+Down</li>
+<li>向上向下复制一行： Shift+Alt+Up 或 Shift+Alt+Down</li>
+<li>在当前行下边插入一行 Ctrl+Enter</li>
+<li>在当前行上方插入一行 Ctrl+Shift+Enter</li>
+</ul>
+<br>
+</li>
+<li><p>光标相关</p>
+<ul>
+<li>移动到行首：Home</li>
+<li>移动到行尾：End</li>
+<li>移动到文件结尾：Ctrl+End</li>
+<li>移动到文件开头：Ctrl+Home</li>
+<li>移动到后半个括号 Ctrl+Shift+]</li>
+<li>选中当前行 Ctrl+i（双击）</li>
+<li>选择从光标到行尾 Shift+End</li>
+<li>选择从行首到光标处 Shift+Home</li>
+<li>删除光标右侧的所有字 Ctrl+Delete</li>
+<li>Shrink/expand selection： Shift+Alt+Left 和 Shift+Alt+Right</li>
+<li>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click 添加 cursor 或者 Ctrl   - +Alt+Down 或 Ctrl+Alt+Up</li>
+<li>同时选中所有匹配的 Ctrl+Shift+L</li>
+<li>Ctrl+D 下一个匹配的也被选中 (被我自定义成删除当前行了，见下边 Ctrl+Shift+K)</li>
+<li>回退上一个光标操作 Ctrl+U</li>
+</ul>
+<br>
+</li>
+<li><p>构代码</p>
+<ul>
+<li>跳转到定义处：F12</li>
+<li>定义处缩略图：只看一眼而不跳转过去 Alt+F12</li>
+<li>列出所有的引用：Shift+F12</li>
+<li>同时修改本文件中所有匹配的：Ctrl+F12</li>
+<li>重命名：比如要修改一个方法名，可以选中后按 F2，输入新的名字，回车，会发现所有的文件 - 都修改过了。</li>
+<li>跳转到下一个 Error 或 Warning：当有多个错误时可以按 F8 逐个跳转</li>
+<li>查看 diff 在 explorer 里选择文件右键 Set file to compare，然后需要对比的文件上右    - 键选择 Compare with ‘file_name_you_chose’.</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<ul>
+<li><p>查找替换</p>
+<ul>
+<li>查找 Ctrl+F</li>
+<li>查找替换 Ctrl+H</li>
+<li>整个文件夹中查找 Ctrl+Shift+F<br>
+</li>
+</ul>
+</li>
+<li><p>显示相关</p>
+<ul>
+<li>全屏:F11</li>
+<li>zoomIn/zoomOut：Ctrl + =/Ctrl + -</li>
+<li>侧边栏显 / 隐：Ctrl+B</li>
+<li>预览 markdown Ctrl+Shift+V<br>
+</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>自动保存：File -&gt; AutoSave ，或者 Ctrl+Shift+P，输入 auto</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" rel="prev" title="pip第三方库备份与恢复">
+                  <i class="fa fa-chevron-left"></i> pip第三方库备份与恢复
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/" rel="next" title="学习Python必须要养成的几个习惯">
+                  学习Python必须要养成的几个习惯 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
