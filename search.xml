@@ -2074,72 +2074,6 @@ b. 在函数中，凡是遇到 return，这个函数就会结束
       </tags>
   </entry>
   <entry>
-    <title>VsCode备份插件</title>
-    <url>/2021/02/11/VsCode%E5%A4%87%E4%BB%BD%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h3 id="安装-Settings-Sync"><a href="#安装-Settings-Sync" class="headerlink" title="安装 Settings Sync"></a>安装 Settings Sync</h3><p>vscode 插件中心直接搜索安装即可。</p>
-<div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210184154.png" alt="20210210184154"></p>
-</div>
-
-<a id="more"></a>
-
-<h3 id="github-生成-token-和-gistid"><a href="#github-生成-token-和-gistid" class="headerlink" title="github 生成 token 和 gistid"></a>github 生成 token 和 gistid</h3><p>token 获取步骤：</p>
-<p>网址：github：<a href="https://github.com/">https://github.com/</a></p>
-<p>路径：Settings -&gt; Developer settings -&gt; Personal access tokens</p>
-<p>操作：点击按钮 Generate new token 新增一个 token，选择 gistid 即可。</p>
-<p>记住生成的 token 值</p>
-<p>gistid 获取步骤</p>
-<p>网址：github：<a href="https://github.com/">https://github.com/</a></p>
-<p>路径： 点击右上角 + 号 New gist</p>
-<p>操作： 任意填写 gist 描述 -&gt; 点击生成私钥 (英文的) -&gt; 记录下来</p>
-<div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210185647.png" alt="20210210185647"></p>
-</div>
-
-<h3 id="配置本设备-gistId-和-token"><a href="#配置本设备-gistId-和-token" class="headerlink" title="配置本设备 gistId 和 token"></a>配置本设备 gistId 和 token</h3><ul>
-<li>Ctrl + P / F1，弹出命令窗口</li>
-<li>输入 &gt; sync</li>
-<li>选择 Advaced Options</li>
-</ul>
-<div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210184505.png" alt="20210210184505"></p>
-</div>
-
-<h3 id="填写-gistid-和-token-即可"><a href="#填写-gistid-和-token-即可" class="headerlink" title="填写 gistid 和 token 即可"></a>填写 gistid 和 token 即可</h3><div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210200919.png" alt="20210210200919"></p>
-</div>
-
-<p>同步、下载</p>
-<p>上载设定</p>
-<p>按 Shift + Alt + U（macOS：Shift + Option + U）</p>
-<blockquote>
-<p>在命令面板中键入 “&gt; 同步”，以顺序下载 / 上传</p>
-</blockquote>
-<p>首次下载或上传时，欢迎页面将自动打开，您可以在其中配置 “设置同步”。</p>
-<p>选择上传后，上传设置后。您将看到 “摘要” 详细信息以及每个上传的文件和扩展名的列表。</p>
-<div align = center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210201241.png" alt="20210210201241"></p>
-</div>
-
-<h3 id="在其他电脑下载插件和配置"><a href="#在其他电脑下载插件和配置" class="headerlink" title="在其他电脑下载插件和配置"></a>在其他电脑下载插件和配置</h3><p>在 Vscode 的插件扩展中输入 sync 查找并安装，按 ctrl+p 输入 ‘&gt;sync’ ，在弹出窗口中选择高级设置，并打开 github 设置，在打开的网页中输入 github 的用户名和密码，本地配置已完成，之后用快捷键即可进行下载配置。</p>
-<p><strong>Setting Sync 快捷键</strong></p>
-<p>上传： Shift + Alt + U (Sync: Update / Upload Settings)</p>
-<p>下载： Shift + Alt + D (Sync: Download Settings)</p>
-<p>如果快捷键有冲突，可 Ctrl + K + S 快捷键设置配置其它快捷键 或 Ctrl + P / F1 在命令窗口输入 &gt;sync 即会出现相应命令供选择</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VsCode快捷键及小技巧</title>
     <url>/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<ul>
@@ -2300,6 +2234,72 @@ b. 在函数中，凡是遇到 return，这个函数就会结束
 </ul>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vscode插件同步到云</title>
+    <url>/2021/02/28/Vscode%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BA%91/</url>
+    <content><![CDATA[<h3 id="安装-Settings-Sync"><a href="#安装-Settings-Sync" class="headerlink" title="安装 Settings Sync"></a>安装 Settings Sync</h3><p>Vscode 插件中心直接搜索安装即可。</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210184154.png" alt="20210210184154"></p>
+</div>
+
+<a id="more"></a>
+
+<h3 id="github-生成-token-和-gistid"><a href="#github-生成-token-和-gistid" class="headerlink" title="github 生成 token 和 gistid"></a>github 生成 token 和 gistid</h3><p>token 获取步骤：</p>
+<p>网址：github：<a href="https://github.com/">https://github.com/</a></p>
+<p>路径：Settings -&gt; Developer settings -&gt; Personal access tokens</p>
+<p>操作：点击按钮 Generate new token 新增一个 token，选择 gistid 即可。</p>
+<p>记住生成的 token 值</p>
+<p>gistid 获取步骤</p>
+<p>网址：github：<a href="https://github.com/">https://github.com/</a></p>
+<p>路径： 点击右上角 + 号 New gist</p>
+<p>操作： 任意填写 gist 描述 -&gt; 点击生成私钥 (英文的) -&gt; 记录下来</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210185647.png" alt="20210210185647"></p>
+</div>
+
+<h3 id="配置本设备-gistId-和-token"><a href="#配置本设备-gistId-和-token" class="headerlink" title="配置本设备 gistId 和 token"></a>配置本设备 gistId 和 token</h3><ul>
+<li>Ctrl + P / F1，弹出命令窗口</li>
+<li>输入 &gt; sync</li>
+<li>选择 Advaced Options</li>
+</ul>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210184505.png" alt="20210210184505"></p>
+</div>
+
+<h3 id="填写-gistid-和-token-即可"><a href="#填写-gistid-和-token-即可" class="headerlink" title="填写 gistid 和 token 即可"></a>填写 gistid 和 token 即可</h3><div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210200919.png" alt="20210210200919"></p>
+</div>
+
+<p>同步、下载</p>
+<p>上载设定</p>
+<p>按 Shift + Alt + U（macOS：Shift + Option + U）</p>
+<blockquote>
+<p>在命令面板中键入 “&gt; 同步”，以顺序下载 / 上传</p>
+</blockquote>
+<p>首次下载或上传时，欢迎页面将自动打开，您可以在其中配置 “设置同步”。</p>
+<p>选择上传后，上传设置后。您将看到 “摘要” 详细信息以及每个上传的文件和扩展名的列表。</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210201241.png" alt="20210210201241"></p>
+</div>
+
+<h3 id="在其他电脑下载插件和配置"><a href="#在其他电脑下载插件和配置" class="headerlink" title="在其他电脑下载插件和配置"></a>在其他电脑下载插件和配置</h3><p>在 Vscode 的插件扩展中输入 sync 查找并安装，按 ctrl+p 输入 ‘&gt;sync’ ，在弹出窗口中选择高级设置，并打开 github 设置，在打开的网页中输入 github 的用户名和密码，本地配置已完成，之后用快捷键即可进行下载配置。</p>
+<p><strong>Setting Sync 快捷键</strong></p>
+<p>上传： Shift + Alt + U (Sync: Update / Upload Settings)</p>
+<p>下载： Shift + Alt + D (Sync: Download Settings)</p>
+<p>如果快捷键有冲突，可 Ctrl + K + S 快捷键设置配置其它快捷键 或 Ctrl + P / F1 在命令窗口输入 &gt;sync 即会出现相应命令供选择</p>
 ]]></content>
       <categories>
         <category>工具使用</category>
