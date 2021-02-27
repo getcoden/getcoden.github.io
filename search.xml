@@ -1185,7 +1185,7 @@ Out[23]: 16
   <entry>
     <title>pip第三方库备份与恢复</title>
     <url>/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</url>
-    <content><![CDATA[<p><code>pip list    //查看当前环境中安装的库</code></p>
+    <content><![CDATA[<p><code>pip list //查看当前环境中安装的库</code></p>
 <h3 id="导出当前环境-pip-安装的包表"><a href="#导出当前环境-pip-安装的包表" class="headerlink" title="导出当前环境 pip 安装的包表"></a>导出当前环境 pip 安装的包表</h3><p><code>pip freeze &gt; requirements.txt</code></p>
 <p>导出的路径为:</p>
 <div align=center>
@@ -1199,7 +1199,7 @@ Out[23]: 16
 </div>
 
 <h3 id="根据导出的-pip-安装包表安装-pip-包"><a href="#根据导出的-pip-安装包表安装-pip-包" class="headerlink" title="根据导出的 pip 安装包表安装 pip 包"></a>根据导出的 pip 安装包表安装 pip 包</h3><p><code>pip install -r requirements.txt</code></p>
-<p>在进行恢复前，先修改pip安装源为国内源，之后进行安装时速度会快很多，键入命令后等待一会即可完成安装。</p>
+<p>在进行恢复前，先修改 pip 安装源为国内源，之后进行安装时速度会快很多，键入命令后等待一会即可完成安装。</p>
 ]]></content>
       <categories>
         <category>工具使用</category>
@@ -1605,6 +1605,227 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python函数应用实例2</title>
+    <url>/2021/02/28/Python%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B2/</url>
+    <content><![CDATA[<h2 id="函数传值为-list-的坑"><a href="#函数传值为-list-的坑" class="headerlink" title="函数传值为 list 的坑"></a>函数传值为 list 的坑</h2><p>函数传入 list 参数时</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def f(x,li&#x3D;[]):</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i*i)</span><br><span class="line">    print(li)</span><br><span class="line">期望结果：</span><br><span class="line">f(4)</span><br><span class="line">#运算结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#运算结果:[0, 1, 4, 9, 16]</span><br><span class="line">print（‘--------------------------------------’）</span><br><span class="line">#运算结果</span><br><span class="line">f(4)</span><br><span class="line">#运算结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#运算结果:[0, 1, 4, 9, 0, 1, 4, 9, 16]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当定义函数时，会保存函数中默认参数 list 的值，也就是列表 li=[]；<br>在每次调用的时候如果传递了新的列表，则使用传递的列表，没有传递，使用定义函数时保存的默认参数（li=[]）；<br>上面两次调用中，都没有传递新的列表（使用默认列表 li=[] ），程序会调用定义函数时保存的默认参数 (（li=[]）);<br>列表在 append 的时候会在 li=[] 原来的基础上 append 追加值，所以会产生以上结果.</p>
+</blockquote>
+<p>通过打印列表的 ID 进行辨识</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def f(x,li&#x3D;[]):</span><br><span class="line">    print(&#39;id:&#39;,id(li))</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i*i)</span><br><span class="line">    print(li)</span><br><span class="line"></span><br><span class="line">f(4)</span><br><span class="line">#id: 2154086435336</span><br><span class="line">#结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#id: 2154086435336</span><br><span class="line">#结果:[0, 1, 4, 9, 0, 1, 4, 9, 16]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>会发现 ID 值是相同的；<br>说明两次执行时使用的都是定义函数时的默认参数 li=[ ]</p>
+</blockquote>
+<p>执行时往里面传新的列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def f(x,li&#x3D;[]):</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i*i)</span><br><span class="line">    print(li)</span><br><span class="line">f(4)</span><br><span class="line">#结果:[0, 1, 4, 9]</span><br><span class="line">f(5,[])</span><br><span class="line">#结果:[0, 1, 4, 9, 16]</span><br><span class="line">f(6)</span><br><span class="line">#结果:[0, 1, 4, 9, 0, 1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当传递空列表时，函数体当中会使用传递的空列表，没有传递时，使用函数默认值 li=[ ], 所以会产生以上结果。</p>
+</blockquote>
+<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><ul>
+<li>如果想要达到预期的结果，只需要在函数体里进行判断即可:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def f(x, li&#x3D;[]):</span><br><span class="line">    if not li:</span><br><span class="line">        # 如果li不为空的话,就往下走(清空列表); 为空就不走</span><br><span class="line">        li &#x3D; []</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i * i)</span><br><span class="line">    print(li)</span><br><span class="line">f(4)</span><br><span class="line">#结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#结果:[0, 1, 4, 9,16]</span><br><span class="line">f(6)</span><br><span class="line">#结果:[0, 1, 4, 9,16,25]</span><br></pre></td></tr></table></figure>
+<h2 id="向函数传递列表"><a href="#向函数传递列表" class="headerlink" title="向函数传递列表"></a>向函数传递列表</h2><p><a href="https://www.cnblogs.com/OliverQin/p/7801600.html">转载</a></p>
+<p>在实际使用中你会发现，向函数传递列表是比较实用的，这种列表可能包含名字、数字、可能更复杂的对象 (字典)</p>
+<p>假设向一个函数传递一堆水果，我们说出我们喜欢所有的水果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def Obj(fruits):</span><br><span class="line">    for fruit in fruits:</span><br><span class="line">        msg &#x3D; &#39;I like &#39;+fruit+&#39;!&#39;</span><br><span class="line">        print(msg)</span><br><span class="line"></span><br><span class="line">L &#x3D; [&#39;apple&#39;,&#39;orange&#39;]</span><br><span class="line">Obj(L)</span><br></pre></td></tr></table></figure>
+<p>我们将 Obj 定义成接受一个水果种类列表，并将其存储在形参 Obj 中，这个函数遍历接受到的列表，然后打印 ‘I like ..!’</p>
+<h2 id="在函数中修改列表"><a href="#在函数中修改列表" class="headerlink" title="在函数中修改列表"></a>在函数中修改列表</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#首先定义一个列表，其中包含要打印的字母</span><br><span class="line">letters &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]</span><br><span class="line">already_letter &#x3D; []</span><br><span class="line"></span><br><span class="line">#模拟阅读每个字母，直到字母读取完毕为止</span><br><span class="line">#将每个已经阅读过的字母转移到列表already_letter中</span><br><span class="line">while letters:</span><br><span class="line">    current_letter &#x3D; letters.pop()</span><br><span class="line">    print(&quot;Printing letter:&quot;+current_letter)</span><br><span class="line">    already_letter.append(current_letter)</span><br><span class="line"></span><br><span class="line">#显示已经读取的所有字母</span><br><span class="line">print(&quot;\nThe follwing letter has been read:&quot;)</span><br><span class="line">for letter in already_letter:</span><br><span class="line">    print(letter)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我们首先需要创建一个列表，还创建一个名为 already_letter 的空列表，每个已经阅读过的字母都存储到这个列表中，只要列表中还有字母，while 循环就模拟阅读过程：从该列表中删除一个已经读取的字母，然后将其存储到变量 current_letter 中，并显示一条消息，再将该字母存储到新列表中，等到循环结束后，再打印出所有的字母。</p>
+<h2 id="上述程序改编版"><a href="#上述程序改编版" class="headerlink" title="上述程序改编版"></a>上述程序改编版</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def read_letter(letters,already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    读取每个字母，直到读取完毕为止</span><br><span class="line">    将读取完毕后的字母存储到新的列表中</span><br><span class="line">    :param letters:</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    while letters:</span><br><span class="line">        current_letter &#x3D; letters.pop()</span><br><span class="line"></span><br><span class="line">        #模拟读取字母的过程</span><br><span class="line">        print(&quot;Printing letter:&quot; + current_letter)</span><br><span class="line">        already_letter.append(current_letter)</span><br><span class="line">def show_already_letter(already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    显示已经阅读的所有字母</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    print(&quot;\nThe follwing letters has been read:&quot;)</span><br><span class="line">    for letter in already_letter:</span><br><span class="line">        print(letter)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">letters &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]</span><br><span class="line">already_letter&#x3D;[]</span><br><span class="line"></span><br><span class="line">read_letter(letters,already_letter)</span><br><span class="line">show_already_letter(already_letter)</span><br></pre></td></tr></table></figure>
+<p>我们定义了函数 read_letter (), 它包含 2 个形参：一个需要阅读字母的列表和一个存储已经阅读字母的列表。给定这两个列表，这个函数模拟阅读过程：将字母一个个阅读，然后打印，最后将其转存到存储已阅读的列表中，函数 show_already_letter () 主要是打印已经阅读字母列表，最后四条语句是定义一个列表与一个空列表，调用上面的两个函数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面的函数中，在读取完毕之后，letters 列表就编程空列表了，那么假如我们想在读取完列表后还保留该列表，该怎么办呢？</p>
+<p>使用切片法 [:] 创建列表的副本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def read_letter(letters,already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    读取每个字母，直到读取完毕为止</span><br><span class="line">    将读取完毕后的字母存储到新的列表中</span><br><span class="line">    :param letters:</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    while letters:</span><br><span class="line">        current_letter &#x3D; letters.pop()</span><br><span class="line"></span><br><span class="line">        #模拟读取字母的过程</span><br><span class="line">        print(&quot;Printing letter:&quot; + current_letter)</span><br><span class="line">        already_letter.append(current_letter)</span><br><span class="line">def show_already_letter(already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    显示已经阅读的所有字母</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    print(&quot;\nThe follwing letters has been read:&quot;)</span><br><span class="line">    for letter in already_letter:</span><br><span class="line">        print(letter)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">letters &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]</span><br><span class="line">already_letter&#x3D;[]</span><br><span class="line"></span><br><span class="line">read_letter(letters[:],already_letter)</span><br><span class="line">show_already_letter(already_letter)</span><br><span class="line"></span><br><span class="line">print(letters)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python函数的基础知识</title>
+    <url>/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h3 id="函数简介"><a href="#函数简介" class="headerlink" title="函数简介"></a>函数简介</h3><p>&emsp;&emsp;我们在编程过程中往往会碰到这样的事情 —– 很多地方都用到了相同的一段代码。虽然复制 / 粘贴这段代码不费多大的功夫，但是这样就无声中增加了程序的维护成本。比如，我们后来需求变动了，要修改原来的这段共用代码才能完成目的，这样如果这段代码在很多地方出现，我们只能一处一处的发现并修改。后来我们有个想法，将这段代码单独拿出来，并给这段代码起一个名字，我们在用到这段代码的地方直接使用这个名字来代替这段代码，那如果日后还要修改这里，我们就可以只修改一处，因为名字没有改变，其他使用名字来替换代码的地方也就不需要改变。这样以来即减少了代码的行数，也方便了日后的维护，我们给拿出来的这段代码起了个名字：函数，每个函数都有一个名字，叫函数名，其他的代码使用这个函数的时候，通过函数名调用这个函数就可以了。</p>
+<p>函数最主要的目的：封装一个功能。</p>
+<!--more>
+
+一个函数的简单例子:
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">login_status &#x3D; 0     # 定义一个记录登录状态的变量</span><br><span class="line"></span><br><span class="line">def welcome_user():  # 定义一个函数，函数的功能就是打印&#39;welcome!&#39;</span><br><span class="line">	print(&#39;Welcome!&#39;)</span><br><span class="line"></span><br><span class="line">while not login_status::</span><br><span class="line">	name &#x3D; input(&#39;Input username here: &#39;)</span><br><span class="line">	if name:</span><br><span class="line">	login_status &#x3D; 1</span><br><span class="line">	welcome_user()</span><br><span class="line"></span><br><span class="line"># do other things</span><br></pre></td></tr></table></figure>
+<p>上面的例子，如果用户输入有效的用户名，就会调用函数 welcome_user, 该函数实现打印 “Weclome !” 的作用，接着就跳出 while 循环做其他的工作.</p>
+<p>上面简单的介绍了函数的定义和使用，函数的定义就是函数实现功能的那段代码，函数的使用就是通过 函数名 来使用.</p>
+<h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><p>函数的定义阶段只检查函数的语法，不执行函数.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def hello():</span><br><span class="line">	print(&#39;foo&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>向上面这样的定义是不会有问题的，因为没有调用函数</p>
+<p>函数定义的方式简单的分为以下两种</p>
+<h4 id="无参数函数"><a href="#无参数函数" class="headerlink" title="无参数函数:"></a>无参数函数:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def print_hello(): # 函数定义</span><br><span class="line">print(&#39;*&#39;*40)</span><br><span class="line">print(&#39;hello&#39;)</span><br><span class="line">print(&#39;*&#39;*40)</span><br><span class="line"></span><br><span class="line">print_hello() # 函数的使用</span><br></pre></td></tr></table></figure>
+<p>上面的函数就是无参数函数，这些函数往往是做一些操作而没有返回值 (return somethings).</p>
+<h4 id="有参数函数"><a href="#有参数函数" class="headerlink" title="有参数函数:"></a>有参数函数:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def put_together_hello(name&#x3D;&#39;&#39;)                 # 函数包含一个参数</span><br><span class="line">    valid_user&#x3D;&#39;xiaoming&#39;</span><br><span class="line">    print(&#39;*&#39;*40)</span><br><span class="line">    res_str &#x3D; hello %s&#39; % name</span><br><span class="line">    return res_str                                 # 返回一个字符串</span><br><span class="line"></span><br><span class="line">name &#x3D; input(&#39;Input username here: &#39;)</span><br><span class="line"></span><br><span class="line">result&#x3D;put_together_hello(name)                    给函数传递一个参数</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<p>我们给上面的函数传递了一个值，这个传给函数的值，通常叫做函数的参并且在函数末尾用 return 返回了一个值，我们在函数调用处用一个新量接收该值，并且打印.</p>
+<h4 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h4><pre><code>有参函数的参数可大致分为 5 种情况:
+
+1). 位置参数
+
+2). 关键字参数
+
+3). 默认值参数
+
+4). 可变长参数 (*args,**kwargs)
+
+5). 命名关键字参数
+
+下面分别介绍:
+</code></pre>
+<p>第一种情况：位置参数:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def print_info(name,age):</span><br><span class="line">    print(&#39;your name is %s and your are %d years old&#39; % (name,age))</span><br><span class="line"></span><br><span class="line">name&#x3D;&#39;xiaoming&#39;</span><br><span class="line">age&#x3D;16</span><br><span class="line">print_info(name,age)</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">your name is xiaoming and your are 16 years old</span><br></pre></td></tr></table></figure>
+<p>上面是位置参数，简单来说，就是调用的时候，参数的位置，应该和函数定义处的函数位置相同，这样才能打印出正确的信息.</p>
+<p>第二种情况：关键字参数:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def print_info(name,age):</span><br><span class="line">    print(&#39;your name is %s and your are %d years old&#39; % (name,age))</span><br><span class="line"></span><br><span class="line">name&#x3D;&#39;xiaoming&#39;</span><br><span class="line">age&#x3D;16</span><br><span class="line">print_info(age&#x3D;age,name&#x3D;name)</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">your name is xiaoming and your are 16 years old</span><br></pre></td></tr></table></figure>
+<pre><code>   这里传递参数的时候指定了传递参数的关键字，就是将 age 变量赋值给 age 参数，就是将 name 变量赋值给 name 参数。这样的就没有问题.
+</code></pre>
+<p>第三种情况：默认参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def print_info(name,age&#x3D;17):</span><br><span class="line">    print(&#39;your name is %s and your are %d years old&#39; % (name,age))</span><br><span class="line"></span><br><span class="line">name&#x3D;&#39;xiaoming&#39;</span><br><span class="line">age&#x3D;16</span><br><span class="line">print_info(age&#x3D;age,name&#x3D;name)</span><br><span class="line"></span><br><span class="line">print_info(&#39;xiaohong&#39;)</span><br><span class="line"></span><br><span class="line">print_info(&#39;xiaohong&#39;,20)</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">your name is xiaoming and your are 16 years old</span><br><span class="line">your name is xiaohomg and your are 17 years old</span><br><span class="line">your name is xiaohong and your are 20 years ol</span><br></pre></td></tr></table></figure>
+<pre><code> 上面的例子，函数定义的时候，给了一个默认的参数 age=17, 我们将这样含有这种默认值的参数叫做默认值参数，既然函数已经有一个默认值，因此我们可以给函数传递 age 这个信息，也可以不传 age 信息，如果传了 age 信息，则函数运行的时候会将我们传递的 age 覆盖默认的值 (16). 如果我们没有传递参数信息，则输出函数的时候会输出默认值 (16). 有种情况需要注意，在函数定义的时候，默认值参数必须在没有默认值的参数的右侧.
+
+第四种情况：可变长参数
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def print_info(name,age,*args,**kwargs):</span><br><span class="line">	print(&#39;your name is %s and your age is %d&#39; % (name,age))</span><br><span class="line">	print(args)</span><br><span class="line">	print(kwargs)</span><br><span class="line"></span><br><span class="line">print_info(&#39;xiaoming&#39;,16,&#39;football&#39;,&#39;baskatball&#39;,favorite_color&#x3D;&#39;black&#39;,vorite_book&#x3D;&#39;A&#39;)</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">yourname is xiaoming and your age is 16</span><br><span class="line">(&#39;football&#39;, &#39;baskatball&#39;) #元组</span><br><span class="line">&#123;&#39;favorite_book&#39;: &#39;A&#39;, &#39;favorite_color&#39;: &#39;black&#39;&#125; #字典</span><br></pre></td></tr></table></figure>
+<p>我们这里定义 print_info 函数，顺便打印了除 name 和 age 之外的变量，这里除了函数前面的两个值按位置赋值给 name 和 age 外，其余多传递的值中，单个字符串或其他单个变量的都被赋值给 args, 包含简单语句 “A=B” 的变量都被赋值给 kwargs 变量，从上面我们也可以看出，args 是一个 tuple (元组), 而 kwargs 是一个 dict (字典).</p>
+<pre><code>第五种情况：命名关键字参数
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def foo(name,age,_,sex&#x3D;&#39;male&#39;,height):</span><br><span class="line">	print(name,age)</span><br><span class="line">	print(sex)</span><br><span class="line">	print(height)</span><br><span class="line"></span><br><span class="line"># * 后定义的参数为命名关键字参数,这类参数必须被传值,而且必须以&quot;变量名&#x3D; 变量值&quot;的形式传值</span><br><span class="line"></span><br><span class="line">foo(&#39;xiaoming&#39;,16,height&#x3D;&#39;185&#39;)</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">xiaoming 16</span><br><span class="line">male</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+<p>再来看其他的例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def foo(*args):</span><br><span class="line">	print(args)</span><br><span class="line"></span><br><span class="line">foo(1,2,3,4)</span><br><span class="line">foo(_[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;])</span><br><span class="line"></span><br><span class="line"># * [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;] &#x3D;&#x3D;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;</span><br><span class="line">#&#x3D;&#x3D;&gt;f(*[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]) &#x3D;&#x3D;&gt; f(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;)</span><br><span class="line"># * 打散后面的参数,使之成为位置参数</span><br></pre></td></tr></table></figure>
+<p>再来一个例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def foo(**kwargs):</span><br><span class="line">	print(kwargs)</span><br><span class="line"></span><br><span class="line">foo(x&#x3D;1,y&#x3D;2)</span><br><span class="line"></span><br><span class="line"># x&#x3D;1,y&#x3D;2 &#x3D;&#x3D; **&#123;&#39;y&#39;:2,&#39;x&#39;:1&#125;</span><br><span class="line"># &#x3D;&#x3D;&gt; foo(**&#123;&#39;y&#39;:2,&#39;x&#39;:1&#125;) &#x3D;&#x3D; foo(x&#x3D;1,y&#x3D;2)</span><br><span class="line"># ** 将后面的字典打散成为关键字参数</span><br><span class="line"></span><br><span class="line"> # 结果</span><br><span class="line"> &#123;&#39;x&#39;:1,&#39;y&#39;:2&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二，函数的优点是什么"><a href="#二，函数的优点是什么" class="headerlink" title="二，函数的优点是什么"></a>二，函数的优点是什么</h2><p>1、减少代码重复率。</p>
+<p>2、增强代码可阅读性。 # 不可能看一百行才知道你这个东西到底是干什么大的吧。</p>
+<h2 id="三、函数的组成部分"><a href="#三、函数的组成部分" class="headerlink" title="三、函数的组成部分"></a>三、函数的组成部分</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def my_len(): # 关键字，函数名，括号，冒号</span><br><span class="line">    l &#x3D; [1, 2, 3, 4]   # 函数体</span><br><span class="line">    count &#x3D; 0</span><br><span class="line">    for i in l:</span><br><span class="line">        count +&#x3D; 1</span><br><span class="line">    print(count)</span><br></pre></td></tr></table></figure>
+<h2 id="四、执行函数"><a href="#四、执行函数" class="headerlink" title="四、执行函数"></a>四、执行函数</h2><p><code>my len() # 函数名 + 括号</code></p>
+<h2 id="五、函数的返回值：return-的作用停止函数体的运行。和-break-的功能一样。并且返回给这个函数一个值。"><a href="#五、函数的返回值：return-的作用停止函数体的运行。和-break-的功能一样。并且返回给这个函数一个值。" class="headerlink" title="五、函数的返回值：return 的作用停止函数体的运行。和 break 的功能一样。并且返回给这个函数一个值。"></a>五、函数的返回值：return 的作用停止函数体的运行。和 break 的功能一样。并且返回给这个函数一个值。</h2><p>1&gt; return 空或者没有 return 时，打印函数执行者时，为 None</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def func1():</span><br><span class="line">    print (888)</span><br><span class="line">    return</span><br><span class="line"></span><br><span class="line">def func2():</span><br><span class="line">    print(9)</span><br><span class="line"></span><br><span class="line">print(func1())</span><br><span class="line">print(func2())</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line"></span><br><span class="line">888</span><br><span class="line">None</span><br><span class="line">9</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+<p>2&gt; return 加一个值，返回给函数这个值，这个值是什么类型就返回什么类型</p>
+<p>3&gt; return 加多个值是，返回给函数一个由这些值组成的元组，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def func1():</span><br><span class="line">    a &#x3D; 8</span><br><span class="line">    return a</span><br><span class="line">def func2():</span><br><span class="line">    a &#x3D; 9</span><br><span class="line">    b &#x3D; 20</span><br><span class="line">    return a, b</span><br><span class="line"></span><br><span class="line">print(func1())</span><br><span class="line">print(func2())</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line"></span><br><span class="line">8</span><br><span class="line">(9, 20)</span><br></pre></td></tr></table></figure>
+<h2 id="六、函数的传参，函数的参数分为形参和实参"><a href="#六、函数的传参，函数的参数分为形参和实参" class="headerlink" title="六、函数的传参，函数的参数分为形参和实参"></a>六、函数的传参，函数的参数分为形参和实参</h2><p>顾名思义，一个形式上的参数，一个实实在在的参数。</p>
+<h4 id="1-形参的角度分类："><a href="#1-形参的角度分类：" class="headerlink" title="1. 形参的角度分类："></a>1. 形参的角度分类：</h4><p>1&gt; 位置参数， 按照顺序 ，一 一对应。就是这个位置我占了，谁在我位置上，我就是谁。先来后到。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227215944.png" alt="20210227215944"></p>
+</div>
+
+<p>2&gt; 默认参数，如果你给我一个值，我会将原来默认的参数覆盖掉。如果你不给我传值，就是设置好的默认参数</p>
+<p>3&gt; 万能参数，也叫动态参数，*args ，**kwargs</p>
+<p>4&gt; 形参的顺序 ：位置参数，*args，默认参数，**kwargs。</p>
+<p>1.位置参数是最大的，一定要摆在第一位，实参中的也一样，如果摆在后面肯定报错，要么少了，要么多了</p>
+<p>2.*args 实际上也是位置参数，就是实参中在形参中的 _ args 的位置有多少个参数，那就吃多少个参数。</p>
+<p>3.如果把默认参数摆在他两前，都被 * args 给吸走了。</p>
+<p>4.**kwargs 一定是在最后的。实质上是一个默认参数</p>
+<p>5，传参陷阱：如果默认参数是一个可变的数据类型，那么他的内存地址用的是一个。</p>
+<p>例 1（传默认参数时的运行结果）：</p>
+<div align=cneter>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220504.png" alt="20210227220504"></p>
+</div>
+
+<p>运行结果如下:</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220551.png" alt="20210227220551"></p>
+</div>
+
+<p>例 2（把变量放入局部命名空间）：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220639.png" alt="20210227220639"></p>
+</div>
+
+<p>运行结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220651.png" alt="20210227220651"></p>
+</div>
+
+<ol>
+<li>站在实参的角度分为：位置传参，关键字传参，混合传参。</li>
+</ol>
+<p>例</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220802.png" alt="20210227220802"></p>
+</div>
+
+<p>运行结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220852.png" alt="20210227220852"></p>
+</div>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python函数的应用实例</title>
+    <url>/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<h2 id="函数二（返回值-传递列表）"><a href="#函数二（返回值-传递列表）" class="headerlink" title="函数二（返回值 / 传递列表）"></a>函数二（返回值 / 传递列表）</h2><p>1.返回值：函数并非总是直接显示输出，它可以处理一些数据，并返回一个或一组值，函数返回的值被称为返回值。在函数中使用 return 语句将值返回到调用函数的代码行。调用返回值的函数时，需要提供一个变量，用于存储返回的值。</p>
+<p>2.return 和 print 的区别</p>
+<!--more>
+
+a. 在执行函数的时候 return 无法打印出值，return 返回的结果只能用于给变量赋值，return 返回值只能通过 print 打印出来
+
+b. 在函数中，凡是遇到 return，这个函数就会结束
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def func1():</span><br><span class="line">	for i in range(1, 5):</span><br><span class="line">		print(i)</span><br><span class="line"></span><br><span class="line"># print(func1())输出结果为 1 2 3 4 none 直接 func1 的结果为 1 2 3 4</span><br><span class="line"></span><br><span class="line">def func2():</span><br><span class="line">    for i in range(1, 5):</span><br><span class="line">		return i</span><br><span class="line"></span><br><span class="line"># print(func2())输出结果为 1，直接 func2()没有输出</span><br><span class="line"></span><br><span class="line">func1()</span><br><span class="line">print(func1())</span><br><span class="line">print(func2())</span><br><span class="line">func2()</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>返回字典：函数可以返回任何类型的值，包括列表和字典。同时可以使用 while 循环</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def one_user(user_name, pass_word):</span><br><span class="line">    info &#x3D; &#123;&#39;name&#39;: user_name,</span><br><span class="line">    &#39;password&#39;: pass_word&#125;</span><br><span class="line">    return info</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    print(&#39;you can quit whenever you enter a q&#39;)</span><br><span class="line">    user_name1 &#x3D; input(&#39;create a user name: &#39;)</span><br><span class="line">    if user_name1 &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">        break</span><br><span class="line">    pass_word1 &#x3D; input(&#39;create a pass word: &#39;)</span><br><span class="line">    if pass_word1 &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">        break</span><br><span class="line">    print(one_user(user_name1, pass_word1))</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>向函数传递列表</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def loved_music(new_songs, old_songs):</span><br><span class="line">    while new_songs:</span><br><span class="line">        choosed_song &#x3D; input(&#39;which song do you want to listen? &#39;)</span><br><span class="line">        new_songs.remove(choosed_song)</span><br><span class="line">        old_songs.append(choosed_song)</span><br><span class="line">        for loved_song in old_songs:</span><br><span class="line">            print(&#39;%s is a good song&#39; % loved_song)</span><br><span class="line"></span><br><span class="line">new_songs &#x3D; [&#39;roar&#39;, &#39;lemon&#39;, &#39;sugar&#39;, &#39;hero&#39;]</span><br><span class="line">old_songs &#x3D; []</span><br><span class="line"></span><br><span class="line">loved_music(new_songs[:], old_songs) # 不会修改原列表 new_songs</span><br><span class="line">print(new_songs)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>传递任意数量的实参</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def favorite_songs(*songs):     # 使用 * 创建一个名为 songs 的空元组，将收到的所有实参都封装到这个元组中</span><br><span class="line">&quot;&quot;&quot;打印最喜欢的音乐&quot;&quot;&quot; # 文档字符串，描述函数的作用</span><br><span class="line">    print(songs)</span><br><span class="line"></span><br><span class="line">favorite_songs(&#39;lemon&#39;, &#39;city song&#39;, &#39;stray&#39;)</span><br></pre></td></tr></table></figure>
+<p>如果要让函数接受不同类型的实参，必须在函数定义中将接纳任意数量实参的形参放在最后</p>
+<ol start="6">
+<li>使用任意数量的关键字实参</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def make_car(manufacturer, type, **car_info): # 使用**创建一个字典，将收到的所有键值对都封装到这个字典中</span><br><span class="line"></span><br><span class="line">    car &#x3D; &#123;&#125;</span><br><span class="line">    car[&#39;manufacturer _name&#39;] &#x3D; manufacturer</span><br><span class="line">    car[&#39;type_name&#39;] &#x3D; type</span><br><span class="line">    for key, value in car_info.items():</span><br><span class="line">        car[key] &#x3D; value</span><br><span class="line">    return car</span><br><span class="line"></span><br><span class="line">cars &#x3D; make_car(&#39;subaru&#39;, &#39;outback&#39;, color&#x3D;&#39;blue&#39;, two_package&#x3D;True)</span><br><span class="line">print(cars)</span><br><span class="line">print(make_car(&#39;subaru&#39;, &#39;outback&#39;, color&#x3D;&#39;blue&#39;, two_package&#x3D;True))</span><br></pre></td></tr></table></figure>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>###函数定义###</p>
+<p>#一般函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def my_abs(x):</span><br><span class="line">    if x &gt;&#x3D; 0:</span><br><span class="line">        return x</span><br><span class="line">    else:</span><br><span class="line">        return -x</span><br></pre></td></tr></table></figure>
+<p>#匿名函数，使用 lambda 创建</p>
+<p><code>sum = lambda arg1, arg2: arg1 + arg2;</code></p>
+<p>#缺省参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def printinfo( name, age &#x3D; 35 ):</span><br><span class="line">    &quot;打印任何传入的字符串&quot;</span><br><span class="line">    print( &quot;Name: &quot;, name);</span><br><span class="line">    print (&quot;Age &quot;, age);</span><br><span class="line">    return;</span><br></pre></td></tr></table></figure>
+<p>#不定长参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def printinfo2( arg1, *vartuple ):</span><br><span class="line">    &quot;打印任何传入的参数&quot;</span><br><span class="line">    print( &quot;输出: &quot;,arg1)</span><br><span class="line">    for var in vartuple:</span><br><span class="line">        print (var)</span><br><span class="line">    return;</span><br></pre></td></tr></table></figure>
+<p>###函数定义###</p>
+<p>###函数调用###</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">printinfo2(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;my_abs&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;) #调用函数 my_abs</span><br><span class="line">absVal&#x3D;my_abs(-3) #按照参数顺序传参</span><br><span class="line">print(&quot;my_abs(-3)&#x3D;&quot;,absVal)</span><br><span class="line">absVal2&#x3D;my_abs(x&#x3D;-4) #关键字参数，可以不按照参数熟悉传参</span><br><span class="line">print(&quot;my_abs(x&#x3D;-4)&#x3D;&quot;,absVal2)</span><br></pre></td></tr></table></figure>
+<p>#调用函数 sum</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">printinfo2(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;sum&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;)</span><br><span class="line">print (&quot;sum(10,20)&#x3D;&quot;, sum( 10, 20 ))</span><br></pre></td></tr></table></figure>
+<p>#调用函数 printinfo</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">printinfo2(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;printinfo&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;)</span><br><span class="line">printinfo(&quot;zhangsan&quot;,18);</span><br><span class="line">printinfo(&quot;lisi&quot;);</span><br></pre></td></tr></table></figure>
+<p>#调用函数 printinfo2</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">printinfo2(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;printinfo2&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;)</span><br><span class="line">printinfo2( 10 );</span><br><span class="line">printinfo2( 70, 60, 50 ); ###函数调用###</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python学习之路</title>
     <url>/2021/02/14/Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</url>
     <content><![CDATA[<p>&emsp;&emsp;本文源自知乎网文，有学习的同感，故抄来以此鞭策自己。感谢原作者</p>
@@ -1880,10 +2101,10 @@ Out[23]: 16
 <h3 id="配置本设备-gistId-和-token"><a href="#配置本设备-gistId-和-token" class="headerlink" title="配置本设备 gistId 和 token"></a>配置本设备 gistId 和 token</h3><ul>
 <li>Ctrl + P / F1，弹出命令窗口</li>
 <li>输入 &gt; sync</li>
-<li>选择 Advaced Options<div align = center>
-
-</li>
+<li>选择 Advaced Options</li>
 </ul>
+<div align = center>
+
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210184505.png" alt="20210210184505"></p>
 </div>
 
@@ -1905,13 +2126,11 @@ Out[23]: 16
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210201241.png" alt="20210210201241"></p>
 </div>
 
-<p>下载您的设置<br>按 Shift + Alt + D（macOS：Shift + Option + D）</p>
-<blockquote>
-<p>在命令面板中键入 “&gt; 同步”，以顺序下载 / 上传</p>
-</blockquote>
-<p>首次下载或上传时，欢迎页面将自动打开，您可以在其中配置 “设置同步”。</p>
-<p>选择下载后，下载后。设置同步将向您显示摘要，其中包含要下载的每个文件和扩展名的列表。</p>
-<p>将打开新的弹出窗口，使您可以重新启动代码以应用设置。</p>
+<h3 id="在其他电脑下载插件和配置"><a href="#在其他电脑下载插件和配置" class="headerlink" title="在其他电脑下载插件和配置"></a>在其他电脑下载插件和配置</h3><p>在 Vscode 的插件扩展中输入 sync 查找并安装，按 ctrl+p 输入 ‘&gt;sync’ ，在弹出窗口中选择高级设置，并打开 github 设置，在打开的网页中输入 github 的用户名和密码，本地配置已完成，之后用快捷键即可进行下载配置。</p>
+<p><strong>Setting Sync 快捷键</strong></p>
+<p>上传： Shift + Alt + U (Sync: Update / Upload Settings)</p>
+<p>下载： Shift + Alt + D (Sync: Download Settings)</p>
+<p>如果快捷键有冲突，可 Ctrl + K + S 快捷键设置配置其它快捷键 或 Ctrl + P / F1 在命令窗口输入 &gt;sync 即会出现相应命令供选择</p>
 ]]></content>
       <categories>
         <category>工具使用</category>
@@ -2313,7 +2532,9 @@ Out[23]: 16
   <entry>
     <title>创建Markdown文章图床</title>
     <url>/2021/01/27/%E5%88%9B%E5%BB%BAMarkdown%E6%96%87%E7%AB%A0%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<h1 id="VSCode-Github-Picgo-jsDelivr-搭建稳定快速高效图床"><a href="#VSCode-Github-Picgo-jsDelivr-搭建稳定快速高效图床" class="headerlink" title="VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床"></a><center>VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床</center></h1><p>&emsp;&emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub 和 jsDelivr 又是知名大厂，不怕他删库跑路。</p>
+    <content><![CDATA[<h1 id="VSCode-Github-PicGo-jsDelivr-搭建稳定快速高效图床"><a href="#VSCode-Github-PicGo-jsDelivr-搭建稳定快速高效图床" class="headerlink" title="VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床"></a><center>VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床</center></h1><p>&emsp;&emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub 和 jsDelivr 又是知名大厂，不怕他删库跑路。</p>
+<a id="more"></a>
+
 <h4 id="这是转载的，感谢作者！"><a href="#这是转载的，感谢作者！" class="headerlink" title="这是转载的，感谢作者！"></a>这是转载的，感谢作者！</h4><h2 id="新建-Github-仓库"><a href="#新建-Github-仓库" class="headerlink" title="新建 Github 仓库"></a>新建 Github 仓库</h2><h4 id="1-创建新仓库，必须是-public"><a href="#1-创建新仓库，必须是-public" class="headerlink" title="1.创建新仓库，必须是 public"></a>1.创建新仓库，必须是 public</h4><div align=center>
 
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/00.png" alt="00"></p>
@@ -2333,16 +2554,13 @@ Out[23]: 16
 
 <h4 id="4-添加描述，然后将-repo-选上"><a href="#4-添加描述，然后将-repo-选上" class="headerlink" title="4.添加描述，然后将 repo 选上"></a>4.添加描述，然后将 repo 选上</h4><div align = center>
 
-
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/55.png" alt="55"></p>
 </div>
-
 
 <h4 id="5-将生成的字符串保存，关闭页面后将再也无法看到这个字符串了"><a href="#5-将生成的字符串保存，关闭页面后将再也无法看到这个字符串了" class="headerlink" title="5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了"></a>5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了</h4><div align = center>
 
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/66.png" alt="66"></p>
 </div>
-
 
 <h2 id="picgo-设置"><a href="#picgo-设置" class="headerlink" title="picgo 设置"></a>picgo 设置</h2><p>打开软件，安装相关插件</p>
 <div align =center>
@@ -2350,37 +2568,25 @@ Out[23]: 16
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/0.png" alt="0"></p>
 </div>
 
-
-<br/>
-1.vscode 右下角选择设置
-
-<br> 
-
-
-<br/>
+<p>1.在 VsCode 左侧扩展栏里找到 PicGo 扩展项</p>
+<br>
 
 <div align=center>
-<![1](https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/1.png)
 
-
-
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png" alt="3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/1.png" alt="1"></p>
 </div>
 
-<br/>
-
-<p>2.打开扩展里的 picgo</p>
+<p>2.左键单击 PiGgo 右下角的的齿轮图标，打开‘扩展设置’项</p>
 <div align =center>
 
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/2.png" alt="2"></p>
 </div>
 
-
-<p>3.具体设置为：</p>
+<p>3.打开后的界面里的具体设置为：</p>
 <div align=center>
 
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png" alt="3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/3.png" alt="3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/30.png" alt="30"></p>
 </div>
 
 <h4 id="具体设置为"><a href="#具体设置为" class="headerlink" title="具体设置为:"></a>具体设置为:</h4><p>1.current 设置为 GitHub</p>
@@ -2408,20 +2614,19 @@ Out[23]: 16
 </ul>
 </li>
 </ul>
-<br/>
-Ctil + Alt + U 图片在剪贴板上
+<br>
 
+<p><strong>Ctrl + Alt + U 图片在剪贴板上</strong></p>
+<br>
 
-<br/> 
-Ctil + Alt + E 从文件夹中选择图片
-
+<p><strong>Ctrl + Alt + E 从文件夹中选择图片</strong></p>
+<p>注意：如果重新安装安装软件或重新安装 PicGo 插件，则要重新设置上述操作。否则无法上传图片。</p>
 <h3 id="接下来就是愉快的写作过程了，如丝般顺滑。啧啧！"><a href="#接下来就是愉快的写作过程了，如丝般顺滑。啧啧！" class="headerlink" title="接下来就是愉快的写作过程了，如丝般顺滑。啧啧！"></a>接下来就是愉快的写作过程了，如丝般顺滑。啧啧！</h3><!--  这是一种注释
 &ensp;&ensp; 等待
 <br/>
 &emsp;等等
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;等等-->
-
 ]]></content>
       <categories>
         <category>工具使用</category>

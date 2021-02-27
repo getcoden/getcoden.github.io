@@ -22,12 +22,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床&amp;emsp;&amp;emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub">
+<meta name="description" content="VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床&amp;emsp;&amp;emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub">
 <meta property="og:type" content="article">
 <meta property="og:title" content="创建Markdown文章图床">
 <meta property="og:url" content="https://getcoden.github.io/2021/01/27/%E5%88%9B%E5%BB%BAMarkdown%E6%96%87%E7%AB%A0%E5%9B%BE%E5%BA%8A/index.html">
 <meta property="og:site_name" content="Bitcoder">
-<meta property="og:description" content="VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床&amp;emsp;&amp;emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub">
+<meta property="og:description" content="VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床&amp;emsp;&amp;emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/00.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/11.png">
@@ -37,11 +37,12 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/55.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/66.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/0.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/1.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/2.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/30.png">
 <meta property="article:published_time" content="2021-01-27T06:03:54.000Z">
-<meta property="article:modified_time" content="2021-01-28T08:10:47.027Z">
+<meta property="article:modified_time" content="2021-02-27T14:42:50.019Z">
 <meta property="article:author" content="Bitcode">
 <meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary">
@@ -199,7 +200,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode-Github-Picgo-jsDelivr-%E6%90%AD%E5%BB%BA%E7%A8%B3%E5%AE%9A%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.</span> <span class="nav-text">VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E8%BD%AC%E8%BD%BD%E7%9A%84%EF%BC%8C%E6%84%9F%E8%B0%A2%E4%BD%9C%E8%80%85%EF%BC%81"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">这是转载的，感谢作者！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA-Github-%E4%BB%93%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">新建 Github 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E6%96%B0%E4%BB%93%E5%BA%93%EF%BC%8C%E5%BF%85%E9%A1%BB%E6%98%AF-public"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">1.创建新仓库，必须是 public</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%9B%E5%85%A5%E4%B8%AA%E4%BA%BA%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%EF%BC%8C%E9%80%89%E6%8B%A9%E5%BC%80%E5%8F%91%E8%80%85%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">2.进入个人设置页面，选择开发者设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%80%89%E6%8B%A9-Personal-access-tokens%EF%BC%8C%E9%80%89%E6%8B%A9%E7%94%9F%E6%88%90%E6%96%B0-token%EF%BC%8C%E6%AD%A4-token-%E6%98%AF%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%E6%97%B6%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E7%94%A8%E7%9A%84"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">3.选择 Personal access tokens，选择生成新 token，此 token 是图床上传时验证身份用的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%B7%BB%E5%8A%A0%E6%8F%8F%E8%BF%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B0%86-repo-%E9%80%89%E4%B8%8A"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">4.添加描述，然后将 repo 选上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%B0%86%E7%94%9F%E6%88%90%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BF%9D%E5%AD%98%EF%BC%8C%E5%85%B3%E9%97%AD%E9%A1%B5%E9%9D%A2%E5%90%8E%E5%B0%86%E5%86%8D%E4%B9%9F%E6%97%A0%E6%B3%95%E7%9C%8B%E5%88%B0%E8%BF%99%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%86"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#picgo-%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">picgo 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%AE%BE%E7%BD%AE%E4%B8%BA"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">具体设置为:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E6%98%AF%E6%84%89%E5%BF%AB%E7%9A%84%E5%86%99%E4%BD%9C%E8%BF%87%E7%A8%8B%E4%BA%86%EF%BC%8C%E5%A6%82%E4%B8%9D%E8%88%AC%E9%A1%BA%E6%BB%91%E3%80%82%E5%95%A7%E5%95%A7%EF%BC%81"><span class="nav-number">1.2.1.</span> <span class="nav-text">接下来就是愉快的写作过程了，如丝般顺滑。啧啧！</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode-Github-PicGo-jsDelivr-%E6%90%AD%E5%BB%BA%E7%A8%B3%E5%AE%9A%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.</span> <span class="nav-text">VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E8%BD%AC%E8%BD%BD%E7%9A%84%EF%BC%8C%E6%84%9F%E8%B0%A2%E4%BD%9C%E8%80%85%EF%BC%81"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">这是转载的，感谢作者！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA-Github-%E4%BB%93%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">新建 Github 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E6%96%B0%E4%BB%93%E5%BA%93%EF%BC%8C%E5%BF%85%E9%A1%BB%E6%98%AF-public"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">1.创建新仓库，必须是 public</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%9B%E5%85%A5%E4%B8%AA%E4%BA%BA%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%EF%BC%8C%E9%80%89%E6%8B%A9%E5%BC%80%E5%8F%91%E8%80%85%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">2.进入个人设置页面，选择开发者设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%80%89%E6%8B%A9-Personal-access-tokens%EF%BC%8C%E9%80%89%E6%8B%A9%E7%94%9F%E6%88%90%E6%96%B0-token%EF%BC%8C%E6%AD%A4-token-%E6%98%AF%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%E6%97%B6%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E7%94%A8%E7%9A%84"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">3.选择 Personal access tokens，选择生成新 token，此 token 是图床上传时验证身份用的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%B7%BB%E5%8A%A0%E6%8F%8F%E8%BF%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B0%86-repo-%E9%80%89%E4%B8%8A"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">4.添加描述，然后将 repo 选上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%B0%86%E7%94%9F%E6%88%90%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BF%9D%E5%AD%98%EF%BC%8C%E5%85%B3%E9%97%AD%E9%A1%B5%E9%9D%A2%E5%90%8E%E5%B0%86%E5%86%8D%E4%B9%9F%E6%97%A0%E6%B3%95%E7%9C%8B%E5%88%B0%E8%BF%99%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BA%86"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#picgo-%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">picgo 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%AE%BE%E7%BD%AE%E4%B8%BA"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">具体设置为:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E6%98%AF%E6%84%89%E5%BF%AB%E7%9A%84%E5%86%99%E4%BD%9C%E8%BF%87%E7%A8%8B%E4%BA%86%EF%BC%8C%E5%A6%82%E4%B8%9D%E8%88%AC%E9%A1%BA%E6%BB%91%E3%80%82%E5%95%A7%E5%95%A7%EF%BC%81"><span class="nav-number">1.2.1.</span> <span class="nav-text">接下来就是愉快的写作过程了，如丝般顺滑。啧啧！</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,7 +216,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -312,7 +313,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-28 08:10:47" itemprop="dateModified" datetime="2021-01-28T08:10:47Z">2021-01-28</time>
+        <time title="修改时间：2021-02-27 14:42:50" itemprop="dateModified" datetime="2021-02-27T14:42:50Z">2021-02-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -334,7 +335,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="VSCode-Github-Picgo-jsDelivr-搭建稳定快速高效图床"><a href="#VSCode-Github-Picgo-jsDelivr-搭建稳定快速高效图床" class="headerlink" title="VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床"></a><center>VSCode + Github + Picgo + jsDelivr 搭建稳定快速高效图床</center></h1><p>&emsp;&emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub 和 jsDelivr 又是知名大厂，不怕他删库跑路。</p>
+        <h1 id="VSCode-Github-PicGo-jsDelivr-搭建稳定快速高效图床"><a href="#VSCode-Github-PicGo-jsDelivr-搭建稳定快速高效图床" class="headerlink" title="VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床"></a><center>VSCode + Github + PicGo + jsDelivr 搭建稳定快速高效图床</center></h1><p>&emsp;&emsp;图床是个什么玩意就不多说了，比较喜欢的是利用 Picgo 插件的 Github 图床，但是其服务器不在国内，访问起来比较的慢，甚至无法访问。所以需要利用到 jsDelivr CDN 加速 (jsDelivr 是一个免费开源的 CDN 解决方案)，Picgo 插件一键上传，GIthub 和 jsDelivr 又是知名大厂，不怕他删库跑路。</p>
+<a id="more"></a>
+
 <h4 id="这是转载的，感谢作者！"><a href="#这是转载的，感谢作者！" class="headerlink" title="这是转载的，感谢作者！"></a>这是转载的，感谢作者！</h4><h2 id="新建-Github-仓库"><a href="#新建-Github-仓库" class="headerlink" title="新建 Github 仓库"></a>新建 Github 仓库</h2><h4 id="1-创建新仓库，必须是-public"><a href="#1-创建新仓库，必须是-public" class="headerlink" title="1.创建新仓库，必须是 public"></a>1.创建新仓库，必须是 public</h4><div align=center>
 
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/00.png" alt="00"></p>
@@ -354,16 +357,13 @@
 
 <h4 id="4-添加描述，然后将-repo-选上"><a href="#4-添加描述，然后将-repo-选上" class="headerlink" title="4.添加描述，然后将 repo 选上"></a>4.添加描述，然后将 repo 选上</h4><div align = center>
 
-
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/55.png" alt="55"></p>
 </div>
-
 
 <h4 id="5-将生成的字符串保存，关闭页面后将再也无法看到这个字符串了"><a href="#5-将生成的字符串保存，关闭页面后将再也无法看到这个字符串了" class="headerlink" title="5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了"></a>5.将生成的字符串保存，关闭页面后将再也无法看到这个字符串了</h4><div align = center>
 
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/66.png" alt="66"></p>
 </div>
-
 
 <h2 id="picgo-设置"><a href="#picgo-设置" class="headerlink" title="picgo 设置"></a>picgo 设置</h2><p>打开软件，安装相关插件</p>
 <div align =center>
@@ -371,37 +371,25 @@
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/0.png" alt="0"></p>
 </div>
 
-
-<br/>
-1.vscode 右下角选择设置
-
-<br> 
-
-
-<br/>
+<p>1.在 VsCode 左侧扩展栏里找到 PicGo 扩展项</p>
+<br>
 
 <div align=center>
-<![1](https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/1.png)
 
-
-
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png" alt="3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/1.png" alt="1"></p>
 </div>
 
-<br/>
-
-<p>2.打开扩展里的 picgo</p>
+<p>2.左键单击 PiGgo 右下角的的齿轮图标，打开‘扩展设置’项</p>
 <div align =center>
 
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/2.png" alt="2"></p>
 </div>
 
-
-<p>3.具体设置为：</p>
+<p>3.打开后的界面里的具体设置为：</p>
 <div align=center>
 
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/3.png" alt="3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/3.png" alt="3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/30.png" alt="30"></p>
 </div>
 
 <h4 id="具体设置为"><a href="#具体设置为" class="headerlink" title="具体设置为:"></a>具体设置为:</h4><p>1.current 设置为 GitHub</p>
@@ -429,20 +417,19 @@
 </ul>
 </li>
 </ul>
-<br/>
-Ctil + Alt + U 图片在剪贴板上
+<br>
 
+<p><strong>Ctrl + Alt + U 图片在剪贴板上</strong></p>
+<br>
 
-<br/> 
-Ctil + Alt + E 从文件夹中选择图片
-
+<p><strong>Ctrl + Alt + E 从文件夹中选择图片</strong></p>
+<p>注意：如果重新安装安装软件或重新安装 PicGo 插件，则要重新设置上述操作。否则无法上传图片。</p>
 <h3 id="接下来就是愉快的写作过程了，如丝般顺滑。啧啧！"><a href="#接下来就是愉快的写作过程了，如丝般顺滑。啧啧！" class="headerlink" title="接下来就是愉快的写作过程了，如丝般顺滑。啧啧！"></a>接下来就是愉快的写作过程了，如丝般顺滑。啧啧！</h3><!--  这是一种注释
 &ensp;&ensp; 等待
 <br/>
 &emsp;等等
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;等等-->
-
 
     </div>
 
