@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="趣味算法入门1.百钱买百鸡：中国古代数学家张丘建在他的《算经》中提出了一个著名的 “ 百钱百鸡问题 “： 一只公鸡值五钱，一只母鸡值三钱，三只小鸡值一钱，现在要用百钱买百鸡，请问公鸡、母鸡、小鸡各多少只？ #答案示例如下; import time #导入 time 模块,以用来计算程序运行的时间,可忽视 time.perf_counter() #与 time 模块中计算时间有关,可忽视 #主体代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础之趣味算法入门">
+<meta property="og:url" content="https://getcoden.github.io/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="趣味算法入门1.百钱买百鸡：中国古代数学家张丘建在他的《算经》中提出了一个著名的 “ 百钱百鸡问题 “： 一只公鸡值五钱，一只母鸡值三钱，三只小鸡值一钱，现在要用百钱买百鸡，请问公鸡、母鸡、小鸡各多少只？ #答案示例如下; import time #导入 time 模块,以用来计算程序运行的时间,可忽视 time.perf_counter() #与 time 模块中计算时间有关,可忽视 #主体代码">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-05T20:11:29.000Z">
+<meta property="article:modified_time" content="2021-03-05T12:14:35.325Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python基础之趣味算法入门 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">趣味算法入门</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python基础之趣味算法入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 20:11:29 / 修改时间：12:14:35" itemprop="dateCreated datePublished" datetime="2021-03-05T20:11:29Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="趣味算法入门"><a href="#趣味算法入门" class="headerlink" title="趣味算法入门"></a>趣味算法入门</h3><p>1.百钱买百鸡：中国古代数学家张丘建在他的《算经》中提出了一个著名的 “ 百钱百鸡问题 “： 一只公鸡值五钱，一只母鸡值三钱，三只小鸡值一钱，现在要用百钱买百鸡，请问公鸡、母鸡、小鸡各多少只？</p>
+<p>#答案示例如下;</p>
+<p>import time #导入 time 模块,以用来计算程序运行的时间,可忽视</p>
+<p>time.perf_counter() #与 time 模块中计算时间有关,可忽视</p>
+<p>#主体代码块如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for cock in range(0,20):</span><br><span class="line">    for hen in range(0,33-cock):</span><br><span class="line">        chicken&#x3D;100-cock-hen</span><br><span class="line">        if chicken%3&#x3D;&#x3D;0:</span><br><span class="line">            if 5 * cock + 3 * hen + chicken &#x2F; 3 &#x3D;&#x3D; 100:</span><br><span class="line">                print(&#39;公鸡&#123;&#125;只，母鸡&#123;&#125;只，小鸡&#123;&#125;只&#39;.format(cock,hen,chicken))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(time.perf_counter())  #打印出程序运行的时间,可忽视</span><br></pre></td></tr></table></figure>
+<p>#解本问题有多种方法，我只写了一种方法，读者可以自己尝试各种方法，再用 time 模块计算每种方法的运行时间。</p>
+<p>补充：算法是解决特定问题的方法，是程序设计的基础，是程序设计的灵魂。作为一个算法， 应具备 5 个特性，即有穷性、确定性、可行性、输入和输出。计算机算法可分为两大类， 分别是数值计算算法和非数值计算算法，数值计算的目的是求解数值，例如求方程的根；非数值计算算法主要用于处理事务领域的问题，如排序、查找等。</p>
+<p>问题分析:用百钱如果只买公鸡，最多可以买 20 只，但题目要求买一百只，由此可知，所买公鸡的数量肯定在 0-20 之间，同理，母鸡的数量在 0~33 之间在。此把公鸡、母鸡和小鸡的数量分别设为 cock、hen、chicken, 则 cock+hen+chicken=100,因此百钱买百鸡问题就转化成解不定方程组 cock + hen + chicken == 100 和 5 x cock + 3 x hen +chicken/3=100 的问题了。</p>
+<p>3.三天打鱼两天晒网：某人从 1990 年 1 月 1 日起开始‘三天打鱼两天晒网’，问这个人在以后的某一天是‘打鱼’还是‘晒网’</p>
+<p>提示：闰年为可以被 4 整除并且不能被 100 整除或者能被 400 整除，2 月为 29 天，1 年为 366 天；平年 2 月为 28 天</p>
+<p>#解题方法示例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import time #导入 time 模块,以用来计算程序运行的时间,可忽视</span><br><span class="line"></span><br><span class="line">time.perf_counter() #与 time 模块中计算时间有关,可忽视</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    year&#x3D;int(input(&#39;请输入年份，格式为1900?:&#39;))</span><br><span class="line">    month&#x3D;int(input(&#39;请输入月份，格式为01:&#39;).strip(&#39;0&#39;))</span><br><span class="line">    day&#x3D;int(input(&#39;请输入日期，格式为1:&#39;))</span><br><span class="line">    i&#x3D;0</span><br><span class="line">    daymonth&#x3D;0</span><br><span class="line">    dayear &#x3D; (year - 1900) * 365</span><br><span class="line">    for oneyear in range(1900,year+1):</span><br><span class="line">        if (oneyear % 4 &#x3D;&#x3D; 0 and oneyear % 100 !&#x3D; 0) or oneyear % 400 &#x3D;&#x3D; 0:</span><br><span class="line">            dayear+&#x3D;1</span><br><span class="line">    for i in range(1,month):</span><br><span class="line">        if i in [1,3,5,7,8,10,12]:</span><br><span class="line">            daymonth &#x3D; daymonth + 31</span><br><span class="line">        elif i &#x3D;&#x3D; 2:</span><br><span class="line">            if (year % 4 &#x3D;&#x3D; 0 and year % 100 !&#x3D; 0) or year % 400 &#x3D;&#x3D; 0:</span><br><span class="line">                daymonth &#x3D; daymonth + 28</span><br><span class="line">            else:</span><br><span class="line">                daymonth &#x3D; daymonth + 29</span><br><span class="line">        else:</span><br><span class="line">            daymonth &#x3D; daymonth + 30</span><br><span class="line">    totalday &#x3D; dayear + daymonth + day</span><br><span class="line">    if totalday % 5 in [1,2,3]:</span><br><span class="line">        print(&#39;这一天是打鱼&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;这一天是晒网&#39;)</span><br><span class="line">except:</span><br><span class="line">    print(&#39;输入的类型有误&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(time.perf_counter())  #打印出程序运行的时间,可忽视</span><br></pre></td></tr></table></figure>
+<p>#解本问题有多种方法，我只写了一种方法，读者可以自己尝试各种方法，再用 time 模块计算每种方法的运行时间。</p>
+<p>4.抓住交通肇事犯:一卡车违反交通规则,撞人后逃跑.现场有三人目击改事件,陈述如下:</p>
+<p>甲:牌照的前两位数字是相同的;乙:牌照的后两位数字是相同的;但与前两位不同;丙:四位的车号刚好是一位整数的平方.</p>
+<p>#解题方法示例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">c &#x3D; 1    #同等于c &#x3D; True，但运行效率高</span><br><span class="line">if c:</span><br><span class="line">    for i in range(1,10):</span><br><span class="line">        a &#x3D; i</span><br><span class="line">        if c :</span><br><span class="line">            for i in range(0,10):</span><br><span class="line">                b &#x3D; i</span><br><span class="line">                if a !&#x3D; b and c:</span><br><span class="line">                    x &#x3D; a*1000+a*100+b*10+b</span><br><span class="line">                    y &#x3D; x**(1&#x2F;2)</span><br><span class="line">                    if y-int(y) &#x3D;&#x3D; 0:</span><br><span class="line">                        print(x)</span><br><span class="line">                        c&#x3D;0    #同等于 c &#x3D; False</span><br></pre></td></tr></table></figure>
+<p>#解本问题有多种方法，此方法并不是标准答案，读者可以自己尝试各种方法</p>
+<p>5.兔子产子问题:有一对兔子,自从出生后的第三个月起每个月都生一对兔子.小兔子长到第三个月后每个月又生一对兔子,假设所有兔子都不死,问三十个月内每个月的兔子总数为多少?</p>
+<p>#解题方法示例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fib1 &#x3D; 1</span><br><span class="line">fib2 &#x3D; 1</span><br><span class="line">month &#x3D; 1</span><br><span class="line">while month &lt;31 :</span><br><span class="line">    if month &lt;&#x3D; 2:</span><br><span class="line">        print(&#39;第&#123;&#125;月的兔子个数为&#123;&#125;&#39;.format(month,fib1))</span><br><span class="line">        month +&#x3D;1</span><br><span class="line">    else:</span><br><span class="line">        fib &#x3D; fib1 + fib2</span><br><span class="line">        print(&#39;第&#123;&#125;月的兔子个数为&#123;&#125;&#39;.format(month,fib))</span><br><span class="line">        month +&#x3D; 1</span><br><span class="line">        fib2 &#x3D; fib1</span><br><span class="line">        fib1 &#x3D; fib</span><br></pre></td></tr></table></figure>
+<p>#方法再次改进，减少参数的使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fib1 &#x3D; 1</span><br><span class="line">fib2 &#x3D; 1</span><br><span class="line">month &#x3D; 1</span><br><span class="line">while month &lt;31 :</span><br><span class="line">    if month &lt;&#x3D; 2:</span><br><span class="line">        print(&#39;第&#123;&#125;月的兔子个数为&#123;&#125;&#39;.format(month,fib1))</span><br><span class="line">        month +&#x3D;1</span><br><span class="line">    else:</span><br><span class="line">        fib1 &#x3D; fib1 + fib2</span><br><span class="line">        fib2 &#x3D; fib1 + fib2</span><br><span class="line">        print(&#39;第&#123;&#125;月的兔子个数为&#123;&#125;&#39;.format(month,fib1))</span><br><span class="line">        print(&#39;第&#123;&#125;月的兔子个数为&#123;&#125;&#39;.format(month+1,fib2))</span><br><span class="line">        month +&#x3D; 2</span><br></pre></td></tr></table></figure>
+<p>#解本问题有多种方法，此方法并不是标准答案，读者可以自己尝试各种方法</p>
+<p>6.牛顿迭代法求方程的根：方程为：ax<strong>3 + bx</strong>2 + cx + d = 0,系数 a,b,c,d 由主函数输入。</p>
+<p>求 x 在 1 附近的一个实根。求出根后，由主函数输出。<br>牛顿迭代法的公式是：x = x0 - f(x0)/f’(x0) 设迭代到|x-x0|&lt;=10**-5 时结束。</p>
+<p>#解题方法示例如下;</p>
+<p>#输入方程的系数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; int(input(&#39;请输入a的值：&#39;))</span><br><span class="line">b &#x3D; int(input(&#39;请输入b的值：&#39;))</span><br><span class="line">c &#x3D; int(input(&#39;请输入c的值：&#39;))</span><br><span class="line">d &#x3D; int(input(&#39;请输入d的值：&#39;))</span><br><span class="line"></span><br><span class="line">#用牛顿迭代法求方程的根</span><br><span class="line"></span><br><span class="line">x &#x3D; 1.5</span><br><span class="line">i &#x3D;1                            #随机定义一个i的值，是其能够进入while循环语句</span><br><span class="line"></span><br><span class="line">while i &gt;&#x3D;  1e-5:               #（1e-5 &#x3D; 10**-5）</span><br><span class="line">    x0 &#x3D; x                      #用所得的x代替x0原来的值</span><br><span class="line">    f &#x3D; ((a*x0+b)*x0+c)*x0 +d   #f用来描述方程的值</span><br><span class="line">    fd &#x3D; (3*a*x0 + 2*b)*x0 +c   #fd用来描述方程求导之后的值</span><br><span class="line">    x &#x3D; x0 - f&#x2F;fd               #求得更接近方程根的x的值</span><br><span class="line">    i &#x3D; abs(x - x0)</span><br><span class="line"></span><br><span class="line">#输出所求方程的根</span><br><span class="line"></span><br><span class="line">print(&#39;方程的一个根为：&#123;:7f&#125;&#39;.format(x))  #format的格式化输出，输出保留7位小数的浮点数。</span><br></pre></td></tr></table></figure>
+<p>#解本问题有多种方法，此方法并不是标准答案，读者可以自己尝试各种方法<br>问题分析：</p>
+<p>​ 牛顿迭代法是取 x0 之后，在这个基础上，找到比 x0 更接近的方程的根，一步一步迭代，从而找到更接近方程的近似根。</p>
+<p>​ 设 r 是 f(x)=0 的根，选取 x0 作为 r 的初始近似值。过点（x0, f(x0))作为曲线 y = f(x)的切线 L，L 的方程为 y = f(x0) +f‘(x0)(x-x0)，求出 L 于 x 轴交点的横坐标 x1 = x0 -f(x0)/f’(x0)，称 x1 为 r 的一次近似值，过点（x1, f(x1))作为曲线 y = f(x)的切线并求改切线于 x 轴的横坐标 x2 = x1 -f(x1)/f’(x1)，称 x2 为 r 的二次近似值，重复以上过程，得 r 的近似值 xn。上述即为牛顿迭代法的求解过程。</p>
+<p>​ 算法设计：</p>
+<p>在 1 附近找任意一实数作为 x0 的初值，我们去 1.5，即 x0 = 1.5. 用初值 x0 带入方程中计算此时的 f(x0)及 f’(x0)；程序中 f 用来描述方程的值，fd 用来描述方程求导之后的值。 计算增量 h=f/fd。 计算下一个 x （x = x0-h）。 用所得的 x 代替 x0 原来的值。 若|x - x0|&gt;=1e-5,则转到第三步继续执行，否则转到步骤 7 所求 x 就是方程的根，将其输出。<br>如果你喜欢我的文章,请滑到下方点个推荐再走. ，以给我动力哦；转载请注名出处。然后..请多来做客鸭。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/06/%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%92%8C%E4%B9%A0%E6%83%AF/" rel="prev" title="好的学习方法和习惯">
+                  <i class="fa fa-chevron-left"></i> 好的学习方法和习惯
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/06/%E5%8D%81%E5%80%8B%E4%BD%A0%E5%BF%85%E5%AD%B8%E7%9A%84Pr%E5%BF%AB%E6%8D%B7%E9%8D%B5%EF%BC%8C%E5%89%AA%E8%BC%AF%E8%B5%B7%E4%BE%86%E5%BF%AB%E9%80%9F%E5%8F%88%E6%96%B9%E4%BE%BF/" rel="next" title="十個你必學的Pr快捷鍵，剪輯起來快速又方便">
+                  十個你必學的Pr快捷鍵，剪輯起來快速又方便 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="1.Jupyter notebook 是什么？&amp;emsp;&amp;emsp;在没有 notebook 之前，在 IT 领域工作的我都是这样工作的：在普通的 Python shell 或者在 IDE（集成开发环境）如 Pycharm 中写代码，然后在 word 中写文档来说明你的项目。这个过程很反锁，通常是写完代码，再写文档的时候我还的重头回顾一遍代码。最蛋疼的地方在于，有些数据分析的中间结果，我还的重新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据处理之anaconda介绍">
+<meta property="og:url" content="https://getcoden.github.io/2021/03/06/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8Banaconda%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="1.Jupyter notebook 是什么？&amp;emsp;&amp;emsp;在没有 notebook 之前，在 IT 领域工作的我都是这样工作的：在普通的 Python shell 或者在 IDE（集成开发环境）如 Pycharm 中写代码，然后在 word 中写文档来说明你的项目。这个过程很反锁，通常是写完代码，再写文档的时候我还的重头回顾一遍代码。最蛋疼的地方在于，有些数据分析的中间结果，我还的重新">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210304100654.png">
+<meta property="article:published_time" content="2021-03-05T19:51:12.000Z">
+<meta property="article:modified_time" content="2021-03-05T11:52:30.236Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="工具使用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210304100654.png">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/03/06/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8Banaconda%E4%BB%8B%E7%BB%8D/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>数据处理之anaconda介绍 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Jupyter-notebook-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.Jupyter notebook 是什么？</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8Banaconda%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据处理之anaconda介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 19:51:12 / 修改时间：11:52:30" itemprop="dateCreated datePublished" datetime="2021-03-05T19:51:12Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="1-Jupyter-notebook-是什么？"><a href="#1-Jupyter-notebook-是什么？" class="headerlink" title="1.Jupyter notebook 是什么？"></a>1.Jupyter notebook 是什么？</h3><p>&emsp;&emsp;在没有 notebook 之前，在 IT 领域工作的我都是这样工作的：在普通的 Python shell 或者在 IDE（集成开发环境）如 Pycharm 中写代码，然后在 word 中写文档来说明你的项目。这个过程很反锁，通常是写完代码，再写文档的时候我还的重头回顾一遍代码。最蛋疼的地方在于，有些数据分析的中间结果，我还的重新跑代码，然后把结果弄到文档里给客户看。有了 notebook 之后，我的世界突然美好了许多，因为 notebook 可以直接在代码旁写出叙述性文档，而不是另外编写单独的文档。也就是它可以能将代码、文档等这一切集中到一处，让用户一目了然。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Jupyter notebook（<a target="_blank" rel="noopener" href="http://jupyter.org/%EF%BC%89">http://jupyter.org/）</a> 是一种 Web 应用，能让用户将说明文本、数学方程、代码和可视化内容全部组合到一个易于共享的文档中。</p>
+</blockquote>
+<p>Jupyter Notebook 已迅速成为数据分析，机器学习的必备工具。因为它可以让数据分析师集中精力向用户解释整个分析过程。</p>
+<p>Jupyter 这个名字是它要服务的三种语言的缩写：Julia，PYThon 和 R，这个名字与“木星（jupiter）”谐音。</p>
+<p>前面说过 Anaconda 是一个 python 数据科学百宝箱，所以它的作用就是燃爆数据科学，让小白也可以轻松玩数据。</p>
+<p>你可以利用 Anaconda 研究数据处理、数据建模、机器学习、神经网络、自然语言处理、可视化展示、教学等等。既能一人独秀，也可以团队作战。</p>
+<p>当然这些都是依托于 python 的，首先你得会撸代码。</p>
+<p>PS：对于小白来说自学也不是件容易的事，需要花相当的时间去适应 python 的语法逻辑，而且要坚持亲手敲代码，不断练习。</p>
+<p>如果对自己没有自信，也可以考虑看编程课程，跟着老师的节奏去学习，能比较快地掌握 python 语法体系，也能得到充分的案例练习。</p>
+<p>神奇的 conda<br>说说 conda，这是 Anaconda 的杀手锏。</p>
+<p>Conda 是一个开源、跨平台和语言无关的软件包管理和系统管理系统，通过 Conda 可安装、升级和升级软件包依赖。Conda 为 Python 程序创造，但是它可以打包、分发任意语言编写的软件（例如 R 语言）和包含多语言的项目。<br>conda 和 pip 都可以管理 python 库，但最大的不同在于 conda 是跨平台且不限语言的，而且可以独自创建虚拟环境。因为 conda 立足于数据科学生态，不像 pip 可以安装几乎所有的 python 库（来自 pypl），conda 只能安装 anaconda 里支持的数据科学库（600 多个）。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210304100654.png" alt="20210304100654"></p>
+</div>
+
+<p>主要的数据科学内置库包括 pandas、numpy、matplotlib、jupyter、scipy、ipython、nltk、notebook、sikit-learn、seaborn、xlrd、xlwt……</p>
+<p>一般把这些数据科学库分为四大类：基础库（jupyter、pandas、numpy、scipy），机器学习库（keras、tensorflow、pytorch、sikit-learn、nltk），可视化库（matplotlib、seaborn、plotly）、拓展计算库（numba、dask、pyspark）</p>
+<p>Anaconda 的缺点</p>
+<p>Anaconda 的优点也是它的缺点，功能太齐全就显得很臃肿，一个安装包快 500M，所以不少人去拥抱 miniconda 了。但无论如何，Anaconda 都是 python 数据科学最好的伙伴。</p>
+<p>首先，作为一个 Python 初学者，你主要想分析下自己学习 Python 目标，比如你想学习 Python 的网络编程和 Web 编程， 下载 Anaconda 没什么用，Anaconda 可能唯一对你有用的，就是它自带了一个 Juypter notebook，让你可以在上面尝试敲一些 Python 代码。</p>
+<p>当然，如果你想学习数据分析和机器学习，下载 Anaconda 就是一个不错的选择，因为它会帮你把数据科学和机器学习常用库都安装好，也不用看到一堆各种各样的库吓到了，Anaconda 的库也就那么几大类：</p>
+<p>提供脚本开发编辑环境，Jupyter/Jupyterlab/….等等<br>提供数据分析的库 Numpy/pandas/Scipy/Numbia/DasK<br>提供数据图表展示的，Bokeh,matplotlib 等等<br>提供机器学习方面的，比如 sktlearn,theano,TensorFloww..等等</p>
+<p>基本覆盖数据科学和机器学习方方面面，没必要一开始贪全贪多，全部都学习。一开始，不要被数据分析数据科学这样大名词吓到，实际上拿 EXCEL 统计销售额，做销售曲线图，也是“数据分析”，Python 相比 EXCEL 的优势, 也只是可以分析更大量的数据,有更多可用的统计函数,有更多可用图表(相比 EXCEL 自带的图表）而已，所以完全不要觉得恐惧。</p>
+<p>Anaconda 的学习，建议先用 Jupyter 来入门 pandas 库，pandas 你可以理解为 Python 版本的 excel, excel 里的操作，Python 都有对应的代码相对应，一开始就专心学会如何 pandas 把你在 excel 会的操作都练一遍。</p>
+<p>Pandas 的官方的 10 分钟教程作为入门就可以，仔细跟着这 10 分钟教程把 Pandas 基本操作练习下，</p>
+<p>学习的过程中，要想想每一行代码，对应 excel 的操作是啥，这样就好理解了。比如 EXCEL 常见操作：</p>
+<p>增加/删除一列<br>增加/删除一行<br>更新某个列行的值<br>过滤<br>根据某一列排序<br>建一个透视图<br>给 EXCEL 一个饼图/Bar 图<br>两个 EXCEL 表格关联<br>给 EXCEL 某一列求和/平均数/中位数等等</p>
+<p>这个在 Jupyter notebook 反复练习下，不要贪快，慢慢练，多练几遍，练到完全熟记为止，可以随便那一个 EXCEL 来操练，用 EXCEL 做增改删关联绘图，加透视等等全部操作一遍，然后将其一步步的对应的 Pandas 用法也来一遍。逐步练到，别人做一个 EXCEL 操作，立刻就能关联到对应的 Pandas 操作，练到这种程度，数据分析基本就入门了。总之有不理解的地方，多和 EXCEL 的行，列，表格相关联，就比较容易理解，这块主要靠多练，练到行程肌肉记忆，敲 pandas 不用花太多脑子，手熟而已。</p>
+<p>有了这个基础，处理一些较复杂的分析，比如对 Pandas 的表格数据做下傅立叶变换，那就去看下 Scipy 的傅立叶变换，要做一些线性，逻辑回归等等，再看看 Skt-learn, 循序渐进，你会发现原来那么多库，那么多方法也不过如此，并不复杂。</p>
+<p>搞这块不要恐惧一些名词，特别数据基础不好的话，不要太恐惧大名词，一个大名词后面，对应的东西，等你自己代码跑一次，其实也很简单明了。<br>你的回答不对，知道你卖数据分析课的，但如果是自己不熟悉的领域，例如编程，好为人师是错的，jupyter 只是个 Python 库，任何 py 环境都可以装，anaconda 是管理包括 py 在内解释器语言环境的，二者没有任何独特的彼此关系，使用 jupyter 并不需要安装 anaconda。不要误导别人。</p>
+<p>简单，别用 anaconda，miniconda 也别用。老老实实装 Python 官方就环境得了。</p>
+<p>笑看楼上楼下扯淡，anaconda 相对原生 py 环境的优势不过是 conda 的包管理和环境管理两个功能。</p>
+<p>conda 的包都是编译过的一些 windows 系统下没装编译器装不上的包使用 conda 可以装上。但第一，现在的 Python 环境支持不是五年十年前了，现在的官方包支持很好，就算装不上的也可以用 whl 包下载安装，而且 conda 的包不全只有流行的包才有，所以基本没什么用了。</p>
+<p>第二个 conda 的环境管理，可以建不同版本的 py 子环境。你都装 conda 了肯定是搞数据科学人工智能的，这行当的项目和软件开发不一样，不需要一个项目建一个 py 子环境，都是共用系统 py 环境的。如果是搞开发的，创建子环境都用 virtualenv(pycharm 默认)。</p>
+<p>总之 conda 的两大功能要是在五年前可能还有些用处，在 Python 发展日新月异的今天基本鸡肋了。他还有几大缺点难以忍受。</p>
+<p>第一是 conda 的包基本都是第三方支持维护，官方只会维护 Python 官方的包，conda 的出毛病不管。例如 tensorflow。</p>
+<p>第二 anaconda 真的很大，安装后上 g 了(Python 官方环境才几十 m)，随便用俩月目录就超过 10g，里面自带那些东西 90％以上你这辈子都用不到。用啥装啥不香吗。</p>
+<p>第三 anaconda 的官方网站是经常被封，逢年过节就封，官方软件源则根本打不开，就算你切换了国内的清华源也卡的基本啥都装不上。Python 的国内源，豆瓣的，阿里的，又多又快，谁用谁知道。</p>
+<p>anaconda 再好不过是个第三个发行版软件，资源和系统兼容性是比不上 Python 官方的。虽然号称能帮使用者减轻环境配置负担，你用了就知道他用着可比官方麻烦多了，虽然有个界面甭提多慢了，再说你都学编程了就用命令行装包吧点鼠标太丢人了。</p>
+<p>我学 Python 开始就用的 anaconda，后来改成乞丐版的 miniconda，现在干脆换回原生 Python 环境。劝你别折腾，官方的就是普世的，最好。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/28/Vscode%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BA%91/" rel="prev" title="Vscode插件同步到云">
+                  <i class="fa fa-chevron-left"></i> Vscode插件同步到云
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/06/Pandas%E8%AF%BB%E5%8F%96Excel%E6%96%87%E4%BB%B6%E6%97%B6%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="next" title="Pandas读取Excel文件时如何指定数据类型">
+                  Pandas读取Excel文件时如何指定数据类型 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
