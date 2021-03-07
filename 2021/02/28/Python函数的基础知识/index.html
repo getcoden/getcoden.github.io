@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220802.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210227220852.png">
 <meta property="article:published_time" content="2021-02-27T17:56:05.000Z">
-<meta property="article:modified_time" content="2021-02-27T14:45:47.876Z">
+<meta property="article:modified_time" content="2021-03-07T12:54:48.165Z">
 <meta property="article:author" content="Bitcode">
 <meta property="article:tag" content="Python基础">
 <meta name="twitter:card" content="summary">
@@ -195,7 +195,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">函数简介</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">函数简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">函数定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">无参数函数:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">有参数函数:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">函数参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%EF%BC%8C%E5%87%BD%E6%95%B0%E7%9A%84%E4%BC%98%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number"></span> <span class="nav-text">二，函数的优点是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-number"></span> <span class="nav-text">三、函数的组成部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number"></span> <span class="nav-text">四、执行函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%9Areturn-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%81%9C%E6%AD%A2%E5%87%BD%E6%95%B0%E4%BD%93%E7%9A%84%E8%BF%90%E8%A1%8C%E3%80%82%E5%92%8C-break-%E7%9A%84%E5%8A%9F%E8%83%BD%E4%B8%80%E6%A0%B7%E3%80%82%E5%B9%B6%E4%B8%94%E8%BF%94%E5%9B%9E%E7%BB%99%E8%BF%99%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%80%E4%B8%AA%E5%80%BC%E3%80%82"><span class="nav-number"></span> <span class="nav-text">五、函数的返回值：return 的作用停止函数体的运行。和 break 的功能一样。并且返回给这个函数一个值。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E4%BC%A0%E5%8F%82%EF%BC%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E5%88%86%E4%B8%BA%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82"><span class="nav-number"></span> <span class="nav-text">六、函数的传参，函数的参数分为形参和实参</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BD%A2%E5%8F%82%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="nav-number">0.1.</span> <span class="nav-text">1. 形参的角度分类：</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -300,10 +300,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-02-27 17:56:05 / 修改时间：14:45:47" itemprop="dateCreated datePublished" datetime="2021-02-27T17:56:05Z">2021-02-27</time>
+      <time title="创建时间：2021-02-27 17:56:05" itemprop="dateCreated datePublished" datetime="2021-02-27T17:56:05Z">2021-02-27</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-07 12:54:48" itemprop="dateModified" datetime="2021-03-07T12:54:48Z">2021-03-07</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -326,10 +332,9 @@
     <div class="post-body" itemprop="articleBody">
         <h3 id="函数简介"><a href="#函数简介" class="headerlink" title="函数简介"></a>函数简介</h3><p>&emsp;&emsp;我们在编程过程中往往会碰到这样的事情 —– 很多地方都用到了相同的一段代码。虽然复制 / 粘贴这段代码不费多大的功夫，但是这样就无声中增加了程序的维护成本。比如，我们后来需求变动了，要修改原来的这段共用代码才能完成目的，这样如果这段代码在很多地方出现，我们只能一处一处的发现并修改。后来我们有个想法，将这段代码单独拿出来，并给这段代码起一个名字，我们在用到这段代码的地方直接使用这个名字来代替这段代码，那如果日后还要修改这里，我们就可以只修改一处，因为名字没有改变，其他使用名字来替换代码的地方也就不需要改变。这样以来即减少了代码的行数，也方便了日后的维护，我们给拿出来的这段代码起了个名字：函数，每个函数都有一个名字，叫函数名，其他的代码使用这个函数的时候，通过函数名调用这个函数就可以了。</p>
 <p>函数最主要的目的：封装一个功能。</p>
-<!--more>
+<a id="more"></a>
 
-一个函数的简单例子:
-
+<p>一个函数的简单例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">login_status &#x3D; 0     # 定义一个记录登录状态的变量</span><br><span class="line"></span><br><span class="line">def welcome_user():  # 定义一个函数，函数的功能就是打印&#39;welcome!&#39;</span><br><span class="line">	print(&#39;Welcome!&#39;)</span><br><span class="line"></span><br><span class="line">while not login_status::</span><br><span class="line">	name &#x3D; input(&#39;Input username here: &#39;)</span><br><span class="line">	if name:</span><br><span class="line">	login_status &#x3D; 1</span><br><span class="line">	welcome_user()</span><br><span class="line"></span><br><span class="line"># do other things</span><br></pre></td></tr></table></figure>
 <p>上面的例子，如果用户输入有效的用户名，就会调用函数 welcome_user, 该函数实现打印 “Weclome !” 的作用，接着就跳出 while 循环做其他的工作.</p>
 <p>上面简单的介绍了函数的定义和使用，函数的定义就是函数实现功能的那段代码，函数的使用就是通过 函数名 来使用.</p>
