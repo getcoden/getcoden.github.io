@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="python 列表切片之负数的含义代码示例123456789101112131415161718192021222324252627282930313233a &#x3D; list(range(10))print(a[::]) #复制一个列表print(a[::2]) #每隔2个取一次print(a[::3]) #每隔3个取一次print(a[::-1]) #表示反转字符串print(a[::-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python列表切片之负数的含义代码示例">
+<meta property="og:url" content="https://getcoden.github.io/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="python 列表切片之负数的含义代码示例123456789101112131415161718192021222324252627282930313233a &#x3D; list(range(10))print(a[::]) #复制一个列表print(a[::2]) #每隔2个取一次print(a[::3]) #每隔3个取一次print(a[::-1]) #表示反转字符串print(a[::-">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-21T08:27:53.000Z">
+<meta property="article:modified_time" content="2021-03-21T00:28:40.964Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python列表切片之负数的含义代码示例 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">python 列表切片之负数的含义代码示例</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python列表切片之负数的含义代码示例
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-21 08:27:53 / 修改时间：00:28:40" itemprop="dateCreated datePublished" datetime="2021-03-21T08:27:53Z">2021-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="python-列表切片之负数的含义代码示例"><a href="#python-列表切片之负数的含义代码示例" class="headerlink" title="python 列表切片之负数的含义代码示例"></a>python 列表切片之负数的含义代码示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; list(range(10))</span><br><span class="line">print(a[::]) #复制一个列表</span><br><span class="line">print(a[::2]) #每隔2个取一次</span><br><span class="line">print(a[::3]) #每隔3个取一次</span><br><span class="line"></span><br><span class="line">print(a[::-1]) #表示反转字符串</span><br><span class="line">print(a[::-2]) #表示反转字符串,每隔2个取一次</span><br><span class="line">print(a[::-3]) #表示反转字符串,每隔3个取一次</span><br><span class="line">#由此得知最后一个位置参数表示间隔数</span><br><span class="line"></span><br><span class="line">print(a[-1::]) #-1表示倒着取1个</span><br><span class="line">print(a[-2::]) #-2表示倒着取2个</span><br><span class="line">print(a[-3::]) #-3表示倒着取3个</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(a[-2:-1:]) #-2,-1:表示倒着取下面为-2到-1区间的</span><br><span class="line">print(a[-4:-2:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line">print(a[-5:-1:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line"></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[0, 2, 4, 6, 8]</span><br><span class="line">[0, 3, 6, 9]</span><br><span class="line">[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span><br><span class="line">[9, 7, 5, 3, 1]</span><br><span class="line">[9, 6, 3, 0]</span><br><span class="line">[9]</span><br><span class="line">[8, 9]</span><br><span class="line">[7, 8, 9]</span><br><span class="line">[8]</span><br><span class="line">[6, 7]</span><br><span class="line">[5, 6, 7, 8]</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/21/Python%E4%BB%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97/" rel="prev" title="Python从字符串中提取数字">
+                  <i class="fa fa-chevron-left"></i> Python从字符串中提取数字
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/22/Python%E6%B1%82%E5%89%8Dn%E9%A1%B9%E9%98%B6%E4%B9%98%E5%92%8C%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C/" rel="next" title="Python求前n项阶乘和与平方和">
+                  Python求前n项阶乘和与平方和 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

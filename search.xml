@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Pandas groupby 保存到 dataFrame</title>
+    <url>/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/</url>
+    <content><![CDATA[<h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
+<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
+<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
+<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
+<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
+<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
+<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
+<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
+<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
+<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
+<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
+<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
+<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
+<p>下面以一组数据为例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
+</div>
+
+<p>下面按 key 进行分组:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
+<p>可以使用循环对分组后的结果进行遍历</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
+</div>
+
+<ul>
+<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>通过循环，对 value 进行拼接。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
+</div>
+
+<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果可以看到数据变为有序：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
+</div>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>00.小白Python学习路线</title>
     <url>/2021/01/29/00-%E5%B0%8F%E7%99%BDPython%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
     <content><![CDATA[<p>学前须知：Python 是一种解释型、面向对象、动态数据类型</p>
@@ -118,70 +182,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data_departments&#x3D; data.groupby(&quot;地区&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">for department, data_department in data_departments:</span><br><span class="line">    data_department.to_excel(f&quot;&#123;department&#125;.xls&quot;)</span><br></pre></td></tr></table></figure>
 <p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201115943.png" alt="20210201115943"></p>
 ]]></content>
-      <categories>
-        <category>Python库之Pandas</category>
-      </categories>
-      <tags>
-        <tag>Python库之Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pandas groupby 保存到 dataFrame</title>
-    <url>/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/</url>
-    <content><![CDATA[<h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
-<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
-<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
-<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
-<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
-<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
-<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
-<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
-<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
-<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
-<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
-<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
-<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
-<p>下面以一组数据为例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
-</div>
-
-<p>下面按 key 进行分组:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
-<p>可以使用循环对分组后的结果进行遍历</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
-</div>
-
-<ul>
-<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>通过循环，对 value 进行拼接。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
-</div>
-
-<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果可以看到数据变为有序：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
-</div>]]></content>
       <categories>
         <category>Python库之Pandas</category>
       </categories>
@@ -903,6 +903,151 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Pandas的合并及拼接问题</title>
+    <url>/2021/02/04/Pandas%E7%9A%84%E5%90%88%E5%B9%B6%E5%8F%8A%E6%8B%BC%E6%8E%A5%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>concat 与其说是连接，更准确的说是拼接。就是把两个表直接合在一起。于是有一个突出的问题，是横向拼接还是纵向拼接，所以 concat 函数的关键参数是 axis 。<br>函数的具体参数是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">concat(objs,axis&#x3D;0,join&#x3D;&#39;outer&#39;,join_axes&#x3D;None,</span><br><span class="line">ignore_index&#x3D;False,keys&#x3D;None,levels&#x3D;None,names&#x3D;None,verigy_integrity&#x3D;False)</span><br></pre></td></tr></table></figure>
+<p>objs 是需要拼接的对象集合，一般为列表或者字典</p>
+<p>axis=0 是行拼接，拼接之后行数增加，列数也根据 join 来定，join=’outer’时，列数是两表并集。同理 join=’inner’, 列数是两表交集。</p>
+<p>在默认情况下，axis=0 为纵向，按行拼接，此时有:</p>
+<p><code>concat([df1,df2]) 等价于 df1.append(df2)</code></p>
+<p>在 axis=1 时为横向拼接 ，此时有:</p>
+<p><code>concat([df1,df2],axis=1) 等价于 merge(df1,df2,left_index=True,right_index=True,how=&#39;outer&#39;)</code></p>
+<h3 id="pandas-的连接函数-concat-函数"><a href="#pandas-的连接函数-concat-函数" class="headerlink" title="pandas 的连接函数 concat () 函数"></a>pandas 的连接函数 concat () 函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat(objs, axis&#x3D;0, join&#x3D;&#39;outer&#39;, join_axes&#x3D;None, ignore_index&#x3D;False,</span><br><span class="line">          keys&#x3D;None, levels&#x3D;None, names&#x3D;None, verify_integrity&#x3D;False,</span><br><span class="line">          copy&#x3D;True)</span><br></pre></td></tr></table></figure>
+<h4 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义:"></a>参数含义:</h4><ul>
+<li>objs：Series，DataFrame 或 Panel 对象的序列或映射。如果传递了 dict，则排序的键将用作键参数，除非它被传递，在这种情况下，将选择值（见下文）。任何无对象将被静默删除，除非它们都是无，在这种情况下将引发一个 ValueError。</li>
+<li>axis：{0,1，…}，默认为 0。沿着连接的轴。</li>
+<li>join：{‘inner’，’outer’}，默认为 “outer”。如何处理其他轴上的索引。outer 为联合和 inner 为交集。</li>
+<li>ignore_index：boolean，default False。如果为 True，请不要使用并置轴上的索引值。结果轴将被标记为 0，…，n-1。如果要连接其中并置轴没有有意义的索引信息的对象，这将非常有用。注意，其他轴上的索引值在连接中仍然受到尊重。</li>
+<li>join_axes：Index 对象列表。用于其他 n-1 轴的特定索引，而不是执行内部 / 外部设置逻辑。</li>
+<li>keys：序列，默认值无。使用传递的键作为最外层构建层次索引。如果为多索引，应该使用元组。</li>
+<li>levels：序列列表，默认值无。用于构建 MultiIndex 的特定级别（唯一值）。否则，它们将从键推断。</li>
+<li>names：list，default 无。结果层次索引中的级别的名称。</li>
+<li>verify_integrity：boolean，default False。检查新连接的轴是否包含重复项。这相对于实际的数据串联可能是非常昂贵的。</li>
+<li>copy：boolean，default True。如果为 False，请勿不必要地复制数据。</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [1]: df1 &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [&#39;A0&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;],</span><br><span class="line">   ...:                     &#39;B&#39;: [&#39;B0&#39;, &#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;],</span><br><span class="line">   ...:                     &#39;C&#39;: [&#39;C0&#39;, &#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;],</span><br><span class="line">   ...:                     &#39;D&#39;: [&#39;D0&#39;, &#39;D1&#39;, &#39;D2&#39;, &#39;D3&#39;]&#125;,</span><br><span class="line">   ...:                     index&#x3D;[0, 1, 2, 3])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [2]: df2 &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [&#39;A4&#39;, &#39;A5&#39;, &#39;A6&#39;, &#39;A7&#39;],</span><br><span class="line">   ...:                     &#39;B&#39;: [&#39;B4&#39;, &#39;B5&#39;, &#39;B6&#39;, &#39;B7&#39;],</span><br><span class="line">   ...:                     &#39;C&#39;: [&#39;C4&#39;, &#39;C5&#39;, &#39;C6&#39;, &#39;C7&#39;],</span><br><span class="line">   ...:                     &#39;D&#39;: [&#39;D4&#39;, &#39;D5&#39;, &#39;D6&#39;, &#39;D7&#39;]&#125;,</span><br><span class="line">   ...:                      index&#x3D;[4, 5, 6, 7])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [3]: df3 &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [&#39;A8&#39;, &#39;A9&#39;, &#39;A10&#39;, &#39;A11&#39;],</span><br><span class="line">   ...:                     &#39;B&#39;: [&#39;B8&#39;, &#39;B9&#39;, &#39;B10&#39;, &#39;B11&#39;],</span><br><span class="line">   ...:                     &#39;C&#39;: [&#39;C8&#39;, &#39;C9&#39;, &#39;C10&#39;, &#39;C11&#39;],</span><br><span class="line">   ...:                     &#39;D&#39;: [&#39;D8&#39;, &#39;D9&#39;, &#39;D10&#39;, &#39;D11&#39;]&#125;,</span><br><span class="line">   ...:                     index&#x3D;[8, 9, 10, 11])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [4]: frames &#x3D; [df1, df2, df3]</span><br><span class="line"> </span><br><span class="line">In [5]: result &#x3D; pd.concat(frames)</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071032.png" alt="20210204071032"></p>
+</div>
+
+<p>KEY 参数:</p>
+<p><code>result = pd.concat(frames, keys=[&#39;x&#39;, &#39;y&#39;, &#39;z&#39;])</code></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071126.png" alt="20210204071126"></p>
+</div>
+
+<p>JOIN 参数:</p>
+<p>默认 join = ‘outer’, 为取并集的关系</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [8]: df4 &#x3D; pd.DataFrame(&#123;&#39;B&#39;: [&#39;B2&#39;, &#39;B3&#39;, &#39;B6&#39;, &#39;B7&#39;],</span><br><span class="line">   ...:                  &#39;D&#39;: [&#39;D2&#39;, &#39;D3&#39;, &#39;D6&#39;, &#39;D7&#39;],</span><br><span class="line">   ...:                  &#39;F&#39;: [&#39;F2&#39;, &#39;F3&#39;, &#39;F6&#39;, &#39;F7&#39;]&#125;,</span><br><span class="line">   ...:                 index&#x3D;[2, 3, 6, 7])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [9]: result &#x3D; pd.concat([df1, df4], axis&#x3D;1)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071210.png" alt="20210204071210"></p>
+</div>
+
+<p>当设置 join = ‘inner’，则说明为取交集</p>
+<p><code>In [10]: result = pd.concat([df1, df4], axis=1, join=&#39;inner&#39;)</code></p>
+<p>结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071315.png" alt="20210204071315"></p>
+</div>
+
+<p>如果索引想从原始 DataFrame 重用确切索引：</p>
+<p><code>In [11]: result = pd.concat([df1, df4], axis=1, join_axes=[df1.index]) #设置索引为df1的索引</code></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071446.png" alt="20210204071446"></p>
+</div>
+
+<h3 id="一、concat：沿着一条轴，将多个对象堆叠到一起"><a href="#一、concat：沿着一条轴，将多个对象堆叠到一起" class="headerlink" title="一、concat：沿着一条轴，将多个对象堆叠到一起"></a>一、concat：沿着一条轴，将多个对象堆叠到一起</h3><p>concat 方法相当于数据库中的全连接（union all），它不仅可以指定连接的方式（outer join 或 inner join）还可以指定按照某个轴进行连接。与数据库不同的是，它不会去重，但是可以使用 drop_duplicates 方法达到去重的效果。</p>
+<h3 id="二、merge：通过键拼接列"><a href="#二、merge：通过键拼接列" class="headerlink" title="二、merge：通过键拼接列"></a>二、merge：通过键拼接列</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">类似于关系型数据库的连接方式，可以根据一个或多个键将不同的DatFrame连接起来。该函数的典型应用场景是，针对同一个主键存在两张不同字段的表，根据主键整合到一张表里面。</span><br></pre></td></tr></table></figure>
+<h3 id="三、join：主要用于索引上的合并"><a href="#三、join：主要用于索引上的合并" class="headerlink" title="三、join：主要用于索引上的合并"></a>三、join：主要用于索引上的合并</h3><h3 id="四、使用-apply-函数实现-group-by-分组拼接"><a href="#四、使用-apply-函数实现-group-by-分组拼接" class="headerlink" title="四、使用 apply 函数实现 group by 分组拼接"></a>四、使用 apply 函数实现 group by 分组拼接</h3><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072137.png" alt="20210204072137"></p>
+</div>
+
+<p>最后 4 行合并为 1 行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def ab(df):</span><br><span class="line">return&#39;,&#39;.join(df.values)</span><br><span class="line"></span><br><span class="line">df &#x3D; df.groupby([&#39;股票代码&#39;,&#39;股票简称&#39;])[&#39;所属概念&#39;].apply(ab)</span><br><span class="line">df &#x3D; df.reset_index()</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072207.png" alt="20210204072207"></p>
+</div>
+
+<h3 id="python-把几个-DataFrame-合并成一个-DataFrame——merge-append-join-conca"><a href="#python-把几个-DataFrame-合并成一个-DataFrame——merge-append-join-conca" class="headerlink" title="python 把几个 DataFrame 合并成一个 DataFrame——merge,append,join,conca"></a>python 把几个 DataFrame 合并成一个 DataFrame——merge,append,join,conca</h3><p>1、merge</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, how&#x3D;&#39;inner&#39;, on&#x3D;None, left_on&#x3D;None, right_on&#x3D;None,</span><br><span class="line">         left_index&#x3D;False, right_index&#x3D;False, sort&#x3D;True,</span><br><span class="line">         suffixes&#x3D;(&#39;_x&#39;, &#39;_y&#39;), copy&#x3D;True, indicator&#x3D;False)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>left ︰   对象</li>
+<li>right ︰   另一个 对象</li>
+<li>on︰   要 加入 的 列   （名称） 。 必须 在 左 、   右 综合 对象 中 找到 。 如果 不 能 通过   left_index   和   right_index   是 假 ， 将 推断   DataFrames   中 的 列 的 交叉点 为 连接 键</li>
+<li>left_on ︰   从 左边 的 综合 使用 作为 键 列 。 可以 是 列名 或 数组 的 长度 等于 长度 综合</li>
+<li>right_on ︰   从 正确 的 综合 ， 以 用作 键 列 。 可以 是 列名 或 数组 的 长度 等于 长度 综合</li>
+<li>left_index ︰  如果为  True ， 则 使用 索引   （行 标签）   从 左 综合 作为 其 联接 键。 在 与 多重   （层次）  的 综合 ， 级别 数 必须 匹配 联接 键 从 右 综合 的 数目<br>r- ight_index ︰   相同 用法 作为 正确 综合   left_index<br>how︰   之一   ‘ 左 ‘， ‘ 右 ‘， ‘ 外在 ‘、   ‘ 内部 ‘。 默认 为 内部 。 每个 方法 的 更 详细 说明 请 参阅 ︰</li>
+<li>sort︰   综合 通过 联接 键 按 字典 顺序 对 结果 进行排序 。 默认值 为   True ， 设置 为   False 将 提高 性能 极大地 在 许多 情况下</li>
+<li>suffixes︰   字符串 后缀 并 不适 用于 重叠 列 的 元组 。 默认值 为   (‘_x’， ‘_y’)。</li>
+<li>copy︰   即使 重新索引 是 不 必要 总是 从 传递 的 综合 对象 ， 复制 的 数据   （默认值 True） 。 在 许多 情况下 不能 避免 ， 但 可能会 提高 性能   /   内存 使用情况 。 可以 避免 复制 上述 案件 有些 病理 但 尽管如此 提供 此 选项 。</li>
+<li>indicator︰  将 列 添加 到 输出 综合 呼吁   _merge   与 信息 源 的 每 一行 。 _merge   是 绝对类型 ， 并 对 观测 其 合并 键 只 出现 在   ‘ 左’  的 综合 ， 观测 其 合并 键 只 会出现 在   ‘ 正确’  的 综合 ， 和 两个 如果 观察 合并 关键 发现 在 两个   right_only   left_only  的 值 。</li>
+</ul>
+<p><code>result = pd.merge(left, right, on=&#39;key&#39;)</code></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072600.png" alt="20210204072600"></p>
+</div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">result &#x3D; pd.merge(left, right, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">result &#x3D; pd.merge(left, right, how&#x3D;&#39;left&#39;, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">result &#x3D; pd.merge(left, right, how&#x3D;&#39;right&#39;, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">result &#x3D; pd.merge(left, right, how&#x3D;&#39;outer&#39;, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br></pre></td></tr></table></figure>
+<p>2、append</p>
+<p><code>result = df1.append(df2)</code></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072716.png" alt="20210204072716"></p>
+</div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">result &#x3D; df1.append(df4)</span><br><span class="line"></span><br><span class="line">result &#x3D; df1.append([df2, df3])</span><br><span class="line"></span><br><span class="line">result &#x3D; df1.append(df4, ignore_index&#x3D;True)</span><br></pre></td></tr></table></figure>
+<p>4、join</p>
+<p><code>left.join(right, on=key_or_keys)</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, left_on&#x3D;key_or_keys, right_index&#x3D;True,</span><br><span class="line">      how&#x3D;&#39;left&#39;, sort&#x3D;False)</span><br></pre></td></tr></table></figure>
+<p><code>1.result = left.join(right, on=&#39;key&#39;)</code></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072925.png" alt="20210204072925"></p>
+</div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2.result &#x3D; left.join(right, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">3.result &#x3D; left.join(right, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;], how&#x3D;&#39;inner&#39;)</span><br></pre></td></tr></table></figure>
+<p>4、concat</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat(objs, axis&#x3D;0, join&#x3D;&#39;outer&#39;, join_axes&#x3D;None, ignore_index&#x3D;False,</span><br><span class="line">          keys&#x3D;None, levels&#x3D;None, names&#x3D;None, verify_integrity&#x3D;False,</span><br><span class="line">          copy&#x3D;True)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>objs︰   一个 序列 或 系列 、   综合 或 面板 对象 的 映射 。 如果 字典 中 传递 ， 将 作为 键 参数 ， 使用 排序 的 键 ， 除非 它 传递 ， 在 这 种情况下 的 值 将 会 选择   （见 下文）。 任何 没有任何 反对 将 默默地 被 丢弃 ， 除非 他们 都 没有 在 这 种情况下 将 引发   ValueError 。</li>
+<li>axis:   {0， 1， …}， 默认值 为 0。 要 连接 沿 轴 。</li>
+<li>join :   {‘ 内部 ‘、   ‘ 外 ‘}， 默认   ‘ 外 ‘。 如何 处理 其他   axis(es)   上 的 索引 。 联盟 内 、   外 的 交叉口 。</li>
+<li>ignore_index ︰   布尔值 、   默认   False 。 如果 为  True ， 则 不要 串联 轴 上 使用 的 索引 值 。 由此产生 的 轴 将 标记   0， … ， n - 1。 这 是 有用 的 如果 你 串联 串联 轴 没有 有意义 的 索引 信息 的 对象 。 请注意 在 联接 中 仍然 受到尊重 的 其他 轴 上 的 索引 值 。</li>
+<li>join_axes ︰   索引 对象 的 列表 。 具体 的 指标 ， 用于 其他   n - 1   轴 而不是 执行 内部 / 外部 设置 逻辑 。</li>
+<li>keys ︰   序列 ， 默认 为 无 。 构建 分层 索引 使用 通过 的 键 作为 最 外面 的 级别 。 如果 多个 级别 获得通过 ， 应 包含 元组 。</li>
+<li>levels ︰   列表 的 序列 ， 默认 为 无 。 具体 水平   （唯一 值）   用于 构建 多重 。 否则 ， 他们 将 推断 钥匙 。</li>
+<li>names ︰   列表中 ， 默认 为 无 。 由此产生 的 分层 索引 中 的 级 的 名称 。</li>
+<li>verify_integrity ︰   布尔值 、   默认   False 。 检查 是否 新 的 串联 的 轴 包含 重复项 。 这 可以 是 相对于 实际 数据 串联 非常 昂贵 。<br>副本 ︰   布尔值 、   默认   True 。 如果 为  False ， 请 不要 ， 不必要地 复制 数据 。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.frames &#x3D; [df1, df2, df3]</span><br><span class="line"></span><br><span class="line">2.result &#x3D; pd.concat(frames)</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204073202.png" alt="20210204073202"></p>
+</div>
+
+<p><code>3.result = pd.concat(frames, keys=[&#39;x&#39;, &#39;y&#39;, &#39;z&#39;])</code></p>
+<p><code>4.result.ix[&#39;y&#39;]</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    A   B   C   D</span><br><span class="line">4  A4  B4  C4  D4</span><br><span class="line">5  A5  B5  C5  D5</span><br><span class="line">6  A6  B6  C6  D6</span><br><span class="line">7  A7  B7  C7  D7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5.result &#x3D; pd.concat([df1, df4], axis&#x3D;1)</span><br><span class="line"></span><br><span class="line">6.result &#x3D; pd.concat([df1, df4], axis&#x3D;1, join&#x3D;&#39;inner&#39;)</span><br><span class="line"></span><br><span class="line">7.result &#x3D; pd.concat([df1, df4], axis&#x3D;1, join_axes&#x3D;[df1.index])</span><br><span class="line"></span><br><span class="line">8.result &#x3D; pd.concat([df1, df4], ignore_index&#x3D;True)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pandas筛选的具体应用</title>
     <url>/2021/02/04/Pandas%E7%AD%9B%E9%80%89%E7%9A%84%E5%85%B7%E4%BD%93%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<p>stu.xlsx表里的数据如下：</p>
@@ -1051,151 +1196,6 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>Pandas的合并及拼接问题</title>
-    <url>/2021/02/04/Pandas%E7%9A%84%E5%90%88%E5%B9%B6%E5%8F%8A%E6%8B%BC%E6%8E%A5%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>concat 与其说是连接，更准确的说是拼接。就是把两个表直接合在一起。于是有一个突出的问题，是横向拼接还是纵向拼接，所以 concat 函数的关键参数是 axis 。<br>函数的具体参数是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">concat(objs,axis&#x3D;0,join&#x3D;&#39;outer&#39;,join_axes&#x3D;None,</span><br><span class="line">ignore_index&#x3D;False,keys&#x3D;None,levels&#x3D;None,names&#x3D;None,verigy_integrity&#x3D;False)</span><br></pre></td></tr></table></figure>
-<p>objs 是需要拼接的对象集合，一般为列表或者字典</p>
-<p>axis=0 是行拼接，拼接之后行数增加，列数也根据 join 来定，join=’outer’时，列数是两表并集。同理 join=’inner’, 列数是两表交集。</p>
-<p>在默认情况下，axis=0 为纵向，按行拼接，此时有:</p>
-<p><code>concat([df1,df2]) 等价于 df1.append(df2)</code></p>
-<p>在 axis=1 时为横向拼接 ，此时有:</p>
-<p><code>concat([df1,df2],axis=1) 等价于 merge(df1,df2,left_index=True,right_index=True,how=&#39;outer&#39;)</code></p>
-<h3 id="pandas-的连接函数-concat-函数"><a href="#pandas-的连接函数-concat-函数" class="headerlink" title="pandas 的连接函数 concat () 函数"></a>pandas 的连接函数 concat () 函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat(objs, axis&#x3D;0, join&#x3D;&#39;outer&#39;, join_axes&#x3D;None, ignore_index&#x3D;False,</span><br><span class="line">          keys&#x3D;None, levels&#x3D;None, names&#x3D;None, verify_integrity&#x3D;False,</span><br><span class="line">          copy&#x3D;True)</span><br></pre></td></tr></table></figure>
-<h4 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义:"></a>参数含义:</h4><ul>
-<li>objs：Series，DataFrame 或 Panel 对象的序列或映射。如果传递了 dict，则排序的键将用作键参数，除非它被传递，在这种情况下，将选择值（见下文）。任何无对象将被静默删除，除非它们都是无，在这种情况下将引发一个 ValueError。</li>
-<li>axis：{0,1，…}，默认为 0。沿着连接的轴。</li>
-<li>join：{‘inner’，’outer’}，默认为 “outer”。如何处理其他轴上的索引。outer 为联合和 inner 为交集。</li>
-<li>ignore_index：boolean，default False。如果为 True，请不要使用并置轴上的索引值。结果轴将被标记为 0，…，n-1。如果要连接其中并置轴没有有意义的索引信息的对象，这将非常有用。注意，其他轴上的索引值在连接中仍然受到尊重。</li>
-<li>join_axes：Index 对象列表。用于其他 n-1 轴的特定索引，而不是执行内部 / 外部设置逻辑。</li>
-<li>keys：序列，默认值无。使用传递的键作为最外层构建层次索引。如果为多索引，应该使用元组。</li>
-<li>levels：序列列表，默认值无。用于构建 MultiIndex 的特定级别（唯一值）。否则，它们将从键推断。</li>
-<li>names：list，default 无。结果层次索引中的级别的名称。</li>
-<li>verify_integrity：boolean，default False。检查新连接的轴是否包含重复项。这相对于实际的数据串联可能是非常昂贵的。</li>
-<li>copy：boolean，default True。如果为 False，请勿不必要地复制数据。</li>
-</ul>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [1]: df1 &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [&#39;A0&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;],</span><br><span class="line">   ...:                     &#39;B&#39;: [&#39;B0&#39;, &#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;],</span><br><span class="line">   ...:                     &#39;C&#39;: [&#39;C0&#39;, &#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;],</span><br><span class="line">   ...:                     &#39;D&#39;: [&#39;D0&#39;, &#39;D1&#39;, &#39;D2&#39;, &#39;D3&#39;]&#125;,</span><br><span class="line">   ...:                     index&#x3D;[0, 1, 2, 3])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [2]: df2 &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [&#39;A4&#39;, &#39;A5&#39;, &#39;A6&#39;, &#39;A7&#39;],</span><br><span class="line">   ...:                     &#39;B&#39;: [&#39;B4&#39;, &#39;B5&#39;, &#39;B6&#39;, &#39;B7&#39;],</span><br><span class="line">   ...:                     &#39;C&#39;: [&#39;C4&#39;, &#39;C5&#39;, &#39;C6&#39;, &#39;C7&#39;],</span><br><span class="line">   ...:                     &#39;D&#39;: [&#39;D4&#39;, &#39;D5&#39;, &#39;D6&#39;, &#39;D7&#39;]&#125;,</span><br><span class="line">   ...:                      index&#x3D;[4, 5, 6, 7])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [3]: df3 &#x3D; pd.DataFrame(&#123;&#39;A&#39;: [&#39;A8&#39;, &#39;A9&#39;, &#39;A10&#39;, &#39;A11&#39;],</span><br><span class="line">   ...:                     &#39;B&#39;: [&#39;B8&#39;, &#39;B9&#39;, &#39;B10&#39;, &#39;B11&#39;],</span><br><span class="line">   ...:                     &#39;C&#39;: [&#39;C8&#39;, &#39;C9&#39;, &#39;C10&#39;, &#39;C11&#39;],</span><br><span class="line">   ...:                     &#39;D&#39;: [&#39;D8&#39;, &#39;D9&#39;, &#39;D10&#39;, &#39;D11&#39;]&#125;,</span><br><span class="line">   ...:                     index&#x3D;[8, 9, 10, 11])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [4]: frames &#x3D; [df1, df2, df3]</span><br><span class="line"> </span><br><span class="line">In [5]: result &#x3D; pd.concat(frames)</span><br></pre></td></tr></table></figure>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071032.png" alt="20210204071032"></p>
-</div>
-
-<p>KEY 参数:</p>
-<p><code>result = pd.concat(frames, keys=[&#39;x&#39;, &#39;y&#39;, &#39;z&#39;])</code></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071126.png" alt="20210204071126"></p>
-</div>
-
-<p>JOIN 参数:</p>
-<p>默认 join = ‘outer’, 为取并集的关系</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [8]: df4 &#x3D; pd.DataFrame(&#123;&#39;B&#39;: [&#39;B2&#39;, &#39;B3&#39;, &#39;B6&#39;, &#39;B7&#39;],</span><br><span class="line">   ...:                  &#39;D&#39;: [&#39;D2&#39;, &#39;D3&#39;, &#39;D6&#39;, &#39;D7&#39;],</span><br><span class="line">   ...:                  &#39;F&#39;: [&#39;F2&#39;, &#39;F3&#39;, &#39;F6&#39;, &#39;F7&#39;]&#125;,</span><br><span class="line">   ...:                 index&#x3D;[2, 3, 6, 7])</span><br><span class="line">   ...: </span><br><span class="line"> </span><br><span class="line">In [9]: result &#x3D; pd.concat([df1, df4], axis&#x3D;1)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071210.png" alt="20210204071210"></p>
-</div>
-
-<p>当设置 join = ‘inner’，则说明为取交集</p>
-<p><code>In [10]: result = pd.concat([df1, df4], axis=1, join=&#39;inner&#39;)</code></p>
-<p>结果：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071315.png" alt="20210204071315"></p>
-</div>
-
-<p>如果索引想从原始 DataFrame 重用确切索引：</p>
-<p><code>In [11]: result = pd.concat([df1, df4], axis=1, join_axes=[df1.index]) #设置索引为df1的索引</code></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204071446.png" alt="20210204071446"></p>
-</div>
-
-<h3 id="一、concat：沿着一条轴，将多个对象堆叠到一起"><a href="#一、concat：沿着一条轴，将多个对象堆叠到一起" class="headerlink" title="一、concat：沿着一条轴，将多个对象堆叠到一起"></a>一、concat：沿着一条轴，将多个对象堆叠到一起</h3><p>concat 方法相当于数据库中的全连接（union all），它不仅可以指定连接的方式（outer join 或 inner join）还可以指定按照某个轴进行连接。与数据库不同的是，它不会去重，但是可以使用 drop_duplicates 方法达到去重的效果。</p>
-<h3 id="二、merge：通过键拼接列"><a href="#二、merge：通过键拼接列" class="headerlink" title="二、merge：通过键拼接列"></a>二、merge：通过键拼接列</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">类似于关系型数据库的连接方式，可以根据一个或多个键将不同的DatFrame连接起来。该函数的典型应用场景是，针对同一个主键存在两张不同字段的表，根据主键整合到一张表里面。</span><br></pre></td></tr></table></figure>
-<h3 id="三、join：主要用于索引上的合并"><a href="#三、join：主要用于索引上的合并" class="headerlink" title="三、join：主要用于索引上的合并"></a>三、join：主要用于索引上的合并</h3><h3 id="四、使用-apply-函数实现-group-by-分组拼接"><a href="#四、使用-apply-函数实现-group-by-分组拼接" class="headerlink" title="四、使用 apply 函数实现 group by 分组拼接"></a>四、使用 apply 函数实现 group by 分组拼接</h3><div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072137.png" alt="20210204072137"></p>
-</div>
-
-<p>最后 4 行合并为 1 行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def ab(df):</span><br><span class="line">return&#39;,&#39;.join(df.values)</span><br><span class="line"></span><br><span class="line">df &#x3D; df.groupby([&#39;股票代码&#39;,&#39;股票简称&#39;])[&#39;所属概念&#39;].apply(ab)</span><br><span class="line">df &#x3D; df.reset_index()</span><br></pre></td></tr></table></figure>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072207.png" alt="20210204072207"></p>
-</div>
-
-<h3 id="python-把几个-DataFrame-合并成一个-DataFrame——merge-append-join-conca"><a href="#python-把几个-DataFrame-合并成一个-DataFrame——merge-append-join-conca" class="headerlink" title="python 把几个 DataFrame 合并成一个 DataFrame——merge,append,join,conca"></a>python 把几个 DataFrame 合并成一个 DataFrame——merge,append,join,conca</h3><p>1、merge</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, how&#x3D;&#39;inner&#39;, on&#x3D;None, left_on&#x3D;None, right_on&#x3D;None,</span><br><span class="line">         left_index&#x3D;False, right_index&#x3D;False, sort&#x3D;True,</span><br><span class="line">         suffixes&#x3D;(&#39;_x&#39;, &#39;_y&#39;), copy&#x3D;True, indicator&#x3D;False)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>left ︰   对象</li>
-<li>right ︰   另一个 对象</li>
-<li>on︰   要 加入 的 列   （名称） 。 必须 在 左 、   右 综合 对象 中 找到 。 如果 不 能 通过   left_index   和   right_index   是 假 ， 将 推断   DataFrames   中 的 列 的 交叉点 为 连接 键</li>
-<li>left_on ︰   从 左边 的 综合 使用 作为 键 列 。 可以 是 列名 或 数组 的 长度 等于 长度 综合</li>
-<li>right_on ︰   从 正确 的 综合 ， 以 用作 键 列 。 可以 是 列名 或 数组 的 长度 等于 长度 综合</li>
-<li>left_index ︰  如果为  True ， 则 使用 索引   （行 标签）   从 左 综合 作为 其 联接 键。 在 与 多重   （层次）  的 综合 ， 级别 数 必须 匹配 联接 键 从 右 综合 的 数目<br>r- ight_index ︰   相同 用法 作为 正确 综合   left_index<br>how︰   之一   ‘ 左 ‘， ‘ 右 ‘， ‘ 外在 ‘、   ‘ 内部 ‘。 默认 为 内部 。 每个 方法 的 更 详细 说明 请 参阅 ︰</li>
-<li>sort︰   综合 通过 联接 键 按 字典 顺序 对 结果 进行排序 。 默认值 为   True ， 设置 为   False 将 提高 性能 极大地 在 许多 情况下</li>
-<li>suffixes︰   字符串 后缀 并 不适 用于 重叠 列 的 元组 。 默认值 为   (‘_x’， ‘_y’)。</li>
-<li>copy︰   即使 重新索引 是 不 必要 总是 从 传递 的 综合 对象 ， 复制 的 数据   （默认值 True） 。 在 许多 情况下 不能 避免 ， 但 可能会 提高 性能   /   内存 使用情况 。 可以 避免 复制 上述 案件 有些 病理 但 尽管如此 提供 此 选项 。</li>
-<li>indicator︰  将 列 添加 到 输出 综合 呼吁   _merge   与 信息 源 的 每 一行 。 _merge   是 绝对类型 ， 并 对 观测 其 合并 键 只 出现 在   ‘ 左’  的 综合 ， 观测 其 合并 键 只 会出现 在   ‘ 正确’  的 综合 ， 和 两个 如果 观察 合并 关键 发现 在 两个   right_only   left_only  的 值 。</li>
-</ul>
-<p><code>result = pd.merge(left, right, on=&#39;key&#39;)</code></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072600.png" alt="20210204072600"></p>
-</div>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">result &#x3D; pd.merge(left, right, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">result &#x3D; pd.merge(left, right, how&#x3D;&#39;left&#39;, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">result &#x3D; pd.merge(left, right, how&#x3D;&#39;right&#39;, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">result &#x3D; pd.merge(left, right, how&#x3D;&#39;outer&#39;, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br></pre></td></tr></table></figure>
-<p>2、append</p>
-<p><code>result = df1.append(df2)</code></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072716.png" alt="20210204072716"></p>
-</div>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">result &#x3D; df1.append(df4)</span><br><span class="line"></span><br><span class="line">result &#x3D; df1.append([df2, df3])</span><br><span class="line"></span><br><span class="line">result &#x3D; df1.append(df4, ignore_index&#x3D;True)</span><br></pre></td></tr></table></figure>
-<p>4、join</p>
-<p><code>left.join(right, on=key_or_keys)</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(left, right, left_on&#x3D;key_or_keys, right_index&#x3D;True,</span><br><span class="line">      how&#x3D;&#39;left&#39;, sort&#x3D;False)</span><br></pre></td></tr></table></figure>
-<p><code>1.result = left.join(right, on=&#39;key&#39;)</code></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204072925.png" alt="20210204072925"></p>
-</div>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2.result &#x3D; left.join(right, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;])</span><br><span class="line"></span><br><span class="line">3.result &#x3D; left.join(right, on&#x3D;[&#39;key1&#39;, &#39;key2&#39;], how&#x3D;&#39;inner&#39;)</span><br></pre></td></tr></table></figure>
-<p>4、concat</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat(objs, axis&#x3D;0, join&#x3D;&#39;outer&#39;, join_axes&#x3D;None, ignore_index&#x3D;False,</span><br><span class="line">          keys&#x3D;None, levels&#x3D;None, names&#x3D;None, verify_integrity&#x3D;False,</span><br><span class="line">          copy&#x3D;True)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>objs︰   一个 序列 或 系列 、   综合 或 面板 对象 的 映射 。 如果 字典 中 传递 ， 将 作为 键 参数 ， 使用 排序 的 键 ， 除非 它 传递 ， 在 这 种情况下 的 值 将 会 选择   （见 下文）。 任何 没有任何 反对 将 默默地 被 丢弃 ， 除非 他们 都 没有 在 这 种情况下 将 引发   ValueError 。</li>
-<li>axis:   {0， 1， …}， 默认值 为 0。 要 连接 沿 轴 。</li>
-<li>join :   {‘ 内部 ‘、   ‘ 外 ‘}， 默认   ‘ 外 ‘。 如何 处理 其他   axis(es)   上 的 索引 。 联盟 内 、   外 的 交叉口 。</li>
-<li>ignore_index ︰   布尔值 、   默认   False 。 如果 为  True ， 则 不要 串联 轴 上 使用 的 索引 值 。 由此产生 的 轴 将 标记   0， … ， n - 1。 这 是 有用 的 如果 你 串联 串联 轴 没有 有意义 的 索引 信息 的 对象 。 请注意 在 联接 中 仍然 受到尊重 的 其他 轴 上 的 索引 值 。</li>
-<li>join_axes ︰   索引 对象 的 列表 。 具体 的 指标 ， 用于 其他   n - 1   轴 而不是 执行 内部 / 外部 设置 逻辑 。</li>
-<li>keys ︰   序列 ， 默认 为 无 。 构建 分层 索引 使用 通过 的 键 作为 最 外面 的 级别 。 如果 多个 级别 获得通过 ， 应 包含 元组 。</li>
-<li>levels ︰   列表 的 序列 ， 默认 为 无 。 具体 水平   （唯一 值）   用于 构建 多重 。 否则 ， 他们 将 推断 钥匙 。</li>
-<li>names ︰   列表中 ， 默认 为 无 。 由此产生 的 分层 索引 中 的 级 的 名称 。</li>
-<li>verify_integrity ︰   布尔值 、   默认   False 。 检查 是否 新 的 串联 的 轴 包含 重复项 。 这 可以 是 相对于 实际 数据 串联 非常 昂贵 。<br>副本 ︰   布尔值 、   默认   True 。 如果 为  False ， 请 不要 ， 不必要地 复制 数据 。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.frames &#x3D; [df1, df2, df3]</span><br><span class="line"></span><br><span class="line">2.result &#x3D; pd.concat(frames)</span><br></pre></td></tr></table></figure>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210204073202.png" alt="20210204073202"></p>
-</div>
-
-<p><code>3.result = pd.concat(frames, keys=[&#39;x&#39;, &#39;y&#39;, &#39;z&#39;])</code></p>
-<p><code>4.result.ix[&#39;y&#39;]</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    A   B   C   D</span><br><span class="line">4  A4  B4  C4  D4</span><br><span class="line">5  A5  B5  C5  D5</span><br><span class="line">6  A6  B6  C6  D6</span><br><span class="line">7  A7  B7  C7  D7</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5.result &#x3D; pd.concat([df1, df4], axis&#x3D;1)</span><br><span class="line"></span><br><span class="line">6.result &#x3D; pd.concat([df1, df4], axis&#x3D;1, join&#x3D;&#39;inner&#39;)</span><br><span class="line"></span><br><span class="line">7.result &#x3D; pd.concat([df1, df4], axis&#x3D;1, join_axes&#x3D;[df1.index])</span><br><span class="line"></span><br><span class="line">8.result &#x3D; pd.concat([df1, df4], ignore_index&#x3D;True)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Python库之Pandas</category>
-      </categories>
-      <tags>
-        <tag>Python库之Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pandas读取Excel文件时如何指定数据类型</title>
     <url>/2021/03/06/Pandas%E8%AF%BB%E5%8F%96Excel%E6%96%87%E4%BB%B6%E6%97%B6%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h3 id="只需指定转换器"><a href="#只需指定转换器" class="headerlink" title="只需指定转换器"></a>只需指定转换器</h3><p>“年龄”列的格式设置为字符串。 装载：</p>
@@ -1283,6 +1283,23 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python三天打鱼两天晒网_完美版</title>
+    <url>/2021/03/21/Python%E4%B8%89%E5%A4%A9%E6%89%93%E9%B1%BC%E4%B8%A4%E5%A4%A9%E6%99%92%E7%BD%91-%E5%AE%8C%E7%BE%8E%E7%89%88/</url>
+    <content><![CDATA[<p>三天打鱼两天晒网</p>
+<p>问题描述：中国有句俗语叫“三天打鱼两天晒网”。某人从 2010 年 1 月 1 日起开始“三天打鱼两天晒网”，问这个人在以后的某一天中是“打鱼”还是“晒网”。</p>
+<p>输入：键盘输入数据或者文件输入测试数据</p>
+<p>输出：判断的结果</p>
+<p>要求：输入日期的正确性验证，文件测试数据</p>
+<p>解题思路：核心思路就是得到给定的日期和给定的最开始的日期之间相隔的天数，然后以天数除以 5，得到余数，通过判断余数是大于 3 还是小于三，大于三则是晒网，小于三则是打鱼。(python)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># date input with the keyboard</span><br><span class="line">def get_days(date_input):</span><br><span class="line">    # get the days</span><br><span class="line">    date_base &#x3D; &#39;2010-01-01&#39;</span><br><span class="line">    # date_input &#x3D; input(&#39;please input the date you want to test with the form xxxx-xx-xx:&#39;)</span><br><span class="line">    # check its form and work out the answer</span><br><span class="line">    date_input &#x3D; datetime.strptime(date_input, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    date_base &#x3D; datetime.strptime(date_base, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    date_days &#x3D; (date_input - date_base).days</span><br><span class="line">    return date_days</span><br><span class="line"></span><br><span class="line"># to work out the result into the file out.txt</span><br><span class="line">def work_result(date_days,date_input):</span><br><span class="line">    mod_day &#x3D; date_days % 5</span><br><span class="line">    # date_input &#x3D; datetime.strptime(date_input, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    with open(&#39;out.txt&#39;, &#39;a&#39;) as file_out:</span><br><span class="line">        if mod_day &lt;&#x3D; 3:</span><br><span class="line">            file_out.write(date_input + &#39;  fishing\n&#39;)</span><br><span class="line">            print(date_input + &#39;  fishing&#39;)</span><br><span class="line">        else:</span><br><span class="line">            file_out.write(date_input + &#39;  webbing\n&#39;)</span><br><span class="line">            print(date_input + &#39;  webbing&#39;)</span><br><span class="line">    file_out.close()</span><br><span class="line"></span><br><span class="line"># test the aoolication with file date</span><br><span class="line">def file_date_test():</span><br><span class="line">    print(&#39;the following is file test&#39;)</span><br><span class="line">    with open(&#39;in.txt&#39;) as file:</span><br><span class="line">        context_line &#x3D; file.readline()</span><br><span class="line">        while context_line:</span><br><span class="line">            # remove the  character &#39;\n&#39;</span><br><span class="line">            context_line &#x3D; context_line.rstrip(&#39;\n&#39;)</span><br><span class="line">            # get the days</span><br><span class="line">            days_in_file &#x3D; get_days(context_line)</span><br><span class="line">            # work out into the file out.txt</span><br><span class="line">            work_result(days_in_file,context_line)</span><br><span class="line">            context_line &#x3D; file.readline()</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"># check the date</span><br><span class="line">def isVaildDate(date):</span><br><span class="line">    try:</span><br><span class="line">        time.strptime(date, &quot;%Y-%m-%d&quot;)</span><br><span class="line">        return True</span><br><span class="line">    except:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    date_input &#x3D; input(&#39;please input the date you want to test with the form xxxx-xx-xx:&#39;)</span><br><span class="line">    while not isVaildDate(date_input):</span><br><span class="line">        date_input &#x3D;input(&#39;date is illegal,please check and input it again:&#39;)</span><br><span class="line"></span><br><span class="line">    # expand ths test file use the input</span><br><span class="line">    with open(&#39;in.txt&#39;, &#39;a&#39;) as file_input:</span><br><span class="line">        size &#x3D; os.path.getsize(&#39;in.txt&#39;)</span><br><span class="line">        if size&#x3D;&#x3D;0:</span><br><span class="line">            file_input.write(date_input)</span><br><span class="line">        else:</span><br><span class="line">            file_input.write(&#39;\n&#39;+ date_input)</span><br><span class="line">    file_input.close()</span><br><span class="line"></span><br><span class="line">    # test the application</span><br><span class="line">    date_days &#x3D; get_days(date_input)</span><br><span class="line">    work_result(date_days,date_input)</span><br><span class="line">    # test the file input and output</span><br><span class="line">    file_date_test()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1648,6 +1665,28 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python从字符串中提取数字</title>
+    <url>/2021/03/21/Python%E4%BB%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">my_str &#x3D; &#39;123and456&#39;</span><br><span class="line"></span><br><span class="line">number &#x3D; filter(str.isdigit,  my_str )</span><br><span class="line"></span><br><span class="line"># number &#x3D; 123456</span><br></pre></td></tr></table></figure>
+<h3 id="使用正则表达式："><a href="#使用正则表达式：" class="headerlink" title="使用正则表达式："></a>使用正则表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; import re</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; re.findall(r&#39;\d+&#39;, &#39;hello 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line"></span><br><span class="line">[&#39;42&#39;, &#39;32&#39;, &#39;30&#39;]</span><br></pre></td></tr></table></figure>
+<h3 id="这也将匹配-42-bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用-b："><a href="#这也将匹配-42-bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用-b：" class="headerlink" title="这也将匹配 42 bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用\ b："></a>这也将匹配 42 bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用\ b：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; re.findall(r&#39;\b\d+\b&#39;, &#39;he33llo 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line"></span><br><span class="line">[&#39;42&#39;, &#39;32&#39;, &#39;30&#39;]</span><br></pre></td></tr></table></figure>
+<p>最终得到一个数字列表而不是字符串列表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; [int(s) for s in re.findall(r&#39;\b\d+\b&#39;, &#39;he33llo 42 I\&#39;m a 32 string 30&#39;)]</span><br><span class="line"></span><br><span class="line">[42, 32, 30]</span><br></pre></td></tr></table></figure>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><p>python str.isdigit() 有浮点数的判断</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.isdigit() 是个很好的工具，用来判断字符串中是否全为数字。而浮点数因为有 &quot;.&quot; ，所以会返还FALSE。</span><br><span class="line"></span><br><span class="line">参考示例：</span><br><span class="line"></span><br><span class="line"># 提示用户输入圆的半径，计算出该圆的周长和面积。要求如下：</span><br><span class="line"># 圆周率 π 值取 3.1415926</span><br><span class="line"># 如果输入的是负数和零，提示半径不能负数或者零</span><br><span class="line"># 计算机的结果保留两位小数</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    PI &#x3D; 3.1415926</span><br><span class="line">    radius &#x3D; input(&quot;请输入圆的半径：&quot;)</span><br><span class="line">    print(radius)</span><br><span class="line">    print(radius.isdigit())</span><br><span class="line">    if radius.isdigit():</span><br><span class="line">        radius &#x3D; float(radius)</span><br><span class="line">        # 计算元的周长和面积</span><br><span class="line">        circle_perimeter &#x3D; 2 * PI * radius</span><br><span class="line">        circle_area &#x3D; PI * radius * radius</span><br><span class="line">        print(&quot;圆的周长：%.2f \n圆的面积：%.2f&quot; % (circle_perimeter, circle_area))</span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line">        print(&quot;半径不能负数或者零&quot;)</span><br><span class="line">以上在输入半径：12.3 就会报错 。</span><br><span class="line"></span><br><span class="line">此时需要replace() 方法语法：</span><br><span class="line"></span><br><span class="line">str.replace(old, new[, max])</span><br><span class="line"></span><br><span class="line">参数</span><br><span class="line"></span><br><span class="line">old -- 将被替换的子字符串。</span><br><span class="line">new -- 新字符串，用于替换old子字符串。</span><br><span class="line">max -- 可选字符串, 替换不超过 max 次</span><br><span class="line"></span><br><span class="line">if radius.replace(&quot;.&quot;, &quot;&quot;).isdigit():   # 替换为空即可。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="闰年-判断的两种方式’"><a href="#闰年-判断的两种方式’" class="headerlink" title="闰年 判断的两种方式’"></a>闰年 判断的两种方式’</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先明确  什么是闰年？</span><br><span class="line"></span><br><span class="line">1、能被4整除，但不能被100整除；</span><br><span class="line"></span><br><span class="line">2、能被400整除；</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方案一：</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    year &#x3D; input(&quot;请输入要判断的年份（例如：2000）：&quot;)</span><br><span class="line">    if  year.isdigit():</span><br><span class="line">        year &#x3D; int(year)</span><br><span class="line">        result &#x3D; (year % 4 &#x3D;&#x3D; 0 and year % 100 !&#x3D; 0) or (year % 400 &#x3D;&#x3D; 0)</span><br><span class="line">        if result:</span><br><span class="line">            s &#x3D; &quot;是&quot;</span><br><span class="line">        else:</span><br><span class="line">            s &#x3D; &quot;不是&quot;</span><br><span class="line">        print(&quot;&#123;0&#125;年&#123;1&#125;闰年&quot;.format(year, s))</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入年份！&quot;)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方案二：</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    year &#x3D; input(&quot;请输入您要判断的年份（例如：2000）：&quot;)</span><br><span class="line">    if  year.isdigit():</span><br><span class="line">        year &#x3D; int(year)</span><br><span class="line">        result &#x3D; (year&#x2F;400 &#x3D;&#x3D; int(year&#x2F;400))or((year&#x2F;4 &#x3D;&#x3D; int(year&#x2F;4)) and (year&#x2F;100 !&#x3D; int(year&#x2F;100)))</span><br><span class="line">        if result:</span><br><span class="line">            s &#x3D; &quot;是&quot;</span><br><span class="line">        else:</span><br><span class="line">            s &#x3D; &quot;不是&quot;</span><br><span class="line">        print(&quot;&#123;0&#125;年&#123;1&#125;闰年!&quot;.format(year, s))</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入年份！&quot;)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方案三：</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    year &#x3D; input(&quot;请输入您要判断的年份（例如：2000）：&quot;)</span><br><span class="line">    if  year.isdigit():</span><br><span class="line">        yea &#x3D; int(year)</span><br><span class="line">        if (yea&#x2F;400 &#x3D;&#x3D; int(yea&#x2F;400))or((yea&#x2F;4 &#x3D;&#x3D; int(yea&#x2F;4)) and (yea&#x2F;100 !&#x3D; int(yea&#x2F;100))):</span><br><span class="line">            print(year+&quot;是闰年!&quot;)</span><br><span class="line">        else:</span><br><span class="line">            print(year+&quot;不是闰年!&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入年份！&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="字典的应用"><a href="#字典的应用" class="headerlink" title="字典的应用"></a>字典的应用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import random</span><br><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line">nums &#x3D; []</span><br><span class="line">for count in range(50):</span><br><span class="line">    nums.append(random.randint(1,100))</span><br><span class="line">sort_nums_dict&#x3D;defaultdict(list)</span><br><span class="line">for num in nums:</span><br><span class="line">    if num&gt;66:</span><br><span class="line">        sort_nums_dict[&#39;大于66的元素&#39;].append(num)</span><br><span class="line">    else:</span><br><span class="line">        sort_nums_dict[&#39;小于66的元素&#39;].append(num)</span><br><span class="line">print(sort_nums_dict)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import re</span><br><span class="line">s &#x3D; re.findall(r&#39;\d+&#39;, &#39;hello 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line">list_ &#x3D; []</span><br><span class="line">sum_&#x3D;0</span><br><span class="line">for i in s:</span><br><span class="line">    s1&#x3D;int(i)</span><br><span class="line">    list_.append(s1)</span><br><span class="line">print(list_)</span><br><span class="line">for i in list_:</span><br><span class="line">    sum_+&#x3D;i</span><br><span class="line">print(sum_)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[42, 32, 30]</span><br><span class="line">104</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python函数应用实例2</title>
     <url>/2021/02/28/Python%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B2/</url>
     <content><![CDATA[<h2 id="函数传值为-list-的坑"><a href="#函数传值为-list-的坑" class="headerlink" title="函数传值为 list 的坑"></a>函数传值为 list 的坑</h2><p>函数传入 list 参数时</p>
@@ -1867,6 +1906,17 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python列表切片之负数的含义代码示例</title>
+    <url>/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</url>
+    <content><![CDATA[<h3 id="python-列表切片之负数的含义代码示例"><a href="#python-列表切片之负数的含义代码示例" class="headerlink" title="python 列表切片之负数的含义代码示例"></a>python 列表切片之负数的含义代码示例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; list(range(10))</span><br><span class="line">print(a[::]) #复制一个列表</span><br><span class="line">print(a[::2]) #每隔2个取一次</span><br><span class="line">print(a[::3]) #每隔3个取一次</span><br><span class="line"></span><br><span class="line">print(a[::-1]) #表示反转字符串</span><br><span class="line">print(a[::-2]) #表示反转字符串,每隔2个取一次</span><br><span class="line">print(a[::-3]) #表示反转字符串,每隔3个取一次</span><br><span class="line">#由此得知最后一个位置参数表示间隔数</span><br><span class="line"></span><br><span class="line">print(a[-1::]) #-1表示倒着取1个</span><br><span class="line">print(a[-2::]) #-2表示倒着取2个</span><br><span class="line">print(a[-3::]) #-3表示倒着取3个</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(a[-2:-1:]) #-2,-1:表示倒着取下面为-2到-1区间的</span><br><span class="line">print(a[-4:-2:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line">print(a[-5:-1:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line"></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[0, 2, 4, 6, 8]</span><br><span class="line">[0, 3, 6, 9]</span><br><span class="line">[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span><br><span class="line">[9, 7, 5, 3, 1]</span><br><span class="line">[9, 6, 3, 0]</span><br><span class="line">[9]</span><br><span class="line">[8, 9]</span><br><span class="line">[7, 8, 9]</span><br><span class="line">[8]</span><br><span class="line">[6, 7]</span><br><span class="line">[5, 6, 7, 8]</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python基础之分数序列求和</title>
     <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%86%E6%95%B0%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/</url>
     <content><![CDATA[<h3 id="分数序列求和，分数自由输入，自由度较高"><a href="#分数序列求和，分数自由输入，自由度较高" class="headerlink" title="分数序列求和，分数自由输入，自由度较高"></a>分数序列求和，分数自由输入，自由度较高</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def eu(a,b):</span><br><span class="line">    if a &lt; b:</span><br><span class="line">        a, b &#x3D; b, a</span><br><span class="line">    r &#x3D; 1</span><br><span class="line">    while r !&#x3D; 0:</span><br><span class="line">        r &#x3D; a % b</span><br><span class="line">        a &#x3D; b</span><br><span class="line">        b &#x3D; r</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">a &#x3D; input(&#39;输入两个分数，以逗号分隔:&#39;)	# 输入两个分数如1&#x2F;2，3&#x2F;4 分数之间用,号分隔</span><br><span class="line">b &#x3D; a.split(&#39;,&#39;)</span><br><span class="line"></span><br><span class="line">num1 &#x3D; b[0].split(&#39;&#x2F;&#39;)</span><br><span class="line">num2 &#x3D; b[1].split(&#39;&#x2F;&#39;)</span><br><span class="line">sum1 &#x3D; int(num1[0])*int(num2[1]) + int(num2[0])*int(num1[1])</span><br><span class="line">sum2 &#x3D; int(num1[1])*int(num2[1])</span><br><span class="line">GCD &#x3D; eu(sum1,sum2)</span><br><span class="line"></span><br><span class="line">c &#x3D; int(sum1&#x2F;GCD)</span><br><span class="line">d &#x3D; int(sum2&#x2F;GCD)</span><br><span class="line"></span><br><span class="line">if c%d &#x3D;&#x3D; 0:</span><br><span class="line">    print(int(c&#x2F;d))</span><br><span class="line">else:</span><br><span class="line">    print(str(c)+ &#39;&#x2F;&#39;+str(d))</span><br></pre></td></tr></table></figure>
@@ -2000,6 +2050,21 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python寻找素数</title>
+    <url>/2021/03/21/Python%E5%AF%BB%E6%89%BE%E7%B4%A0%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="找素数，利用-else"><a href="#找素数，利用-else" class="headerlink" title="找素数，利用 else"></a>找素数，利用 else</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">k &#x3D; 0</span><br><span class="line">for num in range(2, 101):  # 生成从2到100的序列</span><br><span class="line">    for i in range(2, num):</span><br><span class="line">        if num % i &#x3D;&#x3D; 0:</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;生成的素数有:&#123;&#125;&#39;.format(num))</span><br><span class="line">        k +&#x3D; 1</span><br><span class="line"></span><br><span class="line">print(&#39;\n100以内的素数共有&#123;&#125;个&#39;.format(k))</span><br></pre></td></tr></table></figure>
+<h3 id="自由输入求素数个数"><a href="#自由输入求素数个数" class="headerlink" title="自由输入求素数个数"></a>自由输入求素数个数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">is_notprime &#x3D; [] #定义空列表，存放非素数</span><br><span class="line">is_prime &#x3D; []    #定义空列表，存放素数</span><br><span class="line"></span><br><span class="line">num &#x3D; input(&#39;Enter some numbers:&#39;).split()  # 由键盘输入一些数字，并以空格分隔</span><br><span class="line"></span><br><span class="line">num_list &#x3D; [int(j) for j in num]      # 用列表推导式并加以强制类型转换把输入的字符数字转换成 int 类型数据</span><br><span class="line"></span><br><span class="line">for s in num_list:</span><br><span class="line">    for i in range(2, s):</span><br><span class="line">        if s % i &#x3D;&#x3D; 0:</span><br><span class="line">            is_notprime.append(s)    # 将非素数添加到非素数空列表</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        is_prime.append(s)   #将是素数的数字添加到素数列表</span><br><span class="line"></span><br><span class="line"># 输出非素数及素数</span><br><span class="line">print(f&#39;非素数的数字有:&#123;is_notprime&#125;&#39;)</span><br><span class="line">print(f&#39;素数的数字有:&#123;is_prime&#125;&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="格式化求阶乘法"><a href="#格式化求阶乘法" class="headerlink" title="格式化求阶乘法"></a>格式化求阶乘法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def jiecheng(n):</span><br><span class="line">    result &#x3D; 1</span><br><span class="line">    while n&gt;0:</span><br><span class="line">        result *&#x3D;n</span><br><span class="line">        n -&#x3D;1</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">for i in range(1,4):</span><br><span class="line">    re &#x3D; jiecheng(i)</span><br><span class="line">    print(f&#39;&#123;i&#125;的阶乘为:&#123;re&#125;&#39;)</span><br><span class="line">#     print()</span><br></pre></td></tr></table></figure>
+<h3 id="寻找素数"><a href="#寻找素数" class="headerlink" title="寻找素数"></a>寻找素数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">寻找素数</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def is_prime(n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    判断一个数是否是素数</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if n &lt;&#x3D; 1:</span><br><span class="line">        return False</span><br><span class="line">    for i in range(2, int(math.sqrt(n) + 1)):</span><br><span class="line">        if n % i &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    primes &#x3D; [i for i in range(2,100) if is_prime(i)]    #从 2 开始，因为 1 显然不是质数</span><br><span class="line">    print (primes)</span><br></pre></td></tr></table></figure>
+<h3 id="一元二次方程求解"><a href="#一元二次方程求解" class="headerlink" title="一元二次方程求解"></a>一元二次方程求解</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">solving a quadratic equation</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from __future__ import division</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def quadratic_equation(a,b,c):</span><br><span class="line">    delta &#x3D; b*b - 4*a*c</span><br><span class="line">    if delta&lt;0:</span><br><span class="line">        return False</span><br><span class="line">    elif delta&#x3D;&#x3D;0:</span><br><span class="line">        return -(b&#x2F;(2*a))</span><br><span class="line">    else:</span><br><span class="line">        sqrt_delta &#x3D; math.sqrt(delta)</span><br><span class="line">        x1 &#x3D; (-b + sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        x2 &#x3D; (-b - sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        return x1, x2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    print (&quot;a quadratic equation: x^2 + 2x + 1 &#x3D; 0&quot;)</span><br><span class="line">    coefficients &#x3D; []</span><br><span class="line">    a &#x3D; input(&#39;Enter some numbers:&#39;).split( )</span><br><span class="line">    for i in a:</span><br><span class="line">        coefficients.append(int(i))</span><br><span class="line">    roots &#x3D; quadratic_equation(*coefficients)</span><br><span class="line">    if roots:</span><br><span class="line">        print (&quot;the result is:&quot;,roots)</span><br><span class="line">    else:</span><br><span class="line">        print (&quot;this equation has no solution.&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python序列得到所有元素索引及值的方法</title>
     <url>/2021/02/14/Python%E5%BA%8F%E5%88%97%E5%BE%97%E5%88%B0%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E7%B4%A2%E5%BC%95%E5%8F%8A%E5%80%BC%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h3 id="元祖序列的索引及值"><a href="#元祖序列的索引及值" class="headerlink" title="元祖序列的索引及值"></a>元祖序列的索引及值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x &#x3D; (18,20,&#39;黄&#39;,True,1.2)</span><br><span class="line">for i in range(len(x)):</span><br><span class="line">    print(&#39;这是第&#123;&#125;个字符&#123;&#125;&#39;.format(str(i+1),str(x[i])))</span><br></pre></td></tr></table></figure>
@@ -2031,6 +2096,18 @@ Out[23]: 16
 <pre><code>    0
 </code></pre>
 ]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python文件操作练习</title>
+    <url>/2021/03/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="文件操作练习，两数相加求和并输出到文件"><a href="#文件操作练习，两数相加求和并输出到文件" class="headerlink" title="文件操作练习，两数相加求和并输出到文件"></a>文件操作练习，两数相加求和并输出到文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;&quot;&quot;文件操作练习，两数相加求和并输出到文件&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    a1 &#x3D;input(&#39;Enter the first number(q or Q is quit):&#39;)   # 输入一个数或字母进行判断</span><br><span class="line">    if a1.lower() &#x3D;&#x3D; &#39;q&#39;:   # 如果输入的是q或者Q，则退出程序</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        a &#x3D; int(a1)      # 将输入的数字字符串强制转换成 int 整型数，进行计算</span><br><span class="line">        b &#x3D; int(input(&#39;Enter the second number:&#39;))</span><br><span class="line">        c &#x3D; str(a+b)</span><br><span class="line">        f &#x3D; open (&#39;d:&#x2F;out1.txt&#39;,&#39;a+&#39;)   #以追加的方式写入文件</span><br><span class="line">        f.write(f&#39;&#123;str(a)&#125; + &#123;str(b)&#125; &#x3D; &#123;c&#125;&#39; + &#39; \n&#39;)    # 格式化输出加法算式</span><br><span class="line">        f.seek(0)                                # 将鼠标指针移动到文件的开始处</span><br><span class="line">        print(f.read())   # 读出文件并打印输出到屏幕</span><br><span class="line">        f.close()         # 关闭文件</span><br></pre></td></tr></table></figure>
+<h3 id="另一种写法，推荐使用"><a href="#另一种写法，推荐使用" class="headerlink" title="另一种写法，推荐使用"></a>另一种写法，推荐使用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&#39;out0.docx&#39;,&#39;a+&#39;) as f,\</span><br><span class="line">    open(&#39;out0.docx&#39;,&#39;r+&#39;) as f1:    # 可同时操作多个文件，注意格式，一定是在代码块内写</span><br><span class="line"></span><br><span class="line">    f.write(&#39;dkalkdlak&#39;)</span><br><span class="line">    f.write(&#39;123456&#39;)</span><br><span class="line">    f.seek(0)</span><br><span class="line">    print(f1.read())</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Python基础</category>
       </categories>
@@ -2149,6 +2226,18 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python求前n项阶乘和与平方和</title>
+    <url>/2021/03/22/Python%E6%B1%82%E5%89%8Dn%E9%A1%B9%E9%98%B6%E4%B9%98%E5%92%8C%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C/</url>
+    <content><![CDATA[<h3 id="输入一个整数，计算阶乘然后求和"><a href="#输入一个整数，计算阶乘然后求和" class="headerlink" title="输入一个整数，计算阶乘然后求和"></a>输入一个整数，计算阶乘然后求和</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">factorial &#x3D; 1</span><br><span class="line">sum1 &#x3D; 0</span><br><span class="line">n &#x3D; int(input(&#39;输入一个整数，计算阶乘然后求和:&#39;))</span><br><span class="line">str1 &#x3D; &#39;&#39;</span><br><span class="line"></span><br><span class="line">for i in range(1, n + 1):</span><br><span class="line">	for j in range(1, i + 1):</span><br><span class="line">		factorial &#x3D; factorial * j</span><br><span class="line">	print(str(i) + &#39;!&#39;, &#39;&#x3D;&#39;, factorial)</span><br><span class="line">	sum1 &#x3D; sum1 + factorial</span><br><span class="line">	factorial &#x3D; 1</span><br><span class="line">	if n !&#x3D; j:</span><br><span class="line">		str1 &#x3D; str1 + str(j) + &#39;!+&#39;</span><br><span class="line">	else:</span><br><span class="line">		str1 &#x3D; str1 + str(j) + &#39;!&#39;</span><br><span class="line">print(str1, &#39;&#x3D;&#39;, sum1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="前-n-项数字之和平方"><a href="#前-n-项数字之和平方" class="headerlink" title="前 n 项数字之和平方"></a>前 n 项数字之和平方</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">用函数来写</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">def aSum(n):</span><br><span class="line">	sum &#x3D; 0</span><br><span class="line">	for i in range(1, n + 1):</span><br><span class="line">		sum +&#x3D; i * i</span><br><span class="line">	return sum</span><br><span class="line"></span><br><span class="line">print(aSum(2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">for 循环来写</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">str1 &#x3D; &#39;&#39;</span><br><span class="line">sum1 &#x3D; 0</span><br><span class="line">n &#x3D; int(input(&#39;Type n:&#39;))</span><br><span class="line">total &#x3D; 0</span><br><span class="line">for i in range(1, n + 1):</span><br><span class="line">	total +&#x3D; i * i 						# total +&#x3D; i **2  也是可以的</span><br><span class="line">	print(str(i)+ &#39;^2&#39;, &#39;&#x3D;&#39;, total)</span><br><span class="line">	sum1 &#x3D; sum1 + total</span><br><span class="line">	total &#x3D; 0</span><br><span class="line">	if n !&#x3D; i:</span><br><span class="line">		str1 &#x3D; str1 + str(i) + &#39;^2+&#39;</span><br><span class="line">	else:</span><br><span class="line">		str1 &#x3D; str1 + str(i) + &#39;^2&#39;</span><br><span class="line">print(str1, &#39;&#x3D;&#39;, sum1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">平方和与平方和之差</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int((3 * n ** 2 + 2 * n) * (1 - n ** 2) &#x2F; 12)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int(n * (n + 1) * (2 * n + 1) &#x2F; 6 - (n * (n + 1) &#x2F; 2)** 2)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 前 n 项数字之和平方</span><br><span class="line"></span><br><span class="line">def square_sum(numbers):</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for each in range(1,numbers+1):</span><br><span class="line">        total &#x3D; total + each</span><br><span class="line">    return total ** 2</span><br><span class="line"></span><br><span class="line">print(square_sum(3))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python统计list中各元素出现的次数</title>
     <url>/2021/02/14/Python%E7%BB%9F%E8%AE%A1list%E4%B8%AD%E5%90%84%E5%85%83%E7%B4%A0%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/</url>
     <content><![CDATA[<h3 id="用-python-统计-list-中各元素出现的次数（同理统计字符串中各字符出现的次数）"><a href="#用-python-统计-list-中各元素出现的次数（同理统计字符串中各字符出现的次数）" class="headerlink" title="用 python 统计 list 中各元素出现的次数（同理统计字符串中各字符出现的次数）"></a>用 python 统计 list 中各元素出现的次数（同理统计字符串中各字符出现的次数）</h3><p>统计 list 中各元素出现的次数，下面的方法也适用于统计字符串中各字符出现的次数</p>
@@ -2174,25 +2263,25 @@ Out[23]: 16
     <title>Python语法基础练习题</title>
     <url>/2021/03/06/Python%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</url>
     <content><![CDATA[<h3 id="两数之间的素数个数（求素数算法大全）"><a href="#两数之间的素数个数（求素数算法大全）" class="headerlink" title="两数之间的素数个数（求素数算法大全）"></a>两数之间的素数个数（求素数算法大全）</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、这种易理解</span><br><span class="line">L1 &#x3D; []</span><br><span class="line">count &#x3D; 0</span><br><span class="line">for x in range(1, 100):</span><br><span class="line">    n &#x3D; 0</span><br><span class="line">    for y in range(1, x + 1):</span><br><span class="line">        if x % y &#x3D;&#x3D; 0:</span><br><span class="line">            n &#x3D; n + 1</span><br><span class="line">    if n &#x3D;&#x3D; 2:</span><br><span class="line">        count +&#x3D;1</span><br><span class="line">        L1.append(x)</span><br><span class="line">print(L1)</span><br><span class="line">print(count)</span><br><span class="line"></span><br><span class="line">2、计算 2-100 之间素数的个数，返回结果。格式化字符串，标准</span><br><span class="line"></span><br><span class="line">def primeNum(f):</span><br><span class="line">    def f1():</span><br><span class="line">        sum_pri &#x3D; 0</span><br><span class="line">        for i in range(2,101):</span><br><span class="line">            for j in  range(2,i):</span><br><span class="line">                if i % j &#x3D;&#x3D; 0:</span><br><span class="line">                    break</span><br><span class="line">                elif j &#x3D;&#x3D; i - 1:</span><br><span class="line">                    sum_pri +&#x3D; 1</span><br><span class="line">        return f(sum_pri+1)</span><br><span class="line">    return f1</span><br><span class="line">@primeNum</span><br><span class="line">def f(p):</span><br><span class="line">    print(&quot;2-100之间共有&#123;&#125;个素数&quot;.format(p))</span><br><span class="line">f()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="批量生成虚拟姓名"><a href="#批量生成虚拟姓名" class="headerlink" title="批量生成虚拟姓名"></a>批量生成虚拟姓名</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">firstname &#x3D; &#39;赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许&#39;</span><br><span class="line">second &#x3D; &#39;中万斯近元伟丽利国士文连百宏可立成海友南广云基&#39;</span><br><span class="line">third &#x3D; &#39;隆智渝顺乐天杰夫煜兵思霆炜祺亮剀炫翔维瑞韬嘉林庆玮勤栋源路焕霖彩明邦闻朵皓瀚荣奕涓艺&#39;</span><br><span class="line">namelist &#x3D; []</span><br><span class="line">many &#x3D; input(&#39;请输入需要手成姓名的数量:\n&#39;)</span><br><span class="line">for i in range(int(many)):</span><br><span class="line">data &#x3D; [2,3]</span><br><span class="line">namelen &#x3D; random.choice(data)</span><br><span class="line">if namelen&#x3D;&#x3D;2:</span><br><span class="line">newname &#x3D; random.choice(firstname)+random.choice(second)</span><br><span class="line">else:</span><br><span class="line">newname &#x3D; random.choice(firstname)+random.choice(second)+random.choice(third)</span><br><span class="line">namelist.append(newname)</span><br><span class="line">print(&#39;生成的虚拟姓名列表为:\n&#39; + &#39;\n&#39;.join(namelist))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="初学函数，求幂指数练手程序"><a href="#初学函数，求幂指数练手程序" class="headerlink" title="初学函数，求幂指数练手程序"></a>初学函数，求幂指数练手程序</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def jiecheng(num,zhishu):</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">求一个数的幂指数</span><br><span class="line">:param num:</span><br><span class="line">:param zhi:</span><br><span class="line">:return:</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">print(&#39;结果是：&#39;)</span><br><span class="line">restult &#x3D; num \*\* zhi</span><br><span class="line">return restult</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">num &#x3D; input(&#39;一个数\（输入 q 退出程序）:&#39;)</span><br><span class="line">if num.lower() &#x3D;&#x3D;&#39;q&#39;:</span><br><span class="line">break</span><br><span class="line">else:</span><br><span class="line">num &#x3D; int(num)</span><br><span class="line">zhi &#x3D; int(input(&#39;请输入这个数的指数：&#39;))</span><br><span class="line">res &#x3D; jiecheng(num,zhishu)</span><br><span class="line">print(&#39;最后的结果是:&#39;+ str(res))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="获取汉字区位码"><a href="#获取汉字区位码" class="headerlink" title="获取汉字区位码"></a>获取汉字区位码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def getcode(chinese):</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">获取汉字对应的区位码</span><br><span class="line">:param 单个汉字</span><br><span class="line">:return:获取到的区位码</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">barry &#x3D; chinese.encode(&#39;gb2312&#39;)</span><br><span class="line">code &#x3D; &#39;&#123;:02d&#125;&#39;.format(barry[0] - 160) + &#39;&#123;:02d&#125;&#39;.format(barry[1] - 160)</span><br><span class="line">return code</span><br><span class="line">while 1:</span><br><span class="line">name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">for word in name:</span><br><span class="line">print(word,getcode(word))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="python-文件操作"><a href="#python-文件操作" class="headerlink" title="python 文件操作"></a>python 文件操作</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># 1)创建一个一级目录</span><br><span class="line"></span><br><span class="line">path &#x3D; &#39;c:\\demo&#39;</span><br><span class="line"></span><br><span class="line">if not os.path.exists(path):</span><br><span class="line">os.mkdir(path)</span><br><span class="line">print(&#39;目录创建成功&#39;)</span><br><span class="line">else:</span><br><span class="line">print(&#39;目录已经存在&#39;)</span><br><span class="line"></span><br><span class="line"># 2)删除一个一级目录</span><br><span class="line"></span><br><span class="line">path &#x3D; &#39;c:\\demo&#39;</span><br><span class="line">if os.path.exists(path):</span><br><span class="line">os.rmdir(path)</span><br><span class="line">print(&#39;目录删除成功&#39;)</span><br><span class="line">else:</span><br><span class="line">print(&#39;目录不存在&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="批量创建文件操作"><a href="#批量创建文件操作" class="headerlink" title="批量创建文件操作"></a>批量创建文件操作</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import os</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">path &#x3D; input(&#39;请输入文件保存地址：&#39;)</span><br><span class="line">num &#x3D; int(input(&#39;请输入创建文件的数量：&#39;))</span><br><span class="line">for i in range(num):</span><br><span class="line">t &#x3D; datetime.datetime.now()</span><br><span class="line">file &#x3D; os.path.join(path,t.strftime(&#39;%Y%m%d%H%M%S&#39;) + &#39;.txt&#39;)</span><br><span class="line">open(file,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">time.sleep(1)</span><br><span class="line">i +&#x3D; 1</span><br><span class="line">print(&#39;创建成功！&#39;)</span><br><span class="line">os.startfile(path)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="函数求最大-、小、个数的练习"><a href="#函数求最大-、小、个数的练习" class="headerlink" title="函数求最大 、小、个数的练习"></a>函数求最大 、小、个数的练习</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def findmax(\*l):</span><br><span class="line">if l &#x3D;&#x3D; []:</span><br><span class="line">return</span><br><span class="line">else:</span><br><span class="line">Max &#x3D; l[0]</span><br><span class="line">for i in l:</span><br><span class="line">if i &gt; Max:</span><br><span class="line">Max &#x3D; i</span><br><span class="line">return Max</span><br><span class="line"></span><br><span class="line">def findmin(\*l):</span><br><span class="line">if l &#x3D;&#x3D; []:</span><br><span class="line">return</span><br><span class="line">else:</span><br><span class="line">Min &#x3D; l[0]</span><br><span class="line">for i in l:</span><br><span class="line">if i &lt; Min:</span><br><span class="line">Min &#x3D; i</span><br><span class="line">return Min</span><br><span class="line"></span><br><span class="line">def findlen(\*l):</span><br><span class="line">a &#x3D; len(l)</span><br><span class="line">return a</span><br><span class="line"></span><br><span class="line">x &#x3D; input(&#39;请输入数字，并用空格隔开:&#39;).split() #.split()用于分隔关对字符串进行切片操作</span><br><span class="line">last &#x3D; []</span><br><span class="line">for i in x:</span><br><span class="line">last.append(int(i))</span><br><span class="line">print(&#39;max:&#39;,findmax(*last))</span><br><span class="line">print(&#39;min:&#39;,findmin(*last))</span><br><span class="line">print(&#39;max:&#39;,findlen(\*last))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="函数复习-给定数字区间求素数个数"><a href="#函数复习-给定数字区间求素数个数" class="headerlink" title="函数复习 给定数字区间求素数个数"></a>函数复习 给定数字区间求素数个数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def sushu(lower,upper):</span><br><span class="line">lei &#x3D; []</span><br><span class="line">for num in range(lower,upper+1):</span><br><span class="line">if num &gt; 1:</span><br><span class="line">for i in range(2,num):</span><br><span class="line">if (num % i ) &#x3D;&#x3D; 0:</span><br><span class="line">break</span><br><span class="line">else:</span><br><span class="line">lei.append(num)</span><br><span class="line">print(&#39;求的素数共计&#39;+ str(len(lei)) +&#39;个。\n&#39;,&#39;分别是:&#39;,lei)</span><br><span class="line">while 1:</span><br><span class="line">lower &#x3D; int(input(&#39;输入区间最小值:&#39;))</span><br><span class="line">upper &#x3D; int(input(&#39;输入区间最大值:&#39;))</span><br><span class="line">sushu(lower, upper)</span><br><span class="line">print()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="计算题基础练习"><a href="#计算题基础练习" class="headerlink" title="计算题基础练习"></a>计算题基础练习</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">计算1-2+3-4+5-6+...+99的积是多少</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">for i in range(1,100):</span><br><span class="line">    if i % 2 &#x3D;&#x3D; 0:</span><br><span class="line">        sum -&#x3D;  i</span><br><span class="line">    else:</span><br><span class="line">        sum +&#x3D; i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<h3 id="批量生成虚拟姓名"><a href="#批量生成虚拟姓名" class="headerlink" title="批量生成虚拟姓名"></a>批量生成虚拟姓名</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">firstname &#x3D; &#39;赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许&#39;</span><br><span class="line"></span><br><span class="line">second &#x3D; &#39;中万斯近元伟丽利国士文连百宏可立成海友南广云基&#39;</span><br><span class="line"></span><br><span class="line">third &#x3D; &#39;隆智渝顺乐天杰夫煜兵思霆炜祺亮剀炫翔维瑞韬嘉林庆玮勤栋源路焕霖彩明邦闻朵皓瀚荣奕涓艺&#39;</span><br><span class="line"></span><br><span class="line">namelist &#x3D; []</span><br><span class="line"></span><br><span class="line">many &#x3D; input(&#39;请输入需要生成姓名的数量:\n&#39;)</span><br><span class="line">for i in range(int(many)):</span><br><span class="line">    data &#x3D; [2,3]</span><br><span class="line">    namelen &#x3D; random.choice(data)</span><br><span class="line">    if namelen&#x3D;&#x3D;2:</span><br><span class="line">        newname &#x3D; random.choice(firstname)+random.choice(second)</span><br><span class="line">    else:</span><br><span class="line">        newname &#x3D; random.choice(firstname)+random.choice(second)+random.choice(third)</span><br><span class="line">    namelist.append(newname)</span><br><span class="line"></span><br><span class="line">print(&#39;生成的虚拟姓名列表为:\n&#39; + &#39;\n&#39;.join(namelist))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="初学函数，求幂指数练手程序"><a href="#初学函数，求幂指数练手程序" class="headerlink" title="初学函数，求幂指数练手程序"></a>初学函数，求幂指数练手程序</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def jiecheng(num,zhishu):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    求一个数的幂指数</span><br><span class="line">    :param num:</span><br><span class="line">    :param zhi:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    print(&#39;结果是：&#39;)</span><br><span class="line">    restult &#x3D; num ** zhi</span><br><span class="line">    return restult</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    num &#x3D; input(&#39;一个数\（输入q退出程序）:&#39;)</span><br><span class="line">    if num.lower() &#x3D;&#x3D;&#39;q&#39;:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        num &#x3D; int(num)</span><br><span class="line">    zhi &#x3D; int(input(&#39;请输入这个数的指数：&#39;))</span><br><span class="line">    res &#x3D; jiecheng(num,zhishu)</span><br><span class="line">    print(&#39;最后的结果是:&#39;+ str(res))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="获取汉字区位码"><a href="#获取汉字区位码" class="headerlink" title="获取汉字区位码"></a>获取汉字区位码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">def getcode(chinese):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    获取汉字对应的区位码</span><br><span class="line">    :param 单个汉字</span><br><span class="line">    :return:获取到的区位码</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    barry &#x3D; chinese.encode(&#39;gb2312&#39;)</span><br><span class="line">    code &#x3D; &#39;&#123;:02d&#125;&#39;.format(barry[0] - 160) + &#39;&#123;:02d&#125;&#39;.format(barry[1] - 160)</span><br><span class="line">    return code</span><br><span class="line">while 1:</span><br><span class="line">    name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">    for word in name:</span><br><span class="line">        print(word,getcode(word))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="python-文件操作"><a href="#python-文件操作" class="headerlink" title="python 文件操作"></a>python 文件操作</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># 1)创建一个一级目录</span><br><span class="line">path &#x3D; &#39;c:\\demo&#39;</span><br><span class="line"></span><br><span class="line">if not os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br><span class="line">    print(&#39;目录创建成功&#39;)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;目录已经存在&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 2)删除一个一级目录</span><br><span class="line">path &#x3D; &#39;c:\\demo&#39;</span><br><span class="line">if os.path.exists(path):</span><br><span class="line">    os.rmdir(path)</span><br><span class="line">    print(&#39;目录删除成功&#39;)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;目录不存在&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="批量创建文件操作"><a href="#批量创建文件操作" class="headerlink" title="批量创建文件操作"></a>批量创建文件操作</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    path &#x3D; input(&#39;请输入文件保存地址：&#39;)</span><br><span class="line">    num &#x3D; int(input(&#39;请输入创建文件的数量：&#39;))</span><br><span class="line">    for i in range(num):</span><br><span class="line">        t &#x3D; datetime.datetime.now()</span><br><span class="line">        file &#x3D; os.path.join(path,t.strftime(&#39;%Y%m%d%H%M%S&#39;) + &#39;.txt&#39;)</span><br><span class="line">        open(file,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        i +&#x3D; 1</span><br><span class="line">    print(&#39;创建成功！&#39;)</span><br><span class="line">    os.startfile(path)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="函数求最大-、小、个数的练习"><a href="#函数求最大-、小、个数的练习" class="headerlink" title="函数求最大 、小、个数的练习"></a>函数求最大 、小、个数的练习</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def findmax(*l):</span><br><span class="line">    if l &#x3D;&#x3D; []:</span><br><span class="line">        return</span><br><span class="line">    else:</span><br><span class="line">        Max &#x3D; l[0]</span><br><span class="line">        for i in l:</span><br><span class="line">            if i &gt; Max:</span><br><span class="line">                Max &#x3D; i</span><br><span class="line">        return Max</span><br><span class="line"></span><br><span class="line">def findmin(*l):</span><br><span class="line">    if l &#x3D;&#x3D; []:</span><br><span class="line">        return</span><br><span class="line">    else:</span><br><span class="line">        Min &#x3D; l[0]</span><br><span class="line">        for i in l:</span><br><span class="line">            if i &lt; Min:</span><br><span class="line">                Min &#x3D; i</span><br><span class="line">        return Min</span><br><span class="line"></span><br><span class="line">def findlen(*l):</span><br><span class="line">    a &#x3D; len(l)</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">x &#x3D; input(&#39;请输入数字，并用空格隔开:&#39;).split()   #.split()用于分隔关对字符串进行切片操作</span><br><span class="line">last &#x3D; []</span><br><span class="line">for i in x:</span><br><span class="line">    last.append(int(i))</span><br><span class="line">print(&#39;max:&#39;,findmax(*last))</span><br><span class="line">print(&#39;min:&#39;,findmin(*last))</span><br><span class="line">print(&#39;max:&#39;,findlen(*last))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="函数复习-给定数字区间求素数个数"><a href="#函数复习-给定数字区间求素数个数" class="headerlink" title="函数复习 给定数字区间求素数个数"></a>函数复习 给定数字区间求素数个数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def sushu(lower,upper):</span><br><span class="line">    lei &#x3D; []</span><br><span class="line">    for num in range(lower,upper+1):</span><br><span class="line">        if num &gt; 1:</span><br><span class="line">            for i in range(2,num):</span><br><span class="line">                if (num % i ) &#x3D;&#x3D; 0:</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                lei.append(num)</span><br><span class="line">    print(&#39;求的素数共计&#39;+ str(len(lei)) +&#39;个。\n&#39;,&#39;分别是:&#39;,lei)</span><br><span class="line">while 1:</span><br><span class="line">    lower &#x3D; int(input(&#39;输入区间最小值:&#39;))</span><br><span class="line">    upper &#x3D; int(input(&#39;输入区间最大值:&#39;))</span><br><span class="line">    sushu(lower, upper)</span><br><span class="line">    print()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="计算题基础练习"><a href="#计算题基础练习" class="headerlink" title="计算题基础练习"></a>计算题基础练习</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">计算1-2+3-4+5-6+...+99的积是多少</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">for i in range(1,100):</span><br><span class="line">    if i % 2 &#x3D;&#x3D; 0:</span><br><span class="line">        sum -&#x3D;  i</span><br><span class="line">    else:</span><br><span class="line">        sum +&#x3D; i</span><br><span class="line">print(sum)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def fib_recur(n):</span><br><span class="line">    assert n &gt;&#x3D; 0</span><br><span class="line">    if n in (0, 1):</span><br><span class="line">        return n</span><br><span class="line">    return fib_recur(n - 1) + fib_recur(n - 2)</span><br><span class="line"></span><br><span class="line">for i in range(20):</span><br><span class="line">    print(fib_recur(i), end&#x3D;&quot; &quot;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2）递推法</span><br><span class="line"></span><br><span class="line">def fib_loop(n):</span><br><span class="line">    a, b &#x3D; 0, 1</span><br><span class="line">    for i in range(n):</span><br><span class="line">        a, b &#x3D; b, a + b</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">for i in range(20):</span><br><span class="line">    print(fib_loop(i), end&#x3D;&quot; &quot;)</span><br></pre></td></tr></table></figure>
 <h3 id="求-2-22-222…的和"><a href="#求-2-22-222…的和" class="headerlink" title="求 2+22+222…的和"></a>求 2+22+222…的和</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; eval(input(&#39;请输入一个数字:&#39;))</span><br><span class="line">n &#x3D; eval(input(&#39;请输入次数n:&#39;))</span><br><span class="line">sum &#x3D; []</span><br><span class="line">sum2 &#x3D; 0</span><br><span class="line">s1 &#x3D; 0</span><br><span class="line">i &#x3D; 0</span><br><span class="line">while i &lt;&#x3D; n-1:</span><br><span class="line">    s1 &#x3D;s1+(a*(10**i))</span><br><span class="line">    sum.append(s1)</span><br><span class="line">    i +&#x3D; 1</span><br><span class="line">sum1 &#x3D; [str(i) for i in sum]</span><br><span class="line">for j in sum:</span><br><span class="line">    sum2 +&#x3D; j</span><br><span class="line">print(&#39;+&#39;.join(sum1),&#39;&#x3D;&#39;,sum2)</span><br><span class="line"></span><br><span class="line">2）看了大神的写法</span><br><span class="line"></span><br><span class="line">a &#x3D; input(&#39;输入数字&gt;&gt;&gt;&#39;)</span><br><span class="line">count &#x3D; int(input(&#39;几个数字相加&gt;&gt;&gt;&#39;))</span><br><span class="line">ret &#x3D; []</span><br><span class="line">for i in range(1,count+1):</span><br><span class="line">    ret.append(int(a*i))</span><br><span class="line">sum1 &#x3D; [str(j) for j in ret]</span><br><span class="line">print(&#39;+&#39;.join(sum1),&#39;&#x3D;&#39;,sum(ret))</span><br></pre></td></tr></table></figure>
 <h3 id="吃桃子问题"><a href="#吃桃子问题" class="headerlink" title="吃桃子问题"></a>吃桃子问题</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">peach &#x3D; 1</span><br><span class="line">print(&#39;第10天吃之前就剩1个桃子&#39;)</span><br><span class="line">for i in range(9,0,-1):</span><br><span class="line">    p &#x3D; (peach+1) * 2</span><br><span class="line">print(&#39;第1天共摘了&#123;&#125;个桃子&#39;.format(peach))</span><br></pre></td></tr></table></figure>
-<h3 id="阶乘之和"><a href="#阶乘之和" class="headerlink" title="阶乘之和"></a>阶乘之和</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">      if x &#x3D;&#x3D; 0:</span><br><span class="line">           return 0</span><br><span class="line">      elif x &#x3D;&#x3D; 1:</span><br><span class="line">           return 1</span><br><span class="line">      else:</span><br><span class="line">            return (x * f(x - 1))</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">        info &#x3D; int(input(&#39;&gt;&gt;&gt;:&#39;))</span><br><span class="line">        print(f(info))</span><br><span class="line">        info &#x3D; input(&#39;还想试试吗？(输入n退出)&#39;)</span><br><span class="line">        if info &#x3D;&#x3D; &#39;n&#39;:</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<h3 id="循环求一个数的阶乘"><a href="#循环求一个数的阶乘" class="headerlink" title="循环求一个数的阶乘"></a>循环求一个数的阶乘</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">      if x &#x3D;&#x3D; 0:</span><br><span class="line">           return 0</span><br><span class="line">      elif x &#x3D;&#x3D; 1:</span><br><span class="line">           return 1</span><br><span class="line">      else:</span><br><span class="line">            return (x * f(x - 1))</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">        info &#x3D; int(input(&#39;&gt;&gt;&gt;:&#39;))</span><br><span class="line">        print(f(info))</span><br><span class="line">        info &#x3D; input(&#39;还想试试吗？(输入n退出)&#39;)</span><br><span class="line">        if info &#x3D;&#x3D; &#39;n&#39;:</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
 <h3 id="3-和-5-的倍数之和"><a href="#3-和-5-的倍数之和" class="headerlink" title="3 和 5 的倍数之和"></a>3 和 5 的倍数之和</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">l &#x3D; []</span><br><span class="line">for i in range(1,1000):</span><br><span class="line">    if i%3 &#x3D;&#x3D; 0 and i%5 &#x3D;&#x3D; 0:</span><br><span class="line">        sum +&#x3D; 1</span><br><span class="line">        l.append(i)</span><br><span class="line">print(l)</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
 <h3 id="斐波那契数列数列之和"><a href="#斐波那契数列数列之和" class="headerlink" title="斐波那契数列数列之和"></a>斐波那契数列数列之和</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">a,b &#x3D; 0,1</span><br><span class="line">while b &lt; 4000000:</span><br><span class="line">    if b%2 &#x3D;&#x3D; 0:</span><br><span class="line">        sum +&#x3D; b</span><br><span class="line">    a,b &#x3D; b,a+b</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
 <h3 id="format-格式化输出"><a href="#format-格式化输出" class="headerlink" title="format 格式化输出"></a>format 格式化输出</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mystring &#x3D; input(&#39;输入一带有字母数字特殊符号的字符串:&#39;)</span><br><span class="line">alpha &#x3D; 0</span><br><span class="line">space &#x3D; 0</span><br><span class="line">number &#x3D; 0</span><br><span class="line">other &#x3D; 0</span><br><span class="line">for i in mystring:</span><br><span class="line">    if i &gt;&#x3D; &#39;a&#39; and i &lt;&#x3D; &#39;z&#39; or i &gt;&#x3D; &#39;A&#39; and i &lt;&#x3D; &#39;Z&#39;:</span><br><span class="line">        alpha +&#x3D; 1</span><br><span class="line">    elif i &gt;&#x3D; &#39;0&#39; and i &lt;&#x3D; &#39;9&#39;:</span><br><span class="line">        number +&#x3D; 1</span><br><span class="line">    elif i.isspace():</span><br><span class="line">        space +&#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        other +&#x3D; 1</span><br><span class="line">print(&#39;alpha:&#123;&#125;,number:&#123;&#125;,space:&#123;&#125;,other:&#123;&#125;&#39;.format(alpha,number,space,other))</span><br></pre></td></tr></table></figure>
 <h3 id="1000-以内的完数（经典）"><a href="#1000-以内的完数（经典）" class="headerlink" title="1000 以内的完数（经典）"></a>1000 以内的完数（经典）</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for x in range(1,1001):</span><br><span class="line">    factor &#x3D; []</span><br><span class="line">    for i in range(1,x):</span><br><span class="line">        if x%i &#x3D;&#x3D; 0:</span><br><span class="line">            factor.append(i)</span><br><span class="line">    if sum(factor) &#x3D;&#x3D; x:</span><br><span class="line">        print(x)</span><br></pre></td></tr></table></figure>
-<h3 id="时间的格式化"><a href="#时间的格式化" class="headerlink" title="时间的格式化"></a>时间的格式化</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line">now &#x3D; datetime.now()</span><br><span class="line">print(now.strftime(&#39;%Y-%m-%d&#39;))</span><br><span class="line">print(now.strftime(&#39;%Y%m%d&#39;))</span><br></pre></td></tr></table></figure>
-<h3 id="自定义输入数据的个数并对其进去大小求平均值"><a href="#自定义输入数据的个数并对其进去大小求平均值" class="headerlink" title="自定义输入数据的个数并对其进去大小求平均值"></a>自定义输入数据的个数并对其进去大小求平均值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def fact():</span><br><span class="line">    l &#x3D; []</span><br><span class="line">    for i in range(5):</span><br><span class="line">        temp &#x3D; input(&#39;请输入第%d个数字&#39;%(i+1))</span><br><span class="line">        temp1 &#x3D; int(temp)</span><br><span class="line">        l.append(temp1)</span><br><span class="line">    print(l)</span><br><span class="line">def fact1(l):</span><br><span class="line">    l.sort()</span><br><span class="line">    l2 &#x3D; l[1:-1]</span><br><span class="line">    return round((sum(l2)&#x2F;len(l2)),1)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    fact()</span><br><span class="line">    print(fact1(l))</span><br><span class="line"></span><br><span class="line">lst &#x3D; []</span><br><span class="line">y &#x3D; int(input(&#39;请输入您所要数据的个数:&#39;))</span><br><span class="line">for i in range(y):</span><br><span class="line">    tmp &#x3D; input(&#39;请输入%d个数:&#39;%(i+1))</span><br><span class="line">    tmp1 &#x3D; float(tmp)</span><br><span class="line">    lst.append(tmp1)</span><br><span class="line">print(&#39;你输入的数据为:&#39;)</span><br><span class="line">print(lst)</span><br><span class="line">lst.sort()</span><br><span class="line">lst1 &#x3D; lst[1:-1]</span><br><span class="line">x &#x3D; round((sum(lst1)&#x2F;len(lst1)),1)</span><br><span class="line">print(&#39;这组数的最大值为&#123;&#125;,最小值为&#123;&#125;,平均值为&#123;&#125;&#39;.format(max(lst),min(lst),x))</span><br><span class="line"></span><br><span class="line">2 下次一定用函数来写</span><br><span class="line"></span><br><span class="line">def getMaxMinAvgoflist(list):</span><br><span class="line">    Max &#x3D; max(list)</span><br><span class="line">    Min &#x3D; min(list)</span><br><span class="line">    sum &#x3D; 0.0</span><br><span class="line">    for i in range(len(list)):</span><br><span class="line">        sum +&#x3D; list[i]</span><br><span class="line">        Avg &#x3D; 1.0*sum&#x2F;len(list)</span><br><span class="line">        return  (Max,Min,Avg)</span><br><span class="line">l &#x3D; [1,2,4,5]</span><br><span class="line">print(getMaxMinAvgoflist(l))</span><br></pre></td></tr></table></figure>
+<h3 id="时间的格式化"><a href="#时间的格式化" class="headerlink" title="时间的格式化"></a>时间的格式化</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">now &#x3D; datetime.now()</span><br><span class="line">print(now.strftime(&#39;%Y-%m-%d&#39;))</span><br><span class="line">print(now.strftime(&#39;%Y%m%d&#39;))</span><br></pre></td></tr></table></figure>
+<h3 id="自定义输入数据的个数并对其进去大小求平均值"><a href="#自定义输入数据的个数并对其进去大小求平均值" class="headerlink" title="自定义输入数据的个数并对其进去大小求平均值"></a>自定义输入数据的个数并对其进去大小求平均值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def fact():</span><br><span class="line">    l &#x3D; []</span><br><span class="line">    for i in range(5):</span><br><span class="line">        temp &#x3D; input(&#39;请输入第%d个数字&#39;%(i+1))</span><br><span class="line">        temp1 &#x3D; int(temp)</span><br><span class="line">        l.append(temp1)</span><br><span class="line">    print(l)</span><br><span class="line">def fact1(l):</span><br><span class="line">    l.sort()</span><br><span class="line">    l2 &#x3D; l[1:-1]</span><br><span class="line">    return round((sum(l2)&#x2F;len(l2)),1)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line"></span><br><span class="line">    fact()</span><br><span class="line">    print(fact1(l))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lst &#x3D; []</span><br><span class="line">y &#x3D; int(input(&#39;请输入您所要数据的个数:&#39;))</span><br><span class="line">for i in range(y):</span><br><span class="line">    tmp &#x3D; input(&#39;请输入%d个数:&#39;%(i+1))</span><br><span class="line">    tmp1 &#x3D; float(tmp)</span><br><span class="line">    lst.append(tmp1)</span><br><span class="line"></span><br><span class="line">print(&#39;你输入的数据为:&#39;)</span><br><span class="line">print(lst)</span><br><span class="line">lst.sort()</span><br><span class="line">lst1 &#x3D; lst[1:-1]</span><br><span class="line">x &#x3D; round((sum(lst1)&#x2F;len(lst1)),1)</span><br><span class="line">print(&#39;这组数的最大值为&#123;&#125;,最小值为&#123;&#125;,平均值为&#123;&#125;&#39;.format(max(lst),min(lst),x))</span><br><span class="line"></span><br><span class="line">2 下次一定用函数来写</span><br><span class="line"></span><br><span class="line">def getMaxMinAvgoflist(list):</span><br><span class="line">    Max &#x3D; max(list)</span><br><span class="line">    Min &#x3D; min(list)</span><br><span class="line">    sum &#x3D; 0.0</span><br><span class="line">    for i in range(len(list)):</span><br><span class="line">        sum +&#x3D; list[i]</span><br><span class="line">        Avg &#x3D; 1.0*sum&#x2F;len(list)</span><br><span class="line">        return  (Max,Min,Avg)</span><br><span class="line">l &#x3D; [1,2,4,5]</span><br><span class="line">print(getMaxMinAvgoflist(l))</span><br></pre></td></tr></table></figure>
 <h3 id="Python-键盘输入转换为列表的实例"><a href="#Python-键盘输入转换为列表的实例" class="headerlink" title="Python 键盘输入转换为列表的实例"></a>Python 键盘输入转换为列表的实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Python 输入字符串转列表是为了方便后续处理，这种操作在考试的时候比较多见。</span><br><span class="line"></span><br><span class="line">1. 在 Python3.0 以后，键盘输入使用 input 函数</span><br><span class="line"></span><br><span class="line">eg1.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input</span><br><span class="line">&gt;&gt;&gt; 123</span><br><span class="line">123</span><br><span class="line">在命令行没有任何显示，输入 123 后直接赋值给 x，并打印。</span><br><span class="line"></span><br><span class="line">eg2.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input(&quot;请输入...&quot;)</span><br><span class="line">请输入...123</span><br><span class="line">&gt;&gt;&gt; print(x)</span><br><span class="line">123</span><br><span class="line">在命令行显示 “请输入…”，显示的字符对输入没有任何影响，输入字符后直接赋值给 x。</span><br><span class="line"></span><br><span class="line">2. 仅仅使用 input 是无法解决大部分数据处理的，通常输入的字符串需要分割处理，python 使用 split () 函数进行分割</span><br><span class="line"></span><br><span class="line">eg1.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input()</span><br><span class="line">1,2,3,4</span><br><span class="line">&gt;&gt;&gt; xlist&#x3D;x.split(&quot;,&quot;)</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">但是这样仍然不够，输入的是数字，我们希望列表也是数字，所以还需要进一步转换</span><br><span class="line"></span><br><span class="line">eg2.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input()</span><br><span class="line">1,2,3,4</span><br><span class="line">&gt;&gt;&gt; xlist&#x3D;x.split(&quot;,&quot;)</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">&gt;&gt;&gt; xlist &#x3D; [int(xlist[i]) for i in range(len(xlist))] #for循环，把每个字符转成int值</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[1, 2, 3, 4]</span><br><span class="line">split (“”) 函数的参数可以是任何分隔符，包括（a,b,c….;1,2,3…;%,!,*, 空格）</span><br><span class="line"></span><br><span class="line">eg3.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input()</span><br><span class="line">1 2 3 4</span><br><span class="line">&gt;&gt;&gt; xlist&#x3D;x.split(&quot; &quot;)</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">&gt;&gt;&gt; xlist &#x3D; [int(xlist[i]) for i in range(len(xlist))]</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
 <h3 id="sum-函数及自定义函数复习（学习啊）"><a href="#sum-函数及自定义函数复习（学习啊）" class="headerlink" title="sum()函数及自定义函数复习（学习啊）"></a>sum()函数及自定义函数复习（学习啊）</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def func(lst):</span><br><span class="line">    sum &#x3D; 0</span><br><span class="line">    avg &#x3D; 0</span><br><span class="line">    for i in range(len(lst)):</span><br><span class="line">        sum +&#x3D; lst[i]</span><br><span class="line">        avg &#x3D; sum&#x2F;len(lst)</span><br><span class="line">    return (sum,avg)</span><br><span class="line">    # print(sum,avg)</span><br><span class="line"></span><br><span class="line">l &#x3D; [1,2,3,4,5]</span><br><span class="line">print(func(l))</span><br><span class="line"></span><br><span class="line">2）进阶版</span><br><span class="line">def getMaxMinAvgoflist(list):</span><br><span class="line">    Max &#x3D; max(list)</span><br><span class="line">    Min &#x3D; min(list)</span><br><span class="line">    sum &#x3D; 0.0</span><br><span class="line">    for i in range(len(list)):</span><br><span class="line">        sum +&#x3D; list[i]</span><br><span class="line">        Avg &#x3D; 1.0*sum&#x2F;len(list)</span><br><span class="line">    print(&#39;max:&#123;&#125;,min:&#123;&#125;,ave:&#123;&#125;&#39;.format(Max,Min,Avg))</span><br><span class="line"> # return  (Max,Min,Avg)  # 函数的返回值为元组</span><br><span class="line"></span><br><span class="line">l &#x3D; []</span><br><span class="line">geshu &#x3D; int(input(&#39;请输入你需要的个数:&#39;))</span><br><span class="line">for i in range(geshu):</span><br><span class="line">    temp &#x3D; input(&#39;请输入%d个数:&#39;%(i+1))</span><br><span class="line">    temp &#x3D; float(temp)</span><br><span class="line">    l.append(temp)</span><br><span class="line"></span><br><span class="line">getMaxMinAvgoflist(l)</span><br></pre></td></tr></table></figure>
 <h3 id="忘的快了，用可控循环做一个有趣的小例子"><a href="#忘的快了，用可控循环做一个有趣的小例子" class="headerlink" title="忘的快了，用可控循环做一个有趣的小例子"></a>忘的快了，用可控循环做一个有趣的小例子</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def Brithday(id):</span><br><span class="line">    year &#x3D; id[6:10]</span><br><span class="line">    month &#x3D; id[10:12]</span><br><span class="line">    date &#x3D; id[12:14]</span><br><span class="line">    sex &#x3D; id[16:17]</span><br><span class="line">    sex &#x3D; int(sex)</span><br><span class="line">    if sex % 2:</span><br><span class="line">        sex &#x3D; &#39;男&#39;</span><br><span class="line">    else:</span><br><span class="line">        sex &#x3D; &#39;女&#39;</span><br><span class="line">    print(&#39;你好呀 %s！你是%s生，你的生日是:%s年%s月%s日&#39; % (name, sex, year, month, date))</span><br><span class="line"></span><br><span class="line">name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">id &#x3D; input(&#39;请输入你的身份证号:&#39;)</span><br><span class="line">Brithday(id)</span><br><span class="line">while 1:</span><br><span class="line">    info &#x3D; input(&#39;还想试试吗？(Yes 继续&#x2F; no 退出)&#39;)</span><br><span class="line">    if info &#x3D;&#x3D; &#39;no&#39;:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">        id &#x3D; input(&#39;请输入你的身份证号:&#39;)</span><br><span class="line">        Brithday(id)</span><br></pre></td></tr></table></figure>
@@ -3431,6 +3520,98 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>超强的学习能力是怎样练就的_精练型</title>
+    <url>/2021/03/08/%E8%B6%85%E5%BC%BA%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%BB%83%E5%B0%B1%E7%9A%84-%E7%B2%BE%E7%BB%83%E5%9E%8B/</url>
+    <content><![CDATA[<p>藤校本科，稍微说一下我的经验。</p>
+<ol>
+<li>学习开始前的准备：心态</li>
+</ol>
+<p>我认为世界上没有 “困难” 的内容，只有 “简单但是不完整” 的内容。</p>
+<p>爱因斯坦说：“如果你不能让一个五岁小孩理解你的概念，那就意味着你对这个概念不够了解。”</p>
+<p>这句话的含义很丰富。首先，为什么一个五岁小孩具备可以理解所有概念的能力？</p>
+<p>因为所有概念本质上都是一个逻辑链条，一环接一环。只要把每一个环节的逻辑理解了，那你对这个概念本身就理解透了。</p>
+<p>这个逻辑链条上的每一环都不困难，所以一个五岁小孩都能理解。</p>
+<p>理解一个概念最困难的地方在于填补一个断裂的逻辑链条。</p>
+<p>很多时候，教科书里会说：“因为 A，所以 C。” 然而那个概念其实是 “因为 A，所以 B，所以 C。”</p>
+<p>在这个时候我们就会头大：看不懂 A 和 C 之间的联系啊，难道是因为 A 所以 D 所以 C？还是因为 A 所以 E 所以 C？</p>
+<p>困难就是在这个过程中出现的。</p>
+<p>我们都曾有过这个经历：自己苦苦思索了许久的难题，在别人一两句话的点拨下就豁然开朗。</p>
+<p>这种经历的本质就是对方告诉了你：“A 和 C 之间缺失的那个部分是 B。”</p>
+<p>从 A 到 B 到 C 的逻辑不难，难的是修补 A 和 C 之间断裂的逻辑链条。</p>
+<p>因此，我再次重复：世界上没有 “困难” 的内容，只有 “简单但是不完整” 的内容。</p>
+<p>当你在学习上感到气馁时，记住上面这句话，它将会给你继续探索的信心和勇气。</p>
+<ol start="2">
+<li>痴迷（obsession）</li>
+</ol>
+<p>“痴迷” 是我用过的最有效的方法。当我学到一个新概念时，如果我不能马上理解它，我就会一整天反复在脑中思索这个概念：走路时、吃饭时、坐车时都在思考。其实就是把别人看手机的时间拿来思考概念了。</p>
+<p>但是 “痴迷” 和常见的 “利用碎片时间” 有一个根本性的不同。利用碎片时间是被动的，是 “因为我有这些时间，所以我要利用好它”；而痴迷是主动的，是 “我对这个内容很好奇，所以我要弄懂它。” 换句话说， 利用碎片时间的重点在于 “利用时间”，而痴迷的重点在于 “你很好奇”。</p>
+<p>当你用 “痴迷” 的方法想通一个概念时，你就会把这个概念记得特别牢固，因为 1）你花了很多时间反复思考它，这本身就是一个记忆的过程；2）你对这个概念会有自己的理解，知其然并知其所以然，而不是单纯把教科书背了下来。“知其然并知其所以然” 意味着当你对这个概念的记忆变得模糊时，你脑里将有更多关于这个概念的内容来 “提示” 你将其记起来。</p>
+<ol start="3">
+<li>有效率的学习策略</li>
+</ol>
+<p>当你遇到一道数学难题时，你会怎么做？</p>
+<p>查答案？自己苦苦思索？开始玩手机逃避？</p>
+<p>我的做法是在有答案的情况下先查答案，不浪费时间在解题过程上，而是把时间都花在理解概念上。这样才可以把时间的效用最大化，因为难题都是树的叶子，而题目考察的概念是树的主干。</p>
+<p>一棵树只有一个主干，但是可以有茫茫多的叶子。如果你每个难题都自己思索的话，你大概率得学到猴年马月了。因此，应对难题最好的方法不是硬刚，而是找答案。</p>
+<p>当然，对于主干的概念来讲，建议用前面的方法把它摸透。</p>
+<h3 id="比喻型"><a href="#比喻型" class="headerlink" title="比喻型"></a>比喻型</h3><p>超强的学习能力，本质是超强的思维能力。</p>
+<p>举个例子。玩狼人杀的时候。每一局都有海量的信息。如何从新手成长到大神，就看懂不懂快速的处理信息。</p>
+<p>基本上，每一个狼人杀大神都有固定的思维方式。比如，先排除掉无用的信息，然后从表情，发言的正确性，发言的动机筛选出，自己需要的信息。</p>
+<p>新手如果只记住套路，而不形成处理信息的思维，很难有实质性的成长。</p>
+<p>现实里，很多人学不好数学，就是只背诵教科书上的知识。而数学除了知识点，更是一种思维方式。如果用文科的方法，而没有培养数学思维，是学不好数学的。</p>
+<p>网上有一个段子，每次只喝一半的酒，那酒就永远喝不完。这种规律总结，也算是一种抽象的思维。运用这种思维解决问题，我们可以得出酒喝不完的结论。</p>
+<p>按照这个规律，我们可以一反三得出。路程也应该永远走不完。因为我们走到路程中心的时候，剩下的路程会出来一个新的中心点。所以，我们永远不可能到达目的地。</p>
+<p>上述的过程，便是通过规律总结，把一个未知的问题，转化为一个已知的问题。把一个未知的事物，剖析出已知的规律。</p>
+<p>当然，酒喝不完，目的地永远到不了。这都是错误结论。如果我们学过级数，我们就可以轻易的说出，这类芝诺悖论的荒谬之处。</p>
+<p>对于小学生来说，他们可以总结出酒喝不完的结论。而一个修过高等数学的大学生，能通过级数，证明出前者错误。两种就区别于知识结构的不同。</p>
+<p>前者只有简单的数学思维，最多能发现一些表层的现象。后者，有极限、导数、微积分等抽象工具，可以总结出事物深层次的规律。</p>
+<p>超强的学习能力，不仅是增多知识，更是建立知识的体系的能力。让我们从事物表层规律，进入到深层规律。</p>
+<p>举一个金庸老爷子的例子。</p>
+<p>笑傲江湖里面，风清扬教令狐冲学剑，里面有一招华山剑法，叫小狗洗澡。是用剑尖去戳别人喉咙。令狐冲之前学这一招，都是从下路向上戳。结果与风清扬练剑的时候，还没俯身，剑被打掉了。令狐冲直接呆立当场。</p>
+<p>风清扬当时就怒了，大骂蠢材。你剑没了，就不能用手指去戳别人吗？不能俯身用小狗洗澡，你就不能变招为爱居牛笔，打别人上路吗？</p>
+<p>令狐冲听完又傻了，之前岳不群教剑法的时候，不仅招式顺序不能改动。连剑抬高一公分都会被纠正回来。而风清扬这番话，眼界瞬间开拓起来。</p>
+<p>风清扬后来叹道，五岳剑法就是太注重招式。最后被魔教的人，破的干干净净。我有一套剑法，里面没有招式，但无招胜有招。因为任何招式，都要遵守一定内在规律。而我这套剑法，就是破别人内在规律的。</p>
+<p>剑法叫独孤九剑。里面破剑式，可以破天下剑法。破掌式，可以破天下掌法。无论未来新出什么剑法掌法招式，你都可以一剑破之。</p>
+<p>同样的，当代信息爆炸，招式的更新特别快。但无论怎么变，这些招式都是从一些核心的规律变化而来的。</p>
+<p>信息量增长再快，招式的新老交替再快，规律却很少变化。</p>
+<p>所以，超强的学习能力，一是要高效的吸收信息，二，是能通过整理知识点，把握事情的内在规律，形成新的思维方式。</p>
+<p>而死读书的人，虽然有大量的知识。但并没有处理知识的能力。就好象男生学了一大堆撩妹套路，结果从头尬聊到尾。</p>
+<p>我自创了一个词，叫 “知识型结构处理器。” 便是指，能解决问题的知识体系。</p>
+<p>独孤九剑就是一个巨大的处理器，天下的武功输入进去，输出的都是破解方法。</p>
+<p>而每一个学科的处理器都是不一样的。</p>
+<p>将汉字输入，文院学生的处理器，会出来五言律诗。</p>
+<p>将杯子的颜色、花纹、材质，输入历史学生的处理器，会出来杯子的朝代，使用者的地位。</p>
+<p>将生活的事物，输入商院学生的处理器，会出来各种资源调配的方法。</p>
+<p>当然，越体系化的知识，这个处理器就越强大。同理，越专业的问题，越需要强大的处理器。</p>
+<p>独孤九剑可以破尽天下武功，但仅仅是冷兵器学科的处理器。你用原子弹炸它，它就处理不了。</p>
+<p>那我们如何分辨，自己只是记忆知识点，还是在理解知识点，建立处理器。</p>
+<p>很明显的一点，就是知识是不是块状的。</p>
+<p>举个例子</p>
+<p>我还在学校的时候，基本上跟各种大神级辩手都见过。结果很多被吹捧为神的辩手。打比赛更多的靠运气。</p>
+<p>why？你如果去问他几个问题。</p>
+<p>辩论的定义是什么？ 回答：不知道。</p>
+<p>辩论与吵架，有什么区别？ 回答：不知道</p>
+<p>（吵架：遇到冲突时，双方不企图解决问题。而是尽力言语伤害的过程。</p>
+<p>辩论：遇到冲突时，两方没有能力解决问题，只有第三方拥有解决问题的权利。二者选其一情况下，双方说服第三方的过程。）</p>
+<p>那反驳逻辑的方法呢？回答：不知道</p>
+<p>（逻辑学的三种基本反驳法）</p>
+<p>辩题有几种类型？回答：不知道</p>
+<p>（事实之辩，政策之辩，价值之辩）</p>
+<p>这三个问题，是辩论中最基础的问题。决定着，打辩论的目的，打辩论的方法，准备比赛的整体结构。许多人打了四年辩论，从来没有思考过这个问题。甚至，都没有意识到基本的问题。</p>
+<p>最后导致四年的收获。可能仅仅能用在辩论上。无法反哺其他领域。</p>
+<p>就好象，你用辩论的技巧去应付吵架，就是大灾难。</p>
+<p>如果连基本的逻辑反驳都不知道，逻辑的地基根本没建立。打再多比赛也没用。</p>
+<p>所以学习的本质，就是建立一个思维处理器。处理器的系统，越具有解释力，越能处理生活的信息，就越是一个好系统。</p>
+<p>查理芒格说自己一生有 100 个思维模式，其实就是说有一百个系统结构的处理器，来帮助他日常的决策。</p>
+]]></content>
+      <categories>
+        <category>文章阅读</category>
+      </categories>
+      <tags>
+        <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>遍历目录下的所有文件及文件里的sheet</title>
     <url>/2021/02/02/%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E9%87%8C%E7%9A%84sheet/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"># 遍历某目录下的Excel文件名字，加入列表</span><br><span class="line">list1 &#x3D; []</span><br><span class="line">for file in os.listdir(document_path):</span><br><span class="line">        if file.endswith(&quot;xlsx&quot;) or file.endswith(&quot;xls&quot;):</span><br><span class="line">            list1.append(file)</span><br></pre></td></tr></table></figure>
@@ -4109,6 +4290,129 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>视频工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>超强的学习能力是怎样练就的0</title>
+    <url>/2021/03/08/%E8%B6%85%E5%BC%BA%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%BB%83%E5%B0%B1%E7%9A%840/</url>
+    <content><![CDATA[<p>学习并不是一味的努力，我们需要具备以下几个特质：</p>
+<ul>
+<li>1、匹配合适的目标；</li>
+<li>2、学会深度学习；</li>
+<li>3、建立自己的的认知体系；</li>
+<li>4、及时正向反馈；</li>
+<li>5、合理安排休息。</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="第一节-匹配：舒适区边缘，适用于万物的方法论"><a href="#第一节-匹配：舒适区边缘，适用于万物的方法论" class="headerlink" title="第一节　匹配：舒适区边缘，适用于万物的方法论"></a>第一节　匹配：舒适区边缘，适用于万物的方法论</h4><p>我在前一章描述的深度沉浸其实并非刻意练习的真正核心，其真正核心在于难易匹配上。</p>
+<p>「匹配」这个关键词很可能被大众忽略了，但稍加研究我们就会发现，只要掌握了匹配原则，我们就可以掌握一个适用于万物的方法论。这么说还真不是夸张，因为匹配原则的适用范围实在太广了。</p>
+<p>好的成长是始终游走在「舒适区边缘」</p>
+<p>就在我写这部分内容的时候，碰巧读者「Amy 曹」跟我分享了她的几点体会，我一看内容就会心地笑了，因为她的体会正好印证了「匹配」这个关键词，所以我们不妨从她的故事开始。</p>
+<p>第一件事说的是跑步，她说：「之前我要求自己每天跑步 1 小时，靠意志力，我坚持了蛮长一段时间，但是最后还是中断了。最近我调整了跑步的时间，改为每次 30 分钟，最好不要少于一周 4 次。调整以后发现，我可以不用太靠意志力去做这件事，而且会主动想办法坚持，并且跑完后会很放松，不像之前那样连续跑 1 小时会很累、很难受。我真的能感觉到现在这种『主动做』和原先那种『靠意志力做』完全不一样。」</p>
+<p>第二件事说的是学英语，她说：「原来每天学习 1 小时我会烦躁，但现在改为每天学习 30 分钟，时间一到就不学了。这样，我反而可以坚持每天学，不厌倦。」</p>
+<p>最后她总结道：「找一个自己能坚持做下去的方式，比单纯按照标准化的时间和方式做更重要。以前一直以为多花时间才能学好、才能达到效果，其实那是因为自己急于求成，想要快速见效，这样反而不容易坚持。现在降低了难度和标准，自己的行动力反而能持续增强，虽然达到目标所需的时间可能会变长，但是我相信这样的坚持最终可以产生复利效应。」</p>
+<p>不知道你看了「Amy 曹」的故事后有何感想？在我看来，她最可贵的地方在于能够主动降低学习的强度和难度，使自己处在最佳承受范围，既保留了学习的成就感，也保证了学习的挑战性。</p>
+<p>但是对大多数人来说，这种做法是反直觉的，因为我们想要做成一件事的时候，通常都会告诉自己要很努力、很拼，会给自己设定一个很高的标准，还会经常给自己「打鸡血」，告诉自己坚持就是胜利。这是我们默认的思考模式，只是默认的不代表就是科学的。那么科学的模式是什么呢？</p>
+<p>回忆图 1-4 的内容，它告诉我们，最佳的学习区域在拉伸区内、舒适区边缘，在这个区域，我们既有成就又有挑战，进步最快。事实上，它就是难易匹配的意思：既不要太难，也不要太容易，难易适中的地带才是学习的心流通道。</p>
+<p>「Amy 曹」一开始就处在困难区。由于想快速看到改变，她制订了远超自身水平的学习、训练计划，结果因体验太痛苦而中途放弃，这非常像我们常见的激励模式。很多缺少经历的年轻人都是这样的，总想同时实现太多、太大的目标，还希望在很短的时间内实现，于是不自觉地把自己推到了困难区内。他们总是兴冲冲地开始，热火朝天地做上几天，然后很快就没劲了 —— 做事情半途而废就是这个原因。</p>
+<p>当然，匹配原则不只适用于学习这一领域，在我能观察到的任何领域，几乎都遵循这个规律。</p>
+<p>比如健身，我们每次推举受力的时候其实都是肌肉撕裂的过程，这种轻微的撕裂会让人产生酸痛感但不会造成伤害，经过休息和营养补充，肌肉就会开始修复，修复过后会变得更强壮，所以每次教练让我们再坚持一下，做到力竭，就是在逼迫我们走出肌肉的舒适区到拉伸区。</p>
+<p>其他运动也是如此，比如很多人都想通过跑步来减肥，但有的人很刻苦，上来就猛冲，以为那种痛苦感就是努力的证据，其实不然，专业教练给出的方法看上去更像是一种偷懒的做法。比如教练会建议你先慢跑，到稍微气喘的时候就改为快走，等气匀了再改为慢跑，如此反复，运动半个小时。因为就减肥而言，有氧运动前 20 分钟消耗的主要是身体里的糖，30 分钟之后消耗脂肪的比例才会有较大幅度的上升。所以我们只需每次到舒适区的边缘坚持一下，然后回到舒适区停留一下，调整好了再到舒适区边缘…… 如此反复。在接下来的 10~15 分钟，如果体力允许，就尽量快跑，或者强度至少比前 30 分钟再大一点，以便消耗更多的脂肪，因为此时身体已经适应了一定的强度，可以离舒适区边缘再远一些。</p>
+<p>再说阅读。很多人喜欢向能人索要书单，认为能人们推荐的书肯定很好。他们按照书单兴冲冲地买一大堆回家，读的时候才发现那些书根本没能人们说的那么好，有些书晦涩、难懂、根本读不下去，没过几天，他们的兴趣就消失了。这是因为每个人的知识背景不同，同样一本书，能人们读起来可能刚好在拉伸区，但我们读起来则在困难区。所以，这个时候，不妨先把这本书放一放，去看那些自己感兴趣、又刚好能读懂的书，让兴趣、难度、需求同时匹配到舒适区边缘，这样的书肯定会让你读得津津有味。</p>
+<p>再说说学习。成绩不好的同学想要奋起直追，想到的第一件事往往是努力比拼，于是他们也和成绩好的同学一样去做那些比较难的题目，结果人家学得挺轻松，自己却学得很痛苦，差距越拉越大。因为学习同样的内容，成绩好的同学可能刚好在拉伸区，但自己可能在困难区。此时，正确的做法应该是先沉住气，主动降低学习难度。</p>
+<p>知道了这个原理以后，我们就应该花大量的时间去梳理哪些内容处在自己的拉伸区，即梳理那些「会做但特别容易错或不会做但稍微努力就能懂」的内容，然后在这个区域内努力。如果你已经为人父母，那就应该花大量的时间探寻孩子的拉伸区，然后指导他们在舒适区的边缘努力，而不是看到孩子考不好就一味冲着他们发脾气，说别人家的孩子如何如何，对标优等生，给孩子加学习量、加难度，这样做往往会适得其反。</p>
+<p>另外，很多人说自己学习时经常分心走神、不够专注，其实原因也是一样的，因为他们可能并没有刻意关注自己学习内容的难易程度、调整学习的快慢节奏。我的朋友宋鼎华是一名高级工程师，平日里大家都叫他「宋兄」，他的孩子正在读高中，学习成绩始终名列前茅，可贵的是孩子从来不上课外兴趣班，学习之余还有不少玩游戏的时间，是名副其实的「学霸」。在一次聚会中，我正好与宋兄临座，于是试探地问：「你在孩子的学习上有没有采取什么特别的方法？」没想到他干脆地说：「有的！」我竖起耳朵继续听，他说：「就两条，一是像对待考试一样对待家庭作业；二是有问题只找主观原因。」</p>
+<p>我听后有些发懵，心想：这就是所谓学霸的秘密吗？尤其是第一条，我竟然抓不到要领。后来才明白，「像对待考试一样对待家庭作业」就是让孩子保持合适的学习节奏。因为大多数孩子在家里写作业的时候都会因缺少限制而漫不经心，一会儿上厕所，一会儿喝水，遇到不会的就卡在原地发呆或马上求助，这种状态看起来像一直在学习，实际上是在舒适区内磨洋工，不仅效率低，还特别容易出错。而要求像考试一样，他们就必须逼迫自己集中注意力，在最短的时间内做最多的题，并且还要做正确，于是他们不自觉地把自己推到了舒适区的边缘。在这种状态下，孩子必然会极度专注，学习效率和成绩自然会提升。</p>
+<p>距离太远的，我们都把握不住</p>
+<p>面对上述需要努力的事情，我们需要游走在舒适区边缘，那么，面对那些不需要努力，甚至是令人享受的事物时，我们又该如何呢？比如突然有了大量的时间和金钱。我想很多人肯定希望时间和金钱越多越好，不过我劝你一定要谨慎，因为距离我们太远的事物，我们通常无法把握，无论它们是令人痛苦的还是令人享受的。</p>
+<p>2019 年暑假，一位年轻的老师在向我提问的时候说：「别人羡慕我有寒暑假，但我一点也不喜欢，因为自己根本没有能力掌控这些大量的空余时间。不仅计划一个没实现，连作息时间也乱作一团。可以说，我对假期简直一点控制力都没有。」</p>
+<p>很多学生也经常给我留言，说上了大学之后，一下子没有了高三时的那种紧张感，虽然刚开学的时候还算自律，但很快就开始变得懒散，宅在寝室里打游戏、刷抖音，无法专心学习，尤其是独处、时间由自己支配的时候，总是不自觉地选择最舒适的娱乐活动。这其实就是自由时间超出了自己的掌控 —— 他们失控了。</p>
+<p>千万不要认为没有管束的生活很美好，一旦进入完全自由的时间，虽然开始会很舒服，但很快，我们就会迷失在众多选项中 —— 做这个也行，做那个也行。做选择是一件极为耗能的事情，如果没有与之匹配的清醒和定力，绝大多数人最终都会被强大的天性支配，去选择娱乐消遣。在有约束的环境下我们反而效率更高，生活更充实。</p>
+<p>至于突然获得巨额财富这种事，估计大多数人都很难有这样的运气，不过我们可以看看别人的经历。2002 年，英国男子卡罗尔中了 970 万英镑奖金，一夜之间从垃圾工成了超级富翁，然后他开始买豪宅、买名车、吸毒、赌博，7 年后，其财富被挥霍一空，妻子离他而去，他不得不重做苦力，靠救济金生活；2006 年，英国女子温迪・格雷厄姆中了 100 万英镑奖金，结果奖金在一年内被花光，该女子沦为穷光蛋。据统计，在美国，每年彩票中奖者的破产率高达 75%。以此为戒，我们一定要保持清醒，认真审视自己控制欲望的能力，不要让悲剧发生。</p>
+<p>理想的状态是持续获取与自己当前能力相匹配的财富或自由。这一点，做父母的应该有所启示：我们要关注孩子当前对自由、财富的掌控程度，在适当的时候适当放权或鼓励，这样的父母才是真正明智的。那些溺爱孩子的父母，往往在孩子很小的时候就给他们很大的决策权，让他们自己决定吃什么、玩什么、做什么，但孩子根本没有相应的掌控能力，最后变成了自以为是、自私自利的人，造成这些后果的原因正是我们缺少对匹配这个概念的认识。</p>
+<p>人们常说底层概念、底层规律，那到底什么是底层呢？在我眼中，能解释的现象越多，这个概念就越底层。所以你掌握了匹配原则之后，就可以自己解释其他事情了，比如有人问你：「练习写作是日更好还是周更好？」你可以这样回答：「不管采用哪种方式，关键是你有没有让自己处在舒适区的边缘进行练习。如果输出的东西都是在舒适区随便写写的，那写再多也没用。」这样的回答既能给出开放的答案，又能抓住问题的本质。</p>
+<p>从这个底层概念中我们可以得到这样一个结论：不管做什么，不管当前做得怎么样，只要让自己处在舒适区的边缘持续练习，你的舒适区就会不断扩大，拉伸区也就会不断扩展，原先的困难区也会慢慢变成拉伸区，甚至是舒适区，所以成长是必然的。</p>
+<p>同时，我们也可以肯定：速成是不可能的。因为能力圈只能一点一点扩大，所以只要我们遵循匹配规律，不断在舒适区边缘拓展自己，同时愿意和时间做朋友，那么我们注定可以持续成长，重塑自己。</p>
+<p>一切为了匹配</p>
+<p>刻意练习的四要素看上去各自独立，实际上环环相扣、互连互通，而且它们最终都指向匹配。</p>
+<p>先说第一个要素「目标」，它能帮我们解决行动力中的大问题。比如，我们每次行动遇阻时都会一筹莫展，但只要细想就能发现，不管你遇到的是什么问题，其根源都是一样的，那就是：这个问题太大、太模糊。</p>
+<p>所以，你只要拆解目标 —— 把大目标拆分为小目标，任务就会立即从困难区转移到拉伸区，这样你就愿意行动了。不信的话，你可以细心观察一下，几乎所有的行动达人都是拆解任务的高手。</p>
+<p>掌握了这个原理，我们就能推导出从舒适区到拉伸区的策略：提炼目标。在舒适区内行动最大的特点就是不动脑筋地重复，这种状态下，人们凭习惯和感觉做事，没有特别需要关注的东西，所以学习的时候分心走神，跑步的时候分心走神，睡觉的时候也分心走神，这样，做什么事都不会有太大的长进。</p>
+<p>在拉伸区练习的一大特点就是要有关注点。</p>
+<h3 id="这个回答最好"><a href="#这个回答最好" class="headerlink" title="这个回答最好"></a>这个回答最好</h3><p>老规矩，绝不只答题，必须先审题，先破题。</p>
+<p>本答案中心思想：超强的学习能力，不是练就的，而是把那些阻碍一个人发挥潜力的东西清理掉，而呈现出来的。所以这个答案的中心思想是 “减”，而不是 “加”。</p>
+<p>1、真正的学霸显然会给人一种，游刃有余，浑然天成的感觉。不是那种苦哈哈紧绷绷学习的人，而是做任何事情，轻松随意，却又条理分明，十分漂亮的人。这里就形成了一个悖论 —— 如果你在看这个问题及答案的时候，基本模式仍然是，我要更用力一点，我要更努力一点，学到某些东西，做到某些东西，不妨先暂停下来，反思一下这个十分明显的矛盾。</p>
+<p>2、我会把这个问题反过来问，大部分人在小时候都聪明过，而且都有过一切轻松明了的经验，但我们真正的成长过程是 —— 慢慢的就越变越笨了。少部分没有被变笨的人，自然地变成了更会学习的，那么我们不妨来问，人是如何慢慢变笨的呢？</p>
+<p>3、心思一多，人就变笨。凡是利弊得失考虑的多了，心思不纯，思前想后，人就变得蠢笨了。人开始考虑投机取巧，开始想老师怎么看我，同学怎么看我，开始聚集在一起讲讲八卦聊聊闲天的人，只要沾染了这些习惯，那种简单干净朴素的心境就全然不再。面对一个课题，一个知识的时候，也就无法再简单纯粹地客观处理它。</p>
+<p>4、随着年岁的增长，社会化的程度越来越多，人的心思越来越散乱，我们每个人都可以再自己身上观察到这样一些东西：常常处在千头万绪，心思涣散的过程中。总在看，怎么评价谁谁，如何关注某个事件。还在悄悄咪咪地想，别人看不看得起我。哎呀，我好看不起那个人之类的事情。真正全心全意用来 “学习” 的时间，高纯度的注意力，都越来越少。</p>
+<p>5、到了一定年龄，哪怕工作后，都仍然保持着超强学习能力的人，都会让人感觉他们还很像小孩子。生活简朴，心思也非常简单。说话办事，给人的感觉就是两个字 ——“干净”。他们不会想太多，就是很淳朴的，该学习了，我便学习了。该做的事，那么我就踏踏实实地做好，做完。也不多说什么，也不和谁讨论什么，抱怨什么，也不需要考虑那么多利弊得失。因为这些人一路以来就这样过下来，他 / 她考虑得很少，得到的却很多。这个正向循环，就让他们心思越来越纯粹，事情也做的越来越好。</p>
+<p>6、如果你认为，“超强的学习能力”，就意味着，我会有光明的未来，名利丰收，别人也会看得起我。那么，你几乎不会拥有超强的学习能力。因为，你喜欢的只是结果，不是这个过程。你在内心里没有对学习，对这个事本身的尊重和虔诚，只是把它当做一个垫脚石，那么，它也并不会给予你足够的尊重和虔诚。世间道理千千万，学习、工作、金钱也好，都只是一面镜子，它们对我的态度，恰是我对它们的态度，分毫不差。</p>
+<p>7、说到底，“汝欲学诗，功夫在诗外。” 真正喜欢骏马的人，会懂得欣赏骏马，得到骏马。真正喜欢学习的人，会懂得欣赏学习本身，也就会被学习和成绩所善待。奇技淫巧，文过饰非，不如真诚面对自己每时每刻的态度。仅此而已。</p>
+<h3 id="高冷冷-的回答（最佳）"><a href="#高冷冷-的回答（最佳）" class="headerlink" title="高冷冷 的回答（最佳）"></a>高冷冷 的回答（最佳）</h3><p>[转自知乎高冷冷的回答，感谢]</p>
+<p>手把手教你：如何练就超强的学习能力、如何做到「特别会考试」</p>
+<p>本答案共计 2612 字，预计花费你 5 分钟，但会给你的学习方法带来极大的改变。请耐心阅读。</p>
+<p>大家应该见过这样的同学，甚至自己也有类似的经历，就是<strong>平时学习感觉基本上都会，知识点也都记住了、书也都看懂了，但是一做题、一考试，就没法真正地发挥出来。</strong></p>
+<p>这不是很奇怪吗？</p>
+<h4 id="【一】你要用考试（或者说「测试」）的思维，去决定如何看书、如何学习。"><a href="#【一】你要用考试（或者说「测试」）的思维，去决定如何看书、如何学习。" class="headerlink" title="【一】你要用考试（或者说「测试」）的思维，去决定如何看书、如何学习。"></a>【一】你要用考试（或者说「测试」）的思维，去决定如何看书、如何学习。</h4><p>其实是这样的，我们从小的学习模式，都是先埋头苦读，然后再去考试。我们的习惯思维是，只要掌握得滚瓜烂熟，那么考场上自然什么题目都会做。</p>
+<p>我今天要唱一下反调，这是非常低效的学习方式。那么什么是高效的？</p>
+<p>—— 是用考试的思维去学习。</p>
+<p>看书时候，非常重要的一点是，你要明确你的目的。</p>
+<p>这个目的不是所谓的看懂公式、记住概念等比较宽泛模糊的东西，而是非常明确的：</p>
+<p>你要回答什么问题？最直接的，就是课后习题，或者考试真题。</p>
+<p>你是否要据此写一篇论文 / 文章？这意味着，你需要在掌握知识的基础上，有自己的思考，并且经过整合，进行输出。</p>
+<p>也就是说，你要用考试（或者说「测试」）的思维，去决定如何看书、如何学习。</p>
+<h4 id="【二】考试不是阅读，而是提问。我们是为了考试，而不是为了学习-知道-记住。"><a href="#【二】考试不是阅读，而是提问。我们是为了考试，而不是为了学习-知道-记住。" class="headerlink" title="【二】考试不是阅读，而是提问。我们是为了考试，而不是为了学习 / 知道 / 记住。"></a>【二】考试不是阅读，而是提问。我们是为了考试，而不是为了学习 / 知道 / 记住。</h4><p><strong>考试不是阅读，而是提问。</strong>不是一个被动地逐字逐句、照单全收的过程，这是事倍功半的，而且你总会觉得都要去记要去学；考试，最重要的是输出。</p>
+<p>你体会一下这句话：<strong>我们是为了考试，而不是为了学习 / 知道 / 记住。</strong></p>
+<p>这是两个完全不同，甚至相反的路径。</p>
+<p>我们常把大量的高密度的「输入」（也就是接收信息、学习知识）放在首位，觉得「输入」之后自然会有「输出」（也就是把知识点用在考试之中）。</p>
+<p>我们甚至会有这种错觉：我把中文系 / 历史系 / 哲学系前辈们列出的这 30 本书看完，学会并且记住其中的知识，我就会做题了。如果还不会，那就再看 20 本。</p>
+<p>不是这样的。<strong>考试意味着主动去回想知识点，是把知识点从脑袋里调取出来。</strong></p>
+<h4 id="【三】即用即学，是一个根据问题寻找答案的过程。"><a href="#【三】即用即学，是一个根据问题寻找答案的过程。" class="headerlink" title="【三】即用即学，是一个根据问题寻找答案的过程。"></a>【三】即用即学，是一个根据问题寻找答案的过程。</h4><p>发现了吗？<strong>学习和考试，是完全不同的事情。只有去以考试为明确的目的，你才知道看书的时候，如何看、如何思考、如何记忆。</strong></p>
+<p>去研究考试题，包括它的出题范围和出题思路；去分析考试时，题目要求你怎样回忆知识点、怎样运用知识点？在学习的时候，就按照这种思路去学习。</p>
+<p>大家知道，<strong>如果你刚掌握的知识点，就立刻应用，你就能掌握得非常牢固。这叫做即学即用。</strong></p>
+<p>我想教大家的是，其实 <strong>「即用即学」，是另一种非常高效的学习方式。</strong>但掌握这个思路的人，并不多。</p>
+<p>「即用即学」，也就是我刚才说的考试思维：<strong>总结出来考试时候怎么考，来决定学习时候如何学。先看看你要怎么用，再去学。</strong></p>
+<p>以考研为例，同样也适用于考试、以及输出文章等，你先去找你最终要面对的真题。</p>
+<p>真题为何重要？它给了你具体的目标，它是你所需要解决的具体的问题。</p>
+<p>而且，最好能找到答案。如此你才能知道，你要对此问题了解、回答到何种程度，才是达到标准的。</p>
+<p>这种反馈，才是明确的、有效的，方便你进行自我调整的。</p>
+<p>所谓即用即学，是一个根据问题寻找答案的过程。不是为了学习，而是为了考试。</p>
+<p>如果看到这里，觉得这篇答案对你有帮助，还请点个赞（不点也行，哈哈，不强求）。接下来还有一个重要的学习思维，我们继续说，大家加油，耐心看完。会对你有所帮助的。：）</p>
+<h4 id="【四】「测试」比被动输入更加高效，也记得更牢。正是感觉到学习更吃力时，记忆才更为长久、牢固。"><a href="#【四】「测试」比被动输入更加高效，也记得更牢。正是感觉到学习更吃力时，记忆才更为长久、牢固。" class="headerlink" title="【四】「测试」比被动输入更加高效，也记得更牢。正是感觉到学习更吃力时，记忆才更为长久、牢固。"></a>【四】「测试」比被动输入更加高效，也记得更牢。正是感觉到学习更吃力时，记忆才更为长久、牢固。</h4><p>大脑中架构太多的空中楼阁是没有用处的，你要做的不是囤积各式精美的砖头，以及各类建筑的设计图，而是在有了一些主要的砖头之后，就试图踏踏实实地盖房子；并且在盖房子的过程中，发现哪块砖头可以怎么用，哪块砖头掌握得不好，还缺哪些砖头。</p>
+<p>这就叫即用即学。</p>
+<p>就像是学习英语单词，更好的方法是结合文章学习，在阅读理解中学习，而不是单独地背单词。这也是一个「即用即学」的过程。</p>
+<p>单独地背单词，只是一个被动灌输的过程，并没有使用考试的思维进行调取，没有一个「测试」的过程。「测试」比被动输入更加高效，也记得更牢。</p>
+<p>我们平时学习是怎样的？基本上是，把书和笔记拿过来，一遍又一遍地温习；如果想不起来，会直接去看原文，很少留给自己苦苦思索的时间。</p>
+<blockquote>
+<p>而研究表明，你越是愿意在那里耗着，花时间和精力去回想，哪怕最后想不起来，这个艰苦卓绝的过程，也能帮助你更好地记忆并理解知识点。（S.H.Kang 等人的研究，转引自彼得・布朗《认知天性》）</p>
+</blockquote>
+<p>「重复阅读」带来的熟练感，只是自以为掌握而已。</p>
+<blockquote>
+<p>与反复阅读这种复习方法相比，回想事实、概念或事件会更有效。这种方法被称为检索式练习。（《认知天性》）<br>在你回想时，如果很难想起来，或者磕磕巴巴，只能想起片段，别急于苛责自己。这是熟练地掌握知识点，必须经历的过程。</p>
+</blockquote>
+<p>正是感觉到学习更吃力时，记忆才更为长久、牢固。</p>
+<h4 id="【五】学习最重要的，就是即用即学和即学即用，两个途径互为表里、互相推进，无法分割。"><a href="#【五】学习最重要的，就是即用即学和即学即用，两个途径互为表里、互相推进，无法分割。" class="headerlink" title="【五】学习最重要的，就是即用即学和即学即用，两个途径互为表里、互相推进，无法分割。"></a>【五】学习最重要的，就是即用即学和即学即用，两个途径互为表里、互相推进，无法分割。</h4><p>分享一个，与前文一脉相承，但让我耳目一新的观点，学习就是一个输入和输出的过程。我们平常的重心放在了输入，但实际上：</p>
+<blockquote>
+<p>要让知识和经验产生链接，也就是学以致用，最好保持输入和输出的平衡，但不是绝对的相等，输出要更多一些。（《奇特的一生》）<br>输出要更多一些。</p>
+</blockquote>
+<p>一些专业课的书，无论是人文社科还是理工科，可以先对某章节大致过一遍，对知识点和公式大致理解即可，不要去反复复习和背诵，而是立刻着手做题，在用的过程中，让自己去彻底理解和巩固记忆。</p>
+<p><strong>学习最重要的，就是即用即学和即学即用，两个途径互为表里、互相推进，无法分割。</strong></p>
+<p>然后在这一过程中获得反馈，这个反馈不是你背会了多少东西（囤积了多少砖头），而是对所必须面对的问题进行测试，并且以相对标准的答案进行反馈。</p>
+<p>语文课代表冷冷的例行总结：</p>
+<p>1、平时学习感觉基本上都会，知识点也都记住了、书也都看懂了，但是一做题、一考试，就没法真正地发挥出来。</p>
+<p>2、学习不是目的，考试（测试）才是目的。你要用考试（或者说「测试」）的思维，去决定如何学习。</p>
+<p>3、学习和考试，是完全不同的事情。只有去以考试为明确的目的，你才知道看书的时候，如何看、如何思考、如何记忆。</p>
+<p>4、考试不是阅读，而是提问。考试意味着主动去回想知识点，是把知识点从脑袋里调取出来。</p>
+<p>5、你先去找你最终要面对的真题。最好能找到答案。如此你才能知道，你要对此问题了解、回答到何种程度，才是达到标准的。总结出来考试时候怎么考，来决定学习时候如何学。</p>
+<p>6、「测试」比被动输入更加高效，也记得更牢。「检索式练习」才是最有效的学习方法。</p>
+<p>按照我所说的根本思维和具体方法，基本上每个人都可以大幅度提高学习能力。大家加油。</p>
+]]></content>
+      <categories>
+        <category>文章阅读</category>
+      </categories>
+      <tags>
+        <tag>文章阅读</tag>
       </tags>
   </entry>
 </search>
