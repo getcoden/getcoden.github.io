@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Pandas groupby 保存到 dataFrame</title>
+    <url>/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/</url>
+    <content><![CDATA[<h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
+<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
+<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
+<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
+<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
+<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
+<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
+<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
+<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
+<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
+<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
+<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
+<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
+<p>下面以一组数据为例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
+</div>
+
+<p>下面按 key 进行分组:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
+<p>可以使用循环对分组后的结果进行遍历</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
+</div>
+
+<ul>
+<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>通过循环，对 value 进行拼接。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
+</div>
+
+<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果可以看到数据变为有序：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
+</div>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>00.小白Python学习路线</title>
     <url>/2021/01/29/00-%E5%B0%8F%E7%99%BDPython%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
     <content><![CDATA[<p>学前须知：Python 是一种解释型、面向对象、动态数据类型</p>
@@ -95,70 +159,6 @@
       </categories>
       <tags>
         <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pandas groupby 保存到 dataFrame</title>
-    <url>/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/</url>
-    <content><![CDATA[<h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
-<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
-<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
-<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
-<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
-<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
-<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
-<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
-<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
-<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
-<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
-<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
-<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
-<p>下面以一组数据为例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
-</div>
-
-<p>下面按 key 进行分组:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
-<p>可以使用循环对分组后的结果进行遍历</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
-</div>
-
-<ul>
-<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>通过循环，对 value 进行拼接。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
-</div>
-
-<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果可以看到数据变为有序：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
-</div>]]></content>
-      <categories>
-        <category>Python库之Pandas</category>
-      </categories>
-      <tags>
-        <tag>Python库之Pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -2140,21 +2140,6 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>Python寻找素数</title>
-    <url>/2021/03/21/Python%E5%AF%BB%E6%89%BE%E7%B4%A0%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="找素数，利用-else"><a href="#找素数，利用-else" class="headerlink" title="找素数，利用 else"></a>找素数，利用 else</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">k &#x3D; 0</span><br><span class="line">for num in range(2, 101):  # 生成从2到100的序列</span><br><span class="line">    for i in range(2, num):</span><br><span class="line">        if num % i &#x3D;&#x3D; 0:</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;生成的素数有:&#123;&#125;&#39;.format(num))</span><br><span class="line">        k +&#x3D; 1</span><br><span class="line"></span><br><span class="line">print(&#39;\n100以内的素数共有&#123;&#125;个&#39;.format(k))</span><br></pre></td></tr></table></figure>
-<h3 id="自由输入求素数个数"><a href="#自由输入求素数个数" class="headerlink" title="自由输入求素数个数"></a>自由输入求素数个数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">is_notprime &#x3D; [] #定义空列表，存放非素数</span><br><span class="line">is_prime &#x3D; []    #定义空列表，存放素数</span><br><span class="line"></span><br><span class="line">num &#x3D; input(&#39;Enter some numbers:&#39;).split()  # 由键盘输入一些数字，并以空格分隔</span><br><span class="line"></span><br><span class="line">num_list &#x3D; [int(j) for j in num]      # 用列表推导式并加以强制类型转换把输入的字符数字转换成 int 类型数据</span><br><span class="line"></span><br><span class="line">for s in num_list:</span><br><span class="line">    for i in range(2, s):</span><br><span class="line">        if s % i &#x3D;&#x3D; 0:</span><br><span class="line">            is_notprime.append(s)    # 将非素数添加到非素数空列表</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        is_prime.append(s)   #将是素数的数字添加到素数列表</span><br><span class="line"></span><br><span class="line"># 输出非素数及素数</span><br><span class="line">print(f&#39;非素数的数字有:&#123;is_notprime&#125;&#39;)</span><br><span class="line">print(f&#39;素数的数字有:&#123;is_prime&#125;&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="格式化求阶乘法"><a href="#格式化求阶乘法" class="headerlink" title="格式化求阶乘法"></a>格式化求阶乘法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def jiecheng(n):</span><br><span class="line">    result &#x3D; 1</span><br><span class="line">    while n&gt;0:</span><br><span class="line">        result *&#x3D;n</span><br><span class="line">        n -&#x3D;1</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">for i in range(1,4):</span><br><span class="line">    re &#x3D; jiecheng(i)</span><br><span class="line">    print(f&#39;&#123;i&#125;的阶乘为:&#123;re&#125;&#39;)</span><br><span class="line">#     print()</span><br></pre></td></tr></table></figure>
-<h3 id="寻找素数"><a href="#寻找素数" class="headerlink" title="寻找素数"></a>寻找素数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">寻找素数</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def is_prime(n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    判断一个数是否是素数</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if n &lt;&#x3D; 1:</span><br><span class="line">        return False</span><br><span class="line">    for i in range(2, int(math.sqrt(n) + 1)):</span><br><span class="line">        if n % i &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    primes &#x3D; [i for i in range(2,100) if is_prime(i)]    #从 2 开始，因为 1 显然不是质数</span><br><span class="line">    print (primes)</span><br></pre></td></tr></table></figure>
-<h3 id="一元二次方程求解"><a href="#一元二次方程求解" class="headerlink" title="一元二次方程求解"></a>一元二次方程求解</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">solving a quadratic equation</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from __future__ import division</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def quadratic_equation(a,b,c):</span><br><span class="line">    delta &#x3D; b*b - 4*a*c</span><br><span class="line">    if delta&lt;0:</span><br><span class="line">        return False</span><br><span class="line">    elif delta&#x3D;&#x3D;0:</span><br><span class="line">        return -(b&#x2F;(2*a))</span><br><span class="line">    else:</span><br><span class="line">        sqrt_delta &#x3D; math.sqrt(delta)</span><br><span class="line">        x1 &#x3D; (-b + sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        x2 &#x3D; (-b - sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        return x1, x2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    print (&quot;a quadratic equation: x^2 + 2x + 1 &#x3D; 0&quot;)</span><br><span class="line">    coefficients &#x3D; []</span><br><span class="line">    a &#x3D; input(&#39;Enter some numbers:&#39;).split( )</span><br><span class="line">    for i in a:</span><br><span class="line">        coefficients.append(int(i))</span><br><span class="line">    roots &#x3D; quadratic_equation(*coefficients)</span><br><span class="line">    if roots:</span><br><span class="line">        print (&quot;the result is:&quot;,roots)</span><br><span class="line">    else:</span><br><span class="line">        print (&quot;this equation has no solution.&quot;)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python学习之路</title>
     <url>/2021/02/14/Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</url>
     <content><![CDATA[<p>&emsp;&emsp;本文源自知乎网文，有学习的同感，故抄来以此鞭策自己。感谢原作者</p>
@@ -2183,6 +2168,21 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python寻找素数</title>
+    <url>/2021/03/21/Python%E5%AF%BB%E6%89%BE%E7%B4%A0%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="找素数，利用-else"><a href="#找素数，利用-else" class="headerlink" title="找素数，利用 else"></a>找素数，利用 else</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">k &#x3D; 0</span><br><span class="line">for num in range(2, 101):  # 生成从2到100的序列</span><br><span class="line">    for i in range(2, num):</span><br><span class="line">        if num % i &#x3D;&#x3D; 0:</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;生成的素数有:&#123;&#125;&#39;.format(num))</span><br><span class="line">        k +&#x3D; 1</span><br><span class="line"></span><br><span class="line">print(&#39;\n100以内的素数共有&#123;&#125;个&#39;.format(k))</span><br></pre></td></tr></table></figure>
+<h3 id="自由输入求素数个数"><a href="#自由输入求素数个数" class="headerlink" title="自由输入求素数个数"></a>自由输入求素数个数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">is_notprime &#x3D; [] #定义空列表，存放非素数</span><br><span class="line">is_prime &#x3D; []    #定义空列表，存放素数</span><br><span class="line"></span><br><span class="line">num &#x3D; input(&#39;Enter some numbers:&#39;).split()  # 由键盘输入一些数字，并以空格分隔</span><br><span class="line"></span><br><span class="line">num_list &#x3D; [int(j) for j in num]      # 用列表推导式并加以强制类型转换把输入的字符数字转换成 int 类型数据</span><br><span class="line"></span><br><span class="line">for s in num_list:</span><br><span class="line">    for i in range(2, s):</span><br><span class="line">        if s % i &#x3D;&#x3D; 0:</span><br><span class="line">            is_notprime.append(s)    # 将非素数添加到非素数空列表</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        is_prime.append(s)   #将是素数的数字添加到素数列表</span><br><span class="line"></span><br><span class="line"># 输出非素数及素数</span><br><span class="line">print(f&#39;非素数的数字有:&#123;is_notprime&#125;&#39;)</span><br><span class="line">print(f&#39;素数的数字有:&#123;is_prime&#125;&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="格式化求阶乘法"><a href="#格式化求阶乘法" class="headerlink" title="格式化求阶乘法"></a>格式化求阶乘法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def jiecheng(n):</span><br><span class="line">    result &#x3D; 1</span><br><span class="line">    while n&gt;0:</span><br><span class="line">        result *&#x3D;n</span><br><span class="line">        n -&#x3D;1</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">for i in range(1,4):</span><br><span class="line">    re &#x3D; jiecheng(i)</span><br><span class="line">    print(f&#39;&#123;i&#125;的阶乘为:&#123;re&#125;&#39;)</span><br><span class="line">#     print()</span><br></pre></td></tr></table></figure>
+<h3 id="寻找素数"><a href="#寻找素数" class="headerlink" title="寻找素数"></a>寻找素数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">寻找素数</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def is_prime(n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    判断一个数是否是素数</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if n &lt;&#x3D; 1:</span><br><span class="line">        return False</span><br><span class="line">    for i in range(2, int(math.sqrt(n) + 1)):</span><br><span class="line">        if n % i &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    primes &#x3D; [i for i in range(2,100) if is_prime(i)]    #从 2 开始，因为 1 显然不是质数</span><br><span class="line">    print (primes)</span><br></pre></td></tr></table></figure>
+<h3 id="一元二次方程求解"><a href="#一元二次方程求解" class="headerlink" title="一元二次方程求解"></a>一元二次方程求解</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">solving a quadratic equation</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from __future__ import division</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def quadratic_equation(a,b,c):</span><br><span class="line">    delta &#x3D; b*b - 4*a*c</span><br><span class="line">    if delta&lt;0:</span><br><span class="line">        return False</span><br><span class="line">    elif delta&#x3D;&#x3D;0:</span><br><span class="line">        return -(b&#x2F;(2*a))</span><br><span class="line">    else:</span><br><span class="line">        sqrt_delta &#x3D; math.sqrt(delta)</span><br><span class="line">        x1 &#x3D; (-b + sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        x2 &#x3D; (-b - sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        return x1, x2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    print (&quot;a quadratic equation: x^2 + 2x + 1 &#x3D; 0&quot;)</span><br><span class="line">    coefficients &#x3D; []</span><br><span class="line">    a &#x3D; input(&#39;Enter some numbers:&#39;).split( )</span><br><span class="line">    for i in a:</span><br><span class="line">        coefficients.append(int(i))</span><br><span class="line">    roots &#x3D; quadratic_equation(*coefficients)</span><br><span class="line">    if roots:</span><br><span class="line">        print (&quot;the result is:&quot;,roots)</span><br><span class="line">    else:</span><br><span class="line">        print (&quot;this equation has no solution.&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -2801,6 +2801,45 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>写给刚入门编程（python）的同学</title>
+    <url>/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/</url>
+    <content><![CDATA[<h2 id="写给谁"><a href="#写给谁" class="headerlink" title="写给谁"></a>写给谁</h2><p>刚准备入手学习 python 编程的大学生或者研究生。</p>
+<h2 id="你为什么学-python"><a href="#你为什么学-python" class="headerlink" title="你为什么学 python"></a>你为什么学 python</h2><ul>
+<li>当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。</li>
+<li>深度学习大火，科室的实验开始使用深度学习的分析方法</li>
+</ul>
+<p>可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。</p>
+<h2 id="你为什么惦记或者自学了很久却迟迟未入门"><a href="#你为什么惦记或者自学了很久却迟迟未入门" class="headerlink" title="你为什么惦记或者自学了很久却迟迟未入门"></a>你为什么惦记或者自学了很久却迟迟未入门</h2><ul>
+<li>担心自己投入了大量的时间却没有收获，或者在毕业后，甚至在刚做完实验后 python 就没用了。</li>
+</ul>
+<p>一门编程语言都没有深入学习过的人，常常误认为 java，c++，python， JavaScript 等编程语言的差别非常大。但是，在你开始学习它们之中的一个的时候，你学到的大部分知识其实都只是现代编程语言的基本元素：变量，运算符，语句，控制流，函数，面向对象，文件读写，使用第三方库。甚至当你学习数据结构与算法的时候，你仍然没有太多涉及到一个语言的特性。作者前几天就见识了一个刚学会 python 的计算机教授用自己的 C 语言风格写出的 python 数据结构与算法书，真的被震惊到了。</p>
+<p>但是，当你学习到这一步的时候，甚至还没开始学数据结构与算法的时候，你就已经可以开始做很多事情了。结合你的本专业（比如前面列出的那些）知识，以及一些专业的算法库，你就能使用你选择的编程语言，进行专业领域的探索和科学研究了。这个时候，你的注意力就不再在编程语言上了，而是你的课题。你的眼中只有宝石，而编程语言只是你用来打磨宝石的锉子。</p>
+<ul>
+<li><p>那各个编程语言之间究竟有哪些不同呢？</p>
+<p>编程语言，就像是手机或者电脑的操作系统，其最大的财富，是它们的生态，也就是适用的软件包。当你开始深入探索，改进，甚至自己做一个大型的软件包的时候，可能就是需要重新思考使用什么的语言的时候了。比如说，当你需要学习做一个大型网站，或者需要做一个和手机淘宝差不多的 app 出来的时候。当然，这个时候的你再认真考量之后自然会有自己的选择。</p>
+</li>
+</ul>
+<h2 id="我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"><a href="#我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？" class="headerlink" title="我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"></a>我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？</h2><ul>
+<li>没有找到好的入门教材</li>
+</ul>
+<p>计算机技术社区是最拥抱开源的社区，当你在网上找不到好的数学，物理，经济学教材的时候，你可以抱怨说：适合我的教材还没有被写出来。然而，当你找计算机技术教材的时候，你只能抱怨说：适合我的教材还没有和我遇见。动动手，逛逛各种技术社区和论坛，优质技术资料是无穷无尽的～</p>
+<ul>
+<li>被 python 的灵活性所迷惑</li>
+</ul>
+<p>如果 python 是你的第一门编程语言，那么你是很容易被 python 愚弄的。python 的最大特性是灵活，但是语言的灵活性却也是刺向初学者的利剑。毕竟，很多人学习 C 语言这门以严谨刻板著称的语言的时候，都会经常被自己所写出的程序所捉弄。</p>
+<p>这个时候，请记住：</p>
+<p>1，先选择一本知识点齐全的 python 基础教材放在手边，牢固掌握 python 的面向对象用法，并且知道 python 有哪些高级的函数式编程和面向对象编程的知识，在不懂的时候随时查阅。做完这些预备动作，才跟着某些教材做一些小项目。</p>
+<p>2，永远清楚你正在使用的变量的数据类型。如果不清楚，使用 type (a) 查询 a 的数据类型。</p>
+<p>很多初学者看别人写的程序，常常有一种错觉：所有的变量都是适合所有操作的，str 类型可以 print，list 类型也可以 print；它们都还都支持遍历，甚至还都支持加法，那不就是说所有的类型都支持所有的操作了？然而并不是，当你这么想时，你已经把 python 当成了魔法，而不是遵循客观规律的科学工具了。</p>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人最重要的能力是什么</title>
     <url>/2021/02/16/%E4%BA%BA%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%83%BD%E5%8A%9B%E6%98%AF%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p>人最重要的能力是什么</p>
@@ -2923,6 +2962,26 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数式程序测试</title>
+    <url>/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h4 id="实例-020：高空抛物"><a href="#实例-020：高空抛物" class="headerlink" title="实例 020：高空抛物"></a>实例 020：高空抛物</h4><p><strong>题目：</strong>一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？</p>
+<p>代码：</p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">high &#x3D; int(input(&#39;请输入起始高度:&#39;))</span><br><span class="line">times &#x3D; int(input(&#39;请输入次数:&#39;))</span><br><span class="line">high_all &#x3D; []</span><br><span class="line">high_each &#x3D; []</span><br><span class="line">for i in range(1, times + 1):</span><br><span class="line">	if i &#x3D;&#x3D; 1:</span><br><span class="line">		high_all.append(high)</span><br><span class="line">	else:</span><br><span class="line">		high_all.append(2 * high)</span><br><span class="line">	high &#x2F;&#x3D; 2</span><br><span class="line">	high_each.append(high)</span><br><span class="line">	print(f&#39;&#123;i&#125;次经历的总路程为:&#123;high&#125;&#39;)</span><br><span class="line">s &#x3D; sum(high_all)</span><br><span class="line">last_time &#x3D; high_each[-1]</span><br><span class="line">print(f&#39;&#123;times&#125;次经历的总路程为:&#123;s&#125;&#39;)</span><br><span class="line">print(f&#39;第&#123;times&#125;次反弹高度为:&#123;last_time&#125;&#39;)</span><br></pre></td></tr></table></figure>
+<p>2）函数写法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def bounce(num):</span><br><span class="line">    height &#x3D; 100</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for i in range(num):</span><br><span class="line">        total +&#x3D; height</span><br><span class="line">        height &#x2F;&#x3D; 2</span><br><span class="line">    return total, height</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    t, h &#x3D; bounce(10)</span><br><span class="line">    print(f&#39;它在第10次落地时，共经过&#123;t&#125;米，第10次反弹高度是&#123;h&#125;&#39;)</span><br></pre></td></tr></table></figure>
+<p>3）简单写法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; [100]  #每个‘反弹落地’过程经过的路程，第1次只有落地（100米）</span><br><span class="line">h &#x3D; 100  #每个‘反弹落地’过程，反弹的高度，第1次为100米</span><br><span class="line">print(&#39;第1次从%s米高落地，走过%s米，之后又反弹至%s米。&#39; % (h, a[0], h&#x2F;2))</span><br><span class="line">for i in range(2,11):  #第1次已初始化，再循环9次</span><br><span class="line">    a.append(h)  #先计算路程，再高度减半，因为一个‘反弹落地’为2个高度</span><br><span class="line">    h &#x3D; h &#x2F; 2</span><br><span class="line">    print(&#39;第%s次从%s米高落地，共走过%s米，之后又反弹至%s米。&#39; % (i, h, sum(a), h &#x2F; 2))</span><br></pre></td></tr></table></figure>
+<h3 id="获取桌面路径，写成函数方便调用"><a href="#获取桌面路径，写成函数方便调用" class="headerlink" title="获取桌面路径，写成函数方便调用"></a>获取桌面路径，写成函数方便调用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 写成函数，需要时直接调用更方便</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def GetDesktopPath():</span><br><span class="line">    return os.path.join(os.path.expanduser(&quot;~&quot;), &#39;Desktop\\111.txt&#39;)   #存放在桌面上的文件在读取时，路径应加 \\ 表示转义</span><br><span class="line"></span><br><span class="line"># print(GetDesktopPath())</span><br><span class="line"></span><br><span class="line">def Readfiles(b):</span><br><span class="line">	with open(b,encoding&#x3D;&#39;utf-8&#39;) as f1:</span><br><span class="line">		for line in f1:		  #用 for 循环一行一行的读取，推荐这读法，不占用内存空间</span><br><span class="line">			line &#x3D; line[:-1]  #去除每一行的换行符，即回车产生的空行，使输出时没有空格</span><br><span class="line">			print(line)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">	a&#x3D;GetDesktopPath()		#调用函数时，其返回值返回给函数本身，这时用一个变量 ‘a’ 接收，再把 a 传下一个函数使用</span><br><span class="line">	Readfiles(a)		#传实参变量 a 给读取文件的函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -3350,18 +3409,6 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>异常处理</title>
-    <url>/2021/03/27/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while 1:</span><br><span class="line">	first_number &#x3D; input(&#39;\nFirst number:&#39;)</span><br><span class="line">	if first_number.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">	second_number &#x3D; input(&#39;\nSecond number:&#39;)</span><br><span class="line">	try:</span><br><span class="line">		answer &#x3D; int(first_number) &#x2F; int(second_number)</span><br><span class="line">	except ZeroDivisionError:</span><br><span class="line">		print(&quot;You can&#39;t divide by 0!&quot;)</span><br><span class="line">	else:</span><br><span class="line">		print(answer)</span><br></pre></td></tr></table></figure>
-<h3 id="异常处理实例"><a href="#异常处理实例" class="headerlink" title="异常处理实例"></a>异常处理实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        n&#x3D;float(input(&#39;输入一个数字：&#39;))</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;输入错误&#39;)</span><br><span class="line">        continue</span><br><span class="line">    dn&#x3D;n**2</span><br><span class="line">    print(&#39;其平方为：&#39;,dn)</span><br><span class="line">    if dn&lt;50:</span><br><span class="line">        print(&#39;平方小于50，退出&#39;)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>将本地项目上传到Github</title>
     <url>/2021/02/14/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/u014135752/article/details/79951802">本文来源</a></p>
@@ -3450,6 +3497,18 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>异常处理</title>
+    <url>/2021/03/27/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while 1:</span><br><span class="line">	first_number &#x3D; input(&#39;\nFirst number:&#39;)</span><br><span class="line">	if first_number.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">	second_number &#x3D; input(&#39;\nSecond number:&#39;)</span><br><span class="line">	try:</span><br><span class="line">		answer &#x3D; int(first_number) &#x2F; int(second_number)</span><br><span class="line">	except ZeroDivisionError:</span><br><span class="line">		print(&quot;You can&#39;t divide by 0!&quot;)</span><br><span class="line">	else:</span><br><span class="line">		print(answer)</span><br></pre></td></tr></table></figure>
+<h3 id="异常处理实例"><a href="#异常处理实例" class="headerlink" title="异常处理实例"></a>异常处理实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        n&#x3D;float(input(&#39;输入一个数字：&#39;))</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;输入错误&#39;)</span><br><span class="line">        continue</span><br><span class="line">    dn&#x3D;n**2</span><br><span class="line">    print(&#39;其平方为：&#39;,dn)</span><br><span class="line">    if dn&lt;50:</span><br><span class="line">        print(&#39;平方小于50，退出&#39;)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>

@@ -22,31 +22,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：">
+<meta name="description" content="实例 020：高空抛物题目：一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？ 代码：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VsCode快捷键及小技巧">
-<meta property="og:url" content="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:title" content="函数式程序测试">
+<meta property="og:url" content="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="Bitcoder">
-<meta property="og:description" content="「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：">
+<meta property="og:description" content="实例 020：高空抛物题目：一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？ 代码：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png">
-<meta property="article:published_time" content="2021-02-17T13:15:32.000Z">
-<meta property="article:modified_time" content="2021-02-17T06:24:38.936Z">
+<meta property="article:published_time" content="2021-04-16T21:44:30.000Z">
+<meta property="article:modified_time" content="2021-04-16T13:52:55.665Z">
 <meta property="article:author" content="Bitcode">
-<meta property="article:tag" content="工具使用">
+<meta property="article:tag" content="Python基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png">
 
 
-<link rel="canonical" href="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+<link rel="canonical" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/">
 
 
 <script class="page-configurations">
@@ -58,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>VsCode快捷键及小技巧 | Bitcoder</title>
+<title>函数式程序测试 | Bitcoder</title>
   
 
 
@@ -197,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">VS Code 使用技巧整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E5%85%A5%E5%8A%9F%E8%83%BD"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、多光标插入功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%87%AA%E7%94%B1%E5%A4%9A%E8%A1%8C%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、自由多行选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%97%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、列选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B0%86%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E7%9A%84%E5%8F%98%E9%87%8F%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%80%E6%AC%A1%E6%80%A7%E6%9B%BF%E6%8D%A2%EF%BC%9A"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、将自动高亮的变量、字符一次性替换：</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B-020%EF%BC%9A%E9%AB%98%E7%A9%BA%E6%8A%9B%E7%89%A9"><span class="nav-number">1.</span> <span class="nav-text">实例 020：高空抛物</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%A1%8C%E9%9D%A2%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%86%99%E6%88%90%E5%87%BD%E6%95%B0%E6%96%B9%E4%BE%BF%E8%B0%83%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">获取桌面路径，写成函数方便调用</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -279,7 +269,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -292,7 +282,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          VsCode快捷键及小技巧
+          函数式程序测试
         </h1>
 
         <div class="post-meta-container">
@@ -304,7 +294,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-02-17 13:15:32 / 修改时间：06:24:38" itemprop="dateCreated datePublished" datetime="2021-02-17T13:15:32Z">2021-02-17</time>
+      <time title="创建时间：2021-04-16 21:44:30 / 修改时间：13:52:55" itemprop="dateCreated datePublished" datetime="2021-04-16T21:44:30Z">2021-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -312,7 +302,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
         </span>
     </span>
 
@@ -326,165 +316,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <ul>
-<li>「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：</li>
-</ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png" alt="20210217131854"></p>
-</div>
-
-<hr>
+        <h4 id="实例-020：高空抛物"><a href="#实例-020：高空抛物" class="headerlink" title="实例 020：高空抛物"></a>实例 020：高空抛物</h4><p><strong>题目：</strong>一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？</p>
+<p>代码：</p>
 <a id="more"></a>
 
-<ul>
-<li>「Ctrl + D」当选中文本时直接按「Ctrl + D」，可直接同时选中其他相同文本（按一次 ‘D’，选中一个，可按住不放），可进行同时编辑，界面如下：</li>
-</ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png" alt="20210217131911"></p>
-</div>
-
-<hr>
-<ul>
-<li><p>「Ctrl + E」当前文件内按「Ctrl + E」, 输入文件名可快速打开其他文件</p>
-<br>
-</li>
-<li><p>「F2」重命名一个变量</p>
-<br>
-- 选中一个变量，然后按 F2，弹出一个小窗口，在里面输入内容后按回车，所有该变量都会被重命名。（注意：在 js 文件中，如果这个变量没有用 var 或者 const 或者 let 声明，会无法重命名）
-
-</li>
-</ul>
-<hr>
-<ul>
-<li>「按住 alt，用鼠标左键点击」可以出现多个光标，输入的代码可以在光标处同时增加</li>
-</ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif" alt="20191007144725963"></p>
-</div>
-
-<hr>
-<ul>
-<li>「按 shift+alt，再使用鼠标拖动」可以出现竖直的列光标，同时可以选中多列</li>
-</ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif" alt="tuodong"></p>
-</div>
-
-<hr>
-<h2 id="VS-Code-使用技巧整理"><a href="#VS-Code-使用技巧整理" class="headerlink" title="VS Code 使用技巧整理"></a>VS Code 使用技巧整理</h2><h4 id="一、多光标插入功能"><a href="#一、多光标插入功能" class="headerlink" title="一、多光标插入功能"></a>一、多光标插入功能</h4><p>Alt + 鼠标左键，添加多光标输入</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png" alt="20210217133338"></p>
-</div>
-
-<hr>
-<h4 id="二、自由多行选择"><a href="#二、自由多行选择" class="headerlink" title="二、自由多行选择"></a>二、自由多行选择</h4><p>Alt 键 + 鼠标左键拖动选择各行的部分内容</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png" alt="20210217133415"></p>
-</div>
-
-<hr>
-<h4 id="三、列选择"><a href="#三、列选择" class="headerlink" title="三、列选择"></a>三、列选择</h4><p>Shift+Alit + 鼠标左键拖动，选中拖动的区域内容</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png" alt="20210217133842"></p>
-</div>
-
-<hr>
-<h4 id="四、将自动高亮的变量、字符一次性替换："><a href="#四、将自动高亮的变量、字符一次性替换：" class="headerlink" title="四、将自动高亮的变量、字符一次性替换："></a>四、将自动高亮的变量、字符一次性替换：</h4><p>双击变量，右键‘更改所有匹配项’。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png" alt="20210217134125"></p>
-</div>
-
-<hr>
-<p>或者</p>
-<p>双击变量，Ctrl+F2</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png" alt="20210217134138"></p>
-</div>
-
-
-
-<ul>
-<li><p>格式调整</p>
-<ul>
-<li>代码行缩进 Ctrl+[， Ctrl+]</li>
-<li>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]</li>
-<li>Ctrl+C Ctrl+V 如果不选中，默认复制或剪切一整行</li>
-<li>代码格式化：Shift+Alt+F，或 Ctrl+Shift+P 后输入 format code</li>
-<li>修剪空格 Ctrl+Shift+X</li>
-<li>上下移动一行： Alt+Up 或 Alt+Down</li>
-<li>向上向下复制一行： Shift+Alt+Up 或 Shift+Alt+Down</li>
-<li>在当前行下边插入一行 Ctrl+Enter</li>
-<li>在当前行上方插入一行 Ctrl+Shift+Enter</li>
-</ul>
-<br>
-</li>
-<li><p>光标相关</p>
-<ul>
-<li>移动到行首：Home</li>
-<li>移动到行尾：End</li>
-<li>移动到文件结尾：Ctrl+End</li>
-<li>移动到文件开头：Ctrl+Home</li>
-<li>移动到后半个括号 Ctrl+Shift+]</li>
-<li>选中当前行 Ctrl+i（双击）</li>
-<li>选择从光标到行尾 Shift+End</li>
-<li>选择从行首到光标处 Shift+Home</li>
-<li>删除光标右侧的所有字 Ctrl+Delete</li>
-<li>Shrink/expand selection： Shift+Alt+Left 和 Shift+Alt+Right</li>
-<li>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click 添加 cursor 或者 Ctrl   - +Alt+Down 或 Ctrl+Alt+Up</li>
-<li>同时选中所有匹配的 Ctrl+Shift+L</li>
-<li>Ctrl+D 下一个匹配的也被选中 (被我自定义成删除当前行了，见下边 Ctrl+Shift+K)</li>
-<li>回退上一个光标操作 Ctrl+U</li>
-</ul>
-<br>
-</li>
-<li><p>构代码</p>
-<ul>
-<li>跳转到定义处：F12</li>
-<li>定义处缩略图：只看一眼而不跳转过去 Alt+F12</li>
-<li>列出所有的引用：Shift+F12</li>
-<li>同时修改本文件中所有匹配的：Ctrl+F12</li>
-<li>重命名：比如要修改一个方法名，可以选中后按 F2，输入新的名字，回车，会发现所有的文件 - 都修改过了。</li>
-<li>跳转到下一个 Error 或 Warning：当有多个错误时可以按 F8 逐个跳转</li>
-<li>查看 diff 在 explorer 里选择文件右键 Set file to compare，然后需要对比的文件上右    - 键选择 Compare with ‘file_name_you_chose’.</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<ul>
-<li><p>查找替换</p>
-<ul>
-<li>查找 Ctrl+F</li>
-<li>查找替换 Ctrl+H</li>
-<li>整个文件夹中查找 Ctrl+Shift+F<br>
-</li>
-</ul>
-</li>
-<li><p>显示相关</p>
-<ul>
-<li>全屏:F11</li>
-<li>zoomIn/zoomOut：Ctrl + =/Ctrl + -</li>
-<li>侧边栏显 / 隐：Ctrl+B</li>
-<li>预览 markdown Ctrl+Shift+V<br>
-</li>
-</ul>
-</li>
-<li><p>其他</p>
-<ul>
-<li>自动保存：File -&gt; AutoSave ，或者 Ctrl+Shift+P，输入 auto</li>
-</ul>
-</li>
-</ul>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">high &#x3D; int(input(&#39;请输入起始高度:&#39;))</span><br><span class="line">times &#x3D; int(input(&#39;请输入次数:&#39;))</span><br><span class="line">high_all &#x3D; []</span><br><span class="line">high_each &#x3D; []</span><br><span class="line">for i in range(1, times + 1):</span><br><span class="line">	if i &#x3D;&#x3D; 1:</span><br><span class="line">		high_all.append(high)</span><br><span class="line">	else:</span><br><span class="line">		high_all.append(2 * high)</span><br><span class="line">	high &#x2F;&#x3D; 2</span><br><span class="line">	high_each.append(high)</span><br><span class="line">	print(f&#39;&#123;i&#125;次经历的总路程为:&#123;high&#125;&#39;)</span><br><span class="line">s &#x3D; sum(high_all)</span><br><span class="line">last_time &#x3D; high_each[-1]</span><br><span class="line">print(f&#39;&#123;times&#125;次经历的总路程为:&#123;s&#125;&#39;)</span><br><span class="line">print(f&#39;第&#123;times&#125;次反弹高度为:&#123;last_time&#125;&#39;)</span><br></pre></td></tr></table></figure>
+<p>2）函数写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def bounce(num):</span><br><span class="line">    height &#x3D; 100</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for i in range(num):</span><br><span class="line">        total +&#x3D; height</span><br><span class="line">        height &#x2F;&#x3D; 2</span><br><span class="line">    return total, height</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    t, h &#x3D; bounce(10)</span><br><span class="line">    print(f&#39;它在第10次落地时，共经过&#123;t&#125;米，第10次反弹高度是&#123;h&#125;&#39;)</span><br></pre></td></tr></table></figure>
+<p>3）简单写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [100]  #每个‘反弹落地’过程经过的路程，第1次只有落地（100米）</span><br><span class="line">h &#x3D; 100  #每个‘反弹落地’过程，反弹的高度，第1次为100米</span><br><span class="line">print(&#39;第1次从%s米高落地，走过%s米，之后又反弹至%s米。&#39; % (h, a[0], h&#x2F;2))</span><br><span class="line">for i in range(2,11):  #第1次已初始化，再循环9次</span><br><span class="line">    a.append(h)  #先计算路程，再高度减半，因为一个‘反弹落地’为2个高度</span><br><span class="line">    h &#x3D; h &#x2F; 2</span><br><span class="line">    print(&#39;第%s次从%s米高落地，共走过%s米，之后又反弹至%s米。&#39; % (i, h, sum(a), h &#x2F; 2))</span><br></pre></td></tr></table></figure>
+<h3 id="获取桌面路径，写成函数方便调用"><a href="#获取桌面路径，写成函数方便调用" class="headerlink" title="获取桌面路径，写成函数方便调用"></a>获取桌面路径，写成函数方便调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 写成函数，需要时直接调用更方便</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def GetDesktopPath():</span><br><span class="line">    return os.path.join(os.path.expanduser(&quot;~&quot;), &#39;Desktop\\111.txt&#39;)   #存放在桌面上的文件在读取时，路径应加 \\ 表示转义</span><br><span class="line"></span><br><span class="line"># print(GetDesktopPath())</span><br><span class="line"></span><br><span class="line">def Readfiles(b):</span><br><span class="line">	with open(b,encoding&#x3D;&#39;utf-8&#39;) as f1:</span><br><span class="line">		for line in f1:		  #用 for 循环一行一行的读取，推荐这读法，不占用内存空间</span><br><span class="line">			line &#x3D; line[:-1]  #去除每一行的换行符，即回车产生的空行，使输出时没有空格</span><br><span class="line">			print(line)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">	a&#x3D;GetDesktopPath()		#调用函数时，其返回值返回给函数本身，这时用一个变量 ‘a’ 接收，再把 a 传下一个函数使用</span><br><span class="line">	Readfiles(a)		#传实参变量 a 给读取文件的函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -493,21 +334,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" rel="prev" title="pip第三方库备份与恢复">
-                  <i class="fa fa-chevron-left"></i> pip第三方库备份与恢复
+                <a href="/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/" rel="prev" title="写给刚入门编程（python）的同学">
+                  <i class="fa fa-chevron-left"></i> 写给刚入门编程（python）的同学
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/" rel="next" title="学习Python必须要养成的几个习惯">
-                  学习Python必须要养成的几个习惯 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

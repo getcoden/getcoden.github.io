@@ -22,31 +22,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：">
+<meta name="description" content="写给谁刚准备入手学习 python 编程的大学生或者研究生。 你为什么学 python 当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。 深度学习大火，科室的实验开始使用深度学习的分析方法  可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。 你">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VsCode快捷键及小技巧">
-<meta property="og:url" content="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:title" content="写给刚入门编程（python）的同学">
+<meta property="og:url" content="https://getcoden.github.io/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Bitcoder">
-<meta property="og:description" content="「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：">
+<meta property="og:description" content="写给谁刚准备入手学习 python 编程的大学生或者研究生。 你为什么学 python 当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。 深度学习大火，科室的实验开始使用深度学习的分析方法  可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。 你">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png">
-<meta property="article:published_time" content="2021-02-17T13:15:32.000Z">
-<meta property="article:modified_time" content="2021-02-17T06:24:38.936Z">
+<meta property="article:published_time" content="2021-04-16T21:34:58.000Z">
+<meta property="article:modified_time" content="2021-04-16T13:38:43.761Z">
 <meta property="article:author" content="Bitcode">
-<meta property="article:tag" content="工具使用">
+<meta property="article:tag" content="Python基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png">
 
 
-<link rel="canonical" href="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+<link rel="canonical" href="https://getcoden.github.io/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/">
 
 
 <script class="page-configurations">
@@ -58,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>VsCode快捷键及小技巧 | Bitcoder</title>
+<title>写给刚入门编程（python）的同学 | Bitcoder</title>
   
 
 
@@ -197,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">VS Code 使用技巧整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E5%85%A5%E5%8A%9F%E8%83%BD"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、多光标插入功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%87%AA%E7%94%B1%E5%A4%9A%E8%A1%8C%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、自由多行选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%97%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、列选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B0%86%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E7%9A%84%E5%8F%98%E9%87%8F%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%80%E6%AC%A1%E6%80%A7%E6%9B%BF%E6%8D%A2%EF%BC%9A"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、将自动高亮的变量、字符一次性替换：</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E7%BB%99%E8%B0%81"><span class="nav-number">1.</span> <span class="nav-text">写给谁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%A6-python"><span class="nav-number">2.</span> <span class="nav-text">你为什么学 python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%83%A6%E8%AE%B0%E6%88%96%E8%80%85%E8%87%AA%E5%AD%A6%E4%BA%86%E5%BE%88%E4%B9%85%E5%8D%B4%E8%BF%9F%E8%BF%9F%E6%9C%AA%E5%85%A5%E9%97%A8"><span class="nav-number">3.</span> <span class="nav-text">你为什么惦记或者自学了很久却迟迟未入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E5%AD%A6%E4%B9%A0-python-%E4%BA%86%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E4%BA%86%EF%BC%8C%E4%B9%9F%E8%B7%9F%E7%9D%80%E6%95%99%E6%9D%90%E5%81%9A%E8%BF%87%E5%B0%8F%E9%A1%B9%E7%9B%AE%EF%BC%8C%E4%BD%86%E6%98%AF%E6%80%BB%E8%A7%89%E5%BE%97%E8%87%AA%E5%B7%B1%E5%95%A5%E9%83%BD%E4%B8%8D%E4%BC%9A%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -279,7 +269,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/17/VsCode%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -292,7 +282,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          VsCode快捷键及小技巧
+          写给刚入门编程（python）的同学
         </h1>
 
         <div class="post-meta-container">
@@ -304,7 +294,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-02-17 13:15:32 / 修改时间：06:24:38" itemprop="dateCreated datePublished" datetime="2021-02-17T13:15:32Z">2021-02-17</time>
+      <time title="创建时间：2021-04-16 21:34:58 / 修改时间：13:38:43" itemprop="dateCreated datePublished" datetime="2021-04-16T21:34:58Z">2021-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -312,7 +302,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
         </span>
     </span>
 
@@ -326,164 +316,34 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <ul>
-<li>「Ctrl + F」当前文件内搜索，当选中文本时直接按「Ctrl + F」，可直接填写搜索内容，界面如下：</li>
+        <h2 id="写给谁"><a href="#写给谁" class="headerlink" title="写给谁"></a>写给谁</h2><p>刚准备入手学习 python 编程的大学生或者研究生。</p>
+<h2 id="你为什么学-python"><a href="#你为什么学-python" class="headerlink" title="你为什么学 python"></a>你为什么学 python</h2><ul>
+<li>当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。</li>
+<li>深度学习大火，科室的实验开始使用深度学习的分析方法</li>
 </ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131854.png" alt="20210217131854"></p>
-</div>
-
-<hr>
-<a id="more"></a>
-
-<ul>
-<li>「Ctrl + D」当选中文本时直接按「Ctrl + D」，可直接同时选中其他相同文本（按一次 ‘D’，选中一个，可按住不放），可进行同时编辑，界面如下：</li>
+<p>可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。</p>
+<h2 id="你为什么惦记或者自学了很久却迟迟未入门"><a href="#你为什么惦记或者自学了很久却迟迟未入门" class="headerlink" title="你为什么惦记或者自学了很久却迟迟未入门"></a>你为什么惦记或者自学了很久却迟迟未入门</h2><ul>
+<li>担心自己投入了大量的时间却没有收获，或者在毕业后，甚至在刚做完实验后 python 就没用了。</li>
 </ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217131911.png" alt="20210217131911"></p>
-</div>
-
-<hr>
+<p>一门编程语言都没有深入学习过的人，常常误认为 java，c++，python， JavaScript 等编程语言的差别非常大。但是，在你开始学习它们之中的一个的时候，你学到的大部分知识其实都只是现代编程语言的基本元素：变量，运算符，语句，控制流，函数，面向对象，文件读写，使用第三方库。甚至当你学习数据结构与算法的时候，你仍然没有太多涉及到一个语言的特性。作者前几天就见识了一个刚学会 python 的计算机教授用自己的 C 语言风格写出的 python 数据结构与算法书，真的被震惊到了。</p>
+<p>但是，当你学习到这一步的时候，甚至还没开始学数据结构与算法的时候，你就已经可以开始做很多事情了。结合你的本专业（比如前面列出的那些）知识，以及一些专业的算法库，你就能使用你选择的编程语言，进行专业领域的探索和科学研究了。这个时候，你的注意力就不再在编程语言上了，而是你的课题。你的眼中只有宝石，而编程语言只是你用来打磨宝石的锉子。</p>
 <ul>
-<li><p>「Ctrl + E」当前文件内按「Ctrl + E」, 输入文件名可快速打开其他文件</p>
-<br>
-</li>
-<li><p>「F2」重命名一个变量</p>
-<br>
-- 选中一个变量，然后按 F2，弹出一个小窗口，在里面输入内容后按回车，所有该变量都会被重命名。（注意：在 js 文件中，如果这个变量没有用 var 或者 const 或者 let 声明，会无法重命名）
-
+<li><p>那各个编程语言之间究竟有哪些不同呢？</p>
+<p>编程语言，就像是手机或者电脑的操作系统，其最大的财富，是它们的生态，也就是适用的软件包。当你开始深入探索，改进，甚至自己做一个大型的软件包的时候，可能就是需要重新思考使用什么的语言的时候了。比如说，当你需要学习做一个大型网站，或者需要做一个和手机淘宝差不多的 app 出来的时候。当然，这个时候的你再认真考量之后自然会有自己的选择。</p>
 </li>
 </ul>
-<hr>
-<ul>
-<li>「按住 alt，用鼠标左键点击」可以出现多个光标，输入的代码可以在光标处同时增加</li>
+<h2 id="我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"><a href="#我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？" class="headerlink" title="我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"></a>我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？</h2><ul>
+<li>没有找到好的入门教材</li>
 </ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20191007144725963.gif" alt="20191007144725963"></p>
-</div>
-
-<hr>
+<p>计算机技术社区是最拥抱开源的社区，当你在网上找不到好的数学，物理，经济学教材的时候，你可以抱怨说：适合我的教材还没有被写出来。然而，当你找计算机技术教材的时候，你只能抱怨说：适合我的教材还没有和我遇见。动动手，逛逛各种技术社区和论坛，优质技术资料是无穷无尽的～</p>
 <ul>
-<li>「按 shift+alt，再使用鼠标拖动」可以出现竖直的列光标，同时可以选中多列</li>
+<li>被 python 的灵活性所迷惑</li>
 </ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/tuodong.gif" alt="tuodong"></p>
-</div>
-
-<hr>
-<h2 id="VS-Code-使用技巧整理"><a href="#VS-Code-使用技巧整理" class="headerlink" title="VS Code 使用技巧整理"></a>VS Code 使用技巧整理</h2><h4 id="一、多光标插入功能"><a href="#一、多光标插入功能" class="headerlink" title="一、多光标插入功能"></a>一、多光标插入功能</h4><p>Alt + 鼠标左键，添加多光标输入</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133338.png" alt="20210217133338"></p>
-</div>
-
-<hr>
-<h4 id="二、自由多行选择"><a href="#二、自由多行选择" class="headerlink" title="二、自由多行选择"></a>二、自由多行选择</h4><p>Alt 键 + 鼠标左键拖动选择各行的部分内容</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133415.png" alt="20210217133415"></p>
-</div>
-
-<hr>
-<h4 id="三、列选择"><a href="#三、列选择" class="headerlink" title="三、列选择"></a>三、列选择</h4><p>Shift+Alit + 鼠标左键拖动，选中拖动的区域内容</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217133842.png" alt="20210217133842"></p>
-</div>
-
-<hr>
-<h4 id="四、将自动高亮的变量、字符一次性替换："><a href="#四、将自动高亮的变量、字符一次性替换：" class="headerlink" title="四、将自动高亮的变量、字符一次性替换："></a>四、将自动高亮的变量、字符一次性替换：</h4><p>双击变量，右键‘更改所有匹配项’。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134125.png" alt="20210217134125"></p>
-</div>
-
-<hr>
-<p>或者</p>
-<p>双击变量，Ctrl+F2</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217134138.png" alt="20210217134138"></p>
-</div>
-
-
-
-<ul>
-<li><p>格式调整</p>
-<ul>
-<li>代码行缩进 Ctrl+[， Ctrl+]</li>
-<li>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]</li>
-<li>Ctrl+C Ctrl+V 如果不选中，默认复制或剪切一整行</li>
-<li>代码格式化：Shift+Alt+F，或 Ctrl+Shift+P 后输入 format code</li>
-<li>修剪空格 Ctrl+Shift+X</li>
-<li>上下移动一行： Alt+Up 或 Alt+Down</li>
-<li>向上向下复制一行： Shift+Alt+Up 或 Shift+Alt+Down</li>
-<li>在当前行下边插入一行 Ctrl+Enter</li>
-<li>在当前行上方插入一行 Ctrl+Shift+Enter</li>
-</ul>
-<br>
-</li>
-<li><p>光标相关</p>
-<ul>
-<li>移动到行首：Home</li>
-<li>移动到行尾：End</li>
-<li>移动到文件结尾：Ctrl+End</li>
-<li>移动到文件开头：Ctrl+Home</li>
-<li>移动到后半个括号 Ctrl+Shift+]</li>
-<li>选中当前行 Ctrl+i（双击）</li>
-<li>选择从光标到行尾 Shift+End</li>
-<li>选择从行首到光标处 Shift+Home</li>
-<li>删除光标右侧的所有字 Ctrl+Delete</li>
-<li>Shrink/expand selection： Shift+Alt+Left 和 Shift+Alt+Right</li>
-<li>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click 添加 cursor 或者 Ctrl   - +Alt+Down 或 Ctrl+Alt+Up</li>
-<li>同时选中所有匹配的 Ctrl+Shift+L</li>
-<li>Ctrl+D 下一个匹配的也被选中 (被我自定义成删除当前行了，见下边 Ctrl+Shift+K)</li>
-<li>回退上一个光标操作 Ctrl+U</li>
-</ul>
-<br>
-</li>
-<li><p>构代码</p>
-<ul>
-<li>跳转到定义处：F12</li>
-<li>定义处缩略图：只看一眼而不跳转过去 Alt+F12</li>
-<li>列出所有的引用：Shift+F12</li>
-<li>同时修改本文件中所有匹配的：Ctrl+F12</li>
-<li>重命名：比如要修改一个方法名，可以选中后按 F2，输入新的名字，回车，会发现所有的文件 - 都修改过了。</li>
-<li>跳转到下一个 Error 或 Warning：当有多个错误时可以按 F8 逐个跳转</li>
-<li>查看 diff 在 explorer 里选择文件右键 Set file to compare，然后需要对比的文件上右    - 键选择 Compare with ‘file_name_you_chose’.</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<ul>
-<li><p>查找替换</p>
-<ul>
-<li>查找 Ctrl+F</li>
-<li>查找替换 Ctrl+H</li>
-<li>整个文件夹中查找 Ctrl+Shift+F<br>
-</li>
-</ul>
-</li>
-<li><p>显示相关</p>
-<ul>
-<li>全屏:F11</li>
-<li>zoomIn/zoomOut：Ctrl + =/Ctrl + -</li>
-<li>侧边栏显 / 隐：Ctrl+B</li>
-<li>预览 markdown Ctrl+Shift+V<br>
-</li>
-</ul>
-</li>
-<li><p>其他</p>
-<ul>
-<li>自动保存：File -&gt; AutoSave ，或者 Ctrl+Shift+P，输入 auto</li>
-</ul>
-</li>
-</ul>
+<p>如果 python 是你的第一门编程语言，那么你是很容易被 python 愚弄的。python 的最大特性是灵活，但是语言的灵活性却也是刺向初学者的利剑。毕竟，很多人学习 C 语言这门以严谨刻板著称的语言的时候，都会经常被自己所写出的程序所捉弄。</p>
+<p>这个时候，请记住：</p>
+<p>1，先选择一本知识点齐全的 python 基础教材放在手边，牢固掌握 python 的面向对象用法，并且知道 python 有哪些高级的函数式编程和面向对象编程的知识，在不懂的时候随时查阅。做完这些预备动作，才跟着某些教材做一些小项目。</p>
+<p>2，永远清楚你正在使用的变量的数据类型。如果不清楚，使用 type (a) 查询 a 的数据类型。</p>
+<p>很多初学者看别人写的程序，常常有一种错觉：所有的变量都是适合所有操作的，str 类型可以 print，list 类型也可以 print；它们都还都支持遍历，甚至还都支持加法，那不就是说所有的类型都支持所有的操作了？然而并不是，当你这么想时，你已经把 python 当成了魔法，而不是遵循客观规律的科学工具了。</p>
 
     </div>
 
@@ -493,20 +353,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" rel="prev" title="pip第三方库备份与恢复">
-                  <i class="fa fa-chevron-left"></i> pip第三方库备份与恢复
+                <a href="/2021/04/03/Python%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/" rel="prev" title="Python命名规范">
+                  <i class="fa fa-chevron-left"></i> Python命名规范
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/" rel="next" title="学习Python必须要养成的几个习惯">
-                  学习Python必须要养成的几个习惯 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/" rel="next" title="函数式程序测试">
+                  函数式程序测试 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
