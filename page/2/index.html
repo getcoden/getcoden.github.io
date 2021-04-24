@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,320 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E4%BB%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/21/Python%E4%BB%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97/" class="post-title-link" itemprop="url">Python从字符串中提取数字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-21 08:25:43 / 修改时间：00:27:12" itemprop="dateCreated datePublished" datetime="2021-03-21T08:25:43Z">2021-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my_str &#x3D; &#39;123and456&#39;</span><br><span class="line"></span><br><span class="line">number &#x3D; filter(str.isdigit,  my_str )</span><br><span class="line"></span><br><span class="line"># number &#x3D; 123456</span><br></pre></td></tr></table></figure>
+<h3 id="使用正则表达式："><a href="#使用正则表达式：" class="headerlink" title="使用正则表达式："></a>使用正则表达式：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import re</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; re.findall(r&#39;\d+&#39;, &#39;hello 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line"></span><br><span class="line">[&#39;42&#39;, &#39;32&#39;, &#39;30&#39;]</span><br></pre></td></tr></table></figure>
+<h3 id="这也将匹配-42-bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用-b："><a href="#这也将匹配-42-bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用-b：" class="headerlink" title="这也将匹配 42 bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用\ b："></a>这也将匹配 42 bla42bla。如果您只想要按字边界（空格，句号，逗号）分隔的数字，则可以使用\ b：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; re.findall(r&#39;\b\d+\b&#39;, &#39;he33llo 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line"></span><br><span class="line">[&#39;42&#39;, &#39;32&#39;, &#39;30&#39;]</span><br></pre></td></tr></table></figure>
+<p>最终得到一个数字列表而不是字符串列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [int(s) for s in re.findall(r&#39;\b\d+\b&#39;, &#39;he33llo 42 I\&#39;m a 32 string 30&#39;)]</span><br><span class="line"></span><br><span class="line">[42, 32, 30]</span><br></pre></td></tr></table></figure>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><p>python str.isdigit() 有浮点数的判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">str.isdigit() 是个很好的工具，用来判断字符串中是否全为数字。而浮点数因为有 &quot;.&quot; ，所以会返还FALSE。</span><br><span class="line"></span><br><span class="line">参考示例：</span><br><span class="line"></span><br><span class="line"># 提示用户输入圆的半径，计算出该圆的周长和面积。要求如下：</span><br><span class="line"># 圆周率 π 值取 3.1415926</span><br><span class="line"># 如果输入的是负数和零，提示半径不能负数或者零</span><br><span class="line"># 计算机的结果保留两位小数</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    PI &#x3D; 3.1415926</span><br><span class="line">    radius &#x3D; input(&quot;请输入圆的半径：&quot;)</span><br><span class="line">    print(radius)</span><br><span class="line">    print(radius.isdigit())</span><br><span class="line">    if radius.isdigit():</span><br><span class="line">        radius &#x3D; float(radius)</span><br><span class="line">        # 计算元的周长和面积</span><br><span class="line">        circle_perimeter &#x3D; 2 * PI * radius</span><br><span class="line">        circle_area &#x3D; PI * radius * radius</span><br><span class="line">        print(&quot;圆的周长：%.2f \n圆的面积：%.2f&quot; % (circle_perimeter, circle_area))</span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line">        print(&quot;半径不能负数或者零&quot;)</span><br><span class="line">以上在输入半径：12.3 就会报错 。</span><br><span class="line"></span><br><span class="line">此时需要replace() 方法语法：</span><br><span class="line"></span><br><span class="line">str.replace(old, new[, max])</span><br><span class="line"></span><br><span class="line">参数</span><br><span class="line"></span><br><span class="line">old -- 将被替换的子字符串。</span><br><span class="line">new -- 新字符串，用于替换old子字符串。</span><br><span class="line">max -- 可选字符串, 替换不超过 max 次</span><br><span class="line"></span><br><span class="line">if radius.replace(&quot;.&quot;, &quot;&quot;).isdigit():   # 替换为空即可。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="闰年-判断的两种方式’"><a href="#闰年-判断的两种方式’" class="headerlink" title="闰年 判断的两种方式’"></a>闰年 判断的两种方式’</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">首先明确  什么是闰年？</span><br><span class="line"></span><br><span class="line">1、能被4整除，但不能被100整除；</span><br><span class="line"></span><br><span class="line">2、能被400整除；</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方案一：</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    year &#x3D; input(&quot;请输入要判断的年份（例如：2000）：&quot;)</span><br><span class="line">    if  year.isdigit():</span><br><span class="line">        year &#x3D; int(year)</span><br><span class="line">        result &#x3D; (year % 4 &#x3D;&#x3D; 0 and year % 100 !&#x3D; 0) or (year % 400 &#x3D;&#x3D; 0)</span><br><span class="line">        if result:</span><br><span class="line">            s &#x3D; &quot;是&quot;</span><br><span class="line">        else:</span><br><span class="line">            s &#x3D; &quot;不是&quot;</span><br><span class="line">        print(&quot;&#123;0&#125;年&#123;1&#125;闰年&quot;.format(year, s))</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入年份！&quot;)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方案二：</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    year &#x3D; input(&quot;请输入您要判断的年份（例如：2000）：&quot;)</span><br><span class="line">    if  year.isdigit():</span><br><span class="line">        year &#x3D; int(year)</span><br><span class="line">        result &#x3D; (year&#x2F;400 &#x3D;&#x3D; int(year&#x2F;400))or((year&#x2F;4 &#x3D;&#x3D; int(year&#x2F;4)) and (year&#x2F;100 !&#x3D; int(year&#x2F;100)))</span><br><span class="line">        if result:</span><br><span class="line">            s &#x3D; &quot;是&quot;</span><br><span class="line">        else:</span><br><span class="line">            s &#x3D; &quot;不是&quot;</span><br><span class="line">        print(&quot;&#123;0&#125;年&#123;1&#125;闰年!&quot;.format(year, s))</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入年份！&quot;)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">方案三：</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    year &#x3D; input(&quot;请输入您要判断的年份（例如：2000）：&quot;)</span><br><span class="line">    if  year.isdigit():</span><br><span class="line">        yea &#x3D; int(year)</span><br><span class="line">        if (yea&#x2F;400 &#x3D;&#x3D; int(yea&#x2F;400))or((yea&#x2F;4 &#x3D;&#x3D; int(yea&#x2F;4)) and (yea&#x2F;100 !&#x3D; int(yea&#x2F;100))):</span><br><span class="line">            print(year+&quot;是闰年!&quot;)</span><br><span class="line">        else:</span><br><span class="line">            print(year+&quot;不是闰年!&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入年份！&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="字典的应用"><a href="#字典的应用" class="headerlink" title="字典的应用"></a>字典的应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line">nums &#x3D; []</span><br><span class="line">for count in range(50):</span><br><span class="line">    nums.append(random.randint(1,100))</span><br><span class="line">sort_nums_dict&#x3D;defaultdict(list)</span><br><span class="line">for num in nums:</span><br><span class="line">    if num&gt;66:</span><br><span class="line">        sort_nums_dict[&#39;大于66的元素&#39;].append(num)</span><br><span class="line">    else:</span><br><span class="line">        sort_nums_dict[&#39;小于66的元素&#39;].append(num)</span><br><span class="line">print(sort_nums_dict)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">s &#x3D; re.findall(r&#39;\d+&#39;, &#39;hello 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line">list_ &#x3D; []</span><br><span class="line">sum_&#x3D;0</span><br><span class="line">for i in s:</span><br><span class="line">    s1&#x3D;int(i)</span><br><span class="line">    list_.append(s1)</span><br><span class="line">print(list_)</span><br><span class="line">for i in list_:</span><br><span class="line">    sum_+&#x3D;i</span><br><span class="line">print(sum_)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[42, 32, 30]</span><br><span class="line">104</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E4%B8%89%E5%A4%A9%E6%89%93%E9%B1%BC%E4%B8%A4%E5%A4%A9%E6%99%92%E7%BD%91-%E5%AE%8C%E7%BE%8E%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/21/Python%E4%B8%89%E5%A4%A9%E6%89%93%E9%B1%BC%E4%B8%A4%E5%A4%A9%E6%99%92%E7%BD%91-%E5%AE%8C%E7%BE%8E%E7%89%88/" class="post-title-link" itemprop="url">Python三天打鱼两天晒网_完美版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-21 08:24:12 / 修改时间：00:32:59" itemprop="dateCreated datePublished" datetime="2021-03-21T08:24:12Z">2021-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>三天打鱼两天晒网</p>
+<p>问题描述：中国有句俗语叫“三天打鱼两天晒网”。某人从 2010 年 1 月 1 日起开始“三天打鱼两天晒网”，问这个人在以后的某一天中是“打鱼”还是“晒网”。</p>
+<p>输入：键盘输入数据或者文件输入测试数据</p>
+<p>输出：判断的结果</p>
+<p>要求：输入日期的正确性验证，文件测试数据</p>
+<p>解题思路：核心思路就是得到给定的日期和给定的最开始的日期之间相隔的天数，然后以天数除以 5，得到余数，通过判断余数是大于 3 还是小于三，大于三则是晒网，小于三则是打鱼。(python)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># date input with the keyboard</span><br><span class="line">def get_days(date_input):</span><br><span class="line">    # get the days</span><br><span class="line">    date_base &#x3D; &#39;2010-01-01&#39;</span><br><span class="line">    # date_input &#x3D; input(&#39;please input the date you want to test with the form xxxx-xx-xx:&#39;)</span><br><span class="line">    # check its form and work out the answer</span><br><span class="line">    date_input &#x3D; datetime.strptime(date_input, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    date_base &#x3D; datetime.strptime(date_base, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    date_days &#x3D; (date_input - date_base).days</span><br><span class="line">    return date_days</span><br><span class="line"></span><br><span class="line"># to work out the result into the file out.txt</span><br><span class="line">def work_result(date_days,date_input):</span><br><span class="line">    mod_day &#x3D; date_days % 5</span><br><span class="line">    # date_input &#x3D; datetime.strptime(date_input, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    with open(&#39;out.txt&#39;, &#39;a&#39;) as file_out:</span><br><span class="line">        if mod_day &lt;&#x3D; 3:</span><br><span class="line">            file_out.write(date_input + &#39;  fishing\n&#39;)</span><br><span class="line">            print(date_input + &#39;  fishing&#39;)</span><br><span class="line">        else:</span><br><span class="line">            file_out.write(date_input + &#39;  webbing\n&#39;)</span><br><span class="line">            print(date_input + &#39;  webbing&#39;)</span><br><span class="line">    file_out.close()</span><br><span class="line"></span><br><span class="line"># test the aoolication with file date</span><br><span class="line">def file_date_test():</span><br><span class="line">    print(&#39;the following is file test&#39;)</span><br><span class="line">    with open(&#39;in.txt&#39;) as file:</span><br><span class="line">        context_line &#x3D; file.readline()</span><br><span class="line">        while context_line:</span><br><span class="line">            # remove the  character &#39;\n&#39;</span><br><span class="line">            context_line &#x3D; context_line.rstrip(&#39;\n&#39;)</span><br><span class="line">            # get the days</span><br><span class="line">            days_in_file &#x3D; get_days(context_line)</span><br><span class="line">            # work out into the file out.txt</span><br><span class="line">            work_result(days_in_file,context_line)</span><br><span class="line">            context_line &#x3D; file.readline()</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"># check the date</span><br><span class="line">def isVaildDate(date):</span><br><span class="line">    try:</span><br><span class="line">        time.strptime(date, &quot;%Y-%m-%d&quot;)</span><br><span class="line">        return True</span><br><span class="line">    except:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    date_input &#x3D; input(&#39;please input the date you want to test with the form xxxx-xx-xx:&#39;)</span><br><span class="line">    while not isVaildDate(date_input):</span><br><span class="line">        date_input &#x3D;input(&#39;date is illegal,please check and input it again:&#39;)</span><br><span class="line"></span><br><span class="line">    # expand ths test file use the input</span><br><span class="line">    with open(&#39;in.txt&#39;, &#39;a&#39;) as file_input:</span><br><span class="line">        size &#x3D; os.path.getsize(&#39;in.txt&#39;)</span><br><span class="line">        if size&#x3D;&#x3D;0:</span><br><span class="line">            file_input.write(date_input)</span><br><span class="line">        else:</span><br><span class="line">            file_input.write(&#39;\n&#39;+ date_input)</span><br><span class="line">    file_input.close()</span><br><span class="line"></span><br><span class="line">    # test the application</span><br><span class="line">    date_days &#x3D; get_days(date_input)</span><br><span class="line">    work_result(date_days,date_input)</span><br><span class="line">    # test the file input and output</span><br><span class="line">    file_date_test()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0/" class="post-title-link" itemprop="url">Python文件操作练习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-21 08:22:20 / 修改时间：00:23:05" itemprop="dateCreated datePublished" datetime="2021-03-21T08:22:20Z">2021-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="文件操作练习，两数相加求和并输出到文件"><a href="#文件操作练习，两数相加求和并输出到文件" class="headerlink" title="文件操作练习，两数相加求和并输出到文件"></a>文件操作练习，两数相加求和并输出到文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;文件操作练习，两数相加求和并输出到文件&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    a1 &#x3D;input(&#39;Enter the first number(q or Q is quit):&#39;)   # 输入一个数或字母进行判断</span><br><span class="line">    if a1.lower() &#x3D;&#x3D; &#39;q&#39;:   # 如果输入的是q或者Q，则退出程序</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        a &#x3D; int(a1)      # 将输入的数字字符串强制转换成 int 整型数，进行计算</span><br><span class="line">        b &#x3D; int(input(&#39;Enter the second number:&#39;))</span><br><span class="line">        c &#x3D; str(a+b)</span><br><span class="line">        f &#x3D; open (&#39;d:&#x2F;out1.txt&#39;,&#39;a+&#39;)   #以追加的方式写入文件</span><br><span class="line">        f.write(f&#39;&#123;str(a)&#125; + &#123;str(b)&#125; &#x3D; &#123;c&#125;&#39; + &#39; \n&#39;)    # 格式化输出加法算式</span><br><span class="line">        f.seek(0)                                # 将鼠标指针移动到文件的开始处</span><br><span class="line">        print(f.read())   # 读出文件并打印输出到屏幕</span><br><span class="line">        f.close()         # 关闭文件</span><br></pre></td></tr></table></figure>
+<h3 id="另一种写法，推荐使用"><a href="#另一种写法，推荐使用" class="headerlink" title="另一种写法，推荐使用"></a>另一种写法，推荐使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;out0.docx&#39;,&#39;a+&#39;) as f,\</span><br><span class="line">    open(&#39;out0.docx&#39;,&#39;r+&#39;) as f1:    # 可同时操作多个文件，注意格式，一定是在代码块内写</span><br><span class="line"></span><br><span class="line">    f.write(&#39;dkalkdlak&#39;)</span><br><span class="line">    f.write(&#39;123456&#39;)</span><br><span class="line">    f.seek(0)</span><br><span class="line">    print(f1.read())</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E5%AF%BB%E6%89%BE%E7%B4%A0%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/21/Python%E5%AF%BB%E6%89%BE%E7%B4%A0%E6%95%B0/" class="post-title-link" itemprop="url">Python寻找素数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-21 08:20:35 / 修改时间：00:21:47" itemprop="dateCreated datePublished" datetime="2021-03-21T08:20:35Z">2021-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="找素数，利用-else"><a href="#找素数，利用-else" class="headerlink" title="找素数，利用 else"></a>找素数，利用 else</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">k &#x3D; 0</span><br><span class="line">for num in range(2, 101):  # 生成从2到100的序列</span><br><span class="line">    for i in range(2, num):</span><br><span class="line">        if num % i &#x3D;&#x3D; 0:</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;生成的素数有:&#123;&#125;&#39;.format(num))</span><br><span class="line">        k +&#x3D; 1</span><br><span class="line"></span><br><span class="line">print(&#39;\n100以内的素数共有&#123;&#125;个&#39;.format(k))</span><br></pre></td></tr></table></figure>
+<h3 id="自由输入求素数个数"><a href="#自由输入求素数个数" class="headerlink" title="自由输入求素数个数"></a>自由输入求素数个数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">is_notprime &#x3D; [] #定义空列表，存放非素数</span><br><span class="line">is_prime &#x3D; []    #定义空列表，存放素数</span><br><span class="line"></span><br><span class="line">num &#x3D; input(&#39;Enter some numbers:&#39;).split()  # 由键盘输入一些数字，并以空格分隔</span><br><span class="line"></span><br><span class="line">num_list &#x3D; [int(j) for j in num]      # 用列表推导式并加以强制类型转换把输入的字符数字转换成 int 类型数据</span><br><span class="line"></span><br><span class="line">for s in num_list:</span><br><span class="line">    for i in range(2, s):</span><br><span class="line">        if s % i &#x3D;&#x3D; 0:</span><br><span class="line">            is_notprime.append(s)    # 将非素数添加到非素数空列表</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        is_prime.append(s)   #将是素数的数字添加到素数列表</span><br><span class="line"></span><br><span class="line"># 输出非素数及素数</span><br><span class="line">print(f&#39;非素数的数字有:&#123;is_notprime&#125;&#39;)</span><br><span class="line">print(f&#39;素数的数字有:&#123;is_prime&#125;&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="格式化求阶乘法"><a href="#格式化求阶乘法" class="headerlink" title="格式化求阶乘法"></a>格式化求阶乘法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def jiecheng(n):</span><br><span class="line">    result &#x3D; 1</span><br><span class="line">    while n&gt;0:</span><br><span class="line">        result *&#x3D;n</span><br><span class="line">        n -&#x3D;1</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">for i in range(1,4):</span><br><span class="line">    re &#x3D; jiecheng(i)</span><br><span class="line">    print(f&#39;&#123;i&#125;的阶乘为:&#123;re&#125;&#39;)</span><br><span class="line">#     print()</span><br></pre></td></tr></table></figure>
+<h3 id="寻找素数"><a href="#寻找素数" class="headerlink" title="寻找素数"></a>寻找素数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">寻找素数</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def is_prime(n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    判断一个数是否是素数</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if n &lt;&#x3D; 1:</span><br><span class="line">        return False</span><br><span class="line">    for i in range(2, int(math.sqrt(n) + 1)):</span><br><span class="line">        if n % i &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    primes &#x3D; [i for i in range(2,100) if is_prime(i)]    #从 2 开始，因为 1 显然不是质数</span><br><span class="line">    print (primes)</span><br></pre></td></tr></table></figure>
+<h3 id="一元二次方程求解"><a href="#一元二次方程求解" class="headerlink" title="一元二次方程求解"></a>一元二次方程求解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">solving a quadratic equation</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from __future__ import division</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def quadratic_equation(a,b,c):</span><br><span class="line">    delta &#x3D; b*b - 4*a*c</span><br><span class="line">    if delta&lt;0:</span><br><span class="line">        return False</span><br><span class="line">    elif delta&#x3D;&#x3D;0:</span><br><span class="line">        return -(b&#x2F;(2*a))</span><br><span class="line">    else:</span><br><span class="line">        sqrt_delta &#x3D; math.sqrt(delta)</span><br><span class="line">        x1 &#x3D; (-b + sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        x2 &#x3D; (-b - sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        return x1, x2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    print (&quot;a quadratic equation: x^2 + 2x + 1 &#x3D; 0&quot;)</span><br><span class="line">    coefficients &#x3D; []</span><br><span class="line">    a &#x3D; input(&#39;Enter some numbers:&#39;).split( )</span><br><span class="line">    for i in a:</span><br><span class="line">        coefficients.append(int(i))</span><br><span class="line">    roots &#x3D; quadratic_equation(*coefficients)</span><br><span class="line">    if roots:</span><br><span class="line">        print (&quot;the result is:&quot;,roots)</span><br><span class="line">    else:</span><br><span class="line">        print (&quot;this equation has no solution.&quot;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -856,370 +1170,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Python%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/Python%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/" class="post-title-link" itemprop="url">Python语法基础练习题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-05 20:02:09" itemprop="dateCreated datePublished" datetime="2021-03-05T20:02:09Z">2021-03-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-21 00:12:17" itemprop="dateModified" datetime="2021-03-21T00:12:17Z">2021-03-21</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="两数之间的素数个数（求素数算法大全）"><a href="#两数之间的素数个数（求素数算法大全）" class="headerlink" title="两数之间的素数个数（求素数算法大全）"></a>两数之间的素数个数（求素数算法大全）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1、这种易理解</span><br><span class="line">L1 &#x3D; []</span><br><span class="line">count &#x3D; 0</span><br><span class="line">for x in range(1, 100):</span><br><span class="line">    n &#x3D; 0</span><br><span class="line">    for y in range(1, x + 1):</span><br><span class="line">        if x % y &#x3D;&#x3D; 0:</span><br><span class="line">            n &#x3D; n + 1</span><br><span class="line">    if n &#x3D;&#x3D; 2:</span><br><span class="line">        count +&#x3D;1</span><br><span class="line">        L1.append(x)</span><br><span class="line">print(L1)</span><br><span class="line">print(count)</span><br><span class="line"></span><br><span class="line">2、计算 2-100 之间素数的个数，返回结果。格式化字符串，标准</span><br><span class="line"></span><br><span class="line">def primeNum(f):</span><br><span class="line">    def f1():</span><br><span class="line">        sum_pri &#x3D; 0</span><br><span class="line">        for i in range(2,101):</span><br><span class="line">            for j in  range(2,i):</span><br><span class="line">                if i % j &#x3D;&#x3D; 0:</span><br><span class="line">                    break</span><br><span class="line">                elif j &#x3D;&#x3D; i - 1:</span><br><span class="line">                    sum_pri +&#x3D; 1</span><br><span class="line">        return f(sum_pri+1)</span><br><span class="line">    return f1</span><br><span class="line">@primeNum</span><br><span class="line">def f(p):</span><br><span class="line">    print(&quot;2-100之间共有&#123;&#125;个素数&quot;.format(p))</span><br><span class="line">f()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="批量生成虚拟姓名"><a href="#批量生成虚拟姓名" class="headerlink" title="批量生成虚拟姓名"></a>批量生成虚拟姓名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">firstname &#x3D; &#39;赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许&#39;</span><br><span class="line"></span><br><span class="line">second &#x3D; &#39;中万斯近元伟丽利国士文连百宏可立成海友南广云基&#39;</span><br><span class="line"></span><br><span class="line">third &#x3D; &#39;隆智渝顺乐天杰夫煜兵思霆炜祺亮剀炫翔维瑞韬嘉林庆玮勤栋源路焕霖彩明邦闻朵皓瀚荣奕涓艺&#39;</span><br><span class="line"></span><br><span class="line">namelist &#x3D; []</span><br><span class="line"></span><br><span class="line">many &#x3D; input(&#39;请输入需要生成姓名的数量:\n&#39;)</span><br><span class="line">for i in range(int(many)):</span><br><span class="line">    data &#x3D; [2,3]</span><br><span class="line">    namelen &#x3D; random.choice(data)</span><br><span class="line">    if namelen&#x3D;&#x3D;2:</span><br><span class="line">        newname &#x3D; random.choice(firstname)+random.choice(second)</span><br><span class="line">    else:</span><br><span class="line">        newname &#x3D; random.choice(firstname)+random.choice(second)+random.choice(third)</span><br><span class="line">    namelist.append(newname)</span><br><span class="line"></span><br><span class="line">print(&#39;生成的虚拟姓名列表为:\n&#39; + &#39;\n&#39;.join(namelist))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="初学函数，求幂指数练手程序"><a href="#初学函数，求幂指数练手程序" class="headerlink" title="初学函数，求幂指数练手程序"></a>初学函数，求幂指数练手程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def jiecheng(num,zhishu):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    求一个数的幂指数</span><br><span class="line">    :param num:</span><br><span class="line">    :param zhi:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    print(&#39;结果是：&#39;)</span><br><span class="line">    restult &#x3D; num ** zhi</span><br><span class="line">    return restult</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    num &#x3D; input(&#39;一个数\（输入q退出程序）:&#39;)</span><br><span class="line">    if num.lower() &#x3D;&#x3D;&#39;q&#39;:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        num &#x3D; int(num)</span><br><span class="line">    zhi &#x3D; int(input(&#39;请输入这个数的指数：&#39;))</span><br><span class="line">    res &#x3D; jiecheng(num,zhishu)</span><br><span class="line">    print(&#39;最后的结果是:&#39;+ str(res))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="获取汉字区位码"><a href="#获取汉字区位码" class="headerlink" title="获取汉字区位码"></a>获取汉字区位码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def getcode(chinese):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    获取汉字对应的区位码</span><br><span class="line">    :param 单个汉字</span><br><span class="line">    :return:获取到的区位码</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    barry &#x3D; chinese.encode(&#39;gb2312&#39;)</span><br><span class="line">    code &#x3D; &#39;&#123;:02d&#125;&#39;.format(barry[0] - 160) + &#39;&#123;:02d&#125;&#39;.format(barry[1] - 160)</span><br><span class="line">    return code</span><br><span class="line">while 1:</span><br><span class="line">    name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">    for word in name:</span><br><span class="line">        print(word,getcode(word))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="python-文件操作"><a href="#python-文件操作" class="headerlink" title="python 文件操作"></a>python 文件操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># 1)创建一个一级目录</span><br><span class="line">path &#x3D; &#39;c:\\demo&#39;</span><br><span class="line"></span><br><span class="line">if not os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br><span class="line">    print(&#39;目录创建成功&#39;)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;目录已经存在&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 2)删除一个一级目录</span><br><span class="line">path &#x3D; &#39;c:\\demo&#39;</span><br><span class="line">if os.path.exists(path):</span><br><span class="line">    os.rmdir(path)</span><br><span class="line">    print(&#39;目录删除成功&#39;)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;目录不存在&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="批量创建文件操作"><a href="#批量创建文件操作" class="headerlink" title="批量创建文件操作"></a>批量创建文件操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    path &#x3D; input(&#39;请输入文件保存地址：&#39;)</span><br><span class="line">    num &#x3D; int(input(&#39;请输入创建文件的数量：&#39;))</span><br><span class="line">    for i in range(num):</span><br><span class="line">        t &#x3D; datetime.datetime.now()</span><br><span class="line">        file &#x3D; os.path.join(path,t.strftime(&#39;%Y%m%d%H%M%S&#39;) + &#39;.txt&#39;)</span><br><span class="line">        open(file,&#39;w&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        i +&#x3D; 1</span><br><span class="line">    print(&#39;创建成功！&#39;)</span><br><span class="line">    os.startfile(path)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="函数求最大-、小、个数的练习"><a href="#函数求最大-、小、个数的练习" class="headerlink" title="函数求最大 、小、个数的练习"></a>函数求最大 、小、个数的练习</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def findmax(*l):</span><br><span class="line">    if l &#x3D;&#x3D; []:</span><br><span class="line">        return</span><br><span class="line">    else:</span><br><span class="line">        Max &#x3D; l[0]</span><br><span class="line">        for i in l:</span><br><span class="line">            if i &gt; Max:</span><br><span class="line">                Max &#x3D; i</span><br><span class="line">        return Max</span><br><span class="line"></span><br><span class="line">def findmin(*l):</span><br><span class="line">    if l &#x3D;&#x3D; []:</span><br><span class="line">        return</span><br><span class="line">    else:</span><br><span class="line">        Min &#x3D; l[0]</span><br><span class="line">        for i in l:</span><br><span class="line">            if i &lt; Min:</span><br><span class="line">                Min &#x3D; i</span><br><span class="line">        return Min</span><br><span class="line"></span><br><span class="line">def findlen(*l):</span><br><span class="line">    a &#x3D; len(l)</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">x &#x3D; input(&#39;请输入数字，并用空格隔开:&#39;).split()   #.split()用于分隔关对字符串进行切片操作</span><br><span class="line">last &#x3D; []</span><br><span class="line">for i in x:</span><br><span class="line">    last.append(int(i))</span><br><span class="line">print(&#39;max:&#39;,findmax(*last))</span><br><span class="line">print(&#39;min:&#39;,findmin(*last))</span><br><span class="line">print(&#39;max:&#39;,findlen(*last))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="函数复习-给定数字区间求素数个数"><a href="#函数复习-给定数字区间求素数个数" class="headerlink" title="函数复习 给定数字区间求素数个数"></a>函数复习 给定数字区间求素数个数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def sushu(lower,upper):</span><br><span class="line">    lei &#x3D; []</span><br><span class="line">    for num in range(lower,upper+1):</span><br><span class="line">        if num &gt; 1:</span><br><span class="line">            for i in range(2,num):</span><br><span class="line">                if (num % i ) &#x3D;&#x3D; 0:</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                lei.append(num)</span><br><span class="line">    print(&#39;求的素数共计&#39;+ str(len(lei)) +&#39;个。\n&#39;,&#39;分别是:&#39;,lei)</span><br><span class="line">while 1:</span><br><span class="line">    lower &#x3D; int(input(&#39;输入区间最小值:&#39;))</span><br><span class="line">    upper &#x3D; int(input(&#39;输入区间最大值:&#39;))</span><br><span class="line">    sushu(lower, upper)</span><br><span class="line">    print()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="计算题基础练习"><a href="#计算题基础练习" class="headerlink" title="计算题基础练习"></a>计算题基础练习</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">计算1-2+3-4+5-6+...+99的积是多少</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">for i in range(1,100):</span><br><span class="line">    if i % 2 &#x3D;&#x3D; 0:</span><br><span class="line">        sum -&#x3D;  i</span><br><span class="line">    else:</span><br><span class="line">        sum +&#x3D; i</span><br><span class="line">print(sum)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def fib_recur(n):</span><br><span class="line">    assert n &gt;&#x3D; 0</span><br><span class="line">    if n in (0, 1):</span><br><span class="line">        return n</span><br><span class="line">    return fib_recur(n - 1) + fib_recur(n - 2)</span><br><span class="line"></span><br><span class="line">for i in range(20):</span><br><span class="line">    print(fib_recur(i), end&#x3D;&quot; &quot;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">2）递推法</span><br><span class="line"></span><br><span class="line">def fib_loop(n):</span><br><span class="line">    a, b &#x3D; 0, 1</span><br><span class="line">    for i in range(n):</span><br><span class="line">        a, b &#x3D; b, a + b</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">for i in range(20):</span><br><span class="line">    print(fib_loop(i), end&#x3D;&quot; &quot;)</span><br></pre></td></tr></table></figure>
-<h3 id="求-2-22-222…的和"><a href="#求-2-22-222…的和" class="headerlink" title="求 2+22+222…的和"></a>求 2+22+222…的和</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; eval(input(&#39;请输入一个数字:&#39;))</span><br><span class="line">n &#x3D; eval(input(&#39;请输入次数n:&#39;))</span><br><span class="line">sum &#x3D; []</span><br><span class="line">sum2 &#x3D; 0</span><br><span class="line">s1 &#x3D; 0</span><br><span class="line">i &#x3D; 0</span><br><span class="line">while i &lt;&#x3D; n-1:</span><br><span class="line">    s1 &#x3D;s1+(a*(10**i))</span><br><span class="line">    sum.append(s1)</span><br><span class="line">    i +&#x3D; 1</span><br><span class="line">sum1 &#x3D; [str(i) for i in sum]</span><br><span class="line">for j in sum:</span><br><span class="line">    sum2 +&#x3D; j</span><br><span class="line">print(&#39;+&#39;.join(sum1),&#39;&#x3D;&#39;,sum2)</span><br><span class="line"></span><br><span class="line">2）看了大神的写法</span><br><span class="line"></span><br><span class="line">a &#x3D; input(&#39;输入数字&gt;&gt;&gt;&#39;)</span><br><span class="line">count &#x3D; int(input(&#39;几个数字相加&gt;&gt;&gt;&#39;))</span><br><span class="line">ret &#x3D; []</span><br><span class="line">for i in range(1,count+1):</span><br><span class="line">    ret.append(int(a*i))</span><br><span class="line">sum1 &#x3D; [str(j) for j in ret]</span><br><span class="line">print(&#39;+&#39;.join(sum1),&#39;&#x3D;&#39;,sum(ret))</span><br></pre></td></tr></table></figure>
-<h3 id="吃桃子问题"><a href="#吃桃子问题" class="headerlink" title="吃桃子问题"></a>吃桃子问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">peach &#x3D; 1</span><br><span class="line">print(&#39;第10天吃之前就剩1个桃子&#39;)</span><br><span class="line">for i in range(9,0,-1):</span><br><span class="line">    p &#x3D; (peach+1) * 2</span><br><span class="line">print(&#39;第1天共摘了&#123;&#125;个桃子&#39;.format(peach))</span><br></pre></td></tr></table></figure>
-<h3 id="循环求一个数的阶乘"><a href="#循环求一个数的阶乘" class="headerlink" title="循环求一个数的阶乘"></a>循环求一个数的阶乘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def f(x):</span><br><span class="line">      if x &#x3D;&#x3D; 0:</span><br><span class="line">           return 0</span><br><span class="line">      elif x &#x3D;&#x3D; 1:</span><br><span class="line">           return 1</span><br><span class="line">      else:</span><br><span class="line">            return (x * f(x - 1))</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">        info &#x3D; int(input(&#39;&gt;&gt;&gt;:&#39;))</span><br><span class="line">        print(f(info))</span><br><span class="line">        info &#x3D; input(&#39;还想试试吗？(输入n退出)&#39;)</span><br><span class="line">        if info &#x3D;&#x3D; &#39;n&#39;:</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
-<h3 id="3-和-5-的倍数之和"><a href="#3-和-5-的倍数之和" class="headerlink" title="3 和 5 的倍数之和"></a>3 和 5 的倍数之和</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">l &#x3D; []</span><br><span class="line">for i in range(1,1000):</span><br><span class="line">    if i%3 &#x3D;&#x3D; 0 and i%5 &#x3D;&#x3D; 0:</span><br><span class="line">        sum +&#x3D; 1</span><br><span class="line">        l.append(i)</span><br><span class="line">print(l)</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-<h3 id="斐波那契数列数列之和"><a href="#斐波那契数列数列之和" class="headerlink" title="斐波那契数列数列之和"></a>斐波那契数列数列之和</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">a,b &#x3D; 0,1</span><br><span class="line">while b &lt; 4000000:</span><br><span class="line">    if b%2 &#x3D;&#x3D; 0:</span><br><span class="line">        sum +&#x3D; b</span><br><span class="line">    a,b &#x3D; b,a+b</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-<h3 id="format-格式化输出"><a href="#format-格式化输出" class="headerlink" title="format 格式化输出"></a>format 格式化输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mystring &#x3D; input(&#39;输入一带有字母数字特殊符号的字符串:&#39;)</span><br><span class="line">alpha &#x3D; 0</span><br><span class="line">space &#x3D; 0</span><br><span class="line">number &#x3D; 0</span><br><span class="line">other &#x3D; 0</span><br><span class="line">for i in mystring:</span><br><span class="line">    if i &gt;&#x3D; &#39;a&#39; and i &lt;&#x3D; &#39;z&#39; or i &gt;&#x3D; &#39;A&#39; and i &lt;&#x3D; &#39;Z&#39;:</span><br><span class="line">        alpha +&#x3D; 1</span><br><span class="line">    elif i &gt;&#x3D; &#39;0&#39; and i &lt;&#x3D; &#39;9&#39;:</span><br><span class="line">        number +&#x3D; 1</span><br><span class="line">    elif i.isspace():</span><br><span class="line">        space +&#x3D; 1</span><br><span class="line">    else:</span><br><span class="line">        other +&#x3D; 1</span><br><span class="line">print(&#39;alpha:&#123;&#125;,number:&#123;&#125;,space:&#123;&#125;,other:&#123;&#125;&#39;.format(alpha,number,space,other))</span><br></pre></td></tr></table></figure>
-<h3 id="1000-以内的完数（经典）"><a href="#1000-以内的完数（经典）" class="headerlink" title="1000 以内的完数（经典）"></a>1000 以内的完数（经典）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for x in range(1,1001):</span><br><span class="line">    factor &#x3D; []</span><br><span class="line">    for i in range(1,x):</span><br><span class="line">        if x%i &#x3D;&#x3D; 0:</span><br><span class="line">            factor.append(i)</span><br><span class="line">    if sum(factor) &#x3D;&#x3D; x:</span><br><span class="line">        print(x)</span><br></pre></td></tr></table></figure>
-<h3 id="时间的格式化"><a href="#时间的格式化" class="headerlink" title="时间的格式化"></a>时间的格式化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">now &#x3D; datetime.now()</span><br><span class="line">print(now.strftime(&#39;%Y-%m-%d&#39;))</span><br><span class="line">print(now.strftime(&#39;%Y%m%d&#39;))</span><br></pre></td></tr></table></figure>
-<h3 id="自定义输入数据的个数并对其进去大小求平均值"><a href="#自定义输入数据的个数并对其进去大小求平均值" class="headerlink" title="自定义输入数据的个数并对其进去大小求平均值"></a>自定义输入数据的个数并对其进去大小求平均值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">def fact():</span><br><span class="line">    l &#x3D; []</span><br><span class="line">    for i in range(5):</span><br><span class="line">        temp &#x3D; input(&#39;请输入第%d个数字&#39;%(i+1))</span><br><span class="line">        temp1 &#x3D; int(temp)</span><br><span class="line">        l.append(temp1)</span><br><span class="line">    print(l)</span><br><span class="line">def fact1(l):</span><br><span class="line">    l.sort()</span><br><span class="line">    l2 &#x3D; l[1:-1]</span><br><span class="line">    return round((sum(l2)&#x2F;len(l2)),1)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line"></span><br><span class="line">    fact()</span><br><span class="line">    print(fact1(l))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lst &#x3D; []</span><br><span class="line">y &#x3D; int(input(&#39;请输入您所要数据的个数:&#39;))</span><br><span class="line">for i in range(y):</span><br><span class="line">    tmp &#x3D; input(&#39;请输入%d个数:&#39;%(i+1))</span><br><span class="line">    tmp1 &#x3D; float(tmp)</span><br><span class="line">    lst.append(tmp1)</span><br><span class="line"></span><br><span class="line">print(&#39;你输入的数据为:&#39;)</span><br><span class="line">print(lst)</span><br><span class="line">lst.sort()</span><br><span class="line">lst1 &#x3D; lst[1:-1]</span><br><span class="line">x &#x3D; round((sum(lst1)&#x2F;len(lst1)),1)</span><br><span class="line">print(&#39;这组数的最大值为&#123;&#125;,最小值为&#123;&#125;,平均值为&#123;&#125;&#39;.format(max(lst),min(lst),x))</span><br><span class="line"></span><br><span class="line">2 下次一定用函数来写</span><br><span class="line"></span><br><span class="line">def getMaxMinAvgoflist(list):</span><br><span class="line">    Max &#x3D; max(list)</span><br><span class="line">    Min &#x3D; min(list)</span><br><span class="line">    sum &#x3D; 0.0</span><br><span class="line">    for i in range(len(list)):</span><br><span class="line">        sum +&#x3D; list[i]</span><br><span class="line">        Avg &#x3D; 1.0*sum&#x2F;len(list)</span><br><span class="line">        return  (Max,Min,Avg)</span><br><span class="line">l &#x3D; [1,2,4,5]</span><br><span class="line">print(getMaxMinAvgoflist(l))</span><br></pre></td></tr></table></figure>
-<h3 id="Python-键盘输入转换为列表的实例"><a href="#Python-键盘输入转换为列表的实例" class="headerlink" title="Python 键盘输入转换为列表的实例"></a>Python 键盘输入转换为列表的实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">Python 输入字符串转列表是为了方便后续处理，这种操作在考试的时候比较多见。</span><br><span class="line"></span><br><span class="line">1. 在 Python3.0 以后，键盘输入使用 input 函数</span><br><span class="line"></span><br><span class="line">eg1.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input</span><br><span class="line">&gt;&gt;&gt; 123</span><br><span class="line">123</span><br><span class="line">在命令行没有任何显示，输入 123 后直接赋值给 x，并打印。</span><br><span class="line"></span><br><span class="line">eg2.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input(&quot;请输入...&quot;)</span><br><span class="line">请输入...123</span><br><span class="line">&gt;&gt;&gt; print(x)</span><br><span class="line">123</span><br><span class="line">在命令行显示 “请输入…”，显示的字符对输入没有任何影响，输入字符后直接赋值给 x。</span><br><span class="line"></span><br><span class="line">2. 仅仅使用 input 是无法解决大部分数据处理的，通常输入的字符串需要分割处理，python 使用 split () 函数进行分割</span><br><span class="line"></span><br><span class="line">eg1.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input()</span><br><span class="line">1,2,3,4</span><br><span class="line">&gt;&gt;&gt; xlist&#x3D;x.split(&quot;,&quot;)</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">但是这样仍然不够，输入的是数字，我们希望列表也是数字，所以还需要进一步转换</span><br><span class="line"></span><br><span class="line">eg2.</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input()</span><br><span class="line">1,2,3,4</span><br><span class="line">&gt;&gt;&gt; xlist&#x3D;x.split(&quot;,&quot;)</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">&gt;&gt;&gt; xlist &#x3D; [int(xlist[i]) for i in range(len(xlist))] #for循环，把每个字符转成int值</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[1, 2, 3, 4]</span><br><span class="line">split (“”) 函数的参数可以是任何分隔符，包括（a,b,c….;1,2,3…;%,!,*, 空格）</span><br><span class="line"></span><br><span class="line">eg3.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x&#x3D;input()</span><br><span class="line">1 2 3 4</span><br><span class="line">&gt;&gt;&gt; xlist&#x3D;x.split(&quot; &quot;)</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">&gt;&gt;&gt; xlist &#x3D; [int(xlist[i]) for i in range(len(xlist))]</span><br><span class="line">&gt;&gt;&gt; print(xlist)</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
-<h3 id="sum-函数及自定义函数复习（学习啊）"><a href="#sum-函数及自定义函数复习（学习啊）" class="headerlink" title="sum()函数及自定义函数复习（学习啊）"></a>sum()函数及自定义函数复习（学习啊）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">def func(lst):</span><br><span class="line">    sum &#x3D; 0</span><br><span class="line">    avg &#x3D; 0</span><br><span class="line">    for i in range(len(lst)):</span><br><span class="line">        sum +&#x3D; lst[i]</span><br><span class="line">        avg &#x3D; sum&#x2F;len(lst)</span><br><span class="line">    return (sum,avg)</span><br><span class="line">    # print(sum,avg)</span><br><span class="line"></span><br><span class="line">l &#x3D; [1,2,3,4,5]</span><br><span class="line">print(func(l))</span><br><span class="line"></span><br><span class="line">2）进阶版</span><br><span class="line">def getMaxMinAvgoflist(list):</span><br><span class="line">    Max &#x3D; max(list)</span><br><span class="line">    Min &#x3D; min(list)</span><br><span class="line">    sum &#x3D; 0.0</span><br><span class="line">    for i in range(len(list)):</span><br><span class="line">        sum +&#x3D; list[i]</span><br><span class="line">        Avg &#x3D; 1.0*sum&#x2F;len(list)</span><br><span class="line">    print(&#39;max:&#123;&#125;,min:&#123;&#125;,ave:&#123;&#125;&#39;.format(Max,Min,Avg))</span><br><span class="line"> # return  (Max,Min,Avg)  # 函数的返回值为元组</span><br><span class="line"></span><br><span class="line">l &#x3D; []</span><br><span class="line">geshu &#x3D; int(input(&#39;请输入你需要的个数:&#39;))</span><br><span class="line">for i in range(geshu):</span><br><span class="line">    temp &#x3D; input(&#39;请输入%d个数:&#39;%(i+1))</span><br><span class="line">    temp &#x3D; float(temp)</span><br><span class="line">    l.append(temp)</span><br><span class="line"></span><br><span class="line">getMaxMinAvgoflist(l)</span><br></pre></td></tr></table></figure>
-<h3 id="忘的快了，用可控循环做一个有趣的小例子"><a href="#忘的快了，用可控循环做一个有趣的小例子" class="headerlink" title="忘的快了，用可控循环做一个有趣的小例子"></a>忘的快了，用可控循环做一个有趣的小例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def Brithday(id):</span><br><span class="line">    year &#x3D; id[6:10]</span><br><span class="line">    month &#x3D; id[10:12]</span><br><span class="line">    date &#x3D; id[12:14]</span><br><span class="line">    sex &#x3D; id[16:17]</span><br><span class="line">    sex &#x3D; int(sex)</span><br><span class="line">    if sex % 2:</span><br><span class="line">        sex &#x3D; &#39;男&#39;</span><br><span class="line">    else:</span><br><span class="line">        sex &#x3D; &#39;女&#39;</span><br><span class="line">    print(&#39;你好呀 %s！你是%s生，你的生日是:%s年%s月%s日&#39; % (name, sex, year, month, date))</span><br><span class="line"></span><br><span class="line">name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">id &#x3D; input(&#39;请输入你的身份证号:&#39;)</span><br><span class="line">Brithday(id)</span><br><span class="line">while 1:</span><br><span class="line">    info &#x3D; input(&#39;还想试试吗？(Yes 继续&#x2F; no 退出)&#39;)</span><br><span class="line">    if info &#x3D;&#x3D; &#39;no&#39;:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        name &#x3D; input(&#39;请输入姓名:&#39;)</span><br><span class="line">        id &#x3D; input(&#39;请输入你的身份证号:&#39;)</span><br><span class="line">        Brithday(id)</span><br></pre></td></tr></table></figure>
-<h3 id="datetime-模块"><a href="#datetime-模块" class="headerlink" title="datetime 模块"></a>datetime 模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line"></span><br><span class="line">print(&#39;---计算从出生到现在你生活了多少天，多少小时，多少秒---&#39;)</span><br><span class="line">day_srt &#x3D; input(&#39;请按 年-月-日 的格式输入日期:&#39;)</span><br><span class="line">t_day &#x3D; datetime.datetime.strptime(day_srt,&#39;%Y-%m-%d&#39;)</span><br><span class="line">day_now &#x3D; datetime.datetime.now()</span><br><span class="line">day_s &#x3D; (day_now - t_day).days</span><br><span class="line">xiaoshi &#x3D; ((day_now - t_day).days)*24</span><br><span class="line">miao &#x3D; (day_now - t_day).seconds</span><br><span class="line"></span><br><span class="line">print(&#39;你共生活了:&#39;,day_s,&#39;天&#39;)</span><br><span class="line">print(&#39;你共生活了:&#39;,xiaoshi,&#39;时&#39;)</span><br><span class="line">print(&#39;你共生活了:&#39;,miao,&#39;秒&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="输入一串数字，求其对应的平方数"><a href="#输入一串数字，求其对应的平方数" class="headerlink" title="输入一串数字，求其对应的平方数"></a>输入一串数字，求其对应的平方数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">l &#x3D; []</span><br><span class="line">number &#x3D; input(&#39;请输入数字以空格 隔开&gt;&gt;&gt;:&#39;).split()</span><br><span class="line">number &#x3D; [int(x) for x in number]</span><br><span class="line">for i in number:</span><br><span class="line">    i &#x3D; i**2</span><br><span class="line">    l.append(i)</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
-<h3 id="再来一次复习-求阶乘-循环体控制"><a href="#再来一次复习-求阶乘-循环体控制" class="headerlink" title="再来一次复习 求阶乘 循环体控制"></a>再来一次复习 求阶乘 循环体控制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 求一个数的阶乘的小程序，用循环控制实现</span><br><span class="line"></span><br><span class="line">def jiecheng(num):</span><br><span class="line">    if num &lt; 0:</span><br><span class="line">        return -1</span><br><span class="line">    if num &#x3D;&#x3D; 0:</span><br><span class="line">        return 1</span><br><span class="line">    return num * jiecheng(num - 1)</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    try:</span><br><span class="line">        num &#x3D; input(&#39;提示:输入&quot;q&quot;退出程序。\n请输入一个数字:&#39;)</span><br><span class="line">        if num.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">            break</span><br><span class="line">        num &#x3D; int(num)</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;输入的数字不正确！&#39;)</span><br><span class="line">        continue</span><br><span class="line">    jiecheng(num)</span><br><span class="line">    print(num * jiecheng(num - 1))</span><br></pre></td></tr></table></figure>
-<h3 id="每日一更"><a href="#每日一更" class="headerlink" title="每日一更"></a>每日一更</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"># Created by danding at 2019&#x2F;10&#x2F;31</span><br><span class="line"></span><br><span class="line">from math import *</span><br><span class="line"></span><br><span class="line">def jiechenghe(num):</span><br><span class="line">    list &#x3D; []</span><br><span class="line">    k &#x3D; 1</span><br><span class="line">    for i in range(1,num+1):</span><br><span class="line">        k &#x3D; k*i</span><br><span class="line">        list.append(k)</span><br><span class="line">    sum &#x3D; 0</span><br><span class="line">    for i in list:</span><br><span class="line">        sum +&#x3D; i</span><br><span class="line"></span><br><span class="line">    print(&#39;前&#123;&#125;项的阶乘和是:&#123;&#125;&#39;.format(num,sum))</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    try:</span><br><span class="line">        num &#x3D; input(&#39;提示:输入&quot;q&quot;退出程序。\n请输入前几项数字的阶乘和:&#39;)</span><br><span class="line">        if num.lower()&#x3D;&#x3D;&#39;q&#39;:</span><br><span class="line">            break</span><br><span class="line">        num &#x3D; int(num)</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;请输入数！&#39;)</span><br><span class="line">        continue</span><br><span class="line">    jiechenghe(num)</span><br></pre></td></tr></table></figure>
-<h3 id="python-复习求素数"><a href="#python-复习求素数" class="headerlink" title="python 复习求素数"></a>python 复习求素数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">num_pri &#x3D; []</span><br><span class="line">l&#x3D;[]</span><br><span class="line">for i in range(2,101):</span><br><span class="line">    for j in range(2,i):</span><br><span class="line">        if (i %j) &#x3D;&#x3D; 0:</span><br><span class="line">            num_pri.append(i)</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        l.append(i)</span><br><span class="line">print(l)</span><br><span class="line"></span><br><span class="line">print(num_pri)</span><br></pre></td></tr></table></figure>
-<h3 id="素数，输入任多个数，求其中的素"><a href="#素数，输入任多个数，求其中的素" class="headerlink" title="素数，输入任多个数，求其中的素"></a>素数，输入任多个数，求其中的素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; []</span><br><span class="line">b &#x3D; []</span><br><span class="line">n &#x3D; input(&#39;Enter some numbers:&#39;).split()</span><br><span class="line"></span><br><span class="line">c &#x3D; [int(j) for j in n]</span><br><span class="line"></span><br><span class="line">for s in c:</span><br><span class="line">    for i in range(2, s):</span><br><span class="line">        if s % i &#x3D;&#x3D; 0:</span><br><span class="line">            a.append(s)</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        b.append(s)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/" class="post-title-link" itemprop="url">Python基础之求平均数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-05 20:00:27 / 修改时间：12:25:39" itemprop="dateCreated datePublished" datetime="2021-03-05T20:00:27Z">2021-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
-<p>len()函数</p>
-<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%86%E6%95%B0%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%86%E6%95%B0%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/" class="post-title-link" itemprop="url">Python基础之分数序列求和</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-05 19:58:33 / 修改时间：12:24:52" itemprop="dateCreated datePublished" datetime="2021-03-05T19:58:33Z">2021-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="分数序列求和，分数自由输入，自由度较高"><a href="#分数序列求和，分数自由输入，自由度较高" class="headerlink" title="分数序列求和，分数自由输入，自由度较高"></a>分数序列求和，分数自由输入，自由度较高</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def eu(a,b):</span><br><span class="line">    if a &lt; b:</span><br><span class="line">        a, b &#x3D; b, a</span><br><span class="line">    r &#x3D; 1</span><br><span class="line">    while r !&#x3D; 0:</span><br><span class="line">        r &#x3D; a % b</span><br><span class="line">        a &#x3D; b</span><br><span class="line">        b &#x3D; r</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">a &#x3D; input(&#39;输入两个分数，以逗号分隔:&#39;)	# 输入两个分数如1&#x2F;2，3&#x2F;4 分数之间用,号分隔</span><br><span class="line">b &#x3D; a.split(&#39;,&#39;)</span><br><span class="line"></span><br><span class="line">num1 &#x3D; b[0].split(&#39;&#x2F;&#39;)</span><br><span class="line">num2 &#x3D; b[1].split(&#39;&#x2F;&#39;)</span><br><span class="line">sum1 &#x3D; int(num1[0])*int(num2[1]) + int(num2[0])*int(num1[1])</span><br><span class="line">sum2 &#x3D; int(num1[1])*int(num2[1])</span><br><span class="line">GCD &#x3D; eu(sum1,sum2)</span><br><span class="line"></span><br><span class="line">c &#x3D; int(sum1&#x2F;GCD)</span><br><span class="line">d &#x3D; int(sum2&#x2F;GCD)</span><br><span class="line"></span><br><span class="line">if c%d &#x3D;&#x3D; 0:</span><br><span class="line">    print(int(c&#x2F;d))</span><br><span class="line">else:</span><br><span class="line">    print(str(c)+ &#39;&#x2F;&#39;+str(d))</span><br></pre></td></tr></table></figure>
-<h3 id="实际上用-fractions-模块可以瞬间解决问题"><a href="#实际上用-fractions-模块可以瞬间解决问题" class="headerlink" title="实际上用 fractions 模块可以瞬间解决问题"></a>实际上用 fractions 模块可以瞬间解决问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from fractions import Fraction</span><br><span class="line">a,b &#x3D; (input().split(&#39;,&#39;))</span><br><span class="line">sum&#x3D;Fraction(a)+Fraction(b)</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-<h3 id="高级的写法"><a href="#高级的写法" class="headerlink" title="高级的写法"></a>高级的写法</h3><p>使用 Python 编写分数的加减法</p>
-<p>基本概念</p>
-<p>1.1 最大公约数与最小公倍数</p>
-<p>1.1.1 最大公约数(gcd)：</p>
-<p>较大的数除较小的数，得到整型余数</p>
-<p>较小的数除以余数</p>
-<p>最终得到 0，返回另一个数</p>
-<p>1.1.2 最小公倍数(lcm)：</p>
-<p>lcm=a*b/gcd(a,b)</p>
-<p>1.2 最小公倍数与最大公约数类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#目的求lcm</span><br><span class="line">class Rational1(object):</span><br><span class="line">     def __init__(self):#初始化程序</span><br><span class="line">         pass</span><br><span class="line"></span><br><span class="line">     def gcd(a,b):#判断最大公约数</span><br><span class="line">         if not a &gt; b:</span><br><span class="line">             a,b &#x3D; b,a</span><br><span class="line">         while b !&#x3D; 0 :</span><br><span class="line">             remider &#x3D; a%b</span><br><span class="line">             a,b &#x3D; b,remider</span><br><span class="line">             print(&quot;%s&quot; %a)</span><br><span class="line">         return a</span><br><span class="line"></span><br><span class="line">     def lcm(a,b):#返回最小公倍数</span><br><span class="line">         lcm &#x3D; a*b &#x2F;Rational1.gcd(a,b)</span><br><span class="line">         return lcm</span><br><span class="line"></span><br><span class="line">class Rational(object):#以1&#x2F;3,3&#x2F;5为例，输出加法</span><br><span class="line"></span><br><span class="line">     #初始化类</span><br><span class="line">     def __init__(self,numer,denom &#x3D; 1):</span><br><span class="line">         print(&quot;in constuctor&quot;)</span><br><span class="line">         self.numer &#x3D; numer</span><br><span class="line">         self.deom &#x3D; denom</span><br><span class="line"></span><br><span class="line">     def __str__(self):</span><br><span class="line">         print(&quot;in str&quot;)</span><br><span class="line">         return str(self.numer) + &quot;&#x2F;&quot; + str(self.deom)</span><br><span class="line"></span><br><span class="line">     def __repr__(self):</span><br><span class="line">         print(&quot;in repr&quot;)</span><br><span class="line">         return self.__str__()</span><br><span class="line"></span><br><span class="line">     #定义分数的加法</span><br><span class="line">     def __add__(self, f):</span><br><span class="line">         print(&quot; in add&quot;)</span><br><span class="line">         thelcm &#x3D; int(Rational1.lcm(self.deom,f.deom))</span><br><span class="line">         numeratorSum &#x3D; int((thelcm&#x2F;self.deom*self.numer)+(thelcm&#x2F;f.deom*f.numer))</span><br><span class="line">         return Rational(numeratorSum,thelcm)</span><br><span class="line"></span><br><span class="line">     #定义分数的减法</span><br><span class="line">     def __sub__(self, f):</span><br><span class="line">         print(&quot;in sub&quot;)</span><br><span class="line">         thelcm &#x3D; Rational1.lcm(self.deom,f.deom)</span><br><span class="line">         numeratorSub &#x3D; (thelcm&#x2F;self.deom*self.numer)-(thelcm&#x2F;f.deom*f.numer)</span><br><span class="line">         return Rational(numeratorSub,thelcm)</span><br><span class="line"></span><br><span class="line">onehalf &#x3D; Rational(1,3)</span><br><span class="line">threefive &#x3D; Rational(3,5)</span><br><span class="line">thesum &#x3D; onehalf + threefive</span><br><span class="line">print(thesum)</span><br></pre></td></tr></table></figure>
-<p>有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13…求出这个数列的前 20 项之和。</p>
-<p>#方法一</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def g(n):</span><br><span class="line">  if n &lt;&#x3D; 2:</span><br><span class="line">    return n</span><br><span class="line">  else:</span><br><span class="line">    return g(n-1) + g(n-2)</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">for i in range(1,21):</span><br><span class="line">  sum +&#x3D; g(i+1)&#x2F;g(i)</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-<p>#方法二</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">numerator &#x3D; 2</span><br><span class="line">denominator &#x3D; 1</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">    n &#x3D; int(input(&quot;请输入一个整数：&quot;))</span><br><span class="line">  except ValueError:</span><br><span class="line">    print(&quot;输入错误，请输入整数&quot;)</span><br><span class="line">  else:</span><br><span class="line">    for i in range(n):</span><br><span class="line">      sum +&#x3D; numerator &#x2F; denominator</span><br><span class="line">      numerator, denominator &#x3D; numerator + denominator, numerator</span><br><span class="line"></span><br><span class="line">    print(sum)</span><br><span class="line">    break</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Pandas%E4%B9%8B%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8-%E8%BE%93%E5%85%A5%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/Pandas%E4%B9%8B%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8-%E8%BE%93%E5%85%A5%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">Pandas之拆分工作表_输入到文件夹</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-05 19:56:19 / 修改时间：12:29:05" itemprop="dateCreated datePublished" datetime="2021-03-05T19:56:19Z">2021-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="拆分总表为单个-excel-文件至一个文件夹内"><a href="#拆分总表为单个-excel-文件至一个文件夹内" class="headerlink" title="拆分总表为单个 excel 文件至一个文件夹内"></a>拆分总表为单个 excel 文件至一个文件夹内</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line">data &#x3D; pd.read_excel(&#39;.&#x2F;五年级账号和密码.xls&#39;)		#读取数据</span><br><span class="line">data_list &#x3D; list(data[&#39;班级&#39;].drop_duplicates())        #去重处理</span><br><span class="line">longth &#x3D; len(data_list)		#计算共有多少数量</span><br><span class="line">path &#x3D; &#39;.&#x2F;SplitExcel&#39;</span><br><span class="line">if not os.path.exists(path):					#当前文件夹下是否有此文件夹</span><br><span class="line">    os.mkdir(path)					#创建此文件夹</span><br><span class="line">count &#x3D; 0</span><br><span class="line">for item in data_list:</span><br><span class="line">    data_select &#x3D; data[data[&#39;班级&#39;]&#x3D;&#x3D;item]		       #选出item对应的行</span><br><span class="line">    Bigzone &#x3D; data_select.iat[0,0]				#需要参与文件命名的值</span><br><span class="line">    Smallzone &#x3D; data_select.iat[0,1]</span><br><span class="line">    service_code &#x3D; data_select.iat[0,2]</span><br><span class="line">    data_select.to_excel(&#39;.&#x2F;SplitExcel&#x2F;&#123;0:&#125;-&#123;1:&#125;.xlsx&#39;.format(Bigzone,Smallzone),index&#x3D;False)	#按照对应的值生成EXCEL文件</span><br><span class="line">    count +&#x3D; 1</span><br><span class="line">    print(&#39;\rEXCEL表中共有 &#123;&#125; 个班级，正在拆分第 &#123;&#125; 个的数据，拆分进度：&#123;:.2%&#125;&#39;.format(longth, count, count &#x2F; longth),end&#x3D;&quot;&quot;)</span><br><span class="line">print(&#39;\n&#123;&#125;个名称已经全部拆分完毕，请前往SplitExcel文件夹下查看拆分后的各文件数据.&#39;.format(longth))</span><br></pre></td></tr></table></figure>
-<h3 id="拆分总表至一个新工作薄内的每个工作表"><a href="#拆分总表至一个新工作薄内的每个工作表" class="headerlink" title="拆分总表至一个新工作薄内的每个工作表"></a>拆分总表至一个新工作薄内的每个工作表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd			#调用pandas包</span><br><span class="line">import xlsxwriter  			#调用xlswriter包，用来生成表</span><br><span class="line"></span><br><span class="line">data&#x3D;pd.read_excel(&#39;.&#x2F;五年级账号和密码.xls&#39;) 	#读取存储路径在桌面的工作簿chaifengzb,编码格式为gbk</span><br><span class="line">area_list&#x3D;list(set(data[&quot;班级&quot;])) 	#按分公司字段分成列表</span><br><span class="line"></span><br><span class="line">writer&#x3D;pd.ExcelWriter(&#39;.&#x2F;chaifengzb1.xls&#39;) 	    #生成一个新 工作簿</span><br><span class="line"></span><br><span class="line">data.to_excel(writer,sheet_name&#x3D;&quot;班级&quot;,index&#x3D;False)      #将总表存到新工作簿中</span><br><span class="line"></span><br><span class="line">for j in area_list:</span><br><span class="line">    df&#x3D;data[data[&quot;班级&quot;]&#x3D;&#x3D;j]</span><br><span class="line">    df.to_excel(writer,sheet_name&#x3D;&#39;五&#39;+j,index&#x3D;False)   #按分成的列表中的分公司字段进行命名</span><br><span class="line">writer.save()  				                            #文件保存</span><br></pre></td></tr></table></figure>
-<h3 id="一种简洁高效的办法"><a href="#一种简洁高效的办法" class="headerlink" title="一种简洁高效的办法"></a>一种简洁高效的办法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D;pd.read_excel(&#39;F:\\fxwnj五年级(2).xls&#39;,dtype&#x3D;str)</span><br><span class="line">class_list &#x3D; list(df[&#39;班级&#39;].drop_duplicates())</span><br><span class="line">for i in class_list:</span><br><span class="line">    banji &#x3D; df[df[&#39;班级&#39;]&#x3D;&#x3D;i]</span><br><span class="line">    banji.to_excel(&#39;%s.xlsx&#39;%(i),index &#x3D; False)</span><br><span class="line"></span><br><span class="line">print(&#39;拆分表格已完成，请到工作目录下查看！&#39;)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 

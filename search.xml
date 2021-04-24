@@ -1687,6 +1687,224 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python入门必备知识</title>
+    <url>/2021/04/24/Python%E5%85%A5%E9%97%A8%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>1989 年才诞生，一个名叫吉多·范罗苏姆的荷兰人搞出来的编程语言，可以协助处理一些重复的、繁琐的事务性工作。这个语言最初无人问津，没想到几十年后却风靡全球，火得烫手。</p>
+<p>Python 是一种高层次的结合了解释性、编译性、互动性和面向对象的脚本语言。Python 由 Guido van Rossum 于 1989 年底在荷兰国家数学和计算机科学研究所发明，第一个公开发行版发行于 1991 年。</p>
+<p>特点</p>
+<ul>
+<li>易于学习：Python 有相对较少的关键字，结构简单，和一个明确定义的语法，学习起来更加简单。</li>
+<li>易于阅读：Python 代码定义的更清晰。</li>
+<li>易于维护：Python 的成功在于它的源代码是相当容易维护的。</li>
+<li>一个广泛的标准库：Python 的最大的优势之一是丰富的库，跨平台的，在 UNIX，Windows 和 macOS 兼容很好。</li>
+<li>互动模式：互动模式的支持，您可以从终端输入执行代码并获得结果的语言，互动的测试和调试代码片断。</li>
+<li>可移植：基于其开放源代码的特性，Python 已经被移植（也就是使其工作）到许多平台。</li>
+<li>可扩展：如果你需要一段运行很快的关键代码，或者是想要编写一些不愿开放的算法，你可以使用 C 或 C++ 完成那部分程序，然后从你的 Python 程序中调用。</li>
+<li>数据库：Python 提供所有主要的商业数据库的接口。</li>
+<li>GUI 编程：Python 支持 GUI 可以创建和移植到许多系统调用。</li>
+<li>可嵌入：你可以将 Python 嵌入到 C/C++ 程序，让你的程序的用户获得”脚本化”的能力。</li>
+<li>面向对象：Python 是强面向对象的语言，程序中任何内容统称为对象，包括数字、字符串、函数等。</li>
+</ul>
+<h4 id="交互式解释器"><a href="#交互式解释器" class="headerlink" title="交互式解释器"></a>交互式解释器</h4><p>在命令行窗口执行 python 后，进入 Python 的交互式解释器。exit() 或 Ctrl + D 组合键退出交互式解释器。</p>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>默认情况下，3.x 源码文件都是 UTF-8 编码，字符串都是 Unicode 字符。也可以手动指定文件编码：</p>
+<p><code># -*- coding: utf-8 -*-</code><br>或者<br><code># encoding: utf-8</code></p>
+<p>注意: 该行标注必须位于文件第一行</p>
+<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><ul>
+<li>第一个字符必须是英文字母或下划线 _ 。</li>
+<li>标识符的其他的部分由字母、数字和下划线组成。</li>
+<li>标识符对大小写敏感。</li>
+</ul>
+<p>注：从 3.x 开始，非 ASCII 标识符也是允许的，但不建议。</p>
+<h3 id="写代码，如何变得更牛逼"><a href="#写代码，如何变得更牛逼" class="headerlink" title="写代码，如何变得更牛逼"></a>写代码，如何变得更牛逼</h3><p>没有哪个文坛巨匠天生下来就能写出巨著来，他们都是通过阅读大量作品并参考借鉴最后形成自己独特的风格，其实写程序也是一样。</p>
+<p>现在很多优秀的软件库都是开源的，这给了我们可以零距离向大牛学习的机会，阅读源代码给我们带来的好处也是非常多的。</p>
+<p>1、学习代码风格</p>
+<p>优秀的开源软件都来自于经验非常丰富的老司机程序员之手，往往他们写的代码更规范、无论是从可读性还是性能上经过仔细斟酌，不断优化结果。比如著名的 HTTP 请求库 Requests 就是一份不错的源码学习典范，因为里面有教科书似的 Pythonic 代码。</p>
+<p>2、理解作者思路</p>
+<p>作者实现某个功能，通常是经过多次重构不断改进得以实现最优的解决方案，那么我们可以思考作者为什么要这么做，比如 Cpython 里把小整数缓存到内存中，提高系统性能，你不去看源代码是不知道的，因为书上很少会讲到这些。再比如 Cpython 中的垃圾算法为什么要使用别人都不用的引用计数法呢？因为权衡利弊之后，引用计数是最简单的一种垃圾收集算法，再配合其他算法也能达到很好的效果。</p>
+<p>3、提升编程水平</p>
+<p>毫无疑问，通过阅读源代码，对自身的成长是非常有帮助的，站在巨人的肩膀上，才看得比别人更远。阅读优秀的源代码是提高编程水平的方式之一</p>
+<p>阅读源代码的误区</p>
+<p>初学者阅读源代码容易陷入一种误区，认为具备阅读源代码能力才牛逼，于是自己也扎进代码深渊，一开始欣喜若狂，后来开始迷失自我，有始无终，最后一无所获，还打击了自信心。</p>
+<p>主要原因是，现在的项目动不动就是几万行的代码，如果一行行的读下去要不了几分钟就放弃了，其次，纯粹的”读”是没用的，还需要有思考。那么如何正确地阅读源代码？</p>
+<p>阅读源代码的一些技巧</p>
+<p>高效阅读源代码，可以从以下几个方面入手</p>
+<p>1、读文档</p>
+<p>任何一个优秀的开源项目标配有完善的文档，RTFM(Read The Fucking Manual)是了解开源项目最好的方式之一，同时也为后面阅读源代码提供了基础。</p>
+<p>2、找程序入口</p>
+<p>找到了文档之后，就根据文档找到程序的入口，从最简单的实例下手</p>
+<p>3、跑单元测试</p>
+<p>要想知道 API 怎么使用，除了可以查看文档之外，另外一个武器就是跑单元测试，单元测试对每一个方法都做了边界测试，通过阅读测试代码也能知道怎么样去使用这些方法。</p>
+<p>4、找最早期版本</p>
+<p>往往最开始的版本代码是最简洁的，读起来要轻松很多</p>
+<p>5、多搜索一下网络上看看是否有前人做些相关的总结。这也是很好的参考。</p>
+<h2 id="python-编程-ide-是什么"><a href="#python-编程-ide-是什么" class="headerlink" title="python 编程 ide 是什么"></a>python 编程 ide 是什么</h2><p>IDE 是 python 集成开发环境，是编写 python 代码的工具，常用的 IDE 有 “pycharm”、“Sublim text”、“vim”、“Eclipse with PyDev”、“Komodo Edit” 等等。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424111424.png" alt="20210424111424"></p>
+</div>
+
+<h4 id="Python-IDE，又叫集成开发环境，是用来编写-python-程序的。python-本身自带一款-ide"><a href="#Python-IDE，又叫集成开发环境，是用来编写-python-程序的。python-本身自带一款-ide" class="headerlink" title="Python IDE，又叫集成开发环境，是用来编写 python 程序的。python 本身自带一款 ide."></a>Python IDE，又叫集成开发环境，是用来编写 python 程序的。python 本身自带一款 ide.</h4><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424111811.png" alt="20210424111811"></p>
+</div>
+
+<p>Python 是一种广泛运用的解说型、高级编程、通用型编程语言。</p>
+<p>Python 首要分为 Python2 和 Python3 两个版别，两个版别间有一些差异 (待续)。</p>
+<p>Python 拥有动态类型系统和废物收回功用，可以主动办理内存运用，并且支持多种编程范式，包含面向对象、命令式、函数式和过程式编程。其自身拥有一个巨大而广泛的标准库。</p>
+<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><p>Vim 能够说是 Python 最好的 IDE。Vim 是高级文本编辑器，旨在提供实践的 Unix 编辑器‘Vi’功用，支撑更多更完善的特性集。</p>
+<p>Vim 不需求花费太多的学习时间，一旦你需求一个无缝的编程体会，那么就会把 Vim 集成到你的工作流中。</p>
+<h4 id="居然没有推荐-vs-code-的？"><a href="#居然没有推荐-vs-code-的？" class="headerlink" title="居然没有推荐 vs code 的？"></a>居然没有推荐 vs code 的？</h4><p>题目描述全符合。</p>
+<p>估计不是没有使用过就是没有深入使用过，居然对 vs code 视而不见！</p>
+<p>安个插件即安即用啊，也自带 Jupyter notebook。你电脑里要是有几个 Python，点下左下角还能给自由切换。</p>
+<p>你们写 Python 就不写别的东西了？偶尔处理个文本，或是写写网页啥的…… 通吃啊。</p>
+<p>简单点的可以用 vs code</p>
+<p>我感觉主要还是看你以哪方向为主吧</p>
+<p>web 方向后期 pycharm 比较好用。如果要做数据方面的可以使用 jupyter</p>
+<h2 id="Python-新手入门第一步：什么是-IDE？IDE-有什么用"><a href="#Python-新手入门第一步：什么是-IDE？IDE-有什么用" class="headerlink" title="Python 新手入门第一步：什么是 IDE？IDE 有什么用"></a>Python 新手入门第一步：什么是 IDE？IDE 有什么用</h2><p>前言</p>
+<p>写 Python 代码最好的方式莫过于使用集成开发环境（IDE）了。它们不仅能使你的工作更加简单、更具逻辑性，还能够提升编程体验和效率。</p>
+<p>每个人都知道这一点。而问题在于，如何从众多选项中选择最好的 Python 开发环境。初级开发者往往面临这个问题。</p>
+<p>本文将概述最受程序员欢迎的 Python IDE，以及其他值得考虑的选项。在此之前，我们先来看看 IDE 是什么。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424115921.png" alt="20210424115921"></p>
+</div>
+
+<p>什么是 IDE？IDE 有什么用？</p>
+<p>IDE 是开发者创建程序时使用的软件包。它通过简单的用户界面集成多个高度关联的组件，从而最大化程序员的生产效率。本质上，IDE 是一种改进代码创建、测试和 debug 流程的工具，它使这些工作更加简单。</p>
+<p>IDE 使用的工具包括：</p>
+<ul>
+<li>文本编辑器</li>
+<li>编译器和 / 或解释器</li>
+<li>装配自动化工具（assembly automation tool）</li>
+<li>调试器（debugger）</li>
+<li>有一个与 IDE 相似的术语 —— 代码编辑器（code editor）。我们先来探讨二者的异同。</li>
+</ul>
+<p>什么是代码编辑器？</p>
+<p>代码编辑器是一个能够突出显示语法和安排代码版式的文本编辑器。高级代码编辑器可以开发和修改代码。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424120151.png" alt="20210424120151"></p>
+</div>
+
+<p>IDE 和代码编辑器的显著特征</p>
+<p>IDE 和代码编辑器有哪些共同优点？它们均可帮助开发者：</p>
+<ul>
+<li>存储和重新打开脚本</li>
+<li>运行代码</li>
+<li>debug</li>
+<li>突出显示语法</li>
+</ul>
+<p>最受 Python 开发者欢迎的 IDE</p>
+<p>1.PyCharm</p>
+<p>PyCharm 由著名软件开发公司 JetBrains 开发。在涉及人工智能和机器学习时，它被认为是最好的 Python IDE。最重要的是，Pycharm 合并了多个库（如 Matplotlib 和 NumPy），帮助开发者探索更多可用选项。</p>
+<p>兼容性：Windows、MacOS、Linux</p>
+<p>主要插件和功能：</p>
+<ul>
+<li>内置开发者工具</li>
+<li>远程开发能力</li>
+<li>实时编辑模式</li>
+<li>IPython Notebook</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>PyCharm 支持 web 开发框架，如 Pyramid、Flask 和 Django。</li>
+<li>提供智能代码功能，可以执行更精确、快速的 bug 修复。</li>
+<li>在 Docker 和 Vagrant 连接和 ssh 终端的帮助下，允许在远程主机上进行程序开发。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>界面庞杂</p>
+</li>
+<li><p>其优点的成本高昂</p>
+<p>2.Visual Studio Code</p>
+</li>
+</ul>
+<p>Visual Studio Code 有时会与 Visual Studio IDE 混淆，后者并非 Python 使用者常用的工具。VS Code 是完整的代码编辑器，具备很多优秀功能，许多程序员称其为最好的 IDE 编辑器。</p>
+<p>兼容性：Windows、Linux、Mac OS</p>
+<p>主要插件和功能：</p>
+<ul>
+<li><p>内置 git</p>
+</li>
+<li><p>自定义工具扩展插件</p>
+</li>
+<li><p>断点调试</p>
+</li>
+<li><p>交互式控制台</p>
+</li>
+<li><p>优点：</p>
+</li>
+<li><p>其 Electron 框架允许开发者在几乎所有平台上使用 VS Code。</p>
+</li>
+<li><p>在编辑器中直接 debug。</p>
+</li>
+<li><p>支持多个键盘快捷键，以加速编程。</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>debug 功能有限。</p>
+</li>
+<li><p>没有内置模板。</p>
+<p>3.VI/Vim</p>
+</li>
+</ul>
+<p>Vim 位列最好的 Python IDE 工具前 5 名。它是一个 modal editor，可以从「文件编辑」中分割文件。相比最初的 Vi，Vim 有了巨大进步，功能更加强大。</p>
+<p>兼容性：Windows、Linux、Mac OS、IOS、Android、UNIX、AmigaOS、MorphOS</p>
+<p>主要插件和功能：</p>
+<ul>
+<li>其脚本允许用 Python 执行几乎所有编程任务。</li>
+<li>Ctags，帮助实现更好的标记导航。</li>
+<li>内置基础词汇补全。</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>具备键盘界面，可以提升效率。</li>
+<li>支持多个插件（如版本控制工具、文件管理工具）。</li>
+<li>通过 .vimrc 文件实现不同扩展功能（如突出显示搜索结果）。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>界面笨拙，一些开发者认为其不方便使用。</p>
+</li>
+<li><p>其 modal editor 需要用户花费一定时间学习。</p>
+<p>4.IDLE</p>
+</li>
+</ul>
+<p>IDLE 代码编辑器深受学生欢迎，它是 Python 自带编辑器。该编辑器使用简单、通用，且支持不同设备。在使用更复杂工具之前，开发者可以通过 IDLE 学习基础知识。</p>
+<p>兼容性：Windows、Linux、Mac OS</p>
+<p>主要插件和功能：</p>
+<ul>
+<li>tkinter GUI 工具包</li>
+<li>多窗口界面</li>
+<li>具备对话框、浏览器等配置</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>允许用户突出显示错误、自动编码，并进行准确识别。</li>
+<li>具备轻量级 Python shell。</li>
+<li>其内置修正功能可以提升性能。</li>
+<li>允许用户在编辑器中搜索和替换文件。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>不支持复制到库。</li>
+<li>脚本不能超过 100 行代码。</li>
+</ul>
+<p>对于机器学习、人工智能和大数据，最好的 Python 兼容 IDE</p>
+<p>Python 是机器学习、人工智能、大数据等领域中的首选语言之一。这部分将介绍适合这些领域 Python 开发的 IDE。</p>
+<p>5.JuPyter/IPython Notebook</p>
+<p>Jupyter 是基于 web 的编辑器，它允许开发者构建和运行脚本或 notebook。它相对简单，对用户也更加友好。Jupyter 还使用 Seaborn 和 Matplotlib 执行数据可视化。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h3><p>本文概述了大量优秀的 Python IDE 和其他工具。决定使用哪一种工具取决于工具的便利性和对工具的熟练程度。当然，也有大家都喜欢的工具（如 PyCharm），但是你可以多尝试几种工具，看看哪种最适合你。</p>
+<p>一些 IDE 适合新手，另一些则更加专业，每一个 IDE 都具备独特的功能和设计。本文仅提供一些选项，读者可以从中选择适合自己的 Python IDE。</p>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python函数应用实例2</title>
     <url>/2021/02/28/Python%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B2/</url>
     <content><![CDATA[<h2 id="函数传值为-list-的坑"><a href="#函数传值为-list-的坑" class="headerlink" title="函数传值为 list 的坑"></a>函数传值为 list 的坑</h2><p>函数传入 list 参数时</p>
@@ -2066,34 +2284,6 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>Python基础之求平均数</title>
-    <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
-<p>len()函数</p>
-<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
-</div>
-]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python基础之趣味算法入门</title>
     <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h3 id="趣味算法入门"><a href="#趣味算法入门" class="headerlink" title="趣味算法入门"></a>趣味算法入门</h3><p>1.百钱买百鸡：中国古代数学家张丘建在他的《算经》中提出了一个著名的 “ 百钱百鸡问题 “： 一只公鸡值五钱，一只母鸡值三钱，三只小鸡值一钱，现在要用百钱买百鸡，请问公鸡、母鸡、小鸡各多少只？</p>
@@ -2131,6 +2321,34 @@ Out[23]: 16
 <p>​ 设 r 是 f(x)=0 的根，选取 x0 作为 r 的初始近似值。过点（x0, f(x0))作为曲线 y = f(x)的切线 L，L 的方程为 y = f(x0) +f‘(x0)(x-x0)，求出 L 于 x 轴交点的横坐标 x1 = x0 -f(x0)/f’(x0)，称 x1 为 r 的一次近似值，过点（x1, f(x1))作为曲线 y = f(x)的切线并求改切线于 x 轴的横坐标 x2 = x1 -f(x1)/f’(x1)，称 x2 为 r 的二次近似值，重复以上过程，得 r 的近似值 xn。上述即为牛顿迭代法的求解过程。</p>
 <p>​ 算法设计：</p>
 <p>在 1 附近找任意一实数作为 x0 的初值，我们去 1.5，即 x0 = 1.5. 用初值 x0 带入方程中计算此时的 f(x0)及 f’(x0)；程序中 f 用来描述方程的值，fd 用来描述方程求导之后的值。 计算增量 h=f/fd。 计算下一个 x （x = x0-h）。 用所得的 x 代替 x0 原来的值。 若|x - x0|&gt;=1e-5,则转到第三步继续执行，否则转到步骤 7 所求 x 就是方程的根，将其输出。<br>如果你喜欢我的文章,请滑到下方点个推荐再走. ，以给我动力哦；转载请注名出处。然后..请多来做客鸭。</p>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python基础之求平均数</title>
+    <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
+<p>len()函数</p>
+<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
+</div>
 ]]></content>
       <categories>
         <category>Python基础</category>
@@ -2355,6 +2573,46 @@ Out[23]: 16
 <h3 id="平方和与平方和之差"><a href="#平方和与平方和之差" class="headerlink" title="平方和与平方和之差"></a>平方和与平方和之差</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int((3 * n ** 2 + 2 * n) * (1 - n ** 2) &#x2F; 12)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int(n * (n + 1) * (2 * n + 1) &#x2F; 6 - (n * (n + 1) &#x2F; 2)** 2)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br></pre></td></tr></table></figure>
 <h3 id="前-n-项数字之和平方"><a href="#前-n-项数字之和平方" class="headerlink" title="前 n 项数字之和平方"></a>前 n 项数字之和平方</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def square_sum(numbers):</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for each in range(1,numbers+1):</span><br><span class="line">        total &#x3D; total + each</span><br><span class="line">    return total ** 2</span><br><span class="line"></span><br><span class="line">print(square_sum(3))</span><br></pre></td></tr></table></figure>
 <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while 1:</span><br><span class="line">	first_number &#x3D; input(&#39;\nFirst number:&#39;)</span><br><span class="line">	if first_number.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">	second_number &#x3D; input(&#39;\nSecond number:&#39;)</span><br><span class="line">	try:</span><br><span class="line">		answer &#x3D; int(first_number) &#x2F; int(second_number)</span><br><span class="line">	except ZeroDivisionError:</span><br><span class="line">		print(&quot;You can&#39;t divide by 0!&quot;)</span><br><span class="line">	else:</span><br><span class="line">		print(answer)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python环境搭建</title>
+    <url>/2021/04/24/Python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>其实 Python 已经是一个很老的编程语言了，到现在（2019 年） Python 已经高龄 28 岁，比很多程序员的年龄都大。现在之所以这么流行和社区、人工智能的发展，有很大的关系。</p>
+<p>千里之行始于足下，今天我们先来学习 Python 环境搭建。</p>
+<h2 id="Python-介绍"><a href="#Python-介绍" class="headerlink" title="Python 介绍"></a>Python 介绍</h2><p>Python（英国发音：/ˈpaɪθən/ 美国发音：/ˈpaɪθɑːn/）是一种广泛使用的解释型、高级编程、通用型编程语言，由吉多·范罗苏姆创造，第一版发布于 1991 年。可以视之为一种改良（加入一些其他编程语言的优点，如面向对象）的 LISP。</p>
+<p>Python 的设计哲学强调代码的可读性和简洁的语法（尤其是使用空格缩进划分代码块，而非使用大括号或者关键词）。相比于 C++ 或 Java，Python 让开发者能够用更少的代码表达想法。不管是小型还是大型程序，该语言都试图让程序的结构清晰明了。</p>
+<p>与 Scheme、Ruby、Perl、Tcl 等动态类型编程语言一样，Python 拥有动态类型系统和垃圾回收功能，能够自动管理内存使用，并且支持多种编程范式，包括面向对象、命令式、函数式和过程式编程。其本身拥有一个巨大而广泛的标准库。</p>
+<p>Python 解释器本身几乎可以在所有的操作系统中运行。Python 的其中一个解释器 CPython 是用 C 语言编写的、是一个由社群驱动的自由软件，当前由 Python 软件基金会管理。</p>
+<p>1989 年的圣诞节期间，由 Python 的创始人为吉多·范罗苏姆，业余时间开发。Python 的历史参考：人生苦短，我用 Python。</p>
+<p>注意：本系列教程基于 Python 3.X</p>
+<h2 id="Python-环境搭建"><a href="#Python-环境搭建" class="headerlink" title="Python 环境搭建"></a>Python 环境搭建</h2><h3 id="Win-安装"><a href="#Win-安装" class="headerlink" title="Win 安装"></a>Win 安装</h3><p>打开 Python 官网 <a href="https://www.python.org/downloads/%E9%80%89%E6%8B%A9%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD%EF%BC%8C%E6%88%96%E8%80%85%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%ACpython-374%EF%BC%88https://www.python.org/downloads/release/python-374/%EF%BC%89%E3%80%82">https://www.python.org/downloads/选择最新版本下载，或者直接打开对应的版本python-374（https://www.python.org/downloads/release/python-374/）。</a><br>打开页面会看到有一个列表，如下图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures68579c3f12b9e7321a72454cb67e3861.jpg" alt="68579c3f12b9e7321a72454cb67e3861"></p>
+</div>
+
+<p>x86 是 32 位，x86-64 是 64 位。</p>
+<p>可以通过下面 3 种途径获取 python：</p>
+<ul>
+<li>web-based installer 是需要通过联网完成安装的</li>
+<li>executable installer 是可执行文件(*.exe)方- 式安装</li>
+<li>embeddable zip file 嵌入式版本，可以集成到其它应用中。</li>
+</ul>
+<p>Windows x86 选择下载 ：[Windows executable installer(<a href="https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe">https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe</a>)</p>
+<p>下载完成，双击 exe 文件进行安装，如下图，并按照圈中区域进行设置，切记要勾选打钩的框，然后再点击 Customize installation 进入到下一步：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures2e164557ffe9d9c976bb84642a738dfe.jpg" alt="2e164557ffe9d9c976bb84642a738dfe"></p>
+</div>
+
+<p>一路选择 Next，直至安装成功。</p>
+]]></content>
       <categories>
         <category>Python基础</category>
       </categories>
@@ -2705,6 +2963,49 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>python解析器和Python-IDE的区别</title>
+    <url>/2021/04/24/python%E8%A7%A3%E6%9E%90%E5%99%A8%E5%92%8CPython-IDE%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p>经常会有刚刚入门 Python 的初学者把 PythonIDE 与 Python 解释器弄混，其实它们是有本质区别的，有些人还会误认为配置 Python 环境就是配置 IDE 工具。那么，PythonIDE 和解释器的区别是什么呢？下面就带大家好好认识一下 Python IDE 和解释器。</p>
+<p>1、Python IDE</p>
+<p>IDE (Integrated Development Environment)，全称是集成开发环境，是用于提供程序开发环境的应用程序，一般包括代码编辑器、编译器、调试器和图形用户界面等工具。集成了代码编写功能、分析功能、编译功能、调试功能等一体化的开发软件服务套。所有具备这一特性的软件或者软件套 (组) 都可以叫集成开发环境。常见的 IDE 工具有 Pycharm，Visual Studio Code，Vim 等等。</p>
+<p>2、解释器</p>
+<p>(1) 什么是解释器</p>
+<p>我们都知道，Python 是一门解释型语言，解释器是 Python 运行必不可少的一种工具。所以，我们搭建 Pyhton 环境，本质上就是对 Pyhton 进行配置或者定制。而解释器是能够执行用其他计算机语言编写的程序的系统软件，它是一种编译程序。它的执行方式是一边翻译一边执行，因此其执行效率一般偏低，但是解释器的实现较为简单，而且编写源程序的高级语言可以使用更加灵活和富于表现力的语法。</p>
+<p>(2) Python 解释器</p>
+<p>当我们编写 Python 代码时，我们得到的是一个包含 Python 代码的以.py 为扩展名的文本文件。要运行代码，就需要 Python 解释器去执行.py 文件。由于整个 Python 语言从规范到解释器都是开源的，所以理论上，只要水平够高，任何人都可以编写 Python 解释器来执行 Python 代码 (当然难度很大)。事实上，确实存在多种 Python 解释器。</p>
+<p>(3) 常见的 Python 解释器</p>
+<ul>
+<li><strong>A</strong>、CPython：</li>
+</ul>
+<p>当我们从 Python 官方网站下载并安装好 Python2.7 后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用 C 语言开发的，所以叫 CPython。在命令行下运行 Python 就是启动 CPython 解释器。CPython 是使用最广的 Python 解释器。教程的所有代码也都在 CPython 下执行的。</p>
+<ul>
+<li><strong>B</strong>、IPython：IPython</li>
+</ul>
+<p>是基于 CPython 之上的一个交互式解释器，也就是说，IPython 只是在交互方式上有所增强，但是执行 Python 代码的功能和 CPython 是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了 IE。</p>
+<ul>
+<li><strong>C</strong>、PyPy：</li>
+</ul>
+<p>PyPy 是另一个 Python 解释器，它的目标是执行速度。PyPy 采用 JIT 技术，对 Python 代码进行动态编译 (注意不是解释)，所以可以显著提高 Python 代码的执行速度。绝大部分 Python 代码都可以在 PyPy 下运行，但是 PyPy 和 CPython 有一些是不同的，这就导致相同的 Python 代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到 PyPy 下执行，就需要了解 PyPy 和 CPython 的不同点。</p>
+<ul>
+<li><strong>D</strong>、Jython：</li>
+</ul>
+<p>Jython 是运行在 Java 平台上的 Python 解释器，可以直接把 Python 代码编译成 Java 字节码执行。</p>
+<ul>
+<li><strong>E</strong>、IronPython：</li>
+</ul>
+<p>IronPython 和 Jython 类似，只不过 IronPython 是运行在微软.Net 平台上的 Python 解释器，可以直接把 Python 代码编译成.Net 的字节码。</p>
+<p>3、Python IDE 和解释器的区别</p>
+<p>集成开发环境 (IDE) 可以去绑定和调用 Python 解释器进行代码编辑、运行和调试等，但他不等同于解释器。我们配置 IDE 工具的操作，绝大多数都是在调整我们使用工具的方式，只有对解释器的配置，才是对代码运行环境的调整。</p>
+<p>综上所述，Python IDE 和解释器的区别还是很大的，大家可千万不要把两者的概念混淆了！</p>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>不同方法读取excel中的多个不同sheet表格性能比较</title>
     <url>/2021/02/06/%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95%E8%AF%BB%E5%8F%96excel%E4%B8%AD%E7%9A%84%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8Csheet%E8%A1%A8%E6%A0%BC%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<p><a href="https://www.jb51.net/article/190704.htm">转自脚本之家</a></p>
@@ -2798,45 +3099,6 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>Python库之Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写给刚入门编程（python）的同学</title>
-    <url>/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/</url>
-    <content><![CDATA[<h2 id="写给谁"><a href="#写给谁" class="headerlink" title="写给谁"></a>写给谁</h2><p>刚准备入手学习 python 编程的大学生或者研究生。</p>
-<h2 id="你为什么学-python"><a href="#你为什么学-python" class="headerlink" title="你为什么学 python"></a>你为什么学 python</h2><ul>
-<li>当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。</li>
-<li>深度学习大火，科室的实验开始使用深度学习的分析方法</li>
-</ul>
-<p>可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。</p>
-<h2 id="你为什么惦记或者自学了很久却迟迟未入门"><a href="#你为什么惦记或者自学了很久却迟迟未入门" class="headerlink" title="你为什么惦记或者自学了很久却迟迟未入门"></a>你为什么惦记或者自学了很久却迟迟未入门</h2><ul>
-<li>担心自己投入了大量的时间却没有收获，或者在毕业后，甚至在刚做完实验后 python 就没用了。</li>
-</ul>
-<p>一门编程语言都没有深入学习过的人，常常误认为 java，c++，python， JavaScript 等编程语言的差别非常大。但是，在你开始学习它们之中的一个的时候，你学到的大部分知识其实都只是现代编程语言的基本元素：变量，运算符，语句，控制流，函数，面向对象，文件读写，使用第三方库。甚至当你学习数据结构与算法的时候，你仍然没有太多涉及到一个语言的特性。作者前几天就见识了一个刚学会 python 的计算机教授用自己的 C 语言风格写出的 python 数据结构与算法书，真的被震惊到了。</p>
-<p>但是，当你学习到这一步的时候，甚至还没开始学数据结构与算法的时候，你就已经可以开始做很多事情了。结合你的本专业（比如前面列出的那些）知识，以及一些专业的算法库，你就能使用你选择的编程语言，进行专业领域的探索和科学研究了。这个时候，你的注意力就不再在编程语言上了，而是你的课题。你的眼中只有宝石，而编程语言只是你用来打磨宝石的锉子。</p>
-<ul>
-<li><p>那各个编程语言之间究竟有哪些不同呢？</p>
-<p>编程语言，就像是手机或者电脑的操作系统，其最大的财富，是它们的生态，也就是适用的软件包。当你开始深入探索，改进，甚至自己做一个大型的软件包的时候，可能就是需要重新思考使用什么的语言的时候了。比如说，当你需要学习做一个大型网站，或者需要做一个和手机淘宝差不多的 app 出来的时候。当然，这个时候的你再认真考量之后自然会有自己的选择。</p>
-</li>
-</ul>
-<h2 id="我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"><a href="#我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？" class="headerlink" title="我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"></a>我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？</h2><ul>
-<li>没有找到好的入门教材</li>
-</ul>
-<p>计算机技术社区是最拥抱开源的社区，当你在网上找不到好的数学，物理，经济学教材的时候，你可以抱怨说：适合我的教材还没有被写出来。然而，当你找计算机技术教材的时候，你只能抱怨说：适合我的教材还没有和我遇见。动动手，逛逛各种技术社区和论坛，优质技术资料是无穷无尽的～</p>
-<ul>
-<li>被 python 的灵活性所迷惑</li>
-</ul>
-<p>如果 python 是你的第一门编程语言，那么你是很容易被 python 愚弄的。python 的最大特性是灵活，但是语言的灵活性却也是刺向初学者的利剑。毕竟，很多人学习 C 语言这门以严谨刻板著称的语言的时候，都会经常被自己所写出的程序所捉弄。</p>
-<p>这个时候，请记住：</p>
-<p>1，先选择一本知识点齐全的 python 基础教材放在手边，牢固掌握 python 的面向对象用法，并且知道 python 有哪些高级的函数式编程和面向对象编程的知识，在不懂的时候随时查阅。做完这些预备动作，才跟着某些教材做一些小项目。</p>
-<p>2，永远清楚你正在使用的变量的数据类型。如果不清楚，使用 type (a) 查询 a 的数据类型。</p>
-<p>很多初学者看别人写的程序，常常有一种错觉：所有的变量都是适合所有操作的，str 类型可以 print，list 类型也可以 print；它们都还都支持遍历，甚至还都支持加法，那不就是说所有的类型都支持所有的操作了？然而并不是，当你这么想时，你已经把 python 当成了魔法，而不是遵循客观规律的科学工具了。</p>
-]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -2962,6 +3224,45 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写给刚入门编程（python）的同学</title>
+    <url>/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/</url>
+    <content><![CDATA[<h2 id="写给谁"><a href="#写给谁" class="headerlink" title="写给谁"></a>写给谁</h2><p>刚准备入手学习 python 编程的大学生或者研究生。</p>
+<h2 id="你为什么学-python"><a href="#你为什么学-python" class="headerlink" title="你为什么学 python"></a>你为什么学 python</h2><ul>
+<li>当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。</li>
+<li>深度学习大火，科室的实验开始使用深度学习的分析方法</li>
+</ul>
+<p>可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。</p>
+<h2 id="你为什么惦记或者自学了很久却迟迟未入门"><a href="#你为什么惦记或者自学了很久却迟迟未入门" class="headerlink" title="你为什么惦记或者自学了很久却迟迟未入门"></a>你为什么惦记或者自学了很久却迟迟未入门</h2><ul>
+<li>担心自己投入了大量的时间却没有收获，或者在毕业后，甚至在刚做完实验后 python 就没用了。</li>
+</ul>
+<p>一门编程语言都没有深入学习过的人，常常误认为 java，c++，python， JavaScript 等编程语言的差别非常大。但是，在你开始学习它们之中的一个的时候，你学到的大部分知识其实都只是现代编程语言的基本元素：变量，运算符，语句，控制流，函数，面向对象，文件读写，使用第三方库。甚至当你学习数据结构与算法的时候，你仍然没有太多涉及到一个语言的特性。作者前几天就见识了一个刚学会 python 的计算机教授用自己的 C 语言风格写出的 python 数据结构与算法书，真的被震惊到了。</p>
+<p>但是，当你学习到这一步的时候，甚至还没开始学数据结构与算法的时候，你就已经可以开始做很多事情了。结合你的本专业（比如前面列出的那些）知识，以及一些专业的算法库，你就能使用你选择的编程语言，进行专业领域的探索和科学研究了。这个时候，你的注意力就不再在编程语言上了，而是你的课题。你的眼中只有宝石，而编程语言只是你用来打磨宝石的锉子。</p>
+<ul>
+<li><p>那各个编程语言之间究竟有哪些不同呢？</p>
+<p>编程语言，就像是手机或者电脑的操作系统，其最大的财富，是它们的生态，也就是适用的软件包。当你开始深入探索，改进，甚至自己做一个大型的软件包的时候，可能就是需要重新思考使用什么的语言的时候了。比如说，当你需要学习做一个大型网站，或者需要做一个和手机淘宝差不多的 app 出来的时候。当然，这个时候的你再认真考量之后自然会有自己的选择。</p>
+</li>
+</ul>
+<h2 id="我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"><a href="#我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？" class="headerlink" title="我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"></a>我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？</h2><ul>
+<li>没有找到好的入门教材</li>
+</ul>
+<p>计算机技术社区是最拥抱开源的社区，当你在网上找不到好的数学，物理，经济学教材的时候，你可以抱怨说：适合我的教材还没有被写出来。然而，当你找计算机技术教材的时候，你只能抱怨说：适合我的教材还没有和我遇见。动动手，逛逛各种技术社区和论坛，优质技术资料是无穷无尽的～</p>
+<ul>
+<li>被 python 的灵活性所迷惑</li>
+</ul>
+<p>如果 python 是你的第一门编程语言，那么你是很容易被 python 愚弄的。python 的最大特性是灵活，但是语言的灵活性却也是刺向初学者的利剑。毕竟，很多人学习 C 语言这门以严谨刻板著称的语言的时候，都会经常被自己所写出的程序所捉弄。</p>
+<p>这个时候，请记住：</p>
+<p>1，先选择一本知识点齐全的 python 基础教材放在手边，牢固掌握 python 的面向对象用法，并且知道 python 有哪些高级的函数式编程和面向对象编程的知识，在不懂的时候随时查阅。做完这些预备动作，才跟着某些教材做一些小项目。</p>
+<p>2，永远清楚你正在使用的变量的数据类型。如果不清楚，使用 type (a) 查询 a 的数据类型。</p>
+<p>很多初学者看别人写的程序，常常有一种错觉：所有的变量都是适合所有操作的，str 类型可以 print，list 类型也可以 print；它们都还都支持遍历，甚至还都支持加法，那不就是说所有的类型都支持所有的操作了？然而并不是，当你这么想时，你已经把 python 当成了魔法，而不是遵循客观规律的科学工具了。</p>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -3629,6 +3930,20 @@ Out[23]: 16
 <p>&emsp;&emsp;重要的是要盯住目标，消除痛苦的最好办法之一就是将其忘记而只是盯住快乐。有人说痛苦和快乐似乎不可能同时发生，痛苦着就不会感到快乐。错！如果把注意力仅仅放在痛苦上，即使有快乐可言的时候你也会对其麻木不仁，转移了注意的重点也就改变了感觉。再举个例子：打棒球的时候，正常情况下你会奔跑、跳跃、投球、防卫，这一次不用球做一次！你想你能坚持玩多久？五分钟？没有球，也就没有了分散痛苦的快乐，每一步都似乎那么沉重。再把球拿上来，又可以玩上两个小时了。圣人说要把双眼盯在目标上，要达到人生目标，你必须学会有关生活的相应知识，这样你才能真正感受到努力带来的快乐。</p>
 <p>&emsp;&emsp;想象某个男孩和伙伴玩耍时跌倒擦破了膝盖，开始哭泣，伙伴们冲他喊道：“哭吧，伙计，可劲儿哭！”他却立刻站起来重又加入游戏。回到家里，孩子给妈妈看受的伤，立刻又大哭起来。我们的生活享受与痛苦密切相关，很多人学会说“那又怎么样”，对痛苦毫不在意，而有的人则纠结于自怨自艾情绪，深陷痛苦不能自拔。很多人盯住自己的不能而不是能够，结果造成毫无意义的痛苦。每个人生来都有惊人的天赋和潜力，所以纠缠于自己的缺点就如同衣裳褴褛到高级饭店进餐一样愚蠢–漂亮的风景、精美雅致的餐具，为此你感到局促不安大声喊道：“没有盐！怎么回事？”原本很愉快的经历变成你和周围人的一场噩梦。取得伟大成就的是那些忍受最大痛苦的人，你会因为手指扎根刺就放弃革命吗？你会因为头痛就不再发挥聪明才智吗？有的人在冰水中游泳、在烧红的煤炭上行走，为的就是克服这样做所带来的恐惧，克服恐惧使我们能够感觉到自由意志，让我们能在多大程度上塑造自己的生活。学会专注痛苦中的好处吧，这样你才能发现生活所能给予的最大快乐。</p>
 <p>&emsp;&emsp;说到他人的痛苦，那就是两回事了。看望住院朋友的时候，不要说教他应该“看到积极的一面”，同情和理解才能减轻痛苦。同样，也不要对人类的苦难视而不见，你的社区如果出现问题，问自己：“我能做些有助于问题解决的什么事情？”大多数人都能体会到今天人类的苦难：绝望、迫害、残缺的家园……而愿意全力以赴找到真正解决方法的人却凤毛麟角。伟大不仅仅在于比去年更多的捐献，而在于身体力行，把他人的痛苦当作自己的，这就是伟人的伟大之处，这里才是伟大最终得以展现出来之处。</p>
+]]></content>
+      <categories>
+        <category>文章阅读</category>
+      </categories>
+      <tags>
+        <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>经典语句</title>
+    <url>/2021/04/24/%E7%BB%8F%E5%85%B8%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>《乡下人的悲歌》，是《纽约时报》和影响力颇大的《泰晤士报》力推的一本书，作者 J.D 万斯借自己真实的人生经历，讲述了一个普通家庭孩子要如何才能跨越阶层，为自己的人生谋得选择的权利。</p>
+<p>万斯在序言中说：</p>
+<p>我之所以写这本书，并不是因为我取得了什么不平凡的成就，而是因为我做的事虽然非常平凡，但大多数像我那样家庭的孩子都做不到。</p>
 ]]></content>
       <categories>
         <category>文章阅读</category>
