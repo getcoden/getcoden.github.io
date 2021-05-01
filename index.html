@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,175 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/05/01/VsCode-Picgo-Github%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/01/VsCode-Picgo-Github%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">VsCode_Picgo_Github图床上传失败解决方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-05-01 11:59:41 / 修改时间：04:05:49" itemprop="dateCreated datePublished" datetime="2021-05-01T11:59:41Z">2021-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>前言</p>
+<p>写 Markdown 的时候，插入图片总是插入本地图片，这就导致把笔记发给别人的时候必须要打包发送。<br>后来发现了 Picgo 这款软件，可以把图片上传到图床，然后在 VsCode 中插入网络图片链接，发笔记的时候就不用再把图片打包了。<br>但使用 Picgo 一段时间后，发现 Github 图床总是上传失败，于是总结了以下问题。</p>
+<p>总结</p>
+<p>目前知道的 Github 图床问题有：</p>
+<ul>
+<li>Token 未更新</li>
+<li>仓库名称带空格，配置时需要变为 -</li>
+<li>无法上传 PNG</li>
+<li>图片名称不能带 +</li>
+<li>仓库中已存在相同名称的图片</li>
+</ul>
+<h2 id="在-VsCode-中编写代码时"><a href="#在-VsCode-中编写代码时" class="headerlink" title="在 VsCode 中编写代码时"></a>在 VsCode 中编写代码时</h2><p>在格式控制中有一项是这样的，通过 Ctrl + , 打开 setting 设置，然后在格式化控制中有一项 Format On Type ‘控制编辑器在键入一行后是否自动格式化该行’。由于之前一直用着这一功能很好用，这也是选择该编辑器的一个原因，前几天突然一个插件升级要重新加载编辑器，由于自己也没看清是什么插件，后来这项功能一直不能用了，自己折腾了四、五天，重启了无数次，安装又卸载了无数个插件，真是累的快吐血了，最后真的想放弃了。又一个无心的举动，发现了问题。原来是 VsCode 中的 Python 插件版本更新所导致的这个问题。于是乎又查看如果使用之前版本的插件，最后发现真是这是个问题引起的。现在解决了，心里真是很爽的。又可以像以前一样使用此工功能了。只不过扩展插件栏一直提示要更新，现在也不管那么多了，只要好用就行。 </p>
+<h2 id="修改版本号为此版："><a href="#修改版本号为此版：" class="headerlink" title="修改版本号为此版："></a>修改版本号为此版：</h2><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/%E9%80%89%E6%8B%A9%E6%8C%87%E5%AE%9A%E7%9A%84Python%E6%8F%92%E4%BB%B6%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7.png" alt="选择指定的Python插件的版本号"></p>
+</div>
+
+<h2 id="禁止版本更新方法："><a href="#禁止版本更新方法：" class="headerlink" title="禁止版本更新方法："></a>禁止版本更新方法：</h2><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/%E4%BF%AE%E6%94%B9Python%E6%8F%92%E4%BB%B6%E7%89%88%E6%9C%AC%E5%B9%B6%E7%A6%81%E6%AD%A2%E6%9B%B4%E6%96%B0.png" alt="修改Python插件版本并禁止更新"></p>
+</div>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/05/01/VsCode%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/01/VsCode%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" class="post-title-link" itemprop="url">VsCode中添加用户代码片段</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-05-01 11:48:07 / 修改时间：03:50:17" itemprop="dateCreated datePublished" datetime="2021-05-01T11:48:07Z">2021-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="常用的用户代码片段"><a href="#常用的用户代码片段" class="headerlink" title="常用的用户代码片段"></a>常用的用户代码片段</h2><p>添加方法：VsCode 右下角，单击’设置’小齿轮按钮，之后选择用户代码片段，在命令行单击添加全局代码片段，在大括号里写上下代码即可。</p>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;读文件&quot;:&#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;files&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;with open($&#123;1:文件全路径&#125;) as 文件:&quot;,</span><br><span class="line">			&quot;\t内容 &#x3D; 文件.read()&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;读取某文件&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;读所有文件&quot;:&#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;allfiles&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;import os&quot;,</span><br><span class="line">			&quot;filepath &#x3D;&#39;.&#39;&quot;,</span><br><span class="line">			&quot;for filenames in os.listdir(filepath):&quot;,</span><br><span class="line">			&quot;\twith open(os.path.join(filepath,filenames)) as f:&quot;,</span><br><span class="line">			&quot;\t\twords &#x3D; f.read()&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;读取某目录下所有文件&quot;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一些常用片段"><a href="#一些常用片段" class="headerlink" title="一些常用片段"></a>一些常用片段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;Print with space lines&quot;: &#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;pp&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;print(&#39;\\n&#39;*2, $1)&quot;,</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;Print with space lines&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;这是分隔线</span><br><span class="line"></span><br><span class="line">	&quot;class init&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;class $1 $2&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;class $1(object):&quot;,</span><br><span class="line">			&quot;    def __init__(self$2):&quot;,</span><br><span class="line">			&quot;        self.&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto class init&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;class pass&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;classpass $1&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;class $1: pass&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto class pass&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;def pass&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;defpass $1&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;def $1(): pass&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto def pass&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;get path&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;import os&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;import os&quot;,</span><br><span class="line">			&quot;&quot;,</span><br><span class="line">			&quot;def getScriptPath():&quot;,</span><br><span class="line">			&quot;    return os.path.split(os.path.realpath(__file__))[0]&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto getScriptPath&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;env init&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;import sys&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;#!&#x2F;usr&#x2F;bin&#x2F;env python&quot;,</span><br><span class="line">			&quot;# coding:utf-8&quot;,</span><br><span class="line">			&quot;&quot;,</span><br><span class="line">			&quot;import sys&quot;,</span><br><span class="line">			&quot;reload(sys)&quot;,</span><br><span class="line">			&quot;sys.setdefaultencoding(&#39;utf-8&#39;)&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto set utf8&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;logging&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;import logging $1&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;import logging&quot;,</span><br><span class="line">			&quot;&quot;,</span><br><span class="line">			&quot;logger &#x3D; logging.getLogger(__name__)&quot;,</span><br><span class="line">			&quot;logger.setLevel(level&#x3D;logging.INFO)&quot;,</span><br><span class="line">			&quot;handler &#x3D; logging.FileHandler(&#39;$1&#39;)&quot;,</span><br><span class="line">			&quot;handler.setLevel(level&#x3D;logging.INFO)&quot;,</span><br><span class="line">			&quot;formatter &#x3D; logging.Formatter(&#39;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#39;)&quot;,</span><br><span class="line">			&quot;handler.setFormatter(formatter)&quot;,</span><br><span class="line">			&quot;logger.addHandler(handler)&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto logging&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;args&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;*a&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;*args, **kwargs&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto *args&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;closure&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;proxy $1 $2 $3&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;def $1(func):&quot;,</span><br><span class="line">			&quot;    def proxy(*args, **kwargs):&quot;,</span><br><span class="line">			&quot;        $2&quot;,</span><br><span class="line">			&quot;        result &#x3D; func(*args, **kwargs)&quot;,</span><br><span class="line">			&quot;        $3&quot;,</span><br><span class="line">			&quot;        return result&quot;,</span><br><span class="line">			&quot;    return proxy&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto closure&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;Quick info&quot;: &#123;</span><br><span class="line">	&quot;prefix&quot;: &quot;info&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;#! &#x2F;usr&#x2F;bin&#x2F;env python&quot;,</span><br><span class="line">		&quot;# author : BJxo&quot;,</span><br><span class="line">		&quot;# date : $CURRENT_YEAR&#x2F;$CURRENT_MONTH&#x2F;$CURRENT_DATE&quot;</span><br><span class="line">		&quot;\nimport os&quot;,</span><br><span class="line">		&quot;import sys&quot;,</span><br><span class="line">		&quot;import pandas&quot;,</span><br><span class="line">		&quot;from datetime import datetime&quot;,</span><br><span class="line">		&quot;$0&quot;,</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1240,163 +1409,6 @@
     <div class="post-body" itemprop="articleBody">
           <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while 1:</span><br><span class="line">	first_number &#x3D; input(&#39;\nFirst number:&#39;)</span><br><span class="line">	if first_number.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">	second_number &#x3D; input(&#39;\nSecond number:&#39;)</span><br><span class="line">	try:</span><br><span class="line">		answer &#x3D; int(first_number) &#x2F; int(second_number)</span><br><span class="line">	except ZeroDivisionError:</span><br><span class="line">		print(&quot;You can&#39;t divide by 0!&quot;)</span><br><span class="line">	else:</span><br><span class="line">		print(answer)</span><br></pre></td></tr></table></figure>
 <h3 id="异常处理实例"><a href="#异常处理实例" class="headerlink" title="异常处理实例"></a>异常处理实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        n&#x3D;float(input(&#39;输入一个数字：&#39;))</span><br><span class="line">    except:</span><br><span class="line">        print(&#39;输入错误&#39;)</span><br><span class="line">        continue</span><br><span class="line">    dn&#x3D;n**2</span><br><span class="line">    print(&#39;其平方为：&#39;,dn)</span><br><span class="line">    if dn&lt;50:</span><br><span class="line">        print(&#39;平方小于50，退出&#39;)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/22/Python%E6%B1%82%E5%89%8Dn%E9%A1%B9%E9%98%B6%E4%B9%98%E5%92%8C%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/22/Python%E6%B1%82%E5%89%8Dn%E9%A1%B9%E9%98%B6%E4%B9%98%E5%92%8C%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C/" class="post-title-link" itemprop="url">Python求前n项阶乘和与平方和</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-21 18:09:18" itemprop="dateCreated datePublished" datetime="2021-03-21T18:09:18Z">2021-03-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-27 04:11:46" itemprop="dateModified" datetime="2021-03-27T04:11:46Z">2021-03-27</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="输入一个整数，计算阶乘然后求和"><a href="#输入一个整数，计算阶乘然后求和" class="headerlink" title="输入一个整数，计算阶乘然后求和"></a>输入一个整数，计算阶乘然后求和</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">factorial &#x3D; 1</span><br><span class="line">sum1 &#x3D; 0</span><br><span class="line">n &#x3D; int(input(&#39;输入一个整数，计算阶乘然后求和:&#39;))</span><br><span class="line">str1 &#x3D; &#39;&#39;</span><br><span class="line"></span><br><span class="line">for i in range(1, n + 1):</span><br><span class="line">	for j in range(1, i + 1):</span><br><span class="line">		factorial &#x3D; factorial * j</span><br><span class="line">	print(str(i) + &#39;!&#39;, &#39;&#x3D;&#39;, factorial)</span><br><span class="line">	sum1 &#x3D; sum1 + factorial</span><br><span class="line">	factorial &#x3D; 1</span><br><span class="line">	if n !&#x3D; j:</span><br><span class="line">		str1 &#x3D; str1 + str(j) + &#39;!+&#39;</span><br><span class="line">	else:</span><br><span class="line">		str1 &#x3D; str1 + str(j) + &#39;!&#39;</span><br><span class="line">print(str1, &#39;&#x3D;&#39;, sum1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="前-n-项数字之和平方用函数来写"><a href="#前-n-项数字之和平方用函数来写" class="headerlink" title="前 n 项数字之和平方用函数来写"></a>前 n 项数字之和平方用函数来写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def aSum(n):</span><br><span class="line">	sum &#x3D; 0</span><br><span class="line">	for i in range(1, n + 1):</span><br><span class="line">		sum +&#x3D; i * i</span><br><span class="line">	return sum</span><br><span class="line"></span><br><span class="line">print(aSum(2))</span><br></pre></td></tr></table></figure>
-<h3 id="for-循环来写"><a href="#for-循环来写" class="headerlink" title="for 循环来写"></a>for 循环来写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">str1 &#x3D; &#39;&#39;</span><br><span class="line">sum1 &#x3D; 0</span><br><span class="line">n &#x3D; int(input(&#39;Type n:&#39;))</span><br><span class="line">total &#x3D; 0</span><br><span class="line">for i in range(1, n + 1):</span><br><span class="line">	total +&#x3D; i * i 				# total +&#x3D; i **2  也是可以的</span><br><span class="line">	print(str(i)+ &#39;^2&#39;, &#39;&#x3D;&#39;, total)</span><br><span class="line">	sum1 &#x3D; sum1 + total</span><br><span class="line">	total &#x3D; 0</span><br><span class="line">	if n !&#x3D; i:</span><br><span class="line">		str1 &#x3D; str1 + str(i) + &#39;^2+&#39;</span><br><span class="line">	else:</span><br><span class="line">		str1 &#x3D; str1 + str(i) + &#39;^2&#39;</span><br><span class="line">print(str1, &#39;&#x3D;&#39;, sum1)</span><br></pre></td></tr></table></figure>
-<h3 id="平方和与平方和之差"><a href="#平方和与平方和之差" class="headerlink" title="平方和与平方和之差"></a>平方和与平方和之差</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int((3 * n ** 2 + 2 * n) * (1 - n ** 2) &#x2F; 12)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int(n * (n + 1) * (2 * n + 1) &#x2F; 6 - (n * (n + 1) &#x2F; 2)** 2)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br></pre></td></tr></table></figure>
-<h3 id="前-n-项数字之和平方"><a href="#前-n-项数字之和平方" class="headerlink" title="前 n 项数字之和平方"></a>前 n 项数字之和平方</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def square_sum(numbers):</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for each in range(1,numbers+1):</span><br><span class="line">        total &#x3D; total + each</span><br><span class="line">    return total ** 2</span><br><span class="line"></span><br><span class="line">print(square_sum(3))</span><br></pre></td></tr></table></figure>
-<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while 1:</span><br><span class="line">	first_number &#x3D; input(&#39;\nFirst number:&#39;)</span><br><span class="line">	if first_number.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">	second_number &#x3D; input(&#39;\nSecond number:&#39;)</span><br><span class="line">	try:</span><br><span class="line">		answer &#x3D; int(first_number) &#x2F; int(second_number)</span><br><span class="line">	except ZeroDivisionError:</span><br><span class="line">		print(&quot;You can&#39;t divide by 0!&quot;)</span><br><span class="line">	else:</span><br><span class="line">		print(answer)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" class="post-title-link" itemprop="url">Python列表切片之负数的含义代码示例</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-21 08:27:53 / 修改时间：00:28:40" itemprop="dateCreated datePublished" datetime="2021-03-21T08:27:53Z">2021-03-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="python-列表切片之负数的含义代码示例"><a href="#python-列表切片之负数的含义代码示例" class="headerlink" title="python 列表切片之负数的含义代码示例"></a>python 列表切片之负数的含义代码示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; list(range(10))</span><br><span class="line">print(a[::]) #复制一个列表</span><br><span class="line">print(a[::2]) #每隔2个取一次</span><br><span class="line">print(a[::3]) #每隔3个取一次</span><br><span class="line"></span><br><span class="line">print(a[::-1]) #表示反转字符串</span><br><span class="line">print(a[::-2]) #表示反转字符串,每隔2个取一次</span><br><span class="line">print(a[::-3]) #表示反转字符串,每隔3个取一次</span><br><span class="line">#由此得知最后一个位置参数表示间隔数</span><br><span class="line"></span><br><span class="line">print(a[-1::]) #-1表示倒着取1个</span><br><span class="line">print(a[-2::]) #-2表示倒着取2个</span><br><span class="line">print(a[-3::]) #-3表示倒着取3个</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(a[-2:-1:]) #-2,-1:表示倒着取下面为-2到-1区间的</span><br><span class="line">print(a[-4:-2:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line">print(a[-5:-1:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line"></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[0, 2, 4, 6, 8]</span><br><span class="line">[0, 3, 6, 9]</span><br><span class="line">[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span><br><span class="line">[9, 7, 5, 3, 1]</span><br><span class="line">[9, 6, 3, 0]</span><br><span class="line">[9]</span><br><span class="line">[8, 9]</span><br><span class="line">[7, 8, 9]</span><br><span class="line">[8]</span><br><span class="line">[6, 7]</span><br><span class="line">[5, 6, 7, 8]</span><br></pre></td></tr></table></figure>
       
     </div>
 

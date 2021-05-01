@@ -2284,6 +2284,34 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python基础之求平均数</title>
+    <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
+<p>len()函数</p>
+<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
+</div>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python基础之趣味算法入门</title>
     <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h3 id="趣味算法入门"><a href="#趣味算法入门" class="headerlink" title="趣味算法入门"></a>趣味算法入门</h3><p>1.百钱买百鸡：中国古代数学家张丘建在他的《算经》中提出了一个著名的 “ 百钱百鸡问题 “： 一只公鸡值五钱，一只母鸡值三钱，三只小鸡值一钱，现在要用百钱买百鸡，请问公鸡、母鸡、小鸡各多少只？</p>
@@ -2321,34 +2349,6 @@ Out[23]: 16
 <p>​ 设 r 是 f(x)=0 的根，选取 x0 作为 r 的初始近似值。过点（x0, f(x0))作为曲线 y = f(x)的切线 L，L 的方程为 y = f(x0) +f‘(x0)(x-x0)，求出 L 于 x 轴交点的横坐标 x1 = x0 -f(x0)/f’(x0)，称 x1 为 r 的一次近似值，过点（x1, f(x1))作为曲线 y = f(x)的切线并求改切线于 x 轴的横坐标 x2 = x1 -f(x1)/f’(x1)，称 x2 为 r 的二次近似值，重复以上过程，得 r 的近似值 xn。上述即为牛顿迭代法的求解过程。</p>
 <p>​ 算法设计：</p>
 <p>在 1 附近找任意一实数作为 x0 的初值，我们去 1.5，即 x0 = 1.5. 用初值 x0 带入方程中计算此时的 f(x0)及 f’(x0)；程序中 f 用来描述方程的值，fd 用来描述方程求导之后的值。 计算增量 h=f/fd。 计算下一个 x （x = x0-h）。 用所得的 x 代替 x0 原来的值。 若|x - x0|&gt;=1e-5,则转到第三步继续执行，否则转到步骤 7 所求 x 就是方程的根，将其输出。<br>如果你喜欢我的文章,请滑到下方点个推荐再走. ，以给我动力哦；转载请注名出处。然后..请多来做客鸭。</p>
-]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python基础之求平均数</title>
-    <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
-<p>len()函数</p>
-<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
-</div>
 ]]></content>
       <categories>
         <category>Python基础</category>
@@ -2725,6 +2725,51 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VsCode_Picgo_Github图床上传失败解决方法</title>
+    <url>/2021/05/01/VsCode-Picgo-Github%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>前言</p>
+<p>写 Markdown 的时候，插入图片总是插入本地图片，这就导致把笔记发给别人的时候必须要打包发送。<br>后来发现了 Picgo 这款软件，可以把图片上传到图床，然后在 VsCode 中插入网络图片链接，发笔记的时候就不用再把图片打包了。<br>但使用 Picgo 一段时间后，发现 Github 图床总是上传失败，于是总结了以下问题。</p>
+<p>总结</p>
+<p>目前知道的 Github 图床问题有：</p>
+<ul>
+<li>Token 未更新</li>
+<li>仓库名称带空格，配置时需要变为 -</li>
+<li>无法上传 PNG</li>
+<li>图片名称不能带 +</li>
+<li>仓库中已存在相同名称的图片</li>
+</ul>
+<h2 id="在-VsCode-中编写代码时"><a href="#在-VsCode-中编写代码时" class="headerlink" title="在 VsCode 中编写代码时"></a>在 VsCode 中编写代码时</h2><p>在格式控制中有一项是这样的，通过 Ctrl + , 打开 setting 设置，然后在格式化控制中有一项 Format On Type ‘控制编辑器在键入一行后是否自动格式化该行’。由于之前一直用着这一功能很好用，这也是选择该编辑器的一个原因，前几天突然一个插件升级要重新加载编辑器，由于自己也没看清是什么插件，后来这项功能一直不能用了，自己折腾了四、五天，重启了无数次，安装又卸载了无数个插件，真是累的快吐血了，最后真的想放弃了。又一个无心的举动，发现了问题。原来是 VsCode 中的 Python 插件版本更新所导致的这个问题。于是乎又查看如果使用之前版本的插件，最后发现真是这是个问题引起的。现在解决了，心里真是很爽的。又可以像以前一样使用此工功能了。只不过扩展插件栏一直提示要更新，现在也不管那么多了，只要好用就行。 </p>
+<h2 id="修改版本号为此版："><a href="#修改版本号为此版：" class="headerlink" title="修改版本号为此版："></a>修改版本号为此版：</h2><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/%E9%80%89%E6%8B%A9%E6%8C%87%E5%AE%9A%E7%9A%84Python%E6%8F%92%E4%BB%B6%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7.png" alt="选择指定的Python插件的版本号"></p>
+</div>
+
+<h2 id="禁止版本更新方法："><a href="#禁止版本更新方法：" class="headerlink" title="禁止版本更新方法："></a>禁止版本更新方法：</h2><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/%E4%BF%AE%E6%94%B9Python%E6%8F%92%E4%BB%B6%E7%89%88%E6%9C%AC%E5%B9%B6%E7%A6%81%E6%AD%A2%E6%9B%B4%E6%96%B0.png" alt="修改Python插件版本并禁止更新"></p>
+</div>]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VsCode中添加用户代码片段</title>
+    <url>/2021/05/01/VsCode%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
+    <content><![CDATA[<h2 id="常用的用户代码片段"><a href="#常用的用户代码片段" class="headerlink" title="常用的用户代码片段"></a>常用的用户代码片段</h2><p>添加方法：VsCode 右下角，单击’设置’小齿轮按钮，之后选择用户代码片段，在命令行单击添加全局代码片段，在大括号里写上下代码即可。</p>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;读文件&quot;:&#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;files&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;with open($&#123;1:文件全路径&#125;) as 文件:&quot;,</span><br><span class="line">			&quot;\t内容 &#x3D; 文件.read()&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;读取某文件&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;读所有文件&quot;:&#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;allfiles&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;import os&quot;,</span><br><span class="line">			&quot;filepath &#x3D;&#39;.&#39;&quot;,</span><br><span class="line">			&quot;for filenames in os.listdir(filepath):&quot;,</span><br><span class="line">			&quot;\twith open(os.path.join(filepath,filenames)) as f:&quot;,</span><br><span class="line">			&quot;\t\twords &#x3D; f.read()&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;读取某目录下所有文件&quot;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一些常用片段"><a href="#一些常用片段" class="headerlink" title="一些常用片段"></a>一些常用片段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;Print with space lines&quot;: &#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;pp&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;print(&#39;\\n&#39;*2, $1)&quot;,</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;Print with space lines&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;这是分隔线</span><br><span class="line"></span><br><span class="line">	&quot;class init&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;class $1 $2&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;class $1(object):&quot;,</span><br><span class="line">			&quot;    def __init__(self$2):&quot;,</span><br><span class="line">			&quot;        self.&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto class init&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;class pass&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;classpass $1&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;class $1: pass&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto class pass&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;def pass&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;defpass $1&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;def $1(): pass&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto def pass&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;get path&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;import os&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;import os&quot;,</span><br><span class="line">			&quot;&quot;,</span><br><span class="line">			&quot;def getScriptPath():&quot;,</span><br><span class="line">			&quot;    return os.path.split(os.path.realpath(__file__))[0]&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto getScriptPath&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;env init&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;import sys&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;#!&#x2F;usr&#x2F;bin&#x2F;env python&quot;,</span><br><span class="line">			&quot;# coding:utf-8&quot;,</span><br><span class="line">			&quot;&quot;,</span><br><span class="line">			&quot;import sys&quot;,</span><br><span class="line">			&quot;reload(sys)&quot;,</span><br><span class="line">			&quot;sys.setdefaultencoding(&#39;utf-8&#39;)&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto set utf8&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;logging&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;import logging $1&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;import logging&quot;,</span><br><span class="line">			&quot;&quot;,</span><br><span class="line">			&quot;logger &#x3D; logging.getLogger(__name__)&quot;,</span><br><span class="line">			&quot;logger.setLevel(level&#x3D;logging.INFO)&quot;,</span><br><span class="line">			&quot;handler &#x3D; logging.FileHandler(&#39;$1&#39;)&quot;,</span><br><span class="line">			&quot;handler.setLevel(level&#x3D;logging.INFO)&quot;,</span><br><span class="line">			&quot;formatter &#x3D; logging.Formatter(&#39;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#39;)&quot;,</span><br><span class="line">			&quot;handler.setFormatter(formatter)&quot;,</span><br><span class="line">			&quot;logger.addHandler(handler)&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto logging&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;args&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;*a&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;*args, **kwargs&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto *args&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;closure&quot;: &#123;</span><br><span class="line">		&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">		&quot;prefix&quot;: &quot;proxy $1 $2 $3&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">			&quot;def $1(func):&quot;,</span><br><span class="line">			&quot;    def proxy(*args, **kwargs):&quot;,</span><br><span class="line">			&quot;        $2&quot;,</span><br><span class="line">			&quot;        result &#x3D; func(*args, **kwargs)&quot;,</span><br><span class="line">			&quot;        $3&quot;,</span><br><span class="line">			&quot;        return result&quot;,</span><br><span class="line">			&quot;    return proxy&quot;,</span><br><span class="line">			&quot;&quot;</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;auto closure&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;Quick info&quot;: &#123;</span><br><span class="line">	&quot;prefix&quot;: &quot;info&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;#! &#x2F;usr&#x2F;bin&#x2F;env python&quot;,</span><br><span class="line">		&quot;# author : BJxo&quot;,</span><br><span class="line">		&quot;# date : $CURRENT_YEAR&#x2F;$CURRENT_MONTH&#x2F;$CURRENT_DATE&quot;</span><br><span class="line">		&quot;\nimport os&quot;,</span><br><span class="line">		&quot;import sys&quot;,</span><br><span class="line">		&quot;import pandas&quot;,</span><br><span class="line">		&quot;from datetime import datetime&quot;,</span><br><span class="line">		&quot;$0&quot;,</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>

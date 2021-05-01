@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,163 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/22/Python%E6%B1%82%E5%89%8Dn%E9%A1%B9%E9%98%B6%E4%B9%98%E5%92%8C%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/22/Python%E6%B1%82%E5%89%8Dn%E9%A1%B9%E9%98%B6%E4%B9%98%E5%92%8C%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C/" class="post-title-link" itemprop="url">Python求前n项阶乘和与平方和</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-21 18:09:18" itemprop="dateCreated datePublished" datetime="2021-03-21T18:09:18Z">2021-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-27 04:11:46" itemprop="dateModified" datetime="2021-03-27T04:11:46Z">2021-03-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="输入一个整数，计算阶乘然后求和"><a href="#输入一个整数，计算阶乘然后求和" class="headerlink" title="输入一个整数，计算阶乘然后求和"></a>输入一个整数，计算阶乘然后求和</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">factorial &#x3D; 1</span><br><span class="line">sum1 &#x3D; 0</span><br><span class="line">n &#x3D; int(input(&#39;输入一个整数，计算阶乘然后求和:&#39;))</span><br><span class="line">str1 &#x3D; &#39;&#39;</span><br><span class="line"></span><br><span class="line">for i in range(1, n + 1):</span><br><span class="line">	for j in range(1, i + 1):</span><br><span class="line">		factorial &#x3D; factorial * j</span><br><span class="line">	print(str(i) + &#39;!&#39;, &#39;&#x3D;&#39;, factorial)</span><br><span class="line">	sum1 &#x3D; sum1 + factorial</span><br><span class="line">	factorial &#x3D; 1</span><br><span class="line">	if n !&#x3D; j:</span><br><span class="line">		str1 &#x3D; str1 + str(j) + &#39;!+&#39;</span><br><span class="line">	else:</span><br><span class="line">		str1 &#x3D; str1 + str(j) + &#39;!&#39;</span><br><span class="line">print(str1, &#39;&#x3D;&#39;, sum1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="前-n-项数字之和平方用函数来写"><a href="#前-n-项数字之和平方用函数来写" class="headerlink" title="前 n 项数字之和平方用函数来写"></a>前 n 项数字之和平方用函数来写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def aSum(n):</span><br><span class="line">	sum &#x3D; 0</span><br><span class="line">	for i in range(1, n + 1):</span><br><span class="line">		sum +&#x3D; i * i</span><br><span class="line">	return sum</span><br><span class="line"></span><br><span class="line">print(aSum(2))</span><br></pre></td></tr></table></figure>
+<h3 id="for-循环来写"><a href="#for-循环来写" class="headerlink" title="for 循环来写"></a>for 循环来写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">str1 &#x3D; &#39;&#39;</span><br><span class="line">sum1 &#x3D; 0</span><br><span class="line">n &#x3D; int(input(&#39;Type n:&#39;))</span><br><span class="line">total &#x3D; 0</span><br><span class="line">for i in range(1, n + 1):</span><br><span class="line">	total +&#x3D; i * i 				# total +&#x3D; i **2  也是可以的</span><br><span class="line">	print(str(i)+ &#39;^2&#39;, &#39;&#x3D;&#39;, total)</span><br><span class="line">	sum1 &#x3D; sum1 + total</span><br><span class="line">	total &#x3D; 0</span><br><span class="line">	if n !&#x3D; i:</span><br><span class="line">		str1 &#x3D; str1 + str(i) + &#39;^2+&#39;</span><br><span class="line">	else:</span><br><span class="line">		str1 &#x3D; str1 + str(i) + &#39;^2&#39;</span><br><span class="line">print(str1, &#39;&#x3D;&#39;, sum1)</span><br></pre></td></tr></table></figure>
+<h3 id="平方和与平方和之差"><a href="#平方和与平方和之差" class="headerlink" title="平方和与平方和之差"></a>平方和与平方和之差</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int((3 * n ** 2 + 2 * n) * (1 - n ** 2) &#x2F; 12)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def square_sum_difference(n):</span><br><span class="line">    return int(n * (n + 1) * (2 * n + 1) &#x2F; 6 - (n * (n + 1) &#x2F; 2)** 2)</span><br><span class="line"></span><br><span class="line">print(square_sum_difference(6))</span><br></pre></td></tr></table></figure>
+<h3 id="前-n-项数字之和平方"><a href="#前-n-项数字之和平方" class="headerlink" title="前 n 项数字之和平方"></a>前 n 项数字之和平方</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def square_sum(numbers):</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for each in range(1,numbers+1):</span><br><span class="line">        total &#x3D; total + each</span><br><span class="line">    return total ** 2</span><br><span class="line"></span><br><span class="line">print(square_sum(3))</span><br></pre></td></tr></table></figure>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while 1:</span><br><span class="line">	first_number &#x3D; input(&#39;\nFirst number:&#39;)</span><br><span class="line">	if first_number.lower() &#x3D;&#x3D; &#39;q&#39;:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">	second_number &#x3D; input(&#39;\nSecond number:&#39;)</span><br><span class="line">	try:</span><br><span class="line">		answer &#x3D; int(first_number) &#x2F; int(second_number)</span><br><span class="line">	except ZeroDivisionError:</span><br><span class="line">		print(&quot;You can&#39;t divide by 0!&quot;)</span><br><span class="line">	else:</span><br><span class="line">		print(answer)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/21/Python%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E4%B9%8B%E8%B4%9F%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" class="post-title-link" itemprop="url">Python列表切片之负数的含义代码示例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-21 08:27:53 / 修改时间：00:28:40" itemprop="dateCreated datePublished" datetime="2021-03-21T08:27:53Z">2021-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="python-列表切片之负数的含义代码示例"><a href="#python-列表切片之负数的含义代码示例" class="headerlink" title="python 列表切片之负数的含义代码示例"></a>python 列表切片之负数的含义代码示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; list(range(10))</span><br><span class="line">print(a[::]) #复制一个列表</span><br><span class="line">print(a[::2]) #每隔2个取一次</span><br><span class="line">print(a[::3]) #每隔3个取一次</span><br><span class="line"></span><br><span class="line">print(a[::-1]) #表示反转字符串</span><br><span class="line">print(a[::-2]) #表示反转字符串,每隔2个取一次</span><br><span class="line">print(a[::-3]) #表示反转字符串,每隔3个取一次</span><br><span class="line">#由此得知最后一个位置参数表示间隔数</span><br><span class="line"></span><br><span class="line">print(a[-1::]) #-1表示倒着取1个</span><br><span class="line">print(a[-2::]) #-2表示倒着取2个</span><br><span class="line">print(a[-3::]) #-3表示倒着取3个</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(a[-2:-1:]) #-2,-1:表示倒着取下面为-2到-1区间的</span><br><span class="line">print(a[-4:-2:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line">print(a[-5:-1:]) #-4:-2:表示倒着取下面为-4到-3区间的</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line"></span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[0, 2, 4, 6, 8]</span><br><span class="line">[0, 3, 6, 9]</span><br><span class="line">[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span><br><span class="line">[9, 7, 5, 3, 1]</span><br><span class="line">[9, 6, 3, 0]</span><br><span class="line">[9]</span><br><span class="line">[8, 9]</span><br><span class="line">[7, 8, 9]</span><br><span class="line">[8]</span><br><span class="line">[6, 7]</span><br><span class="line">[5, 6, 7, 8]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -984,175 +1141,6 @@
 <p>​ 算法设计：</p>
 <p>在 1 附近找任意一实数作为 x0 的初值，我们去 1.5，即 x0 = 1.5. 用初值 x0 带入方程中计算此时的 f(x0)及 f’(x0)；程序中 f 用来描述方程的值，fd 用来描述方程求导之后的值。 计算增量 h=f/fd。 计算下一个 x （x = x0-h）。 用所得的 x 代替 x0 原来的值。 若|x - x0|&gt;=1e-5,则转到第三步继续执行，否则转到步骤 7 所求 x 就是方程的根，将其输出。<br>如果你喜欢我的文章,请滑到下方点个推荐再走. ，以给我动力哦；转载请注名出处。然后..请多来做客鸭。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%92%8C%E4%B9%A0%E6%83%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%92%8C%E4%B9%A0%E6%83%AF/" class="post-title-link" itemprop="url">好的学习方法和习惯</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-05 20:09:51 / 修改时间：12:10:36" itemprop="dateCreated datePublished" datetime="2021-03-05T20:09:51Z">2021-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>能在考试中胜出的人分为两种：一种是策略正确的人，一种是真正刻苦的人。</p>
-<p>人和人之间最大的差距是什么</p>
-<p>网络上有句成功学鸡汤这样说：「经营企业，经营的是与那些成功企业之间的差距；经营人生，经营的是与成功人士之间的差距。干掉这个差距，你也可以很牛 ×。」</p>
-<p>可是，差距是什么？在哪里？怎么干掉？</p>
-<p>我考过不少试了，中高考、考研、司考、托福，接下来还想考 CPA（注册会计师），甚至想去尝试一下考博。</p>
-<p>考试难吗？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/06/%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%92%8C%E4%B9%A0%E6%83%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/%E5%AD%A6%E9%9C%B8%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/%E5%AD%A6%E9%9C%B8%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">学霸的学习方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-05 20:07:52 / 修改时间：12:09:16" itemprop="dateCreated datePublished" datetime="2021-03-05T20:07:52Z">2021-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果你有这种情况，那这篇回答就是为你准备的。答应我，耐心花 3 分钟把本文看完，然后去实践，你会遇到一个学霸一样的自己。</p>
-<p>下面，我将从预习、听讲、课后提问、做题、考前复习以及参加比赛等多方面，详细讲解我的学习方法。</p>
-<p>考前复习方法，无论是高考、考研还是平时的考试，都可以用到。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/06/%E5%AD%A6%E9%9C%B8%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
