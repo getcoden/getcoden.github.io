@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="12大神总结的python实用的几个文件操作的案例 2. python 进行文件的读写文件的读写在 python 中比较常见， 文件读取的时候， 首先要判断文件是否存在， 若文件操作就进行读取， 否则报错。 2.1 文件读操作文件读操作可以的函数有 read (), 这个是读取整个文件， 还有 readlines () 这个是一行行的进行读取并保存到列表中。 下面直接上代码： 1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python实用的几个文件操作的案例">
+<meta property="og:url" content="https://getcoden.github.io/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="12大神总结的python实用的几个文件操作的案例 2. python 进行文件的读写文件的读写在 python 中比较常见， 文件读取的时候， 首先要判断文件是否存在， 若文件操作就进行读取， 否则报错。 2.1 文件读操作文件读操作可以的函数有 read (), 这个是读取整个文件， 还有 readlines () 这个是一行行的进行读取并保存到列表中。 下面直接上代码： 1234567891">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-12T06:19:27.000Z">
+<meta property="article:modified_time" content="2021-06-11T22:23:09.931Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>python实用的几个文件操作的案例 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-python-%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="nav-number">1.</span> <span class="nav-text">2. python 进行文件的读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%96%87%E4%BB%B6%E5%86%99%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">2.2 文件写操作</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python实用的几个文件操作的案例
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-12 06:19:27" itemprop="dateCreated datePublished" datetime="2021-06-12T06:19:27Z">2021-06-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-11 22:23:09" itemprop="dateModified" datetime="2021-06-11T22:23:09Z">2021-06-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">大神总结的python实用的几个文件操作的案例</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-python-进行文件的读写"><a href="#2-python-进行文件的读写" class="headerlink" title="2. python 进行文件的读写"></a>2. python 进行文件的读写</h2><p>文件的读写在 python 中比较常见， 文件读取的时候， 首先要判断文件是否存在， 若文件操作就进行读取， 否则报错。</p>
+<p>2.1 文件读操作<br>文件读操作可以的函数有 read (), 这个是读取整个文件， 还有 readlines () 这个是一行行的进行读取并保存到列表中。 下面直接上代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    f = <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>)   <span class="comment"># 后面那个是指定编码  一般平台默认编码格式是utf-8</span></span><br><span class="line">    content = f.read()</span><br><span class="line">    f.close()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种写法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;gbk&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.read()    <span class="comment">#  这时候读完了之后自动关闭</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line">content = read_file(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br><span class="line">content = read_file(<span class="string">r&quot;D:\学习方法.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&#39;Hey, Python
+
+I just love  Python so much,
+
+and want to get the whole  Python stack by this 60-days column
+
+and believe Python !&#39;
+计算机基础基础
+组成
+硬件：输入设备 + 输出设备 + 存储设备
+软件：系统 + 应用软件
+
+语言发展
+机器语言 - 汇编语言 - 高级语言
+
+交互方式
+TUI：命令行
+GUI：图形界面
+
+学习方法
+三遍
+1、对战视频练习一遍代码（抄）
+2、脱离视频，自己写一遍代码（背）
+3、结合自身实际去实践（吸收）
+
+理想的人终究 过不好这一生，不快乐
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是按行读的效果：按行读时，是把每一行都放进列表，输入的是列表</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;文件按行读&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file_line</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filename):</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % filename)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.readlines()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line">con = read_file_line(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">con</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&quot;&#39;Hey, Python\n&quot;,
+ &#39;\n&#39;,
+ &#39;I just love  Python so much,\n&#39;,
+ &#39;\n&#39;,
+ &#39;and want to get the whole  Python stack by this 60-days column\n&#39;,
+ &#39;\n&#39;,
+ &quot;and believe Python !&#39;&quot;]
+</code></pre>
+<p>好了， 基于上面的这个就可以写一个统计文件里面所有单词的出现次数了。 先走一遍这个过程： 我获取到文件的内容， 然后进行分词， 分开之后才能统计个数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是一个统计单词个数的例子</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict  </span><br><span class="line"><span class="comment">#这里的defaultdict(function_factory)构建的是一个类似dictionary的对象，</span></span><br><span class="line"><span class="comment">#其中keys的值，自行确定赋值，但是values的类型，是function_factory的类实例，</span></span><br><span class="line"><span class="comment">#而且具有默认值。比如default(int)则创建一个类似dictionary对象，里面任何的values都是int的实例，</span></span><br><span class="line"><span class="comment">#而且就算是一个不存在的key, d[key] 也有一个默认值，这个默认值是int()的默认值0.</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">rec = re.<span class="built_in">compile</span>(<span class="string">&#x27;\s+&#x27;</span>)      <span class="comment"># 匹配一个或者多个空格</span></span><br><span class="line">dd = defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;D:\a.txt&quot;</span>, <span class="string">&#x27;r+&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        clean_line = line.strip()</span><br><span class="line">        <span class="keyword">if</span> clean_line:</span><br><span class="line">            words = rec.split(clean_line)</span><br><span class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">                dd[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">dd = <span class="built_in">sorted</span>(dd.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line">dd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[(&#39;Python&#39;, 4),
+ (&#39;and&#39;, 2),
+ (&quot;&#39;Hey,&quot;, 1),
+ (&#39;I&#39;, 1),
+ (&#39;just&#39;, 1),
+ (&#39;love&#39;, 1),
+ (&#39;so&#39;, 1),
+ (&#39;much,&#39;, 1),
+ (&#39;want&#39;, 1),
+ (&#39;to&#39;, 1),
+ (&#39;get&#39;, 1),
+ (&#39;the&#39;, 1),
+ (&#39;whole&#39;, 1),
+ (&#39;stack&#39;, 1),
+ (&#39;by&#39;, 1),
+ (&#39;this&#39;, 1),
+ (&#39;60-days&#39;, 1),
+ (&#39;column&#39;, 1),
+ (&#39;believe&#39;, 1),
+ (&quot;!&#39;&quot;, 1)]
+</code></pre>
+<h2 id="2-2-文件写操作"><a href="#2-2-文件写操作" class="headerlink" title="2.2 文件写操作"></a>2.2 文件写操作</h2><p>文件写操作时，需要首先判断要写入的文件路径是否存在。若不存在，通过 mkdir 创建出路径；否则，直接写入文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_file</span>(<span class="params">file_path, file_name</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">        os.mkdir(file_path)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    whole_path_filename = os.path.join(file_path, file_name)</span><br><span class="line">    </span><br><span class="line">    to_write_content = <span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">                        Hey, Python</span></span><br><span class="line"><span class="string">                        I just love Python so much,</span></span><br><span class="line"><span class="string">                        and want to get the whole python stack by this 60-days column</span></span><br><span class="line"><span class="string">                        and believe!</span></span><br><span class="line"><span class="string">                        &#x27;&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(whole_path_filename, mode=<span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(to_write_content)</span><br><span class="line">write_to_file(<span class="string">&#x27;d:/1/&#x27;</span>,<span class="string">&#x27;b.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>获取文件名及文件的后缀名<br>有时候我们拿到一个文件名的时候， 名字上带有路径， 这时候我们可以用 os.path.split 方法实现路径和文件名的分离。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">file_ext = os.path.split(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">ipath, ifile = file_ext</span><br><span class="line"></span><br><span class="line">print(ipath, ifile)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>d:/1 b.txt
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># os.path 模块，splitext 能够优雅地提取文件后缀。</span></span><br><span class="line"></span><br><span class="line">file_extension = os.path.splitext(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">file_extension     <span class="comment"># .py</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>(&#39;d:/1/b&#39;, &#39;.txt&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基于上面的这个操作， 就可以获取某个目录下面指定后缀名的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取某个目录下指定后缀名的文件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_file</span>(<span class="params">work_dir, extension=<span class="string">&#x27;jpg&#x27;</span></span>):</span></span><br><span class="line">    lst = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        <span class="comment">#print(filename)</span></span><br><span class="line">        splits = os.path.splitext(filename)</span><br><span class="line">        ext = splits[<span class="number">1</span>]      <span class="comment"># 拿到扩展名</span></span><br><span class="line">        <span class="keyword">if</span> ext == <span class="string">&#x27;.&#x27;</span>+extension:</span><br><span class="line">            lst.append(filename)</span><br><span class="line">    <span class="keyword">return</span> lst</span><br><span class="line"></span><br><span class="line">r = find_file(<span class="string">r&#x27;d:/test/&#x27;</span>,<span class="string">&#x27;xlsx&#x27;</span>)</span><br><span class="line">r</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;1.xlsx&#39;,
+ &#39;1155.xlsx&#39;,
+ &#39;2.xlsx&#39;,
+ &#39;21.xlsx&#39;,
+ &#39;d1.xlsx&#39;,
+ &#39;d2.xlsx&#39;,
+ &#39;diff.xlsx&#39;,
+ &#39;la.xlsx&#39;]
+</code></pre>
+<p>这个还是很实用的， 比如在 CNN 的一些任务中， 很多图片都是以.jpg 的形式存放到文件夹里面的， 我们这时候就需要先获取到所有的.jpg 文件， 然后再通过一些方式把图片转成矩阵的表示形式， 这样我们的网络才会认识。</p>
+<p>下面再整理一个批量修改文件后缀名的例子， 比如我想把某个目录下所有的.xls 转成.xlsx 文件。这个要怎么做？ 依然是先梳理一下逻辑：</p>
+<p>首先要遍历所给的目录<br>拿到各个文件的后缀名<br>看看后缀名是否是需要修改的后缀名， 如果是就进行重命名操作<br>有了这个逻辑， 代码就比较好写了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            )</span><br><span class="line">batch_rename(<span class="string">r&quot;D:\test\excel\data&quot;</span>,<span class="string">&#x27;.xls&#x27;</span>,<span class="string">&#x27;.xlsx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    print(new_ext)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line"></span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            </span><br><span class="line">            )</span><br><span class="line">    print(<span class="string">&quot;完成重命名&quot;</span>)</span><br><span class="line">    print(os.listdir(work_dir))</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/10/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E8%A6%81%E4%B8%8A%E5%AD%A6/" rel="prev" title="为什么非要上学">
+                  <i class="fa fa-chevron-left"></i> 为什么非要上学
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/12/python%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%9E%81%E7%AE%80%E4%BB%8B%E7%BB%8D/" rel="next" title="python学习方法及极简介绍">
+                  python学习方法及极简介绍 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -3008,6 +3008,220 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>python学习方法及极简介绍</title>
+    <url>/2021/06/12/python%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%9E%81%E7%AE%80%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>这个世界上根本没有正确的选择，我们只不过是要努力奋斗，使当初的选择变得正确。</p>
+<pre><code>                                                      —— 村上春树
+</code></pre>
+<p>计算机基础基础</p>
+<p>组成</p>
+<p>硬件：输入设备 + 输出设备 + 存储设备<br>软件：系统 + 应用软件</p>
+<p>语言发展</p>
+<p>机器语言 - 汇编语言 - 高级语言</p>
+<p>交互方式</p>
+<p>TUI：命令行<br>GUI：图形界面</p>
+<p>学习方法</p>
+<p>三遍</p>
+<blockquote>
+<p>1、对战视频练习一遍代码（抄）</p>
+<p>2、脱离视频，自己写一遍代码（背）</p>
+<p>3、结合自身实际去实践（吸收）</p>
+</blockquote>
+<p>（一）、Python 的开发环境</p>
+<p>Python 诞生于 20 世纪 90 年代初，是一种解释型、面向对象、动态数据类型的高级程序设计语言，是最受欢迎的程序设计语言之一。</p>
+<p>编写、编译和运行 Python 程序有以下 3 种方法。</p>
+<ol>
+<li><p>使用交互式解释器</p>
+</li>
+<li><p>使用 Windows 命令行命令执行 Python 程序</p>
+</li>
+</ol>
+<p>在 Windows 7 中安装 python 程序后，在开始菜单的所有程序中会出现一个 Python 3.6 分组。单击其下面的 Python 3.6 (command line - 32 bit) 菜单项，就可以打开 python 命令窗口。也可以打开 Windows 命令窗口，然后运行 python 命令，来打开 python 命令窗口</p>
+<ol start="3">
+<li>使用集成开发环境编写和执行 Python 程序</li>
+</ol>
+<p>IDLE 的启动文件是 idle.bat，它的位置在 Python 安装目录下，运行 idle.bat，即可打开文本编辑器 IDLE。也可以在开始菜单的所有程序中，选择 Python 3.6 分组下面的 IDLE (Python 3.6  32 bit) 菜单项，打开 IDLE 窗口。</p>
+<p>（二）、Python 语言的基本语法</p>
+<p>Python 程序结构涉及代码块、注释、语句分隔、语句续航和关键字与大小写等内容。</p>
+<ol>
+<li>用缩进表示代码块</li>
+</ol>
+<p>Python 程序是依靠代码块的缩进（空格）来体现代码之间的逻辑关系的，缩进结束就表示一个代码块结束了。在包含代码嵌套时，应注意同级的代码块，其缩进量应保持相同（不同可能会导致出错或得到意外的结果）。通常，语句末尾的冒号表示代码块的开始。在 if、for、while、函数、类等定义中都会使用到代码块。</p>
+<p>（1）代码注释</p>
+<p>注释用于为程序添加说明性的文字。Python 在运行程序时，会忽略被注释的内容。Python 注释有单行注释和多行注释：单行注释用 “#” 表示注释开始，“#” 之后的内容不会被执行。单行注释可以单独占一行，也可放在语句末尾；多行注释是用三个英文的单引号 “’’’” 或双引号 “”””” 作为注释的开始和结束符号。</p>
+<p>（2）语句续行</p>
+<p>Python 中的一条语句占一行，没有类似于 Java 中的分号等语句结束符号。在遇到较长的语句时，可使用语句续行符号，将一条语句写在多行之中。</p>
+<p>Python 有两种续行方式。一种是使用 “\” 符号；另一种续行方式是在使用括号（包括圆括号 ()、方括号 [] 和大括号 {} 等）时，括号中的内容可分多行书写，括号中的空白和换行符都会被忽略。</p>
+<p>（3）标识符与关键字</p>
+<p>标识符是计算机语言中允许作为名字的有效字符串集合。Python 标识符命名规则和其他大部分用 C 编写的高级语言相似，有以下一些命名规则：名字必须以字母或者下划线‘_’开始；数字不能作为首字符；当名字包含多个单词时，可以使用下划线_来连接，例如 monty_Python；名字不能是关键字。名字不能出现分隔符、标点符号或者运算符。</p>
+<p>Python 中的名字是区分大小写的。比如 myClass、MyClass、myclass 是不同的。名字长度不限。</p>
+<p>（三）、Python 语言的基本输入输出</p>
+<p>在 Python 程序中，通常用 input（）和 print（）函数来执行基本的输入和输出。</p>
+<ol>
+<li>基本输入</li>
+</ol>
+<p>input（）函数用于获得用户输入数据，其基本格式为：</p>
+<p>用户输入的数据 = input（提示字符串）</p>
+<p>其中，变量和提示字符串均可省略。可输入数字、字符串和其它对象，input 函数将用户输入以字符串返回。用户按【Enter】键完成输入，【Enter】键之前的全部字符均作为输入内容。</p>
+<p>如果需要输入整数或小数，则需要使用 int 或 float 函数进行转。</p>
+<ol start="2">
+<li>基本输出</li>
+</ol>
+<p>print () 函数最简单的应用就是输出字符串，print () 函数的参数列表可以有多个参数，格式如下：</p>
+<p>print(“…%s…%s…” %(string1, string2,…stringn))</p>
+<p>输出时 string1, string2,…stringn 会出现在对应的 % s 位置。</p>
+<p>（四）、Python 的常量、变量和对象</p>
+<ol>
+<li>常量</li>
+</ol>
+<p>常量指在程序的执行过程中不变的量。通常直接写出的数据就是常量，如 1,2,3,4,5,6 等。直接写出的数据一般称为字面量，用符号表示的常量一般称为符号常量。</p>
+<p>Python 中常用的两个符号表示的常量是 True 和 False，它们分别表示逻辑判断中的‘真’和‘假’，实际的数值分别是 1 和 0。也有一些包含在模块中的用符号表示的常量，常用的如 math 模块中的 pi 和 e。</p>
+<ol start="2">
+<li>对象</li>
+</ol>
+<p>Python 中，一切皆对象。对象是某个类型事物的一个具体的实例。对象的类型决定了对象支持的操作，也定义了对象的取值范围。Type（）函数返回对象的类型。</p>
+<ol start="3">
+<li>变量</li>
+</ol>
+<p>指向对象的值的名称就是变量。变量是一个标识符，通过等号（=）赋值运算创建，变量指向一个对象。从变量到对象的连接称为引用。</p>
+<p>变量使用前需要先赋值，多个变量可以引用同一个对象，一个变量也可以引用不同的对象，引用不同的对象时，id 也就不同的</p>
+<p>Python 中的变量不需要声明，可以随时赋不同类型的值</p>
+<p>（五）、Python 语言的数据类型</p>
+<p>数据类型决定了程序如何存储和处理数据。Python 完善的数据类型系统，使得在 Python 程序中可以轻松完成各种数据处理。Python 中的数据类型分为数字类型、序列类型、集合类型、字典类型等。</p>
+<p>1、数字类型</p>
+<p>数字类型是那些能进行算术运算、位运算和数学函数运算的数据类型，包括：整数（int，无小数点的数）、浮点数（float，带小数点的数）、复数、其他数字类型等。</p>
+<p>2、序列类型</p>
+<p>序列类型表示的是若干有序的数据，分不可变序列类型和可变序列类型：</p>
+<p>不可变序列的数据类型有字符串、元组和字节序列</p>
+<p>可变序列有列表、字节数组等。</p>
+<p>3、其他类型</p>
+<p>包括：集合数据类型、字典数据类型和 Pyhton 一切皆有类型。</p>
+<p>（六）、Python 语言的运算符</p>
+<p>对数据的变换统称为运算，表示运算的符号称为运算符，参与运算的数据称为操作数。运算符分为：一元运算符和二元运算符。</p>
+<p>运算符有：算术运算符、比较运算符、对象运算符、逻辑运算符、复合运算符等。</p>
+<p>（七）Python 语言的常用语句</p>
+<p>Python 提供判断语句、循环语句和其他语句 pass、break、continue 语句等。</p>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python实用的几个文件操作的案例</title>
+    <url>/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大神总结的python实用的几个文件操作的案例</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-python-进行文件的读写"><a href="#2-python-进行文件的读写" class="headerlink" title="2. python 进行文件的读写"></a>2. python 进行文件的读写</h2><p>文件的读写在 python 中比较常见， 文件读取的时候， 首先要判断文件是否存在， 若文件操作就进行读取， 否则报错。</p>
+<p>2.1 文件读操作<br>文件读操作可以的函数有 read (), 这个是读取整个文件， 还有 readlines () 这个是一行行的进行读取并保存到列表中。 下面直接上代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    f = <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>)   <span class="comment"># 后面那个是指定编码  一般平台默认编码格式是utf-8</span></span><br><span class="line">    content = f.read()</span><br><span class="line">    f.close()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种写法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;gbk&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.read()    <span class="comment">#  这时候读完了之后自动关闭</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line">content = read_file(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br><span class="line">content = read_file(<span class="string">r&quot;D:\学习方法.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&#39;Hey, Python
+
+I just love  Python so much,
+
+and want to get the whole  Python stack by this 60-days column
+
+and believe Python !&#39;
+计算机基础基础
+组成
+硬件：输入设备 + 输出设备 + 存储设备
+软件：系统 + 应用软件
+
+语言发展
+机器语言 - 汇编语言 - 高级语言
+
+交互方式
+TUI：命令行
+GUI：图形界面
+
+学习方法
+三遍
+1、对战视频练习一遍代码（抄）
+2、脱离视频，自己写一遍代码（背）
+3、结合自身实际去实践（吸收）
+
+理想的人终究 过不好这一生，不快乐
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下面是按行读的效果：按行读时，是把每一行都放进列表，输入的是列表</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;文件按行读&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file_line</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filename):</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % filename)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.readlines()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line">con = read_file_line(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">con</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&quot;&#39;Hey, Python\n&quot;,
+ &#39;\n&#39;,
+ &#39;I just love  Python so much,\n&#39;,
+ &#39;\n&#39;,
+ &#39;and want to get the whole  Python stack by this 60-days column\n&#39;,
+ &#39;\n&#39;,
+ &quot;and believe Python !&#39;&quot;]
+</code></pre>
+<p>好了， 基于上面的这个就可以写一个统计文件里面所有单词的出现次数了。 先走一遍这个过程： 我获取到文件的内容， 然后进行分词， 分开之后才能统计个数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下面是一个统计单词个数的例子</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict  </span><br><span class="line"><span class="comment">#这里的defaultdict(function_factory)构建的是一个类似dictionary的对象，</span></span><br><span class="line"><span class="comment">#其中keys的值，自行确定赋值，但是values的类型，是function_factory的类实例，</span></span><br><span class="line"><span class="comment">#而且具有默认值。比如default(int)则创建一个类似dictionary对象，里面任何的values都是int的实例，</span></span><br><span class="line"><span class="comment">#而且就算是一个不存在的key, d[key] 也有一个默认值，这个默认值是int()的默认值0.</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">rec = re.<span class="built_in">compile</span>(<span class="string">&#x27;\s+&#x27;</span>)      <span class="comment"># 匹配一个或者多个空格</span></span><br><span class="line">dd = defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;D:\a.txt&quot;</span>, <span class="string">&#x27;r+&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        clean_line = line.strip()</span><br><span class="line">        <span class="keyword">if</span> clean_line:</span><br><span class="line">            words = rec.split(clean_line)</span><br><span class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">                dd[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">dd = <span class="built_in">sorted</span>(dd.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line">dd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[(&#39;Python&#39;, 4),
+ (&#39;and&#39;, 2),
+ (&quot;&#39;Hey,&quot;, 1),
+ (&#39;I&#39;, 1),
+ (&#39;just&#39;, 1),
+ (&#39;love&#39;, 1),
+ (&#39;so&#39;, 1),
+ (&#39;much,&#39;, 1),
+ (&#39;want&#39;, 1),
+ (&#39;to&#39;, 1),
+ (&#39;get&#39;, 1),
+ (&#39;the&#39;, 1),
+ (&#39;whole&#39;, 1),
+ (&#39;stack&#39;, 1),
+ (&#39;by&#39;, 1),
+ (&#39;this&#39;, 1),
+ (&#39;60-days&#39;, 1),
+ (&#39;column&#39;, 1),
+ (&#39;believe&#39;, 1),
+ (&quot;!&#39;&quot;, 1)]
+</code></pre>
+<h2 id="2-2-文件写操作"><a href="#2-2-文件写操作" class="headerlink" title="2.2 文件写操作"></a>2.2 文件写操作</h2><p>文件写操作时，需要首先判断要写入的文件路径是否存在。若不存在，通过 mkdir 创建出路径；否则，直接写入文件：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_file</span>(<span class="params">file_path, file_name</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">        os.mkdir(file_path)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    whole_path_filename = os.path.join(file_path, file_name)</span><br><span class="line">    </span><br><span class="line">    to_write_content = <span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">                        Hey, Python</span></span><br><span class="line"><span class="string">                        I just love Python so much,</span></span><br><span class="line"><span class="string">                        and want to get the whole python stack by this 60-days column</span></span><br><span class="line"><span class="string">                        and believe!</span></span><br><span class="line"><span class="string">                        &#x27;&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(whole_path_filename, mode=<span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(to_write_content)</span><br><span class="line">write_to_file(<span class="string">&#x27;d:/1/&#x27;</span>,<span class="string">&#x27;b.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>获取文件名及文件的后缀名<br>有时候我们拿到一个文件名的时候， 名字上带有路径， 这时候我们可以用 os.path.split 方法实现路径和文件名的分离。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_ext = os.path.split(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">ipath, ifile = file_ext</span><br><span class="line"></span><br><span class="line">print(ipath, ifile)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>d:/1 b.txt
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># os.path 模块，splitext 能够优雅地提取文件后缀。</span></span><br><span class="line"></span><br><span class="line">file_extension = os.path.splitext(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">file_extension     <span class="comment"># .py</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>(&#39;d:/1/b&#39;, &#39;.txt&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基于上面的这个操作， 就可以获取某个目录下面指定后缀名的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取某个目录下指定后缀名的文件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_file</span>(<span class="params">work_dir, extension=<span class="string">&#x27;jpg&#x27;</span></span>):</span></span><br><span class="line">    lst = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        <span class="comment">#print(filename)</span></span><br><span class="line">        splits = os.path.splitext(filename)</span><br><span class="line">        ext = splits[<span class="number">1</span>]      <span class="comment"># 拿到扩展名</span></span><br><span class="line">        <span class="keyword">if</span> ext == <span class="string">&#x27;.&#x27;</span>+extension:</span><br><span class="line">            lst.append(filename)</span><br><span class="line">    <span class="keyword">return</span> lst</span><br><span class="line"></span><br><span class="line">r = find_file(<span class="string">r&#x27;d:/test/&#x27;</span>,<span class="string">&#x27;xlsx&#x27;</span>)</span><br><span class="line">r</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;1.xlsx&#39;,
+ &#39;1155.xlsx&#39;,
+ &#39;2.xlsx&#39;,
+ &#39;21.xlsx&#39;,
+ &#39;d1.xlsx&#39;,
+ &#39;d2.xlsx&#39;,
+ &#39;diff.xlsx&#39;,
+ &#39;la.xlsx&#39;]
+</code></pre>
+<p>这个还是很实用的， 比如在 CNN 的一些任务中， 很多图片都是以.jpg 的形式存放到文件夹里面的， 我们这时候就需要先获取到所有的.jpg 文件， 然后再通过一些方式把图片转成矩阵的表示形式， 这样我们的网络才会认识。</p>
+<p>下面再整理一个批量修改文件后缀名的例子， 比如我想把某个目录下所有的.xls 转成.xlsx 文件。这个要怎么做？ 依然是先梳理一下逻辑：</p>
+<p>首先要遍历所给的目录<br>拿到各个文件的后缀名<br>看看后缀名是否是需要修改的后缀名， 如果是就进行重命名操作<br>有了这个逻辑， 代码就比较好写了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            )</span><br><span class="line">batch_rename(<span class="string">r&quot;D:\test\excel\data&quot;</span>,<span class="string">&#x27;.xls&#x27;</span>,<span class="string">&#x27;.xlsx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    print(new_ext)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line"></span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            </span><br><span class="line">            )</span><br><span class="line">    print(<span class="string">&quot;完成重命名&quot;</span>)</span><br><span class="line">    print(os.listdir(work_dir))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python解析器和Python-IDE的区别</title>
     <url>/2021/04/24/python%E8%A7%A3%E6%9E%90%E5%99%A8%E5%92%8CPython-IDE%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p>经常会有刚刚入门 Python 的初学者把 PythonIDE 与 Python 解释器弄混，其实它们是有本质区别的，有些人还会误认为配置 Python 环境就是配置 IDE 工具。那么，PythonIDE 和解释器的区别是什么呢？下面就带大家好好认识一下 Python IDE 和解释器。</p>
@@ -3144,6 +3358,95 @@ Out[23]: 16
       </categories>
       <tags>
         <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为什么非要上学</title>
+    <url>/2021/05/10/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9D%9E%E8%A6%81%E4%B8%8A%E5%AD%A6/</url>
+    <content><![CDATA[<p>很多时候所谓教育，就是大人想把自己已经明白的道理讲给孩子们听。只可惜，真正听进去的人并不多。</p>
+<blockquote>
+<p>“为什么非要上学？不读书也能赚钱养活自己”<br>“大学毕业后一样得找工作，为什么不能现在就去打工？”</p>
+</blockquote>
+<p>当孩子问起这些问题，一场生活教育，比你唠叨千万句更管用。</p>
+<p>上学那么重要，为什么孩子就是不懂？</p>
+<p>时代变了。以前大家穷，上学就是为了能分配工作、走出老家、养家糊口、出人头地。</p>
+<p>而现在呢，大部分孩子都从小不愁吃穿，家长甚至都不舍得让做家务，从小学起就被逼在读书的军备竞赛中，和一本又一本的书、一道又一道的题打交道，逼久了、逼急了，孩子们不知道为什么要逼自己，为什么必须要努力。</p>
+<p>在应试教育之外，我们缺乏了生活教育。</p>
+<p>这些鲜活的生活，给孩子看看，比你唠叨千万句还管用。</p>
+<p>①带孩子去老家走走，哪怕是早已破败的院落。都说改变阶层要靠三代人的努力，但毁掉可能只需要一代。让孩子知道父辈是怎么打拼下了现在的生活，然后问问孩子是想要继续往上走，还是倒退回去。</p>
+<p>②带孩子去机场、高铁站、火车站、汽车站走走，看看每个地方行人的言谈举止、衣食住行。让孩子知道人虽生而平等，但生活质量，是分三六九等的，想要哪种生活，得靠自己去争取。</p>
+<p>③带孩子去招聘现场走走。让孩子知道在求职的第一关，面试官就会看学历的，博士、硕士、本科，双一流、985、211，对不同求职者，态度是不一样的。不同的工作，薪酬、待遇也是千差万别的。让孩子了解，想做的工作，需要怎样的学历和能力，现在是否已经具备。</p>
+<p>但仔细研究就可以知道，除了被耽误了的学习天赋外，是他超出常人的努力和付出。</p>
+<p>“辛苦是辛苦，但相比种地的辛苦、在工地搬石头的辛苦，这又算得了什么呢？”</p>
+<p>吃过了生活的苦的人，更能忍受读书的苦，因为他更明白这一份苦后面隐藏的甜。</p>
+<p>今天吃读书的苦，明天才能享生活的甜。</p>
+<p>为什么要好好读书？知乎上有一个高赞回答：</p>
+<p>就像课堂上老师说的，你现在读书不是为了别人，而是为了自己。</p>
+<p>生活这破烂玩意儿会使了老劲摧残你，不会跟你讲什么道理，你只能默默承受，或者拼命反抗。</p>
+<p>而在你真正直面生活之前，能让自己的起点高点，就高点，再高点。</p>
+<p>这样当生活魔抓伸出尖锐的指甲时，你至少还能选择用什么样的姿势去接受挑战。</p>
+<h2 id="孩子一天天长大，这些话记得和孩子聊一聊…"><a href="#孩子一天天长大，这些话记得和孩子聊一聊…" class="headerlink" title="孩子一天天长大，这些话记得和孩子聊一聊…"></a>孩子一天天长大，这些话记得和孩子聊一聊…</h2><p>父母是孩子漫漫人生路上最初接触的人，也是第一位导师，对于孩子的成长、发展起到不可或缺的作用。</p>
+<p>其实，除了学习、成绩，还有一些事你也必须讲给孩子。</p>
+<p>今天我们一起来走近一位智慧母亲，看一看她是如何用信的方式与孩子沟通，一起倾听她的谆谆教诲与殷殷牵挂。</p>
+<p>写这信给你，基于三个原因：</p>
+<blockquote>
+<p>第一，你正站在人生节点上：回首，是悄然溜走的童年时光；向前，青春的帷幕徐徐向你开启。 </p>
+<p>第二，有些话，我们不跟你说，没有人会跟你说。</p>
+<p>第三，彼此约定：我们好好工作，你好好读书，谁也不让谁操心。</p>
+</blockquote>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>不管大小，一定要有目标。</p>
+<p>人可以没有伟大理想，但不能失去目标。</p>
+<p>目标感的建立会决定一个人一生的高度，有目标的人生是蓝图，没有目标的人生是拼图。</p>
+<p>目标是一个人前进的动力，每一个从小就有目标的孩子，都是未来很厉害的孩子。</p>
+<p>《人生设计在童年》的作者高燕定先生曾说：</p>
+<p>“从小开始人生规划，设立人生目标，可以在教育资源有限、生存竞争日益激烈的社会上保有立足之地，拥有美好的人生。”</p>
+<p>目标决定了一个人是否有立足之地，目标是一个人美好人生的起源。</p>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>用心打磨自己的性格。</p>
+<p>在家里，独生子女个个都是小皇帝，但在学校，皇帝太多，没人会把你当回事！</p>
+<p>除非你的成绩更优秀、你的才艺更出众、你的表现更出色，老师才会当你是块宝。</p>
+<p>社会也一样，以后，要别人瞧不起还是尊重，都靠自己负责。</p>
+<h3 id="健康"><a href="#健康" class="headerlink" title="健康"></a>健康</h3><p>身体是学习的本钱。</p>
+<p>在学校，学习是主要的，但不是唯一的，身体健康也很重要。</p>
+<p>有人说，人生在世总要被比来比去，同学间搞聚会，要比就比：20岁比学历、30岁比能力、40岁比阅历、50岁比财力、60岁比体力、70岁比病历、80岁翻黄历，人生几十载，归根到底就是比身体，孩子，好好锻炼吧。</p>
+<h3 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h3><p>坚持，坚持，再坚持。</p>
+<p>一个人的未来由知识、能力、态度决定。知识可以通过学习获得，能力也可以在实践中增长，而态度却由习惯养成。</p>
+<p>现在，端正态度还来得及。未来，我希望你所做的一切，都既利己又利人。</p>
+<h3 id="自己"><a href="#自己" class="headerlink" title="自己"></a>自己</h3><p>既不自傲也不自卑。</p>
+<blockquote>
+<p>在学校，老师没有义务对你好，除非你首先尊重老师；</p>
+<p>同学没有义务关心你，除非你首先关心同学；</p>
+<p>在你的一生中，也没有人有义务要对你好，除了我和你爸。</p>
+</blockquote>
+<p>不要以为世界少了自己，地球就转不了，不要以为个人渺小，就自我放弃和抛弃。</p>
+<h3 id="朋友"><a href="#朋友" class="headerlink" title="朋友"></a>朋友</h3><p>朋友是能和你一起哭的人。</p>
+<p>交友就像投资。投资当然要考虑回报，能从朋友身上学习到任何一点优秀的品质，那都是回报。如果你找了个朋友，而朋友最后没有给你回报，只能证明你投资失败。</p>
+<p>记住，在朋友落难时，一定要施以援手。</p>
+<p>因为，与自己一起笑过的人易忘记，与自己一起哭过的人最难忘。这就是为什么雪中送炭比锦上添花更有意义。</p>
+<h3 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h3><p>父母的这些小心思。</p>
+<p>为人父母，谁都渴望与子女的距离短些，但随着儿女的成长，属于你们的天空肯定会越来越广阔，与父母的空间距离与时间距离也肯定会越来越远。</p>
+<p>做父母的，当然特别在乎自己到底能够占据儿女多大的天空位置！</p>
+<p>因为，父母的天空与儿女的天空恰恰相反——随着一天天老去而变得愈来愈小。</p>
+<p>我凡人百姓，同样拥有大众情怀，同样在乎你是否常在身边。父母的儿女情长，你是否读得懂？</p>
+<h3 id="得失"><a href="#得失" class="headerlink" title="得失"></a>得失</h3><p>永远不要去计较得失。</p>
+<p>一个人，不可能永远得意，也不可能永远失意。</p>
+<blockquote>
+<p>得意时，你要清醒，这个世界上有太多比自己厉害的人，要记得自己的渺小；</p>
+<p>失意时，不退缩，坚持下去，过去是怎样走过来的，现在就怎样走过去。</p>
+</blockquote>
+<h3 id="亲人"><a href="#亲人" class="headerlink" title="亲人"></a>亲人</h3><p>家，是你最温暖的港湾。</p>
+<p>亲人只有一次缘分，这辈子，即使无法与你一路伴行，但在风雨交加的时候，总会想着为你遮风挡雨一程！</p>
+<p>即使不能与你一路并肩作战，但在艰难险阻的时候，总会想着与你一同分担苦痛！</p>
+<p>这辈子，无论我们和你会相处多久，都请好好珍惜共聚的时光，下辈子，无论爱与不爱，都不会再见。</p>
+<h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><p>对于小学家长，你还有很多年，不过时间真的过得很快……</p>
+<p>对于初中生家长，你可能还有三年的时间来陪孩子慢慢长大，可对于高中生家长，去读大学前的这段时间可能就是你日夜陪伴孩子的最后一段。</p>
+<p>日后，他会买一张票远去求学，会找一座城落根打拼，会挑一个人恋爱结婚，会生一个娃守护一生。余生，他会离你越来越远。</p>
+<p>珍惜彼此相伴的日子，和他好好聊聊天，也告诉他，你一直都会在他身后。</p>
+]]></content>
+      <categories>
+        <category>文章阅读</category>
+      </categories>
+      <tags>
+        <tag>文章阅读</tag>
       </tags>
   </entry>
   <entry>

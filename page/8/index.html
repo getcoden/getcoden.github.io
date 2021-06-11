@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,475 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/29/02-2%E6%95%B0%E5%80%BC%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/29/02-2%E6%95%B0%E5%80%BC%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">02.2数值和字符串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-28 18:06:03 / 修改时间：10:21:03" itemprop="dateCreated datePublished" datetime="2021-01-28T18:06:03Z">2021-01-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li>字符串方法</li>
+</ul>
+<p>字符串处理方法很多（下面斜体为所有内置方法），本文介绍常用的几种方法，详细可见链接：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/stdtypes.html">https://docs.python.org/zh-cn/3.7/library/stdtypes.html</a> 。</p>
+<p><code>In [23]: print(dir(str))#dir列出字符串所用方法</code></p>
+<p>[‘<strong>add</strong>‘, ‘<strong>class</strong>‘, ‘<strong>contains</strong>‘, ‘<strong>delattr</strong>‘, ‘<strong>dir</strong>‘, ‘<strong>doc</strong>‘, ‘<strong>eq</strong>‘, ‘<strong>format</strong>‘, ‘<strong>ge</strong>‘, ‘<strong>getattribute</strong>‘, ‘<strong>getitem</strong>‘, ‘<strong>getnewargs</strong>‘, ‘<strong>gt</strong>‘, ‘<strong>hash</strong>‘, ‘<strong>init</strong>‘, ‘<strong>init_subclass__’, ‘<strong>iter</strong>‘, ‘<strong>le</strong>‘, ‘<strong>len</strong>‘, ‘<strong>lt</strong>‘, ‘<strong>mod</strong>‘, ‘<strong>mul</strong>‘, ‘<strong>ne</strong>‘, ‘<strong>new</strong>‘, ‘<strong>reduce</strong>‘, ‘__reduce_ex</strong>‘, ‘<strong>repr</strong>‘, ‘<strong>rmod</strong>‘, ‘<strong>rmul</strong>‘, ‘<strong>setattr</strong>‘, ‘<strong>sizeof</strong>‘, ‘<strong>str</strong>‘, ‘<strong>subclasshook</strong>‘, <strong><em>‘capitalize’, ‘casefold’, ‘center’, ‘count’, ‘encode’, ‘endswith’, ‘expandtabs’, ‘find’, ‘format’, ‘format_map’, ‘index’, ‘isalnum’, ‘isalpha’, ‘isascii’, ‘isdecimal’, ‘isdigit’, ‘isidentifier’, ‘islower’, ‘isnumeric’, ‘isprintable’, ‘isspace’, ‘istitle’, ‘isupper’, ‘join’, ‘ljust’, ‘lower’, ‘lstrip’, ‘maketrans’, ‘partition’, ‘replace’, ‘rfind’, ‘rindex’, ‘rjust’, ‘rpartition’, ‘rsplit’, ‘rstrip’, ‘split’, ‘splitlines’, ‘startswith’, ‘strip’, ‘swapcase’, ‘title’, ‘translate’, ‘upper’, ‘zfill’]</em></strong></p>
+<ul>
+<li><p>find 方法</p>
+<p>语法，str.find (sub_str,a,b)</p>
+</li>
+</ul>
+<p>字符串 str 中查找子字符串 sub_str 所在位置时使用，a，b 分别制定从 str 中开始搜索的位置，默认从第一个字符开始，a，b 均可忽略；如果找到 sub_str，就返回 sub_str 的第一个字符的索引，没找到返回 - 1。可用来判断 str 中是否包 sub_str 以及位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [32]: print(&quot;xiyangyang lanyangyang&quot;.find(&quot;huitanglang&quot;))</span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">In [33]: print(&quot;xiyangyang lanyangyang&quot;.find(&quot;yang&quot;))</span><br><span class="line">2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>join 方法</li>
+</ul>
+<p>语法：sep.join (str)，以 sep 为分隔符拼接字符串 str。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [36]: print(&quot;+&quot;.join(&quot;xiyangyang&quot;))</span><br><span class="line">x+i+y+a+n+g+y+a+n+g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>split 方法</li>
+</ul>
+<p>语法：str.split (sep)，以 sep 为分隔符，拆分字符串 str 为一个 list。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [37]: print(&quot;x+i+y+a+n+g+y+a+n+g&quot;.split(&quot;+&quot;))</span><br><span class="line">[&#39;x&#39;, &#39;i&#39;, &#39;y&#39;, &#39;a&#39;, &#39;n&#39;, &#39;g&#39;, &#39;y&#39;, &#39;a&#39;, &#39;n&#39;, &#39;g&#39;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>lower 方法</li>
+</ul>
+<p>语法：str.lower ()，将字符串 str 转化为小写版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [39]: print(&quot;Hello! Hi!&quot;.lower())</span><br><span class="line">hello! hi!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>upper 方法</li>
+</ul>
+<p>语法：str.upper ()，将字符串 str 转化为大写版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [41]: print(&quot;Hello! Hi!&quot;.upper())</span><br><span class="line">HELLO! HI!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>replace 方法</li>
+</ul>
+<p>语法：str.replace (“sub_str1”, “sub_str2”, max)。将字符串 str 中的子字符串 sub_str1 替换为 sub_str2，max 为允许替换的最大次数，可忽略，默认替换所有。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [48]: print(&quot;xiyangyang lanyangyang&quot;.replace(&quot;an&quot;,&quot;XX&quot;,2))</span><br><span class="line">xiyXXgyXXg lanyangyang</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>strip，lstrip 和 rstrip 方法</p>
+<p>语法：三个方法类似，str.strip (sub_str)。strip 方法去掉 str 开头和结尾的子字符串 sub_str，sub_str 可忽略，默认为空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [49]: print(&quot; Hello &quot;.strip())</span><br><span class="line">Hello</span><br><span class="line"></span><br><span class="line">In [50]: print(&quot; Hello &quot;.lstrip())</span><br><span class="line">Hello</span><br><span class="line"></span><br><span class="line">In [51]: print(&quot; Hello &quot;.rstrip())</span><br><span class="line">Hello</span><br><span class="line"></span><br><span class="line">In [52: print(&quot; Hello &quot;.rstrip(&quot;o &quot;))</span><br><span class="line">Hell</span><br></pre></td></tr></table></figure></li>
+<li><p>translate 方法</p>
+</li>
+</ul>
+<p>语法：str.translate (table)，该方法同时替换 str 中多个字符，replace 一次只能替换一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [56]: old &#x3D; &quot;axy&quot;</span><br><span class="line">    ...: new &#x3D; &quot;123&quot;</span><br><span class="line">    ...: #调用字符串str的maketrans方法制作转换表</span><br><span class="line">    ...: table &#x3D; str.maketrans(old, new)</span><br><span class="line">    ...:</span><br><span class="line">    ...: str1 &#x3D; &quot;xiyangyang lanyangyang&quot;</span><br><span class="line">    ...: print (str1.translate(table))</span><br><span class="line">2i31ng31ng l1n31ng31ng</span><br></pre></td></tr></table></figure>
+<ul>
+<li>startswith 方法</li>
+</ul>
+<p>语法：str.startswith (sub_str, a, b)。判断 str 是否以 sub_str 开头，是则返回 True，否则返回 False，a，b 指定检索开始和结束（ 默认是字符串的长度，表示结束搜索的位置）为止，默认从第一个字符开始。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [64]: print(&quot;Hello&quot;.startswith(&quot;H&quot;))</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<ul>
+<li>endswith 方法</li>
+</ul>
+<p>使用类似 startswith，判断 str 是否以 sub_str 结尾。</p>
+<ul>
+<li><p>is 开头的诸多方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39;isalnum&#39;, &#39;isalpha&#39;, &#39;isascii&#39;, &#39;isdecimal&#39;,</span><br><span class="line">&#39;isdigit&#39;, &#39;isidentifier&#39;, &#39;islower&#39;, &#39;isnumeric&#39;,</span><br><span class="line">&#39;istitle&#39;, &#39;isupper&#39;</span><br></pre></td></tr></table></figure>
+<p>以上分别为判断字符时否是字母或数字、字母、ASCII 等，详细参考 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/stdtypes.html%EF%BC%8C%E7%BB%93%E6%9E%9C%E8%BF%94%E5%9B%9E">https://docs.python.org/zh-cn/3.7/library/stdtypes.html，结果返回</a> True 或者 False。</p>
+</li>
+<li><p>字符串格式化输出：format 方法</p>
+</li>
+<li><ul>
+<li>调用参数</li>
+</ul>
+</li>
+</ul>
+<p>按顺序将字段和参数配对输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#按顺序将字段和参数配对输出</span><br><span class="line">In [79]: &quot;&#123;&#125; &#123;&#125; &#123;&#125; &#123;&#125;&quot;.format(1, 2, 4, 3)</span><br><span class="line">Out[79]: &#39;1 2 4 3&#39;</span><br><span class="line"> </span><br><span class="line">#给参数指定名称，通过参数名称调用输出</span><br><span class="line">In [80]: &quot;&#123;a&#125; &#123;a&#125; &#123;b&#125; &#123;b&#125;&quot;.format(a&#x3D;1, b&#x3D;2)</span><br><span class="line">Out[80]: &#39;1 1 2 2&#39;</span><br><span class="line"> </span><br><span class="line">#以上两种方法混用</span><br><span class="line">In [81]: &quot;&#123;&#125; &#123;a&#125; &#123;&#125; &#123;b&#125;&quot;.format(0, 3, a&#x3D;1, b&#x3D;2)</span><br><span class="line">Out[81]: &#39;0 1 3 2&#39;</span><br><span class="line"> </span><br><span class="line">#未命名参数通过索引调用输出</span><br><span class="line">In [82]: &quot;&#123;1&#125; &#123;a&#125; &#123;0&#125; &#123;b&#125;&quot;.format(0, 3, a&#x3D;1, b&#x3D;2)</span><br><span class="line">Out[82]: &#39;3 1 0 2&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ul>
+<li>参数格式转换</li>
+</ul>
+</li>
+</ul>
+<p>指定要转换的值是哪种类型，如下例中的 f b。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [85]: &quot;The number is &#123;:f&#125;&quot;.format(42)#f将小数表示为定点数</span><br><span class="line">Out[85]: &#39;The number is 42.000000&#39;</span><br><span class="line"> </span><br><span class="line">In [86]: &quot;The number is &#123;:b&#125;&quot;.format(42)#b将整数表示为二进制数</span><br><span class="line">Out[86]: &#39;The number is 101010&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ul>
+<li>python 指定字符宽度，精度</li>
+</ul>
+</li>
+</ul>
+<p>常用转化类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">b             将整数表示为二进制数</span><br><span class="line">c             将整数解读为Unicode码点</span><br><span class="line">d             将整数视为十进制数进行处理，这是整数默认使用的说明符</span><br><span class="line">e             使用科学表示法来表示小数（用e来表示指数）</span><br><span class="line">E             与e相同，但使用E来表示指数</span><br><span class="line">f              将小数表示为定点数</span><br><span class="line">F            与f相同，但对于特殊值（nan和inf），使用大写表示</span><br><span class="line">g            自动在定点表示法和科学表示法之间做出选择。这是默认用于小数的说明符，但在默认情况下至少有1位小数</span><br><span class="line">G            与g相同，但使用大写来表示指数和特殊值</span><br><span class="line">n            与g相同，但插入随区域而异的数字分隔符</span><br><span class="line">o            将整数表示为八进制数</span><br><span class="line">s            保持字符串的格式不变，这是默认用于字符串的说明符</span><br><span class="line">x            将整数表示为十六进制数并使用小写字母</span><br><span class="line">X            与x相同，但使用大写字母</span><br><span class="line">%            将数表示为百分比值（乘以100，按说明符f设置格式，再在后面加上%）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [96]: &quot;Pi is &#123;pi:10.2f&#125;&quot;.format(pi&#x3D;math.pi)#指定字符快读为10，精度为2个小数位</span><br><span class="line">Out[96]: &#39;Pi is       3.14&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ul>
+<li>指定字符千分位分隔符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [101]: &#39;Oh gold banknote is &#123;:,&#125; yuan&#39;.format(100000000000)</span><br><span class="line">Out[101]: &#39;Oh gold banknote is 100,000,000,000 yuan&#39;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><ul>
+<li>对齐</li>
+</ul>
+</li>
+</ul>
+<p>分别使用 &lt;、&gt; 和 ^ 指定左对齐，右对齐和居中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [107]: print(&#39;&#123;0:&lt;10.2f&#125;\n&#123;0:^10.2f&#125;\n&#123;0:&gt;10.2f&#125;&#39;.format(math.pi))</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210128181624.png" alt="20210128181624"></p>
+<ul>
+<li><ul>
+<li>指定填充字符</li>
+</ul>
+</li>
+</ul>
+<p>默认为空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [113]: print(&#39;&#123;0:$&lt;10.2f&#125;\n&#123;0:@^10.2f&#125;\n&#123;0:&amp;&gt;10.2f&#125;&#39;.format(math.pi))</span><br><span class="line">3.14$$$$$$</span><br><span class="line">@@@3.14@@@</span><br><span class="line">&amp;&amp;&amp;&amp;&amp;&amp;3.14</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ul>
+<li>等号（=），指定将填充字符放在符号和数字之间。</li>
+</ul>
+</li>
+</ul>
+<p>此处 = 类似于 &lt;、&gt; 和 ^</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [127]: print(&#39;&#123;0:$&gt;10.2f&#125;\n&#123;1:$&#x3D;10.2f&#125;&#39;.format(math.pi, -math.pi))</span><br><span class="line">$$$$$$3.14</span><br><span class="line">-$$$$$3.14</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/29/02-1%E6%95%B0%E5%80%BC%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/29/02-1%E6%95%B0%E5%80%BC%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">02.1数值和字符串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-28 17:23:39 / 修改时间：10:23:07" itemprop="dateCreated datePublished" datetime="2021-01-28T17:23:39Z">2021-01-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>1、数值</p>
+<ul>
+<li>数值数据类型</li>
+</ul>
+<p>python 支持如下数值型数据：</p>
+<table>
+<thead>
+<tr>
+<th align="center">数值类型</th>
+<th align="center">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">整数（int）</td>
+<td align="center">0, -3</td>
+</tr>
+<tr>
+<td align="center">浮点数（float）</td>
+<td align="center">3.1415926, 0.3E+1, 3E-1</td>
+</tr>
+<tr>
+<td align="center">十六进制（hexadecimal）</td>
+<td align="center">0xAF（以0x开头，其后都是数字或者大小写字母）</td>
+</tr>
+<tr>
+<td align="center">八进制（octal）</td>
+<td align="center">0o10（以0o或0O开头，其后其后都是0-7之间的整数）</td>
+</tr>
+<tr>
+<td align="center">二进制（binary）</td>
+<td align="center">0b1011010010（以0b或0B开头,其后都是0、1）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>数值运算<br>常见数字运算类型及内置函数如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">运算符  含义</span><br><span class="line">+      （加）    </span><br><span class="line">-      （减）</span><br><span class="line">*      （乘）</span><br><span class="line">&#x2F;      （除）</span><br><span class="line">&#x2F;&#x2F;     （整除运算）</span><br><span class="line">%      （求余数）</span><br><span class="line">**     （幂）</span><br><span class="line">int(x)   (取x整数部分)</span><br><span class="line">float(x) （将x转化为浮点数）</span><br><span class="line">pow(x,y)  （求x的y次幂）</span><br><span class="line">abs(x)   （求x的绝对值）</span><br><span class="line">round(x)  (x四舍五入)</span><br><span class="line">bin(x)   (将x转化为二进制)</span><br><span class="line">oct(x)  （将x转化为八进制）</span><br><span class="line">hex(x) （将x转化为十六进制）</span><br><span class="line">math.floor(x) (math模块中向下取整，floor中文有地板的意思)</span><br><span class="line">math.ceil(x) （math模块中向上取整，ceil中文天花板的意思）</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>数值运算举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">  In [1]: #加</span><br><span class="line">   ...: print(2 + 3)</span><br><span class="line">5</span><br><span class="line"></span><br><span class="line">In [2]: #减</span><br><span class="line">   ...: print(2 - 3)</span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">In [3]: #乘</span><br><span class="line">   ...: print(2 * 3)</span><br><span class="line">6</span><br><span class="line"></span><br><span class="line">In [4]: #除</span><br><span class="line">   ...: print(2 &#x2F; 3)</span><br><span class="line">0.6666666666666666</span><br><span class="line"></span><br><span class="line">In [5]: #整除运算，向下取整</span><br><span class="line">   ...: print(1 &#x2F;&#x2F; 3)</span><br><span class="line">   ...: print(5.0 &#x2F;&#x2F; 2.0)#输出结果类型与除数和被除数一致</span><br><span class="line">   ...: print(5.0 &#x2F;&#x2F; 2)</span><br><span class="line">   ...: print(5 &#x2F;&#x2F; 2.0)</span><br><span class="line">   ...: print(-5 &#x2F;&#x2F; 2)#向下（向负3）取整</span><br><span class="line">0</span><br><span class="line">2.0</span><br><span class="line">2.0</span><br><span class="line">2.0</span><br><span class="line">-3</span><br><span class="line"></span><br><span class="line">In [6]: #求余运算</span><br><span class="line">    ...: print(5 % 2)</span><br><span class="line">    ...: print(5.0 % 2.0)</span><br><span class="line">    ...: print(5.0 % 2)</span><br><span class="line">    ...: print(5 % 2.0)</span><br><span class="line">1</span><br><span class="line">1.0</span><br><span class="line">1.0</span><br><span class="line">1.0</span><br><span class="line"></span><br><span class="line">In [7]: #求幂</span><br><span class="line">    ...: print(2 ** 3)</span><br><span class="line">    ...: print(-2 ** 2)#注意比较区别</span><br><span class="line">    ...: print((-2) ** 2)</span><br><span class="line">8</span><br><span class="line">-4</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">In [8]: #取浮点数</span><br><span class="line">    ...: print(float(2))</span><br><span class="line">    ...:</span><br><span class="line">    ...:</span><br><span class="line">2.0</span><br><span class="line"></span><br><span class="line">In [9]: #取整数</span><br><span class="line">    ...: print(int(2.3))</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">In [10]: #取浮点数</span><br><span class="line">    ...: print(float(2))</span><br><span class="line">2.0</span><br><span class="line"></span><br><span class="line">In [11]: #pow函数求幂</span><br><span class="line">    ...: print(pow(2,3))</span><br><span class="line">    ...: print(2 ** 3)#与上行等价</span><br><span class="line">8</span><br><span class="line">8</span><br><span class="line"></span><br><span class="line">In [12]: #取绝对值</span><br><span class="line">    ...: print(abs(-2))</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">In [13]: #四舍五入</span><br><span class="line">    ...: print(round(2.3))</span><br><span class="line">    ...: print(round(2.6))</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">In [14]: #转二进制</span><br><span class="line">    ...: print(bin(2))</span><br><span class="line">    ...:</span><br><span class="line">    ...: #转八进制</span><br><span class="line">    ...: print(oct(2))</span><br><span class="line">    ...:</span><br><span class="line">    ...: #转十六进制</span><br><span class="line">    ...: print(hex(2))</span><br><span class="line">0b10</span><br><span class="line">0o2</span><br><span class="line">0x2</span><br><span class="line"></span><br><span class="line">In [15]: #向下取整和向上取整</span><br><span class="line">   ...: import math</span><br><span class="line">   ...: print(math.floor(3.5))#向下取整</span><br><span class="line">   ...: print(math.ceil(3.5))#向上取整</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<p>2、字符串<br>字符串使用单引号，双引号或者三引号包围起来，例如，”hello, boy!”，’hello, boy!’，’’’hello,boy!’’’。</p>
+</li>
+<li><p>单引号双引号区别</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [16]: #该场景单引号和双引号作用一致</span><br><span class="line">   ...: print(&quot;hello boy!&quot;)</span><br><span class="line">   ...: print(&#39;hello girl!&#39;)</span><br><span class="line">hello boy!</span><br><span class="line">hello girl!</span><br><span class="line"></span><br><span class="line">#以下场景双引号和单引号作用不一致</span><br><span class="line">In [13]: print(&#39;hello,boy! Let&#39;s do it&#39;)</span><br><span class="line">  File &quot;&lt;ipython-input-13-be7bb4cf818c&gt;&quot;, line 1</span><br><span class="line">    print(&#39;hello,boy! Let&#39;s do it&#39;)</span><br><span class="line">                                  ^</span><br><span class="line">SyntaxError: invalid syntax</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>反斜杠 \ 转义符<br>
+  可添加转义字符使以上场景发挥相同作用。
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [15]: print(&#39;hello,boy! Let\&#39;s do it&#39;)</span><br><span class="line">hello,boy! Let&#39;s do it</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出原始字符串<br> 
+输出字符串例如，换行符（\n），tab 分隔符（\t）等的原始字符串，而不是换行或者 tab 分割
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [16]: #方法一，反斜线转义</span><br><span class="line">    ...: #分别在特殊字符钱加反斜线转义</span><br><span class="line">    ...: print(&quot;Hi\\tHello\\nboy!&quot;)</span><br><span class="line">    ...:</span><br><span class="line">    ...: #方法二，使用r</span><br><span class="line">    ...: print(repr(&quot;Hi\tHello\nboy!&quot;))</span><br><span class="line">    ...: print(r&quot;Hi\tHello\nboy!&quot;)</span><br><span class="line"></span><br><span class="line">        Hi\tHello\nboy!</span><br><span class="line">        Hi\tHello\nboy!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>三引号<br>
+三引号内的字符可自由换行。
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [26]: print(&quot;&quot;&quot;Hello</span><br><span class="line">    ...: ,</span><br><span class="line">    ...: boy!&quot;&quot;&quot;)</span><br><span class="line">Hello</span><br><span class="line">,</span><br><span class="line">boy!</span><br></pre></td></tr></table></figure>
+<p>三引号内可以随意使用双引号和单引号而不需要转义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [22]: print(&quot;&quot;&quot;hello,boy! Let&#39;s d&quot;o it&quot;&quot;&quot;)</span><br><span class="line">hello,boy! Let&#39;s d&quot;o it</span><br></pre></td></tr></table></figure>
+<ul>
+<li>操作字符串</li>
+</ul>
+<p>索引、切片、乘法、成员资格检查、长度、最小值和最大值都适用于字符串。</p>
+<ul>
+<li>字符串修改</li>
+</ul>
+<p>字符串是不可变的，所有的元素赋值和切片赋值都是非法的；<br>强行修改字符串的值会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [128]: &quot;Hello&quot;[1:]&#x3D;&quot;o&quot;</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-128-0a82fa2a7175&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 &quot;Hello&quot;[1:]&#x3D;&quot;o&quot;</span><br><span class="line"></span><br><span class="line">TypeError: &#39;str&#39; object does not support item assignment</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>索引</li>
+</ul>
+<p>索引每次取一个元素，python 索引从 0 开始，可以为负数，最后一位索引为 - 1, 倒数第二位索引为 - 2，依次类推。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">In [6]: &quot;Keepstudying&quot;[0:3]#取出索引位为0到2的元素</span><br><span class="line">Out[6]: &#39;Kee&#39;</span><br><span class="line"></span><br><span class="line">In [7]: &quot;Keepstudying&quot;[0:-2]#取出索引位为0到倒数第三个元素</span><br><span class="line">Out[7]: &#39;Keepstudyi&#39;</span><br><span class="line"></span><br><span class="line">In [8]: &quot;Keepstudying&quot;[-4:-2]#取出索引位为-4到-3的元素</span><br><span class="line">Out[8]: &#39;yi&#39;</span><br><span class="line"></span><br><span class="line">In [9]: &quot;Keepstudying&quot;[:3]#第一个参数可以省略</span><br><span class="line">Out[9]: &#39;Kee&#39;</span><br><span class="line"></span><br><span class="line">In [10]: &quot;Keepstudying&quot;[:]#取出所有元素</span><br><span class="line">Out[10]: &#39;Keepstudying&#39;</span><br><span class="line"></span><br><span class="line">In [11]: &quot;Keepstudying&quot;[1:]#第二个参数也可以省略</span><br><span class="line">Out[11]: &#39;eepstudying&#39;</span><br><span class="line"></span><br><span class="line">In [13]: &quot;Keepstudying&quot;[1:5:2]#步长为2</span><br><span class="line">Out[13]: &#39;ep&#39;</span><br><span class="line"></span><br><span class="line">In [14]: &quot;Keepstudying&quot;[::-1]#将字符颠倒</span><br><span class="line">Out[14]: &#39;gniydutspeeK&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>乘法<br>str*n，重复 str n 次。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [27]: print(&quot;Keepstudying\t&quot; * 10)#重复10次</span><br><span class="line">Keepstudying    Keepstudying    Keepstudying    Keepstudying    Keepstudying    Keepstudying    Keepstudying    Keepstudying    Keepstudying    Keepstudying</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>拼接</p>
+<bf>
+使用加号拼接。
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [27]: print(&quot;Hello,&quot;+&quot;world!&quot;)</span><br><span class="line">Hello,world!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>in 成员资格检查</li>
+</ul>
+<p>使用 in 判断字符串是否包含某个子字符串，包含返回 True，不包含返回 False。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [15]: &quot;stu&quot; in &quot;Keepstudying&quot;</span><br><span class="line">Out[15]: True</span><br><span class="line"></span><br><span class="line">In [16]: &quot;stv&quot; in &quot;Keepstudying&quot;</span><br><span class="line">Out[16]: False</span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍历</li>
+</ul>
+<p>依次输出字符串中每个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In [18]: for i in &quot;Keepstudying&quot;:</span><br><span class="line">    ...:     print(i)</span><br><span class="line">K</span><br><span class="line">e</span><br><span class="line">e</span><br><span class="line">p</span><br><span class="line">s</span><br><span class="line">t</span><br><span class="line">u</span><br><span class="line">d</span><br><span class="line">y</span><br><span class="line">i</span><br><span class="line">n</span><br><span class="line">g</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>求长度</p>
+<p>使用 len 函数，计算字符串个数，\t，\n 算一个字符。</p>
+<pre><code>In [23]: len(&quot;Keepstudyin  \t\ng&quot;)
+Out[23]: 16
+```
+</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/29/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%9F%A5%E7%9C%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/29/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%9F%A5%E7%9C%8B/" class="post-title-link" itemprop="url">Markdown基本语法查看</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-28 16:05:36 / 修改时间：09:01:40" itemprop="dateCreated datePublished" datetime="2021-01-28T16:05:36Z">2021-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/191d1e21f7ed/">1. Markdown 基本语法含流程图的创建</a></p>
+<p><a target="_blank" rel="noopener" href="http://markdown.p2hp.com/basic-syntax/index.html">2. 基本语法 官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ebe52d2d468f">3. Markdown语法大全(超级版)</a></p>
+<pre><code>表头|表头|表头
+:--|:--:|:--:
+内容|内容|内容
+内容|内容|内容
+
+第二行分割表头和内容。
+- 有一个就行，为了对齐，多加了几个
+文字默认居左
+-两边加：表示文字居中
+-右边加：表示文字居右
+</code></pre>
+<p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">姓名</th>
+<th align="center">技能</th>
+<th align="center">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">刘备</td>
+<td align="center">哭</td>
+<td align="center">大哥</td>
+</tr>
+<tr>
+<td align="center">关羽</td>
+<td align="center">打</td>
+<td align="center">二哥</td>
+</tr>
+<tr>
+<td align="center">张飞</td>
+<td align="center">骂</td>
+<td align="center">三弟</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
