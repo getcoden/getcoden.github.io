@@ -22,21 +22,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="实例 020：高空抛物题目：一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？ 代码：">
+<meta name="description" content="实例 020：高空抛物题目: 一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？ 12345678910111213141516high &#x3D; int(input(&amp;#x27;请输入起始高度:&amp;#x27;))times &#x3D; int(input(&amp;#x27;请输入次数:&amp;#x27;))high_all &#x3D; []high_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数式程序测试">
-<meta property="og:url" content="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:url" content="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="Bitcoder">
-<meta property="og:description" content="实例 020：高空抛物题目：一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？ 代码：">
+<meta property="og:description" content="实例 020：高空抛物题目: 一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？ 12345678910111213141516high &#x3D; int(input(&amp;#x27;请输入起始高度:&amp;#x27;))times &#x3D; int(input(&amp;#x27;请输入次数:&amp;#x27;))high_all &#x3D; []high_">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-16T21:44:30.000Z">
-<meta property="article:modified_time" content="2021-04-16T13:52:55.665Z">
+<meta property="article:modified_time" content="2021-06-13T08:14:01.546Z">
 <meta property="article:author" content="Bitcode">
 <meta property="article:tag" content="Python基础">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/">
+<link rel="canonical" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95/">
 
 
 <script class="page-configurations">
@@ -187,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B-020%EF%BC%9A%E9%AB%98%E7%A9%BA%E6%8A%9B%E7%89%A9"><span class="nav-number">1.</span> <span class="nav-text">实例 020：高空抛物</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%A1%8C%E9%9D%A2%E8%B7%AF%E5%BE%84%EF%BC%8C%E5%86%99%E6%88%90%E5%87%BD%E6%95%B0%E6%96%B9%E4%BE%BF%E8%B0%83%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">获取桌面路径，写成函数方便调用</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B-020%EF%BC%9A%E9%AB%98%E7%A9%BA%E6%8A%9B%E7%89%A9"><span class="nav-number">1.</span> <span class="nav-text">实例 020：高空抛物</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -269,7 +269,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -292,10 +292,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-04-16 21:44:30 / 修改时间：13:52:55" itemprop="dateCreated datePublished" datetime="2021-04-16T21:44:30Z">2021-04-16</time>
+      <time title="创建时间：2021-04-16 21:44:30" itemprop="dateCreated datePublished" datetime="2021-04-16T21:44:30Z">2021-04-16</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-13 08:14:01" itemprop="dateModified" datetime="2021-06-13T08:14:01Z">2021-06-13</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -316,16 +322,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h4 id="实例-020：高空抛物"><a href="#实例-020：高空抛物" class="headerlink" title="实例 020：高空抛物"></a>实例 020：高空抛物</h4><p><strong>题目：</strong>一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？</p>
-<p>代码：</p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">high &#x3D; int(input(&#39;请输入起始高度:&#39;))</span><br><span class="line">times &#x3D; int(input(&#39;请输入次数:&#39;))</span><br><span class="line">high_all &#x3D; []</span><br><span class="line">high_each &#x3D; []</span><br><span class="line">for i in range(1, times + 1):</span><br><span class="line">	if i &#x3D;&#x3D; 1:</span><br><span class="line">		high_all.append(high)</span><br><span class="line">	else:</span><br><span class="line">		high_all.append(2 * high)</span><br><span class="line">	high &#x2F;&#x3D; 2</span><br><span class="line">	high_each.append(high)</span><br><span class="line">	print(f&#39;&#123;i&#125;次经历的总路程为:&#123;high&#125;&#39;)</span><br><span class="line">s &#x3D; sum(high_all)</span><br><span class="line">last_time &#x3D; high_each[-1]</span><br><span class="line">print(f&#39;&#123;times&#125;次经历的总路程为:&#123;s&#125;&#39;)</span><br><span class="line">print(f&#39;第&#123;times&#125;次反弹高度为:&#123;last_time&#125;&#39;)</span><br></pre></td></tr></table></figure>
+        <h4 id="实例-020：高空抛物"><a href="#实例-020：高空抛物" class="headerlink" title="实例 020：高空抛物"></a>实例 020：高空抛物</h4><p><strong>题目:</strong> 一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">high = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入起始高度:&#x27;</span>))</span><br><span class="line">times = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入次数:&#x27;</span>))</span><br><span class="line">high_all = []</span><br><span class="line">high_each = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, times + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">        high_all.append(high)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        high_all.append(<span class="number">2</span> * high)</span><br><span class="line">    high /= <span class="number">2</span></span><br><span class="line">    high_each.append(high)</span><br><span class="line">    print(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span>次经历的总路程为:<span class="subst">&#123;high&#125;</span>&#x27;</span>)</span><br><span class="line">s = <span class="built_in">sum</span>(high_all)</span><br><span class="line">last_time = high_each[-<span class="number">1</span>]</span><br><span class="line">print(<span class="string">f&#x27;<span class="subst">&#123;times&#125;</span>次经历的总路程为:<span class="subst">&#123;s&#125;</span>&#x27;</span>)</span><br><span class="line">print(<span class="string">f&#x27;第<span class="subst">&#123;times&#125;</span>次反弹高度为:<span class="subst">&#123;last_time&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>请输入起始高度:200
+请输入次数:10
+1次经历的总路程为:100.0
+2次经历的总路程为:50.0
+3次经历的总路程为:25.0
+4次经历的总路程为:12.5
+5次经历的总路程为:6.25
+6次经历的总路程为:3.125
+7次经历的总路程为:1.5625
+8次经历的总路程为:0.78125
+9次经历的总路程为:0.390625
+10次经历的总路程为:0.1953125
+10次经历的总路程为:599.21875
+第10次反弹高度为:0.1953125
+</code></pre>
 <p>2）函数写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def bounce(num):</span><br><span class="line">    height &#x3D; 100</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for i in range(num):</span><br><span class="line">        total +&#x3D; height</span><br><span class="line">        height &#x2F;&#x3D; 2</span><br><span class="line">    return total, height</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    t, h &#x3D; bounce(10)</span><br><span class="line">    print(f&#39;它在第10次落地时，共经过&#123;t&#125;米，第10次反弹高度是&#123;h&#125;&#39;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bounce</span>(<span class="params">num</span>):</span></span><br><span class="line">    height = <span class="number">100</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        total += height</span><br><span class="line">        height /= <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> total, height</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    t, h = bounce(<span class="number">10</span>)</span><br><span class="line">    print(<span class="string">f&#x27;它在第10次落地时，共经过<span class="subst">&#123;t&#125;</span>米，第10次反弹高度是<span class="subst">&#123;h&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>3）简单写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [100]  #每个‘反弹落地’过程经过的路程，第1次只有落地（100米）</span><br><span class="line">h &#x3D; 100  #每个‘反弹落地’过程，反弹的高度，第1次为100米</span><br><span class="line">print(&#39;第1次从%s米高落地，走过%s米，之后又反弹至%s米。&#39; % (h, a[0], h&#x2F;2))</span><br><span class="line">for i in range(2,11):  #第1次已初始化，再循环9次</span><br><span class="line">    a.append(h)  #先计算路程，再高度减半，因为一个‘反弹落地’为2个高度</span><br><span class="line">    h &#x3D; h &#x2F; 2</span><br><span class="line">    print(&#39;第%s次从%s米高落地，共走过%s米，之后又反弹至%s米。&#39; % (i, h, sum(a), h &#x2F; 2))</span><br></pre></td></tr></table></figure>
-<h3 id="获取桌面路径，写成函数方便调用"><a href="#获取桌面路径，写成函数方便调用" class="headerlink" title="获取桌面路径，写成函数方便调用"></a>获取桌面路径，写成函数方便调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 写成函数，需要时直接调用更方便</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def GetDesktopPath():</span><br><span class="line">    return os.path.join(os.path.expanduser(&quot;~&quot;), &#39;Desktop\\111.txt&#39;)   #存放在桌面上的文件在读取时，路径应加 \\ 表示转义</span><br><span class="line"></span><br><span class="line"># print(GetDesktopPath())</span><br><span class="line"></span><br><span class="line">def Readfiles(b):</span><br><span class="line">	with open(b,encoding&#x3D;&#39;utf-8&#39;) as f1:</span><br><span class="line">		for line in f1:		  #用 for 循环一行一行的读取，推荐这读法，不占用内存空间</span><br><span class="line">			line &#x3D; line[:-1]  #去除每一行的换行符，即回车产生的空行，使输出时没有空格</span><br><span class="line">			print(line)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">	a&#x3D;GetDesktopPath()		#调用函数时，其返回值返回给函数本身，这时用一个变量 ‘a’ 接收，再把 a 传下一个函数使用</span><br><span class="line">	Readfiles(a)		#传实参变量 a 给读取文件的函数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>]  <span class="comment">#每个‘反弹落地’过程经过的路程，第1次只有落地（100米）</span></span><br><span class="line">h = <span class="number">100</span>  <span class="comment">#每个‘反弹落地’过程，反弹的高度，第1次为100米</span></span><br><span class="line">print(<span class="string">&#x27;第1次从%s米高落地，走过%s米，之后又反弹至%s米。&#x27;</span> % (h, a[<span class="number">0</span>], h/<span class="number">2</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">11</span>):  <span class="comment">#第1次已初始化，再循环9次</span></span><br><span class="line">    a.append(h)  <span class="comment">#先计算路程，再高度减半，因为一个‘反弹落地’为2个高度</span></span><br><span class="line">    h = h / <span class="number">2</span></span><br><span class="line">    print(<span class="string">&#x27;第%s次从%s米高落地，共走过%s米，之后又反弹至%s米。&#x27;</span> % (i, h, <span class="built_in">sum</span>(a), h / <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
     </div>
 
     
