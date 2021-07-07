@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式练习">
+<meta property="og:url" content="https://getcoden.github.io/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-30T10:40:37.000Z">
+<meta property="article:modified_time" content="2021-06-30T02:45:10.884Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>正则表达式练习 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          正则表达式练习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-30 10:40:37 / 修改时间：02:45:10" itemprop="dateCreated datePublished" datetime="2021-06-30T10:40:37Z">2021-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"># author : BJxo</span><br><span class="line"># date : 2021&#x2F;04&#x2F;30</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;(\(\d&#123;3&#125;\)) (\d&#123;3&#125;-\d&#123;3&#125;)&#39;)</span><br><span class="line"># mo &#x3D; phone_number_regex.search(&#39;My number is (415) 555-4242.&#39;)</span><br><span class="line"># print(&#39;Phone number found: &#39; + mo.group(1))</span><br><span class="line"># print(mo.groups())</span><br><span class="line"></span><br><span class="line"># bat_regex &#x3D; re.compile(r&#39;Bat(man|mobile|bat|copter)&#39;)</span><br><span class="line"># mo &#x3D; bat_regex.search(&#39;Batmobile lost a wheel&#39;)</span><br><span class="line"># print(mo.group())</span><br><span class="line"># print(mo.group(1))</span><br><span class="line"></span><br><span class="line"># &#39;?&#39; 在正则表达式内表示匹配 0 或 1 次，换句话说就是可选匹配，有就匹配，没有就不匹配。而 &#39;*&#39; 则表示匹配 0 次 或多次。</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">bat_regex1 &#x3D; re.compile(r&#39;Bat(wo)?man&#39;)</span><br><span class="line">mo1 &#x3D; bat_regex1.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line">print(mo1.group())</span><br><span class="line">mo2 &#x3D; bat_regex1.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># phone_regex &#x3D; re.compile(r&#39;(\d&#123;3&#125;-)?(\d&#123;3&#125;-\d&#123;4&#125;)&#39;)</span><br><span class="line"># mo1 &#x3D; phone_regex.search(&#39;My number is 415-555-4242&#39;)</span><br><span class="line"># print(mo1.group())</span><br><span class="line"># mo2 &#x3D; phone_regex.search(&#39;My number is 555-4242&#39;)</span><br><span class="line"># print(mo2.group())</span><br><span class="line"></span><br><span class="line"># 用星号匹配 0 次或 多次</span><br><span class="line"># bat_regex &#x3D; re.compile(r&#39;Bat(wo)*man&#39;)</span><br><span class="line"># mo1 &#x3D; bat_regex.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line"># print(mo1.group())</span><br><span class="line"></span><br><span class="line"># mo2 &#x3D; bat_regex.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line"># print(mo2.group())</span><br><span class="line"># mo3 &#x3D; bat_regex.search(&#39;The Adventures of Batwowowowoman&#39;)</span><br><span class="line"># print(mo3.group())</span><br><span class="line"></span><br><span class="line"># 用 &#39;+&#39; 号匹配 1 次或 多次</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">bat_regex &#x3D; re.compile(r&#39;Bat(wo)+man&#39;)</span><br><span class="line">mo1 &#x3D; bat_regex.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line">print(mo1 &#x3D;&#x3D; None)</span><br><span class="line"></span><br><span class="line">mo2 &#x3D; bat_regex.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line">mo3 &#x3D; bat_regex.search(&#39;The Adventures of Batwowowowoman&#39;)</span><br><span class="line">print(mo3.group())</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># 贪心和非贪心匹配</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">greedy_ha_regex &#x3D; re.compile(r&#39;(ha)&#123;3,5&#125;&#39;)</span><br><span class="line">mo1 &#x3D; greedy_ha_regex.search(&#39;hahahahahaha&#39;)</span><br><span class="line">print(mo1.group())</span><br><span class="line"></span><br><span class="line">greedy_ha_regex &#x3D; re.compile(r&#39;(ha)&#123;3,5&#125;?&#39;)</span><br><span class="line">mo2 &#x3D; greedy_ha_regex.search(&#39;hahahahahaha&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># findall() 方法 返回一组字符串，而 search 返回一个Match 对象，包含被查找字符串的‘第一次’匹配的文本</span><br><span class="line"></span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;&#39;)</span><br><span class="line"># mo &#x3D; phone_number_regex.search(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line"># print(mo.group())  # 只返回‘第一次’匹配的文本</span><br><span class="line"></span><br><span class="line"># findall() 返回一个字符串列表</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">phone_number_regex &#x3D; re.compile(r&#39;\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;&#39;)  # has no groups</span><br><span class="line">mo &#x3D; phone_number_regex.findall(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line">print(mo)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;(\d&#123;3&#125;)-(\d&#123;3&#125;-\d&#123;4&#125;)&#39;)  # has groups</span><br><span class="line"># mo1 &#x3D; phone_number_regex.findall(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line"># print(mo1)</span><br><span class="line"></span><br><span class="line"># 建立自己的字符分类</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">vowel_regex &#x3D; re.compile(r&#39;[aeiouAEIOU]&#39;)</span><br><span class="line">print(vowel_regex.findall(&#39;Robocop eats baby food.ABY FOOD.&#39;))</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># ^ 加在左方括号后 表示将得到‘非字符类’，即不在这个字符类中的所有字符</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">vowel_regex &#x3D; re.compile(r&#39;[^aeiouAEIOU]&#39;)</span><br><span class="line">print(vowel_regex.findall(&#39;Robocop eats baby food.ABY FOOD.&#39;))</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># 插入字符和美元字符</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">begins_with_hello &#x3D; re.compile(r&#39;^hello&#39;)</span><br><span class="line">he &#x3D; begins_with_hello.search(&#39;hello world!&#39;)</span><br><span class="line">print(he)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># begins_with_hello &#x3D; re.compile(r&#39;^hello&#39;)</span><br><span class="line"># he &#x3D; begins_with_hello.search(&#39;hello world!&#39;)</span><br><span class="line"># print(begins_with_hello.search(&#39;he said hello&#39;) &#x3D;&#x3D; None)</span><br><span class="line"></span><br><span class="line"># 正则表达式 r&#39;\d$&#39; 匹配以数字 0 到 9 结束的字符串</span><br><span class="line"></span><br><span class="line"># endwith_number &#x3D; re.compile(r&#39;\d$&#39;)</span><br><span class="line"># num &#x3D; endwith_number.search(&#39;Your number is 43&#39;)</span><br><span class="line"></span><br><span class="line"># print(num)</span><br><span class="line"></span><br><span class="line"># 正则表达式 r&#39;^\d$&#39; 匹配从开始到结束都是数字的字符串</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">whole_string_isnum &#x3D; re.compile(r&#39;^\d+$&#39;)</span><br><span class="line">print(whole_string_isnum.search(&#39;12345670&#39;))</span><br><span class="line">print(whole_string_isnum.search(&#39;1234xy5670&#39;) &#x3D;&#x3D; None)</span><br><span class="line">print(whole_string_isnum.search(&#39;12 345670&#39;) &#x3D;&#x3D; None)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"># 通配符(.) 这个历害了，它匹配除了换行之外的所有字符</span><br><span class="line"></span><br><span class="line"># at_regex &#x3D; re.compile(r&#39;.at&#39;)</span><br><span class="line"># print(at_regex.findall(&#39;The cat in thd hat sat on the flat at.&#39;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 用 (.*) 匹配所有字符</span><br><span class="line"></span><br><span class="line">name_regex &#x3D; re.compile(r&#39;First Name:(.*) Last Name:(.*)&#39;)</span><br><span class="line">mo &#x3D; name_regex.search(&#39;First Name:Al Last Name:Sweigart&#39;)</span><br><span class="line">print(mo.group(1))</span><br><span class="line">print(mo.group(2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/" rel="prev" title="Python特性介绍">
+                  <i class="fa fa-chevron-left"></i> Python特性介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/06/%E5%A4%9A%E5%B7%A5%E4%BD%9C%E8%A1%A8%E4%BF%9D%E5%AD%98%E8%87%B3%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E8%96%84%E5%86%85%E9%97%AE%E9%A2%98/" rel="next" title="多工作表保存至一个工作薄内问题">
+                  多工作表保存至一个工作薄内问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
