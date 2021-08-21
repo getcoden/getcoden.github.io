@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,869 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/" class="post-title-link" itemprop="url">获取路径下所有文件全名路径判断是路径目录文件是否存在</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:53:13 / 修改时间：09:54:23" itemprop="dateCreated datePublished" datetime="2021-08-21T17:53:13Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="comment"># print(root)  # 当前目录路径</span></span><br><span class="line">        print(dirs)  <span class="comment"># 当前路径下所有子目录</span></span><br><span class="line">        print(files)  <span class="comment"># 当前路径下所有非目录子文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line">    L = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> os.path.splitext(file)[<span class="number">1</span>] == <span class="string">&#x27;.png&#x27;</span>:  <span class="comment"># 想要保存的文件格式</span></span><br><span class="line">                L.append(os.path.join(root, file))</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#其中os.path.splitext()函数将路径拆分为文件名+扩展名</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">dirpath = <span class="string">r&#x27;D:\Premiere\1&#x27;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirpath):</span><br><span class="line">	os.mksdir(dirpath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的目录和文件名（分开显示）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printPath</span>(<span class="params">path</span>):</span></span><br><span class="line">    dirList = []</span><br><span class="line">    fileList = []</span><br><span class="line"></span><br><span class="line">    dirFiles = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> dirFile <span class="keyword">in</span> dirFiles:</span><br><span class="line">        curPath = path + <span class="string">&#x27;/&#x27;</span> + dirFile</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(curPath):</span><br><span class="line">            <span class="comment"># 排除隐藏文件</span></span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                dirList.append(curPath)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">elif</span> os.path.isfile(curPath):</span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                fileList.append(curPath)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;dirlist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> dir_ <span class="keyword">in</span> dirList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, dir_)</span><br><span class="line">    print(<span class="string">&#x27;filelist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> file_ <span class="keyword">in</span> fileList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, file_)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">printPath(path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的文件名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eachFile</span>(<span class="params">filepath</span>):</span></span><br><span class="line">    pathDir = os.listdir(filepath)</span><br><span class="line">    print(<span class="string">&#x27;pathDir:&#x27;</span>, pathDir)</span><br><span class="line">    <span class="keyword">for</span> allDir <span class="keyword">in</span> pathDir:</span><br><span class="line">        child = os.path.join(filepath, allDir)</span><br><span class="line">        print(child)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eachFile(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归获取路径下所有文件名</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listdir</span>(<span class="params">path, list_name</span>):</span>  <span class="comment"># 传入存储的list</span></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">        	listdir(file_path, list_name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            list_name.append(file_path)</span><br><span class="line">    <span class="keyword">return</span> list_name</span><br><span class="line">listdir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>,list_name=[])</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
+</code></pre>
+<h2 id="怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在"><a href="#怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在" class="headerlink" title="怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在"></a>怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.path.exists(path)     <span class="comment"># 判断一个路径是否存在，可以判断一个文件或目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)      <span class="comment"># 判断一个目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断一个路径是文件还是目录（文件夹）</span></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)   <span class="comment"># 返回 True 表示是目录（文件夹）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"></span><br><span class="line">os.path.isfile(path)   <span class="comment"># 返回 True 表示是文件</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" class="post-title-link" itemprop="url">函数的实例应用去除图片水印</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:51:42 / 修改时间：09:52:17" itemprop="dateCreated datePublished" datetime="2021-08-21T17:51:42Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 PDF 文档 分割成图片</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> fitz</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pyMuPDF_fitz</span>(<span class="params">pdfPath, imagePath</span>):</span></span><br><span class="line">    startTime_pdf2img = datetime.datetime.now()  <span class="comment"># 开始时间</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;imagePath=&quot;</span>+imagePath)</span><br><span class="line">    pdfDoc = fitz.<span class="built_in">open</span>(pdfPath)</span><br><span class="line">    <span class="keyword">for</span> pg <span class="keyword">in</span> <span class="built_in">range</span>(pdfDoc.pageCount):</span><br><span class="line">        page = pdfDoc[pg]</span><br><span class="line">        rotate = <span class="built_in">int</span>(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 每个尺寸的缩放系数为1.3，这将为我们生成分辨率提高2.6的图像。</span></span><br><span class="line">        <span class="comment"># 此处若是不做设置，默认图片大小为：792X612, dpi=72</span></span><br><span class="line">        zoom_x = <span class="number">1.33333333</span>  <span class="comment"># (1.33333333--&gt;1056x816)   (2--&gt;1584x1224)</span></span><br><span class="line">        zoom_y = <span class="number">1.33333333</span></span><br><span class="line">        mat = fitz.Matrix(zoom_x, zoom_y).preRotate(rotate)</span><br><span class="line">        pix = page.getPixmap(matrix=mat, alpha=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(imagePath):  <span class="comment"># 判断存放图片的文件夹是否存在</span></span><br><span class="line">            os.makedirs(imagePath)  <span class="comment"># 若图片文件夹不存在就创建</span></span><br><span class="line"></span><br><span class="line">        pix.writePNG(imagePath+<span class="string">&#x27;/&#x27;</span>+<span class="string">&#x27;images_%s.png&#x27;</span> % pg)  <span class="comment"># 将图片写入指定的文件夹内</span></span><br><span class="line"></span><br><span class="line">    endTime_pdf2img = datetime.datetime.now()  <span class="comment"># 结束时间</span></span><br><span class="line">    print(<span class="string">&#x27;pdf2img时间=&#x27;</span>, (endTime_pdf2img - startTime_pdf2img).seconds)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    pdfPath = <span class="string">r&quot;D:\教学工具软件\冰点文库下载器 3.2.10 去广告版\冰点文库下载器 3.2.10 去广告版\kpdf\哪些人适合学Python培训，你在其中吗？.pdf&quot;</span></span><br><span class="line">    imagePath = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">    pyMuPDF_fitz(pdfPath, imagePath)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将图片去除水印，配合上一个程序使用</span></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> product</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># img = Image.open(r&quot;D:\1jieya\image\images_0.png&quot;)</span></span><br><span class="line"><span class="comment"># width, height = img.size</span></span><br><span class="line"><span class="comment"># for pos in product(range(width), range(height)):</span></span><br><span class="line"><span class="comment">#     if sum(img.getpixel(pos)[:3]) &gt; 600:</span></span><br><span class="line"><span class="comment">#         img.putpixel(pos, (255, 255, 255))</span></span><br><span class="line"><span class="comment"># img.save(r&quot;C:\Users\win\Desktop\removed_1.png&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">output = <span class="string">r&quot;D:\1jieya\remove&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(<span class="built_in">input</span>):</span><br><span class="line">        print(image_name)</span><br><span class="line">        img = Image.<span class="built_in">open</span>(os.path.join(<span class="built_in">input</span>, image_name))</span><br><span class="line">        width, height = img.size</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> product(<span class="built_in">range</span>(width), <span class="built_in">range</span>(height)):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span>(img.getpixel(pos)[:<span class="number">3</span>]) &gt; <span class="number">600</span>:</span><br><span class="line">                img.putpixel(pos, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">        img.save(os.path.join(output, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 批量将图片修改为指定大小</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter, ImageDraw</span><br><span class="line"></span><br><span class="line"><span class="comment"># im = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片的格式，大小，以及模式</span></span><br><span class="line"><span class="comment"># print(im.format, im.size, im.mode)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定图片的像素</span></span><br><span class="line"><span class="comment"># im.thumbnail((720, 1280))</span></span><br><span class="line"><span class="comment"># im.save(r&quot;C:\Users\win\Desktop\ccc\128_128.jpg&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 旋转图片的方向</span></span><br><span class="line"><span class="comment"># dest_im = im.rotate(90)</span></span><br><span class="line"><span class="comment"># dest_im.save(r&quot;C:\Users\win\Desktop\ccc\90.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给图片添加滤镜</span></span><br><span class="line"><span class="comment"># dest_im = im.filter(ImageFilter.GaussianBlur)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 图片反转</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_LEFT_RIGHT)</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_TOP_BOTTOM)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片上写文字</span></span><br><span class="line"><span class="comment"># image = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"><span class="comment"># img_draw = ImageDraw.Draw(image)</span></span><br><span class="line"><span class="comment"># img_draw.text((1270, 1250), &#x27;hello world!&#x27;, fill=&#x27;green&#x27;)</span></span><br><span class="line"><span class="comment"># image.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量将图片的大小设置为指定大小</span></span><br><span class="line"></span><br><span class="line">in_path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">out_path = os.path.join(in_path, <span class="string">&#x27;modify&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(out_path):</span><br><span class="line">    os.makedirs(out_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(in_path):</span><br><span class="line">        cur_dir = in_path + <span class="string">&#x27;/&#x27;</span> + image_name</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(cur_dir):</span><br><span class="line">            print(<span class="string">f&#x27;正在处理:<span class="subst">&#123;cur_dir&#125;</span>&#x27;</span>)</span><br><span class="line">            im = Image.<span class="built_in">open</span>(cur_dir)</span><br><span class="line">            im.thumbnail((<span class="number">1280</span>, <span class="number">720</span>))</span><br><span class="line">            im.save(os.path.join(out_path, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E8%AF%BB%E5%8F%96%E5%A4%9A%E8%A1%8C%E4%B8%BA%E8%A1%A8%E5%A4%B4%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E8%AF%BB%E5%8F%96%E5%A4%9A%E8%A1%8C%E4%B8%BA%E8%A1%A8%E5%A4%B4%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">读取多行为表头的方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:47:53 / 修改时间：09:51:21" itemprop="dateCreated datePublished" datetime="2021-08-21T17:47:53Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br></pre></td></tr></table></figure>
+<h2 id="对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解："><a href="#对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解：" class="headerlink" title="对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解："></a>对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解：</h2><h3 id="第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据"><a href="#第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据" class="headerlink" title="第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据"></a>第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">displaydir</span>(<span class="params">dir_path</span>):</span></span><br><span class="line">    file_list = []</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> filenames <span class="keyword">in</span> os.walk(dir_path):</span><br><span class="line">        <span class="keyword">for</span> table <span class="keyword">in</span> filenames[<span class="number">2</span>]:</span><br><span class="line">            path = filenames[<span class="number">0</span>] + <span class="string">&#x27;/&#x27;</span> + table</span><br><span class="line">            li = pd.read_excel(path,header=<span class="number">3</span>,dtype=<span class="built_in">str</span>)</span><br><span class="line">            li[<span class="string">&#x27;file_name&#x27;</span>] = os.path.splitext(table)[<span class="number">0</span>]</span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            file_list.append(li)</span><br><span class="line">            print(<span class="string">&#x27; 第&#x27;</span> + <span class="built_in">str</span>(n) + <span class="string">&#x27; 个表格已合并&#x27;</span>)</span><br><span class="line">    print(<span class="string">&#x27;在该目录下有 %d 个 xlsx 文件&#x27;</span> % <span class="built_in">len</span>(file_list))</span><br><span class="line">    data_result = pd.concat(file_list, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    data_result.to_excel(out_path + <span class="string">&#x27;/&#x27;</span> + <span class="string">&#x27;result.xlsx&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    dir_path = <span class="string">r&quot;D:\1 - 副本\新建文件夹&quot;</span></span><br><span class="line">    out_path = <span class="string">r&quot;C:\Users\win\Desktop\xlsx&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(out_path):</span><br><span class="line">        os.makedirs(out_path)</span><br><span class="line"></span><br><span class="line">    displaydir(dir_path)</span><br></pre></td></tr></table></figure>
+<h3 id="第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。"><a href="#第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。" class="headerlink" title="第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。"></a>第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_excel(<span class="string">r&quot;C:\Users\win\Desktop\xlsx\result.xlsx&quot;</span>,dtype=<span class="built_in">str</span>)</span><br><span class="line">data.rename(columns=&#123;<span class="string">&#x27;Unnamed: 1&#x27;</span>:<span class="string">&#x27;学校&#x27;</span>,<span class="string">&#x27;Unnamed: 2&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>,<span class="string">&#x27;Unnamed: 3&#x27;</span>:<span class="string">&#x27;学生/教师&#x27;</span>,<span class="string">&#x27;Unnamed: 4&#x27;</span>:<span class="string">&#x27;性别&#x27;</span>,<span class="string">&#x27;Unnamed: 5&#x27;</span>:<span class="string">&#x27;身份证号&#x27;</span>,<span class="string">&#x27;Unnamed: 6&#x27;</span>:<span class="string">&#x27;手机号&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br><span class="line">data.dropna(axis=<span class="number">0</span>,how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="reset-index-重置索引列"><a href="#reset-index-重置索引列" class="headerlink" title="reset_index () 重置索引列"></a>reset_index () 重置索引列</h2><p>pandas 中的 reset_index ()</p>
+<p>数据清洗时，会将带空值的行删除，此时 DataFrame 或 Series 类型的数据不再是连续的索引，可以使用 reset_index () 重置索引</p>
+<p>eg:<br>import pandas as pd</p>
+<p>import numpy as np</p>
+<p>df = pd.DataFrame(np.arange(20).reshape(5,4),index=[1,3,4,6,8])</p>
+<p>print(df)</p>
+<p>reset_index () 重置索引：</p>
+<p>print(df.reset_index())</p>
+<p>在获得新的 index，原来的 index 变成数据列，保留下来。</p>
+<p>不想保留原来的 index，使用参数 drop=True，默认 False。</p>
+<p>print(df.reset_index(drop=True))</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.to_excel(<span class="string">r&#x27;D:\finall.xlsx&#x27;</span>,index=<span class="literal">False</span>)   <span class="comment"># 保存工作表</span></span><br></pre></td></tr></table></figure>
+<h1 id="上述为一个处理的完整过程"><a href="#上述为一个处理的完整过程" class="headerlink" title="上述为一个处理的完整过程"></a>上述为一个处理的完整过程</h1><h1 id="以下为第一学习操作的过程："><a href="#以下为第一学习操作的过程：" class="headerlink" title="以下为第一学习操作的过程："></a>以下为第一学习操作的过程：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">file_path=<span class="string">r&quot;D:\1 - 副本\新建文件夹&quot;</span></span><br><span class="line">file_list=os.listdir(file_path)</span><br><span class="line"></span><br><span class="line">data_list=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file_list:</span><br><span class="line">    full_path=os.path.join(file_path,i)</span><br><span class="line">    data=pd.read_excel(full_path,header=<span class="number">3</span>,dtype=<span class="built_in">str</span>)</span><br><span class="line">    data_list.append(data)</span><br><span class="line">    df_all=pd.concat(data_list)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># df_all.to_excel(r&#x27;D:\result1.xlsx&#x27;)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df_all.rename(columns=&#123;<span class="string">&#x27;Unnamed: 0&#x27;</span>:<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;Unnamed: 1&#x27;</span>:<span class="string">&#x27;学校&#x27;</span>,<span class="string">&#x27;Unnamed: 2&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>,<span class="string">&#x27;Unnamed: 3&#x27;</span>:<span class="string">&#x27;学生家长&#x27;</span>,<span class="string">&#x27;Unnamed: 4&#x27;</span>:<span class="string">&#x27;性别&#x27;</span>,<span class="string">&#x27;Unnamed: 5&#x27;</span>:<span class="string">&#x27;身份证号&#x27;</span>,<span class="string">&#x27;Unnamed: 6&#x27;</span>:<span class="string">&#x27;手机号&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># df_all.head(20)</span></span><br><span class="line"><span class="comment"># df_all.drop(columns=[&#x27;id&#x27;], inplace=True)</span></span><br><span class="line">df_all.head(<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_all.dropna(axis=<span class="number">0</span>, how=<span class="string">&#x27;all&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(39, 15)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.reset_index(drop=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.to_excel(<span class="string">r&#x27;D:\finall.xlsx&#x27;</span>,index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_all.rename(columns=&#123;<span class="string">&#x27;学生家长&#x27;</span>:<span class="string">&#x27;学生/教师&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_all.dropna(axis=<span class="number">0</span>,how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line">df_all</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/os-startfile%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/os-startfile%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">os.startfile自动打开文件夹及文件的操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:46:06 / 修改时间：09:46:47" itemprop="dateCreated datePublished" datetime="2021-08-21T17:46:06Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="python-写入文件自动换行问题的方法"><a href="#python-写入文件自动换行问题的方法" class="headerlink" title="python 写入文件自动换行问题的方法"></a>python 写入文件自动换行问题的方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_result</span>(<span class="params"><span class="built_in">str</span></span>):</span></span><br><span class="line">    writeresult=<span class="built_in">open</span>(<span class="string">&#x27;C:/Users/win/Desktop/aa.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">    str1=writeresult.write(<span class="built_in">str</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    writeresult.close()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    a=<span class="built_in">input</span>(<span class="string">&#x27;enter some strs:&#x27;</span>)</span><br><span class="line">    write_result(a)</span><br></pre></td></tr></table></figure>
+<pre><code>enter some strs:12
+enter some strs:123
+enter some strs:1234
+enter some strs:12345
+enter some strs:123456
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">#print(os.startfile(r&#x27;D:\11&#x27;))</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_files_in_dir</span>(<span class="params">path</span>):</span></span><br><span class="line">	<span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">		filepath = os.path.join(path,file)</span><br><span class="line">		<span class="keyword">if</span> os.path.isdir(filepath):</span><br><span class="line">			open_files_in_dir(filepath)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			os.startfile(filepath)</span><br><span class="line">		</span><br><span class="line">path = <span class="string">r&#x27;D:\11&#x27;</span></span><br><span class="line">open_files_in_dir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>python 用什么打开文件_用 python 打开文件夹的三种方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一、利用 explorer.exe</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 explorer.exe 执行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start_directory = r&#x27;C:\ 代码 \ 软件包&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># os.system(&quot;explorer.exe %s&quot; % start_directory)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二、用 os.startfile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># import os</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start_directory = r&#x27;C:\ 代码 \ 软件包&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># os.startfile(start_directory)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三、利用 subprocess</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 subprocess</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">startfile</span>(<span class="params">filename</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">        os.startfile(filename)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line"></span><br><span class="line">        subprocess.Popen([<span class="string">&#x27;xdg-open&#x27;</span>, filename])</span><br><span class="line"></span><br><span class="line">start_directory = <span class="string">&#x27;D:/11/9.jpg&#x27;</span></span><br><span class="line"></span><br><span class="line">startfile(start_directory)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AAExcel%E5%90%88%E5%B9%B6%E7%9A%84%E8%8A%B1%E5%BC%8F%E6%93%8D%E4%BD%9C%E8%A6%81%E6%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AAExcel%E5%90%88%E5%B9%B6%E7%9A%84%E8%8A%B1%E5%BC%8F%E6%93%8D%E4%BD%9C%E8%A6%81%E6%B1%82/" class="post-title-link" itemprop="url">代码实现多个Excel合并的花式操作要求</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:44:31 / 修改时间：09:45:16" itemprop="dateCreated datePublished" datetime="2021-08-21T17:44:31Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一、合并指定目录下的所有订单表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">files = Path(<span class="string">&quot;orders/orders1&quot;</span>).glob(<span class="string">&quot;*.xlsx&quot;</span>)</span><br><span class="line">dfs = [pd.read_excel(f) <span class="keyword">for</span> f <span class="keyword">in</span> files]</span><br><span class="line">df = pd.concat(dfs)</span><br><span class="line">df.to_excel(<span class="string">&quot;result2.xlsx&quot;</span>,index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二、合并指定目录下的指定订单表</span></span><br><span class="line"></span><br><span class="line">dfs = [pd.read_excel(f) <span class="keyword">for</span> f <span class="keyword">in</span> (<span class="string">&#x27;orders/orders1/order1.xlsx&#x27;</span>,<span class="string">&#x27;orders/orders1/order2.xlsx&#x27;</span>)]</span><br><span class="line">df = pd.concat(dfs)</span><br><span class="line">df.to_excel(<span class="string">&quot;result3.xlsx&quot;</span>,index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 三、合并指定目录指定订单表的指定字段</span></span><br><span class="line"></span><br><span class="line">table1 = pd.read_excel(<span class="string">&quot;orders/orders1/order1.xlsx&quot;</span>)</span><br><span class="line">table2 = pd.read_excel(<span class="string">&#x27;orders/orders1/order2.xlsx&#x27;</span>)</span><br><span class="line">part1 = table1.iloc[:,<span class="number">2</span>]  <span class="comment">#取order1.xlsx第3列的所有行</span></span><br><span class="line">part2 = table2.iloc[:,[<span class="number">8</span>,<span class="number">9</span>]]  <span class="comment">#取order2.xlsx的第9、10列的所有行</span></span><br><span class="line">result4 = pd.concat([part1,part2],axis = <span class="number">1</span> ) <span class="comment">#合并  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上注意axis=1表示横向合并。打印一下result4，长这样</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 四、合并所有目录下的所有订单表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">file_list = os.walk(<span class="string">&quot;./&quot;</span>)</span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> dir_path,dirs,files <span class="keyword">in</span> file_list:</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        file_path = os.path.join(dir_path,f) <span class="comment">#重构文件路径</span></span><br><span class="line">        print(file_path)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;xlsx&#x27;</span> <span class="keyword">in</span> f:    <span class="comment">#只要xlsx文件</span></span><br><span class="line">            df = pd.read_excel(file_path) <span class="comment">#将Excel转成DataFrame</span></span><br><span class="line">            result.append(df)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line">df = pd.concat(result) <span class="comment">#多个DataFrame合成一个</span></span><br><span class="line">df.to_excel(<span class="string">&quot;result4.xlsx&quot;</span>,index=<span class="literal">False</span>) <span class="comment">#导入到一个新的Excel中</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_image_filepaths</span>(<span class="params">dataset_dir</span>):</span></span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(dataset_dir):</span><br><span class="line">        <span class="keyword">for</span> name <span class="keyword">in</span> files:</span><br><span class="line">            fp = os.path.join(root, name)</span><br><span class="line">            <span class="keyword">if</span> name.endswith(<span class="string">&quot;.jpg&quot;</span>):</span><br><span class="line">                result.append(fp)</span><br><span class="line">    <span class="keyword">return</span> result </span><br><span class="line"></span><br><span class="line">find_image_filepaths(<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 批量读取 excel</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line">path=<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span></span><br><span class="line">filename_list = os.listdir(<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span>)</span><br><span class="line">train_data=[]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> filename_list:</span><br><span class="line">    train_data.append(pd.read_excel(path+<span class="string">&#x27;/&#x27;</span>+item))</span><br><span class="line">train_data=pd.concat(train_data)</span><br><span class="line">train_data</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E5%9C%A8Pandas%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E5%9C%A8Pandas%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">在Pandas中更改列的数据类型方法总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:41:04 / 修改时间：09:43:22" itemprop="dateCreated datePublished" datetime="2021-08-21T17:41:04Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df= pd.DataFrame(a)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0    object
+1    object
+2    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame (a, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment">#示例 1</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0     object
+1    float64
+2    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame (data=a, dtype=np.int8) <span class="comment">#示例 2</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+<pre><code>0    object
+1    object
+2    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是一个字符串 Seriess 的例子，它的 dtype 为 object：</span></span><br><span class="line"></span><br><span class="line">s = pd.Series([<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;4.7&#x27;</span>, <span class="string">&#x27;pandas&#x27;</span>, <span class="string">&#x27;10&#x27;</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0         1
+1         2
+2       4.7
+3    pandas
+4        10
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 to_numeric 转为数值。默认情况下，它不能处理字母型的字符串 &#x27;pandas&#x27;：</span></span><br><span class="line"><span class="comment"># 如果遇到无效值，第三个选项就是忽略该操作：</span></span><br><span class="line">pd.to_numeric(s,errors=<span class="string">&#x27;coerce&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0     1.0
+1     2.0
+2     4.7
+3     NaN
+4    10.0
+dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.to_numeric(s, errors=<span class="string">&#x27;ignore&#x27;</span>)<span class="comment">#the original Series is returned untouched</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0         1
+1         2
+2       4.7
+3    pandas
+4        10
+dtype: object
+</code></pre>
+<p>对于多列或者整个 DataFrame</p>
+<p>如果想要将这个操作应用到多个列，依次处理每一列是非常繁琐的，所以可以使用 DataFrame.apply 处理每一列。</p>
+<p>对于某个 DataFrame：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line">df = pd.DataFrame(a, columns=[<span class="string">&#x27;col1&#x27;</span>,<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+      <th>col3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>col1    object
+col2    object
+col3    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>]]=df[[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>]].apply(pd.to_numeric)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>col1     object
+col2    float64
+col3    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+      <th>col3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70.0</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5.0</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 但是，可能不知道哪些列可以可靠地转换为数字类型。在这种情况下，设置参数：</span></span><br><span class="line"></span><br><span class="line">df.apply(pd.to_numeric, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后该函数将被应用于整个 DataFrame，可以转换为数字类型的列将被转换，而不能 (例如，它们包含非数字字符串或日期) 的列将被单独保留。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另外 pd.to_datetime 和 pd.to_timedelta 可将数据转换为日期和时间戳。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+      <th>col3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70.0</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5.0</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 软转换 —— 类型自动推断</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 版本 0.21.0 引入了 infer_objects () 方法，用于将具有对象数据类型的 DataFrame 的列转换为更具体的类型。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如，用两列对象类型创建一个 DataFrame，其中一个保存整数，另一个保存整数的字符串：</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>: [<span class="number">7</span>, <span class="number">1</span>, <span class="number">5</span>], <span class="string">&#x27;b&#x27;</span>: [<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;1&#x27;</span>]&#125;, dtype=<span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">df.dtypes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>a    object
+b    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 然后使用 infer_objects ()，可以将列 &#x27;a&#x27; 的类型更改为 int64：</span></span><br><span class="line"></span><br><span class="line">df =df.infer_objects()</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>a     int64
+b    object
+dtype: object
+</code></pre>
+<p>astype 强制转换</p>
+<p>如果试图强制将两列转换为整数类型，可以使用 df.astype (int)。</p>
+<p>示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df= pd.DataFrame(a, columns=[<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>])</span><br><span class="line"></span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>one      object
+two      object
+three    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[[<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]]=df[[<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]].astype(<span class="built_in">float</span>)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>one       object
+two      float64
+three    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -458,10 +1321,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-07-07 16:36:04 / 修改时间：09:19:06" itemprop="dateCreated datePublished" datetime="2021-07-07T16:36:04Z">2021-07-07</time>
+      <time title="创建时间：2021-07-07 16:36:04" itemprop="dateCreated datePublished" datetime="2021-07-07T16:36:04Z">2021-07-07</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-02 06:46:41" itemprop="dateModified" datetime="2021-08-02T06:46:41Z">2021-08-02</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -483,13 +1352,13 @@
     
     <div class="post-body" itemprop="articleBody">
           <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 某个sheet下的数据,将其转化为列表数据，方便操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_data</span>(<span class="params">filename, sheetname</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=sheetname)</span><br><span class="line">        dataList = df.to_dict(orient=<span class="string">&#x27;records&#x27;</span>)  <span class="comment"># 转换为列表</span></span><br><span class="line">        <span class="keyword">return</span> dataList</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;未能打开此文件，请确认文件名及路径是否正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 所有sheet表名，并将其转化为列表返回</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_list</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> df.keys()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fileName = <span class="string">&#x27;D:/test/xlsx/Notes_111.xlsx&#x27;</span></span><br><span class="line">    sheetList = get_excel_sheet_list(fileName)  <span class="comment"># 获取sheet列表</span></span><br><span class="line">    print(sheetList)</span><br><span class="line">    writer = pd.ExcelWriter(<span class="string">&quot;D:/test/xlsx/新数据.xlsx&quot;</span>, engin=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheetList:  <span class="comment"># 遍历每个sheet名称</span></span><br><span class="line">        sheetData = get_excel_sheet_data(fileName, i)   <span class="comment"># 读取每个sheet下的数据</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> sheetData:  <span class="comment"># 取出每一项的数据</span></span><br><span class="line">            <span class="comment"># do something</span></span><br><span class="line">            <span class="comment"># 依次根据sheet名称对“新数据.xlsx”此文件多次写入Sheet</span></span><br><span class="line">            pd_look = pd.DataFrame(sheetData)</span><br><span class="line">            pd_look.to_excel(writer, sheet_name=i, index=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># 最后保存写入，并释放</span></span><br><span class="line">    writer.save()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 没有操作成功示例</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> load_workbook </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> time </span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据时间创建工作表名子</span></span><br><span class="line">path = <span class="string">r&quot;D:\test\xlsx&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作表名字</span></span><br><span class="line">date_rand = time.strftime(<span class="string">&quot;%H-%M-%S&quot;</span>, time.localtime()) <span class="comment"># &quot;%Y-%m-%d&quot; 按日期创建文件</span></span><br><span class="line">out_file_name = path+<span class="string">&#x27;\%s.xlsx&#x27;</span> % date_rand</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 某个sheet下的数据,将其转化为列表数据，方便操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_data</span>(<span class="params">filename, sheetname</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=sheetname)</span><br><span class="line">        <span class="keyword">return</span> df </span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;未能打开此文件，请确认文件名及路径是否正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 所有sheet表名，并将其转化为列表返回</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_list</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> df.keys()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fileName = <span class="string">&#x27;D:/test/xlsx/Notes_222.xlsx&#x27;</span></span><br><span class="line">    sheetList = get_excel_sheet_list(fileName)  <span class="comment"># 获取sheet列表</span></span><br><span class="line">    print(sheetList)</span><br><span class="line">    writer = pd.ExcelWriter(out_file_name,engine=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表,要加入 engine=&#x27;openpyxl&#x27; 引擎</span></span><br><span class="line"><span class="comment">#     book = load_workbook(writer.path)</span></span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表，同时也 import 入 from openpylx import load_workbook</span></span><br><span class="line"><span class="comment">#     writer.book = book</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheetList:  <span class="comment"># 遍历每个sheet名称</span></span><br><span class="line">        sheetData = get_excel_sheet_data(fileName, i)   <span class="comment"># 读取每个sheet下的数据</span></span><br><span class="line">        df=sheetData[sheetData[<span class="string">&#x27;code&#x27;</span>]==<span class="number">111</span>] <span class="comment"># do something</span></span><br><span class="line">        print(df)</span><br><span class="line">        <span class="comment"># 依次根据sheet名称对“新数据.xlsx”此文件多次写入Sheet</span></span><br><span class="line">        df.to_excel(writer, sheet_name=i, index=<span class="literal">False</span>)</span><br><span class="line">            </span><br><span class="line">    writer.save()  <span class="comment"># 最后保存写入，并释放</span></span><br><span class="line">    os.system(<span class="string">&#x27;explorer.exe &#x27;</span> + path) <span class="comment"># 程序执行完后自动打开目标文件夹 </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> load_workbook </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> time </span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据时间创建工作表名子</span></span><br><span class="line">path = <span class="string">r&quot;D:\test\xlsx&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作表名字</span></span><br><span class="line">date_rand = time.strftime(<span class="string">&quot;%H-%M-%S&quot;</span>, time.localtime()) <span class="comment"># &quot;%Y-%m-%d&quot; 按日期创建文件</span></span><br><span class="line">out_file_name = path+<span class="string">&#x27;\%s.xlsx&#x27;</span> % date_rand</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 某个sheet下的数据,将其转化为列表数据，方便操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_data</span>(<span class="params">filename, sheetname</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=sheetname)</span><br><span class="line">        <span class="keyword">return</span> df </span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;未能打开此文件，请确认文件名及路径是否正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 所有sheet表名，并将其转化为列表返回</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_list</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> df.keys()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fileName = <span class="string">&#x27;D:/test/xlsx/Notes_222.xlsx&#x27;</span></span><br><span class="line">    sheetList = get_excel_sheet_list(fileName)  <span class="comment"># 获取sheet列表</span></span><br><span class="line">    print(sheetList)</span><br><span class="line">    writer = pd.ExcelWriter(out_file_name,engine=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表,要加入 engine=&#x27;openpyxl&#x27; 引擎</span></span><br><span class="line"><span class="comment">#     book = load_workbook(writer.path)</span></span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表，同时也 import 入 from openpylx import load_workbook</span></span><br><span class="line"><span class="comment">#     writer.book = book</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheetList:  <span class="comment"># 遍历每个sheet名称</span></span><br><span class="line">        sheetData = get_excel_sheet_data(fileName, i)   <span class="comment"># 读取每个sheet下的数据</span></span><br><span class="line">        df=sheetData[sheetData[<span class="string">&#x27;code&#x27;</span>]==<span class="number">111</span>] <span class="comment"># do something</span></span><br><span class="line">        print(df)</span><br><span class="line">        <span class="comment"># 依次根据sheet名称对“新数据.xlsx”此文件多次写入Sheet</span></span><br><span class="line">        df.to_excel(writer, sheet_name=i, index=<span class="literal">False</span>)</span><br><span class="line">            </span><br><span class="line">    writer.save()  <span class="comment"># 最后保存写入，并释放</span></span><br><span class="line">    os.startfile(path)  <span class="comment"># 推荐此种写法</span></span><br><span class="line">    <span class="comment"># os.system(&#x27;explorer.exe &#x27; + path) # 程序执行完后自动打开目标文件夹 </span></span><br></pre></td></tr></table></figure>
 <pre><code>dict_keys([&#39;Sheet1&#39;])
    code       city
 0   111         NY
 1   111         CA
 </code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sPath=<span class="string">r&#x27;d:\test1&#x27;</span></span><br><span class="line">os.system(<span class="string">&#x27;explorer.exe &#x27;</span> + sPath)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sPath=<span class="string">r&#x27;d:\test1&#x27;</span></span><br><span class="line">os.startfile(sPath)</span><br><span class="line"><span class="comment"># os.system(&#x27;explorer.exe &#x27; + sPath)</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    print(time.localtime())</span><br><span class="line"></span><br><span class="line">    year = time.localtime().tm_year</span><br><span class="line">    month = time.localtime().tm_mon</span><br><span class="line">    day = time.localtime().tm_mday</span><br><span class="line"></span><br><span class="line">    hour = time.localtime().tm_hour</span><br><span class="line">    minute = time.localtime().tm_min</span><br><span class="line">    second = time.localtime().tm_sec</span><br><span class="line"></span><br><span class="line">    print(year, <span class="string">&#x27;年&#x27;</span>, month, <span class="string">&#x27;月&#x27;</span>, day, <span class="string">&#x27;日&#x27;</span>)</span><br><span class="line">    print(hour, <span class="string">&#x27;时&#x27;</span>, minute, <span class="string">&#x27;分&#x27;</span>, second, <span class="string">&#x27;秒&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>time.struct_time(tm_year=2021, tm_mon=7, tm_mday=7, tm_hour=16, tm_min=30, tm_sec=37, tm_wday=2, tm_yday=188, tm_isdst=0)
 2021 年 7 月 7 日
@@ -614,1084 +1483,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/" class="post-title-link" itemprop="url">正则表达式练习</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-30 10:40:37 / 修改时间：02:45:10" itemprop="dateCreated datePublished" datetime="2021-06-30T10:40:37Z">2021-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"># author : BJxo</span><br><span class="line"># date : 2021&#x2F;04&#x2F;30</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;(\(\d&#123;3&#125;\)) (\d&#123;3&#125;-\d&#123;3&#125;)&#39;)</span><br><span class="line"># mo &#x3D; phone_number_regex.search(&#39;My number is (415) 555-4242.&#39;)</span><br><span class="line"># print(&#39;Phone number found: &#39; + mo.group(1))</span><br><span class="line"># print(mo.groups())</span><br><span class="line"></span><br><span class="line"># bat_regex &#x3D; re.compile(r&#39;Bat(man|mobile|bat|copter)&#39;)</span><br><span class="line"># mo &#x3D; bat_regex.search(&#39;Batmobile lost a wheel&#39;)</span><br><span class="line"># print(mo.group())</span><br><span class="line"># print(mo.group(1))</span><br><span class="line"></span><br><span class="line"># &#39;?&#39; 在正则表达式内表示匹配 0 或 1 次，换句话说就是可选匹配，有就匹配，没有就不匹配。而 &#39;*&#39; 则表示匹配 0 次 或多次。</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">bat_regex1 &#x3D; re.compile(r&#39;Bat(wo)?man&#39;)</span><br><span class="line">mo1 &#x3D; bat_regex1.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line">print(mo1.group())</span><br><span class="line">mo2 &#x3D; bat_regex1.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># phone_regex &#x3D; re.compile(r&#39;(\d&#123;3&#125;-)?(\d&#123;3&#125;-\d&#123;4&#125;)&#39;)</span><br><span class="line"># mo1 &#x3D; phone_regex.search(&#39;My number is 415-555-4242&#39;)</span><br><span class="line"># print(mo1.group())</span><br><span class="line"># mo2 &#x3D; phone_regex.search(&#39;My number is 555-4242&#39;)</span><br><span class="line"># print(mo2.group())</span><br><span class="line"></span><br><span class="line"># 用星号匹配 0 次或 多次</span><br><span class="line"># bat_regex &#x3D; re.compile(r&#39;Bat(wo)*man&#39;)</span><br><span class="line"># mo1 &#x3D; bat_regex.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line"># print(mo1.group())</span><br><span class="line"></span><br><span class="line"># mo2 &#x3D; bat_regex.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line"># print(mo2.group())</span><br><span class="line"># mo3 &#x3D; bat_regex.search(&#39;The Adventures of Batwowowowoman&#39;)</span><br><span class="line"># print(mo3.group())</span><br><span class="line"></span><br><span class="line"># 用 &#39;+&#39; 号匹配 1 次或 多次</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">bat_regex &#x3D; re.compile(r&#39;Bat(wo)+man&#39;)</span><br><span class="line">mo1 &#x3D; bat_regex.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line">print(mo1 &#x3D;&#x3D; None)</span><br><span class="line"></span><br><span class="line">mo2 &#x3D; bat_regex.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line">mo3 &#x3D; bat_regex.search(&#39;The Adventures of Batwowowowoman&#39;)</span><br><span class="line">print(mo3.group())</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># 贪心和非贪心匹配</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">greedy_ha_regex &#x3D; re.compile(r&#39;(ha)&#123;3,5&#125;&#39;)</span><br><span class="line">mo1 &#x3D; greedy_ha_regex.search(&#39;hahahahahaha&#39;)</span><br><span class="line">print(mo1.group())</span><br><span class="line"></span><br><span class="line">greedy_ha_regex &#x3D; re.compile(r&#39;(ha)&#123;3,5&#125;?&#39;)</span><br><span class="line">mo2 &#x3D; greedy_ha_regex.search(&#39;hahahahahaha&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># findall() 方法 返回一组字符串，而 search 返回一个Match 对象，包含被查找字符串的‘第一次’匹配的文本</span><br><span class="line"></span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;&#39;)</span><br><span class="line"># mo &#x3D; phone_number_regex.search(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line"># print(mo.group())  # 只返回‘第一次’匹配的文本</span><br><span class="line"></span><br><span class="line"># findall() 返回一个字符串列表</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">phone_number_regex &#x3D; re.compile(r&#39;\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;&#39;)  # has no groups</span><br><span class="line">mo &#x3D; phone_number_regex.findall(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line">print(mo)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;(\d&#123;3&#125;)-(\d&#123;3&#125;-\d&#123;4&#125;)&#39;)  # has groups</span><br><span class="line"># mo1 &#x3D; phone_number_regex.findall(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line"># print(mo1)</span><br><span class="line"></span><br><span class="line"># 建立自己的字符分类</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">vowel_regex &#x3D; re.compile(r&#39;[aeiouAEIOU]&#39;)</span><br><span class="line">print(vowel_regex.findall(&#39;Robocop eats baby food.ABY FOOD.&#39;))</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># ^ 加在左方括号后 表示将得到‘非字符类’，即不在这个字符类中的所有字符</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">vowel_regex &#x3D; re.compile(r&#39;[^aeiouAEIOU]&#39;)</span><br><span class="line">print(vowel_regex.findall(&#39;Robocop eats baby food.ABY FOOD.&#39;))</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># 插入字符和美元字符</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">begins_with_hello &#x3D; re.compile(r&#39;^hello&#39;)</span><br><span class="line">he &#x3D; begins_with_hello.search(&#39;hello world!&#39;)</span><br><span class="line">print(he)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># begins_with_hello &#x3D; re.compile(r&#39;^hello&#39;)</span><br><span class="line"># he &#x3D; begins_with_hello.search(&#39;hello world!&#39;)</span><br><span class="line"># print(begins_with_hello.search(&#39;he said hello&#39;) &#x3D;&#x3D; None)</span><br><span class="line"></span><br><span class="line"># 正则表达式 r&#39;\d$&#39; 匹配以数字 0 到 9 结束的字符串</span><br><span class="line"></span><br><span class="line"># endwith_number &#x3D; re.compile(r&#39;\d$&#39;)</span><br><span class="line"># num &#x3D; endwith_number.search(&#39;Your number is 43&#39;)</span><br><span class="line"></span><br><span class="line"># print(num)</span><br><span class="line"></span><br><span class="line"># 正则表达式 r&#39;^\d$&#39; 匹配从开始到结束都是数字的字符串</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">whole_string_isnum &#x3D; re.compile(r&#39;^\d+$&#39;)</span><br><span class="line">print(whole_string_isnum.search(&#39;12345670&#39;))</span><br><span class="line">print(whole_string_isnum.search(&#39;1234xy5670&#39;) &#x3D;&#x3D; None)</span><br><span class="line">print(whole_string_isnum.search(&#39;12 345670&#39;) &#x3D;&#x3D; None)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"># 通配符(.) 这个历害了，它匹配除了换行之外的所有字符</span><br><span class="line"></span><br><span class="line"># at_regex &#x3D; re.compile(r&#39;.at&#39;)</span><br><span class="line"># print(at_regex.findall(&#39;The cat in thd hat sat on the flat at.&#39;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 用 (.*) 匹配所有字符</span><br><span class="line"></span><br><span class="line">name_regex &#x3D; re.compile(r&#39;First Name:(.*) Last Name:(.*)&#39;)</span><br><span class="line">mo &#x3D; name_regex.search(&#39;First Name:Al Last Name:Sweigart&#39;)</span><br><span class="line">print(mo.group(1))</span><br><span class="line">print(mo.group(2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">Python特性介绍</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-26 14:08:42 / 修改时间：06:27:42" itemprop="dateCreated datePublished" datetime="2021-06-26T14:08:42Z">2021-06-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>所谓变量，在我理解下来应该是用来装内容的名字，百度上说是这样的</strong></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210618092121.png" alt="20210618092121"></p>
-</div>
-
-<p>在学 C 时，使用变量前都需要提前进行声明，而在python使用时不需要提前声明，只要想用就可以直接使用<br>举个栗子</p>
-<p>大部分了解过的人，应该都能看出来，<br>变量有一些需要注意的地方</p>
-<blockquote>
-<p>在使用变量之前，需要先进行赋值</p>
-<p>变量名可以用字母、数字、下划线，但不能用数字开头，这倒是和&gt; C一样</p>
-<p>字母大小写是不同的</p>
-<p>等号(＝)是赋值的意思，将右边的值赋给右边</p>
-<p>尽量将变量名与要表达的意思一致</p>
-</blockquote>
-<h2 id="人们为什么使用python"><a href="#人们为什么使用python" class="headerlink" title="人们为什么使用python"></a>人们为什么使用python</h2><h3 id="软件质量"><a href="#软件质量" class="headerlink" title="软件质量"></a>软件质量</h3><ul>
-<li>Python的设计侧重于代码的可读性，一致性和软件质量，这使得python与其他脚本语言区分开来。因Python强大的可读性，在维护性和重用性方面有很大的优势。Python也支持面向对象(OOP)，使得程序的重用性大大提升。</li>
-</ul>
-<h3 id="提高开发者的效率"><a href="#提高开发者的效率" class="headerlink" title="提高开发者的效率"></a>提高开发者的效率</h3><ul>
-<li>相对于一些静态编译语言，java，C++等，python的代码量往往只有他们的1/5~1/3，这种代码量就意味值python就更具维护性，更能提高开发者的效率。并且Python语言可以立即运行，不需要传统语言的编译和链接等步骤。进一步提高了程序员的效率。</li>
-</ul>
-<h3 id="程序的可移植性"><a href="#程序的可移植性" class="headerlink" title="程序的可移植性"></a>程序的可移植性</h3><ul>
-<li><p>Python程序可以在多个主流计算机平台运行，不需要修改代码。比如一些文件操作与管理等操作系统接口，在设计时，都考虑了程序的可移植性。</p>
-<h3 id="标准库的支持"><a href="#标准库的支持" class="headerlink" title="标准库的支持"></a>标准库的支持</h3></li>
-<li><p>Python有强大的标准库支持，这些标准库支持一系列的应用级编程任务。此外更多的还有很多python第三方支持工具，让Python有更强大的活力。</p>
-</li>
-</ul>
-<h3 id="组件集成"><a href="#组件集成" class="headerlink" title="组件集成"></a>组件集成</h3><ul>
-<li><p>python脚本可以灵活的与其他定制程序轻松地与应用程序的其他部分进行通信。这种集成可以让python成为名副其实的“胶水语言”，Python可以调用C，C++等程序，也可以被C,C++调用。</p>
-<h3 id="享受乐趣"><a href="#享受乐趣" class="headerlink" title="享受乐趣"></a>享受乐趣</h3></li>
-<li><p>应用级的编程享受，让开发者避免繁琐的编程工作，直接调用标准库或三方库，就能轻易完成自己的目标。</p>
-</li>
-</ul>
-<h2 id="Python是脚本语言吗？"><a href="#Python是脚本语言吗？" class="headerlink" title="Python是脚本语言吗？"></a>Python是脚本语言吗？</h2><p>Python是一种多用途的编程语言，时常在扮演脚本语言的角色。一般来说，Python可定义为面向对象的脚本语言。实际上，往往人们从以下几个“角色”来使用Python：</p>
-<ul>
-<li>shell工具</li>
-</ul>
-<p>这只用到了Python语言价值的其中一小部分，这里的python常常用来调用其他程序，或者当作一个脚本处理任务，比如处理文本等等</p>
-<ul>
-<li>控制语言</li>
-</ul>
-<p>Python的简洁，可以让他在各个场合充当一个控制角色，比如控制各个相关设备及程序之间的沟通和测试，或者是充当相关不同程序之间的“连接层”。</p>
-<ul>
-<li>使用快捷</li>
-</ul>
-<p>常常充当“脚本程序”的Python，就意味着它有脚本一样的快捷性，但是它的功能与能力远远超出脚本的范畴。它的灵活性和便捷能更快提高开发速度，更增加了探索研究与递增的开发编程模式的效率（这也是Python在机器学习上热门的原因）。</p>
-<h2 id="Python的缺点是什么？"><a href="#Python的缺点是什么？" class="headerlink" title="Python的缺点是什么？"></a>Python的缺点是什么？</h2><p>与C语言这类静态编译语言来说，Python的执行速度还不够快，目前的Python是将源码编译（或者说转化）为字节码，之后再将字节码解释出来，因为字节码是一种平台无关的格式，字节码就具有可移植性。python没有像C语言那样将代码编译成为二进制代码（可用于芯片的指令），所以Python没有静态编译语言的执行速度快。</p>
-<p>Python在发展过程中，一直对执行速度再做改进，比如在解释器内部，一些需要执行速度的操作，往往是由c语言在执行，他们都有C语言的执行速度（Numpy就是一个双语言混编策略的一个重要例子）。总得来说，Python在开发过程中带来的收益比执行效率上的损失更为重要，尤其是在如今计算机的处理速度下。</p>
-<h2 id="使用python能做些什么"><a href="#使用python能做些什么" class="headerlink" title="使用python能做些什么"></a>使用python能做些什么</h2><ul>
-<li><p>系统编程： 对操作系统服务的内置接口，使其成为编写可移植的系统管理的维护工具和组件的理想语言。</p>
-</li>
-<li><p>用户图形接口：python快速，简洁的开发模式，十分适合GUI程序，一些内置的TKinter的标准面向对象接口，可以让python生成本地观感的GUI,并且可以通过可移植性，在任何操作平台上运行。</p>
-</li>
-<li><p>Internet脚本：python提供许多的网络接口和标准Internet模块，使得python在网络的服务器端或是客户端都能发挥巨大的作用。还有许多强大的第三方工具，让python在处理网络时有更多选择。</p>
-</li>
-<li><p>组件集成：Python作为控制语言时，曾涉及它的组件集成的角色。Python可以通过C/C++系统进行扩展，并能够嵌套C/C++系统的特性，使其成为一种灵活的黏合语言。</p>
-</li>
-<li><p>数据库编程：Python提供了对所有主流数据库系统的接口。</p>
-</li>
-<li><p>数值计算和科学计算编程</p>
-</li>
-</ul>
-<h2 id="Python有哪些技术上的优点"><a href="#Python有哪些技术上的优点" class="headerlink" title="Python有哪些技术上的优点"></a>Python有哪些技术上的优点</h2><ul>
-<li>面向对象：支持面向对象编程</li>
-<li>免费开源</li>
-<li>可移植：几乎在所有主流的操作系统上都能运行python</li>
-<li>功能强大<ul>
-<li>动态类型</li>
-<li>自动内存管理：无需“垃圾回收”，Python能够代替你执行底层的内存管理</li>
-<li>大型程序支持</li>
-<li>内置对象类型</li>
-<li>内置工具和齐全的第三方库工具</li>
-<li>简单易用易学</li>
-</ul>
-</li>
-</ul>
-<h2 id="Python-编程快速上手，小白学习第一章课后习题1"><a href="#Python-编程快速上手，小白学习第一章课后习题1" class="headerlink" title="Python 编程快速上手，小白学习第一章课后习题1"></a>Python 编程快速上手，小白学习第一章课后习题1</h2><ul>
-<li><p>print()函数将括号内的字符串显示在屏幕上–输出</p>
-</li>
-<li><p>input()函数 等待用户在键盘上输入一些文本，并按下回车键–输入</p>
-</li>
-<li><p>len()函数接受一个字符串，并求值为该字符串中字符的数目</p>
-</li>
-<li><p>+操作符只能加两个整数，或连接两个字符串。不能让一个整数和一个字符</p>
-</li>
-<li><p>串相加，这不符合python的语法。</p>
-</li>
-<li><p>str()、int()、float()函数将分别求值为传入的字符串、整数和浮点数形式。 </p>
-</li>
-<li><p>这里写代码片# This program says hello and asks for my name.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">print(‘Hello world !’) #print()函数将括号内的字符串显示在屏幕上</span><br><span class="line"></span><br><span class="line">print(‘What is your name ?’) # ask for their name</span><br><span class="line"></span><br><span class="line">myName&#x3D;input() #input()函数 等待用户在键盘上输入一些文本，并按下回车键</span><br><span class="line"></span><br><span class="line">print(‘hai~ I love you , ‘+myName)</span><br><span class="line"></span><br><span class="line">print(‘The length of your name is:’)</span><br><span class="line"></span><br><span class="line">print(len(myName)) #len()函数求值为一个整型，即字符串中字符的个数</span><br><span class="line"></span><br><span class="line">print(‘What is your age ?’) # ask for their age</span><br><span class="line"></span><br><span class="line">myAge&#x3D;input()</span><br><span class="line"></span><br><span class="line">print(‘You will be ‘+str(int(myAge)+1)+’ in a year.’)</span><br></pre></td></tr></table></figure>
-<p>图示：</p>
-</li>
-</ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210618095332.png" alt="20210618095332"></p>
-</div>
-
-
-<p>课后习题1</p>
-<p>1．下面哪些是操作符，哪些是值？</p>
-<p>‘hello’ -88.8 - / + 5<br>答：操作符包括 ：* 、-、/、+；值包括：’hello’、-88.8、5</p>
-<p>2．下面哪个是变量，哪个是字符串？</p>
-<p>spam（变量）</p>
-<p>‘spam’（字符串）</p>
-<p>3．说出 3 种数据类型。</p>
-<p>答：整形（int）、浮点型（float）、字符串(str)</p>
-<p>4．表达式由什么构成？所有表达式都做什么事？</p>
-<p>答：表达式含”值”和”操作符”，并且总是可以求值</p>
-<p>5．本章介绍了赋值语句，如 spam = 10。表达式和语句有什么区别？</p>
-<p>答： 表达式：表达是某件事</p>
-<p>语句：表达是做某件事</p>
-<p>赋值语句包含一个变量名，一个等号，以及存储的值。而表达式是求值</p>
-<p>8．为什么 eggs 是有效的变量名，而 100 是无效的？</p>
-<p>变量名规则</p>
-<p>遵从以下3条规则：</p>
-<p>1.只能是一个词</p>
-<p>2.只能包含字母 数字和下划线</p>
-<p>3.不能以数字开头</p>
-<p>100不满足第三条规则</p>
-<p>9．哪 3 个函数能分别取得一个值的整型、浮点型或字符串版本？<br>10．为什么这个表达式会导致错误？如何修复？</p>
-<p>答：需要转换类型’I have eaten ’ + str(99 )+ ’ burritos.’</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/26/JupyterNotebook%E4%BB%8B%E7%BB%8D%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/26/JupyterNotebook%E4%BB%8B%E7%BB%8D%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">JupyterNotebook介绍安装及使用教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-26 12:06:45 / 修改时间：05:42:31" itemprop="dateCreated datePublished" datetime="2021-06-26T12:06:45Z">2021-06-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>由于最近开始学pandas数据处理的课程，看了很多教程都有介绍说使用Jupyter Notebook是最合适的选择。于是乎从网上找了教程来学习使用，但找了很久才完美的安装及初步的学会简单使用。由于其过程中踩了很多坑，做了太久的工具选择的痛苦决定，故今天写下这篇个人认为是正确且完善的安装使用教程，以便于广大想要学习使用此工具的同学，同时也是为方便以后自己观看学习。如有不恰当之处，请指出，本人会及时改正。过程中有引用网上各大神的教程说明及图片，在此向他们致敬，如有不适请及时联系，定会删除。</p>
-<h2 id="一、什么是Jupyter-Notebook？"><a href="#一、什么是Jupyter-Notebook？" class="headerlink" title="一、什么是Jupyter Notebook？"></a>一、什么是Jupyter Notebook？</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。简而言之，Jupyter Notebook是以网页的形式打开，可以在网页页面中直接编写代码和运行代码，代码的运行结果也会直接在代码块下显示。如在编程过程中需要编写说明文档，可在同一个页面中直接编写，便于作及时的说明和解释。</p>
-<h3 id="2-组成部分"><a href="#2-组成部分" class="headerlink" title="2. 组成部分"></a>2. 组成部分</h3><p>① 网页应用</p>
-<p>网页应用即基于网页形式的、结合了编写说明文档、数学公式、交互计算和其他富媒体形式的工具。简言之，网页应用是可以实现各种功能的工具。</p>
-<p>② 文档</p>
-<p>即Jupyter Notebook中所有交互计算、编写说明文档、数学公式、图片以及其他富媒体形式的输入和输出，都是以文档的形式体现的。这些文档是保存为后缀名为.ipynb的JSON格式文件，不仅便于版本控制，也方便与他人共享。此外，文档还可以导出为：HTML、LaTeX、PDF等格式。</p>
-<h3 id="3-Jupyter-Notebook的主要特点"><a href="#3-Jupyter-Notebook的主要特点" class="headerlink" title="3. Jupyter Notebook的主要特点"></a>3. Jupyter Notebook的主要特点</h3><blockquote>
-<p>1、编程时具有语法高亮、缩进、tab补全的功能。</p>
-<p>2、可直接通过浏览器运行代码，同时在代码块下方展示运行结果。</p>
-<p>3、以富媒体格式展示计算结果。富媒体格式包括：HTML，LaTeX，PNG，SVG等。</p>
-<p>4、对代码编写说明文档或语句时，支持Markdown语法。</p>
-<p>5、支持使用LaTeX编写数学性说明。</p>
-</blockquote>
-<h2 id="二、安装Jupyter-Notebook"><a href="#二、安装Jupyter-Notebook" class="headerlink" title="二、安装Jupyter Notebook"></a>二、安装Jupyter Notebook</h2><ol>
-<li>安装</li>
-</ol>
-<p>安装Jupyter Notebook的前提是需要安装了Python3 版本及以上</p>
-<p>2、使用pip命令安装</p>
-<p>①把pip升级到最新版本   python -m pip install –upgrade pip</p>
-<p>②安装Jupyter Notebook  pip install jupyter notbook -i 国内源</p>
-<p>注：在安装Python时默认都安装了pip，安装pip后，在cmd.exe下可以运行pip。安装库：pip install 库的名字  换源：因为PyPi地址在国外，国内访问速度慢有些地方甚至访问不了,把镜像源换为国内地址速度简直飞起。</p>
-<p>国内一些常用的软件源如下：</p>
-<blockquote>
-<p>阿里云：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/pypi/simple/">https://mirrors.aliyun.com/pypi/simple/</a></p>
-<p>中国科技大学：<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
-<p>豆瓣：<a target="_blank" rel="noopener" href="https://pypi.douban.com/simple/">https://pypi.douban.com/simple/</a></p>
-<p>清华大学：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
-<p>中国科学技术大学：<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
-</blockquote>
-<p>以阿里云镜像源为例</p>
-<p><code>pip install 库的名字 -i https://mirrors.aliyun.com/pypi/simple/</code></p>
-<p>3、常用pip安装常用命令</p>
-<p>0、把pip升级到最新版本   python -m pip install –upgrade pip</p>
-<p>①查看已安装的库 pip list</p>
-<p>②更新库 pip install –upgrade 库的名字</p>
-<p>③卸载库pip uninstall 库的名字 -y   # 加上-y表示直接卸载，没有提示选择是否要卸载，直到最后完成卸载提示。</p>
-<p>④迁移库:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip freeze&gt;requirements.txt--&gt;将本机库列表输出到指定的requirements.txt文件 </span><br><span class="line"></span><br><span class="line">示例：pip freeze&gt;C:\Users\clefairy\Desktop\requirements.txt--&gt;输出到桌面 </span><br><span class="line"></span><br><span class="line">pip install-requirements.txt--&gt;使用pip安装requirements.txt文件中所含的库 </span><br></pre></td></tr></table></figure>
-
-<p>查看库的版本     pip  version</p>
-<p>查看需要更新的库     pip list  –outdated</p>
-<h2 id="三、使用Jupyter-Notebook"><a href="#三、使用Jupyter-Notebook" class="headerlink" title="三、使用Jupyter Notebook"></a>三、使用Jupyter Notebook</h2><p>1、在cmd中输入jupyter notebook 即可打开，看到如下界面，表示安装成功。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121556.png" alt="20210626121556"></p>
-</div>
-
-<p>注意2:</p>
-<p>Jupyter notebook使用过程成中 对应的 cmd 不要关闭。</p>
-<h2 id="四、配置-Jupyter-notebook"><a href="#四、配置-Jupyter-notebook" class="headerlink" title="四、配置 Jupyter notebook"></a>四、配置 Jupyter notebook</h2><h3 id="如何更改默认目录？"><a href="#如何更改默认目录？" class="headerlink" title="如何更改默认目录？"></a>如何更改默认目录？</h3><p>默认情况下，Jupyter notebook 将 c: / users / username 设置为默认目录。 我们可以更改默认目录，以便更容易地管理项目。</p>
-<p><code>CMD 中输入 jupyter notebook --generate-config</code></p>
-<p>•    首先生成配置文件</p>
-<p><code>Jupyter notebook --generate-config</code></p>
-<p>这会生成一个配置文件，路径终端会给出。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121841.png" alt="20210626121841"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121850.png" alt="20210626121850"></p>
-</div>
-
-<p><code>用记事本打开 jupyter_notebook_config.py</code></p>
-<p>做如下修改，记得要把句首【#】去掉，参数才能生效</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121922.png" alt="20210626121922"></p>
-</div>
-
-<h2 id="五、运行Jupyter-Notebook"><a href="#五、运行Jupyter-Notebook" class="headerlink" title="五、运行Jupyter Notebook"></a>五、运行Jupyter Notebook</h2><ol start="0">
-<li>帮助</li>
-</ol>
-<p>如果你有任何jupyter notebook命令的疑问，可以考虑查看官方帮助文档，命令如下：</p>
-<p><code>jupyter notebook --help  或  jupyter notebook -h</code></p>
-<ol>
-<li><p>启动</p>
-<p>① 默认端口启动</p>
-</li>
-</ol>
-<p><code>在终端中输入以下命令：jupyter notebook</code></p>
-<p>执行命令之后，在终端中将会显示一系列notebook的服务器信息，同时浏览器将会自动启动Jupyter Notebook。</p>
-<p>启动过程中终端显示内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter notebook</span><br><span class="line">[I 08:58:24.417 NotebookApp] Serving notebooks from local directory: &#x2F;Users&#x2F;catherine</span><br><span class="line">[I 08:58:24.417 NotebookApp] 0 active kernels</span><br><span class="line">[I 08:58:24.417 NotebookApp] The Jupyter Notebook is running at: http:&#x2F;&#x2F;localhost:8888&#x2F;</span><br><span class="line">[I 08:58:24.417 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).</span><br></pre></td></tr></table></figure>
-<p>•    注意：之后在Jupyter Notebook的所有操作，都请保持终端不要关闭，因为一旦关闭终端，就会断开与本地服务器的链接，你将无法在Jupyter Notebook中进行其他操作啦。</p>
-<p>浏览器地址栏中默认地将会显示：<a href="http://localhost:8888。其中，“localhost”指的是本机，“8888”则是端口号。">http://localhost:8888。其中，“localhost”指的是本机，“8888”则是端口号。</a></p>
-<p>如果你同时启动了多个Jupyter Notebook，由于默认端口“8888”被占用，因此地址栏中的数字将从“8888”起，每多启动一个Jupyter Notebook数字就加1，如“8889”、“8890”……</p>
-<p>② 指定端口启动</p>
-<p>如果你想自定义端口号来启动Jupyter Notebook，可以在终端中输入以下命令：</p>
-<p><code>jupyter notebook --port &lt;port_number&gt;</code></p>
-<p>其中，“<port_number>”是自定义端口号，直接以数字的形式写在命令当中，数字两边不加尖括号“&lt;&gt;”。如：jupyter notebook –port 9999，即在端口号为“9999”的服务器启动Jupyter Notebook。</p>
-<p>③ 启动服务器但不打开浏览器</p>
-<p>如果你只是想启动Jupyter Notebook的服务器但不打算立刻进入到主页面，那么就无需立刻启动浏览器。在终端中输入：</p>
-<p><code>jupyter notebook --no-browser</code></p>
-<p>此时，将会在终端显示启动的服务器信息，并在服务器启动之后，显示出打开浏览器页面的链接。当你需要启动浏览器页面时，只需要复制链接，并粘贴在浏览器的地址栏中，轻按回车变转到了你的Jupyter Notebook页面。</p>
-<p><code>no_browser</code></p>
-<p>例图中由于在完成上面内容时我同时启动了多个Jupyter Notebook，因此显示我的“8888”端口号被占用，最终分配给我的是“8889”。</p>
-<ol>
-<li><p>主页面</p>
-<p>① 主页面内容</p>
-</li>
-</ol>
-<p>当执行完启动命令之后，浏览器将会进入到Notebook的主页面，如下图所示。<br>如果你的主页面里边的文件夹跟我的不同，或者你在疑惑为什么首次启动里边就已经有这么多文件夹，不要担心，这里边的文件夹全都是你的家目录里的目录文件。你可以在终端中执行以下2步来查看：</p>
-<h2 id="六、安装jupyter-contrib-nbextensions库"><a href="#六、安装jupyter-contrib-nbextensions库" class="headerlink" title="六、安装jupyter_contrib_nbextensions库"></a>六、安装jupyter_contrib_nbextensions库</h2><p>安装步骤：<br>如果你已经安装了，先执行卸载命令：</p>
-<p><code>pip uninstall jupyter_contrib_nbextensions</code></p>
-<p><code>pip uninstall jupyter_nbextensions_configurator</code></p>
-<p>在cmd中运行：</p>
-<p><code>pip install jupyter_contrib_nbextensions</code></p>
-<p><code>jupyter-contrib-nbextension install --user</code></p>
-<p>记住jupyter, contrib和nbextension中间要加上-，这个很重要…否则就会报以下错误：</p>
-<p><code>Exception: Jupyter command </code>jupyter-contrib<code> not found.</code></p>
-<p>在其中勾选需要的功能即可</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626122606.png" alt="20210626122606"></p>
-</div>
-
-<p><strong>较为常见的部分功能</strong></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626122649.png" alt="20210626122649"></p>
-</div>
-
-<p>注意：勾选 autopep8 后可能会提示找不到该模块，此时:</p>
-<p><code>pip install autopep8 -i 国内源</code></p>
-<p>即可</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626122746.png" alt="20210626122746"></p>
-</div>
-
-<h2 id="七、创建快捷方式"><a href="#七、创建快捷方式" class="headerlink" title="七、创建快捷方式"></a>七、创建快捷方式</h2><p>每次都通过命令行来打开 Jupyter Lab 确实麻烦。</p>
-<p>写个.bat文件就好啦。</p>
-<p>方法：先创建一个文本文件，在里面写入jupyter notebook，之后把扩展名改为.bat，双击运行即可。</p>
-<h2 id="八、Jupyter的各种快捷键"><a href="#八、Jupyter的各种快捷键" class="headerlink" title="八、Jupyter的各种快捷键"></a>八、Jupyter的各种快捷键</h2><blockquote>
-<p>执行当前cell，并自动跳到下一个cell：Shift Enter</p>
-<p>执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</p>
-<p>是当前的cell进入编辑模式：Enter</p>
-<p>退出当前cell的编辑模式：Esc</p>
-<p>删除当前的cell：双D</p>
-<p>为当前的cell加入line number：单L</p>
-<p>将当前的cell转化为具有一级标题的maskdown：单1</p>
-<p>将当前的cell转化为具有二级标题的maskdown：单2</p>
-<p>将当前的cell转化为具有三级标题的maskdown：单3</p>
-<p>为一行或者多行添加/取消注释：Crtl /</p>
-<p>撤销对某个cell的删除：z</p>
-<p>浏览器的各个Tab之间切换：Crtl PgUp和Crtl PgDn</p>
-<p>快速跳转到首个cell：Crtl Home</p>
-<p>快速跳转到最后一个cell：Crtl End</p>
-</blockquote>
-<h2 id="九、Jupyter-Notebook如何导入代码"><a href="#九、Jupyter-Notebook如何导入代码" class="headerlink" title="九、Jupyter Notebook如何导入代码"></a>九、Jupyter Notebook如何导入代码</h2><p>即导入代码到jupyter notebook的cell中</p>
-<p>1 将本地的.py文件load到jupyter的一个cell中</p>
-<p>问题背景：有一个test.py文件，需要将其载入到jupyter的一个cell中</p>
-<p>test.py内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import caffe</span><br><span class="line"></span><br><span class="line">SolverName &#x3D; &quot;&#x2F;root&#x2F;workspace&quot;</span><br><span class="line">sovler &#x3D; caffe.AdamSolver(SolverName)</span><br></pre></td></tr></table></figure>
-<p>方法步骤：</p>
-<p>（1）在需要导入该段代码的cell中输入</p>
-<p><code>%load test.py      # test.py 是当前路径下的一个python文件</code></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123324.png" alt="20210626123324"></p>
-</div>
-
-<p>（2）运行该cell</p>
-<p>利用快捷键“Shift+Enter”，可以看到如下结果：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123346.png" alt="20210626123346"></p>
-</div>
-
-<p>（3）可以看到，运行后，%load test.py被自动加入了注释符号#，test.py中的所有代码都被load到了当前的cell中</p>
-<p>2 从网络load代码到jupyter</p>
-<p>在cell中输入%load http://…..，然后运行该cell，就会将load后面所对应地址的代码load到当前的cell中；</p>
-<p>下面给出一个例子，导入matplotlib中的一个小例子color example code</p>
-<p>首先，在想要导入该段代码的cell中输入</p>
-<p><code>%load test.py</code>   #test.py是当前路径下的一个python文件,然后，Shift+Enter运行，可以看到如下结果：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123506.png" alt="20210626123506"></p>
-</div>
-
-<p>可以看到，运行后，%load test.py被自动加入了注释符号#，test.py中的所有代码都被load到了当前的cell中</p>
-<h2 id="十、Jupyter运行python文件"><a href="#十、Jupyter运行python文件" class="headerlink" title="十、Jupyter运行python文件"></a>十、Jupyter运行python文件</h2><p>利用jupyter的cell是可以运行python文件的，即在cell中运行如下代码：</p>
-<p><code>%run file.py</code></p>
-<p>file.py为要运行的python程序，结果会显示在该cell中</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123619.png" alt="20210626123619"></p>
-</div>
-
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123629.png" alt="20210626123629"></p>
-</div>
-
-<h2 id="十一、Jupyter一些其他琐碎用法"><a href="#十一、Jupyter一些其他琐碎用法" class="headerlink" title="十一、Jupyter一些其他琐碎用法"></a>十一、Jupyter一些其他琐碎用法</h2><p>1 jupyter的cell可以作为unix command使用</p>
-<p>具体方法为：在unitx command前面加入一个感叹号“！”</p>
-<p>例子：</p>
-<p>查看python版本：!python –version</p>
-<p>运行python文件：!python myfile.py</p>
-<p>2 Magic functions</p>
-<p>3 获取current working directory</p>
-<p>即当前运行的代码所在的路径具体方法：current_path = %pwd   这样得到的current_path就是当前工作路径的字符转</p>
-<p>4 使用Matplotlib绘图</p>
-<p>在Jupyter Notebook中，如果使用Matplotlib绘图，有时是弹不出图像框的，此时，可以在开头加入:</p>
-<p><code>%matplotlib inline</code></p>
-<h2 id="十二、Jupyter中的Markdown"><a href="#十二、Jupyter中的Markdown" class="headerlink" title="十二、Jupyter中的Markdown"></a>十二、Jupyter中的Markdown</h2><p>1 在jupyter中设置link，需要设置两部分：</p>
-<p>要跳到的位置(the destination)</p>
-<p>需要在要跳转到的位置添加下面语句:</p>
-<p><code>&lt;a id=&#39;the_destination&#39;&gt;&lt;/a&gt;</code></p>
-<p>这里的id取值任意赋值，下面在添加链接时要用需要添加链接的文字（an internal hyperlink to the destination），即点击该处可以跳转到the destination，在需要添加链接的文字后面加入：下面是一个例子：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123914.png" alt="20210626123914"></p>
-</div>
-
-<p>效果图：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123944.png" alt="20210626123944"></p>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/14/%E4%B8%80%E6%96%87%E7%90%86%E8%A7%A3Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E7%BC%96%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/14/%E4%B8%80%E6%96%87%E7%90%86%E8%A7%A3Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">一文理解Python字符串和编码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-14 15:29:20" itemprop="dateCreated datePublished" datetime="2021-06-14T15:29:20Z">2021-06-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-26 05:53:24" itemprop="dateModified" datetime="2021-06-26T05:53:24Z">2021-06-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="整数类型和变量"><a href="#整数类型和变量" class="headerlink" title="整数类型和变量"></a>整数类型和变量</h2><p>1.python 字符串前面加上’r’的作用</p>
-<p>这种情况其实是这样子的， 比如下面这两行代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; &#39;hello, \&#39;Adam\&#39;&#39;</span><br><span class="line">s2 &#x3D; r&#39;hello, \&#39;Adam\&#39;&#39;</span><br><span class="line"></span><br><span class="line">print(s1)      # hello, &#39;Adam&#39;</span><br><span class="line">print(s2)     # hello, \&#39;Adam\&#39;</span><br></pre></td></tr></table></figure>
-<p>‘r’是防止字符转义的 如果路径中出现’\t’的话 不加 r 的话 \t 就会被转义 而加了’r’之后’\t’就能保留原有的样子。</p>
-<p>在 Python 的 string 前面加上‘r’， 是为了告诉编译器这个 string 是个 raw string，不要转意 backslash ‘’ 。 例如，\n 在 raw string 中，是两个字符，\ 和 n， 而不会转意为换行符。由于正则表达式和 \ 会有冲突，因此，当一个字符串使用了正则表达式后，最好在前面加上’r’。</p>
-<p>2.动态语言 VS 静态语言</p>
-<p>python 中的变量往往是采用动态语言的方式，所谓动态语言， 就是说变量本身类型不固定， 我们看一下 python 中的变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 123   # a是整数</span><br><span class="line">a &#x3D; &#39;ABC&#39;  # a变成字符串</span><br></pre></td></tr></table></figure>
-<p>与动态语言对应的是静态语言。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如 Java 是静态语言，赋值语句如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 123; &#x2F;&#x2F; a是整数类型变量</span><br><span class="line">a &#x3D; &quot;ABC&quot;; &#x2F;&#x2F; 错误：不能把字符串赋给整型变量</span><br></pre></td></tr></table></figure>
-<p>3.变量在进行赋值的时候，python 解释器到底在干什么？</p>
-<p>我们看下面的代码， 捋一捋计算机内部的逻辑：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; &#39;ABC&#39;</span><br><span class="line">b &#x3D; a</span><br><span class="line">a &#x3D; &#39;XYZ&#39;</span><br><span class="line">print(b)    # ABC</span><br></pre></td></tr></table></figure>
-<p>我们可能一下子就知道结果， 但是你知道解释器到底在干什么事情吗？ 也就是为什么会有这样的结果？ 这个我直接引用廖雪峰老师画的图了：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153608.png" alt="20210614153608"></p>
-</div>
-
-<p>Python 支持多种数据类型，在计算机内部，可以把任何数据都看成一个 “对象”，而变量就是在程序中用来指向这些数据对象的，对变量赋值就是把数据和变量给关联起来。</p>
-<p>对变量赋值 x=y 是把变量 x 指向真正的对象， 该对象是变量 y 所指向的。 随后对变量 y 的赋值不影响变量 x 的指向。</p>
-<p>4.Python 中的两种除法： / 和 //</p>
-<ul>
-<li><p>/ 计算结果是浮点数，即使两个整数恰好整除，结果也是浮点数</p>
-</li>
-<li><p>// 表示地板除法， 两个整数的除法依然是整数， 浮点数相除最后也是整数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9&#x2F;3 &#x3D; 3.0</span><br><span class="line">10 &#x2F;&#x2F; 3 &#x3D; 3</span><br></pre></td></tr></table></figure>
-<p>PS: Python 的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如 Java 对 32 位整数的范围限制在 - 2147483648-2147483647。Python 的浮点数也没有大小限制，但是超出一定范围就直接表示为 inf（无限大）。</p>
-</li>
-</ul>
-<h2 id="字符串和编码"><a href="#字符串和编码" class="headerlink" title="字符串和编码"></a>字符串和编码</h2><p>这一块我需要好好的整理了， 之前没太仔细的学习这块， 导致有些东西似懂非懂。</p>
-<p>1.字符编码的问题（捋一捋 ASCII，GB2312，Utf-8，Unicode）</p>
-<p>字符串也是一种数据类型，但是字符串比较特殊的是一个编码问题， 因为计算机只能处理数字， 如果要处理文本， 就需要先把文本转换成数字。</p>
-<p>最早的计算机在设计时采用 8 个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是 255（二进制 11111111 = 十进制 255），如果要表示更大的整数，就必须用更多的字节，两个字节可以表示的最大整数是 65535。</p>
-<p>计算机是美国人发明的， 因此，最早只有 127 个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号， 这个编码表被称为 ASCII 编码。 比如大写字母 A 的编码时 65， 小写字母 z 的编码时 122。</p>
-<p>但是要处理中文，显然一个字节是不够的， 至少需要两个字节， 而且还不能和 ASCII 编码冲突， 所以中国制定了 GB2312 编码，用来把中文编进去。</p>
-<p>但是全世界有上百种语言， 像中国一样，每个国家有各国的标准， 那很容易就乱了套， 出现冲突，也就是在多语言混合的文本中，会出现乱码的问题。因此， Unicode 应运而生， Unicode 把所有语言都统一到一套编码里，就不会再有乱码问题了， 看这个名字也能看出来</p>
-<p>现在就可以来看看 ASCII 编码和 Unicode 编码的区别：ASCII 编码是 1 个字节， 而 Unicode 编码通常 2 个字节</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153813.png" alt="20210614153813"></p>
-</div>
-
-<p>但是这样统一成 Unicode 编码，乱码问题从此消失， 但是，如果你写的如果全是英文， 用 Unicode 编码比 ASCII 编码需要多一倍的存储空间，在存储和传输上都会造成一种浪费。所以本着节约的精神， 又出现了把 Unicode 编码转换成 “可变长” 的 UTF-8 编码。UTF-8 编码把一个 Unicode 字符根据不同的数字大小编码成 1-6 个字节，常用的英文字母被编码成 1 个字节，汉字通常是 3 个字节，只有很生僻的字符才会被编码成 4-6 个字节。如果你要传输的文本包含大量英文字符，用 UTF-8 编码就能节省空间。</p>
-<p>所以这个就是这几种编码之间的关系了，之前遇到编码问题总是心态一崩， 现在终于搞清楚了这些编码之间的逻辑了。</p>
-<p>搞清楚了 ASCII、Unicode 和 UTF-8 的关系，我们就可以总结一下现在计算机系统通用的字符编码工作方式：在计算机内存中，统一使用 Unicode 编码，当需要保存到硬盘或者需要传输的时候，就转换为 UTF-8 编码 , 比如用记事本编辑的时候，从文件读取的 UTF-8 字符被转换为 Unicode 字符到内存里，编辑完成后，保存的时候再把 Unicode 转换为 UTF-8 保存到文件：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153904.png" alt="20210614153904"></p>
-</div>
-
-<p>浏览网页的时候，服务器会把动态生成的 Unicode 内容转换为 UTF-8 再传输到浏览器：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153948.png" alt="20210614153948"></p>
-</div>
-
-<p>2.Python 的字符串</p>
-<p>在最新的 Python 3 版本中，字符串是以 Unicode 编码的，也就是说，Python 的字符串支持多语言， 可以使用 ord () 函数获取字符的整数表示， chr () 函数把编码转成对应的字符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ord(&#39;A&#39;)    # 65</span><br><span class="line">ord(&#39;中&#39;)   # 20013</span><br><span class="line">chr(25991)   # 文</span><br></pre></td></tr></table></figure>
-<p>由于 Python 的字符串类型是 str， 在内存中以 Unicode 表示， 一个字符对应若干个字节。** 如果要在网络上传输， 或者保存到磁盘上，就需要把 str 变为以字节为单位的 bytes。** Python 中 bytes 类型的数据用 b 前缀的单引号或者双引号表示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X1 &#x3D; &#39;ABC&#39;</span><br><span class="line">X2 &#x3D; b&#39;ABC&#39;</span><br></pre></td></tr></table></figure>
-<p>注意，这两个是不一样的， X1 是个字符串， X2 虽然和 X1 显示的内容一样，但 bytes 的每个字符都只占用一个字节。</p>
-<p>以 Unicode 表示的 str 通过 encode () 方法可以编码为指定的 bytes</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39;ABC&#39;.encode(&#39;ascii&#39;)   # b&#39;ABC&#39;</span><br><span class="line">&#39;中文&#39;.encode(&#39;utf-8&#39;)    # b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;</span><br><span class="line">&#39;中文&#39;.encode(&#39;ascii&#39;)    # 这个会报错， 中文不能转成ASCII编码</span><br></pre></td></tr></table></figure>
-<p>如果我们从网络或磁盘上读取了字节流， 那么读到的数据就是 bytes。 要把 bytes 变为 str， 就需要用 decode () 方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b&#39;ABC&#39;.decode(&#39;ascii&#39;)   # &#39;ABC&#39;</span><br><span class="line">b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;.decode(&#39;utf-8&#39;)  # 中文</span><br></pre></td></tr></table></figure>
-<p>如果 bytes 中包含无法解码的字节，用 decode () 方法会报错， 如果只有一小部分是无效的字节， 可以传入 errors=’ignore’忽略错误的字节。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b&#39;\xe4\xb8\xad\xff&#39;.decode(&#39;utf-8&#39;)   # 会报错</span><br><span class="line">b&#39;\xe4\xb8\xad\xff&#39;.decode(&#39;utf-8&#39;, errors&#x3D;&#39;ignore&#39;)  # ‘中’</span><br></pre></td></tr></table></figure>
-<p>3.len () 函数计算字符串长度</p>
-<p>我们知道， 如果 len (str) 会计算包含多少个字符， 但是你知道吗？ 如果 len (bytes) 呢， 就会计算字节数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len(&#39;中文&#39;)    # 2</span><br><span class="line">len(b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;)   # 6</span><br></pre></td></tr></table></figure>
-<p>由于 Python 源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为 UTF-8 编码。当 Python 解释器读取源代码时，为了让它按 UTF-8 编码读取，我们通常在文件开头写上这两行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
-<p>现在终于知道为啥需要加这两行了， 第一行注释是为了告诉 Linux/OS X 系统，这是一个 Python 可执行程序，Windows 系统会忽略这个注释；第二行注释是为了告诉 Python 解释器，按照 UTF-8 编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
-<ol start="4">
-<li>总结梳理</li>
-</ol>
-<p>最后梳理一遍知识， 首先 python 的基础知识里面抠了点细节，比如那个字符串前面的小 r，这个代表转义失效。 然后就是动态语言和静态语言的区别，还有两种除法。 在字符串编码那块整理了各种编码以及之间的关系，从 ASCII，GB2312， UNicode，utf-8。 然后就是基本的类型，像列表，元组，字典集合等一些细节部分，可变不可变对象等。 函数部分， 整理了函数起别名，空函数，返回多个值的内部原理。 还有各种函数参数，必选参数，默认参数，可变参数 (*num)，关键字参数 (** kw), 命名关键字参数等。 最后介绍了两种递归的细节，关于尾递归，参数里面要传入当前结果或者路径。 下面一张思维导图把知识拎起来：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614154742.png" alt="20210614154742"></p>
-</div>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/12/python%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%9E%81%E7%AE%80%E4%BB%8B%E7%BB%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/12/python%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%9E%81%E7%AE%80%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">python学习方法及极简介绍</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-12 06:26:06" itemprop="dateCreated datePublished" datetime="2021-06-12T06:26:06Z">2021-06-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-11 23:12:24" itemprop="dateModified" datetime="2021-06-11T23:12:24Z">2021-06-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这个世界上根本没有正确的选择，我们只不过是要努力奋斗，使当初的选择变得正确。</p>
-<pre><code>                                                      —— 村上春树
-</code></pre>
-<p>计算机基础基础</p>
-<p>组成</p>
-<p>硬件：输入设备 + 输出设备 + 存储设备<br>软件：系统 + 应用软件</p>
-<p>语言发展</p>
-<p>机器语言 - 汇编语言 - 高级语言</p>
-<p>交互方式</p>
-<p>TUI：命令行<br>GUI：图形界面</p>
-<p>学习方法</p>
-<p>三遍</p>
-<blockquote>
-<p>1、对战视频练习一遍代码（抄）</p>
-<p>2、脱离视频，自己写一遍代码（背）</p>
-<p>3、结合自身实际去实践（吸收）</p>
-</blockquote>
-<p>（一）、Python 的开发环境</p>
-<p>Python 诞生于 20 世纪 90 年代初，是一种解释型、面向对象、动态数据类型的高级程序设计语言，是最受欢迎的程序设计语言之一。</p>
-<p>编写、编译和运行 Python 程序有以下 3 种方法。</p>
-<ol>
-<li><p>使用交互式解释器</p>
-</li>
-<li><p>使用 Windows 命令行命令执行 Python 程序</p>
-</li>
-</ol>
-<p>在 Windows 7 中安装 python 程序后，在开始菜单的所有程序中会出现一个 Python 3.6 分组。单击其下面的 Python 3.6 (command line - 32 bit) 菜单项，就可以打开 python 命令窗口。也可以打开 Windows 命令窗口，然后运行 python 命令，来打开 python 命令窗口</p>
-<ol start="3">
-<li>使用集成开发环境编写和执行 Python 程序</li>
-</ol>
-<p>IDLE 的启动文件是 idle.bat，它的位置在 Python 安装目录下，运行 idle.bat，即可打开文本编辑器 IDLE。也可以在开始菜单的所有程序中，选择 Python 3.6 分组下面的 IDLE (Python 3.6  32 bit) 菜单项，打开 IDLE 窗口。</p>
-<p>（二）、Python 语言的基本语法</p>
-<p>Python 程序结构涉及代码块、注释、语句分隔、语句续航和关键字与大小写等内容。</p>
-<ol>
-<li>用缩进表示代码块</li>
-</ol>
-<p>Python 程序是依靠代码块的缩进（空格）来体现代码之间的逻辑关系的，缩进结束就表示一个代码块结束了。在包含代码嵌套时，应注意同级的代码块，其缩进量应保持相同（不同可能会导致出错或得到意外的结果）。通常，语句末尾的冒号表示代码块的开始。在 if、for、while、函数、类等定义中都会使用到代码块。</p>
-<p>（1）代码注释</p>
-<p>注释用于为程序添加说明性的文字。Python 在运行程序时，会忽略被注释的内容。Python 注释有单行注释和多行注释：单行注释用 “#” 表示注释开始，“#” 之后的内容不会被执行。单行注释可以单独占一行，也可放在语句末尾；多行注释是用三个英文的单引号 “’’’” 或双引号 “”””” 作为注释的开始和结束符号。</p>
-<p>（2）语句续行</p>
-<p>Python 中的一条语句占一行，没有类似于 Java 中的分号等语句结束符号。在遇到较长的语句时，可使用语句续行符号，将一条语句写在多行之中。</p>
-<p>Python 有两种续行方式。一种是使用 “\” 符号；另一种续行方式是在使用括号（包括圆括号 ()、方括号 [] 和大括号 {} 等）时，括号中的内容可分多行书写，括号中的空白和换行符都会被忽略。</p>
-<p>（3）标识符与关键字</p>
-<p>标识符是计算机语言中允许作为名字的有效字符串集合。Python 标识符命名规则和其他大部分用 C 编写的高级语言相似，有以下一些命名规则：名字必须以字母或者下划线‘_’开始；数字不能作为首字符；当名字包含多个单词时，可以使用下划线_来连接，例如 monty_Python；名字不能是关键字。名字不能出现分隔符、标点符号或者运算符。</p>
-<p>Python 中的名字是区分大小写的。比如 myClass、MyClass、myclass 是不同的。名字长度不限。</p>
-<p>（三）、Python 语言的基本输入输出</p>
-<p>在 Python 程序中，通常用 input（）和 print（）函数来执行基本的输入和输出。</p>
-<ol>
-<li>基本输入</li>
-</ol>
-<p>input（）函数用于获得用户输入数据，其基本格式为：</p>
-<p>用户输入的数据 = input（提示字符串）</p>
-<p>其中，变量和提示字符串均可省略。可输入数字、字符串和其它对象，input 函数将用户输入以字符串返回。用户按【Enter】键完成输入，【Enter】键之前的全部字符均作为输入内容。</p>
-<p>如果需要输入整数或小数，则需要使用 int 或 float 函数进行转。</p>
-<ol start="2">
-<li>基本输出</li>
-</ol>
-<p>print () 函数最简单的应用就是输出字符串，print () 函数的参数列表可以有多个参数，格式如下：</p>
-<p>print(“…%s…%s…” %(string1, string2,…stringn))</p>
-<p>输出时 string1, string2,…stringn 会出现在对应的 % s 位置。</p>
-<p>（四）、Python 的常量、变量和对象</p>
-<ol>
-<li>常量</li>
-</ol>
-<p>常量指在程序的执行过程中不变的量。通常直接写出的数据就是常量，如 1,2,3,4,5,6 等。直接写出的数据一般称为字面量，用符号表示的常量一般称为符号常量。</p>
-<p>Python 中常用的两个符号表示的常量是 True 和 False，它们分别表示逻辑判断中的‘真’和‘假’，实际的数值分别是 1 和 0。也有一些包含在模块中的用符号表示的常量，常用的如 math 模块中的 pi 和 e。</p>
-<ol start="2">
-<li>对象</li>
-</ol>
-<p>Python 中，一切皆对象。对象是某个类型事物的一个具体的实例。对象的类型决定了对象支持的操作，也定义了对象的取值范围。Type（）函数返回对象的类型。</p>
-<ol start="3">
-<li>变量</li>
-</ol>
-<p>指向对象的值的名称就是变量。变量是一个标识符，通过等号（=）赋值运算创建，变量指向一个对象。从变量到对象的连接称为引用。</p>
-<p>变量使用前需要先赋值，多个变量可以引用同一个对象，一个变量也可以引用不同的对象，引用不同的对象时，id 也就不同的</p>
-<p>Python 中的变量不需要声明，可以随时赋不同类型的值</p>
-<p>（五）、Python 语言的数据类型</p>
-<p>数据类型决定了程序如何存储和处理数据。Python 完善的数据类型系统，使得在 Python 程序中可以轻松完成各种数据处理。Python 中的数据类型分为数字类型、序列类型、集合类型、字典类型等。</p>
-<p>1、数字类型</p>
-<p>数字类型是那些能进行算术运算、位运算和数学函数运算的数据类型，包括：整数（int，无小数点的数）、浮点数（float，带小数点的数）、复数、其他数字类型等。</p>
-<p>2、序列类型</p>
-<p>序列类型表示的是若干有序的数据，分不可变序列类型和可变序列类型：</p>
-<p>不可变序列的数据类型有字符串、元组和字节序列</p>
-<p>可变序列有列表、字节数组等。</p>
-<p>3、其他类型</p>
-<p>包括：集合数据类型、字典数据类型和 Pyhton 一切皆有类型。</p>
-<p>（六）、Python 语言的运算符</p>
-<p>对数据的变换统称为运算，表示运算的符号称为运算符，参与运算的数据称为操作数。运算符分为：一元运算符和二元运算符。</p>
-<p>运算符有：算术运算符、比较运算符、对象运算符、逻辑运算符、复合运算符等。</p>
-<p>（七）Python 语言的常用语句</p>
-<p>Python 提供判断语句、循环语句和其他语句 pass、break、continue 语句等。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/" class="post-title-link" itemprop="url">python实用的几个文件操作的案例</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-12 06:19:27" itemprop="dateCreated datePublished" datetime="2021-06-12T06:19:27Z">2021-06-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-11 22:23:09" itemprop="dateModified" datetime="2021-06-11T22:23:09Z">2021-06-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">大神总结的python实用的几个文件操作的案例</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="2-python-进行文件的读写"><a href="#2-python-进行文件的读写" class="headerlink" title="2. python 进行文件的读写"></a>2. python 进行文件的读写</h2><p>文件的读写在 python 中比较常见， 文件读取的时候， 首先要判断文件是否存在， 若文件操作就进行读取， 否则报错。</p>
-<p>2.1 文件读操作<br>文件读操作可以的函数有 read (), 这个是读取整个文件， 还有 readlines () 这个是一行行的进行读取并保存到列表中。 下面直接上代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    f = <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>)   <span class="comment"># 后面那个是指定编码  一般平台默认编码格式是utf-8</span></span><br><span class="line">    content = f.read()</span><br><span class="line">    f.close()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种写法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;gbk&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.read()    <span class="comment">#  这时候读完了之后自动关闭</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line">content = read_file(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br><span class="line">content = read_file(<span class="string">r&quot;D:\学习方法.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>&#39;Hey, Python
-
-I just love  Python so much,
-
-and want to get the whole  Python stack by this 60-days column
-
-and believe Python !&#39;
-计算机基础基础
-组成
-硬件：输入设备 + 输出设备 + 存储设备
-软件：系统 + 应用软件
-
-语言发展
-机器语言 - 汇编语言 - 高级语言
-
-交互方式
-TUI：命令行
-GUI：图形界面
-
-学习方法
-三遍
-1、对战视频练习一遍代码（抄）
-2、脱离视频，自己写一遍代码（背）
-3、结合自身实际去实践（吸收）
-
-理想的人终究 过不好这一生，不快乐
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是按行读的效果：按行读时，是把每一行都放进列表，输入的是列表</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;文件按行读&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file_line</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filename):</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % filename)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.readlines()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line">con = read_file_line(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">con</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>[&quot;&#39;Hey, Python\n&quot;,
- &#39;\n&#39;,
- &#39;I just love  Python so much,\n&#39;,
- &#39;\n&#39;,
- &#39;and want to get the whole  Python stack by this 60-days column\n&#39;,
- &#39;\n&#39;,
- &quot;and believe Python !&#39;&quot;]
-</code></pre>
-<p>好了， 基于上面的这个就可以写一个统计文件里面所有单词的出现次数了。 先走一遍这个过程： 我获取到文件的内容， 然后进行分词， 分开之后才能统计个数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是一个统计单词个数的例子</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict  </span><br><span class="line"><span class="comment">#这里的defaultdict(function_factory)构建的是一个类似dictionary的对象，</span></span><br><span class="line"><span class="comment">#其中keys的值，自行确定赋值，但是values的类型，是function_factory的类实例，</span></span><br><span class="line"><span class="comment">#而且具有默认值。比如default(int)则创建一个类似dictionary对象，里面任何的values都是int的实例，</span></span><br><span class="line"><span class="comment">#而且就算是一个不存在的key, d[key] 也有一个默认值，这个默认值是int()的默认值0.</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">rec = re.<span class="built_in">compile</span>(<span class="string">&#x27;\s+&#x27;</span>)      <span class="comment"># 匹配一个或者多个空格</span></span><br><span class="line">dd = defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;D:\a.txt&quot;</span>, <span class="string">&#x27;r+&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        clean_line = line.strip()</span><br><span class="line">        <span class="keyword">if</span> clean_line:</span><br><span class="line">            words = rec.split(clean_line)</span><br><span class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">                dd[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">dd = <span class="built_in">sorted</span>(dd.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line">dd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>[(&#39;Python&#39;, 4),
- (&#39;and&#39;, 2),
- (&quot;&#39;Hey,&quot;, 1),
- (&#39;I&#39;, 1),
- (&#39;just&#39;, 1),
- (&#39;love&#39;, 1),
- (&#39;so&#39;, 1),
- (&#39;much,&#39;, 1),
- (&#39;want&#39;, 1),
- (&#39;to&#39;, 1),
- (&#39;get&#39;, 1),
- (&#39;the&#39;, 1),
- (&#39;whole&#39;, 1),
- (&#39;stack&#39;, 1),
- (&#39;by&#39;, 1),
- (&#39;this&#39;, 1),
- (&#39;60-days&#39;, 1),
- (&#39;column&#39;, 1),
- (&#39;believe&#39;, 1),
- (&quot;!&#39;&quot;, 1)]
-</code></pre>
-<h2 id="2-2-文件写操作"><a href="#2-2-文件写操作" class="headerlink" title="2.2 文件写操作"></a>2.2 文件写操作</h2><p>文件写操作时，需要首先判断要写入的文件路径是否存在。若不存在，通过 mkdir 创建出路径；否则，直接写入文件：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_file</span>(<span class="params">file_path, file_name</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">        os.mkdir(file_path)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    whole_path_filename = os.path.join(file_path, file_name)</span><br><span class="line">    </span><br><span class="line">    to_write_content = <span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">                        Hey, Python</span></span><br><span class="line"><span class="string">                        I just love Python so much,</span></span><br><span class="line"><span class="string">                        and want to get the whole python stack by this 60-days column</span></span><br><span class="line"><span class="string">                        and believe!</span></span><br><span class="line"><span class="string">                        &#x27;&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(whole_path_filename, mode=<span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(to_write_content)</span><br><span class="line">write_to_file(<span class="string">&#x27;d:/1/&#x27;</span>,<span class="string">&#x27;b.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>获取文件名及文件的后缀名<br>有时候我们拿到一个文件名的时候， 名字上带有路径， 这时候我们可以用 os.path.split 方法实现路径和文件名的分离。</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">file_ext = os.path.split(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">ipath, ifile = file_ext</span><br><span class="line"></span><br><span class="line">print(ipath, ifile)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<pre><code>d:/1 b.txt
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># os.path 模块，splitext 能够优雅地提取文件后缀。</span></span><br><span class="line"></span><br><span class="line">file_extension = os.path.splitext(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">file_extension     <span class="comment"># .py</span></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>(&#39;d:/1/b&#39;, &#39;.txt&#39;)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基于上面的这个操作， 就可以获取某个目录下面指定后缀名的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取某个目录下指定后缀名的文件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_file</span>(<span class="params">work_dir, extension=<span class="string">&#x27;jpg&#x27;</span></span>):</span></span><br><span class="line">    lst = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        <span class="comment">#print(filename)</span></span><br><span class="line">        splits = os.path.splitext(filename)</span><br><span class="line">        ext = splits[<span class="number">1</span>]      <span class="comment"># 拿到扩展名</span></span><br><span class="line">        <span class="keyword">if</span> ext == <span class="string">&#x27;.&#x27;</span>+extension:</span><br><span class="line">            lst.append(filename)</span><br><span class="line">    <span class="keyword">return</span> lst</span><br><span class="line"></span><br><span class="line">r = find_file(<span class="string">r&#x27;d:/test/&#x27;</span>,<span class="string">&#x27;xlsx&#x27;</span>)</span><br><span class="line">r</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>[&#39;1.xlsx&#39;,
- &#39;1155.xlsx&#39;,
- &#39;2.xlsx&#39;,
- &#39;21.xlsx&#39;,
- &#39;d1.xlsx&#39;,
- &#39;d2.xlsx&#39;,
- &#39;diff.xlsx&#39;,
- &#39;la.xlsx&#39;]
-</code></pre>
-<p>这个还是很实用的， 比如在 CNN 的一些任务中， 很多图片都是以.jpg 的形式存放到文件夹里面的， 我们这时候就需要先获取到所有的.jpg 文件， 然后再通过一些方式把图片转成矩阵的表示形式， 这样我们的网络才会认识。</p>
-<p>下面再整理一个批量修改文件后缀名的例子， 比如我想把某个目录下所有的.xls 转成.xlsx 文件。这个要怎么做？ 依然是先梳理一下逻辑：</p>
-<p>首先要遍历所给的目录<br>拿到各个文件的后缀名<br>看看后缀名是否是需要修改的后缀名， 如果是就进行重命名操作<br>有了这个逻辑， 代码就比较好写了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            )</span><br><span class="line">batch_rename(<span class="string">r&quot;D:\test\excel\data&quot;</span>,<span class="string">&#x27;.xls&#x27;</span>,<span class="string">&#x27;.xlsx&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    print(new_ext)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line"></span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            </span><br><span class="line">            )</span><br><span class="line">    print(<span class="string">&quot;完成重命名&quot;</span>)</span><br><span class="line">    print(os.listdir(work_dir))</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 

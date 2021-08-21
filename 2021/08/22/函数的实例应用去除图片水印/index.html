@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536# 将 PDF 文档 分割成图片import sysimport fitzimport osimport datetimedef pyMuPDF_fitz(pdfPath, imagePath):    startTime_pdf2img &#x3D; datetime.dateti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数的实例应用去除图片水印">
+<meta property="og:url" content="https://getcoden.github.io/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536# 将 PDF 文档 分割成图片import sysimport fitzimport osimport datetimedef pyMuPDF_fitz(pdfPath, imagePath):    startTime_pdf2img &#x3D; datetime.dateti">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-21T17:51:42.000Z">
+<meta property="article:modified_time" content="2021-08-21T09:52:17.353Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python库之Pandas">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>函数的实例应用去除图片水印 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          函数的实例应用去除图片水印
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:51:42 / 修改时间：09:52:17" itemprop="dateCreated datePublished" datetime="2021-08-21T17:51:42Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 PDF 文档 分割成图片</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> fitz</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pyMuPDF_fitz</span>(<span class="params">pdfPath, imagePath</span>):</span></span><br><span class="line">    startTime_pdf2img = datetime.datetime.now()  <span class="comment"># 开始时间</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;imagePath=&quot;</span>+imagePath)</span><br><span class="line">    pdfDoc = fitz.<span class="built_in">open</span>(pdfPath)</span><br><span class="line">    <span class="keyword">for</span> pg <span class="keyword">in</span> <span class="built_in">range</span>(pdfDoc.pageCount):</span><br><span class="line">        page = pdfDoc[pg]</span><br><span class="line">        rotate = <span class="built_in">int</span>(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 每个尺寸的缩放系数为1.3，这将为我们生成分辨率提高2.6的图像。</span></span><br><span class="line">        <span class="comment"># 此处若是不做设置，默认图片大小为：792X612, dpi=72</span></span><br><span class="line">        zoom_x = <span class="number">1.33333333</span>  <span class="comment"># (1.33333333--&gt;1056x816)   (2--&gt;1584x1224)</span></span><br><span class="line">        zoom_y = <span class="number">1.33333333</span></span><br><span class="line">        mat = fitz.Matrix(zoom_x, zoom_y).preRotate(rotate)</span><br><span class="line">        pix = page.getPixmap(matrix=mat, alpha=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(imagePath):  <span class="comment"># 判断存放图片的文件夹是否存在</span></span><br><span class="line">            os.makedirs(imagePath)  <span class="comment"># 若图片文件夹不存在就创建</span></span><br><span class="line"></span><br><span class="line">        pix.writePNG(imagePath+<span class="string">&#x27;/&#x27;</span>+<span class="string">&#x27;images_%s.png&#x27;</span> % pg)  <span class="comment"># 将图片写入指定的文件夹内</span></span><br><span class="line"></span><br><span class="line">    endTime_pdf2img = datetime.datetime.now()  <span class="comment"># 结束时间</span></span><br><span class="line">    print(<span class="string">&#x27;pdf2img时间=&#x27;</span>, (endTime_pdf2img - startTime_pdf2img).seconds)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    pdfPath = <span class="string">r&quot;D:\教学工具软件\冰点文库下载器 3.2.10 去广告版\冰点文库下载器 3.2.10 去广告版\kpdf\哪些人适合学Python培训，你在其中吗？.pdf&quot;</span></span><br><span class="line">    imagePath = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">    pyMuPDF_fitz(pdfPath, imagePath)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将图片去除水印，配合上一个程序使用</span></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> product</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># img = Image.open(r&quot;D:\1jieya\image\images_0.png&quot;)</span></span><br><span class="line"><span class="comment"># width, height = img.size</span></span><br><span class="line"><span class="comment"># for pos in product(range(width), range(height)):</span></span><br><span class="line"><span class="comment">#     if sum(img.getpixel(pos)[:3]) &gt; 600:</span></span><br><span class="line"><span class="comment">#         img.putpixel(pos, (255, 255, 255))</span></span><br><span class="line"><span class="comment"># img.save(r&quot;C:\Users\win\Desktop\removed_1.png&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">output = <span class="string">r&quot;D:\1jieya\remove&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(<span class="built_in">input</span>):</span><br><span class="line">        print(image_name)</span><br><span class="line">        img = Image.<span class="built_in">open</span>(os.path.join(<span class="built_in">input</span>, image_name))</span><br><span class="line">        width, height = img.size</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> product(<span class="built_in">range</span>(width), <span class="built_in">range</span>(height)):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span>(img.getpixel(pos)[:<span class="number">3</span>]) &gt; <span class="number">600</span>:</span><br><span class="line">                img.putpixel(pos, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">        img.save(os.path.join(output, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 批量将图片修改为指定大小</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter, ImageDraw</span><br><span class="line"></span><br><span class="line"><span class="comment"># im = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片的格式，大小，以及模式</span></span><br><span class="line"><span class="comment"># print(im.format, im.size, im.mode)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定图片的像素</span></span><br><span class="line"><span class="comment"># im.thumbnail((720, 1280))</span></span><br><span class="line"><span class="comment"># im.save(r&quot;C:\Users\win\Desktop\ccc\128_128.jpg&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 旋转图片的方向</span></span><br><span class="line"><span class="comment"># dest_im = im.rotate(90)</span></span><br><span class="line"><span class="comment"># dest_im.save(r&quot;C:\Users\win\Desktop\ccc\90.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给图片添加滤镜</span></span><br><span class="line"><span class="comment"># dest_im = im.filter(ImageFilter.GaussianBlur)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 图片反转</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_LEFT_RIGHT)</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_TOP_BOTTOM)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片上写文字</span></span><br><span class="line"><span class="comment"># image = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"><span class="comment"># img_draw = ImageDraw.Draw(image)</span></span><br><span class="line"><span class="comment"># img_draw.text((1270, 1250), &#x27;hello world!&#x27;, fill=&#x27;green&#x27;)</span></span><br><span class="line"><span class="comment"># image.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量将图片的大小设置为指定大小</span></span><br><span class="line"></span><br><span class="line">in_path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">out_path = os.path.join(in_path, <span class="string">&#x27;modify&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(out_path):</span><br><span class="line">    os.makedirs(out_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(in_path):</span><br><span class="line">        cur_dir = in_path + <span class="string">&#x27;/&#x27;</span> + image_name</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(cur_dir):</span><br><span class="line">            print(<span class="string">f&#x27;正在处理:<span class="subst">&#123;cur_dir&#125;</span>&#x27;</span>)</span><br><span class="line">            im = Image.<span class="built_in">open</span>(cur_dir)</span><br><span class="line">            im.thumbnail((<span class="number">1280</span>, <span class="number">720</span>))</span><br><span class="line">            im.save(os.path.join(out_path, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%BA%93%E4%B9%8BPandas/" rel="tag"># Python库之Pandas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/22/%E8%AF%BB%E5%8F%96%E5%A4%9A%E8%A1%8C%E4%B8%BA%E8%A1%A8%E5%A4%B4%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="读取多行为表头的方法">
+                  <i class="fa fa-chevron-left"></i> 读取多行为表头的方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/" rel="next" title="获取路径下所有文件全名路径判断是路径目录文件是否存在">
+                  获取路径下所有文件全名路径判断是路径目录文件是否存在 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

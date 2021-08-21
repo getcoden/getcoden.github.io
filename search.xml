@@ -1,70 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Pandas groupby 保存到 dataFrame</title>
-    <url>/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/</url>
-    <content><![CDATA[<h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
-<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
-<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
-<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
-<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
-<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
-<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
-<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
-<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
-<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
-<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
-<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
-<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
-<p>下面以一组数据为例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
-</div>
-
-<p>下面按 key 进行分组:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
-<p>可以使用循环对分组后的结果进行遍历</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
-</div>
-
-<ul>
-<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>通过循环，对 value 进行拼接。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
-</div>
-
-<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果可以看到数据变为有序：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
-</div>]]></content>
-      <categories>
-        <category>Python库之Pandas</category>
-      </categories>
-      <tags>
-        <tag>Python库之Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>00.小白Python学习路线</title>
     <url>/2021/01/29/00-%E5%B0%8F%E7%99%BDPython%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
     <content><![CDATA[<p>学前须知：Python 是一种解释型、面向对象、动态数据类型</p>
@@ -159,6 +95,70 @@
       </categories>
       <tags>
         <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pandas groupby 保存到 dataFrame</title>
+    <url>/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/</url>
+    <content><![CDATA[<h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
+<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
+<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
+<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
+<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
+<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
+<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
+<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
+<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
+<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
+<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
+<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
+<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
+<p>下面以一组数据为例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
+</div>
+
+<p>下面按 key 进行分组:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
+<p>可以使用循环对分组后的结果进行遍历</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
+</div>
+
+<ul>
+<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>通过循环，对 value 进行拼接。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
+</div>
+
+<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
+<p>结果可以看到数据变为有序：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
+</div>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -759,7 +759,7 @@ Out[23]: 16
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip freeze&gt;requirements.txt--&gt;将本机库列表输出到指定的requirements.txt文件 </span><br><span class="line"></span><br><span class="line">示例：pip freeze&gt;C:\Users\clefairy\Desktop\requirements.txt--&gt;输出到桌面 </span><br><span class="line"></span><br><span class="line">pip install-requirements.txt--&gt;使用pip安装requirements.txt文件中所含的库 </span><br></pre></td></tr></table></figure>
 
 <p>查看库的版本     pip  version</p>
-<p>查看需要更新的库     pip list  –outdated</p>
+<p>查看需要更新的库     pip list  --outdated</p>
 <h2 id="三、使用Jupyter-Notebook"><a href="#三、使用Jupyter-Notebook" class="headerlink" title="三、使用Jupyter Notebook"></a>三、使用Jupyter Notebook</h2><p>1、在cmd中输入jupyter notebook 即可打开，看到如下界面，表示安装成功。</p>
 <div align=center>
 
@@ -2690,18 +2690,6 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>Python文件操作练习</title>
-    <url>/2021/03/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="文件操作练习，两数相加求和并输出到文件"><a href="#文件操作练习，两数相加求和并输出到文件" class="headerlink" title="文件操作练习，两数相加求和并输出到文件"></a>文件操作练习，两数相加求和并输出到文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;&quot;&quot;文件操作练习，两数相加求和并输出到文件&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    a1 &#x3D;input(&#39;Enter the first number(q or Q is quit):&#39;)   # 输入一个数或字母进行判断</span><br><span class="line">    if a1.lower() &#x3D;&#x3D; &#39;q&#39;:   # 如果输入的是q或者Q，则退出程序</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        a &#x3D; int(a1)      # 将输入的数字字符串强制转换成 int 整型数，进行计算</span><br><span class="line">        b &#x3D; int(input(&#39;Enter the second number:&#39;))</span><br><span class="line">        c &#x3D; str(a+b)</span><br><span class="line">        f &#x3D; open (&#39;d:&#x2F;out1.txt&#39;,&#39;a+&#39;)   #以追加的方式写入文件</span><br><span class="line">        f.write(f&#39;&#123;str(a)&#125; + &#123;str(b)&#125; &#x3D; &#123;c&#125;&#39; + &#39; \n&#39;)    # 格式化输出加法算式</span><br><span class="line">        f.seek(0)                                # 将鼠标指针移动到文件的开始处</span><br><span class="line">        print(f.read())   # 读出文件并打印输出到屏幕</span><br><span class="line">        f.close()         # 关闭文件</span><br></pre></td></tr></table></figure>
-<h3 id="另一种写法，推荐使用"><a href="#另一种写法，推荐使用" class="headerlink" title="另一种写法，推荐使用"></a>另一种写法，推荐使用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&#39;out0.docx&#39;,&#39;a+&#39;) as f,\</span><br><span class="line">    open(&#39;out0.docx&#39;,&#39;r+&#39;) as f1:    # 可同时操作多个文件，注意格式，一定是在代码块内写</span><br><span class="line"></span><br><span class="line">    f.write(&#39;dkalkdlak&#39;)</span><br><span class="line">    f.write(&#39;123456&#39;)</span><br><span class="line">    f.seek(0)</span><br><span class="line">    print(f1.read())</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python文件路径问题汇总</title>
     <url>/2021/02/14/Python%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Python-中-os-listdir-函数用法"><a href="#Python-中-os-listdir-函数用法" class="headerlink" title="Python 中 os.listdir () 函数用法"></a>Python 中 os.listdir () 函数用法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">os.listdir() </span><br></pre></td></tr></table></figure>
@@ -2804,6 +2792,18 @@ Out[23]: 16
 <h4 id="1、综合例子"><a href="#1、综合例子" class="headerlink" title="1、综合例子"></a>1、综合例子</h4><p>简单的例子</p>
 <p>保持目录 a 的目录结构，在 b 中创建对应的文件夹，并把 a 中所有的文件加上后缀 _bak</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">Root &#x3D; &#39;a&#39;</span><br><span class="line">Dest &#x3D; &#39;b&#39;</span><br><span class="line"></span><br><span class="line">for (root, dirs, files) in os.walk(Root):</span><br><span class="line">    new_root &#x3D; root.replace(Root, Dest, 1)</span><br><span class="line">    if not os.path.exists(new_root):</span><br><span class="line">        os.mkdir(new_root)</span><br><span class="line">    </span><br><span class="line">    for d in dirs:</span><br><span class="line">        d &#x3D; os.path.join(new_root, d)</span><br><span class="line">        if not os.path.exists(d):</span><br><span class="line">            os.mkdir(d)</span><br><span class="line">    </span><br><span class="line">    for f in files:</span><br><span class="line">        # 把文件名分解为 文件名.扩展名</span><br><span class="line">        # 在这里可以添加一个 filter，过滤掉不想复制的文件类型，或者文件名</span><br><span class="line">        (shotname, extension) &#x3D; os.path.splitext(f)</span><br><span class="line">        # 原文件的路径</span><br><span class="line">        old_path &#x3D; os.path.join(root, f)</span><br><span class="line">        new_name &#x3D; shotname + &#39;_bak&#39; + extension</span><br><span class="line">        # 新文件的路径</span><br><span class="line">        new_path &#x3D; os.path.join(new_root, new_name)</span><br><span class="line">        try:</span><br><span class="line">            # 复制文件</span><br><span class="line">            open(new_path, &#39;wb&#39;).write(open(old_path, &#39;rb&#39;).read())</span><br><span class="line">        except IOError as e:</span><br><span class="line">            print(e)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python文件操作练习</title>
+    <url>/2021/03/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="文件操作练习，两数相加求和并输出到文件"><a href="#文件操作练习，两数相加求和并输出到文件" class="headerlink" title="文件操作练习，两数相加求和并输出到文件"></a>文件操作练习，两数相加求和并输出到文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;&quot;&quot;文件操作练习，两数相加求和并输出到文件&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    a1 &#x3D;input(&#39;Enter the first number(q or Q is quit):&#39;)   # 输入一个数或字母进行判断</span><br><span class="line">    if a1.lower() &#x3D;&#x3D; &#39;q&#39;:   # 如果输入的是q或者Q，则退出程序</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        a &#x3D; int(a1)      # 将输入的数字字符串强制转换成 int 整型数，进行计算</span><br><span class="line">        b &#x3D; int(input(&#39;Enter the second number:&#39;))</span><br><span class="line">        c &#x3D; str(a+b)</span><br><span class="line">        f &#x3D; open (&#39;d:&#x2F;out1.txt&#39;,&#39;a+&#39;)   #以追加的方式写入文件</span><br><span class="line">        f.write(f&#39;&#123;str(a)&#125; + &#123;str(b)&#125; &#x3D; &#123;c&#125;&#39; + &#39; \n&#39;)    # 格式化输出加法算式</span><br><span class="line">        f.seek(0)                                # 将鼠标指针移动到文件的开始处</span><br><span class="line">        print(f.read())   # 读出文件并打印输出到屏幕</span><br><span class="line">        f.close()         # 关闭文件</span><br></pre></td></tr></table></figure>
+<h3 id="另一种写法，推荐使用"><a href="#另一种写法，推荐使用" class="headerlink" title="另一种写法，推荐使用"></a>另一种写法，推荐使用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&#39;out0.docx&#39;,&#39;a+&#39;) as f,\</span><br><span class="line">    open(&#39;out0.docx&#39;,&#39;r+&#39;) as f1:    # 可同时操作多个文件，注意格式，一定是在代码块内写</span><br><span class="line"></span><br><span class="line">    f.write(&#39;dkalkdlak&#39;)</span><br><span class="line">    f.write(&#39;123456&#39;)</span><br><span class="line">    f.seek(0)</span><br><span class="line">    print(f1.read())</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Python基础</category>
       </categories>
@@ -3323,6 +3323,28 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>os.startfile自动打开文件夹及文件的操作</title>
+    <url>/2021/08/22/os-startfile%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="python-写入文件自动换行问题的方法"><a href="#python-写入文件自动换行问题的方法" class="headerlink" title="python 写入文件自动换行问题的方法"></a>python 写入文件自动换行问题的方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_result</span>(<span class="params"><span class="built_in">str</span></span>):</span></span><br><span class="line">    writeresult=<span class="built_in">open</span>(<span class="string">&#x27;C:/Users/win/Desktop/aa.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">    str1=writeresult.write(<span class="built_in">str</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    writeresult.close()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    a=<span class="built_in">input</span>(<span class="string">&#x27;enter some strs:&#x27;</span>)</span><br><span class="line">    write_result(a)</span><br></pre></td></tr></table></figure>
+<pre><code>enter some strs:12
+enter some strs:123
+enter some strs:1234
+enter some strs:12345
+enter some strs:123456
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">#print(os.startfile(r&#x27;D:\11&#x27;))</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_files_in_dir</span>(<span class="params">path</span>):</span></span><br><span class="line">	<span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">		filepath = os.path.join(path,file)</span><br><span class="line">		<span class="keyword">if</span> os.path.isdir(filepath):</span><br><span class="line">			open_files_in_dir(filepath)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			os.startfile(filepath)</span><br><span class="line">		</span><br><span class="line">path = <span class="string">r&#x27;D:\11&#x27;</span></span><br><span class="line">open_files_in_dir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>python 用什么打开文件_用 python 打开文件夹的三种方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一、利用 explorer.exe</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 explorer.exe 执行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start_directory = r&#x27;C:\ 代码 \ 软件包&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># os.system(&quot;explorer.exe %s&quot; % start_directory)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二、用 os.startfile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># import os</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start_directory = r&#x27;C:\ 代码 \ 软件包&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># os.startfile(start_directory)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三、利用 subprocess</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 subprocess</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">startfile</span>(<span class="params">filename</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">        os.startfile(filename)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line"></span><br><span class="line">        subprocess.Popen([<span class="string">&#x27;xdg-open&#x27;</span>, filename])</span><br><span class="line"></span><br><span class="line">start_directory = <span class="string">&#x27;D:/11/9.jpg&#x27;</span></span><br><span class="line"></span><br><span class="line">startfile(start_directory)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vscode插件同步到云</title>
     <url>/2021/02/28/Vscode%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BA%91/</url>
     <content><![CDATA[<h3 id="安装-Settings-Sync"><a href="#安装-Settings-Sync" class="headerlink" title="安装 Settings Sync"></a>安装 Settings Sync</h3><p>Vscode 插件中心直接搜索安装即可。</p>
@@ -3742,13 +3764,13 @@ GUI：图形界面
     <title>不同工作表中筛选数据后并保存到同名工作表新表且自动打开</title>
     <url>/2021/07/08/%E4%B8%8D%E5%90%8C%E5%B7%A5%E4%BD%9C%E8%A1%A8%E4%B8%AD%E7%AD%9B%E9%80%89%E6%95%B0%E6%8D%AE%E5%90%8E%E5%B9%B6%E4%BF%9D%E5%AD%98%E5%88%B0%E5%90%8C%E5%90%8D%E5%B7%A5%E4%BD%9C%E8%A1%A8%E6%96%B0%E8%A1%A8%E4%B8%94%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/</url>
     <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 某个sheet下的数据,将其转化为列表数据，方便操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_data</span>(<span class="params">filename, sheetname</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=sheetname)</span><br><span class="line">        dataList = df.to_dict(orient=<span class="string">&#x27;records&#x27;</span>)  <span class="comment"># 转换为列表</span></span><br><span class="line">        <span class="keyword">return</span> dataList</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;未能打开此文件，请确认文件名及路径是否正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 所有sheet表名，并将其转化为列表返回</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_list</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> df.keys()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fileName = <span class="string">&#x27;D:/test/xlsx/Notes_111.xlsx&#x27;</span></span><br><span class="line">    sheetList = get_excel_sheet_list(fileName)  <span class="comment"># 获取sheet列表</span></span><br><span class="line">    print(sheetList)</span><br><span class="line">    writer = pd.ExcelWriter(<span class="string">&quot;D:/test/xlsx/新数据.xlsx&quot;</span>, engin=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheetList:  <span class="comment"># 遍历每个sheet名称</span></span><br><span class="line">        sheetData = get_excel_sheet_data(fileName, i)   <span class="comment"># 读取每个sheet下的数据</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> sheetData:  <span class="comment"># 取出每一项的数据</span></span><br><span class="line">            <span class="comment"># do something</span></span><br><span class="line">            <span class="comment"># 依次根据sheet名称对“新数据.xlsx”此文件多次写入Sheet</span></span><br><span class="line">            pd_look = pd.DataFrame(sheetData)</span><br><span class="line">            pd_look.to_excel(writer, sheet_name=i, index=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># 最后保存写入，并释放</span></span><br><span class="line">    writer.save()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 没有操作成功示例</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> load_workbook </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> time </span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据时间创建工作表名子</span></span><br><span class="line">path = <span class="string">r&quot;D:\test\xlsx&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作表名字</span></span><br><span class="line">date_rand = time.strftime(<span class="string">&quot;%H-%M-%S&quot;</span>, time.localtime()) <span class="comment"># &quot;%Y-%m-%d&quot; 按日期创建文件</span></span><br><span class="line">out_file_name = path+<span class="string">&#x27;\%s.xlsx&#x27;</span> % date_rand</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 某个sheet下的数据,将其转化为列表数据，方便操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_data</span>(<span class="params">filename, sheetname</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=sheetname)</span><br><span class="line">        <span class="keyword">return</span> df </span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;未能打开此文件，请确认文件名及路径是否正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 所有sheet表名，并将其转化为列表返回</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_list</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> df.keys()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fileName = <span class="string">&#x27;D:/test/xlsx/Notes_222.xlsx&#x27;</span></span><br><span class="line">    sheetList = get_excel_sheet_list(fileName)  <span class="comment"># 获取sheet列表</span></span><br><span class="line">    print(sheetList)</span><br><span class="line">    writer = pd.ExcelWriter(out_file_name,engine=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表,要加入 engine=&#x27;openpyxl&#x27; 引擎</span></span><br><span class="line"><span class="comment">#     book = load_workbook(writer.path)</span></span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表，同时也 import 入 from openpylx import load_workbook</span></span><br><span class="line"><span class="comment">#     writer.book = book</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheetList:  <span class="comment"># 遍历每个sheet名称</span></span><br><span class="line">        sheetData = get_excel_sheet_data(fileName, i)   <span class="comment"># 读取每个sheet下的数据</span></span><br><span class="line">        df=sheetData[sheetData[<span class="string">&#x27;code&#x27;</span>]==<span class="number">111</span>] <span class="comment"># do something</span></span><br><span class="line">        print(df)</span><br><span class="line">        <span class="comment"># 依次根据sheet名称对“新数据.xlsx”此文件多次写入Sheet</span></span><br><span class="line">        df.to_excel(writer, sheet_name=i, index=<span class="literal">False</span>)</span><br><span class="line">            </span><br><span class="line">    writer.save()  <span class="comment"># 最后保存写入，并释放</span></span><br><span class="line">    os.system(<span class="string">&#x27;explorer.exe &#x27;</span> + path) <span class="comment"># 程序执行完后自动打开目标文件夹 </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> load_workbook </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> time </span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据时间创建工作表名子</span></span><br><span class="line">path = <span class="string">r&quot;D:\test\xlsx&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工作表名字</span></span><br><span class="line">date_rand = time.strftime(<span class="string">&quot;%H-%M-%S&quot;</span>, time.localtime()) <span class="comment"># &quot;%Y-%m-%d&quot; 按日期创建文件</span></span><br><span class="line">out_file_name = path+<span class="string">&#x27;\%s.xlsx&#x27;</span> % date_rand</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 某个sheet下的数据,将其转化为列表数据，方便操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_data</span>(<span class="params">filename, sheetname</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=sheetname)</span><br><span class="line">        <span class="keyword">return</span> df </span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;未能打开此文件，请确认文件名及路径是否正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取excel 所有sheet表名，并将其转化为列表返回</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_excel_sheet_list</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = pd.read_excel(filename, sheet_name=<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> df.keys()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fileName = <span class="string">&#x27;D:/test/xlsx/Notes_222.xlsx&#x27;</span></span><br><span class="line">    sheetList = get_excel_sheet_list(fileName)  <span class="comment"># 获取sheet列表</span></span><br><span class="line">    print(sheetList)</span><br><span class="line">    writer = pd.ExcelWriter(out_file_name,engine=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表,要加入 engine=&#x27;openpyxl&#x27; 引擎</span></span><br><span class="line"><span class="comment">#     book = load_workbook(writer.path)</span></span><br><span class="line">    <span class="comment"># 加上这一句是为了不覆盖掉原xlsx文件里的工作表，同时也 import 入 from openpylx import load_workbook</span></span><br><span class="line"><span class="comment">#     writer.book = book</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> sheetList:  <span class="comment"># 遍历每个sheet名称</span></span><br><span class="line">        sheetData = get_excel_sheet_data(fileName, i)   <span class="comment"># 读取每个sheet下的数据</span></span><br><span class="line">        df=sheetData[sheetData[<span class="string">&#x27;code&#x27;</span>]==<span class="number">111</span>] <span class="comment"># do something</span></span><br><span class="line">        print(df)</span><br><span class="line">        <span class="comment"># 依次根据sheet名称对“新数据.xlsx”此文件多次写入Sheet</span></span><br><span class="line">        df.to_excel(writer, sheet_name=i, index=<span class="literal">False</span>)</span><br><span class="line">            </span><br><span class="line">    writer.save()  <span class="comment"># 最后保存写入，并释放</span></span><br><span class="line">    os.startfile(path)  <span class="comment"># 推荐此种写法</span></span><br><span class="line">    <span class="comment"># os.system(&#x27;explorer.exe &#x27; + path) # 程序执行完后自动打开目标文件夹 </span></span><br></pre></td></tr></table></figure>
 <pre><code>dict_keys([&#39;Sheet1&#39;])
    code       city
 0   111         NY
 1   111         CA
 </code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sPath=<span class="string">r&#x27;d:\test1&#x27;</span></span><br><span class="line">os.system(<span class="string">&#x27;explorer.exe &#x27;</span> + sPath)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sPath=<span class="string">r&#x27;d:\test1&#x27;</span></span><br><span class="line">os.startfile(sPath)</span><br><span class="line"><span class="comment"># os.system(&#x27;explorer.exe &#x27; + sPath)</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    print(time.localtime())</span><br><span class="line"></span><br><span class="line">    year = time.localtime().tm_year</span><br><span class="line">    month = time.localtime().tm_mon</span><br><span class="line">    day = time.localtime().tm_mday</span><br><span class="line"></span><br><span class="line">    hour = time.localtime().tm_hour</span><br><span class="line">    minute = time.localtime().tm_min</span><br><span class="line">    second = time.localtime().tm_sec</span><br><span class="line"></span><br><span class="line">    print(year, <span class="string">&#x27;年&#x27;</span>, month, <span class="string">&#x27;月&#x27;</span>, day, <span class="string">&#x27;日&#x27;</span>)</span><br><span class="line">    print(hour, <span class="string">&#x27;时&#x27;</span>, minute, <span class="string">&#x27;分&#x27;</span>, second, <span class="string">&#x27;秒&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <pre><code>time.struct_time(tm_year=2021, tm_mon=7, tm_mday=7, tm_hour=16, tm_min=30, tm_sec=37, tm_wday=2, tm_yday=188, tm_isdst=0)
 2021 年 7 月 7 日
@@ -4073,6 +4095,28 @@ GUI：图形界面
       </tags>
   </entry>
   <entry>
+    <title>代码实现多个Excel合并的花式操作要求</title>
+    <url>/2021/08/22/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AAExcel%E5%90%88%E5%B9%B6%E7%9A%84%E8%8A%B1%E5%BC%8F%E6%93%8D%E4%BD%9C%E8%A6%81%E6%B1%82/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一、合并指定目录下的所有订单表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">files = Path(<span class="string">&quot;orders/orders1&quot;</span>).glob(<span class="string">&quot;*.xlsx&quot;</span>)</span><br><span class="line">dfs = [pd.read_excel(f) <span class="keyword">for</span> f <span class="keyword">in</span> files]</span><br><span class="line">df = pd.concat(dfs)</span><br><span class="line">df.to_excel(<span class="string">&quot;result2.xlsx&quot;</span>,index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 二、合并指定目录下的指定订单表</span></span><br><span class="line"></span><br><span class="line">dfs = [pd.read_excel(f) <span class="keyword">for</span> f <span class="keyword">in</span> (<span class="string">&#x27;orders/orders1/order1.xlsx&#x27;</span>,<span class="string">&#x27;orders/orders1/order2.xlsx&#x27;</span>)]</span><br><span class="line">df = pd.concat(dfs)</span><br><span class="line">df.to_excel(<span class="string">&quot;result3.xlsx&quot;</span>,index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 三、合并指定目录指定订单表的指定字段</span></span><br><span class="line"></span><br><span class="line">table1 = pd.read_excel(<span class="string">&quot;orders/orders1/order1.xlsx&quot;</span>)</span><br><span class="line">table2 = pd.read_excel(<span class="string">&#x27;orders/orders1/order2.xlsx&#x27;</span>)</span><br><span class="line">part1 = table1.iloc[:,<span class="number">2</span>]  <span class="comment">#取order1.xlsx第3列的所有行</span></span><br><span class="line">part2 = table2.iloc[:,[<span class="number">8</span>,<span class="number">9</span>]]  <span class="comment">#取order2.xlsx的第9、10列的所有行</span></span><br><span class="line">result4 = pd.concat([part1,part2],axis = <span class="number">1</span> ) <span class="comment">#合并  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上注意axis=1表示横向合并。打印一下result4，长这样</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 四、合并所有目录下的所有订单表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">file_list = os.walk(<span class="string">&quot;./&quot;</span>)</span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> dir_path,dirs,files <span class="keyword">in</span> file_list:</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        file_path = os.path.join(dir_path,f) <span class="comment">#重构文件路径</span></span><br><span class="line">        print(file_path)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;xlsx&#x27;</span> <span class="keyword">in</span> f:    <span class="comment">#只要xlsx文件</span></span><br><span class="line">            df = pd.read_excel(file_path) <span class="comment">#将Excel转成DataFrame</span></span><br><span class="line">            result.append(df)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line">df = pd.concat(result) <span class="comment">#多个DataFrame合成一个</span></span><br><span class="line">df.to_excel(<span class="string">&quot;result4.xlsx&quot;</span>,index=<span class="literal">False</span>) <span class="comment">#导入到一个新的Excel中</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_image_filepaths</span>(<span class="params">dataset_dir</span>):</span></span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(dataset_dir):</span><br><span class="line">        <span class="keyword">for</span> name <span class="keyword">in</span> files:</span><br><span class="line">            fp = os.path.join(root, name)</span><br><span class="line">            <span class="keyword">if</span> name.endswith(<span class="string">&quot;.jpg&quot;</span>):</span><br><span class="line">                result.append(fp)</span><br><span class="line">    <span class="keyword">return</span> result </span><br><span class="line"></span><br><span class="line">find_image_filepaths(<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 批量读取 excel</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line">path=<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span></span><br><span class="line">filename_list = os.listdir(<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span>)</span><br><span class="line">train_data=[]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> filename_list:</span><br><span class="line">    train_data.append(pd.read_excel(path+<span class="string">&#x27;/&#x27;</span>+item))</span><br><span class="line">train_data=pd.concat(train_data)</span><br><span class="line">train_data</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>写给刚入门编程（python）的同学</title>
     <url>/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/</url>
     <content><![CDATA[<h2 id="写给谁"><a href="#写给谁" class="headerlink" title="写给谁"></a>写给谁</h2><p>刚准备入手学习 python 编程的大学生或者研究生。</p>
@@ -4140,6 +4184,22 @@ GUI：图形界面
       </categories>
       <tags>
         <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数的实例应用去除图片水印</title>
+    <url>/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将 PDF 文档 分割成图片</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> fitz</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pyMuPDF_fitz</span>(<span class="params">pdfPath, imagePath</span>):</span></span><br><span class="line">    startTime_pdf2img = datetime.datetime.now()  <span class="comment"># 开始时间</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;imagePath=&quot;</span>+imagePath)</span><br><span class="line">    pdfDoc = fitz.<span class="built_in">open</span>(pdfPath)</span><br><span class="line">    <span class="keyword">for</span> pg <span class="keyword">in</span> <span class="built_in">range</span>(pdfDoc.pageCount):</span><br><span class="line">        page = pdfDoc[pg]</span><br><span class="line">        rotate = <span class="built_in">int</span>(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 每个尺寸的缩放系数为1.3，这将为我们生成分辨率提高2.6的图像。</span></span><br><span class="line">        <span class="comment"># 此处若是不做设置，默认图片大小为：792X612, dpi=72</span></span><br><span class="line">        zoom_x = <span class="number">1.33333333</span>  <span class="comment"># (1.33333333--&gt;1056x816)   (2--&gt;1584x1224)</span></span><br><span class="line">        zoom_y = <span class="number">1.33333333</span></span><br><span class="line">        mat = fitz.Matrix(zoom_x, zoom_y).preRotate(rotate)</span><br><span class="line">        pix = page.getPixmap(matrix=mat, alpha=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(imagePath):  <span class="comment"># 判断存放图片的文件夹是否存在</span></span><br><span class="line">            os.makedirs(imagePath)  <span class="comment"># 若图片文件夹不存在就创建</span></span><br><span class="line"></span><br><span class="line">        pix.writePNG(imagePath+<span class="string">&#x27;/&#x27;</span>+<span class="string">&#x27;images_%s.png&#x27;</span> % pg)  <span class="comment"># 将图片写入指定的文件夹内</span></span><br><span class="line"></span><br><span class="line">    endTime_pdf2img = datetime.datetime.now()  <span class="comment"># 结束时间</span></span><br><span class="line">    print(<span class="string">&#x27;pdf2img时间=&#x27;</span>, (endTime_pdf2img - startTime_pdf2img).seconds)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    pdfPath = <span class="string">r&quot;D:\教学工具软件\冰点文库下载器 3.2.10 去广告版\冰点文库下载器 3.2.10 去广告版\kpdf\哪些人适合学Python培训，你在其中吗？.pdf&quot;</span></span><br><span class="line">    imagePath = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">    pyMuPDF_fitz(pdfPath, imagePath)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将图片去除水印，配合上一个程序使用</span></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> product</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># img = Image.open(r&quot;D:\1jieya\image\images_0.png&quot;)</span></span><br><span class="line"><span class="comment"># width, height = img.size</span></span><br><span class="line"><span class="comment"># for pos in product(range(width), range(height)):</span></span><br><span class="line"><span class="comment">#     if sum(img.getpixel(pos)[:3]) &gt; 600:</span></span><br><span class="line"><span class="comment">#         img.putpixel(pos, (255, 255, 255))</span></span><br><span class="line"><span class="comment"># img.save(r&quot;C:\Users\win\Desktop\removed_1.png&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">output = <span class="string">r&quot;D:\1jieya\remove&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(<span class="built_in">input</span>):</span><br><span class="line">        print(image_name)</span><br><span class="line">        img = Image.<span class="built_in">open</span>(os.path.join(<span class="built_in">input</span>, image_name))</span><br><span class="line">        width, height = img.size</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> product(<span class="built_in">range</span>(width), <span class="built_in">range</span>(height)):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span>(img.getpixel(pos)[:<span class="number">3</span>]) &gt; <span class="number">600</span>:</span><br><span class="line">                img.putpixel(pos, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">        img.save(os.path.join(output, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 批量将图片修改为指定大小</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter, ImageDraw</span><br><span class="line"></span><br><span class="line"><span class="comment"># im = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片的格式，大小，以及模式</span></span><br><span class="line"><span class="comment"># print(im.format, im.size, im.mode)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定图片的像素</span></span><br><span class="line"><span class="comment"># im.thumbnail((720, 1280))</span></span><br><span class="line"><span class="comment"># im.save(r&quot;C:\Users\win\Desktop\ccc\128_128.jpg&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 旋转图片的方向</span></span><br><span class="line"><span class="comment"># dest_im = im.rotate(90)</span></span><br><span class="line"><span class="comment"># dest_im.save(r&quot;C:\Users\win\Desktop\ccc\90.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给图片添加滤镜</span></span><br><span class="line"><span class="comment"># dest_im = im.filter(ImageFilter.GaussianBlur)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 图片反转</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_LEFT_RIGHT)</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_TOP_BOTTOM)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片上写文字</span></span><br><span class="line"><span class="comment"># image = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"><span class="comment"># img_draw = ImageDraw.Draw(image)</span></span><br><span class="line"><span class="comment"># img_draw.text((1270, 1250), &#x27;hello world!&#x27;, fill=&#x27;green&#x27;)</span></span><br><span class="line"><span class="comment"># image.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量将图片的大小设置为指定大小</span></span><br><span class="line"></span><br><span class="line">in_path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">out_path = os.path.join(in_path, <span class="string">&#x27;modify&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(out_path):</span><br><span class="line">    os.makedirs(out_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(in_path):</span><br><span class="line">        cur_dir = in_path + <span class="string">&#x27;/&#x27;</span> + image_name</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(cur_dir):</span><br><span class="line">            print(<span class="string">f&#x27;正在处理:<span class="subst">&#123;cur_dir&#125;</span>&#x27;</span>)</span><br><span class="line">            im = Image.<span class="built_in">open</span>(cur_dir)</span><br><span class="line">            im.thumbnail((<span class="number">1280</span>, <span class="number">720</span>))</span><br><span class="line">            im.save(os.path.join(out_path, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -4315,6 +4375,348 @@ GUI：图形界面
 <h3 id="这是简单高效的方法"><a href="#这是简单高效的方法" class="headerlink" title="这是简单高效的方法"></a>这是简单高效的方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Folder_Path &#x3D; r&#39;D:\jupyter notebook\test&#39;</span><br><span class="line">file_list &#x3D; os.listdir(Folder_Path)</span><br><span class="line"></span><br><span class="line">dfs &#x3D; []</span><br><span class="line">for item in file_list:</span><br><span class="line">    print(&#39;需要合并的文件为:&#39;, Folder_Path+item)</span><br><span class="line">    dfs.append(pd.read_excel(Folder_Path + &#39;\\&#39; + item))</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.concat(dfs, sort&#x3D;False)</span><br><span class="line">df.to_excel(r&#39;D:\jupyter notebook\test\test.xlsx&#39;, index&#x3D;False)</span><br><span class="line">print(&#39;合并后的数据大小为:&#39;, df.shape)</span><br><span class="line">print(&#39;合并完成&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 这个带进度表</span><br><span class="line"></span><br><span class="line">dir &#x3D; &#39;test&#x2F;&#39;</span><br><span class="line">filenames &#x3D; os.listdir(dir)</span><br><span class="line">index &#x3D; 0</span><br><span class="line">dfs &#x3D; []</span><br><span class="line">for name in filenames:</span><br><span class="line">    print(&#39;正在处理第&#39; + str(index+1) + &#39;个表格&#39;)</span><br><span class="line">    dfs.append(pd.read_excel(os.path.join(dir, name)))</span><br><span class="line">    index +&#x3D; 1</span><br><span class="line">df &#x3D; pd.concat(dfs)</span><br><span class="line">df.to_excel(&#39;test&#x2F;total.xlsx&#39;, index&#x3D;False)</span><br></pre></td></tr></table></figure>
 <h3 id="这是一个更高级的用函数来写多功能的"><a href="#这是一个更高级的用函数来写多功能的" class="headerlink" title="这是一个更高级的用函数来写多功能的"></a>这是一个更高级的用函数来写多功能的</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import xlrd</span><br><span class="line">import xlsxwriter</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_file_list(dir, file_type_list&#x3D;[&#39;txt&#39;, &#39;csv&#39;, &#39;xlsx&#39;, &#39;xls&#39;], file_list&#x3D;[]):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    获取指定文件夹下指定类型文件路径</span><br><span class="line">    :param dir: 文件夹路径</span><br><span class="line">    :param file_type_list: 文件类型</span><br><span class="line">    :param file_list: 文件列表</span><br><span class="line">    :return:</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    for root, _, files in os.walk(dir):</span><br><span class="line">        for file in files:</span><br><span class="line">            file_type &#x3D; file[file.rfind(&#39;.&#39;) + 1:]</span><br><span class="line">            if file_type in file_type_list:</span><br><span class="line">                file_list.append(os.path.join(root, file))</span><br><span class="line">    return file_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def merge_xlsx_files(file_dir_path, out_file_path,</span><br><span class="line">                     file_type_list&#x3D;[&#39;txt&#39;, &#39;csv&#39;, &#39;xlsx&#39;, &#39;xls&#39;],</span><br><span class="line">                     out_file_name&#x3D;&#39;result.xlsx&#39;):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    合并目录下指定类型的文件</span><br><span class="line">    :param file_dir_path: 文件夹路径</span><br><span class="line">    :param out_file_path:  输出文件夹路径</span><br><span class="line">    :param file_type_list: 需要合并的文件类型</span><br><span class="line">    :param out_file_name:  输出文件名称</span><br><span class="line">    :return:</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    file_paths &#x3D; get_file_list(file_dir_path, file_type_list)</span><br><span class="line">    if not os.path.exists(out_file_path):</span><br><span class="line">        os.makedirs(out_file_path)</span><br><span class="line">    dfs &#x3D; []</span><br><span class="line">    for file in file_paths:</span><br><span class="line">        print(f&#39;file&#x3D;&#123;file&#125;&#39;)</span><br><span class="line">        dfs.append(pd.read_excel(file))</span><br><span class="line">    df &#x3D; pd.concat(dfs)</span><br><span class="line">    df.to_excel(os.path.join(out_file_path, out_file_name), index&#x3D;False)</span><br><span class="line">    print(f&#39;out_file_path&#x3D;&#123;out_file_path&#125;&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    file_dir_path &#x3D; os.path.join(sys.path[0], r&#39;D:\jupyter notebook\test&#39;)</span><br><span class="line">    out_file_path &#x3D; os.path.join(sys.path[0], r&#39;D:\jupyter notebook\test&#39;)</span><br><span class="line">    merge_xlsx_files(file_dir_path, out_file_path, [&#39;xls&#39;])</span><br></pre></td></tr></table></figure>
 <h3 id="这个是带用弹窗保存的"><a href="#这个是带用弹窗保存的" class="headerlink" title="这个是带用弹窗保存的"></a>这个是带用弹窗保存的</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># python pandas合并多个excel(xls和xlsx)文件（弹窗选择文件夹和保存文件）</span><br><span class="line"></span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import filedialog</span><br><span class="line">import os</span><br><span class="line">import pandas as pd</span><br><span class="line">import glob</span><br><span class="line"></span><br><span class="line">root &#x3D; tk.Tk()</span><br><span class="line">root.withdraw()</span><br><span class="line"></span><br><span class="line"># 选择文件夹位置</span><br><span class="line">filelocation &#x3D; os.path.normpath(</span><br><span class="line">    filedialog.askdirectory(initialdir&#x3D;os.getcwd()))</span><br><span class="line">lst &#x3D; []</span><br><span class="line"></span><br><span class="line"># 读取文件夹下所有文件（xls和xlsx都读取）</span><br><span class="line">for i in glob.glob(filelocation + &quot;\\\\&quot; + &quot;*.*&quot;):</span><br><span class="line">    if os.path.splitext(i)[1] in [&quot;.xls&quot;, &quot;.xlsx&quot;]:</span><br><span class="line">        lst.append(pd.read_excel(i))</span><br><span class="line"></span><br><span class="line"># 保存合并后的excel文件</span><br><span class="line">writer &#x3D; pd.ExcelWriter(filedialog.asksaveasfilename(title&#x3D;&quot;保存&quot;, initialdir&#x3D;filelocation,</span><br><span class="line">                                                     defaultextension&#x3D;&quot;xlsx&quot;, filetypes&#x3D;[(&quot;Excel 工作簿&quot;, &quot;*.xlsx&quot;), (&quot;Excel 97-2003 工作簿&quot;, &quot;*.xls&quot;)]))</span><br><span class="line">pd.concat(lst).to_excel(writer, &#39;all&#39;, index&#x3D;False)</span><br><span class="line">writer.save()</span><br><span class="line"></span><br><span class="line">print(&#39;\n%d个文件已经合并成功！&#39; % len(lst))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在Pandas中更改列的数据类型方法总结</title>
+    <url>/2021/08/22/%E5%9C%A8Pandas%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df= pd.DataFrame(a)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0    object
+1    object
+2    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame (a, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment">#示例 1</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0     object
+1    float64
+2    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame (data=a, dtype=np.int8) <span class="comment">#示例 2</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+<pre><code>0    object
+1    object
+2    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下面是一个字符串 Seriess 的例子，它的 dtype 为 object：</span></span><br><span class="line"></span><br><span class="line">s = pd.Series([<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;4.7&#x27;</span>, <span class="string">&#x27;pandas&#x27;</span>, <span class="string">&#x27;10&#x27;</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0         1
+1         2
+2       4.7
+3    pandas
+4        10
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 to_numeric 转为数值。默认情况下，它不能处理字母型的字符串 &#x27;pandas&#x27;：</span></span><br><span class="line"><span class="comment"># 如果遇到无效值，第三个选项就是忽略该操作：</span></span><br><span class="line">pd.to_numeric(s,errors=<span class="string">&#x27;coerce&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0     1.0
+1     2.0
+2     4.7
+3     NaN
+4    10.0
+dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.to_numeric(s, errors=<span class="string">&#x27;ignore&#x27;</span>)<span class="comment">#the original Series is returned untouched</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0         1
+1         2
+2       4.7
+3    pandas
+4        10
+dtype: object
+</code></pre>
+<p>对于多列或者整个 DataFrame</p>
+<p>如果想要将这个操作应用到多个列，依次处理每一列是非常繁琐的，所以可以使用 DataFrame.apply 处理每一列。</p>
+<p>对于某个 DataFrame：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line">df = pd.DataFrame(a, columns=[<span class="string">&#x27;col1&#x27;</span>,<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+      <th>col3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>col1    object
+col2    object
+col3    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>]]=df[[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>]].apply(pd.to_numeric)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>col1     object
+col2    float64
+col3    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+      <th>col3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70.0</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5.0</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 但是，可能不知道哪些列可以可靠地转换为数字类型。在这种情况下，设置参数：</span></span><br><span class="line"></span><br><span class="line">df.apply(pd.to_numeric, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后该函数将被应用于整个 DataFrame，可以转换为数字类型的列将被转换，而不能 (例如，它们包含非数字字符串或日期) 的列将被单独保留。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另外 pd.to_datetime 和 pd.to_timedelta 可将数据转换为日期和时间戳。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+      <th>col3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70.0</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5.0</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 软转换 —— 类型自动推断</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 版本 0.21.0 引入了 infer_objects () 方法，用于将具有对象数据类型的 DataFrame 的列转换为更具体的类型。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如，用两列对象类型创建一个 DataFrame，其中一个保存整数，另一个保存整数的字符串：</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>: [<span class="number">7</span>, <span class="number">1</span>, <span class="number">5</span>], <span class="string">&#x27;b&#x27;</span>: [<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;1&#x27;</span>]&#125;, dtype=<span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">df.dtypes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>a    object
+b    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 然后使用 infer_objects ()，可以将列 &#x27;a&#x27; 的类型更改为 int64：</span></span><br><span class="line"></span><br><span class="line">df =df.infer_objects()</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>a     int64
+b    object
+dtype: object
+</code></pre>
+<p>astype 强制转换</p>
+<p>如果试图强制将两列转换为整数类型，可以使用 df.astype (int)。</p>
+<p>示例如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df= pd.DataFrame(a, columns=[<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>])</span><br><span class="line"></span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1.2</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>70</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>x</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>one      object
+two      object
+three    object
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[[<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]]=df[[<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]].astype(<span class="built_in">float</span>)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>one       object
+two      float64
+three    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Python库之Pandas</category>
       </categories>
@@ -4894,6 +5296,43 @@ GUI：图形界面
       </tags>
   </entry>
   <entry>
+    <title>获取路径下所有文件全名路径判断是路径目录文件是否存在</title>
+    <url>/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="comment"># print(root)  # 当前目录路径</span></span><br><span class="line">        print(dirs)  <span class="comment"># 当前路径下所有子目录</span></span><br><span class="line">        print(files)  <span class="comment"># 当前路径下所有非目录子文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line">    L = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> os.path.splitext(file)[<span class="number">1</span>] == <span class="string">&#x27;.png&#x27;</span>:  <span class="comment"># 想要保存的文件格式</span></span><br><span class="line">                L.append(os.path.join(root, file))</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#其中os.path.splitext()函数将路径拆分为文件名+扩展名</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dirpath = <span class="string">r&#x27;D:\Premiere\1&#x27;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirpath):</span><br><span class="line">	os.mksdir(dirpath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的目录和文件名（分开显示）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printPath</span>(<span class="params">path</span>):</span></span><br><span class="line">    dirList = []</span><br><span class="line">    fileList = []</span><br><span class="line"></span><br><span class="line">    dirFiles = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> dirFile <span class="keyword">in</span> dirFiles:</span><br><span class="line">        curPath = path + <span class="string">&#x27;/&#x27;</span> + dirFile</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(curPath):</span><br><span class="line">            <span class="comment"># 排除隐藏文件</span></span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                dirList.append(curPath)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">elif</span> os.path.isfile(curPath):</span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                fileList.append(curPath)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;dirlist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> dir_ <span class="keyword">in</span> dirList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, dir_)</span><br><span class="line">    print(<span class="string">&#x27;filelist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> file_ <span class="keyword">in</span> fileList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, file_)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">printPath(path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的文件名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eachFile</span>(<span class="params">filepath</span>):</span></span><br><span class="line">    pathDir = os.listdir(filepath)</span><br><span class="line">    print(<span class="string">&#x27;pathDir:&#x27;</span>, pathDir)</span><br><span class="line">    <span class="keyword">for</span> allDir <span class="keyword">in</span> pathDir:</span><br><span class="line">        child = os.path.join(filepath, allDir)</span><br><span class="line">        print(child)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eachFile(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 递归获取路径下所有文件名</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listdir</span>(<span class="params">path, list_name</span>):</span>  <span class="comment"># 传入存储的list</span></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">        	listdir(file_path, list_name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            list_name.append(file_path)</span><br><span class="line">    <span class="keyword">return</span> list_name</span><br><span class="line">listdir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>,list_name=[])</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
+</code></pre>
+<h2 id="怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在"><a href="#怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在" class="headerlink" title="怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在"></a>怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.path.exists(path)     <span class="comment"># 判断一个路径是否存在，可以判断一个文件或目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)      <span class="comment"># 判断一个目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断一个路径是文件还是目录（文件夹）</span></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)   <span class="comment"># 返回 True 表示是目录（文件夹）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"></span><br><span class="line">os.path.isfile(path)   <span class="comment"># 返回 True 表示是文件</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机存储单位</title>
     <url>/2021/02/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D/</url>
     <content><![CDATA[<h2 id="存储单位"><a href="#存储单位" class="headerlink" title="存储单位"></a>存储单位</h2><p>存储单位是一种计量单位。指在某一领域以一个特定量，或标准做为一个记录（计数）点。再以此点的某个倍数再去定义另一个点，而这个点的代名词就是计数单位或存储单位。</p>
@@ -4969,6 +5408,58 @@ GUI：图形界面
       </categories>
       <tags>
         <tag>文章阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读取多行为表头的方法</title>
+    <url>/2021/08/22/%E8%AF%BB%E5%8F%96%E5%A4%9A%E8%A1%8C%E4%B8%BA%E8%A1%A8%E5%A4%B4%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br></pre></td></tr></table></figure>
+<h2 id="对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解："><a href="#对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解：" class="headerlink" title="对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解："></a>对于待合并的数据表格的表头不正规的情况，如表头由多行组成且行中有折分单元格的情况，这种情形下，如何强行合并可能得不到想要的效果，如何做，且看如下分解：</h2><h3 id="第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据"><a href="#第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据" class="headerlink" title="第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据"></a>第一步：先进行常规合并操作，得到不规整的合并后的的表，目得到的是内容齐全的在一个表格内的所有数据</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">displaydir</span>(<span class="params">dir_path</span>):</span></span><br><span class="line">    file_list = []</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> filenames <span class="keyword">in</span> os.walk(dir_path):</span><br><span class="line">        <span class="keyword">for</span> table <span class="keyword">in</span> filenames[<span class="number">2</span>]:</span><br><span class="line">            path = filenames[<span class="number">0</span>] + <span class="string">&#x27;/&#x27;</span> + table</span><br><span class="line">            li = pd.read_excel(path,header=<span class="number">3</span>,dtype=<span class="built_in">str</span>)</span><br><span class="line">            li[<span class="string">&#x27;file_name&#x27;</span>] = os.path.splitext(table)[<span class="number">0</span>]</span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            file_list.append(li)</span><br><span class="line">            print(<span class="string">&#x27; 第&#x27;</span> + <span class="built_in">str</span>(n) + <span class="string">&#x27; 个表格已合并&#x27;</span>)</span><br><span class="line">    print(<span class="string">&#x27;在该目录下有 %d 个 xlsx 文件&#x27;</span> % <span class="built_in">len</span>(file_list))</span><br><span class="line">    data_result = pd.concat(file_list, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    data_result.to_excel(out_path + <span class="string">&#x27;/&#x27;</span> + <span class="string">&#x27;result.xlsx&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    dir_path = <span class="string">r&quot;D:\1 - 副本\新建文件夹&quot;</span></span><br><span class="line">    out_path = <span class="string">r&quot;C:\Users\win\Desktop\xlsx&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(out_path):</span><br><span class="line">        os.makedirs(out_path)</span><br><span class="line"></span><br><span class="line">    displaydir(dir_path)</span><br></pre></td></tr></table></figure>
+<h3 id="第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。"><a href="#第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。" class="headerlink" title="第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。"></a>第二步：根据需要，对表头的列进行重命名操作，并且删除数据行为全空数据的行。</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.read_excel(<span class="string">r&quot;C:\Users\win\Desktop\xlsx\result.xlsx&quot;</span>,dtype=<span class="built_in">str</span>)</span><br><span class="line">data.rename(columns=&#123;<span class="string">&#x27;Unnamed: 1&#x27;</span>:<span class="string">&#x27;学校&#x27;</span>,<span class="string">&#x27;Unnamed: 2&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>,<span class="string">&#x27;Unnamed: 3&#x27;</span>:<span class="string">&#x27;学生/教师&#x27;</span>,<span class="string">&#x27;Unnamed: 4&#x27;</span>:<span class="string">&#x27;性别&#x27;</span>,<span class="string">&#x27;Unnamed: 5&#x27;</span>:<span class="string">&#x27;身份证号&#x27;</span>,<span class="string">&#x27;Unnamed: 6&#x27;</span>:<span class="string">&#x27;手机号&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br><span class="line">data.dropna(axis=<span class="number">0</span>,how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="reset-index-重置索引列"><a href="#reset-index-重置索引列" class="headerlink" title="reset_index () 重置索引列"></a>reset_index () 重置索引列</h2><p>pandas 中的 reset_index ()</p>
+<p>数据清洗时，会将带空值的行删除，此时 DataFrame 或 Series 类型的数据不再是连续的索引，可以使用 reset_index () 重置索引</p>
+<p>eg:<br>import pandas as pd</p>
+<p>import numpy as np</p>
+<p>df = pd.DataFrame(np.arange(20).reshape(5,4),index=[1,3,4,6,8])</p>
+<p>print(df)</p>
+<p>reset_index () 重置索引：</p>
+<p>print(df.reset_index())</p>
+<p>在获得新的 index，原来的 index 变成数据列，保留下来。</p>
+<p>不想保留原来的 index，使用参数 drop=True，默认 False。</p>
+<p>print(df.reset_index(drop=True))</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.to_excel(<span class="string">r&#x27;D:\finall.xlsx&#x27;</span>,index=<span class="literal">False</span>)   <span class="comment"># 保存工作表</span></span><br></pre></td></tr></table></figure>
+<h1 id="上述为一个处理的完整过程"><a href="#上述为一个处理的完整过程" class="headerlink" title="上述为一个处理的完整过程"></a>上述为一个处理的完整过程</h1><h1 id="以下为第一学习操作的过程："><a href="#以下为第一学习操作的过程：" class="headerlink" title="以下为第一学习操作的过程："></a>以下为第一学习操作的过程：</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file_path=<span class="string">r&quot;D:\1 - 副本\新建文件夹&quot;</span></span><br><span class="line">file_list=os.listdir(file_path)</span><br><span class="line"></span><br><span class="line">data_list=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> file_list:</span><br><span class="line">    full_path=os.path.join(file_path,i)</span><br><span class="line">    data=pd.read_excel(full_path,header=<span class="number">3</span>,dtype=<span class="built_in">str</span>)</span><br><span class="line">    data_list.append(data)</span><br><span class="line">    df_all=pd.concat(data_list)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># df_all.to_excel(r&#x27;D:\result1.xlsx&#x27;)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all.rename(columns=&#123;<span class="string">&#x27;Unnamed: 0&#x27;</span>:<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;Unnamed: 1&#x27;</span>:<span class="string">&#x27;学校&#x27;</span>,<span class="string">&#x27;Unnamed: 2&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>,<span class="string">&#x27;Unnamed: 3&#x27;</span>:<span class="string">&#x27;学生家长&#x27;</span>,<span class="string">&#x27;Unnamed: 4&#x27;</span>:<span class="string">&#x27;性别&#x27;</span>,<span class="string">&#x27;Unnamed: 5&#x27;</span>:<span class="string">&#x27;身份证号&#x27;</span>,<span class="string">&#x27;Unnamed: 6&#x27;</span>:<span class="string">&#x27;手机号&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># df_all.head(20)</span></span><br><span class="line"><span class="comment"># df_all.drop(columns=[&#x27;id&#x27;], inplace=True)</span></span><br><span class="line">df_all.head(<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all.dropna(axis=<span class="number">0</span>, how=<span class="string">&#x27;all&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(39, 15)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.reset_index(drop=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.to_excel(<span class="string">r&#x27;D:\finall.xlsx&#x27;</span>,index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all.rename(columns=&#123;<span class="string">&#x27;学生家长&#x27;</span>:<span class="string">&#x27;学生/教师&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_all.dropna(axis=<span class="number">0</span>,how=<span class="string">&#x27;all&#x27;</span>,inplace=<span class="literal">True</span>)</span><br><span class="line">df_all</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
       </tags>
   </entry>
   <entry>
