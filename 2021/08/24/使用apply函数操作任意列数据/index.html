@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="123456&quot;&quot;&quot;首先创建一个DataFrame&quot;&quot;&quot;import pandas as pddf &#x3D; pd.DataFrame(&amp;#123;&amp;#x27;a&amp;#x27;:[x&#x2F;&#x2F;2 for x in range(5)],                   &amp;#x27;b&amp;#x27;:[x for x in range(5)],">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用apply函数操作任意列数据">
+<meta property="og:url" content="https://getcoden.github.io/2021/08/24/%E4%BD%BF%E7%94%A8apply%E5%87%BD%E6%95%B0%E6%93%8D%E4%BD%9C%E4%BB%BB%E6%84%8F%E5%88%97%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="123456&quot;&quot;&quot;首先创建一个DataFrame&quot;&quot;&quot;import pandas as pddf &#x3D; pd.DataFrame(&amp;#123;&amp;#x27;a&amp;#x27;:[x&#x2F;&#x2F;2 for x in range(5)],                   &amp;#x27;b&amp;#x27;:[x for x in range(5)],">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-24T10:42:25.000Z">
+<meta property="article:modified_time" content="2021-08-24T02:46:53.912Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python库之Pandas">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2021/08/24/%E4%BD%BF%E7%94%A8apply%E5%87%BD%E6%95%B0%E6%93%8D%E4%BD%9C%E4%BB%BB%E6%84%8F%E5%88%97%E6%95%B0%E6%8D%AE/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>使用apply函数操作任意列数据 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/24/%E4%BD%BF%E7%94%A8apply%E5%87%BD%E6%95%B0%E6%93%8D%E4%BD%9C%E4%BB%BB%E6%84%8F%E5%88%97%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用apply函数操作任意列数据
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-24 10:42:25 / 修改时间：02:46:53" itemprop="dateCreated datePublished" datetime="2021-08-24T10:42:25Z">2021-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;首先创建一个DataFrame&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>:[x//<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)],</span><br><span class="line">                   <span class="string">&#x27;b&#x27;</span>:[x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)],</span><br><span class="line">                   <span class="string">&#x27;c&#x27;</span>:[x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>)]&#125;)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Example1：a列所有的值+10&quot;&quot;&quot;</span></span><br><span class="line">df1=df.copy()</span><br><span class="line">df1[<span class="string">&#x27;a&#x27;</span>]=df1[<span class="string">&#x27;a&#x27;</span>].apply(<span class="keyword">lambda</span> x:x+<span class="number">10</span>)</span><br><span class="line">df1</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Example2：a列第1~3行的值+10&quot;&quot;&quot;</span></span><br><span class="line">df2=df.copy()</span><br><span class="line">df2.loc[<span class="number">1</span>:<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>]=df2.loc[<span class="number">1</span>:<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>].apply(<span class="keyword">lambda</span> x:x+<span class="number">10</span>)</span><br><span class="line">df2</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Example3：b列中小于c列、或大于k的值+10&quot;&quot;&quot;</span></span><br><span class="line">df3=df.copy()</span><br><span class="line">k=<span class="number">3</span></span><br><span class="line">index=df3.query(<span class="string">&#x27;b&lt;c|b&gt;@k&#x27;</span>).index.values</span><br><span class="line">df3.loc[index,<span class="string">&#x27;b&#x27;</span>]=df3.loc[index,<span class="string">&#x27;b&#x27;</span>].apply(<span class="keyword">lambda</span> x: x+<span class="number">10</span>)</span><br><span class="line">df3</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>10</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>11</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>14</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Example4：新增d列，且d=a+c+10&quot;&quot;&quot;</span></span><br><span class="line">df4=df.copy()</span><br><span class="line">df4[<span class="string">&#x27;d&#x27;</span>]=df4.apply(<span class="keyword">lambda</span> col:col[<span class="string">&#x27;a&#x27;</span>]+col[<span class="string">&#x27;c&#x27;</span>]+<span class="number">10</span>,axis=<span class="number">1</span>)</span><br><span class="line">df4</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Example5：a列的值改为b列-10，新增d列，且值为c列+10&quot;&quot;&quot;</span></span><br><span class="line">df5 = df.copy()</span><br><span class="line"><span class="comment"># 同时修改多列的值时，是在操作DataFrame的一个区间，如果不新增列直接操作DataFrame，会因为无对应区间而产生bug</span></span><br><span class="line">df5[<span class="string">&#x27;d&#x27;</span>] = <span class="literal">None</span></span><br><span class="line"><span class="comment"># apply函数返回的是一个Series，不能将Series直接赋值给DataFrame，需要转化为List</span></span><br><span class="line"><span class="comment"># DataFrame接受的赋值格式为一个嵌套List：[[row1], [row2], ... [rowN]]</span></span><br><span class="line"><span class="comment"># 因此apply内的函数应该返回一个list,对应于[rowi]，apply返回的Series转化为List，对应于嵌套List的外层</span></span><br><span class="line">df5[[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]] = df5.apply(<span class="keyword">lambda</span> col:[col[<span class="string">&#x27;b&#x27;</span>]-<span class="number">10</span>, col[<span class="string">&#x27;c&#x27;</span>]+<span class="number">10</span>], axis=<span class="number">1</span>).tolist()</span><br><span class="line">df5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-10</td>
+      <td>0</td>
+      <td>4</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-9</td>
+      <td>1</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-8</td>
+      <td>2</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-7</td>
+      <td>3</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-6</td>
+      <td>4</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Example6：基于Example5的操作，但仅操作a列的值变化后小于-8的行, d列如果有空值，则填充为0&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 将Example6的条件写为函数, 注意返回值为列表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">a, b, c</span>):</span></span><br><span class="line">    <span class="keyword">if</span> b-<span class="number">10</span> &lt; -<span class="number">8</span>:</span><br><span class="line">        fa = b - <span class="number">10</span></span><br><span class="line">        fd = c + <span class="number">10</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        fa = a</span><br><span class="line">        fd = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> [fa, fd]</span><br><span class="line"></span><br><span class="line">df6 = df.copy()</span><br><span class="line">df6[<span class="string">&#x27;d&#x27;</span>] = <span class="literal">None</span></span><br><span class="line">df6[[<span class="string">&quot;a&quot;</span>, <span class="string">&quot;d&quot;</span>]]=df6.apply(<span class="keyword">lambda</span> col:func(col[<span class="string">&#x27;a&#x27;</span>], col[<span class="string">&#x27;b&#x27;</span>], col[<span class="string">&#x27;c&#x27;</span>]), axis=<span class="number">1</span>).tolist()</span><br><span class="line">df6</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-10</td>
+      <td>0</td>
+      <td>4</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-9</td>
+      <td>1</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pandas 详解二十六之 Apply-- 对行、列用函数处理</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">俗话说，工欲善其事，必先利其器。在这里形容 apply 函数再合适不过了，apply 函数，可以说是 pandas 中自由度最高的函数。不过，是否能发挥其巨大威力，取决于我们的创造力。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在本博文中，首先通过简单例子来说明 apply 的用法，然后通过俩个高级例子来演示常用的用法。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1 简单例子来说明 apply 的用法</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">df1=pd.DataFrame(&#123;<span class="string">&#x27;sex&#x27;</span>:<span class="built_in">list</span>(<span class="string">&#x27;FFMFMMF&#x27;</span>),<span class="string">&#x27;smoker&#x27;</span>:<span class="built_in">list</span>(<span class="string">&#x27;YNYYNYY&#x27;</span>),<span class="string">&#x27;age&#x27;</span>:[<span class="number">21</span>,<span class="number">30</span>,<span class="number">17</span>,<span class="number">37</span>,<span class="number">40</span>,<span class="number">18</span>,<span class="number">26</span>],<span class="string">&#x27;weight&#x27;</span>:[<span class="number">120</span>,<span class="number">100</span>,<span class="number">132</span>,<span class="number">140</span>,<span class="number">94</span>,<span class="number">89</span>,<span class="number">123</span>]&#125;)</span><br><span class="line">df1</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>age</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>F</td>
+      <td>Y</td>
+      <td>21</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>F</td>
+      <td>N</td>
+      <td>30</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>M</td>
+      <td>Y</td>
+      <td>17</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>F</td>
+      <td>Y</td>
+      <td>37</td>
+      <td>140</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>M</td>
+      <td>N</td>
+      <td>40</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>M</td>
+      <td>Y</td>
+      <td>18</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>F</td>
+      <td>Y</td>
+      <td>26</td>
+      <td>123</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bin_age</span>(<span class="params">age</span>):</span></span><br><span class="line">    <span class="keyword">if</span> age &gt;=<span class="number">18</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">df1[<span class="string">&#x27;age&#x27;</span>].apply(bin_age)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0    1
+1    1
+2    0
+3    1
+4    1
+5    1
+6    1
+Name: age, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># df1[&#x27;age&#x27;].apply(lambda x : 1 if x &gt;18 else 0)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2 取出抽烟和不抽烟的体重前二</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">top</span>(<span class="params">df,col,n=<span class="number">5</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> df.sort_values(by=col)[-n:]</span><br><span class="line">df1.groupby(<span class="string">&#x27;smoker&#x27;</span>).apply(topp,col=<span class="string">&#x27;weight&#x27;</span>,n=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># df1 对象根据:’smoker’列，groupby 分组成抽烟和不抽烟二组，</span></span><br><span class="line"><span class="comment"># 然后每一组作为参数传进自定义的 top 函数，对于 top 函数的其余参数，</span></span><br><span class="line"><span class="comment"># 在 apply 函数作为关键字参数即可。对于自定义的 top 函数返回的 </span></span><br><span class="line"><span class="comment"># DataFrame 对象，将其所有返回的结果（在这是返回俩次）用 concat 连接，</span></span><br><span class="line"><span class="comment"># 形成最终结果。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>age</th>
+      <th>weight</th>
+    </tr>
+    <tr>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">N</th>
+      <th>4</th>
+      <td>M</td>
+      <td>N</td>
+      <td>40</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>F</td>
+      <td>N</td>
+      <td>30</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Y</th>
+      <th>2</th>
+      <td>M</td>
+      <td>Y</td>
+      <td>17</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>F</td>
+      <td>Y</td>
+      <td>37</td>
+      <td>140</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">3 根据性别、年龄求每个人的含水量</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">据科学数据表明：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">婴儿含水量 70%~80%</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">成年男性体内含水量 60%~65%</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">而成年女性体内含水量只是 50%~60%</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">（男人才是水做的～_~）</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">water</span>(<span class="params">one_row</span>):</span></span><br><span class="line">    <span class="comment">#婴儿</span></span><br><span class="line">    <span class="keyword">if</span> one_row[<span class="string">&#x27;age&#x27;</span>]==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> one_row[<span class="string">&#x27;weight&#x27;</span>]*<span class="number">0.7</span></span><br><span class="line">    <span class="comment">#成年男女</span></span><br><span class="line">    <span class="keyword">if</span> one_row[<span class="string">&#x27;sex&#x27;</span>]==<span class="string">&#x27;M&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> one_row[<span class="string">&#x27;weight&#x27;</span>]*<span class="number">0.6</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> one_row[<span class="string">&#x27;weight&#x27;</span>]*<span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">df1.apply(water,axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>0    60.0
+1    50.0
+2    79.2
+3    70.0
+4    56.4
+5    53.4
+6    61.5
+dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">首先我们必须弄清楚，之前都是对列进行操作，而现在是求每一行，</span></span><br><span class="line"><span class="string">也就是每个人的含水量，即对行进行操作，故应用 apply 函数时 axis=1。</span></span><br><span class="line"><span class="string">而每一次应用自定义的 water 函数时，传进的一行是 Series 对象，</span></span><br><span class="line"><span class="string">每次返回单值，最终组合成 Series 对象。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">4 总结</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">首先，我们要弄清操作的元素是行还是列，若对每一行进行 apply，则 axis=1。其次，编写好 apply 应用的函数，注意传进的参数和返回值的类型是单值、Series 或 DataFrame。最后，groupby 和 apply 组合，运用得当将会产生巨大的威力！</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">table = pd.DataFrame(&#123;<span class="string">&#x27;cnt1&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,np.nan,<span class="number">4</span>,np.nan,<span class="number">6</span>],</span><br><span class="line">                      <span class="string">&#x27;cnt2&#x27;</span>:[<span class="number">5</span>,<span class="number">10</span>,np.nan,np.nan,<span class="number">6</span>,<span class="number">10</span>]&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#写成一句</span></span><br><span class="line">table[<span class="string">&#x27;sub&#x27;</span>] = table.apply(<span class="keyword">lambda</span> row: row[<span class="string">&#x27;cnt1&#x27;</span>] <span class="keyword">if</span> (pd.isnull(row[<span class="string">&#x27;cnt1&#x27;</span>]) | pd.isnull(row[<span class="string">&#x27;cnt2&#x27;</span>])) <span class="keyword">else</span> (row[<span class="string">&#x27;cnt1&#x27;</span>]-row[<span class="string">&#x27;cnt2&#x27;</span>]),axis = <span class="number">1</span> )</span><br><span class="line"></span><br><span class="line">table</span><br><span class="line"></span><br><span class="line"><span class="comment">#写成函数</span></span><br><span class="line"><span class="comment"># def my_test(x,y):</span></span><br><span class="line"><span class="comment">#     if pd.isnull(x) | pd.isnull(y):</span></span><br><span class="line"><span class="comment">#         return x</span></span><br><span class="line"><span class="comment">#     else:</span></span><br><span class="line"><span class="comment">#         return x-y</span></span><br><span class="line"><span class="comment"># table[&#x27;sub&#x27;] = table.apply(lambda row: my_test(row[&#x27;cnt1&#x27;],row[&#x27;cnt2&#x27;]),axis = 1 )</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cnt1</th>
+      <th>cnt2</th>
+      <th>sub</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>-4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>10.0</td>
+      <td>-8.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>10.0</td>
+      <td>-4.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%BA%93%E4%B9%8BPandas/" rel="tag"># Python库之Pandas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/24/%E5%AD%A6%E4%B9%A0%E6%98%AF%E6%B2%A1%E6%9C%89%E5%B0%BD%E5%A4%B4%E7%9A%84%E5%B7%AE%E4%B8%8D%E5%A4%9A%E5%B0%B1%E8%A1%8C%E4%BA%86/" rel="prev" title="学习是没有尽头的差不多就行了">
+                  <i class="fa fa-chevron-left"></i> 学习是没有尽头的差不多就行了
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/24/%E6%94%BE%E7%A9%BA%E8%87%AA%E5%B7%B1%EF%BC%8C%E5%A5%BD%E8%BF%90%E5%B0%B1%E4%BC%9A%E6%88%90%E4%B8%BA%E5%B8%B8%E6%80%81/" rel="next" title="放空自己，好运就会成为常态">
+                  放空自己，好运就会成为常态 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
