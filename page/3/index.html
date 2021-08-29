@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,517 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/14/%E4%B8%80%E6%96%87%E7%90%86%E8%A7%A3Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/14/%E4%B8%80%E6%96%87%E7%90%86%E8%A7%A3Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">一文理解Python字符串和编码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-14 15:29:20" itemprop="dateCreated datePublished" datetime="2021-06-14T15:29:20Z">2021-06-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-26 05:53:24" itemprop="dateModified" datetime="2021-06-26T05:53:24Z">2021-06-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="整数类型和变量"><a href="#整数类型和变量" class="headerlink" title="整数类型和变量"></a>整数类型和变量</h2><p>1.python 字符串前面加上’r’的作用</p>
+<p>这种情况其实是这样子的， 比如下面这两行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; &#39;hello, \&#39;Adam\&#39;&#39;</span><br><span class="line">s2 &#x3D; r&#39;hello, \&#39;Adam\&#39;&#39;</span><br><span class="line"></span><br><span class="line">print(s1)      # hello, &#39;Adam&#39;</span><br><span class="line">print(s2)     # hello, \&#39;Adam\&#39;</span><br></pre></td></tr></table></figure>
+<p>‘r’是防止字符转义的 如果路径中出现’\t’的话 不加 r 的话 \t 就会被转义 而加了’r’之后’\t’就能保留原有的样子。</p>
+<p>在 Python 的 string 前面加上‘r’， 是为了告诉编译器这个 string 是个 raw string，不要转意 backslash ‘’ 。 例如，\n 在 raw string 中，是两个字符，\ 和 n， 而不会转意为换行符。由于正则表达式和 \ 会有冲突，因此，当一个字符串使用了正则表达式后，最好在前面加上’r’。</p>
+<p>2.动态语言 VS 静态语言</p>
+<p>python 中的变量往往是采用动态语言的方式，所谓动态语言， 就是说变量本身类型不固定， 我们看一下 python 中的变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 123   # a是整数</span><br><span class="line">a &#x3D; &#39;ABC&#39;  # a变成字符串</span><br></pre></td></tr></table></figure>
+<p>与动态语言对应的是静态语言。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如 Java 是静态语言，赋值语句如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 123; &#x2F;&#x2F; a是整数类型变量</span><br><span class="line">a &#x3D; &quot;ABC&quot;; &#x2F;&#x2F; 错误：不能把字符串赋给整型变量</span><br></pre></td></tr></table></figure>
+<p>3.变量在进行赋值的时候，python 解释器到底在干什么？</p>
+<p>我们看下面的代码， 捋一捋计算机内部的逻辑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; &#39;ABC&#39;</span><br><span class="line">b &#x3D; a</span><br><span class="line">a &#x3D; &#39;XYZ&#39;</span><br><span class="line">print(b)    # ABC</span><br></pre></td></tr></table></figure>
+<p>我们可能一下子就知道结果， 但是你知道解释器到底在干什么事情吗？ 也就是为什么会有这样的结果？ 这个我直接引用廖雪峰老师画的图了：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153608.png" alt="20210614153608"></p>
+</div>
+
+<p>Python 支持多种数据类型，在计算机内部，可以把任何数据都看成一个 “对象”，而变量就是在程序中用来指向这些数据对象的，对变量赋值就是把数据和变量给关联起来。</p>
+<p>对变量赋值 x=y 是把变量 x 指向真正的对象， 该对象是变量 y 所指向的。 随后对变量 y 的赋值不影响变量 x 的指向。</p>
+<p>4.Python 中的两种除法： / 和 //</p>
+<ul>
+<li><p>/ 计算结果是浮点数，即使两个整数恰好整除，结果也是浮点数</p>
+</li>
+<li><p>// 表示地板除法， 两个整数的除法依然是整数， 浮点数相除最后也是整数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9&#x2F;3 &#x3D; 3.0</span><br><span class="line">10 &#x2F;&#x2F; 3 &#x3D; 3</span><br></pre></td></tr></table></figure>
+<p>PS: Python 的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如 Java 对 32 位整数的范围限制在 - 2147483648-2147483647。Python 的浮点数也没有大小限制，但是超出一定范围就直接表示为 inf（无限大）。</p>
+</li>
+</ul>
+<h2 id="字符串和编码"><a href="#字符串和编码" class="headerlink" title="字符串和编码"></a>字符串和编码</h2><p>这一块我需要好好的整理了， 之前没太仔细的学习这块， 导致有些东西似懂非懂。</p>
+<p>1.字符编码的问题（捋一捋 ASCII，GB2312，Utf-8，Unicode）</p>
+<p>字符串也是一种数据类型，但是字符串比较特殊的是一个编码问题， 因为计算机只能处理数字， 如果要处理文本， 就需要先把文本转换成数字。</p>
+<p>最早的计算机在设计时采用 8 个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是 255（二进制 11111111 = 十进制 255），如果要表示更大的整数，就必须用更多的字节，两个字节可以表示的最大整数是 65535。</p>
+<p>计算机是美国人发明的， 因此，最早只有 127 个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号， 这个编码表被称为 ASCII 编码。 比如大写字母 A 的编码时 65， 小写字母 z 的编码时 122。</p>
+<p>但是要处理中文，显然一个字节是不够的， 至少需要两个字节， 而且还不能和 ASCII 编码冲突， 所以中国制定了 GB2312 编码，用来把中文编进去。</p>
+<p>但是全世界有上百种语言， 像中国一样，每个国家有各国的标准， 那很容易就乱了套， 出现冲突，也就是在多语言混合的文本中，会出现乱码的问题。因此， Unicode 应运而生， Unicode 把所有语言都统一到一套编码里，就不会再有乱码问题了， 看这个名字也能看出来</p>
+<p>现在就可以来看看 ASCII 编码和 Unicode 编码的区别：ASCII 编码是 1 个字节， 而 Unicode 编码通常 2 个字节</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153813.png" alt="20210614153813"></p>
+</div>
+
+<p>但是这样统一成 Unicode 编码，乱码问题从此消失， 但是，如果你写的如果全是英文， 用 Unicode 编码比 ASCII 编码需要多一倍的存储空间，在存储和传输上都会造成一种浪费。所以本着节约的精神， 又出现了把 Unicode 编码转换成 “可变长” 的 UTF-8 编码。UTF-8 编码把一个 Unicode 字符根据不同的数字大小编码成 1-6 个字节，常用的英文字母被编码成 1 个字节，汉字通常是 3 个字节，只有很生僻的字符才会被编码成 4-6 个字节。如果你要传输的文本包含大量英文字符，用 UTF-8 编码就能节省空间。</p>
+<p>所以这个就是这几种编码之间的关系了，之前遇到编码问题总是心态一崩， 现在终于搞清楚了这些编码之间的逻辑了。</p>
+<p>搞清楚了 ASCII、Unicode 和 UTF-8 的关系，我们就可以总结一下现在计算机系统通用的字符编码工作方式：在计算机内存中，统一使用 Unicode 编码，当需要保存到硬盘或者需要传输的时候，就转换为 UTF-8 编码 , 比如用记事本编辑的时候，从文件读取的 UTF-8 字符被转换为 Unicode 字符到内存里，编辑完成后，保存的时候再把 Unicode 转换为 UTF-8 保存到文件：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153904.png" alt="20210614153904"></p>
+</div>
+
+<p>浏览网页的时候，服务器会把动态生成的 Unicode 内容转换为 UTF-8 再传输到浏览器：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614153948.png" alt="20210614153948"></p>
+</div>
+
+<p>2.Python 的字符串</p>
+<p>在最新的 Python 3 版本中，字符串是以 Unicode 编码的，也就是说，Python 的字符串支持多语言， 可以使用 ord () 函数获取字符的整数表示， chr () 函数把编码转成对应的字符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ord(&#39;A&#39;)    # 65</span><br><span class="line">ord(&#39;中&#39;)   # 20013</span><br><span class="line">chr(25991)   # 文</span><br></pre></td></tr></table></figure>
+<p>由于 Python 的字符串类型是 str， 在内存中以 Unicode 表示， 一个字符对应若干个字节。** 如果要在网络上传输， 或者保存到磁盘上，就需要把 str 变为以字节为单位的 bytes。** Python 中 bytes 类型的数据用 b 前缀的单引号或者双引号表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X1 &#x3D; &#39;ABC&#39;</span><br><span class="line">X2 &#x3D; b&#39;ABC&#39;</span><br></pre></td></tr></table></figure>
+<p>注意，这两个是不一样的， X1 是个字符串， X2 虽然和 X1 显示的内容一样，但 bytes 的每个字符都只占用一个字节。</p>
+<p>以 Unicode 表示的 str 通过 encode () 方法可以编码为指定的 bytes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39;ABC&#39;.encode(&#39;ascii&#39;)   # b&#39;ABC&#39;</span><br><span class="line">&#39;中文&#39;.encode(&#39;utf-8&#39;)    # b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;</span><br><span class="line">&#39;中文&#39;.encode(&#39;ascii&#39;)    # 这个会报错， 中文不能转成ASCII编码</span><br></pre></td></tr></table></figure>
+<p>如果我们从网络或磁盘上读取了字节流， 那么读到的数据就是 bytes。 要把 bytes 变为 str， 就需要用 decode () 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b&#39;ABC&#39;.decode(&#39;ascii&#39;)   # &#39;ABC&#39;</span><br><span class="line">b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;.decode(&#39;utf-8&#39;)  # 中文</span><br></pre></td></tr></table></figure>
+<p>如果 bytes 中包含无法解码的字节，用 decode () 方法会报错， 如果只有一小部分是无效的字节， 可以传入 errors=’ignore’忽略错误的字节。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b&#39;\xe4\xb8\xad\xff&#39;.decode(&#39;utf-8&#39;)   # 会报错</span><br><span class="line">b&#39;\xe4\xb8\xad\xff&#39;.decode(&#39;utf-8&#39;, errors&#x3D;&#39;ignore&#39;)  # ‘中’</span><br></pre></td></tr></table></figure>
+<p>3.len () 函数计算字符串长度</p>
+<p>我们知道， 如果 len (str) 会计算包含多少个字符， 但是你知道吗？ 如果 len (bytes) 呢， 就会计算字节数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len(&#39;中文&#39;)    # 2</span><br><span class="line">len(b&#39;\xe4\xb8\xad\xe6\x96\x87&#39;)   # 6</span><br></pre></td></tr></table></figure>
+<p>由于 Python 源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为 UTF-8 编码。当 Python 解释器读取源代码时，为了让它按 UTF-8 编码读取，我们通常在文件开头写上这两行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+<p>现在终于知道为啥需要加这两行了， 第一行注释是为了告诉 Linux/OS X 系统，这是一个 Python 可执行程序，Windows 系统会忽略这个注释；第二行注释是为了告诉 Python 解释器，按照 UTF-8 编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
+<ol start="4">
+<li>总结梳理</li>
+</ol>
+<p>最后梳理一遍知识， 首先 python 的基础知识里面抠了点细节，比如那个字符串前面的小 r，这个代表转义失效。 然后就是动态语言和静态语言的区别，还有两种除法。 在字符串编码那块整理了各种编码以及之间的关系，从 ASCII，GB2312， UNicode，utf-8。 然后就是基本的类型，像列表，元组，字典集合等一些细节部分，可变不可变对象等。 函数部分， 整理了函数起别名，空函数，返回多个值的内部原理。 还有各种函数参数，必选参数，默认参数，可变参数 (*num)，关键字参数 (** kw), 命名关键字参数等。 最后介绍了两种递归的细节，关于尾递归，参数里面要传入当前结果或者路径。 下面一张思维导图把知识拎起来：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210614154742.png" alt="20210614154742"></p>
+</div>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/12/python%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%9E%81%E7%AE%80%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/12/python%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%9E%81%E7%AE%80%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">python学习方法及极简介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-12 06:26:06" itemprop="dateCreated datePublished" datetime="2021-06-12T06:26:06Z">2021-06-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-11 23:12:24" itemprop="dateModified" datetime="2021-06-11T23:12:24Z">2021-06-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这个世界上根本没有正确的选择，我们只不过是要努力奋斗，使当初的选择变得正确。</p>
+<pre><code>                                                      —— 村上春树
+</code></pre>
+<p>计算机基础基础</p>
+<p>组成</p>
+<p>硬件：输入设备 + 输出设备 + 存储设备<br>软件：系统 + 应用软件</p>
+<p>语言发展</p>
+<p>机器语言 - 汇编语言 - 高级语言</p>
+<p>交互方式</p>
+<p>TUI：命令行<br>GUI：图形界面</p>
+<p>学习方法</p>
+<p>三遍</p>
+<blockquote>
+<p>1、对战视频练习一遍代码（抄）</p>
+<p>2、脱离视频，自己写一遍代码（背）</p>
+<p>3、结合自身实际去实践（吸收）</p>
+</blockquote>
+<p>（一）、Python 的开发环境</p>
+<p>Python 诞生于 20 世纪 90 年代初，是一种解释型、面向对象、动态数据类型的高级程序设计语言，是最受欢迎的程序设计语言之一。</p>
+<p>编写、编译和运行 Python 程序有以下 3 种方法。</p>
+<ol>
+<li><p>使用交互式解释器</p>
+</li>
+<li><p>使用 Windows 命令行命令执行 Python 程序</p>
+</li>
+</ol>
+<p>在 Windows 7 中安装 python 程序后，在开始菜单的所有程序中会出现一个 Python 3.6 分组。单击其下面的 Python 3.6 (command line - 32 bit) 菜单项，就可以打开 python 命令窗口。也可以打开 Windows 命令窗口，然后运行 python 命令，来打开 python 命令窗口</p>
+<ol start="3">
+<li>使用集成开发环境编写和执行 Python 程序</li>
+</ol>
+<p>IDLE 的启动文件是 idle.bat，它的位置在 Python 安装目录下，运行 idle.bat，即可打开文本编辑器 IDLE。也可以在开始菜单的所有程序中，选择 Python 3.6 分组下面的 IDLE (Python 3.6  32 bit) 菜单项，打开 IDLE 窗口。</p>
+<p>（二）、Python 语言的基本语法</p>
+<p>Python 程序结构涉及代码块、注释、语句分隔、语句续航和关键字与大小写等内容。</p>
+<ol>
+<li>用缩进表示代码块</li>
+</ol>
+<p>Python 程序是依靠代码块的缩进（空格）来体现代码之间的逻辑关系的，缩进结束就表示一个代码块结束了。在包含代码嵌套时，应注意同级的代码块，其缩进量应保持相同（不同可能会导致出错或得到意外的结果）。通常，语句末尾的冒号表示代码块的开始。在 if、for、while、函数、类等定义中都会使用到代码块。</p>
+<p>（1）代码注释</p>
+<p>注释用于为程序添加说明性的文字。Python 在运行程序时，会忽略被注释的内容。Python 注释有单行注释和多行注释：单行注释用 “#” 表示注释开始，“#” 之后的内容不会被执行。单行注释可以单独占一行，也可放在语句末尾；多行注释是用三个英文的单引号 “’’’” 或双引号 “”””” 作为注释的开始和结束符号。</p>
+<p>（2）语句续行</p>
+<p>Python 中的一条语句占一行，没有类似于 Java 中的分号等语句结束符号。在遇到较长的语句时，可使用语句续行符号，将一条语句写在多行之中。</p>
+<p>Python 有两种续行方式。一种是使用 “\” 符号；另一种续行方式是在使用括号（包括圆括号 ()、方括号 [] 和大括号 {} 等）时，括号中的内容可分多行书写，括号中的空白和换行符都会被忽略。</p>
+<p>（3）标识符与关键字</p>
+<p>标识符是计算机语言中允许作为名字的有效字符串集合。Python 标识符命名规则和其他大部分用 C 编写的高级语言相似，有以下一些命名规则：名字必须以字母或者下划线‘_’开始；数字不能作为首字符；当名字包含多个单词时，可以使用下划线_来连接，例如 monty_Python；名字不能是关键字。名字不能出现分隔符、标点符号或者运算符。</p>
+<p>Python 中的名字是区分大小写的。比如 myClass、MyClass、myclass 是不同的。名字长度不限。</p>
+<p>（三）、Python 语言的基本输入输出</p>
+<p>在 Python 程序中，通常用 input（）和 print（）函数来执行基本的输入和输出。</p>
+<ol>
+<li>基本输入</li>
+</ol>
+<p>input（）函数用于获得用户输入数据，其基本格式为：</p>
+<p>用户输入的数据 = input（提示字符串）</p>
+<p>其中，变量和提示字符串均可省略。可输入数字、字符串和其它对象，input 函数将用户输入以字符串返回。用户按【Enter】键完成输入，【Enter】键之前的全部字符均作为输入内容。</p>
+<p>如果需要输入整数或小数，则需要使用 int 或 float 函数进行转。</p>
+<ol start="2">
+<li>基本输出</li>
+</ol>
+<p>print () 函数最简单的应用就是输出字符串，print () 函数的参数列表可以有多个参数，格式如下：</p>
+<p>print(“…%s…%s…” %(string1, string2,…stringn))</p>
+<p>输出时 string1, string2,…stringn 会出现在对应的 % s 位置。</p>
+<p>（四）、Python 的常量、变量和对象</p>
+<ol>
+<li>常量</li>
+</ol>
+<p>常量指在程序的执行过程中不变的量。通常直接写出的数据就是常量，如 1,2,3,4,5,6 等。直接写出的数据一般称为字面量，用符号表示的常量一般称为符号常量。</p>
+<p>Python 中常用的两个符号表示的常量是 True 和 False，它们分别表示逻辑判断中的‘真’和‘假’，实际的数值分别是 1 和 0。也有一些包含在模块中的用符号表示的常量，常用的如 math 模块中的 pi 和 e。</p>
+<ol start="2">
+<li>对象</li>
+</ol>
+<p>Python 中，一切皆对象。对象是某个类型事物的一个具体的实例。对象的类型决定了对象支持的操作，也定义了对象的取值范围。Type（）函数返回对象的类型。</p>
+<ol start="3">
+<li>变量</li>
+</ol>
+<p>指向对象的值的名称就是变量。变量是一个标识符，通过等号（=）赋值运算创建，变量指向一个对象。从变量到对象的连接称为引用。</p>
+<p>变量使用前需要先赋值，多个变量可以引用同一个对象，一个变量也可以引用不同的对象，引用不同的对象时，id 也就不同的</p>
+<p>Python 中的变量不需要声明，可以随时赋不同类型的值</p>
+<p>（五）、Python 语言的数据类型</p>
+<p>数据类型决定了程序如何存储和处理数据。Python 完善的数据类型系统，使得在 Python 程序中可以轻松完成各种数据处理。Python 中的数据类型分为数字类型、序列类型、集合类型、字典类型等。</p>
+<p>1、数字类型</p>
+<p>数字类型是那些能进行算术运算、位运算和数学函数运算的数据类型，包括：整数（int，无小数点的数）、浮点数（float，带小数点的数）、复数、其他数字类型等。</p>
+<p>2、序列类型</p>
+<p>序列类型表示的是若干有序的数据，分不可变序列类型和可变序列类型：</p>
+<p>不可变序列的数据类型有字符串、元组和字节序列</p>
+<p>可变序列有列表、字节数组等。</p>
+<p>3、其他类型</p>
+<p>包括：集合数据类型、字典数据类型和 Pyhton 一切皆有类型。</p>
+<p>（六）、Python 语言的运算符</p>
+<p>对数据的变换统称为运算，表示运算的符号称为运算符，参与运算的数据称为操作数。运算符分为：一元运算符和二元运算符。</p>
+<p>运算符有：算术运算符、比较运算符、对象运算符、逻辑运算符、复合运算符等。</p>
+<p>（七）Python 语言的常用语句</p>
+<p>Python 提供判断语句、循环语句和其他语句 pass、break、continue 语句等。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/12/python%E5%AE%9E%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A1%88%E4%BE%8B/" class="post-title-link" itemprop="url">python实用的几个文件操作的案例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-12 06:19:27" itemprop="dateCreated datePublished" datetime="2021-06-12T06:19:27Z">2021-06-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-11 22:23:09" itemprop="dateModified" datetime="2021-06-11T22:23:09Z">2021-06-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">大神总结的python实用的几个文件操作的案例</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-python-进行文件的读写"><a href="#2-python-进行文件的读写" class="headerlink" title="2. python 进行文件的读写"></a>2. python 进行文件的读写</h2><p>文件的读写在 python 中比较常见， 文件读取的时候， 首先要判断文件是否存在， 若文件操作就进行读取， 否则报错。</p>
+<p>2.1 文件读操作<br>文件读操作可以的函数有 read (), 这个是读取整个文件， 还有 readlines () 这个是一行行的进行读取并保存到列表中。 下面直接上代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    f = <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>)   <span class="comment"># 后面那个是指定编码  一般平台默认编码格式是utf-8</span></span><br><span class="line">    content = f.read()</span><br><span class="line">    f.close()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种写法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % (filename,))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;gbk&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.read()    <span class="comment">#  这时候读完了之后自动关闭</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line">content = read_file(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br><span class="line">content = read_file(<span class="string">r&quot;D:\学习方法.txt&quot;</span>)</span><br><span class="line">print(content)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&#39;Hey, Python
+
+I just love  Python so much,
+
+and want to get the whole  Python stack by this 60-days column
+
+and believe Python !&#39;
+计算机基础基础
+组成
+硬件：输入设备 + 输出设备 + 存储设备
+软件：系统 + 应用软件
+
+语言发展
+机器语言 - 汇编语言 - 高级语言
+
+交互方式
+TUI：命令行
+GUI：图形界面
+
+学习方法
+三遍
+1、对战视频练习一遍代码（抄）
+2、脱离视频，自己写一遍代码（背）
+3、结合自身实际去实践（吸收）
+
+理想的人终究 过不好这一生，不快乐
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是按行读的效果：按行读时，是把每一行都放进列表，输入的是列表</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;文件按行读&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file_line</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filename):</span><br><span class="line">        <span class="keyword">raise</span> FileNotFoundError(<span class="string">&#x27;%s not exists&#x27;</span> % filename)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        content = f.readlines()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line">con = read_file_line(<span class="string">r&quot;D:\a.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">con</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&quot;&#39;Hey, Python\n&quot;,
+ &#39;\n&#39;,
+ &#39;I just love  Python so much,\n&#39;,
+ &#39;\n&#39;,
+ &#39;and want to get the whole  Python stack by this 60-days column\n&#39;,
+ &#39;\n&#39;,
+ &quot;and believe Python !&#39;&quot;]
+</code></pre>
+<p>好了， 基于上面的这个就可以写一个统计文件里面所有单词的出现次数了。 先走一遍这个过程： 我获取到文件的内容， 然后进行分词， 分开之后才能统计个数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是一个统计单词个数的例子</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict  </span><br><span class="line"><span class="comment">#这里的defaultdict(function_factory)构建的是一个类似dictionary的对象，</span></span><br><span class="line"><span class="comment">#其中keys的值，自行确定赋值，但是values的类型，是function_factory的类实例，</span></span><br><span class="line"><span class="comment">#而且具有默认值。比如default(int)则创建一个类似dictionary对象，里面任何的values都是int的实例，</span></span><br><span class="line"><span class="comment">#而且就算是一个不存在的key, d[key] 也有一个默认值，这个默认值是int()的默认值0.</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">rec = re.<span class="built_in">compile</span>(<span class="string">&#x27;\s+&#x27;</span>)      <span class="comment"># 匹配一个或者多个空格</span></span><br><span class="line">dd = defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;D:\a.txt&quot;</span>, <span class="string">&#x27;r+&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        clean_line = line.strip()</span><br><span class="line">        <span class="keyword">if</span> clean_line:</span><br><span class="line">            words = rec.split(clean_line)</span><br><span class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">                dd[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">dd = <span class="built_in">sorted</span>(dd.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line">dd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[(&#39;Python&#39;, 4),
+ (&#39;and&#39;, 2),
+ (&quot;&#39;Hey,&quot;, 1),
+ (&#39;I&#39;, 1),
+ (&#39;just&#39;, 1),
+ (&#39;love&#39;, 1),
+ (&#39;so&#39;, 1),
+ (&#39;much,&#39;, 1),
+ (&#39;want&#39;, 1),
+ (&#39;to&#39;, 1),
+ (&#39;get&#39;, 1),
+ (&#39;the&#39;, 1),
+ (&#39;whole&#39;, 1),
+ (&#39;stack&#39;, 1),
+ (&#39;by&#39;, 1),
+ (&#39;this&#39;, 1),
+ (&#39;60-days&#39;, 1),
+ (&#39;column&#39;, 1),
+ (&#39;believe&#39;, 1),
+ (&quot;!&#39;&quot;, 1)]
+</code></pre>
+<h2 id="2-2-文件写操作"><a href="#2-2-文件写操作" class="headerlink" title="2.2 文件写操作"></a>2.2 文件写操作</h2><p>文件写操作时，需要首先判断要写入的文件路径是否存在。若不存在，通过 mkdir 创建出路径；否则，直接写入文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_file</span>(<span class="params">file_path, file_name</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(file_path):</span><br><span class="line">        os.mkdir(file_path)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    whole_path_filename = os.path.join(file_path, file_name)</span><br><span class="line">    </span><br><span class="line">    to_write_content = <span class="string">&#x27;&#x27;&#x27; </span></span><br><span class="line"><span class="string">                        Hey, Python</span></span><br><span class="line"><span class="string">                        I just love Python so much,</span></span><br><span class="line"><span class="string">                        and want to get the whole python stack by this 60-days column</span></span><br><span class="line"><span class="string">                        and believe!</span></span><br><span class="line"><span class="string">                        &#x27;&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(whole_path_filename, mode=<span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(to_write_content)</span><br><span class="line">write_to_file(<span class="string">&#x27;d:/1/&#x27;</span>,<span class="string">&#x27;b.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>获取文件名及文件的后缀名<br>有时候我们拿到一个文件名的时候， 名字上带有路径， 这时候我们可以用 os.path.split 方法实现路径和文件名的分离。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">file_ext = os.path.split(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">ipath, ifile = file_ext</span><br><span class="line"></span><br><span class="line">print(ipath, ifile)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>d:/1 b.txt
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># os.path 模块，splitext 能够优雅地提取文件后缀。</span></span><br><span class="line"></span><br><span class="line">file_extension = os.path.splitext(<span class="string">&#x27;d:/1/b.txt&#x27;</span>)</span><br><span class="line">file_extension     <span class="comment"># .py</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>(&#39;d:/1/b&#39;, &#39;.txt&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基于上面的这个操作， 就可以获取某个目录下面指定后缀名的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取某个目录下指定后缀名的文件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_file</span>(<span class="params">work_dir, extension=<span class="string">&#x27;jpg&#x27;</span></span>):</span></span><br><span class="line">    lst = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        <span class="comment">#print(filename)</span></span><br><span class="line">        splits = os.path.splitext(filename)</span><br><span class="line">        ext = splits[<span class="number">1</span>]      <span class="comment"># 拿到扩展名</span></span><br><span class="line">        <span class="keyword">if</span> ext == <span class="string">&#x27;.&#x27;</span>+extension:</span><br><span class="line">            lst.append(filename)</span><br><span class="line">    <span class="keyword">return</span> lst</span><br><span class="line"></span><br><span class="line">r = find_file(<span class="string">r&#x27;d:/test/&#x27;</span>,<span class="string">&#x27;xlsx&#x27;</span>)</span><br><span class="line">r</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;1.xlsx&#39;,
+ &#39;1155.xlsx&#39;,
+ &#39;2.xlsx&#39;,
+ &#39;21.xlsx&#39;,
+ &#39;d1.xlsx&#39;,
+ &#39;d2.xlsx&#39;,
+ &#39;diff.xlsx&#39;,
+ &#39;la.xlsx&#39;]
+</code></pre>
+<p>这个还是很实用的， 比如在 CNN 的一些任务中， 很多图片都是以.jpg 的形式存放到文件夹里面的， 我们这时候就需要先获取到所有的.jpg 文件， 然后再通过一些方式把图片转成矩阵的表示形式， 这样我们的网络才会认识。</p>
+<p>下面再整理一个批量修改文件后缀名的例子， 比如我想把某个目录下所有的.xls 转成.xlsx 文件。这个要怎么做？ 依然是先梳理一下逻辑：</p>
+<p>首先要遍历所给的目录<br>拿到各个文件的后缀名<br>看看后缀名是否是需要修改的后缀名， 如果是就进行重命名操作<br>有了这个逻辑， 代码就比较好写了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            )</span><br><span class="line">batch_rename(<span class="string">r&quot;D:\test\excel\data&quot;</span>,<span class="string">&#x27;.xls&#x27;</span>,<span class="string">&#x27;.xlsx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_rename</span>(<span class="params">work_dir, old_ext, new_ext</span>):</span></span><br><span class="line">    print(new_ext)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(work_dir):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取文件后缀</span></span><br><span class="line">        split_file = os.path.splitext(filename)</span><br><span class="line">        file_ext = split_file[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> old_ext == file_ext:   <span class="comment"># 定位需要修改后缀名的文件</span></span><br><span class="line">            newfile = split_file[<span class="number">0</span>] + new_ext   <span class="comment"># 修改后文件的完整名称</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 重命名</span></span><br><span class="line">            os.rename(</span><br><span class="line"></span><br><span class="line">                os.path.join(work_dir, filename),</span><br><span class="line">                os.path.join(work_dir, newfile)</span><br><span class="line">            </span><br><span class="line">            )</span><br><span class="line">    print(<span class="string">&quot;完成重命名&quot;</span>)</span><br><span class="line">    print(os.listdir(work_dir))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1119,389 +1630,6 @@
 <p>Jupyter 是基于 web 的编辑器，它允许开发者构建和运行脚本或 notebook。它相对简单，对用户也更加友好。Jupyter 还使用 Seaborn 和 Matplotlib 执行数据可视化。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h3><p>本文概述了大量优秀的 Python IDE 和其他工具。决定使用哪一种工具取决于工具的便利性和对工具的熟练程度。当然，也有大家都喜欢的工具（如 PyCharm），但是你可以多尝试几种工具，看看哪种最适合你。</p>
 <p>一些 IDE 适合新手，另一些则更加专业，每一个 IDE 都具备独特的功能和设计。本文仅提供一些选项，读者可以从中选择适合自己的 Python IDE。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/17/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">函数式程序测试</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-16 21:44:30" itemprop="dateCreated datePublished" datetime="2021-04-16T21:44:30Z">2021-04-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-13 08:14:01" itemprop="dateModified" datetime="2021-06-13T08:14:01Z">2021-06-13</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="实例-020：高空抛物"><a href="#实例-020：高空抛物" class="headerlink" title="实例 020：高空抛物"></a>实例 020：高空抛物</h4><p><strong>题目:</strong> 一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">high = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入起始高度:&#x27;</span>))</span><br><span class="line">times = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入次数:&#x27;</span>))</span><br><span class="line">high_all = []</span><br><span class="line">high_each = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, times + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">        high_all.append(high)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        high_all.append(<span class="number">2</span> * high)</span><br><span class="line">    high /= <span class="number">2</span></span><br><span class="line">    high_each.append(high)</span><br><span class="line">    print(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span>次经历的总路程为:<span class="subst">&#123;high&#125;</span>&#x27;</span>)</span><br><span class="line">s = <span class="built_in">sum</span>(high_all)</span><br><span class="line">last_time = high_each[-<span class="number">1</span>]</span><br><span class="line">print(<span class="string">f&#x27;<span class="subst">&#123;times&#125;</span>次经历的总路程为:<span class="subst">&#123;s&#125;</span>&#x27;</span>)</span><br><span class="line">print(<span class="string">f&#x27;第<span class="subst">&#123;times&#125;</span>次反弹高度为:<span class="subst">&#123;last_time&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>请输入起始高度:200
-请输入次数:10
-1次经历的总路程为:100.0
-2次经历的总路程为:50.0
-3次经历的总路程为:25.0
-4次经历的总路程为:12.5
-5次经历的总路程为:6.25
-6次经历的总路程为:3.125
-7次经历的总路程为:1.5625
-8次经历的总路程为:0.78125
-9次经历的总路程为:0.390625
-10次经历的总路程为:0.1953125
-10次经历的总路程为:599.21875
-第10次反弹高度为:0.1953125
-</code></pre>
-<p>2）函数写法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bounce</span>(<span class="params">num</span>):</span></span><br><span class="line">    height = <span class="number">100</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        total += height</span><br><span class="line">        height /= <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> total, height</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    t, h = bounce(<span class="number">10</span>)</span><br><span class="line">    print(<span class="string">f&#x27;它在第10次落地时，共经过<span class="subst">&#123;t&#125;</span>米，第10次反弹高度是<span class="subst">&#123;h&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>3）简单写法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>]  <span class="comment">#每个‘反弹落地’过程经过的路程，第1次只有落地（100米）</span></span><br><span class="line">h = <span class="number">100</span>  <span class="comment">#每个‘反弹落地’过程，反弹的高度，第1次为100米</span></span><br><span class="line">print(<span class="string">&#x27;第1次从%s米高落地，走过%s米，之后又反弹至%s米。&#x27;</span> % (h, a[<span class="number">0</span>], h/<span class="number">2</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">11</span>):  <span class="comment">#第1次已初始化，再循环9次</span></span><br><span class="line">    a.append(h)  <span class="comment">#先计算路程，再高度减半，因为一个‘反弹落地’为2个高度</span></span><br><span class="line">    h = h / <span class="number">2</span></span><br><span class="line">    print(<span class="string">&#x27;第%s次从%s米高落地，共走过%s米，之后又反弹至%s米。&#x27;</span> % (i, h, <span class="built_in">sum</span>(a), h / <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/17/%E5%86%99%E7%BB%99%E5%88%9A%E5%85%A5%E9%97%A8%E7%BC%96%E7%A8%8B%EF%BC%88python%EF%BC%89%E7%9A%84%E5%90%8C%E5%AD%A6/" class="post-title-link" itemprop="url">写给刚入门编程（python）的同学</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-16 21:34:58 / 修改时间：13:38:43" itemprop="dateCreated datePublished" datetime="2021-04-16T21:34:58Z">2021-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="写给谁"><a href="#写给谁" class="headerlink" title="写给谁"></a>写给谁</h2><p>刚准备入手学习 python 编程的大学生或者研究生。</p>
-<h2 id="你为什么学-python"><a href="#你为什么学-python" class="headerlink" title="你为什么学 python"></a>你为什么学 python</h2><ul>
-<li>当你做实验（生物信息学，地理信息学，计量经济学，心理学，运筹学，图像处理，语音处理，信号处理，嵌入式，linux 等）的时候，需要编程，而且需要 python。</li>
-<li>深度学习大火，科室的实验开始使用深度学习的分析方法</li>
-</ul>
-<p>可能你还有其他的理由，像是需要建立网站，或者是纯粹想要自学，抑或是你想要从事软件开发的工作。</p>
-<h2 id="你为什么惦记或者自学了很久却迟迟未入门"><a href="#你为什么惦记或者自学了很久却迟迟未入门" class="headerlink" title="你为什么惦记或者自学了很久却迟迟未入门"></a>你为什么惦记或者自学了很久却迟迟未入门</h2><ul>
-<li>担心自己投入了大量的时间却没有收获，或者在毕业后，甚至在刚做完实验后 python 就没用了。</li>
-</ul>
-<p>一门编程语言都没有深入学习过的人，常常误认为 java，c++，python， JavaScript 等编程语言的差别非常大。但是，在你开始学习它们之中的一个的时候，你学到的大部分知识其实都只是现代编程语言的基本元素：变量，运算符，语句，控制流，函数，面向对象，文件读写，使用第三方库。甚至当你学习数据结构与算法的时候，你仍然没有太多涉及到一个语言的特性。作者前几天就见识了一个刚学会 python 的计算机教授用自己的 C 语言风格写出的 python 数据结构与算法书，真的被震惊到了。</p>
-<p>但是，当你学习到这一步的时候，甚至还没开始学数据结构与算法的时候，你就已经可以开始做很多事情了。结合你的本专业（比如前面列出的那些）知识，以及一些专业的算法库，你就能使用你选择的编程语言，进行专业领域的探索和科学研究了。这个时候，你的注意力就不再在编程语言上了，而是你的课题。你的眼中只有宝石，而编程语言只是你用来打磨宝石的锉子。</p>
-<ul>
-<li><p>那各个编程语言之间究竟有哪些不同呢？</p>
-<p>编程语言，就像是手机或者电脑的操作系统，其最大的财富，是它们的生态，也就是适用的软件包。当你开始深入探索，改进，甚至自己做一个大型的软件包的时候，可能就是需要重新思考使用什么的语言的时候了。比如说，当你需要学习做一个大型网站，或者需要做一个和手机淘宝差不多的 app 出来的时候。当然，这个时候的你再认真考量之后自然会有自己的选择。</p>
-</li>
-</ul>
-<h2 id="我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"><a href="#我学习-python-了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？" class="headerlink" title="我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？"></a>我学习 python 了一段时间了，也跟着教材做过小项目，但是总觉得自己啥都不会？</h2><ul>
-<li>没有找到好的入门教材</li>
-</ul>
-<p>计算机技术社区是最拥抱开源的社区，当你在网上找不到好的数学，物理，经济学教材的时候，你可以抱怨说：适合我的教材还没有被写出来。然而，当你找计算机技术教材的时候，你只能抱怨说：适合我的教材还没有和我遇见。动动手，逛逛各种技术社区和论坛，优质技术资料是无穷无尽的～</p>
-<ul>
-<li>被 python 的灵活性所迷惑</li>
-</ul>
-<p>如果 python 是你的第一门编程语言，那么你是很容易被 python 愚弄的。python 的最大特性是灵活，但是语言的灵活性却也是刺向初学者的利剑。毕竟，很多人学习 C 语言这门以严谨刻板著称的语言的时候，都会经常被自己所写出的程序所捉弄。</p>
-<p>这个时候，请记住：</p>
-<p>1，先选择一本知识点齐全的 python 基础教材放在手边，牢固掌握 python 的面向对象用法，并且知道 python 有哪些高级的函数式编程和面向对象编程的知识，在不懂的时候随时查阅。做完这些预备动作，才跟着某些教材做一些小项目。</p>
-<p>2，永远清楚你正在使用的变量的数据类型。如果不清楚，使用 type (a) 查询 a 的数据类型。</p>
-<p>很多初学者看别人写的程序，常常有一种错觉：所有的变量都是适合所有操作的，str 类型可以 print，list 类型也可以 print；它们都还都支持遍历，甚至还都支持加法，那不就是说所有的类型都支持所有的操作了？然而并不是，当你这么想时，你已经把 python 当成了魔法，而不是遵循客观规律的科学工具了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/03/Python%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/03/Python%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">Python命名规范</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-03 11:42:30 / 修改时间：03:44:28" itemprop="dateCreated datePublished" datetime="2021-04-03T11:42:30Z">2021-04-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Python-命名规范"><a href="#Python-命名规范" class="headerlink" title="Python 命名规范"></a>Python 命名规范</h2><h3 id="所有命名规范都要准守这三条"><a href="#所有命名规范都要准守这三条" class="headerlink" title="所有命名规范都要准守这三条"></a>所有命名规范都要准守这三条</h3><p>1.命名只能以字母或者_下划线开头</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#错误类名</span><br><span class="line">class 4_Person():</span><br><span class="line">  pass</span><br><span class="line">#错误函数名</span><br><span class="line">def 漂亮():</span><br><span class="line">  pass</span><br></pre></td></tr></table></figure>
-<p>2.名字不能包含空格</p>
-<p>3.名字不能与关键字重合</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#错误函数名，与关键字and重合</span><br><span class="line">def and():</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
-<p>关键字参考《如何写一个函数》</p>
-<p>不能将字符 l(小写字母 l)，’O’’o’(大小写字母 o)、’I’(大写字母 I)用作变量名称，防止和数字 0、1 混淆</p>
-<p><strong>模块 module_name</strong></p>
-<ul>
-<li>与包的规范相同，如 mymodule</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import decoder</span><br><span class="line">import html_parser</span><br><span class="line">#不推荐的这种命名</span><br><span class="line">import Decoder</span><br></pre></td></tr></table></figure>
-<p><strong>包 package_name</strong></p>
-<ul>
-<li><p>应该是简短的、小写的名字，如果下划线可以改善可读性可以加入，如 mypackage</p>
-</li>
-<li><p><strong>类 ClassName</strong></p>
-</li>
-<li><p>总是使用首字母大写单词串，如 MyClass(CamelCase 驼峰命名)</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Person():</span><br><span class="line">    pass</span><br><span class="line">class Elc_Car(Car):</span><br><span class="line">    pass</span><br><span class="line">class _PrivateCar(Car):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
-<ul>
-<li>内部类可以使用额外的前导下划线</li>
-</ul>
-<p><strong>函数 function_name</strong></p>
-<ul>
-<li>全部小写，如有多个单词，用*下划线隔开，私有函数可用前导下划线，如例 3</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def calculator():</span><br><span class="line">    pass</span><br><span class="line">def private_computer():</span><br><span class="line">    pass</span><br><span class="line">class Person():</span><br><span class="line">    def _private_func():</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
-<p><strong>方法 method_name</strong></p>
-<ul>
-<li>同函数，小写 + 下划线</li>
-</ul>
-<p><strong>变量 var_name</strong></p>
-<ul>
-<li>变量名一般小写，多个单词用_下划线隔开，同函数命</li>
-<li>私有类成员使用单一下划线前缀标识</li>
-<li>变量名不应该带有类型信息，如 num_list,ani_dict 等</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">count &#x3D; 0</span><br><span class="line">animal_count &#x3D; 100</span><br></pre></td></tr></table></figure>
-<p><strong>全局变量</strong></p>
-<ul>
-<li><p>全部大写，多个单词用_下划线隔开，如需要阻止导入模块内的全局变量，可以加一个前导下划线，GLOBAL_VAR_NAME，_GLOBAL_VAL</p>
-</li>
-<li><p>常量和全局变量命名规范相同</p>
-</li>
-</ul>
-<p><strong>异常 ExceptionName</strong></p>
-<ul>
-<li>以 Error 作为后缀</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    pass</span><br><span class="line">except ValueError as result:</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
-<p><strong>参数 function_parameter_name</strong></p>
-<ul>
-<li>如果一个函数的参数名称和保留的关键字冲突，通常使用一个后缀下划线</li>
-</ul>
-<p><strong>常用的命名缩写</strong></p>
-<ul>
-<li>function 缩写为 fn</li>
-<li>text 缩写为 txt</li>
-<li>object 缩写为 obj</li>
-<li>count 缩写为 cnt</li>
-<li>number 缩写为 num</li>
-</ul>
-<p><strong>前导后缀下划线说明</strong></p>
-<ul>
-<li>一个前导下划线：表示非公有</li>
-<li>一个后缀下划线：避免关键字冲突</li>
-<li>两个前导下划线：当命名一个类属性引起名称冲突时使用</li>
-<li>两个前导和后缀下划线：有特殊用途的对象或者属性，例如<strong>init</strong>和<strong>str</strong></li>
-</ul>
-<p><strong>1、缩进</strong></p>
-<p>强制缩进的规定，让代码看上去很整齐，强迫症表示很喜欢。</p>
-<p><strong>第一种情况：代码块的分割</strong></p>
-<p>Python 使用一个冒号和缩进，来分割代码块，代码块指的是类的定义、函数的定义、流程控制中 if、for、while 模块。缩进表示一个代码块的开始，非缩进表示一个代码的结束，相同的缩进表示在代码块中处于相同的级别。</p>
-<p>每一级缩进使用一个 tab 键（四个空格）。实际上一个空格就可以，但是一个空格看起来不那么明显，所以用一个 tab 更方便、清楚。</p>
-<p>例如下面，就是 2 个代码块（两个代码块之间建议空一行）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 一个冒号加换行缩进，开启一个代码块，直到下面一行不缩进了，说明下面一行已经不在这个代码块里了</span><br><span class="line">if a&gt;b:</span><br><span class="line">    print(a)</span><br><span class="line"></span><br><span class="line">def print_name(var):</span><br><span class="line">    print(var)</span><br><span class="line">    print(&#39;haha&#39;)</span><br></pre></td></tr></table></figure>
-<p><strong>第二种情况：换行</strong></p>
-<p>有时候写一行代码，特别特别长的时候，就需要换行。文档建议续行与其包裹元素对齐，譬如用括号来垂直对齐，如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 换行后的括号里内容，不超过上一行的括号</span><br><span class="line">foo &#x3D; long_function_name(var_one, var_two,</span><br><span class="line">                         var_three, var_four)</span><br></pre></td></tr></table></figure>
-<p><strong>2、命名约定</strong></p>
-<p>变量名可以是字母、数字、下划线的组合，不能以数字开头，也不可以用关键字来命名哦！</p>
-<p>关键字，就是有特殊意义的字符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import keyword</span><br><span class="line">print(keyword.kwlist)</span><br><span class="line">[&#39;False&#39;, &#39;None&#39;, &#39;True&#39;, &#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;break&#39;, \</span><br><span class="line"> &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;, &#39;elif&#39;, &#39;else&#39;, &#39;except&#39;,\</span><br><span class="line"> &#39;finally&#39;, &#39;for&#39;, &#39;from&#39;, &#39;global&#39;, &#39;if&#39;, &#39;import&#39;, &#39;in&#39;, \</span><br><span class="line"> &#39;is&#39;, &#39;lambda&#39;, &#39;nonlocal&#39;, &#39;not&#39;, &#39;or&#39;, &#39;pass&#39;, &#39;raise&#39;,\</span><br><span class="line"> &#39;return&#39;, &#39;try&#39;, &#39;while&#39;, &#39;with&#39;, &#39;yield&#39;]</span><br></pre></td></tr></table></figure>
-<p>除此之外，还有一些其他的规范：</p>
-<p>1）Python 里面区分大小写，类名一般使用首字母大写；</p>
-<p>2）慎用字母 I（i 的大写）、l（L 的小写）、o、O，因为可能被人错看成数字 1 和 0；</p>
-<p>3）命名应既简短又具有描述性。例如，student_name 比 s_n 好，name_length 比 length_of_persons_name 好；</p>
-<p>4）在运算符前后各保留一个空格，例如 n == 1；</p>
-<p><strong>3、Python 之禅</strong></p>
-<p>Python 中内置了一个彩蛋，简单明了地说明了 Python 的哲学，只要输入 import this，然后按下回车就能看到原文，这里贴出中文翻译版本：</p>
-<blockquote>
-<p>Python 之禅<br>by Tim Peters<br>优美胜于丑陋<br>明了胜于隐晦<br>简洁胜于复杂<br>复杂胜于混乱<br>扁平胜于嵌套<br>宽松胜于紧凑<br>可读性很重要<br>即便是特例，也不可违背这些规则<br>虽然现实往往不那么完美<br>但是不应该放过任何异常<br>除非你确定需要如此<br>如果存在多种可能，不要猜测<br>肯定有一种——通常也是唯一一种——最佳的解决方案<br>虽然这并不容易，因为你不是 Python 之父<br>动手比不动手要好<br>但不假思索就动手还不如不做<br>如果你的方案很难懂，那肯定不是一个好方案<br>如果你的方案很好懂，那肯定是一个好方案<br>命名空间非常有用，我们应当多加利用</p>
-</blockquote>
-<p>Python 需要使用标识符给变量命名，其实标识符就是用于给程序中变量、类、方法命名的符号（简单来说，标识符就是合法的名字）。</p>
-<p>Python 语言的标识符必须以字母、下画线（_）开头，后面可以跟任意数目的字母、数字和下画线（_）。此处的字母并不局限于 26 个英文字母，可以包含中文字符、日文字符等。</p>
-<p>由于 Python 3 支持 UTF-8 字符集，因此 Python 3 的标识符可以使用 UTF-8 所能表示的多种语言的字符。Python 语言是区分大小写的，因此 abc 和 Abc 是两个不同的标识符。</p>
-<p>Python 2.x 对中文支持较差，如果要在 Python 2.x 程序中使用中文字符或中文变量，则需要在 Python 源程序的第一行增加“#coding:utf-8”，当然别忘了将源文件保存为 UTF-8 字符集。</p>
-<p>在使用标识符时，需要注意如下规则：<br>标识符可以由字母、数字、下画线（_）组成，其中数字不能打头。<br>标识符不能是 Python 关键字，但可以包含关键字。<br>标识符不能包含空格。</p>
-<p>例如下面变量，有些是合法的，有些是不合法的：</p>
-<ul>
-<li>abc_xyz：合法。</li>
-<li>HelloWorld：合法。</li>
-<li>abc：合法。</li>
-<li>xyz#abc：不合法，标识符中不允许出现“#”号。</li>
-<li>abc1：合法。</li>
-<li>1abc：不合法，标识符不允许数字开头。</li>
-</ul>
 
       
     </div>
