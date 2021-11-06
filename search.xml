@@ -756,7 +756,7 @@ Out[23]: 16
 <p>②更新库 pip install –upgrade 库的名字</p>
 <p>③卸载库pip uninstall 库的名字 -y   # 加上-y表示直接卸载，没有提示选择是否要卸载，直到最后完成卸载提示。</p>
 <p>④迁移库:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip freeze&gt;requirements.txt--&gt;将本机库列表输出到指定的requirements.txt文件 </span><br><span class="line"></span><br><span class="line">示例：pip freeze&gt;C:\Users\clefairy\Desktop\requirements.txt--&gt;输出到桌面 </span><br><span class="line"></span><br><span class="line">pip install-requirements.txt--&gt;使用pip安装requirements.txt文件中所含的库 </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip freeze&gt;requirements.txt--&gt;将本机库列表输出到指定的requirements.txt文件 </span><br><span class="line"></span><br><span class="line">示例：pip freeze&gt;C:\Users\自己的\Desktop\requirements.txt--&gt;输出到桌面 </span><br><span class="line"></span><br><span class="line">找到导出的文件，即看文件的路径，使用文件完整路径安装</span><br><span class="line"></span><br><span class="line">pip install -r C:\Users\自己的\Desktop\requirements.txt 使用pip安装requirements.txt文件中所含的库 </span><br></pre></td></tr></table></figure>
 
 <p>查看库的版本     pip  version</p>
 <p>查看需要更新的库     pip list  --outdated</p>
@@ -2531,6 +2531,34 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>Python基础之求平均数</title>
+    <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
+<p>len()函数</p>
+<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
+</div>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python基础之趣味算法入门</title>
     <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%B6%A3%E5%91%B3%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h3 id="趣味算法入门"><a href="#趣味算法入门" class="headerlink" title="趣味算法入门"></a>趣味算法入门</h3><p>1.百钱买百鸡：中国古代数学家张丘建在他的《算经》中提出了一个著名的 “ 百钱百鸡问题 “： 一只公鸡值五钱，一只母鸡值三钱，三只小鸡值一钱，现在要用百钱买百鸡，请问公鸡、母鸡、小鸡各多少只？</p>
@@ -2568,34 +2596,6 @@ Out[23]: 16
 <p>​ 设 r 是 f(x)=0 的根，选取 x0 作为 r 的初始近似值。过点（x0, f(x0))作为曲线 y = f(x)的切线 L，L 的方程为 y = f(x0) +f‘(x0)(x-x0)，求出 L 于 x 轴交点的横坐标 x1 = x0 -f(x0)/f’(x0)，称 x1 为 r 的一次近似值，过点（x1, f(x1))作为曲线 y = f(x)的切线并求改切线于 x 轴的横坐标 x2 = x1 -f(x1)/f’(x1)，称 x2 为 r 的二次近似值，重复以上过程，得 r 的近似值 xn。上述即为牛顿迭代法的求解过程。</p>
 <p>​ 算法设计：</p>
 <p>在 1 附近找任意一实数作为 x0 的初值，我们去 1.5，即 x0 = 1.5. 用初值 x0 带入方程中计算此时的 f(x0)及 f’(x0)；程序中 f 用来描述方程的值，fd 用来描述方程求导之后的值。 计算增量 h=f/fd。 计算下一个 x （x = x0-h）。 用所得的 x 代替 x0 原来的值。 若|x - x0|&gt;=1e-5,则转到第三步继续执行，否则转到步骤 7 所求 x 就是方程的根，将其输出。<br>如果你喜欢我的文章,请滑到下方点个推荐再走. ，以给我动力哦；转载请注名出处。然后..请多来做客鸭。</p>
-]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python基础之求平均数</title>
-    <url>/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="Python-之读取列表元素个数、元素求和元素平均"><a href="#Python-之读取列表元素个数、元素求和元素平均" class="headerlink" title="Python 之读取列表元素个数、元素求和元素平均"></a>Python 之读取列表元素个数、元素求和元素平均</h3><p>读取列表元素用到的函数：</p>
-<p>len()函数</p>
-<p>实例：现有一个列表，存放了小区邻居的工资收入，list=[10000,8500,9000,7000,8000,8000,9000,20000,15000,16000,5000]，算一下小区邻居的平均工资收入</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictureseef2741d78243c6b51ba9180cc203ef3.png" alt="eef2741d78243c6b51ba9180cc203ef3"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/picturesc391d7835ab2cf5bf3b9da5c41a5e18e.png" alt="c391d7835ab2cf5bf3b9da5c41a5e18e"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures852fe91c94e35072c8ab501a55a98340.png" alt="852fe91c94e35072c8ab501a55a98340"></p>
-</div>
 ]]></content>
       <categories>
         <category>Python基础</category>
