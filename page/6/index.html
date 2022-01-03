@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,171 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%86%E6%95%B0%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/06/Python%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%86%E6%95%B0%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/" class="post-title-link" itemprop="url">Python基础之分数序列求和</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 19:58:33 / 修改时间：12:24:52" itemprop="dateCreated datePublished" datetime="2021-03-05T19:58:33Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="分数序列求和，分数自由输入，自由度较高"><a href="#分数序列求和，分数自由输入，自由度较高" class="headerlink" title="分数序列求和，分数自由输入，自由度较高"></a>分数序列求和，分数自由输入，自由度较高</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def eu(a,b):</span><br><span class="line">    if a &lt; b:</span><br><span class="line">        a, b &#x3D; b, a</span><br><span class="line">    r &#x3D; 1</span><br><span class="line">    while r !&#x3D; 0:</span><br><span class="line">        r &#x3D; a % b</span><br><span class="line">        a &#x3D; b</span><br><span class="line">        b &#x3D; r</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">a &#x3D; input(&#39;输入两个分数，以逗号分隔:&#39;)	# 输入两个分数如1&#x2F;2，3&#x2F;4 分数之间用,号分隔</span><br><span class="line">b &#x3D; a.split(&#39;,&#39;)</span><br><span class="line"></span><br><span class="line">num1 &#x3D; b[0].split(&#39;&#x2F;&#39;)</span><br><span class="line">num2 &#x3D; b[1].split(&#39;&#x2F;&#39;)</span><br><span class="line">sum1 &#x3D; int(num1[0])*int(num2[1]) + int(num2[0])*int(num1[1])</span><br><span class="line">sum2 &#x3D; int(num1[1])*int(num2[1])</span><br><span class="line">GCD &#x3D; eu(sum1,sum2)</span><br><span class="line"></span><br><span class="line">c &#x3D; int(sum1&#x2F;GCD)</span><br><span class="line">d &#x3D; int(sum2&#x2F;GCD)</span><br><span class="line"></span><br><span class="line">if c%d &#x3D;&#x3D; 0:</span><br><span class="line">    print(int(c&#x2F;d))</span><br><span class="line">else:</span><br><span class="line">    print(str(c)+ &#39;&#x2F;&#39;+str(d))</span><br></pre></td></tr></table></figure>
+<h3 id="实际上用-fractions-模块可以瞬间解决问题"><a href="#实际上用-fractions-模块可以瞬间解决问题" class="headerlink" title="实际上用 fractions 模块可以瞬间解决问题"></a>实际上用 fractions 模块可以瞬间解决问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from fractions import Fraction</span><br><span class="line">a,b &#x3D; (input().split(&#39;,&#39;))</span><br><span class="line">sum&#x3D;Fraction(a)+Fraction(b)</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<h3 id="高级的写法"><a href="#高级的写法" class="headerlink" title="高级的写法"></a>高级的写法</h3><p>使用 Python 编写分数的加减法</p>
+<p>基本概念</p>
+<p>1.1 最大公约数与最小公倍数</p>
+<p>1.1.1 最大公约数(gcd)：</p>
+<p>较大的数除较小的数，得到整型余数</p>
+<p>较小的数除以余数</p>
+<p>最终得到 0，返回另一个数</p>
+<p>1.1.2 最小公倍数(lcm)：</p>
+<p>lcm=a*b/gcd(a,b)</p>
+<p>1.2 最小公倍数与最大公约数类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#目的求lcm</span><br><span class="line">class Rational1(object):</span><br><span class="line">     def __init__(self):#初始化程序</span><br><span class="line">         pass</span><br><span class="line"></span><br><span class="line">     def gcd(a,b):#判断最大公约数</span><br><span class="line">         if not a &gt; b:</span><br><span class="line">             a,b &#x3D; b,a</span><br><span class="line">         while b !&#x3D; 0 :</span><br><span class="line">             remider &#x3D; a%b</span><br><span class="line">             a,b &#x3D; b,remider</span><br><span class="line">             print(&quot;%s&quot; %a)</span><br><span class="line">         return a</span><br><span class="line"></span><br><span class="line">     def lcm(a,b):#返回最小公倍数</span><br><span class="line">         lcm &#x3D; a*b &#x2F;Rational1.gcd(a,b)</span><br><span class="line">         return lcm</span><br><span class="line"></span><br><span class="line">class Rational(object):#以1&#x2F;3,3&#x2F;5为例，输出加法</span><br><span class="line"></span><br><span class="line">     #初始化类</span><br><span class="line">     def __init__(self,numer,denom &#x3D; 1):</span><br><span class="line">         print(&quot;in constuctor&quot;)</span><br><span class="line">         self.numer &#x3D; numer</span><br><span class="line">         self.deom &#x3D; denom</span><br><span class="line"></span><br><span class="line">     def __str__(self):</span><br><span class="line">         print(&quot;in str&quot;)</span><br><span class="line">         return str(self.numer) + &quot;&#x2F;&quot; + str(self.deom)</span><br><span class="line"></span><br><span class="line">     def __repr__(self):</span><br><span class="line">         print(&quot;in repr&quot;)</span><br><span class="line">         return self.__str__()</span><br><span class="line"></span><br><span class="line">     #定义分数的加法</span><br><span class="line">     def __add__(self, f):</span><br><span class="line">         print(&quot; in add&quot;)</span><br><span class="line">         thelcm &#x3D; int(Rational1.lcm(self.deom,f.deom))</span><br><span class="line">         numeratorSum &#x3D; int((thelcm&#x2F;self.deom*self.numer)+(thelcm&#x2F;f.deom*f.numer))</span><br><span class="line">         return Rational(numeratorSum,thelcm)</span><br><span class="line"></span><br><span class="line">     #定义分数的减法</span><br><span class="line">     def __sub__(self, f):</span><br><span class="line">         print(&quot;in sub&quot;)</span><br><span class="line">         thelcm &#x3D; Rational1.lcm(self.deom,f.deom)</span><br><span class="line">         numeratorSub &#x3D; (thelcm&#x2F;self.deom*self.numer)-(thelcm&#x2F;f.deom*f.numer)</span><br><span class="line">         return Rational(numeratorSub,thelcm)</span><br><span class="line"></span><br><span class="line">onehalf &#x3D; Rational(1,3)</span><br><span class="line">threefive &#x3D; Rational(3,5)</span><br><span class="line">thesum &#x3D; onehalf + threefive</span><br><span class="line">print(thesum)</span><br></pre></td></tr></table></figure>
+<p>有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13…求出这个数列的前 20 项之和。</p>
+<p>#方法一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def g(n):</span><br><span class="line">  if n &lt;&#x3D; 2:</span><br><span class="line">    return n</span><br><span class="line">  else:</span><br><span class="line">    return g(n-1) + g(n-2)</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">for i in range(1,21):</span><br><span class="line">  sum +&#x3D; g(i+1)&#x2F;g(i)</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<p>#方法二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">numerator &#x3D; 2</span><br><span class="line">denominator &#x3D; 1</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">while True:</span><br><span class="line">  try:</span><br><span class="line">    n &#x3D; int(input(&quot;请输入一个整数：&quot;))</span><br><span class="line">  except ValueError:</span><br><span class="line">    print(&quot;输入错误，请输入整数&quot;)</span><br><span class="line">  else:</span><br><span class="line">    for i in range(n):</span><br><span class="line">      sum +&#x3D; numerator &#x2F; denominator</span><br><span class="line">      numerator, denominator &#x3D; numerator + denominator, numerator</span><br><span class="line"></span><br><span class="line">    print(sum)</span><br><span class="line">    break</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Pandas%E4%B9%8B%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8-%E8%BE%93%E5%85%A5%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/06/Pandas%E4%B9%8B%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8-%E8%BE%93%E5%85%A5%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">Pandas之拆分工作表_输入到文件夹</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 19:56:19 / 修改时间：12:29:05" itemprop="dateCreated datePublished" datetime="2021-03-05T19:56:19Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="拆分总表为单个-excel-文件至一个文件夹内"><a href="#拆分总表为单个-excel-文件至一个文件夹内" class="headerlink" title="拆分总表为单个 excel 文件至一个文件夹内"></a>拆分总表为单个 excel 文件至一个文件夹内</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line">data &#x3D; pd.read_excel(&#39;.&#x2F;五年级账号和密码.xls&#39;)		#读取数据</span><br><span class="line">data_list &#x3D; list(data[&#39;班级&#39;].drop_duplicates())        #去重处理</span><br><span class="line">longth &#x3D; len(data_list)		#计算共有多少数量</span><br><span class="line">path &#x3D; &#39;.&#x2F;SplitExcel&#39;</span><br><span class="line">if not os.path.exists(path):					#当前文件夹下是否有此文件夹</span><br><span class="line">    os.mkdir(path)					#创建此文件夹</span><br><span class="line">count &#x3D; 0</span><br><span class="line">for item in data_list:</span><br><span class="line">    data_select &#x3D; data[data[&#39;班级&#39;]&#x3D;&#x3D;item]		       #选出item对应的行</span><br><span class="line">    Bigzone &#x3D; data_select.iat[0,0]				#需要参与文件命名的值</span><br><span class="line">    Smallzone &#x3D; data_select.iat[0,1]</span><br><span class="line">    service_code &#x3D; data_select.iat[0,2]</span><br><span class="line">    data_select.to_excel(&#39;.&#x2F;SplitExcel&#x2F;&#123;0:&#125;-&#123;1:&#125;.xlsx&#39;.format(Bigzone,Smallzone),index&#x3D;False)	#按照对应的值生成EXCEL文件</span><br><span class="line">    count +&#x3D; 1</span><br><span class="line">    print(&#39;\rEXCEL表中共有 &#123;&#125; 个班级，正在拆分第 &#123;&#125; 个的数据，拆分进度：&#123;:.2%&#125;&#39;.format(longth, count, count &#x2F; longth),end&#x3D;&quot;&quot;)</span><br><span class="line">print(&#39;\n&#123;&#125;个名称已经全部拆分完毕，请前往SplitExcel文件夹下查看拆分后的各文件数据.&#39;.format(longth))</span><br></pre></td></tr></table></figure>
+<h3 id="拆分总表至一个新工作薄内的每个工作表"><a href="#拆分总表至一个新工作薄内的每个工作表" class="headerlink" title="拆分总表至一个新工作薄内的每个工作表"></a>拆分总表至一个新工作薄内的每个工作表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd			#调用pandas包</span><br><span class="line">import xlsxwriter  			#调用xlswriter包，用来生成表</span><br><span class="line"></span><br><span class="line">data&#x3D;pd.read_excel(&#39;.&#x2F;五年级账号和密码.xls&#39;) 	#读取存储路径在桌面的工作簿chaifengzb,编码格式为gbk</span><br><span class="line">area_list&#x3D;list(set(data[&quot;班级&quot;])) 	#按分公司字段分成列表</span><br><span class="line"></span><br><span class="line">writer&#x3D;pd.ExcelWriter(&#39;.&#x2F;chaifengzb1.xls&#39;) 	    #生成一个新 工作簿</span><br><span class="line"></span><br><span class="line">data.to_excel(writer,sheet_name&#x3D;&quot;班级&quot;,index&#x3D;False)      #将总表存到新工作簿中</span><br><span class="line"></span><br><span class="line">for j in area_list:</span><br><span class="line">    df&#x3D;data[data[&quot;班级&quot;]&#x3D;&#x3D;j]</span><br><span class="line">    df.to_excel(writer,sheet_name&#x3D;&#39;五&#39;+j,index&#x3D;False)   #按分成的列表中的分公司字段进行命名</span><br><span class="line">writer.save()  				                            #文件保存</span><br></pre></td></tr></table></figure>
+<h3 id="一种简洁高效的办法"><a href="#一种简洁高效的办法" class="headerlink" title="一种简洁高效的办法"></a>一种简洁高效的办法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D;pd.read_excel(&#39;F:\\fxwnj五年级(2).xls&#39;,dtype&#x3D;str)</span><br><span class="line">class_list &#x3D; list(df[&#39;班级&#39;].drop_duplicates())</span><br><span class="line">for i in class_list:</span><br><span class="line">    banji &#x3D; df[df[&#39;班级&#39;]&#x3D;&#x3D;i]</span><br><span class="line">    banji.to_excel(&#39;%s.xlsx&#39;%(i),index &#x3D; False)</span><br><span class="line"></span><br><span class="line">print(&#39;拆分表格已完成，请到工作目录下查看！&#39;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -964,203 +1129,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/17/Pip%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" class="post-title-link" itemprop="url">pip第三方库备份与恢复</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-17 11:41:11" itemprop="dateCreated datePublished" datetime="2021-02-17T11:41:11Z">2021-02-17</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-03 03:46:13" itemprop="dateModified" datetime="2021-04-03T03:46:13Z">2021-04-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>pip list //查看当前环境中安装的库</code></p>
-<h3 id="导出当前环境-pip-安装的包表"><a href="#导出当前环境-pip-安装的包表" class="headerlink" title="导出当前环境 pip 安装的包表"></a>导出当前环境 pip 安装的包表</h3><p><code>pip freeze &gt; requirements.txt</code></p>
-<p>导出的路径为:</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217114531.png" alt="20210217114531"></p>
-</div>
-
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210217114951.png" alt="20210217114951"></p>
-</div>
-
-<h3 id="根据导出的-pip-安装包表安装-pip-包"><a href="#根据导出的-pip-安装包表安装-pip-包" class="headerlink" title="根据导出的 pip 安装包表安装 pip 包"></a>根据导出的 pip 安装包表安装 pip 包</h3><p><code>pip install -r requirements.txt</code></p>
-<p>在进行恢复前，先修改 pip 安装源为国内源，之后进行安装时速度会快很多，键入命令后等待一会即可完成安装。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/16/Pandas%E5%9C%A8github%E4%B8%8A%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/16/Pandas%E5%9C%A8github%E4%B8%8A%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%9B%86/" class="post-title-link" itemprop="url">Pandas在github上获取原始数据集</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-16 12:16:58 / 修改时间：04:33:01" itemprop="dateCreated datePublished" datetime="2021-02-16T12:16:58Z">2021-02-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>GitHub repository 的文件地址后面直接加？raw=true</code></p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>1、文本类文件，小文件 (txt,xml,gif) 可以直接展示；</p>
-<p>2、压缩文件会提示下载，这就可以通过 github 升级程序。</p>
-<p>Sample：</p>
-<p>在github的文件地址后面直接加上(？raw=true)</p>
-<p>zip 提示 save</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/raw.zip?raw=true">https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/raw.zip?raw=true</a></p>
-<p>txt</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/rawTxt.txt?raw=true">https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/rawTxt.txt?raw=true</a></p>
-<p>Pandas读取github上的数据集:</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210216122500.png" alt="20210216122500"></p>
-</div>
-
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在数据分析的过程里，你已经体会到 Python 生态系统的强大了吧？</p>
-<p>数据采集、整理、可视化、统计分析…… 一直到深度学习，都有相应的 Python 包支持。</p>
-<p>但是你会发现，没有任何一个 Python 软件包，是全能的。</p>
-<p>这是一种非常好的设计思维 —— 用优秀的工具，做专业的事儿；用许多优秀工具组成的系统，来有条不紊地处理复杂问题。</p>
-<p>所以，在这个过程中，你大概率会经常遇到数据的交换问题。</p>
-<p>有时候，是把分析结果存起来，下次读取回来继续使用。</p>
-<p>更重要的时候，是把一个工具的分析结果导出，导入到另一个工具包中。</p>
-<p>这些数据存取的功能，几乎分布在每一个 Python 数据科学软件包之内。</p>
-<p>但是，其中有一个最重要的枢纽，那就是 Pandas 。</p>
-<p>不止一次跟你提起过，学好 Pandas 的重要性。</p>
-<p>很多情况下，看似复杂的数据整理与可视化，Pandas 只需要一行语句就能搞定。</p>
-<p>回顾我们的教程里，也曾使用过各种不同的格式读取数据到 Pandas 进行处理。</p>
-<p>然而，当你需要自己独立面对软件包的格式要求时，也许仅仅是因为不了解如何正确生成或读取某种格式，结果导致出错，甚至会使你丧失探索的信心与兴趣。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1194,7 +1164,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

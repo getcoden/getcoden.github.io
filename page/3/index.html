@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,504 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">Python特性介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-26 14:08:42 / 修改时间：06:27:42" itemprop="dateCreated datePublished" datetime="2021-06-26T14:08:42Z">2021-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>所谓变量，在我理解下来应该是用来装内容的名字，百度上说是这样的</strong></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210618092121.png" alt="20210618092121"></p>
+</div>
+
+<p>在学 C 时，使用变量前都需要提前进行声明，而在python使用时不需要提前声明，只要想用就可以直接使用<br>举个栗子</p>
+<p>大部分了解过的人，应该都能看出来，<br>变量有一些需要注意的地方</p>
+<blockquote>
+<p>在使用变量之前，需要先进行赋值</p>
+<p>变量名可以用字母、数字、下划线，但不能用数字开头，这倒是和&gt; C一样</p>
+<p>字母大小写是不同的</p>
+<p>等号(＝)是赋值的意思，将右边的值赋给右边</p>
+<p>尽量将变量名与要表达的意思一致</p>
+</blockquote>
+<h2 id="人们为什么使用python"><a href="#人们为什么使用python" class="headerlink" title="人们为什么使用python"></a>人们为什么使用python</h2><h3 id="软件质量"><a href="#软件质量" class="headerlink" title="软件质量"></a>软件质量</h3><ul>
+<li>Python的设计侧重于代码的可读性，一致性和软件质量，这使得python与其他脚本语言区分开来。因Python强大的可读性，在维护性和重用性方面有很大的优势。Python也支持面向对象(OOP)，使得程序的重用性大大提升。</li>
+</ul>
+<h3 id="提高开发者的效率"><a href="#提高开发者的效率" class="headerlink" title="提高开发者的效率"></a>提高开发者的效率</h3><ul>
+<li>相对于一些静态编译语言，java，C++等，python的代码量往往只有他们的1/5~1/3，这种代码量就意味值python就更具维护性，更能提高开发者的效率。并且Python语言可以立即运行，不需要传统语言的编译和链接等步骤。进一步提高了程序员的效率。</li>
+</ul>
+<h3 id="程序的可移植性"><a href="#程序的可移植性" class="headerlink" title="程序的可移植性"></a>程序的可移植性</h3><ul>
+<li><p>Python程序可以在多个主流计算机平台运行，不需要修改代码。比如一些文件操作与管理等操作系统接口，在设计时，都考虑了程序的可移植性。</p>
+<h3 id="标准库的支持"><a href="#标准库的支持" class="headerlink" title="标准库的支持"></a>标准库的支持</h3></li>
+<li><p>Python有强大的标准库支持，这些标准库支持一系列的应用级编程任务。此外更多的还有很多python第三方支持工具，让Python有更强大的活力。</p>
+</li>
+</ul>
+<h3 id="组件集成"><a href="#组件集成" class="headerlink" title="组件集成"></a>组件集成</h3><ul>
+<li><p>python脚本可以灵活的与其他定制程序轻松地与应用程序的其他部分进行通信。这种集成可以让python成为名副其实的“胶水语言”，Python可以调用C，C++等程序，也可以被C,C++调用。</p>
+<h3 id="享受乐趣"><a href="#享受乐趣" class="headerlink" title="享受乐趣"></a>享受乐趣</h3></li>
+<li><p>应用级的编程享受，让开发者避免繁琐的编程工作，直接调用标准库或三方库，就能轻易完成自己的目标。</p>
+</li>
+</ul>
+<h2 id="Python是脚本语言吗？"><a href="#Python是脚本语言吗？" class="headerlink" title="Python是脚本语言吗？"></a>Python是脚本语言吗？</h2><p>Python是一种多用途的编程语言，时常在扮演脚本语言的角色。一般来说，Python可定义为面向对象的脚本语言。实际上，往往人们从以下几个“角色”来使用Python：</p>
+<ul>
+<li>shell工具</li>
+</ul>
+<p>这只用到了Python语言价值的其中一小部分，这里的python常常用来调用其他程序，或者当作一个脚本处理任务，比如处理文本等等</p>
+<ul>
+<li>控制语言</li>
+</ul>
+<p>Python的简洁，可以让他在各个场合充当一个控制角色，比如控制各个相关设备及程序之间的沟通和测试，或者是充当相关不同程序之间的“连接层”。</p>
+<ul>
+<li>使用快捷</li>
+</ul>
+<p>常常充当“脚本程序”的Python，就意味着它有脚本一样的快捷性，但是它的功能与能力远远超出脚本的范畴。它的灵活性和便捷能更快提高开发速度，更增加了探索研究与递增的开发编程模式的效率（这也是Python在机器学习上热门的原因）。</p>
+<h2 id="Python的缺点是什么？"><a href="#Python的缺点是什么？" class="headerlink" title="Python的缺点是什么？"></a>Python的缺点是什么？</h2><p>与C语言这类静态编译语言来说，Python的执行速度还不够快，目前的Python是将源码编译（或者说转化）为字节码，之后再将字节码解释出来，因为字节码是一种平台无关的格式，字节码就具有可移植性。python没有像C语言那样将代码编译成为二进制代码（可用于芯片的指令），所以Python没有静态编译语言的执行速度快。</p>
+<p>Python在发展过程中，一直对执行速度再做改进，比如在解释器内部，一些需要执行速度的操作，往往是由c语言在执行，他们都有C语言的执行速度（Numpy就是一个双语言混编策略的一个重要例子）。总得来说，Python在开发过程中带来的收益比执行效率上的损失更为重要，尤其是在如今计算机的处理速度下。</p>
+<h2 id="使用python能做些什么"><a href="#使用python能做些什么" class="headerlink" title="使用python能做些什么"></a>使用python能做些什么</h2><ul>
+<li><p>系统编程： 对操作系统服务的内置接口，使其成为编写可移植的系统管理的维护工具和组件的理想语言。</p>
+</li>
+<li><p>用户图形接口：python快速，简洁的开发模式，十分适合GUI程序，一些内置的TKinter的标准面向对象接口，可以让python生成本地观感的GUI,并且可以通过可移植性，在任何操作平台上运行。</p>
+</li>
+<li><p>Internet脚本：python提供许多的网络接口和标准Internet模块，使得python在网络的服务器端或是客户端都能发挥巨大的作用。还有许多强大的第三方工具，让python在处理网络时有更多选择。</p>
+</li>
+<li><p>组件集成：Python作为控制语言时，曾涉及它的组件集成的角色。Python可以通过C/C++系统进行扩展，并能够嵌套C/C++系统的特性，使其成为一种灵活的黏合语言。</p>
+</li>
+<li><p>数据库编程：Python提供了对所有主流数据库系统的接口。</p>
+</li>
+<li><p>数值计算和科学计算编程</p>
+</li>
+</ul>
+<h2 id="Python有哪些技术上的优点"><a href="#Python有哪些技术上的优点" class="headerlink" title="Python有哪些技术上的优点"></a>Python有哪些技术上的优点</h2><ul>
+<li>面向对象：支持面向对象编程</li>
+<li>免费开源</li>
+<li>可移植：几乎在所有主流的操作系统上都能运行python</li>
+<li>功能强大<ul>
+<li>动态类型</li>
+<li>自动内存管理：无需“垃圾回收”，Python能够代替你执行底层的内存管理</li>
+<li>大型程序支持</li>
+<li>内置对象类型</li>
+<li>内置工具和齐全的第三方库工具</li>
+<li>简单易用易学</li>
+</ul>
+</li>
+</ul>
+<h2 id="Python-编程快速上手，小白学习第一章课后习题1"><a href="#Python-编程快速上手，小白学习第一章课后习题1" class="headerlink" title="Python 编程快速上手，小白学习第一章课后习题1"></a>Python 编程快速上手，小白学习第一章课后习题1</h2><ul>
+<li><p>print()函数将括号内的字符串显示在屏幕上–输出</p>
+</li>
+<li><p>input()函数 等待用户在键盘上输入一些文本，并按下回车键–输入</p>
+</li>
+<li><p>len()函数接受一个字符串，并求值为该字符串中字符的数目</p>
+</li>
+<li><p>+操作符只能加两个整数，或连接两个字符串。不能让一个整数和一个字符</p>
+</li>
+<li><p>串相加，这不符合python的语法。</p>
+</li>
+<li><p>str()、int()、float()函数将分别求值为传入的字符串、整数和浮点数形式。 </p>
+</li>
+<li><p>这里写代码片# This program says hello and asks for my name.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">print(‘Hello world !’) #print()函数将括号内的字符串显示在屏幕上</span><br><span class="line"></span><br><span class="line">print(‘What is your name ?’) # ask for their name</span><br><span class="line"></span><br><span class="line">myName&#x3D;input() #input()函数 等待用户在键盘上输入一些文本，并按下回车键</span><br><span class="line"></span><br><span class="line">print(‘hai~ I love you , ‘+myName)</span><br><span class="line"></span><br><span class="line">print(‘The length of your name is:’)</span><br><span class="line"></span><br><span class="line">print(len(myName)) #len()函数求值为一个整型，即字符串中字符的个数</span><br><span class="line"></span><br><span class="line">print(‘What is your age ?’) # ask for their age</span><br><span class="line"></span><br><span class="line">myAge&#x3D;input()</span><br><span class="line"></span><br><span class="line">print(‘You will be ‘+str(int(myAge)+1)+’ in a year.’)</span><br></pre></td></tr></table></figure>
+<p>图示：</p>
+</li>
+</ul>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210618095332.png" alt="20210618095332"></p>
+</div>
+
+
+<p>课后习题1</p>
+<p>1．下面哪些是操作符，哪些是值？</p>
+<p>‘hello’ -88.8 - / + 5<br>答：操作符包括 ：* 、-、/、+；值包括：’hello’、-88.8、5</p>
+<p>2．下面哪个是变量，哪个是字符串？</p>
+<p>spam（变量）</p>
+<p>‘spam’（字符串）</p>
+<p>3．说出 3 种数据类型。</p>
+<p>答：整形（int）、浮点型（float）、字符串(str)</p>
+<p>4．表达式由什么构成？所有表达式都做什么事？</p>
+<p>答：表达式含”值”和”操作符”，并且总是可以求值</p>
+<p>5．本章介绍了赋值语句，如 spam = 10。表达式和语句有什么区别？</p>
+<p>答： 表达式：表达是某件事</p>
+<p>语句：表达是做某件事</p>
+<p>赋值语句包含一个变量名，一个等号，以及存储的值。而表达式是求值</p>
+<p>8．为什么 eggs 是有效的变量名，而 100 是无效的？</p>
+<p>变量名规则</p>
+<p>遵从以下3条规则：</p>
+<p>1.只能是一个词</p>
+<p>2.只能包含字母 数字和下划线</p>
+<p>3.不能以数字开头</p>
+<p>100不满足第三条规则</p>
+<p>9．哪 3 个函数能分别取得一个值的整型、浮点型或字符串版本？<br>10．为什么这个表达式会导致错误？如何修复？</p>
+<p>答：需要转换类型’I have eaten ’ + str(99 )+ ’ burritos.’</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/26/JupyterNotebook%E4%BB%8B%E7%BB%8D%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/26/JupyterNotebook%E4%BB%8B%E7%BB%8D%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">JupyterNotebook介绍安装及使用教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-26 12:06:45" itemprop="dateCreated datePublished" datetime="2021-06-26T12:06:45Z">2021-06-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 05:24:45" itemprop="dateModified" datetime="2021-11-06T05:24:45Z">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>由于最近开始学pandas数据处理的课程，看了很多教程都有介绍说使用Jupyter Notebook是最合适的选择。于是乎从网上找了教程来学习使用，但找了很久才完美的安装及初步的学会简单使用。由于其过程中踩了很多坑，做了太久的工具选择的痛苦决定，故今天写下这篇个人认为是正确且完善的安装使用教程，以便于广大想要学习使用此工具的同学，同时也是为方便以后自己观看学习。如有不恰当之处，请指出，本人会及时改正。过程中有引用网上各大神的教程说明及图片，在此向他们致敬，如有不适请及时联系，定会删除。</p>
+<h2 id="一、什么是Jupyter-Notebook？"><a href="#一、什么是Jupyter-Notebook？" class="headerlink" title="一、什么是Jupyter Notebook？"></a>一、什么是Jupyter Notebook？</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Jupyter Notebook是基于网页的用于交互计算的应用程序。其可被应用于全过程计算：开发、文档编写、运行代码和展示结果。简而言之，Jupyter Notebook是以网页的形式打开，可以在网页页面中直接编写代码和运行代码，代码的运行结果也会直接在代码块下显示。如在编程过程中需要编写说明文档，可在同一个页面中直接编写，便于作及时的说明和解释。</p>
+<h3 id="2-组成部分"><a href="#2-组成部分" class="headerlink" title="2. 组成部分"></a>2. 组成部分</h3><p>① 网页应用</p>
+<p>网页应用即基于网页形式的、结合了编写说明文档、数学公式、交互计算和其他富媒体形式的工具。简言之，网页应用是可以实现各种功能的工具。</p>
+<p>② 文档</p>
+<p>即Jupyter Notebook中所有交互计算、编写说明文档、数学公式、图片以及其他富媒体形式的输入和输出，都是以文档的形式体现的。这些文档是保存为后缀名为.ipynb的JSON格式文件，不仅便于版本控制，也方便与他人共享。此外，文档还可以导出为：HTML、LaTeX、PDF等格式。</p>
+<h3 id="3-Jupyter-Notebook的主要特点"><a href="#3-Jupyter-Notebook的主要特点" class="headerlink" title="3. Jupyter Notebook的主要特点"></a>3. Jupyter Notebook的主要特点</h3><blockquote>
+<p>1、编程时具有语法高亮、缩进、tab补全的功能。</p>
+<p>2、可直接通过浏览器运行代码，同时在代码块下方展示运行结果。</p>
+<p>3、以富媒体格式展示计算结果。富媒体格式包括：HTML，LaTeX，PNG，SVG等。</p>
+<p>4、对代码编写说明文档或语句时，支持Markdown语法。</p>
+<p>5、支持使用LaTeX编写数学性说明。</p>
+</blockquote>
+<h2 id="二、安装Jupyter-Notebook"><a href="#二、安装Jupyter-Notebook" class="headerlink" title="二、安装Jupyter Notebook"></a>二、安装Jupyter Notebook</h2><ol>
+<li>安装</li>
+</ol>
+<p>安装Jupyter Notebook的前提是需要安装了Python3 版本及以上</p>
+<p>2、使用pip命令安装</p>
+<p>①把pip升级到最新版本   python -m pip install –upgrade pip</p>
+<p>②安装Jupyter Notebook  pip install jupyter notbook -i 国内源</p>
+<p>注：在安装Python时默认都安装了pip，安装pip后，在cmd.exe下可以运行pip。安装库：pip install 库的名字  换源：因为PyPi地址在国外，国内访问速度慢有些地方甚至访问不了,把镜像源换为国内地址速度简直飞起。</p>
+<p>国内一些常用的软件源如下：</p>
+<blockquote>
+<p>阿里云：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/pypi/simple/">https://mirrors.aliyun.com/pypi/simple/</a></p>
+<p>中国科技大学：<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<p>豆瓣：<a target="_blank" rel="noopener" href="https://pypi.douban.com/simple/">https://pypi.douban.com/simple/</a></p>
+<p>清华大学：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
+<p>中国科学技术大学：<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+</blockquote>
+<p>以阿里云镜像源为例</p>
+<p><code>pip install 库的名字 -i https://mirrors.aliyun.com/pypi/simple/</code></p>
+<p>3、常用pip安装常用命令</p>
+<p>0、把pip升级到最新版本   python -m pip install –upgrade pip</p>
+<p>①查看已安装的库 pip list</p>
+<p>②更新库 pip install –upgrade 库的名字</p>
+<p>③卸载库pip uninstall 库的名字 -y   # 加上-y表示直接卸载，没有提示选择是否要卸载，直到最后完成卸载提示。</p>
+<p>④迁移库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip freeze&gt;requirements.txt--&gt;将本机库列表输出到指定的requirements.txt文件 </span><br><span class="line"></span><br><span class="line">示例：pip freeze&gt;C:\Users\自己的\Desktop\requirements.txt--&gt;输出到桌面 </span><br><span class="line"></span><br><span class="line">找到导出的文件，即看文件的路径，使用文件完整路径安装</span><br><span class="line"></span><br><span class="line">pip install -r C:\Users\自己的\Desktop\requirements.txt 使用pip安装requirements.txt文件中所含的库 </span><br></pre></td></tr></table></figure>
+
+<p>查看库的版本     pip  version</p>
+<p>查看需要更新的库     pip list  --outdated</p>
+<h2 id="三、使用Jupyter-Notebook"><a href="#三、使用Jupyter-Notebook" class="headerlink" title="三、使用Jupyter Notebook"></a>三、使用Jupyter Notebook</h2><p>1、在cmd中输入jupyter notebook 即可打开，看到如下界面，表示安装成功。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121556.png" alt="20210626121556"></p>
+</div>
+
+<p>注意2:</p>
+<p>Jupyter notebook使用过程成中 对应的 cmd 不要关闭。</p>
+<h2 id="四、配置-Jupyter-notebook"><a href="#四、配置-Jupyter-notebook" class="headerlink" title="四、配置 Jupyter notebook"></a>四、配置 Jupyter notebook</h2><h3 id="如何更改默认目录？"><a href="#如何更改默认目录？" class="headerlink" title="如何更改默认目录？"></a>如何更改默认目录？</h3><p>默认情况下，Jupyter notebook 将 c: / users / username 设置为默认目录。 我们可以更改默认目录，以便更容易地管理项目。</p>
+<p><code>CMD 中输入 jupyter notebook --generate-config</code></p>
+<p>•    首先生成配置文件</p>
+<p><code>Jupyter notebook --generate-config</code></p>
+<p>这会生成一个配置文件，路径终端会给出。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121841.png" alt="20210626121841"></p>
+</div>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121850.png" alt="20210626121850"></p>
+</div>
+
+<p><code>用记事本打开 jupyter_notebook_config.py</code></p>
+<p>做如下修改，记得要把句首【#】去掉，参数才能生效</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626121922.png" alt="20210626121922"></p>
+</div>
+
+<h2 id="五、运行Jupyter-Notebook"><a href="#五、运行Jupyter-Notebook" class="headerlink" title="五、运行Jupyter Notebook"></a>五、运行Jupyter Notebook</h2><ol start="0">
+<li>帮助</li>
+</ol>
+<p>如果你有任何jupyter notebook命令的疑问，可以考虑查看官方帮助文档，命令如下：</p>
+<p><code>jupyter notebook --help  或  jupyter notebook -h</code></p>
+<ol>
+<li><p>启动</p>
+<p>① 默认端口启动</p>
+</li>
+</ol>
+<p><code>在终端中输入以下命令：jupyter notebook</code></p>
+<p>执行命令之后，在终端中将会显示一系列notebook的服务器信息，同时浏览器将会自动启动Jupyter Notebook。</p>
+<p>启动过程中终端显示内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter notebook</span><br><span class="line">[I 08:58:24.417 NotebookApp] Serving notebooks from local directory: &#x2F;Users&#x2F;catherine</span><br><span class="line">[I 08:58:24.417 NotebookApp] 0 active kernels</span><br><span class="line">[I 08:58:24.417 NotebookApp] The Jupyter Notebook is running at: http:&#x2F;&#x2F;localhost:8888&#x2F;</span><br><span class="line">[I 08:58:24.417 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).</span><br></pre></td></tr></table></figure>
+<p>•    注意：之后在Jupyter Notebook的所有操作，都请保持终端不要关闭，因为一旦关闭终端，就会断开与本地服务器的链接，你将无法在Jupyter Notebook中进行其他操作啦。</p>
+<p>浏览器地址栏中默认地将会显示：<a href="http://localhost:8888。其中，“localhost”指的是本机，“8888”则是端口号。">http://localhost:8888。其中，“localhost”指的是本机，“8888”则是端口号。</a></p>
+<p>如果你同时启动了多个Jupyter Notebook，由于默认端口“8888”被占用，因此地址栏中的数字将从“8888”起，每多启动一个Jupyter Notebook数字就加1，如“8889”、“8890”……</p>
+<p>② 指定端口启动</p>
+<p>如果你想自定义端口号来启动Jupyter Notebook，可以在终端中输入以下命令：</p>
+<p><code>jupyter notebook --port &lt;port_number&gt;</code></p>
+<p>其中，“<port_number>”是自定义端口号，直接以数字的形式写在命令当中，数字两边不加尖括号“&lt;&gt;”。如：jupyter notebook –port 9999，即在端口号为“9999”的服务器启动Jupyter Notebook。</p>
+<p>③ 启动服务器但不打开浏览器</p>
+<p>如果你只是想启动Jupyter Notebook的服务器但不打算立刻进入到主页面，那么就无需立刻启动浏览器。在终端中输入：</p>
+<p><code>jupyter notebook --no-browser</code></p>
+<p>此时，将会在终端显示启动的服务器信息，并在服务器启动之后，显示出打开浏览器页面的链接。当你需要启动浏览器页面时，只需要复制链接，并粘贴在浏览器的地址栏中，轻按回车变转到了你的Jupyter Notebook页面。</p>
+<p><code>no_browser</code></p>
+<p>例图中由于在完成上面内容时我同时启动了多个Jupyter Notebook，因此显示我的“8888”端口号被占用，最终分配给我的是“8889”。</p>
+<ol>
+<li><p>主页面</p>
+<p>① 主页面内容</p>
+</li>
+</ol>
+<p>当执行完启动命令之后，浏览器将会进入到Notebook的主页面，如下图所示。<br>如果你的主页面里边的文件夹跟我的不同，或者你在疑惑为什么首次启动里边就已经有这么多文件夹，不要担心，这里边的文件夹全都是你的家目录里的目录文件。你可以在终端中执行以下2步来查看：</p>
+<h2 id="六、安装jupyter-contrib-nbextensions库"><a href="#六、安装jupyter-contrib-nbextensions库" class="headerlink" title="六、安装jupyter_contrib_nbextensions库"></a>六、安装jupyter_contrib_nbextensions库</h2><p>安装步骤：<br>如果你已经安装了，先执行卸载命令：</p>
+<p><code>pip uninstall jupyter_contrib_nbextensions</code></p>
+<p><code>pip uninstall jupyter_nbextensions_configurator</code></p>
+<p>在cmd中运行：</p>
+<p><code>pip install jupyter_contrib_nbextensions</code></p>
+<p><code>jupyter-contrib-nbextension install --user</code></p>
+<p>记住jupyter, contrib和nbextension中间要加上-，这个很重要…否则就会报以下错误：</p>
+<p><code>Exception: Jupyter command </code>jupyter-contrib<code> not found.</code></p>
+<p>在其中勾选需要的功能即可</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626122606.png" alt="20210626122606"></p>
+</div>
+
+<p><strong>较为常见的部分功能</strong></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626122649.png" alt="20210626122649"></p>
+</div>
+
+<p>注意：勾选 autopep8 后可能会提示找不到该模块，此时:</p>
+<p><code>pip install autopep8 -i 国内源</code></p>
+<p>即可</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626122746.png" alt="20210626122746"></p>
+</div>
+
+<h2 id="七、创建快捷方式"><a href="#七、创建快捷方式" class="headerlink" title="七、创建快捷方式"></a>七、创建快捷方式</h2><p>每次都通过命令行来打开 Jupyter Lab 确实麻烦。</p>
+<p>写个.bat文件就好啦。</p>
+<p>方法：先创建一个文本文件，在里面写入jupyter notebook，之后把扩展名改为.bat，双击运行即可。</p>
+<h2 id="八、Jupyter的各种快捷键"><a href="#八、Jupyter的各种快捷键" class="headerlink" title="八、Jupyter的各种快捷键"></a>八、Jupyter的各种快捷键</h2><blockquote>
+<p>执行当前cell，并自动跳到下一个cell：Shift Enter</p>
+<p>执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</p>
+<p>是当前的cell进入编辑模式：Enter</p>
+<p>退出当前cell的编辑模式：Esc</p>
+<p>删除当前的cell：双D</p>
+<p>为当前的cell加入line number：单L</p>
+<p>将当前的cell转化为具有一级标题的maskdown：单1</p>
+<p>将当前的cell转化为具有二级标题的maskdown：单2</p>
+<p>将当前的cell转化为具有三级标题的maskdown：单3</p>
+<p>为一行或者多行添加/取消注释：Crtl /</p>
+<p>撤销对某个cell的删除：z</p>
+<p>浏览器的各个Tab之间切换：Crtl PgUp和Crtl PgDn</p>
+<p>快速跳转到首个cell：Crtl Home</p>
+<p>快速跳转到最后一个cell：Crtl End</p>
+</blockquote>
+<h2 id="九、Jupyter-Notebook如何导入代码"><a href="#九、Jupyter-Notebook如何导入代码" class="headerlink" title="九、Jupyter Notebook如何导入代码"></a>九、Jupyter Notebook如何导入代码</h2><p>即导入代码到jupyter notebook的cell中</p>
+<p>1 将本地的.py文件load到jupyter的一个cell中</p>
+<p>问题背景：有一个test.py文件，需要将其载入到jupyter的一个cell中</p>
+<p>test.py内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import caffe</span><br><span class="line"></span><br><span class="line">SolverName &#x3D; &quot;&#x2F;root&#x2F;workspace&quot;</span><br><span class="line">sovler &#x3D; caffe.AdamSolver(SolverName)</span><br></pre></td></tr></table></figure>
+<p>方法步骤：</p>
+<p>（1）在需要导入该段代码的cell中输入</p>
+<p><code>%load test.py      # test.py 是当前路径下的一个python文件</code></p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123324.png" alt="20210626123324"></p>
+</div>
+
+<p>（2）运行该cell</p>
+<p>利用快捷键“Shift+Enter”，可以看到如下结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123346.png" alt="20210626123346"></p>
+</div>
+
+<p>（3）可以看到，运行后，%load test.py被自动加入了注释符号#，test.py中的所有代码都被load到了当前的cell中</p>
+<p>2 从网络load代码到jupyter</p>
+<p>在cell中输入%load http://…..，然后运行该cell，就会将load后面所对应地址的代码load到当前的cell中；</p>
+<p>下面给出一个例子，导入matplotlib中的一个小例子color example code</p>
+<p>首先，在想要导入该段代码的cell中输入</p>
+<p><code>%load test.py</code>   #test.py是当前路径下的一个python文件,然后，Shift+Enter运行，可以看到如下结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123506.png" alt="20210626123506"></p>
+</div>
+
+<p>可以看到，运行后，%load test.py被自动加入了注释符号#，test.py中的所有代码都被load到了当前的cell中</p>
+<h2 id="十、Jupyter运行python文件"><a href="#十、Jupyter运行python文件" class="headerlink" title="十、Jupyter运行python文件"></a>十、Jupyter运行python文件</h2><p>利用jupyter的cell是可以运行python文件的，即在cell中运行如下代码：</p>
+<p><code>%run file.py</code></p>
+<p>file.py为要运行的python程序，结果会显示在该cell中</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123619.png" alt="20210626123619"></p>
+</div>
+
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123629.png" alt="20210626123629"></p>
+</div>
+
+<h2 id="十一、Jupyter一些其他琐碎用法"><a href="#十一、Jupyter一些其他琐碎用法" class="headerlink" title="十一、Jupyter一些其他琐碎用法"></a>十一、Jupyter一些其他琐碎用法</h2><p>1 jupyter的cell可以作为unix command使用</p>
+<p>具体方法为：在unitx command前面加入一个感叹号“！”</p>
+<p>例子：</p>
+<p>查看python版本：!python –version</p>
+<p>运行python文件：!python myfile.py</p>
+<p>2 Magic functions</p>
+<p>3 获取current working directory</p>
+<p>即当前运行的代码所在的路径具体方法：current_path = %pwd   这样得到的current_path就是当前工作路径的字符转</p>
+<p>4 使用Matplotlib绘图</p>
+<p>在Jupyter Notebook中，如果使用Matplotlib绘图，有时是弹不出图像框的，此时，可以在开头加入:</p>
+<p><code>%matplotlib inline</code></p>
+<h2 id="十二、Jupyter中的Markdown"><a href="#十二、Jupyter中的Markdown" class="headerlink" title="十二、Jupyter中的Markdown"></a>十二、Jupyter中的Markdown</h2><p>1 在jupyter中设置link，需要设置两部分：</p>
+<p>要跳到的位置(the destination)</p>
+<p>需要在要跳转到的位置添加下面语句:</p>
+<p><code>&lt;a id=&#39;the_destination&#39;&gt;&lt;/a&gt;</code></p>
+<p>这里的id取值任意赋值，下面在添加链接时要用需要添加链接的文字（an internal hyperlink to the destination），即点击该处可以跳转到the destination，在需要添加链接的文字后面加入：下面是一个例子：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123914.png" alt="20210626123914"></p>
+</div>
+
+<p>效果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210626123944.png" alt="20210626123944"></p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1292,364 +1790,8 @@ GUI：图形界面
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/24/%E7%BB%8F%E5%85%B8%E8%AF%AD%E5%8F%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/24/%E7%BB%8F%E5%85%B8%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">经典语句</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-24 10:28:08 / 修改时间：02:29:16" itemprop="dateCreated datePublished" datetime="2021-04-24T10:28:08Z">2021-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>《乡下人的悲歌》，是《纽约时报》和影响力颇大的《泰晤士报》力推的一本书，作者 J.D 万斯借自己真实的人生经历，讲述了一个普通家庭孩子要如何才能跨越阶层，为自己的人生谋得选择的权利。</p>
-<p>万斯在序言中说：</p>
-<p>我之所以写这本书，并不是因为我取得了什么不平凡的成就，而是因为我做的事虽然非常平凡，但大多数像我那样家庭的孩子都做不到。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/24/Python%E5%85%A5%E9%97%A8%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/24/Python%E5%85%A5%E9%97%A8%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">Python入门必备知识</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-24 09:56:02 / 修改时间：04:35:48" itemprop="dateCreated datePublished" datetime="2021-04-24T09:56:02Z">2021-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>1989 年才诞生，一个名叫吉多·范罗苏姆的荷兰人搞出来的编程语言，可以协助处理一些重复的、繁琐的事务性工作。这个语言最初无人问津，没想到几十年后却风靡全球，火得烫手。</p>
-<p>Python 是一种高层次的结合了解释性、编译性、互动性和面向对象的脚本语言。Python 由 Guido van Rossum 于 1989 年底在荷兰国家数学和计算机科学研究所发明，第一个公开发行版发行于 1991 年。</p>
-<p>特点</p>
-<ul>
-<li>易于学习：Python 有相对较少的关键字，结构简单，和一个明确定义的语法，学习起来更加简单。</li>
-<li>易于阅读：Python 代码定义的更清晰。</li>
-<li>易于维护：Python 的成功在于它的源代码是相当容易维护的。</li>
-<li>一个广泛的标准库：Python 的最大的优势之一是丰富的库，跨平台的，在 UNIX，Windows 和 macOS 兼容很好。</li>
-<li>互动模式：互动模式的支持，您可以从终端输入执行代码并获得结果的语言，互动的测试和调试代码片断。</li>
-<li>可移植：基于其开放源代码的特性，Python 已经被移植（也就是使其工作）到许多平台。</li>
-<li>可扩展：如果你需要一段运行很快的关键代码，或者是想要编写一些不愿开放的算法，你可以使用 C 或 C++ 完成那部分程序，然后从你的 Python 程序中调用。</li>
-<li>数据库：Python 提供所有主要的商业数据库的接口。</li>
-<li>GUI 编程：Python 支持 GUI 可以创建和移植到许多系统调用。</li>
-<li>可嵌入：你可以将 Python 嵌入到 C/C++ 程序，让你的程序的用户获得”脚本化”的能力。</li>
-<li>面向对象：Python 是强面向对象的语言，程序中任何内容统称为对象，包括数字、字符串、函数等。</li>
-</ul>
-<h4 id="交互式解释器"><a href="#交互式解释器" class="headerlink" title="交互式解释器"></a>交互式解释器</h4><p>在命令行窗口执行 python 后，进入 Python 的交互式解释器。exit() 或 Ctrl + D 组合键退出交互式解释器。</p>
-<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>默认情况下，3.x 源码文件都是 UTF-8 编码，字符串都是 Unicode 字符。也可以手动指定文件编码：</p>
-<p><code># -*- coding: utf-8 -*-</code><br>或者<br><code># encoding: utf-8</code></p>
-<p>注意: 该行标注必须位于文件第一行</p>
-<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><ul>
-<li>第一个字符必须是英文字母或下划线 _ 。</li>
-<li>标识符的其他的部分由字母、数字和下划线组成。</li>
-<li>标识符对大小写敏感。</li>
-</ul>
-<p>注：从 3.x 开始，非 ASCII 标识符也是允许的，但不建议。</p>
-<h3 id="写代码，如何变得更牛逼"><a href="#写代码，如何变得更牛逼" class="headerlink" title="写代码，如何变得更牛逼"></a>写代码，如何变得更牛逼</h3><p>没有哪个文坛巨匠天生下来就能写出巨著来，他们都是通过阅读大量作品并参考借鉴最后形成自己独特的风格，其实写程序也是一样。</p>
-<p>现在很多优秀的软件库都是开源的，这给了我们可以零距离向大牛学习的机会，阅读源代码给我们带来的好处也是非常多的。</p>
-<p>1、学习代码风格</p>
-<p>优秀的开源软件都来自于经验非常丰富的老司机程序员之手，往往他们写的代码更规范、无论是从可读性还是性能上经过仔细斟酌，不断优化结果。比如著名的 HTTP 请求库 Requests 就是一份不错的源码学习典范，因为里面有教科书似的 Pythonic 代码。</p>
-<p>2、理解作者思路</p>
-<p>作者实现某个功能，通常是经过多次重构不断改进得以实现最优的解决方案，那么我们可以思考作者为什么要这么做，比如 Cpython 里把小整数缓存到内存中，提高系统性能，你不去看源代码是不知道的，因为书上很少会讲到这些。再比如 Cpython 中的垃圾算法为什么要使用别人都不用的引用计数法呢？因为权衡利弊之后，引用计数是最简单的一种垃圾收集算法，再配合其他算法也能达到很好的效果。</p>
-<p>3、提升编程水平</p>
-<p>毫无疑问，通过阅读源代码，对自身的成长是非常有帮助的，站在巨人的肩膀上，才看得比别人更远。阅读优秀的源代码是提高编程水平的方式之一</p>
-<p>阅读源代码的误区</p>
-<p>初学者阅读源代码容易陷入一种误区，认为具备阅读源代码能力才牛逼，于是自己也扎进代码深渊，一开始欣喜若狂，后来开始迷失自我，有始无终，最后一无所获，还打击了自信心。</p>
-<p>主要原因是，现在的项目动不动就是几万行的代码，如果一行行的读下去要不了几分钟就放弃了，其次，纯粹的”读”是没用的，还需要有思考。那么如何正确地阅读源代码？</p>
-<p>阅读源代码的一些技巧</p>
-<p>高效阅读源代码，可以从以下几个方面入手</p>
-<p>1、读文档</p>
-<p>任何一个优秀的开源项目标配有完善的文档，RTFM(Read The Fucking Manual)是了解开源项目最好的方式之一，同时也为后面阅读源代码提供了基础。</p>
-<p>2、找程序入口</p>
-<p>找到了文档之后，就根据文档找到程序的入口，从最简单的实例下手</p>
-<p>3、跑单元测试</p>
-<p>要想知道 API 怎么使用，除了可以查看文档之外，另外一个武器就是跑单元测试，单元测试对每一个方法都做了边界测试，通过阅读测试代码也能知道怎么样去使用这些方法。</p>
-<p>4、找最早期版本</p>
-<p>往往最开始的版本代码是最简洁的，读起来要轻松很多</p>
-<p>5、多搜索一下网络上看看是否有前人做些相关的总结。这也是很好的参考。</p>
-<h2 id="python-编程-ide-是什么"><a href="#python-编程-ide-是什么" class="headerlink" title="python 编程 ide 是什么"></a>python 编程 ide 是什么</h2><p>IDE 是 python 集成开发环境，是编写 python 代码的工具，常用的 IDE 有 “pycharm”、“Sublim text”、“vim”、“Eclipse with PyDev”、“Komodo Edit” 等等。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424111424.png" alt="20210424111424"></p>
-</div>
-
-<h4 id="Python-IDE，又叫集成开发环境，是用来编写-python-程序的。python-本身自带一款-ide"><a href="#Python-IDE，又叫集成开发环境，是用来编写-python-程序的。python-本身自带一款-ide" class="headerlink" title="Python IDE，又叫集成开发环境，是用来编写 python 程序的。python 本身自带一款 ide."></a>Python IDE，又叫集成开发环境，是用来编写 python 程序的。python 本身自带一款 ide.</h4><div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424111811.png" alt="20210424111811"></p>
-</div>
-
-<p>Python 是一种广泛运用的解说型、高级编程、通用型编程语言。</p>
-<p>Python 首要分为 Python2 和 Python3 两个版别，两个版别间有一些差异 (待续)。</p>
-<p>Python 拥有动态类型系统和废物收回功用，可以主动办理内存运用，并且支持多种编程范式，包含面向对象、命令式、函数式和过程式编程。其自身拥有一个巨大而广泛的标准库。</p>
-<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><p>Vim 能够说是 Python 最好的 IDE。Vim 是高级文本编辑器，旨在提供实践的 Unix 编辑器‘Vi’功用，支撑更多更完善的特性集。</p>
-<p>Vim 不需求花费太多的学习时间，一旦你需求一个无缝的编程体会，那么就会把 Vim 集成到你的工作流中。</p>
-<h4 id="居然没有推荐-vs-code-的？"><a href="#居然没有推荐-vs-code-的？" class="headerlink" title="居然没有推荐 vs code 的？"></a>居然没有推荐 vs code 的？</h4><p>题目描述全符合。</p>
-<p>估计不是没有使用过就是没有深入使用过，居然对 vs code 视而不见！</p>
-<p>安个插件即安即用啊，也自带 Jupyter notebook。你电脑里要是有几个 Python，点下左下角还能给自由切换。</p>
-<p>你们写 Python 就不写别的东西了？偶尔处理个文本，或是写写网页啥的…… 通吃啊。</p>
-<p>简单点的可以用 vs code</p>
-<p>我感觉主要还是看你以哪方向为主吧</p>
-<p>web 方向后期 pycharm 比较好用。如果要做数据方面的可以使用 jupyter</p>
-<h2 id="Python-新手入门第一步：什么是-IDE？IDE-有什么用"><a href="#Python-新手入门第一步：什么是-IDE？IDE-有什么用" class="headerlink" title="Python 新手入门第一步：什么是 IDE？IDE 有什么用"></a>Python 新手入门第一步：什么是 IDE？IDE 有什么用</h2><p>前言</p>
-<p>写 Python 代码最好的方式莫过于使用集成开发环境（IDE）了。它们不仅能使你的工作更加简单、更具逻辑性，还能够提升编程体验和效率。</p>
-<p>每个人都知道这一点。而问题在于，如何从众多选项中选择最好的 Python 开发环境。初级开发者往往面临这个问题。</p>
-<p>本文将概述最受程序员欢迎的 Python IDE，以及其他值得考虑的选项。在此之前，我们先来看看 IDE 是什么。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424115921.png" alt="20210424115921"></p>
-</div>
-
-<p>什么是 IDE？IDE 有什么用？</p>
-<p>IDE 是开发者创建程序时使用的软件包。它通过简单的用户界面集成多个高度关联的组件，从而最大化程序员的生产效率。本质上，IDE 是一种改进代码创建、测试和 debug 流程的工具，它使这些工作更加简单。</p>
-<p>IDE 使用的工具包括：</p>
-<ul>
-<li>文本编辑器</li>
-<li>编译器和 / 或解释器</li>
-<li>装配自动化工具（assembly automation tool）</li>
-<li>调试器（debugger）</li>
-<li>有一个与 IDE 相似的术语 —— 代码编辑器（code editor）。我们先来探讨二者的异同。</li>
-</ul>
-<p>什么是代码编辑器？</p>
-<p>代码编辑器是一个能够突出显示语法和安排代码版式的文本编辑器。高级代码编辑器可以开发和修改代码。</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures20210424120151.png" alt="20210424120151"></p>
-</div>
-
-<p>IDE 和代码编辑器的显著特征</p>
-<p>IDE 和代码编辑器有哪些共同优点？它们均可帮助开发者：</p>
-<ul>
-<li>存储和重新打开脚本</li>
-<li>运行代码</li>
-<li>debug</li>
-<li>突出显示语法</li>
-</ul>
-<p>最受 Python 开发者欢迎的 IDE</p>
-<p>1.PyCharm</p>
-<p>PyCharm 由著名软件开发公司 JetBrains 开发。在涉及人工智能和机器学习时，它被认为是最好的 Python IDE。最重要的是，Pycharm 合并了多个库（如 Matplotlib 和 NumPy），帮助开发者探索更多可用选项。</p>
-<p>兼容性：Windows、MacOS、Linux</p>
-<p>主要插件和功能：</p>
-<ul>
-<li>内置开发者工具</li>
-<li>远程开发能力</li>
-<li>实时编辑模式</li>
-<li>IPython Notebook</li>
-</ul>
-<p>优点：</p>
-<ul>
-<li>PyCharm 支持 web 开发框架，如 Pyramid、Flask 和 Django。</li>
-<li>提供智能代码功能，可以执行更精确、快速的 bug 修复。</li>
-<li>在 Docker 和 Vagrant 连接和 ssh 终端的帮助下，允许在远程主机上进行程序开发。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><p>界面庞杂</p>
-</li>
-<li><p>其优点的成本高昂</p>
-<p>2.Visual Studio Code</p>
-</li>
-</ul>
-<p>Visual Studio Code 有时会与 Visual Studio IDE 混淆，后者并非 Python 使用者常用的工具。VS Code 是完整的代码编辑器，具备很多优秀功能，许多程序员称其为最好的 IDE 编辑器。</p>
-<p>兼容性：Windows、Linux、Mac OS</p>
-<p>主要插件和功能：</p>
-<ul>
-<li><p>内置 git</p>
-</li>
-<li><p>自定义工具扩展插件</p>
-</li>
-<li><p>断点调试</p>
-</li>
-<li><p>交互式控制台</p>
-</li>
-<li><p>优点：</p>
-</li>
-<li><p>其 Electron 框架允许开发者在几乎所有平台上使用 VS Code。</p>
-</li>
-<li><p>在编辑器中直接 debug。</p>
-</li>
-<li><p>支持多个键盘快捷键，以加速编程。</p>
-</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><p>debug 功能有限。</p>
-</li>
-<li><p>没有内置模板。</p>
-<p>3.VI/Vim</p>
-</li>
-</ul>
-<p>Vim 位列最好的 Python IDE 工具前 5 名。它是一个 modal editor，可以从「文件编辑」中分割文件。相比最初的 Vi，Vim 有了巨大进步，功能更加强大。</p>
-<p>兼容性：Windows、Linux、Mac OS、IOS、Android、UNIX、AmigaOS、MorphOS</p>
-<p>主要插件和功能：</p>
-<ul>
-<li>其脚本允许用 Python 执行几乎所有编程任务。</li>
-<li>Ctags，帮助实现更好的标记导航。</li>
-<li>内置基础词汇补全。</li>
-</ul>
-<p>优点：</p>
-<ul>
-<li>具备键盘界面，可以提升效率。</li>
-<li>支持多个插件（如版本控制工具、文件管理工具）。</li>
-<li>通过 .vimrc 文件实现不同扩展功能（如突出显示搜索结果）。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li><p>界面笨拙，一些开发者认为其不方便使用。</p>
-</li>
-<li><p>其 modal editor 需要用户花费一定时间学习。</p>
-<p>4.IDLE</p>
-</li>
-</ul>
-<p>IDLE 代码编辑器深受学生欢迎，它是 Python 自带编辑器。该编辑器使用简单、通用，且支持不同设备。在使用更复杂工具之前，开发者可以通过 IDLE 学习基础知识。</p>
-<p>兼容性：Windows、Linux、Mac OS</p>
-<p>主要插件和功能：</p>
-<ul>
-<li>tkinter GUI 工具包</li>
-<li>多窗口界面</li>
-<li>具备对话框、浏览器等配置</li>
-</ul>
-<p>优点：</p>
-<ul>
-<li>允许用户突出显示错误、自动编码，并进行准确识别。</li>
-<li>具备轻量级 Python shell。</li>
-<li>其内置修正功能可以提升性能。</li>
-<li>允许用户在编辑器中搜索和替换文件。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>不支持复制到库。</li>
-<li>脚本不能超过 100 行代码。</li>
-</ul>
-<p>对于机器学习、人工智能和大数据，最好的 Python 兼容 IDE</p>
-<p>Python 是机器学习、人工智能、大数据等领域中的首选语言之一。这部分将介绍适合这些领域 Python 开发的 IDE。</p>
-<p>5.JuPyter/IPython Notebook</p>
-<p>Jupyter 是基于 web 的编辑器，它允许开发者构建和运行脚本或 notebook。它相对简单，对用户也更加友好。Jupyter 还使用 Seaborn 和 Matplotlib 执行数据可视化。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h3><p>本文概述了大量优秀的 Python IDE 和其他工具。决定使用哪一种工具取决于工具的便利性和对工具的熟练程度。当然，也有大家都喜欢的工具（如 PyCharm），但是你可以多尝试几种工具，看看哪种最适合你。</p>
-<p>一些 IDE 适合新手，另一些则更加专业，每一个 IDE 都具备独特的功能和设计。本文仅提供一些选项，读者可以从中选择适合自己的 Python IDE。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1683,7 +1825,7 @@ GUI：图形界面
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
