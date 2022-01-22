@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,126 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2022/01/22/%E3%80%90VsCode%E3%80%91%E8%87%AA%E5%AE%9A%E4%B9%89Markdown%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/22/%E3%80%90VsCode%E3%80%91%E8%87%AA%E5%AE%9A%E4%B9%89Markdown%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" class="post-title-link" itemprop="url">【VsCode】自定义Markdown代码片段，矩阵、字体颜色等</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-22 15:27:17 / 修改时间：11:59:08" itemprop="dateCreated datePublished" datetime="2022-01-22T15:27:17Z">2022-01-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="一、再打开-settings-json-文件"><a href="#一、再打开-settings-json-文件" class="headerlink" title="一、再打开 settings.json 文件"></a>一、再打开 settings.json 文件</h4><h4 id="二、进行-markdown-json-文件的配置"><a href="#二、进行-markdown-json-文件的配置" class="headerlink" title="二、进行 markdown.json 文件的配置"></a>二、进行 markdown.json 文件的配置</h4><h4 id="三、个人的配置"><a href="#三、个人的配置" class="headerlink" title="三、个人的配置"></a>三、个人的配置</h4><h2 id="一、再打开-settings-json-文件-1"><a href="#一、再打开-settings-json-文件-1" class="headerlink" title="一、再打开 settings.json 文件"></a>一、再打开 settings.json 文件</h2><ul>
+<li><p>按下 Ctrl + Shift + p，输入 settings.json。找到这个文件</p>
+</li>
+<li><p>配置下面代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;[markdown]&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;editor.formatOnSave&quot;</span>: true,</span><br><span class="line">    <span class="string">&quot;editor.renderWhitespace&quot;</span>: <span class="string">&quot;all&quot;</span>,</span><br><span class="line">    <span class="string">&quot;editor.quickSuggestions&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;other&quot;</span>: true,</span><br><span class="line">        <span class="string">&quot;comments&quot;</span>: true,</span><br><span class="line">        <span class="string">&quot;strings&quot;</span>: true</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;editor.acceptSuggestionOnEnter&quot;</span>: <span class="string">&quot;on&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="二、进行-markdown-json-文件的配置-1"><a href="#二、进行-markdown-json-文件的配置-1" class="headerlink" title="二、进行 markdown.json 文件的配置"></a>二、进行 markdown.json 文件的配置</h2></li>
+<li><p>打开编辑器 &gt; 文件 &gt; 首选项 &gt; 用户代码片段 &gt; 下拉框 中选中 markdown 语言，进入 markdown.json</p>
+</li>
+<li><p>如何配置，有英文说明，下面是中文说明和例子</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Print to ```python&quot;</span>: &#123;</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;```py&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;```python&quot;</span>,</span><br><span class="line">        <span class="string">&quot;$1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;$2&quot;</span>,</span><br><span class="line">        <span class="string">&quot;```&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;py代码片段&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">&quot;con&quot;</span>: &#123; //输入con就会进行提示</span><br><span class="line">    <span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;console&quot;</span>, //面板修正</span><br><span class="line">    <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;console.log($1);&quot;</span>,// <span class="string">&quot;&quot;</span>这个里面是回车后的主体，$<span class="number">1</span>是光标第一次停留位置，$<span class="number">2</span>是光标第二次停留位置，使用tab进行切换。当然你也可以设置$<span class="number">3</span>,$<span class="number">4</span>。。。。。。。</span><br><span class="line">        <span class="string">&quot;$2&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;console.log&quot;</span> //描述提示</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Front-Matter&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;fm&quot;</span>,</span><br><span class="line">	<span class="string">&quot;body&quot;</span>: [</span><br><span class="line">		<span class="string">&quot;---&quot;</span>,</span><br><span class="line">          		<span class="string">&quot;title: 【$&#123;1:title1&#125;】$&#123;2:title2&#125;&quot;</span>,</span><br><span class="line">          		<span class="string">&quot;date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND&quot;</span>,</span><br><span class="line">          		<span class="string">&quot;tags:&quot;</span>,</span><br><span class="line">				<span class="string">&quot;\t# - Python基础&quot;</span>,</span><br><span class="line">				<span class="string">&quot;\t# - Python库之Pandas&quot;</span>,</span><br><span class="line">				<span class="string">&quot;\t# - 工具使用&quot;</span>,</span><br><span class="line">				<span class="string">&quot;\t# - 文章阅读&quot;</span>,</span><br><span class="line">			// <span class="string">&quot;[$&#123;3:tags&#125;]&quot;</span></span><br><span class="line">					<span class="string">&quot;$3&quot;</span>,</span><br><span class="line">			<span class="string">&quot;categories: $&#123;4:categories&#125;&quot;</span>,</span><br><span class="line">      		<span class="string">&quot;---&quot;</span>,</span><br><span class="line">      		  <span class="string">&quot;$5&quot;</span></span><br><span class="line">			],</span><br><span class="line">			<span class="string">&quot;description&quot;</span>: <span class="string">&quot;Front-Matter&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="三、个人的配置-1"><a href="#三、个人的配置-1" class="headerlink" title="三、个人的配置"></a>三、个人的配置</h2><ul>
+<li><p>配置了红黄蓝绿四种字体颜色标签生成</p>
+<p><code>如 ftb 组合：&lt;font color=#00a8ff&gt; 蓝色 &lt;/font&gt;</code></p>
+</li>
+<li><p>配置字体大小标签生成</p>
+<p><code>fts 组合:&lt;font size= 5&gt; 字体 &lt;/font&gt;</code></p>
+</li>
+<li><p>配置字体样式标签生成</p>
+<p><code>ftf 组合:&lt;font face= 楷体&gt; 字体样式 &lt;/font&gt;</code></p>
+</li>
+<li><p>配置矩阵生成</p>
+<p><code>jleft 组合：</code></p>
+<p> A= $\left{ \begin{matrix}a &amp; b &amp; c \  d &amp; e &amp; f  \end{matrix} \right}$</p>
+</li>
+<li><p>配置行列式生成</p>
+<p><code>hleft 组合：</code></p>
+<p>$\left| \begin{array}{lcr}a &amp; b &amp; c \  d &amp; e &amp; f  \end{array} \right|$</p>
+</li>
+<li><p>配置带省略的矩阵生成</p>
+<p><code>sleft 组合:</code><br>A= $\left{ \begin{matrix}a &amp; b &amp; \cdots &amp; e \  f &amp; g &amp; \cdots &amp; j \   \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ p &amp; q &amp; \cdots &amp; t   \end{matrix} \right}$</p>
+</li>
+<li><p>配置语言高亮生成</p>
+<p><code>如 c 组合：</code></p>
+</li>
+<li><p>配置上角标、下角标生成</p>
+<p>上：sup</p>
+<p>hhhh<sup>tm</sup></p>
+</li>
+<li><p>下：sub</p>
+<p> H<sub>2</sub>O</p>
+</li>
+</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>VsCode 自定义 Markdown 片段生成，矩阵、字体颜色等 <code>https://www.jianshu.com/p/00e6173f6e67</code> 感谢</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -3700,105 +3820,6 @@ dtype: float64
 <p>最后你会发现，所有的成长，都是在尝到甜头之后发生的，而不是吃苦吃出来的。</p>
 <p>夸一个穷人如何节俭，就如同夸一个太监道德如何高尚、不乱搞女人一样残忍。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/" class="post-title-link" itemprop="url">获取路径下所有文件全名路径判断是路径目录文件是否存在</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-21 17:53:13 / 修改时间：09:54:23" itemprop="dateCreated datePublished" datetime="2021-08-21T17:53:13Z">2021-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="comment"># print(root)  # 当前目录路径</span></span><br><span class="line">        print(dirs)  <span class="comment"># 当前路径下所有子目录</span></span><br><span class="line">        print(files)  <span class="comment"># 当前路径下所有非目录子文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line">    L = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> os.path.splitext(file)[<span class="number">1</span>] == <span class="string">&#x27;.png&#x27;</span>:  <span class="comment"># 想要保存的文件格式</span></span><br><span class="line">                L.append(os.path.join(root, file))</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#其中os.path.splitext()函数将路径拆分为文件名+扩展名</span></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">dirpath = <span class="string">r&#x27;D:\Premiere\1&#x27;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirpath):</span><br><span class="line">	os.mksdir(dirpath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的目录和文件名（分开显示）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printPath</span>(<span class="params">path</span>):</span></span><br><span class="line">    dirList = []</span><br><span class="line">    fileList = []</span><br><span class="line"></span><br><span class="line">    dirFiles = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> dirFile <span class="keyword">in</span> dirFiles:</span><br><span class="line">        curPath = path + <span class="string">&#x27;/&#x27;</span> + dirFile</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(curPath):</span><br><span class="line">            <span class="comment"># 排除隐藏文件</span></span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                dirList.append(curPath)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">elif</span> os.path.isfile(curPath):</span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                fileList.append(curPath)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;dirlist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> dir_ <span class="keyword">in</span> dirList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, dir_)</span><br><span class="line">    print(<span class="string">&#x27;filelist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> file_ <span class="keyword">in</span> fileList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, file_)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">printPath(path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的文件名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eachFile</span>(<span class="params">filepath</span>):</span></span><br><span class="line">    pathDir = os.listdir(filepath)</span><br><span class="line">    print(<span class="string">&#x27;pathDir:&#x27;</span>, pathDir)</span><br><span class="line">    <span class="keyword">for</span> allDir <span class="keyword">in</span> pathDir:</span><br><span class="line">        child = os.path.join(filepath, allDir)</span><br><span class="line">        print(child)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eachFile(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归获取路径下所有文件名</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listdir</span>(<span class="params">path, list_name</span>):</span>  <span class="comment"># 传入存储的list</span></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">        	listdir(file_path, list_name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            list_name.append(file_path)</span><br><span class="line">    <span class="keyword">return</span> list_name</span><br><span class="line">listdir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>,list_name=[])</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
- &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
-</code></pre>
-<h2 id="怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在"><a href="#怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在" class="headerlink" title="怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在"></a>怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.path.exists(path)     <span class="comment"># 判断一个路径是否存在，可以判断一个文件或目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)      <span class="comment"># 判断一个目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断一个路径是文件还是目录（文件夹）</span></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)   <span class="comment"># 返回 True 表示是目录（文件夹）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"></span><br><span class="line">os.path.isfile(path)   <span class="comment"># 返回 True 表示是文件</span></span><br></pre></td></tr></table></figure>
       
     </div>
 

@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,111 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/24/python%E8%A7%A3%E6%9E%90%E5%99%A8%E5%92%8CPython-IDE%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/24/python%E8%A7%A3%E6%9E%90%E5%99%A8%E5%92%8CPython-IDE%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">python解析器和Python-IDE的区别</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-24 11:41:27 / 修改时间：03:51:14" itemprop="dateCreated datePublished" datetime="2021-04-24T11:41:27Z">2021-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>经常会有刚刚入门 Python 的初学者把 PythonIDE 与 Python 解释器弄混，其实它们是有本质区别的，有些人还会误认为配置 Python 环境就是配置 IDE 工具。那么，PythonIDE 和解释器的区别是什么呢？下面就带大家好好认识一下 Python IDE 和解释器。</p>
+<p>1、Python IDE</p>
+<p>IDE (Integrated Development Environment)，全称是集成开发环境，是用于提供程序开发环境的应用程序，一般包括代码编辑器、编译器、调试器和图形用户界面等工具。集成了代码编写功能、分析功能、编译功能、调试功能等一体化的开发软件服务套。所有具备这一特性的软件或者软件套 (组) 都可以叫集成开发环境。常见的 IDE 工具有 Pycharm，Visual Studio Code，Vim 等等。</p>
+<p>2、解释器</p>
+<p>(1) 什么是解释器</p>
+<p>我们都知道，Python 是一门解释型语言，解释器是 Python 运行必不可少的一种工具。所以，我们搭建 Pyhton 环境，本质上就是对 Pyhton 进行配置或者定制。而解释器是能够执行用其他计算机语言编写的程序的系统软件，它是一种编译程序。它的执行方式是一边翻译一边执行，因此其执行效率一般偏低，但是解释器的实现较为简单，而且编写源程序的高级语言可以使用更加灵活和富于表现力的语法。</p>
+<p>(2) Python 解释器</p>
+<p>当我们编写 Python 代码时，我们得到的是一个包含 Python 代码的以.py 为扩展名的文本文件。要运行代码，就需要 Python 解释器去执行.py 文件。由于整个 Python 语言从规范到解释器都是开源的，所以理论上，只要水平够高，任何人都可以编写 Python 解释器来执行 Python 代码 (当然难度很大)。事实上，确实存在多种 Python 解释器。</p>
+<p>(3) 常见的 Python 解释器</p>
+<ul>
+<li><strong>A</strong>、CPython：</li>
+</ul>
+<p>当我们从 Python 官方网站下载并安装好 Python2.7 后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用 C 语言开发的，所以叫 CPython。在命令行下运行 Python 就是启动 CPython 解释器。CPython 是使用最广的 Python 解释器。教程的所有代码也都在 CPython 下执行的。</p>
+<ul>
+<li><strong>B</strong>、IPython：IPython</li>
+</ul>
+<p>是基于 CPython 之上的一个交互式解释器，也就是说，IPython 只是在交互方式上有所增强，但是执行 Python 代码的功能和 CPython 是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了 IE。</p>
+<ul>
+<li><strong>C</strong>、PyPy：</li>
+</ul>
+<p>PyPy 是另一个 Python 解释器，它的目标是执行速度。PyPy 采用 JIT 技术，对 Python 代码进行动态编译 (注意不是解释)，所以可以显著提高 Python 代码的执行速度。绝大部分 Python 代码都可以在 PyPy 下运行，但是 PyPy 和 CPython 有一些是不同的，这就导致相同的 Python 代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到 PyPy 下执行，就需要了解 PyPy 和 CPython 的不同点。</p>
+<ul>
+<li><strong>D</strong>、Jython：</li>
+</ul>
+<p>Jython 是运行在 Java 平台上的 Python 解释器，可以直接把 Python 代码编译成 Java 字节码执行。</p>
+<ul>
+<li><strong>E</strong>、IronPython：</li>
+</ul>
+<p>IronPython 和 Jython 类似，只不过 IronPython 是运行在微软.Net 平台上的 Python 解释器，可以直接把 Python 代码编译成.Net 的字节码。</p>
+<p>3、Python IDE 和解释器的区别</p>
+<p>集成开发环境 (IDE) 可以去绑定和调用 Python 解释器进行代码编辑、运行和调试等，但他不等同于解释器。我们配置 IDE 工具的操作，绝大多数都是在调整我们使用工具的方式，只有对解释器的配置，才是对代码运行环境的调整。</p>
+<p>综上所述，Python IDE 和解释器的区别还是很大的，大家可千万不要把两者的概念混淆了！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1301,85 +1406,6 @@
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">s &#x3D; re.findall(r&#39;\d+&#39;, &#39;hello 42 I\&#39;m a 32 string 30&#39;)</span><br><span class="line">list_ &#x3D; []</span><br><span class="line">sum_&#x3D;0</span><br><span class="line">for i in s:</span><br><span class="line">    s1&#x3D;int(i)</span><br><span class="line">    list_.append(s1)</span><br><span class="line">print(list_)</span><br><span class="line">for i in list_:</span><br><span class="line">    sum_+&#x3D;i</span><br><span class="line">print(sum_)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[42, 32, 30]</span><br><span class="line">104</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/21/Python%E4%B8%89%E5%A4%A9%E6%89%93%E9%B1%BC%E4%B8%A4%E5%A4%A9%E6%99%92%E7%BD%91-%E5%AE%8C%E7%BE%8E%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/21/Python%E4%B8%89%E5%A4%A9%E6%89%93%E9%B1%BC%E4%B8%A4%E5%A4%A9%E6%99%92%E7%BD%91-%E5%AE%8C%E7%BE%8E%E7%89%88/" class="post-title-link" itemprop="url">Python三天打鱼两天晒网_完美版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-21 08:24:12 / 修改时间：00:32:59" itemprop="dateCreated datePublished" datetime="2021-03-21T08:24:12Z">2021-03-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>三天打鱼两天晒网</p>
-<p>问题描述：中国有句俗语叫“三天打鱼两天晒网”。某人从 2010 年 1 月 1 日起开始“三天打鱼两天晒网”，问这个人在以后的某一天中是“打鱼”还是“晒网”。</p>
-<p>输入：键盘输入数据或者文件输入测试数据</p>
-<p>输出：判断的结果</p>
-<p>要求：输入日期的正确性验证，文件测试数据</p>
-<p>解题思路：核心思路就是得到给定的日期和给定的最开始的日期之间相隔的天数，然后以天数除以 5，得到余数，通过判断余数是大于 3 还是小于三，大于三则是晒网，小于三则是打鱼。(python)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"># date input with the keyboard</span><br><span class="line">def get_days(date_input):</span><br><span class="line">    # get the days</span><br><span class="line">    date_base &#x3D; &#39;2010-01-01&#39;</span><br><span class="line">    # date_input &#x3D; input(&#39;please input the date you want to test with the form xxxx-xx-xx:&#39;)</span><br><span class="line">    # check its form and work out the answer</span><br><span class="line">    date_input &#x3D; datetime.strptime(date_input, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    date_base &#x3D; datetime.strptime(date_base, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    date_days &#x3D; (date_input - date_base).days</span><br><span class="line">    return date_days</span><br><span class="line"></span><br><span class="line"># to work out the result into the file out.txt</span><br><span class="line">def work_result(date_days,date_input):</span><br><span class="line">    mod_day &#x3D; date_days % 5</span><br><span class="line">    # date_input &#x3D; datetime.strptime(date_input, &#39;%Y-%m-%d&#39;)</span><br><span class="line">    with open(&#39;out.txt&#39;, &#39;a&#39;) as file_out:</span><br><span class="line">        if mod_day &lt;&#x3D; 3:</span><br><span class="line">            file_out.write(date_input + &#39;  fishing\n&#39;)</span><br><span class="line">            print(date_input + &#39;  fishing&#39;)</span><br><span class="line">        else:</span><br><span class="line">            file_out.write(date_input + &#39;  webbing\n&#39;)</span><br><span class="line">            print(date_input + &#39;  webbing&#39;)</span><br><span class="line">    file_out.close()</span><br><span class="line"></span><br><span class="line"># test the aoolication with file date</span><br><span class="line">def file_date_test():</span><br><span class="line">    print(&#39;the following is file test&#39;)</span><br><span class="line">    with open(&#39;in.txt&#39;) as file:</span><br><span class="line">        context_line &#x3D; file.readline()</span><br><span class="line">        while context_line:</span><br><span class="line">            # remove the  character &#39;\n&#39;</span><br><span class="line">            context_line &#x3D; context_line.rstrip(&#39;\n&#39;)</span><br><span class="line">            # get the days</span><br><span class="line">            days_in_file &#x3D; get_days(context_line)</span><br><span class="line">            # work out into the file out.txt</span><br><span class="line">            work_result(days_in_file,context_line)</span><br><span class="line">            context_line &#x3D; file.readline()</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"># check the date</span><br><span class="line">def isVaildDate(date):</span><br><span class="line">    try:</span><br><span class="line">        time.strptime(date, &quot;%Y-%m-%d&quot;)</span><br><span class="line">        return True</span><br><span class="line">    except:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    date_input &#x3D; input(&#39;please input the date you want to test with the form xxxx-xx-xx:&#39;)</span><br><span class="line">    while not isVaildDate(date_input):</span><br><span class="line">        date_input &#x3D;input(&#39;date is illegal,please check and input it again:&#39;)</span><br><span class="line"></span><br><span class="line">    # expand ths test file use the input</span><br><span class="line">    with open(&#39;in.txt&#39;, &#39;a&#39;) as file_input:</span><br><span class="line">        size &#x3D; os.path.getsize(&#39;in.txt&#39;)</span><br><span class="line">        if size&#x3D;&#x3D;0:</span><br><span class="line">            file_input.write(date_input)</span><br><span class="line">        else:</span><br><span class="line">            file_input.write(&#39;\n&#39;+ date_input)</span><br><span class="line">    file_input.close()</span><br><span class="line"></span><br><span class="line">    # test the application</span><br><span class="line">    date_days &#x3D; get_days(date_input)</span><br><span class="line">    work_result(date_days,date_input)</span><br><span class="line">    # test the file input and output</span><br><span class="line">    file_date_test()</span><br></pre></td></tr></table></figure>
       
     </div>
 
