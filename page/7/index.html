@@ -197,20 +197,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -253,6 +253,369 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/28/Python%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/28/Python%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B2/" class="post-title-link" itemprop="url">Python函数应用实例2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-27 21:33:32 / 修改时间：14:12:30" itemprop="dateCreated datePublished" datetime="2021-02-27T21:33:32Z">2021-02-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="函数传值为-list-的坑"><a href="#函数传值为-list-的坑" class="headerlink" title="函数传值为 list 的坑"></a>函数传值为 list 的坑</h2><p>函数传入 list 参数时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def f(x,li&#x3D;[]):</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i*i)</span><br><span class="line">    print(li)</span><br><span class="line">期望结果：</span><br><span class="line">f(4)</span><br><span class="line">#运算结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#运算结果:[0, 1, 4, 9, 16]</span><br><span class="line">print（‘--------------------------------------’）</span><br><span class="line">#运算结果</span><br><span class="line">f(4)</span><br><span class="line">#运算结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#运算结果:[0, 1, 4, 9, 0, 1, 4, 9, 16]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当定义函数时，会保存函数中默认参数 list 的值，也就是列表 li=[]；<br>在每次调用的时候如果传递了新的列表，则使用传递的列表，没有传递，使用定义函数时保存的默认参数（li=[]）；<br>上面两次调用中，都没有传递新的列表（使用默认列表 li=[] ），程序会调用定义函数时保存的默认参数 (（li=[]）);<br>列表在 append 的时候会在 li=[] 原来的基础上 append 追加值，所以会产生以上结果.</p>
+</blockquote>
+<p>通过打印列表的 ID 进行辨识</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def f(x,li&#x3D;[]):</span><br><span class="line">    print(&#39;id:&#39;,id(li))</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i*i)</span><br><span class="line">    print(li)</span><br><span class="line"></span><br><span class="line">f(4)</span><br><span class="line">#id: 2154086435336</span><br><span class="line">#结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#id: 2154086435336</span><br><span class="line">#结果:[0, 1, 4, 9, 0, 1, 4, 9, 16]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>会发现 ID 值是相同的；<br>说明两次执行时使用的都是定义函数时的默认参数 li=[ ]</p>
+</blockquote>
+<p>执行时往里面传新的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def f(x,li&#x3D;[]):</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i*i)</span><br><span class="line">    print(li)</span><br><span class="line">f(4)</span><br><span class="line">#结果:[0, 1, 4, 9]</span><br><span class="line">f(5,[])</span><br><span class="line">#结果:[0, 1, 4, 9, 16]</span><br><span class="line">f(6)</span><br><span class="line">#结果:[0, 1, 4, 9, 0, 1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当传递空列表时，函数体当中会使用传递的空列表，没有传递时，使用函数默认值 li=[ ], 所以会产生以上结果。</p>
+</blockquote>
+<h3 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h3><ul>
+<li>如果想要达到预期的结果，只需要在函数体里进行判断即可:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def f(x, li&#x3D;[]):</span><br><span class="line">    if not li:</span><br><span class="line">        # 如果li不为空的话,就往下走(清空列表); 为空就不走</span><br><span class="line">        li &#x3D; []</span><br><span class="line">    for i in range(x):</span><br><span class="line">        li.append(i * i)</span><br><span class="line">    print(li)</span><br><span class="line">f(4)</span><br><span class="line">#结果:[0, 1, 4, 9]</span><br><span class="line">f(5)</span><br><span class="line">#结果:[0, 1, 4, 9,16]</span><br><span class="line">f(6)</span><br><span class="line">#结果:[0, 1, 4, 9,16,25]</span><br></pre></td></tr></table></figure>
+<h2 id="向函数传递列表"><a href="#向函数传递列表" class="headerlink" title="向函数传递列表"></a>向函数传递列表</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/OliverQin/p/7801600.html">转载</a></p>
+<p>在实际使用中你会发现，向函数传递列表是比较实用的，这种列表可能包含名字、数字、可能更复杂的对象 (字典)</p>
+<p>假设向一个函数传递一堆水果，我们说出我们喜欢所有的水果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def Obj(fruits):</span><br><span class="line">    for fruit in fruits:</span><br><span class="line">        msg &#x3D; &#39;I like &#39;+fruit+&#39;!&#39;</span><br><span class="line">        print(msg)</span><br><span class="line"></span><br><span class="line">L &#x3D; [&#39;apple&#39;,&#39;orange&#39;]</span><br><span class="line">Obj(L)</span><br></pre></td></tr></table></figure>
+<p>我们将 Obj 定义成接受一个水果种类列表，并将其存储在形参 Obj 中，这个函数遍历接受到的列表，然后打印 ‘I like ..!’</p>
+<h2 id="在函数中修改列表"><a href="#在函数中修改列表" class="headerlink" title="在函数中修改列表"></a>在函数中修改列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#首先定义一个列表，其中包含要打印的字母</span><br><span class="line">letters &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]</span><br><span class="line">already_letter &#x3D; []</span><br><span class="line"></span><br><span class="line">#模拟阅读每个字母，直到字母读取完毕为止</span><br><span class="line">#将每个已经阅读过的字母转移到列表already_letter中</span><br><span class="line">while letters:</span><br><span class="line">    current_letter &#x3D; letters.pop()</span><br><span class="line">    print(&quot;Printing letter:&quot;+current_letter)</span><br><span class="line">    already_letter.append(current_letter)</span><br><span class="line"></span><br><span class="line">#显示已经读取的所有字母</span><br><span class="line">print(&quot;\nThe follwing letter has been read:&quot;)</span><br><span class="line">for letter in already_letter:</span><br><span class="line">    print(letter)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我们首先需要创建一个列表，还创建一个名为 already_letter 的空列表，每个已经阅读过的字母都存储到这个列表中，只要列表中还有字母，while 循环就模拟阅读过程：从该列表中删除一个已经读取的字母，然后将其存储到变量 current_letter 中，并显示一条消息，再将该字母存储到新列表中，等到循环结束后，再打印出所有的字母。</p>
+<h2 id="上述程序改编版"><a href="#上述程序改编版" class="headerlink" title="上述程序改编版"></a>上述程序改编版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">def read_letter(letters,already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    读取每个字母，直到读取完毕为止</span><br><span class="line">    将读取完毕后的字母存储到新的列表中</span><br><span class="line">    :param letters:</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    while letters:</span><br><span class="line">        current_letter &#x3D; letters.pop()</span><br><span class="line"></span><br><span class="line">        #模拟读取字母的过程</span><br><span class="line">        print(&quot;Printing letter:&quot; + current_letter)</span><br><span class="line">        already_letter.append(current_letter)</span><br><span class="line">def show_already_letter(already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    显示已经阅读的所有字母</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    print(&quot;\nThe follwing letters has been read:&quot;)</span><br><span class="line">    for letter in already_letter:</span><br><span class="line">        print(letter)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">letters &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]</span><br><span class="line">already_letter&#x3D;[]</span><br><span class="line"></span><br><span class="line">read_letter(letters,already_letter)</span><br><span class="line">show_already_letter(already_letter)</span><br></pre></td></tr></table></figure>
+<p>我们定义了函数 read_letter (), 它包含 2 个形参：一个需要阅读字母的列表和一个存储已经阅读字母的列表。给定这两个列表，这个函数模拟阅读过程：将字母一个个阅读，然后打印，最后将其转存到存储已阅读的列表中，函数 show_already_letter () 主要是打印已经阅读字母列表，最后四条语句是定义一个列表与一个空列表，调用上面的两个函数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面的函数中，在读取完毕之后，letters 列表就编程空列表了，那么假如我们想在读取完列表后还保留该列表，该怎么办呢？</p>
+<p>使用切片法 [:] 创建列表的副本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def read_letter(letters,already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    读取每个字母，直到读取完毕为止</span><br><span class="line">    将读取完毕后的字母存储到新的列表中</span><br><span class="line">    :param letters:</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    while letters:</span><br><span class="line">        current_letter &#x3D; letters.pop()</span><br><span class="line"></span><br><span class="line">        #模拟读取字母的过程</span><br><span class="line">        print(&quot;Printing letter:&quot; + current_letter)</span><br><span class="line">        already_letter.append(current_letter)</span><br><span class="line">def show_already_letter(already_letter):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    显示已经阅读的所有字母</span><br><span class="line">    :param already_letter:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    print(&quot;\nThe follwing letters has been read:&quot;)</span><br><span class="line">    for letter in already_letter:</span><br><span class="line">        print(letter)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">letters &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]</span><br><span class="line">already_letter&#x3D;[]</span><br><span class="line"></span><br><span class="line">read_letter(letters[:],already_letter)</span><br><span class="line">show_already_letter(already_letter)</span><br><span class="line"></span><br><span class="line">print(letters)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B/" class="post-title-link" itemprop="url">Python函数的应用实例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-27 18:45:33" itemprop="dateCreated datePublished" datetime="2021-02-27T18:45:33Z">2021-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-07 12:55:55" itemprop="dateModified" datetime="2021-03-07T12:55:55Z">2021-03-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="函数二（返回值-传递列表）"><a href="#函数二（返回值-传递列表）" class="headerlink" title="函数二（返回值 / 传递列表）"></a>函数二（返回值 / 传递列表）</h2><p>1.返回值：函数并非总是直接显示输出，它可以处理一些数据，并返回一个或一组值，函数返回的值被称为返回值。在函数中使用 return 语句将值返回到调用函数的代码行。调用返回值的函数时，需要提供一个变量，用于存储返回的值。</p>
+<p>2.return 和 print 的区别</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">Python函数的基础知识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-27 17:56:05" itemprop="dateCreated datePublished" datetime="2021-02-27T17:56:05Z">2021-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-07 12:54:48" itemprop="dateModified" datetime="2021-03-07T12:54:48Z">2021-03-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="函数简介"><a href="#函数简介" class="headerlink" title="函数简介"></a>函数简介</h3><p>&emsp;&emsp;我们在编程过程中往往会碰到这样的事情 —– 很多地方都用到了相同的一段代码。虽然复制 / 粘贴这段代码不费多大的功夫，但是这样就无声中增加了程序的维护成本。比如，我们后来需求变动了，要修改原来的这段共用代码才能完成目的，这样如果这段代码在很多地方出现，我们只能一处一处的发现并修改。后来我们有个想法，将这段代码单独拿出来，并给这段代码起一个名字，我们在用到这段代码的地方直接使用这个名字来代替这段代码，那如果日后还要修改这里，我们就可以只修改一处，因为名字没有改变，其他使用名字来替换代码的地方也就不需要改变。这样以来即减少了代码的行数，也方便了日后的维护，我们给拿出来的这段代码起了个名字：函数，每个函数都有一个名字，叫函数名，其他的代码使用这个函数的时候，通过函数名调用这个函数就可以了。</p>
+<p>函数最主要的目的：封装一个功能。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/28/Python%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/" class="post-title-link" itemprop="url">学习Python必须要养成的几个习惯</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-18 20:41:49 / 修改时间：13:34:20" itemprop="dateCreated datePublished" datetime="2021-02-18T20:41:49Z">2021-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/296731634">源自知乎</a>感谢作者，以此来鞭策及督促自己学习。</p>
+<p>首先，我就是从零基础开始学的 Python，在学习 Python 前，首先你要具备以下条件。</p>
+<p>1、能够坚持学下去的精神<br>2、一台电脑</p>
+<p>没错，就只要这两点，就可以学会 Python，因为 Python 本身设计的目的就是简单易上手，换句话来说，学会 Python，有手就行。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/19/%E5%AD%A6%E4%B9%A0Python%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%BB%E6%88%90%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B9%A0%E6%83%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -766,345 +1129,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/02/16/%E8%AF%BB%E4%B9%A6%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%843%E4%BB%B6%E4%BA%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/16/%E7%9C%9F%E6%AD%A3%E5%86%B3%E5%AE%9A%E4%BD%A0%E4%BA%BA%E7%94%9F%E9%AB%98%E5%BA%A6%E7%9A%84%E6%98%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/16/%E7%9C%9F%E6%AD%A3%E5%86%B3%E5%AE%9A%E4%BD%A0%E4%BA%BA%E7%94%9F%E9%AB%98%E5%BA%A6%E7%9A%84%E6%98%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B/" class="post-title-link" itemprop="url">真正决定你人生高度的，是深度学习能力</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-15 16:56:31 / 修改时间：09:31:35" itemprop="dateCreated datePublished" datetime="2021-02-15T16:56:31Z">2021-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="主动学习和被动学习的差异"><a href="#主动学习和被动学习的差异" class="headerlink" title="主动学习和被动学习的差异"></a>主动学习和被动学习的差异</h3><p>作者 | 周岭</p>
-<p>来源 | 清脑</p>
-<p>胡适的英语老师、民国时期自学成才的出版家王云五先生在年轻的时候是这样自学英语写作的：</p>
-<p>找到一篇英文的名家佳作，熟读几次以后，把它翻译成中文，等过了一星期之后，再依据中文反过来翻译成英文，这个期间绝不查阅英语原文。</p>
-<p>翻译后再与原文比对，找出自己翻译的错误、失误和不够精良之处。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/16/%E7%9C%9F%E6%AD%A3%E5%86%B3%E5%AE%9A%E4%BD%A0%E4%BA%BA%E7%94%9F%E9%AB%98%E5%BA%A6%E7%9A%84%E6%98%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D/" class="post-title-link" itemprop="url">计算机存储单位</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-15 12:14:10 / 修改时间：04:42:50" itemprop="dateCreated datePublished" datetime="2021-02-15T12:14:10Z">2021-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">视频工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="存储单位"><a href="#存储单位" class="headerlink" title="存储单位"></a>存储单位</h2><p>存储单位是一种计量单位。指在某一领域以一个特定量，或标准做为一个记录（计数）点。再以此点的某个倍数再去定义另一个点，而这个点的代名词就是计数单位或存储单位。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/15/%E8%A7%86%E9%A2%91%E6%9C%89%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/15/%E8%A7%86%E9%A2%91%E6%9C%89%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">视频有关概念及文件大小计算方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-15 03:48:08 / 修改时间：04:56:34" itemprop="dateCreated datePublished" datetime="2021-02-15T03:48:08Z">2021-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">视频工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>编码率 / 比特率直接与文件体积有关。且编码率与编码格式配合是否合适，直接关系到视频文件是否清晰。 </p>
-<p>在视频编码领域，比特率常翻译为编码率，单位是 Kbps，例如 800Kbps </p>
-<p>其中， 1K=1024 1M=1024K </p>
-<p>b 为 比特（bit） 这个就是电脑文件大小的计量单位，1KB=8Kb，区分大小写，B 代表字节 (Byte) s 为 秒（second） p 为 每（per） </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/15/%E8%A7%86%E9%A2%91%E6%9C%89%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/" class="post-title-link" itemprop="url">Python遍历文件实例</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-14 19:15:55" itemprop="dateCreated datePublished" datetime="2021-02-14T19:15:55Z">2021-02-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-15 04:43:07" itemprop="dateModified" datetime="2021-02-15T04:43:07Z">2021-02-15</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="listdir-读取某一目录下面的所有文件"><a href="#listdir-读取某一目录下面的所有文件" class="headerlink" title="listdir 读取某一目录下面的所有文件"></a>listdir 读取某一目录下面的所有文件</h2><p>某一文件下面的.txt文本比较多，那么怎么才能讲该文件夹下面的所有的文件中的内容读取出来，这样就需要一个函数直接读取某一文件夹里面所有的文件。</p>
-<p>在python中listdir就可以实现上述的功能</p>
-<p>程序代码如下所示：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

@@ -951,6 +951,37 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
+    <title>【markdown】 编辑器中段落缩进、换行，改变字体、字号与颜色等</title>
+    <url>/2022/01/26/Markdown%20%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%AE%B5%E8%90%BD%E7%BC%A9%E8%BF%9B%E3%80%81%E6%8D%A2%E8%A1%8C%EF%BC%8C%E6%94%B9%E5%8F%98%E5%AD%97%E4%BD%93%E3%80%81%E5%AD%97%E5%8F%B7%E4%B8%8E%E9%A2%9C%E8%89%B2%E7%AD%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过类似 HTML 的标记语法，它可以使普通文本内容具有一定的格式。但是它本身是不支持缩进、换行、修改字体、字号与颜色等功能的！但是可以通过内嵌 HTML 的方法来实相关功能。</p>
+<h3 id="文字居中："><a href="#文字居中：" class="headerlink" title="文字居中："></a>文字居中：</h3><p><code>&lt;center&gt; ssss&lt;/center &gt;</code></p>
+<h3 id="缩进："><a href="#缩进：" class="headerlink" title="缩进："></a>缩进：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">一个字：全方大的空白&amp;emsp;或&amp;<span class="comment">#8195;空白</span></span><br><span class="line">½个字：半方大的空白&amp;ensp;或&amp;<span class="comment">#8194;空白</span></span><br><span class="line">⅓个字：不断行的空白&amp;nbsp;或&amp;<span class="comment">#160;空白</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><font color= red size=3 face="黑体">重点注意：使用大家敲缩进符：1.&amp; 2.emsp 3.；，这三部分是都要敲进去才有效果的！！！</font></p>
+<p>我一般会用一个字的缩进，在每个段落的开始加上两个该缩进符，缩进两个字符合我们平时的书写习惯.</p>
+<h3 id="换行："><a href="#换行：" class="headerlink" title="换行："></a>换行：</h3><p>&emsp;&emsp;在 MarkDown 编辑器段落之间换一行我们按回车，但是换两行了？大家可能会说按两下回车，但是现实是多次按回车只能换一行，所以我们可以这样做：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">技术层，段落是&lt;p&gt;，换行是&lt;br&gt;，两者不同，这是废话。</span><br><span class="line"><span class="number">1</span>隔壁老王来了</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>隔壁老王来了&lt;br&gt;&lt;br&gt;</span><br><span class="line"><span class="number">3</span>隔壁老王来了&lt;br&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line"><span class="number">4</span>隔壁老王来了&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line"><span class="number">5</span>隔壁老王来了&lt;p&gt;</span><br><span class="line"><span class="number">6</span>隔壁老王来了&lt;p&gt;&lt;p&gt;&lt;p&gt;</span><br><span class="line"><span class="number">7</span>隔壁老王来了</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">4</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">5</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">6</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">7</span> 隔壁老王来了</span><br><span class="line"></span><br><span class="line">这样大家就可以看出来回车换行和加符号换行的区别了！</span><br></pre></td></tr></table></figure>
+<h3 id="改变字体、字号与颜色："><a href="#改变字体、字号与颜色：" class="headerlink" title="改变字体、字号与颜色："></a>改变字体、字号与颜色：</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;font face=&quot;黑体&quot;&gt;黑体字&lt;/font&gt;</span><br><span class="line">&lt;font face=&quot;STCAIYUN&quot; size=7&gt;华文彩云&lt;/font&gt;</span><br><span class="line">&lt;font face=&quot;微软雅黑&quot; size=5&gt;微软雅黑&lt;/font&gt;</span><br><span class="line"></span><br><span class="line">&lt;font color=<span class="comment">#0099f6 size=3 face=&quot;黑体&quot;&gt;color=#0099ff size=72 face=&quot;黑体&quot;&lt;/font&gt;</span></span><br><span class="line">&lt;font color=<span class="comment">#00ff00 size=4&gt;color=#00ffff&lt;/font&gt;</span></span><br><span class="line">&lt;font color=red size=5&gt;color=gray&lt;/font&gt;</span><br><span class="line">&lt;font color=blue size=6 face=&quot;STCAIYUN&quot;&gt;color=gray&lt;/font&gt;</span><br><span class="line">&lt;font color=gray size=7  face=&quot;微软雅黑&quot;&gt;color=gray&lt;/font&gt;</span><br></pre></td></tr></table></figure>
+<p>Size：规定文本的字体的大小。可能的值：从 1 到 7 的数字。浏览器默认值是 3。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126112608.png" alt="20220126112608"></p>
+</div>
+
+<p>关于字体颜色的设置（color=……）相信各位从事安卓开发的同仁应该早就了然于胸，这里就不一一列出颜色列表。</p>
+<p>段落前小黑点： 20170310 增加</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">- 隔壁老王来了</span><br><span class="line">-隔壁老张来了</span><br><span class="line">- 隔壁老李来了</span><br><span class="line">--隔壁老杨来了</span><br><span class="line">-               隔壁老陈来了</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126112821.png" alt="20220126112821"></p>
+<p>加黑点就是在字段前面加一个 “-” 然后空格，可以加很多空格，出于书写美观我只加一个空格。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown基本语法查看</title>
     <url>/2021/01/29/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%9F%A5%E7%9C%8B/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/191d1e21f7ed/">1. Markdown 基本语法含流程图的创建</a></p>
@@ -3668,6 +3699,339 @@ GUI：图形界面
       </tags>
   </entry>
   <entry>
+    <title>【Photoshop】中 RGB 三色原理及颜色相加相减</title>
+    <url>/2022/01/26/%E3%80%90Photoshop%E3%80%91%E4%B8%ADRGB%E4%B8%89%E8%89%B2%E5%8E%9F%E7%90%86%E5%8F%8A%E9%A2%9C%E8%89%B2%E7%9B%B8%E5%8A%A0%E7%9B%B8%E5%87%8F/</url>
+    <content><![CDATA[<p>一、RGB三色原理</p>
+<p>&emsp;&emsp;在中学的物理课中我们可能做过棱镜的试验，白光通过棱镜后被分解成多种颜色逐渐过渡的色谱，颜色依次为红、橙、黄、绿、青、蓝、紫，这就是可见光谱。其中人眼对红、绿、蓝最为敏感，人的眼睛就像一个三色接收器的体系，大多数的颜色可以通过红、绿、蓝三色按照不同的比例合成产生。同样绝大多数单色光也可以分解成红绿蓝三种色光。这是色度学的最基本原理，即三基色原理。三种基色是相互独立的，任何一种基色都不能有其它两种颜色合成。红绿蓝是三基色，这三种颜色合成的颜色范围最为广泛。红绿蓝三基色按照不同的比例相加合成混色称为相加混色。</p>
+<p>　　红色+绿色=黄色</p>
+<p>　　绿色+蓝色=青色</p>
+<p>　　红色+蓝色=品红</p>
+<p>　　红色+绿色+蓝色=白色</p>
+<p>　　黄色、青色、品红都是由两种及色相混合而成，所以它们又称相加二次色。另外：</p>
+<p>　　红色+青色=白色</p>
+<p>　　绿色+品红=白色</p>
+<p>　　蓝色+黄色=白色</p>
+<p>&emsp;&emsp;所以青色、黄色、品红分别又是红色、蓝色、绿色的补色。由于每个人的眼睛对于相同的单色的感受有不同，所以，如果我们用相同强度的三基色混合时，假设得到白光的强度为100%，这时候人的主观感受是，绿光最亮，红光次之，蓝光最弱。</p>
+<p>&emsp;&emsp;除了相加混色法之外还有相减混色法。在白光照射下，青色颜料能吸收红色而反射青色，黄色颜料吸收蓝色而反射黄色，品红颜料吸收绿色而反射品红。也就是：</p>
+<p>　　白色-红色=青色</p>
+<p>　　白色-绿色=品红</p>
+<p>　　白色-蓝色=黄色</p>
+<p>另外，如果把青色和黄色两种颜料混合，在白光照射下，由于颜料吸收了红色和蓝色，而反射了绿色，对于颜料的混合我们表示如下：</p>
+<p>　　颜料(黄色+青色)=白色-红色-蓝色=绿色</p>
+<p>　　颜料(品红+青色)=白色-红色-绿色=蓝色</p>
+<p>　　颜料(黄色+品红)=白色-绿色-蓝色=红色</p>
+<p>&emsp;&emsp;以上的都是相减混色,相减混色就是以吸收三基色比例不同而形成不同的颜色的。所以有把青色、品红、黄色称为颜料三基色。颜料三基色的混色在绘画、印刷中得到广泛应用。在颜料三基色中，红绿蓝三色被称为相减二次色或颜料二次色。在相减二次色中有：</p>
+<p>　　(青色+黄色+品红)=白色-红色-蓝色-绿色=黑色</p>
+<p>&emsp;&emsp;用以上的相加混色三基色所表示的颜色模式称为RGB模式,而用相减混色三基色原理所表示的颜色模式称为CMYK模式,它们广泛运用于绘画和印刷领域。</p>
+<p>&emsp;&emsp;RGB模式是绘图软件最常用的一种颜色模式，在这种模式下，处理图像比较方便，而且，RGB存储的图像要比CMYK图像要小，可以节省内存和空间。</p>
+<p>&emsp;&emsp;CMYK模式是一种颜料模式,所以它属于印刷模式,但本质上与RGB模式没有区别,只是产生颜色的方式不同。RGB为相加混色模式，CMYK为相减混色模式。例如，显示器采用RGB模式，就是因为显示器是电子光束轰击荧光屏上的荧光材料发出亮光从而产生颜色。当没有光的时候为黑色，光线加到最大时为白色。而打印机呢？它的油墨不会自己发出光线。因而只有采用吸收特定光波而反射其它光的颜色，所以需要用减色法来解决。</p>
+<p>二、HLS(色相、亮度、饱和度)原理</p>
+<p>&emsp;&emsp;HLS 是Hue(色相)、Luminance(亮度)、Saturation(饱和度)。色相是颜色的一种属性，它实质上是色彩的基本颜色，即我们经常讲的红、橙、黄、绿、青、蓝、紫七种，每一种代表一种色相。色相的调整也就是改变它的颜色。</p>
+<p>&emsp;&emsp;亮度就是各种颜色的图形原色（如RGB图像的原色为R、G、B三种或各种自的色相）的明暗度，亮度调整也就是明暗度的调整。亮度范围从 0 到255，共分为256个等级。而我们通常讲的灰度图像，就是在纯白色和纯黑色之间划分了256个级别的亮度，也就是从白到灰，再转黑。同理，在RGB模式中则代表个原色的明暗度，即红绿蓝三原色的明暗度，从浅到深。</p>
+<p>&emsp;&emsp;饱和度是指图像颜色的彩度.对于每一种颜色都有一种人为规定的 标准颜色，饱和度就是用描述颜色与标准颜色之间的相近程度的物理量。调整饱和度就是调整图像的彩度。将一个图像的饱和度条为零时，图像则变成一个灰度图像，大家在电视机上可以试一式调整饱和度按钮。</p>
+<p>&emsp;&emsp;另外还有一个概念,就是对比度。对比度是指不同颜色之间的差异。对比度越大，两种颜色之间的相差越大，反之，就越接近。如，一幅灰度图像提高它的对比度会更加黑白分明，调到的极限时，变成黑白图像，反之，我们可以得到一幅灰色的画布。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/156766544_1_20190318061935832.jpg" alt="156766544_1_20190318061935832"></p>
+</div>
+
+
+
+<h3 id="经典色彩理论，让你轻松搞定色彩搭配难题"><a href="#经典色彩理论，让你轻松搞定色彩搭配难题" class="headerlink" title="经典色彩理论，让你轻松搞定色彩搭配难题"></a>经典色彩理论，让你轻松搞定色彩搭配难题</h3><p>一、色彩的力量<br>色彩在设计和日常生活中起着至关重要的作用。甚至可以通过一张照片吸引你的视线，唤起特定的情绪或情感。它甚至可以在不使用文字的情况下传达重要的信息，比如下图。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113532.png" alt="20220126113532"></p>
+</div>
+
+
+
+<p>那么，我们如何才能知道哪些颜色搭配起来比较好看，而哪些不好看？答案很简单：色彩理论。</p>
+<p>几个世纪以来，艺术家和设计师一直遵循着色彩理论，并且任何人都可以从中学习。色彩理论可以帮助你在许多不同的场合下正确使用色彩，无论是为设计选择颜色，或是简单的衣着搭配。有了一定的色彩洞察力，你将会以一种全新的方式来看待色彩。</p>
+<p>二、色彩基础知识<br>让我们从头开始，了解一些基础知识。还记得在学校学过的原色和二次色吗？那么，你已经有了一些色彩的常识。（Tips：二次色也称作间色）</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113555.png" alt="20220126113555"></p>
+</div>
+
+
+<p>二次色是由两种原色混合得来的。红色加黄色可得到橙色；黄色加蓝色可得到绿色；而蓝色加红色可得到紫色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113639.png" alt="20220126113639"></p>
+</div>
+
+<p>如果我们把这些颜色混合在一起，就会得到更多的中间色调，比如红橙色和黄绿色。总之，它们就形成了所谓的色轮。(你大概会明白它们的名字是怎么得来的。)</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113722.png" alt="20220126113722"></p>
+</div>
+
+
+<p>三、仔细观察色彩的细节<br>现在，你知道了什么是色轮，接下来就让我们进一步的了解色相、饱和度、和明度。这些是你在日常生活中可能不会遇到的术语，但它们是深入认识色彩细微差异的关键 —— 就像我们家装过程中的油漆配色一样。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113739.png" alt="20220126113739"></p>
+</div>
+
+
+<p>3.1 色相（Hue）</p>
+<p>色相是最简单的，他基本就是我们所说的 “颜色”。上在下面的例子中，你可能会把颜色描述为珊瑚粉色或浅红色，这取决于你的常识。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113754.png" alt="20220126113754"></p>
+</div>
+
+
+<p>3.2 饱和度（Saturation）</p>
+<p>饱和度，指的是色彩强度 —— 换句话说，颜色是否显得更稀薄或更浓郁的。高度饱和的颜色更加鲜艳或浓郁，而低饱和的颜色色料更少，因此显得更加素雅。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113807.png" alt="20220126113807"></p>
+</div>
+
+
+
+<p>3.3 明度（Value）</p>
+<p>明度与颜色的深浅有关系，从黑色到白色都有。正如你在下面看到的，这给我们提供了许多不同的色调，从深红棕色到淡粉色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113828.png" alt="20220126113828"></p>
+</div>
+四、制定色彩搭配方案
+那么，我们如何将这些色彩搭配起来，创造出专业的配色方案呢？实际上，有一些基于色彩调和的搭配公式是有据可循的，可以帮助到大家。
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113915.png" alt="20220126113915"></p>
+</div>
+
+
+<p>色彩调和，会用到色轮这个工具，给大家举例说明久经时间考验的颜色组合，下面我们将探讨一些最常见的色彩调和方案。</p>
+<p>4.1 单色（Monochromatic）</p>
+<p>最简单的色彩调和方式就是单色，因为它只使用一个颜色或色相。要创建单色配色方案，只需在色轮上选一个点，然后利用你的饱和度和明度来创造变化。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113937.png" alt="20220126113937"></p>
+</div>
+
+<p>单色配色方案的最佳之处是，他们搭配在一起总是有保证的。颜色很适合彼此，因为它们都来自同一个家庭（色相）。</p>
+<p>4.2 相似色（Analogous）</p>
+<p>相似色搭配是使用色轮中彼此相邻的颜色，比如红色和橙色，或者蓝色和绿色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114001.png" alt="20220126114001"></p>
+</div>
+
+
+<p>不要害怕色彩搭配得不好，大胆的尝试调色，去创造出属于你的配色方案。这便是色彩调和的意义所在，这些公式仅仅是给你引导帮助和启发灵感的开始。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114019.png" alt="20220126114019"></p>
+</div>
+
+<p>4.3 互补色（Complementary）</p>
+<p>互补色在色轮上彼此相对，例如，蓝色和橙色，或者经典的红色和绿色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114035.png" alt="20220126114035"></p>
+</div>
+
+
+<p>为了避免互补配色方案过于单调，可以通过引入一些更浅、更暗，或不同饱和度的颜色，来增加色彩层次。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114049.png" alt="20220126114049"></p>
+</div>
+
+<p>4.4 分裂互补色（Split-complementary）</p>
+<p>分裂互补色组配色方案，是从色轮上选择一种颜色，再在色轮上找到其互补色两侧的颜色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114101.png" alt="20220126114101"></p>
+</div>
+
+
+<p>这与互补色配色方案有着相同的对比度，而且你有更多的颜色可以使用，还可能搭配出更加有趣的结果。</p>
+<p>4.5 三色组（Triadic）</p>
+<p>三色组配色方案，采用三种均匀分布的颜色，在色轮上形成一个完美的三角形。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114113.png" alt="20220126114113"></p>
+</div>
+
+<p>这些组合往往是非常引人注目的，尤其是当它们包含了原色或二次色时 —— 所以在你的工作中使用它们时，需要留意。</p>
+<p>4.6 四方补色（Tetradic）</p>
+<p>四方补色在色轮上形成了一个矩形，通过一组互补色两旁的颜色建立的色彩组合。让其中一种颜色作为主色，其余颜色用于辅色，这样的搭配效果是最好的。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114125.png" alt="20220126114125"></p>
+</div>
+
+
+<p>五、避免尝试性错误<br>色彩搭配，有一些经典的颜色行为准则。你是否遇到一些色彩搭配会特别的扎眼？</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114142.png" alt="20220126114142"></p>
+</div>
+
+<p>最简单的一个方法，就是想办法把色调降下来，从一种颜色开始，并尝试调整其亮度，暗度或饱和度。有时候，只需调整一点点对比度，就能满足你的画面需求。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114157.png" alt="20220126114157"></p>
+</div>
+
+<p>可读性，是任何设计的必备要素。你的颜色应该清晰悦目的，特别是处理文本类型的平面设计。</p>
+<p>有时候，你也不必在每个设计细节上都使用颜色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114208.png" alt="20220126114208"></p>
+</div>
+
+<p>中性色，如黑色、白色和灰色可以帮助你平衡画面，所以当你使用颜色时，要确保它真的需要从信息流中脱颖而出。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114220.png" alt="20220126114220"></p>
+</div>
+
+<p>六、选择正确的颜色<br>每种颜色都会发出一个信息，重要的是要考虑到你的项目基调，并选择一个合理的配色方案。</p>
+<p>例如，明亮的颜色往往能带来有趣或者现代感的氛围。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114235.png" alt="20220126114235"></p>
+</div>
+
+
+<p>低饱和度的色彩搭配方案，往往出现在更加严肃或商务环境中。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114246.png" alt="20220126114246"></p>
+</div>
+
+<p>有时，配色还需要取决于具体的使用环境。在你有了一定的实践和创造力后，你能做什么就没有那么多限制了。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114302.png" alt="20220126114302"></p>
+</div>
+
+<p>6.1 寻找灵感</p>
+<p>你可以在各种各样有趣的地方寻找配色方案的灵感，比如：从商业广告到品牌文化，以及著名的艺术作品等。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114315.png" alt="20220126114315"></p>
+</div>
+
+<p>你也可以通过配色网站，获取到很多精美的配色方案。</p>
+<p>那些富有经验的设计师，也会经常从他们周围的世界去得到灵感。找到你喜欢的色彩搭配，并把它做成自己的设计作品，这并没有什么不对。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114327.png" alt="20220126114327"></p>
+</div>
+
+
+<p>七、总结<br>色彩无处不在，你大可不用畏惧配色，记住这些色彩基础理论，从而去发现更多精美的配色。很快，你就会对色彩搭配，游刃有余。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114336.png" alt="20220126114336"></p>
+</div>
+
+
+<h2 id="颜色心理学（Color-Psychology）"><a href="#颜色心理学（Color-Psychology）" class="headerlink" title="颜色心理学（Color Psychology）"></a>颜色心理学（Color Psychology）</h2><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/2022-01-26_114539.png" alt="2022-01-26_114539"></p>
+</div>
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>深入学习 Photoshop</category>
+      </categories>
+      <tags>
+        <tag>深入学习 Photoshop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【VsCode】pyinstaller 使用（内含虚拟环境使用）</title>
+    <url>/2022/01/26/%E3%80%90VsCode%E3%80%91pyinstaller%20%E4%BD%BF%E7%94%A8%EF%BC%88%E5%86%85%E5%90%AB%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;pyinstaller 这个库可以将.py 文件编译成.exe 可执行文件，之后将.exe 文件放到没有 python 的电脑也可以执行程序。</p>
+<p>&emsp;&emsp;对于高级语言写的程序如.py 文件，在 python 中运行时，python（解释器）逐句将高级语言解释为机器语言（二进制），送往内存执行，当.py 文件中需要调用 python 其它库文件时，把库文件用 python 解释并送往内存，继续执行.py 文件。</p>
+<p>&emsp;&emsp;而生成.exe 文件则是把上面的过程完整化到一个文件中，将已解释的.py 文件及已解释的其相关的库文件一起复制放到一个文件夹中，于是执行.exe 文件时就不再需要 python 解释器及将相关经解释的库文件复制到内存中。</p>
+<p>.py 及相关库文件称为源程序。</p>
+<p><font color= green size=5>一、创建虚拟环境。</font></p>
+<ul>
+<li><p>1、为什么要创建虚拟环境。</p>
+<ul>
+<li>主要用于在一台电脑上需要安装不同版本的 python 虚拟环境来做项目，这种情况下，每个应用可能需要各自拥有一套 “独立” 的 Python 运行环境，virtualenv 就是用来为一个项目创建一套可以隔离的 Python 运行环境。</li>
+<li>实体机的 python 环境中，在学习 python 时会安装许多第三方库，打包时会将所有包都打包进去，而某些包对于此程序不是必要的，导致包很大。</li>
+<li>由于创建的虚拟环境与本机实际使用的环境相隔离，在创建时可以指定 Python 版本及程序所需要的第三方库，也可以使用命令 pip install 来安装所需要的库，按需安装，这样在用 Pyinstaller 打包程序时会大大减少程序包的大小。</li>
+</ul>
+</li>
+<li><p>2、安装</p>
+<ul>
+<li>在实体机环境中安装：<code>pip3 install virtualenv</code></li>
+<li>或者使用 pip3: <code>pip3 install virtualenv</code></li>
+</ul>
+</li>
+</ul>
+<p><font color= green size=5>二、基本使用</font></p>
+<ul>
+<li><p>1、创建虚拟环境过程</p>
+<ul>
+<li><p>创建目录</p>
+<p>新建文件夹 myproject 中打开 cmd，创建一个不依赖系统 python 包的虚拟环境，名为 venv。</p>
+<p>linux 的话 mkdir XXX_project</p>
+</li>
+<li><p>2、创建虚拟环境</p>
+<p>windows:进入 myproject\venv\Scripts，打开 cmd，执行命令 activate，激活虚拟环境</p>
+<p>linux : <code>virtualenv -p /usr/bin/python3.5 myenv</code> 意为创建虚拟环境时指定 python 版本。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    C:\Users\acer\myproject\venv\Scripts&gt;activate</span><br><span class="line">返回</span><br><span class="line">(venv) C:\Users\acer\myproject\venv\Scripts&gt;  <span class="comment">#表明进入了虚拟环境venv</span></span><br></pre></td></tr></table></figure></li>
+<li><p>3、安装各种依赖第三方库</p>
+<p>  在虚拟环境中安装 numpy 包。继续在 cmd 中键入。省略号指 numpy 包。其他库方法相同。从现在起，任何你使用pip安装的包将会放在 venv 文件夹中，与全局安装的 Python 隔绝开。</p>
+<p><code>(venv) C:\Users\acer\myproject\venv\Scripts&gt;pip install ...</code></p>
+</li>
+<li><p>4、在虚拟环境中安装 pyinstaller</p>
+<p><code>(venv) C:\Users\acer\myproject\venv\Scripts&gt;pip install pyinstaller</code></p>
+</li>
+<li><p>5、在使用 pyinstaller 之前还要安装 pypiwin32 库<br><code>(venv) C:\Users\acer\myproject\venv\Scripts&gt;pip install pypiwin32</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>6、编译及包装</p>
+<p>在.py 所在目录打开 cmd（在.py 所在窗口，按住 shift，同时右键，选择 ‘ 在此窗口打开命令窗口 ‘），键入</p>
+<p><code>pyinstaller -F --icon=my.ico xxx.py</code> </p>
+<p>-F 参数，直接编译会将.py 里面需要调用的文件放在一个文件夹里，文件夹里同时还有.exe 用来开始执行，而 - F 参数指将所有这些文件整合为一个文件，最终只有一个.exe 文件，双击即可执行文件。</p>
+<p>由于我用 PySimpeGUI 制作图形化界面，所以在打包时这样添加参数 <code>pyinstaller -F - w--icon=my.ico xxx.py</code>  待程序打包完成后，到虚拟环境目录 `venv\Scripts\dist’里即可找到成功打包好的 .exe 文件</p>
+</li>
+<li><p>7、Pyinstaller 常用的参数用法:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--distpath &lt;path&gt;: 打包到哪个目录下</span><br><span class="line"></span><br><span class="line">-w: 指定生成 GUI 软件，也就是运行时不打开控制台</span><br><span class="line"></span><br><span class="line">-c: 运行时打开控制台</span><br><span class="line"></span><br><span class="line">-i &lt;Icon File&gt;: 指定打包后可执行文件的图标</span><br><span class="line"></span><br><span class="line">--clean: 在构建之前清理 PyInstaller 缓存并删除临时文件</span><br><span class="line"></span><br><span class="line">pyinstaller -h 来查看参数</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>关于打包成什么样，有两种选择：</p>
+<p>-D: 创建包含可执行文件的单文件夹包，同时会有一大堆依赖的 dll 文件，这是默认选项</p>
+<p>-F: 只生成一个 .exe 文件，如果项目比较小的话可以用这个，但比较大的话就不推荐</p>
+<p>如果不指定 –dispatch 的话，最后会默认发布到 dis 目录下，进入目录后，就可以看到打包好的软件</p>
+</li>
+<li><p>退出环境</p>
+<p><code>deactivate</code></p>
+</li>
+<li><p>只在打包独立的程序运行时，都应在虚拟环境中进行打包编译 .py 文件。</p>
+</li>
+<li><p>删除虚拟环境</p>
+<p>要删除一个虚拟环境，只需删除它的文件夹即可。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【VsCode】自定义Markdown代码片段，矩阵、字体颜色等</title>
     <url>/2022/01/22/%E3%80%90VsCode%E3%80%91%E8%87%AA%E5%AE%9A%E4%B9%89Markdown%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
     <content><![CDATA[<h4 id="一、再打开-settings-json-文件"><a href="#一、再打开-settings-json-文件" class="headerlink" title="一、再打开 settings.json 文件"></a>一、再打开 settings.json 文件</h4><h4 id="二、进行-markdown-json-文件的配置"><a href="#二、进行-markdown-json-文件的配置" class="headerlink" title="二、进行 markdown.json 文件的配置"></a>二、进行 markdown.json 文件的配置</h4><h4 id="三、个人的配置"><a href="#三、个人的配置" class="headerlink" title="三、个人的配置"></a>三、个人的配置</h4><h2 id="一、再打开-settings-json-文件-1"><a href="#一、再打开-settings-json-文件-1" class="headerlink" title="一、再打开 settings.json 文件"></a>一、再打开 settings.json 文件</h2><ul>
@@ -6018,6 +6382,81 @@ dtype: object
       </tags>
   </entry>
   <entry>
+    <title>打开文本文件后读取方式及行后显示控制</title>
+    <url>/2021/08/29/%E6%89%93%E5%BC%80%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%90%8E%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E8%A1%8C%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<h2 id="python-逐行读取文件内容的三种方法"><a href="#python-逐行读取文件内容的三种方法" class="headerlink" title="python 逐行读取文件内容的三种方法"></a>python 逐行读取文件内容的三种方法</h2><p>一、使用 open 打开文件后一定要记得调用文件对象的 close () 方法。比如可以用 try/finally 语句来确保最后能关闭文件。</p>
+<p>二、需要导入 import os</p>
+<p>三、下面是逐行读取文件内容的三种方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1、第一种方法：</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>)               <span class="comment"># 返回一个文件对象 </span></span><br><span class="line">line = f.readline()               <span class="comment"># 调用文件的 readline()方法    </span></span><br><span class="line"><span class="keyword">while</span> line:</span><br><span class="line">    print(line,end=<span class="string">&#x27;&#x27;</span>)      <span class="comment"># 后面跟 &#x27;,&#x27; 将忽略换行符</span></span><br><span class="line">    line=f.readlines()</span><br><span class="line">    print(line)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+[&#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;]
+[&#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;][]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 2、第二种方法：</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>): </span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+
+時光再慢
+
+相聚再久
+
+總得散
+
+幾十年後
+
+當我離開人間
+
+塵歸塵
+
+土歸土
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 3、第三种方法：</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>,<span class="string">&quot;r&quot;</span>) </span><br><span class="line">lines = f.readlines()      <span class="comment">#读取全部内容 ，并以列表方式返回</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    print(line)  </span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+
+時光再慢
+
+相聚再久
+
+總得散
+
+幾十年後
+
+當我離開人間
+
+塵歸塵
+
+土歸土
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 四、一次性读取整个文件内容：</span></span><br><span class="line">file_object = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    all_the_text = file_object.read()</span><br><span class="line">    print(all_the_text)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file_object.close()</span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+時光再慢
+相聚再久
+總得散
+幾十年後
+當我離開人間
+塵歸塵
+土歸土
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># python 读取文件，如何去掉换行符 &quot;\n&quot;_</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.readlines()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read().splitlines()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        line=line.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;每晚陪伴你\n&#39;, &#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;]
+[&#39;每晚陪伴你&#39;, &#39;時光再慢&#39;, &#39;相聚再久&#39;, &#39;總得散&#39;, &#39;幾十年後&#39;, &#39;當我離開人間&#39;, &#39;塵歸塵&#39;, &#39;土歸土&#39;]
+每晚陪伴你
+時光再慢
+相聚再久
+總得散
+幾十年後
+當我離開人間
+塵歸塵
+土歸土
+</code></pre>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>将本地项目上传到Github</title>
     <url>/2021/02/14/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/u014135752/article/details/79951802">本文来源</a></p>
@@ -6106,81 +6545,6 @@ dtype: object
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>打开文本文件后读取方式及行后显示控制</title>
-    <url>/2021/08/29/%E6%89%93%E5%BC%80%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%90%8E%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E8%A1%8C%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<h2 id="python-逐行读取文件内容的三种方法"><a href="#python-逐行读取文件内容的三种方法" class="headerlink" title="python 逐行读取文件内容的三种方法"></a>python 逐行读取文件内容的三种方法</h2><p>一、使用 open 打开文件后一定要记得调用文件对象的 close () 方法。比如可以用 try/finally 语句来确保最后能关闭文件。</p>
-<p>二、需要导入 import os</p>
-<p>三、下面是逐行读取文件内容的三种方法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1、第一种方法：</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>)               <span class="comment"># 返回一个文件对象 </span></span><br><span class="line">line = f.readline()               <span class="comment"># 调用文件的 readline()方法    </span></span><br><span class="line"><span class="keyword">while</span> line:</span><br><span class="line">    print(line,end=<span class="string">&#x27;&#x27;</span>)      <span class="comment"># 后面跟 &#x27;,&#x27; 将忽略换行符</span></span><br><span class="line">    line=f.readlines()</span><br><span class="line">    print(line)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-<pre><code>每晚陪伴你
-[&#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;]
-[&#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;][]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 2、第二种方法：</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>): </span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
-<pre><code>每晚陪伴你
-
-時光再慢
-
-相聚再久
-
-總得散
-
-幾十年後
-
-當我離開人間
-
-塵歸塵
-
-土歸土
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 3、第三种方法：</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>,<span class="string">&quot;r&quot;</span>) </span><br><span class="line">lines = f.readlines()      <span class="comment">#读取全部内容 ，并以列表方式返回</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    print(line)  </span><br></pre></td></tr></table></figure>
-<pre><code>每晚陪伴你
-
-時光再慢
-
-相聚再久
-
-總得散
-
-幾十年後
-
-當我離開人間
-
-塵歸塵
-
-土歸土
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 四、一次性读取整个文件内容：</span></span><br><span class="line">file_object = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    all_the_text = file_object.read()</span><br><span class="line">    print(all_the_text)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file_object.close()</span><br></pre></td></tr></table></figure>
-<pre><code>每晚陪伴你
-時光再慢
-相聚再久
-總得散
-幾十年後
-當我離開人間
-塵歸塵
-土歸土
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># python 读取文件，如何去掉换行符 &quot;\n&quot;_</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.readlines()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read().splitlines()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        line=line.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
-<pre><code>[&#39;每晚陪伴你\n&#39;, &#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;]
-[&#39;每晚陪伴你&#39;, &#39;時光再慢&#39;, &#39;相聚再久&#39;, &#39;總得散&#39;, &#39;幾十年後&#39;, &#39;當我離開人間&#39;, &#39;塵歸塵&#39;, &#39;土歸土&#39;]
-每晚陪伴你
-時光再慢
-相聚再久
-總得散
-幾十年後
-當我離開人間
-塵歸塵
-土歸土
-</code></pre>
-]]></content>
-      <categories>
-        <category>Python基础</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -6851,6 +7215,169 @@ dtype: object
       </categories>
       <tags>
         <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Photoshop】颜色的心理效应与学习</title>
+    <url>/2022/01/26/%E3%80%90Photoshop%E3%80%91%E9%A2%9C%E8%89%B2%E7%9A%84%E5%BF%83%E7%90%86%E6%95%88%E5%BA%94%E4%B8%8E%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>要说到调色，《选择的艺术》这套书籍个人认为是最好的，只是没有出视频教程有点遗憾。</p>
+<p>所谓高手就是用简单的方法来诠释复杂的过程。</p>
+<p>&emsp;&emsp;人的感觉器官是互相联系、互相作用的整体，任何一种感觉器官受到刺激以后，都会诱发其他感觉系统的反应，这种伴随性感觉在心理学上又称为“共感觉”或“通感”。</p>
+<h3 id="一、颜色与情感"><a href="#一、颜色与情感" class="headerlink" title="一、颜色与情感"></a>一、颜色与情感</h3><p>&emsp;&emsp;颜色具有使人产生某种心理联想和唤起某种情感的作用，在特定的颜色情境中经常发生某些带有情感色彩的事，这与颜色的心理效应有关。</p>
+<p>&emsp;&emsp;一般来说，每一种颜色都与一些相应的情感相联系。白色一般会使人想到清洁、纯洁、神圣、诚实。黑色是夜晚的象征，会使人产生罪恶、悲哀、压抑、死亡、庄重的感觉。红色具有刺激人的生理欲望的作用，同时与温暖、危险、争斗、愤怒相联系，红色还有吉利、吉祥、好运气的意思。黄色表示愉快、舒适，同时也可能使人产生富裕、高贵的联想。绿色是生命的象征，容易使人产生和平、充满生机以及平静、安宁的感觉。蓝色与广阔的天空和大海相联系，会使人联想到遥远、冷淡、寂寞、朴素。紫色可以使人联想到优雅和威严，还有优美、满意、希望、生机的感觉。</p>
+<p>&emsp;&emsp;对于颜色的情感效应，卢基以12种彩色为例做过专门的实验研究，受试者的判断结果见表1。</p>
+<p>表1 颜色与情感的联系</p>
+<div align=center>
+
+<p><img src="https://cdn、jsdelivr、net/gh/getcoden/picgo/blogs/pictures/20220126123203%E3%80%81png" alt="20220126123203"></p>
+</div>
+
+<h3 id="二、颜色与心境（情绪）"><a href="#二、颜色与心境（情绪）" class="headerlink" title="二、颜色与心境（情绪）"></a>二、颜色与心境（情绪）</h3><p>&emsp;&emsp;我国心理学家马谋超曾经对青年进行过关于颜色与心境联系方面的调查，发现，在日常生活中，人们已经把特定的颜色同一定的对象以及心境或情绪体验联系起来。红色同节日喜庆连在一起，另外还同火、血、危险建立起联想；橙黄引起阳光明媚、充满希望的感受；绿色使人想起春天、万象更新的景象；蓝色与天空、海洋发生天然的联系；洁白更容易与纯洁对应；灰黑则令人伤感不安详见表2。</p>
+<p>表2 颜色与心境、对象的联系</p>
+<div align=center>
+
+<p><img src="https://cdn、jsdelivr、net/gh/getcoden/picgo/blogs/pictures/20220126123251%E3%80%81png" alt="20220126123251"></p>
+</div>
+
+<h3 id="三、颜色与生理"><a href="#三、颜色与生理" class="headerlink" title="三、颜色与生理"></a>三、颜色与生理</h3><p>&emsp;&emsp;色彩的直接性心理效应来自色彩的物理刺激对人的生理发生的直接影响。心理学家对此曾经作过许多实验。他们发现，在红色的环境中，人的脉搏会加快，血压有所升高，情绪兴奋冲动。而在蓝色环境中，脉搏会减缓，情绪也较沉静。</p>
+<p>&emsp;&emsp;冷色与暖色是依据心理错觉对色彩的物理分类，对于颜色的物质性印象，大致有冷暖两个色系产生。波长长的红光和橙光、黄色光，本身有暖和感；相反，波长短的紫色光、蓝色光、绿色有寒冷的感觉。冷色与暖色除去给我们以温度上的不同感觉外，还会带来其它一些感受。比方说，暖色偏重，冷色偏轻；暖色有密度强的感觉，冷色有稀薄的感觉；冷色有退却的感觉，暖色有逼近感。这些感觉都是偏向于对物理方面的印象，而不是物理的真实，它属于一种心理错觉。</p>
+<h3 id="四、颜色与行为"><a href="#四、颜色与行为" class="headerlink" title="四、颜色与行为"></a>四、颜色与行为</h3><p>&emsp;&emsp;颜色引起的物质性的心理错觉，是艺术家或设计家最可利用的手段之一。有一个生动的例子：1940年，纽约的码头工人因搬运的弹药箱太重而举行罢工，一位颜色专家出了个主意，把弹药箱的颜色改漆为浅绿色，弹药箱的重量并未改变，但颜色使工人觉得它变轻了，罢工终于停止了！颜色提高了劳动效率。一般来说，在狭窄的空间中，若想使它变得宽敞，应该使用明亮的冷调。由于暖色有前进感，冷色有后退感，可在细长的空间中远处两壁涂以暖色，近处两壁涂以冷色，空间就会从心理感到更接近方形。</p>
+<p>&emsp;&emsp;对策：我们知道，处于升学考试阶段的考生，对外界的反应一般都是比较敏感的，因此色彩对他们的影响也会更大一些，作为家长可以很好地顺势利用色彩的变化去潜移默化他们，这比你单调的说教可能不知好多少倍。比如你家的孩子情绪波动比较大，你不妨改变一下家里的色调，把家里的色调布置成蓝色或绿色，如果你想鼓起学生的斗志，那么就把家里的色调布置成以红色为主色调，有的家长可能会感到犯难或困惑，家里的色调怎么改变呀？难道要重新粉刷一遍？其实，用不着那样麻烦，你只需要改变一下家里的窗帘颜色，或换一个灯罩。</p>
+<h3 id="五、颜色与音乐"><a href="#五、颜色与音乐" class="headerlink" title="五、颜色与音乐"></a>五、颜色与音乐</h3><p>&emsp;&emsp;在音乐领域里，最知名的就是俄国作曲家，史克里雅宾（A。Scriabin，1872－1915）。他将色彩与音调的共生感觉谱进他的第五交响曲，一个“音乐与色彩水乳交融的构想”。他并精确地罗列了曲调、每秒震动次数和色彩的对应表：</p>
+<div align=center>
+
+<p><img src="https://cdn、jsdelivr、net/gh/getcoden/picgo/blogs/pictures/20220126123708%E3%80%81png" alt="20220126123708"></p>
+</div>
+
+
+<p>&emsp;&emsp;康丁斯基（W、Kandiski，1866－1944）指出我们不仅能从音乐中“听见”颜色，并且也能从色彩中“看到”声音：黄色具有一种特殊能力，可以愈“升”愈高，达到眼睛和精神所无法忍受的高度，如同愈吹愈高的小喇叭会变得愈来愈“尖锐”，刺痛耳朵和精神。蓝色具有完全相反的能力，会“降到”无限深，以其雄伟的低音而发出横笛（浅蓝色时）、大提琴（降得更低时）、低音提琴的音色；而在手风琴的深度里，你会“看到”蓝色的深度。绿色非常平衡，相对于小提琴中段和渐细的音色。而红色（朱砂色）运用技巧时，可以给予强烈鼓声的印象。这种通感并不只发生于视觉与听觉之间，还发生于嗅觉、触觉甚至味觉之间。</p>
+<p>&emsp;&emsp;对策：现在，听音乐是大多数学生都乐于做的一件事情，经常是边做作业边听音乐，真是让人头痛，其实，我们也可以利用这一点来引导他们，如果学生做作业慢腾腾的，你不妨为他选一些红色（C调）的音乐，如果学生做作业急躁，不妨建议他们听一点蓝色（B调）或绿色（A调）音乐。</p>
+<h3 id="六、颜色与味觉"><a href="#六、颜色与味觉" class="headerlink" title="六、颜色与味觉"></a>六、颜色与味觉</h3><p>&emsp;&emsp;饮食文化讲究色香味俱全，其中色彩排在首位，色彩可以促进人们的食欲，有色彩变化搭配的食物容易增进食欲，而单调或者杂乱无章的色彩搭配则使人倒足了胃口。不同彩色光源的照射也会对食品色彩产生很大的影响，从而引起人们不同的食欲反映，农贸市场中许多出售肉食的摊位用红色玻璃纸包裹灯泡用红色灯光照射食物，就是为了使肉食看上去更加新鲜，引起人的食欲。</p>
+<p>&emsp;&emsp;这是家长们需要做的了，学生不想吃东西，不是没有胃口，而是你做的菜可能“色”。</p>
+<h3 id="七、颜色与嗅觉"><a href="#七、颜色与嗅觉" class="headerlink" title="七、颜色与嗅觉"></a>七、颜色与嗅觉</h3><p>&emsp;&emsp;色彩与嗅觉的关系大致与味觉相同，也是由生活联想而得。从花色联想到花香，根据试验心理学的报告：通常红、黄、橙等的暖色系容易使人感到有香味，偏冷的浊色系容易使人感到有腐败的臭味。深褐色容易联想到烧焦了的食物，感到有蛋白质烤焦的臭味。</p>
+<p>&emsp;&emsp;这是家长们需要做的了，学生不想吃东西，不是没有胃口，而是你做的菜可能“香”。</p>
+<h3 id="色彩的感觉"><a href="#色彩的感觉" class="headerlink" title="色彩的感觉"></a>色彩的感觉</h3><p>&emsp;&emsp;色彩的直接心理效应来自色彩的物理光刺激对人的生理发生的直接影响。<br>心理学家对此曾做过许多实验。他们发现，在红色环境中，人的脉搏会加快，血压有所升高，情绪兴奋冲动。而处在蓝色环境中，脉搏会减缓，情绪也较沉静。有的科学家发现，颜色能影响脑电波，脑电波对红色反应是警觉，对蓝色的反应是放松。自19世纪中叶以后，心理学已从哲学转入科学的范畴，心理学家注重实验所验证的色彩心理的效果。</p>
+<p>&emsp;&emsp;不少色彩理论中都对此作过专门的介绍，这些经验向我们明确地肯定了色彩对人心理的影响。冷色与暖色是依据心理错觉对色彩的物理性分类，对于颜色的物质性印象，大致由冷暖两个色系产生。波长长的红光和橙、黄色光，本身有暖和感，以次光照射到任何色都会有暖和感。相反，波长短的紫色光、蓝色光、绿色光，有寒冷的感觉。夏日，我们关掉室内的白炽灯，打开日光灯，就会有一种变凉爽的感觉。颜料也是如此，在冷食或冷的饮料包装上使用冷色，视觉上会引起你对这些食物冰冷的感觉。冬日，把卧室的窗帘换成暖色，就会增加室内的暖和感。</p>
+<p>&emsp;&emsp;以上的冷暖感觉，并非来自物理上的真实温度，而是与我们的视觉与心理联想有关。总的来说，人们在日常生活中既需要暖色，又需要冷色，在色彩的表现上也是如此。</p>
+<p>&emsp;&emsp;冷色与暖色除去给我们温度上的不同感觉以外，还会带来其它的一些感受，例如，重量感、湿度感等。比方说，暖色偏重，冷色偏轻；暖色有密度强的感觉，冷色有稀薄的感觉；两者相比较，冷色的透明感更强，暖色则透明感较弱；冷色显得湿润，暖色显得干燥；冷色又很远的感觉，暖色则有迫近感。</p>
+<p>&emsp;&emsp;一般说来，在狭窄的空间中，若想使它变得宽敞，应该使用明亮的冷调。由于暖色有前进感，冷色有后退感，可在细长的空间中的两壁涂以暖色，近处的两壁涂以冷色，空间就会从心理上感到更接近方形。</p>
+<p>&emsp;&emsp;除去寒暖色系具有明显的心理区别以外，色彩的明度与纯度也会引起对色彩物理印象的错觉。一般来说，颜色的重量感主要取决于色彩的明度，暗色给人以重的感觉，明色给人以轻的感觉。纯度与明度的变化给人以色彩软硬的印象，如淡的亮色使人觉得柔软，暗的纯色则有强硬的感觉。</p>
+<p>PS怎么调色? ps如何调色？<br>1、 曲线。色彩调整之王，神通广大，变幻无穷，但在作业实践中，曲线却并非首选。首选的是东西什么呢？首选的东西是</p>
+<p>2、 色阶。拉动三个滑标，足以解决大部分问题，但亲和力远在曲线之上。打个比方说，曲线是元帅，那么色阶便是先锋了。</p>
+<p>3、 色相、饱和度和色彩平衡，并列第三位。</p>
+<p>4、 尽量不要使用“图像调整-变化”菜单。这个菜单无法量化，而且不能加蒙板，是专留给学徒们用的。</p>
+<p>5、 不到万不得已，不要使用“图像调整-亮度和对比度”菜单。这里的亮度常常带来白翳，对比又常常失衡。</p>
+<p>6、 如果你想用“图像调整-明度”菜单做点儿什么，那么你死定了。切记：这儿讨论的是调整色彩而不是着色，明度在这儿是100%的狗屎指标，成事不足败事有余，永远不要去理它！</p>
+<p>7、 归纳言之，一个色彩调整问题如果有解，那么用曲线、色阶、色相、饱和度和色彩平衡这五个手段，就一定可解，而且我们强烈建议，除了这五个手段以外，不要再使用任何其他手段。</p>
+<p>8、 除非极其简单的调整，一切调整工作，都绝对应当在调整图层（可变蒙板）上进行。这样做起码有四大好处：</p>
+<p>1）色彩调整的每一步都是不可逆的，使用调整图层，使逆过程成为可能，历史记录远远不能望其项背。</p>
+<p>2）耗时越多的色彩调整，图像损失越大，使用调整图层，完全避免了这一弊病。</p>
+<p>3）操作者可以通过图层开关，逐一比较每一块蒙板的作用，这对于总结经验有不可替代的重要作用。</p>
+<p>4）调整图层可以简单重现或者拷贝，这对于成组成套成系列的色彩调整极其方便，你只要精心做好一张就可以了，其余的，统统依样画葫芦。</p>
+<p>9、 质言之，可变蒙板实际上也是一种通道，而且是比较高级的一种通道，除此而外，一般不必另外建立什么特别的通道或在单通道中进行什么特别的调整。事实上，上帝安排的诸色并不是孤立的（更确切点儿，我想借用一个医学上的名词说，诸种颜色彼此间是有所代偿的），个别调整常常顾此失彼，事与愿违。</p>
+<p>10、  饱和度不可不用，但必须慎用。白皙的肤色本质上是饱和度很低的肤色，但不能忘记，死亡的肤色也是饱和度很低的肤色。而且饱和度过低，容易导致画面平板；为了“白皙”而牺牲了画面的层次，为设计之大忌。</p>
+<p>11、  眼睛切不可一味求亮，一个有趣的事实是，亮灼灼的眼睛不是靠提高亮度做成，恰恰相反，是通过降低亮度做成的。你应当提高的是对比度。</p>
+<p>12、  但对比度和饱和度一样亦须慎用。一个经验是：对比度太高，眼睛倒是黑白分明了，但同时就带来了上视感，给人的第一印象是，你的主人公好像在瞻仰我佛。</p>
+<p>13、  轻易不要尝试用图层混合模式解决什么问题，如果仔细研究一下的话，你就会发现，混合模式其实是或多或少损害画面清晰度的。</p>
+<p>14、  白种人皮肤比较粗，必要的时候，你可以加一个图层，弄一点柔光效果。但切记不可过分，要让人看不出才行。</p>
+<p>15、  某些细部是需要特别处理的，指望一切都通过全图调整完成，是懒汉和傻瓜的想法。</p>
+<h3 id="PS的混合模式详解"><a href="#PS的混合模式详解" class="headerlink" title="PS的混合模式详解"></a>PS的混合模式详解</h3><p>&emsp;&emsp;混合模式是PS最强大的功能之一，它决定了当前图像中的像素如何与底层图像中的像素混合，使用混合模式可以轻松地制作出许多特殊的效果，但是要真正掌握它却不是一件容易的事。</p>
+<p>将混合模式分为六大类，即：</p>
+<ul>
+<li><p>一、组合模式（正常、溶解）</p>
+</li>
+<li><p>二、加深混合模式（变暗、正片叠底、颜色加深、线性加深）</p>
+</li>
+<li><p>三、减淡混合模式（变亮、滤色、颜色减淡、线性减淡）</p>
+</li>
+<li><p>四、对比混合模式（叠加、柔光、强光、亮光、线性光、点光、实色混合）</p>
+</li>
+<li><p>五、比较混合模式（差值、排除）</p>
+</li>
+<li><p>六、、色彩混合模式（色相、饱和度、颜色、亮度）。</p>
+</li>
+</ul>
+<h3 id="详解："><a href="#详解：" class="headerlink" title="详解："></a>详解：</h3><ul>
+<li><p>一、组合模式：组合模式中包含“正常和溶解”模式，它们需要配合使用不透明度才能产生一定的混合效果。</p>
+<ul>
+<li><p>1、正常模式：在“正常”模式下调整上面图层的不透明度可以使当前图像与底层图像产生混合效果。</p>
+</li>
+<li><p>2、“溶解”模式：特点是配合调整不透明度可创建点状喷雾式的图像效果，不透明度越低，像素点越分散。</p>
+</li>
+</ul>
+</li>
+<li><p>二、加深混合模式：加深混合模式可将当前图像与底层图像进行比较使底层图像变暗。</p>
+<ul>
+<li><p>1、变暗模式：特点是显示并处理比当前图像更暗的区域。(查看每个通道中的颜色信息，并选择基色或混合色中较暗的颜色作为结果色。比混合色亮的像素被替换，比混合色暗的像素保持不变。)</p>
+</li>
+<li><p>2、正片叠底：特点是可以使当前图像中的白色完全消失，另外，除白色以外的其他区域都会使底层图像变暗。无论是图层间的混合还是在图层样式中，正片叠底都是最常用的一种混合模式。(查看每个通道中的颜色信息，并将基色与混合色复合。结果色总是较暗的颜色。任何颜色与黑色复合产生黑色。任何颜色与白色复合保持不变。当用黑色或白色以外的颜色绘画时，绘画工具绘制的连续描边产生逐渐变暗的颜色。这与使用多个魔术标记在图像上绘图的效果相似。)</p>
+</li>
+<li><p>3、颜色加深：特点是可保留当前图像中的白色区域，并加强深色区域。<br>(查看每个通道中的颜色信息，并通过增加对比度使基色变暗以反映混合色。与白色混合后不产生变化。)</p>
+</li>
+<li><p>4、线性加深：线性加深模式与正片叠底模式的效果相似，但产生的对比效果更强烈，相当于正片叠底与颜色加深模式的组合。(查看每个通道中的颜色信息，并通过减小亮度使基色变暗以反映混合色。与白色混合后不产生变化。)</p>
+</li>
+</ul>
+</li>
+<li><p>三、减淡混合模式：在PS中每一种加深模式都有一种完全相反的减淡模式相对应，减淡模式的特点是当前图像中的黑色将会消失，任何比黑色亮的区域都可能加亮底层图像。</p>
+<ul>
+<li><p>1、变亮模式：特点是比较并显示当前图像比下面图像亮的区域，变亮模式与变暗模式产生的效果相反。(查看每个通道中的颜色信息，并选择基色或混合色中较亮的颜色作为结果色。比混合色暗的像素被替换，比混合色亮的像素保持不变。)</p>
+</li>
+<li><p>2、滤色模式：特点是可以使图像产生漂白的效果，滤色模式与正片叠底模式产生的效果相反。(查看每个通道的颜色信息，并将混合色的互补色与基色复合。结果色总是较亮的颜色。用黑色过滤时颜色保持不变。用白色过滤将产生白色。此效果类似于多个摄影幻灯片在彼此之上投影。)</p>
+</li>
+<li><p>3、色减淡模式：特点是可加亮底层的图像，同时使颜色变得更加饱和，由于对暗部区域的改变有限，因而可以保持较好的对比度。(查看每个通道中的颜色信息，并通过减小对比度使基色变亮以反映混合色。与黑色混合则不发生变化。)</p>
+</li>
+<li><p>4、线性减淡模式：它与滤色模式相似，但是可产生更加强烈的对比效果。(查看每个通道中的颜色信息，并通过增加亮度使基色变亮以反映混合色。与黑色混合则不发生变化。)</p>
+</li>
+</ul>
+</li>
+<li><p>四、对比混合模式：它综合了加深和减淡模式的特点，在进行混合时50%的灰色会完全消失，任何亮于50%灰色区域都可能加亮下面的图像，而暗于50%灰色的区域都可能使底层图像变暗，从而增加图像对比度。</p>
+<ul>
+<li><p>1、叠加模式：特点是在为底层图像添加颜色时，可保持底层图像的高光和暗调。(复合或过滤颜色，具体取决于基色。图案或颜色在现有像素上叠加，同时保留基色的明暗对比。不替换基色，但基色与混合色相混以反映原色的亮度或暗度。)</p>
+</li>
+<li><p>2、柔光模式：柔光模式可产生比叠加模式或强光模式更为精细的效果。<br>(使颜色变亮或变暗，具体取决于混合色。此效果与发散的聚光灯照在图像上相似。 如果混合色（光源）比 50% 灰色亮，则图像变亮，就像被减淡了一样。如果混合色（光源）比 50% 灰色暗，则图像变暗，就象被加深了一样。用纯黑色或纯白色绘画会产生明显较暗或较亮的区域，但不会产生纯黑色或纯白色。)</p>
+</li>
+<li><p>3、强光模式：强光模式特点是可增加图像的对比度，它相当于正片叠底和滤色的组合。(复合或过滤颜色，具体取决于混合色。此效果与耀眼的聚光灯照在图像上相似。 如果混合色（光源）比 50% 灰色亮，则图像变亮，就像过滤后的效果。这对于向图像中添加高光非常有用。如果混合色（光源）比 50% 灰色暗，则图像变暗，就像复合后的效果。这对于向图像添加暗调非常有用。用纯黑色或纯白色绘画会产生纯黑色或纯白色。)</p>
+</li>
+<li><p>4、亮光模式：特点是混合后的颜色更为饱和，可使图像产生一种明快感，它相当于颜色减淡和颜色加深的组合。(通过增加或减小对比度来加深或减淡颜色，具体取决于混合色。如果混合色（光源）比 50% 灰色亮，则通过减小对比度使图像变亮。如果混合色比 50% 灰色暗，则通过增加对比度使图像变暗。)</p>
+</li>
+<li><p>5、线性光：特点是可使图像产生更高的对比度效果，从而使更多区域变为黑色和白色，它相当于线性减淡和线性加深的组合。(通过减小或增加亮度来加深或减淡颜色，具体取决于混合色。如果混合色（光源）比 50% 灰色亮，则通过增加亮度使图像变亮。如果混合色比 50% 灰色暗，则通过减小亮度使图像变暗。)</p>
+</li>
+<li><p>6、点光：特点是可根据混合色替换颜色，主要用于制作特效，它相当于变亮与变暗模式的组合。(替换颜色，具体取决于混合色。如果混合色（光源）比 50% 灰色亮，则替换比混合色暗的像素，而不改变比混合色亮的像素。如果混合色比 50% 灰色暗，则替换比混合色亮的像素，而不改变比混合色暗的像素。这对于向图像添加特殊效果非常有用。)</p>
+</li>
+<li><p>7、实色混合：特点是可增加颜色的饱和度，使图像产生色调分离的效果。</p>
+</li>
+</ul>
+</li>
+<li><p>五、比较混合模式：比较混合模式可比较当前图像与底层图像，然后将相同的区域显示为黑色，不同的区域显示为灰度层次或彩色。</p>
+<ul>
+<li><p>1、差值模式：特点是当前图像中的白色区域会使图像产生反相的效果，而黑色区域则会越接近底层图像。(查看每个通道中的颜色信息，并从基色中减去混合色，或从混合色中减去基色，具体取决于哪一个颜色的亮度值更大。与白色混合将反转基色值；与黑色混合则不产生变化。)</p>
+</li>
+<li><p>2、排除模式：排除模式可比差值模式产生更为柔和的效果。(创建一种与“差值”模式相似但对比度更低的效果。与白色混合将反转基色值。与黑色混合则不发生变化。)</p>
+</li>
+</ul>
+</li>
+<li><p>六、色彩混合模式：色彩的三要素是色相、饱和度和亮度，使用色彩混合模式合成图像时，PS会将三要素中的一种或两种应用在图像中。</p>
+<ul>
+<li><p>1、色相模式：它适合于修改彩色图像的颜色，该模式可将当前图像的基本颜色应用到底层图像中，并保持底层图像的亮度和饱和度。(用基色的亮度和饱和度以及混合色的色相创建结果色。)</p>
+</li>
+<li><p>2、饱和度模式：饱和度模式特点是可使图像的某些区域变为黑白色，该模式可将当前图像的饱和度应用到底层图像中，并保持底层图像的亮度和色相。(用基色的亮度和色相以及混合色的饱和度创建结果色。在无 (0) 饱和度（灰色）的区域上用此模式绘画不会产生变化。)</p>
+</li>
+<li><p>3、颜色模式：特点是可将当前图像的色相和饱和度应用到底层图像中，并保持底层图像的亮度。(用基色的亮度以及混合色的色相和饱和度创建结果色。这样可以保留图像中的灰阶，并且对于给单色图像上色和给彩色图像着色都会非常有用。)</p>
+</li>
+<li><p>4、亮度模式：特点是可将当前图像的亮度应用于底层图像中，并保持底层图像的色相与饱和度。(用基色的色相和饱和度以及混合色的亮度创建结果色。此模式创建与“颜色”模式相反的效果。)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;除上述23种基本的混合模式外，PS还提供了“背后”和“清除”模式，当我们在使用油漆桶工具、形状工具（当填充区域按钮被按下时）、画笔工具和铅笔工具时，工具选项栏中会显示这两种模式：在执行“填充”命令和“描边”命令的对话框中也包括这两种模式。</p>
+<p>&emsp;&emsp;背后模式的作用仅限于当前图层的透明区域，就像在当前图层下面的图层绘画一样，丝毫不会影响当前图层原有的图像。</p>
+<p>&emsp;&emsp;清除模式与橡皮擦的作用基本相同，在使用时填充与绘图的颜色不再重要，不透明度的设置决定图像是否完全被删除。</p>
+]]></content>
+      <categories>
+        <category>深入学习 Photoshop</category>
+      </categories>
+      <tags>
+        <tag>深入学习 Photoshop</tag>
       </tags>
   </entry>
   <entry>
