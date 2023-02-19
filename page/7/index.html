@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">106</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,264 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Pandas%E8%AF%BB%E5%8F%96Excel%E6%96%87%E4%BB%B6%E6%97%B6%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/06/Pandas%E8%AF%BB%E5%8F%96Excel%E6%96%87%E4%BB%B6%E6%97%B6%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">Pandas读取Excel文件时如何指定数据类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 19:53:10 / 修改时间：11:54:57" itemprop="dateCreated datePublished" datetime="2021-03-05T19:53:10Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="只需指定转换器"><a href="#只需指定转换器" class="headerlink" title="只需指定转换器"></a>只需指定转换器</h3><p>“年龄”列的格式设置为字符串。 装载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.read_excel(&#39;Book1.xlsx&#39;,sheetname&#x3D;&#39;Sheet1&#39;,header&#x3D;0,converters&#x3D;&#123;&#39;names&#39;:str,&#39;ages&#39;:str&#125;)</span><br><span class="line">df</span><br><span class="line">       names ages</span><br><span class="line">   0   bob   05</span><br><span class="line">   1   tom   4</span><br><span class="line">   2   suzy  3</span><br></pre></td></tr></table></figure>
+<p>从 keys 开始，keys 函数中的 values 关键字参数可用于指定需要应用于列的数据类型，就像 keys 案例中存在的那样。</p>
+<p>在相同的列名称上一起使用 keys 和 values 和参数会导致后者变得模糊不清，而前者获得优先。</p>
+<p>1）为了使其不解释 keys，而是传递其原来在文件中之前的所有列内容，我们可以将此 arg 设置为 2970247651138208208 或 dtype，以免混淆数据。 （其中一种情况是数字的前导零，否则将丢失）</p>
+<p><code>pd.read_excel(&#39;file_name.xlsx&#39;, dtype=str) # (or) dtype=object</code></p>
+<p>2）它甚至支持 dict 映射，其中 keys 构成列名，values 分别设置数据类型，尤其是当您要更改 dtype 所有列的子集时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Assuming data types for &#96;a&#96; and &#96;b&#96; columns to be altered</span><br><span class="line">pd.read_excel(&#39;file_name.xlsx&#39;, dtype&#x3D;&#123;&#39;a&#39;: np.float64, &#39;b&#39;: np.int32&#125;)</span><br></pre></td></tr></table></figure>
+<p>read_excel（）函数具有 converters 参数，您可以在其中将函数应用于某些列中的输入。 您可以使用它来将它们保留为字符串。说明文件：</p>
+<p>用于转换某些列中的值的函数的字典。 键可以是整数或列标签，值是具有一个输入参数，Excel 单元格内容并返回转换后的内容的函数。</p>
+<p>示例代码：</p>
+<p><code>pandas.read_excel(my_file, converters = &#123;my_str_column: str&#125;)</code></p>
+<p>如果您不知道数据框中的列数和名称，则可以使用此方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">column_list &#x3D; []</span><br><span class="line">df_column &#x3D; pd.read_excel(file_name, &#39;Sheet1&#39;).columns</span><br><span class="line">for i in df_column:</span><br><span class="line">    column_list.append(i)</span><br><span class="line">converter &#x3D; &#123;col: str for col in column_list&#125;</span><br><span class="line">df_actual &#x3D; pd.read_excel(file_name, converters&#x3D;converter)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其中 column_list 是您的列名的列表。</p>
+<p>如果您不知道列名，并且想为所有列指定 str 数据类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table &#x3D; pd.read_excel(&quot;path_to_filename&quot;)</span><br><span class="line">cols &#x3D; table.columns</span><br><span class="line">conv &#x3D; dict(zip(cols ,[str] * len(cols)))</span><br><span class="line">table &#x3D; pd.read_excel(&quot;path_to_filename&quot;, converters&#x3D;conv)</span><br></pre></td></tr></table></figure>
+<p>如果密钥的位数固定，则可能应将其存储为文本而不是数字数据。 您可以为此使用 converters 参数或 read_excel。</p>
+<p>或者，如果这不起作用，则在将数据读入数据框后对其进行操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df[&#39;key_zfill&#39;] &#x3D; df[&#39;key&#39;].astype(str).str.zfill(4)</span><br><span class="line"></span><br><span class="line">  names   key key_zfill</span><br><span class="line">0   abc     5      0005</span><br><span class="line">1   def  4962      4962</span><br><span class="line">2   ghi   300      0300</span><br><span class="line">3   jkl    14      0014</span><br><span class="line">4   mno    20      0020</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8Banaconda%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/06/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8Banaconda%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">数据处理之anaconda介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 19:51:12 / 修改时间：11:52:30" itemprop="dateCreated datePublished" datetime="2021-03-05T19:51:12Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-Jupyter-notebook-是什么？"><a href="#1-Jupyter-notebook-是什么？" class="headerlink" title="1.Jupyter notebook 是什么？"></a>1.Jupyter notebook 是什么？</h3><p>&emsp;&emsp;在没有 notebook 之前，在 IT 领域工作的我都是这样工作的：在普通的 Python shell 或者在 IDE（集成开发环境）如 Pycharm 中写代码，然后在 word 中写文档来说明你的项目。这个过程很反锁，通常是写完代码，再写文档的时候我还的重头回顾一遍代码。最蛋疼的地方在于，有些数据分析的中间结果，我还的重新跑代码，然后把结果弄到文档里给客户看。有了 notebook 之后，我的世界突然美好了许多，因为 notebook 可以直接在代码旁写出叙述性文档，而不是另外编写单独的文档。也就是它可以能将代码、文档等这一切集中到一处，让用户一目了然。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/06/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8Banaconda%E4%BB%8B%E7%BB%8D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/28/Vscode%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BA%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/28/Vscode%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BA%91/" class="post-title-link" itemprop="url">Vscode插件同步到云</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-27 23:00:09 / 修改时间：15:01:25" itemprop="dateCreated datePublished" datetime="2021-02-27T23:00:09Z">2021-02-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="安装-Settings-Sync"><a href="#安装-Settings-Sync" class="headerlink" title="安装 Settings Sync"></a>安装 Settings Sync</h3><p>Vscode 插件中心直接搜索安装即可。</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210210184154.png" alt="20210210184154"></p>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/28/Vscode%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%88%B0%E4%BA%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -901,256 +1159,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/16/%E4%BA%BA%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%83%BD%E5%8A%9B%E6%98%AF%E4%BB%80%E4%B9%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/16/%E4%BA%BA%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%83%BD%E5%8A%9B%E6%98%AF%E4%BB%80%E4%B9%88/" class="post-title-link" itemprop="url">人最重要的能力是什么</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-15 17:13:31 / 修改时间：09:39:44" itemprop="dateCreated datePublished" datetime="2021-02-15T17:13:31Z">2021-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>人最重要的能力是什么</p>
-<p>随时保持内心平静的能力</p>
-<p>我开始第一个想到的是「坚持」，后来我认为不对。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/16/%E4%BA%BA%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%83%BD%E5%8A%9B%E6%98%AF%E4%BB%80%E4%B9%88/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/16/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E7%88%B6%E4%BA%B2%E5%8F%91%E6%96%87%E6%80%92%E6%96%A5%E7%BD%91%E6%B8%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/16/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E7%88%B6%E4%BA%B2%E5%8F%91%E6%96%87%E6%80%92%E6%96%A5%E7%BD%91%E6%B8%B8/" class="post-title-link" itemprop="url">如何看待父亲发文怒斥网游</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-15 17:13:31 / 修改时间：09:50:56" itemprop="dateCreated datePublished" datetime="2021-02-15T17:13:31Z">2021-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>[转载知乎网文，写得太好了，感谢]</p>
-<p>最近，浙江一家长发表在《新华每日电讯》的文章《被网游毁掉的孩子》引热议。他说，儿子沉迷网游，荒废了学业，高考失利。其努力10年才帮儿子从网游中走出。文章全文如下图：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/16/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E7%88%B6%E4%BA%B2%E5%8F%91%E6%96%87%E6%80%92%E6%96%A5%E7%BD%91%E6%B8%B8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/16/%E8%AF%BB%E4%B9%A6%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%843%E4%BB%B6%E4%BA%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/16/%E8%AF%BB%E4%B9%A6%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%843%E4%BB%B6%E4%BA%8B/" class="post-title-link" itemprop="url">读书最基本的3件事</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-15 16:56:31 / 修改时间：09:48:33" itemprop="dateCreated datePublished" datetime="2021-02-15T16:56:31Z">2021-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="读书最基本的-3-件事：一是学会做人，二是打破我执，三是洞察规律"><a href="#读书最基本的-3-件事：一是学会做人，二是打破我执，三是洞察规律" class="headerlink" title="读书最基本的 3 件事：一是学会做人，二是打破我执，三是洞察规律"></a>读书最基本的 3 件事：一是学会做人，二是打破我执，三是洞察规律</h3><p>之前听到一个人说：“我们人修行，就是与天争命。” 这个观点，甚有道理。</p>
-<p>古人说，一命二运三风水，四积阴德五读书。对于绝大多数人而言，真正能改变命运的，只能靠读书。</p>
-<p>有的人不以为然，说隔壁家老王的儿子，读完大学出来，赚到的钱，还不如人家不读书，自己做生意的多。</p>
-<p>读书≠学历 读书≠知识 读书≠知道</p>
-<p>这篇文章，给大家解读，如何通过真正的读书，来改变自己，逆袭命运。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/16/%E8%AF%BB%E4%B9%A6%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%843%E4%BB%B6%E4%BA%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1186,7 +1194,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

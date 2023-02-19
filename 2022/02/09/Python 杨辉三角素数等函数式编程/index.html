@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"getcoden.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python】 杨辉三角素数等函数式编程">
+<meta property="og:url" content="https://getcoden.github.io/2022/02/09/Python%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E7%B4%A0%E6%95%B0%E7%AD%89%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Bitcoder">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-09T13:14:28.000Z">
+<meta property="article:modified_time" content="2022-02-09T05:15:58.707Z">
+<meta property="article:author" content="Bitcode">
+<meta property="article:tag" content="Python基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://getcoden.github.io/2022/02/09/Python%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E7%B4%A0%E6%95%B0%E7%AD%89%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>【Python】 杨辉三角素数等函数式编程 | Bitcoder</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Bitcoder</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">getsomecodes</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bitcode"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bitcode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/getcoden" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;getcoden" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z337885169@gmail.com" title="E-Mail → mailto:z337885169@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://google.com/" title="Google → https:&#x2F;&#x2F;google.com" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2022/02/09/Python%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E7%B4%A0%E6%95%B0%E7%AD%89%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Python】 杨辉三角素数等函数式编程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-02-09 13:14:28 / 修改时间：05:15:58" itemprop="dateCreated datePublished" datetime="2022-02-09T13:14:28Z">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 杨辉三角形，由用户输入三角形层数，直到输入 q 退出程序</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def print_pyramid(level: int):</span></span><br><span class="line"><span class="string">    for i in range(level):</span></span><br><span class="line"><span class="string">        new_line_str = &#x27;&#x27;</span></span><br><span class="line"><span class="string">        new_line_str += &#x27; &#x27; * (level - 1 - i)</span></span><br><span class="line"><span class="string">        new_line_str += &#x27;*&#x27; * ((i+1) * 2 - 1)</span></span><br><span class="line"><span class="string">        print(new_line_str)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># input_level = int()</span></span><br><span class="line"><span class="string"># print_pyramid(input_level)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">while True:</span></span><br><span class="line"><span class="string">    input_level = input(&#x27;Enter a number:(q is quite)&#x27;)</span></span><br><span class="line"><span class="string">    if input_level == &#x27;q&#x27;:</span></span><br><span class="line"><span class="string">        break</span></span><br><span class="line"><span class="string">    else:</span></span><br><span class="line"><span class="string">        input_level = int(input_level)</span></span><br><span class="line"><span class="string">        print_pyramid(input_level)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># def yang(i, j):</span></span><br><span class="line"><span class="comment">#     if j == 0 or j == i:</span></span><br><span class="line"><span class="comment">#         return 1</span></span><br><span class="line"><span class="comment">#     else:</span></span><br><span class="line"><span class="comment">#         return yang(i-1, j)+yang(i-1, j-1)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for i in range(0, 10):</span></span><br><span class="line"><span class="comment">#     print()</span></span><br><span class="line"><span class="comment">#     for n in range(0, 10-i):</span></span><br><span class="line"><span class="comment">#         print(&quot;&quot;, end=&quot;&quot;)  # 控制每一行前面的空格</span></span><br><span class="line"><span class="comment">#     for j in range(0, i):</span></span><br><span class="line"><span class="comment">#         print(yang(i, j), &quot;&quot;, end=&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 传统的杨辉三角形实现</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def pascal(row):</span></span><br><span class="line"><span class="string">    result_list = [0] * (row * 2 + 1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    for row_loc in range(row):</span></span><br><span class="line"><span class="string">        base_loc = row - row_loc - 1</span></span><br><span class="line"><span class="string">        if row_loc == 0:</span></span><br><span class="line"><span class="string">            result_list[base_loc] = 1</span></span><br><span class="line"><span class="string">        else:</span></span><br><span class="line"><span class="string">            result_list[base_loc] = result_list[base_loc + 1]</span></span><br><span class="line"><span class="string">            for line_loc in range(row_loc):</span></span><br><span class="line"><span class="string">                now_loc = base_loc + (line_loc + 1) * 2</span></span><br><span class="line"><span class="string">                result_list[now_loc] = result_list[now_loc - 1] + \</span></span><br><span class="line"><span class="string">                    result_list[now_loc + 1]</span></span><br><span class="line"><span class="string">                result_list[now_loc - 1] = 0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        print(str(result_list)</span></span><br><span class="line"><span class="string">              .replace(&quot;]&quot;, &quot;,&quot;).replace(&quot; 0,&quot;, &quot;  &quot;).replace(&quot;,&quot;, &quot;&quot;).replace(&quot;[0&quot;, &quot;  &quot;).replace(&quot;[&quot;, &quot; &quot;))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">pascal(5)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用python列表迭代的实现</span></span><br><span class="line"><span class="comment"># 第二种：基于 python 的列表迭代的思路</span></span><br><span class="line"><span class="comment"># 这个实现利用 python 的列表处理特性来实现，代码比传统思路要简洁很多，也还算好懂。缺点是仍然不够简洁。</span></span><br><span class="line"><span class="comment"># 代码如下（来自于毛豆子，原文链接：http: // www.cnblogs.com/maodouzi/archive/2011/07/12/2104153.html）：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def printLine(lineList, row):</span></span><br><span class="line"><span class="string">    lineList = [str(tmpNum) for tmpNum in lineList]</span></span><br><span class="line"><span class="string">    print(&quot;%s%s&quot; % (&quot; &quot; * (row - len(lineList)), &quot; &quot;.join(lineList)))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">def pascal(row):</span></span><br><span class="line"><span class="string">    for i in range(row):</span></span><br><span class="line"><span class="string">        if i &lt; 2:</span></span><br><span class="line"><span class="string">            yhList = [1] * (i + 1)</span></span><br><span class="line"><span class="string">        else:</span></span><br><span class="line"><span class="string">            yhList[1:-1] = [(tmpNum + yhList[j])</span></span><br><span class="line"><span class="string">                            for j, tmpNum in enumerate(yhList[1:])]</span></span><br><span class="line"><span class="string">        printLine(yhList, row)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">pascal(10)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">1、这种易理解</span></span><br><span class="line"><span class="string">L1 = []</span></span><br><span class="line"><span class="string">count = 0</span></span><br><span class="line"><span class="string">for x in range(1, 100):</span></span><br><span class="line"><span class="string">    n = 0</span></span><br><span class="line"><span class="string">    for y in range(1, x + 1):</span></span><br><span class="line"><span class="string">        if x % y == 0:</span></span><br><span class="line"><span class="string">            n = n + 1</span></span><br><span class="line"><span class="string">    if n == 2:</span></span><br><span class="line"><span class="string">        count += 1</span></span><br><span class="line"><span class="string">        L1.append(x)</span></span><br><span class="line"><span class="string">print(L1)</span></span><br><span class="line"><span class="string">print(count)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 2、计算 2-100 之间素数的个数，返回结果。格式化字符串，标准</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># def primeNum(f):</span></span><br><span class="line"><span class="comment">#     def f1():</span></span><br><span class="line"><span class="comment">#         sum_pri = 0</span></span><br><span class="line"><span class="comment">#         for i in range(2, 101):</span></span><br><span class="line"><span class="comment">#             for j in range(2, i):</span></span><br><span class="line"><span class="comment">#                 if i % j == 0:</span></span><br><span class="line"><span class="comment">#                     break</span></span><br><span class="line"><span class="comment">#                 elif j == i - 1:</span></span><br><span class="line"><span class="comment">#                     sum_pri += 1</span></span><br><span class="line"><span class="comment">#         return f(sum_pri+1)</span></span><br><span class="line"><span class="comment">#     return f1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># @primeNum</span></span><br><span class="line"><span class="comment"># def f(p):</span></span><br><span class="line"><span class="comment">#     print(&quot;2-100之间共有&#123;&#125;个素数&quot;.format(p))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># f()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l = []</span><br><span class="line">number = <span class="built_in">input</span>(<span class="string">&#x27;请输入数字以空格 隔开&gt;&gt;&gt;:&#x27;</span>).split()</span><br><span class="line">number = [<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> number]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> number:</span><br><span class="line">    i = i**<span class="number">2</span></span><br><span class="line">    l.append(i)</span><br><span class="line">print(l)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python%E5%9F%BA%E7%A1%80/" rel="tag"># Python基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/08/%E3%80%90pandas%E3%80%91%E8%AF%BB%E5%8F%96%20excel%20%E7%9A%84%E8%A1%8C%E5%88%97%E5%86%85%E5%AE%B9%EF%BC%8C%E8%B6%85%E8%AF%A6%E7%BB%86/" rel="prev" title="【pandas】读取 excel 的行列内容，超详细">
+                  <i class="fa fa-chevron-left"></i> 【pandas】读取 excel 的行列内容，超详细
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/02/20/UbuntuDocker%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/" rel="next" title="UbuntuDocker相关配置信息">
+                  UbuntuDocker相关配置信息 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bitcode</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

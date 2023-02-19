@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">106</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,2156 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/29/%E5%88%9D%E5%85%B7%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BA%8F%E9%A3%8E%E6%A0%BC-%E5%AD%97%E5%B9%95%E7%B9%81%E7%AE%80%E4%BA%92%E8%BD%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/29/%E5%88%9D%E5%85%B7%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BA%8F%E9%A3%8E%E6%A0%BC-%E5%AD%97%E5%B9%95%E7%B9%81%E7%AE%80%E4%BA%92%E8%BD%AC/" class="post-title-link" itemprop="url">初具完整程序风格_字幕繁简互转</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-29 08:49:01 / 修改时间：00:52:27" itemprop="dateCreated datePublished" datetime="2021-08-29T08:49:01Z">2021-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> youtube_dl</span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"></span><br><span class="line">os.chdir(<span class="string">r&#x27;设置下载文件保存的目录路径&#x27;</span>)  <span class="comment"># 自定义设置下载文件保存的目录路径</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    ydl_opts = &#123;&#125;</span><br><span class="line">    ysurl=<span class="built_in">input</span>(<span class="string">&#x27;要下载视频的地址:&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> ysurl==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        print(<span class="string">&#x27;已退出程序！&#x27;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">with</span> youtube_dl.YoutubeDL(ydl_opts) <span class="keyword">as</span> ydl:</span><br><span class="line">        print(<span class="string">&#x27;正在下载:&#x27;</span>)</span><br><span class="line">        ydl.download([ysurl])</span><br></pre></td></tr></table></figure>
+<pre><code>要下载视频的地址:
+已退出程序！
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> youtube_dl</span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="comment"># 设定</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">os.chdir(r&#x27;设置下载文件保存的目录路径&#x27;)  # 自定义设置下载文件保存的目录路径 或者用以下方法</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">destPath = <span class="string">&#x27;D:/Download/&#x27;</span>    <span class="comment"># 音频文件存放的目标字串</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    videoPage = <span class="built_in">input</span>(<span class="string">&#x27;要下载视频地址:&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> videoPage==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        print(<span class="string">&#x27;已退出程序！&#x27;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    ydl_opts = &#123;                              <span class="comment"># 设定下载选项</span></span><br><span class="line">                <span class="string">&#x27;outtmpl&#x27;</span>: destPath+<span class="string">&#x27;%(title)s.%(ext)s&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;format&#x27;</span>: <span class="string">&#x27;best&#x27;</span>,                </span><br><span class="line">                &#125;    </span><br><span class="line">    print(<span class="string">&#x27;正在下载:&#x27;</span>)</span><br><span class="line">    ydl = youtube_dl.YoutubeDL(ydl_opts)</span><br><span class="line">    ydl.download([videoPage])                 <span class="comment"># 下载视频</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    a=<span class="built_in">input</span>(<span class="string">&#x27;shuru:&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(<span class="string">&#x27;123&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>shuru:2
+123
+shuru:
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> opencc</span><br><span class="line">converter = opencc.OpenCC(<span class="string">&#x27;t2s.json&#x27;</span>)</span><br><span class="line">converter.convert(<span class="string">&#x27;沒有對她更溫柔&#x27;</span>)  <span class="comment"># 漢字</span></span><br></pre></td></tr></table></figure>
+<pre><code>&#39;没有对她更温柔&#39;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python 繁体中文与简体中文相互转换</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 繁体转简体</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> opencc</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Traditional2Simplified</span>(<span class="params">sentence</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    将sentence中的繁体字转为简体字</span></span><br><span class="line"><span class="string">    :param sentence: 待转换的句子</span></span><br><span class="line"><span class="string">    :return: 将句子中繁体字转换为简体字之后的句子</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    cc=opencc.OpenCC(<span class="string">&#x27;t2s&#x27;</span>)</span><br><span class="line">    sentence = cc.convert(sentence)</span><br><span class="line">    <span class="keyword">return</span> sentence</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    traditional_sentence = <span class="string">&#x27;憂郁的臺灣烏龜&#x27;</span></span><br><span class="line">    simplified_sentence = Traditional2Simplified(traditional_sentence)</span><br><span class="line">    print(simplified_sentence)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>忧郁的台湾乌龟
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简体转繁体</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Simplified2Traditional</span>(<span class="params">sentence</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    将sentence中的简体字转为繁体字</span></span><br><span class="line"><span class="string">    :param sentence: 待转换的句子</span></span><br><span class="line"><span class="string">    :return: 将句子中简体字转换为繁体字之后的句子</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    cc=opencc.OpenCC(<span class="string">&#x27;s2t&#x27;</span>)</span><br><span class="line">    sentence = cc.convert(sentence)</span><br><span class="line">    <span class="keyword">return</span> sentence</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    simplified_sentence = <span class="string">&#x27;忧郁的台湾乌龟&#x27;</span></span><br><span class="line">    traditional_sentence = Simplified2Traditional(simplified_sentence)</span><br><span class="line">    print(traditional_sentence)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>憂鬱的臺灣烏龜
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 完整代码 二合一高级写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> opencc</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Traditional2Simplified</span>(<span class="params">sentence</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    将sentence中的繁体字转为简体字</span></span><br><span class="line"><span class="string">    :param sentence: 待转换的句子</span></span><br><span class="line"><span class="string">    :return: 将句子中繁体字转换为简体字之后的句子</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    cc=opencc.OpenCC(<span class="string">&#x27;t2s&#x27;</span>)</span><br><span class="line">    sentence = cc.convert(sentence)</span><br><span class="line">    <span class="keyword">return</span> sentence</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Simplified2Traditional</span>(<span class="params">sentence</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    将sentence中的简体字转为繁体字</span></span><br><span class="line"><span class="string">    :param sentence: 待转换的句子</span></span><br><span class="line"><span class="string">    :return: 将句子中简体字转换为繁体字之后的句子</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    cc=opencc.OpenCC(<span class="string">&#x27;s2t&#x27;</span>)</span><br><span class="line">    sentence = cc.convert(sentence)</span><br><span class="line">    <span class="keyword">return</span> sentence</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    traditional_sentence = <span class="string">&#x27;憂郁的臺灣烏龜&#x27;</span></span><br><span class="line">    simplified_sentence = Traditional2Simplified(traditional_sentence)</span><br><span class="line">    print(simplified_sentence)</span><br><span class="line">    </span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">(2) 主要函数：</span></span><br><span class="line"><span class="string">・ t2s – 繁体转简体</span></span><br><span class="line"><span class="string">・ s2t – 简体转繁体</span></span><br><span class="line"><span class="string">・ mix2t – 混合转繁体</span></span><br><span class="line"><span class="string">・ mix2s – 混合转简体</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<pre><code>忧郁的台湾乌龟
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3 实例：</span></span><br><span class="line"><span class="keyword">import</span> opencc</span><br><span class="line"><span class="comment"># 第一步打开文本文件，for 读取每句繁体</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\t.txt&quot;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    question_labels = f.readlines()</span><br><span class="line"></span><br><span class="line">q_zh = []   <span class="comment">#   Data中问题的中文</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> question_labels:</span><br><span class="line">    line=line.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    q_zh.append(line)</span><br><span class="line"></span><br><span class="line">print(q_zh)</span><br><span class="line"><span class="comment"># [&#x27;請問京都議定書規定幾個工業國家的二氧化碳排放量限制？&#x27;, &#x27;請問首位自費太空旅行的觀光客為誰？&#x27;,]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二步转换</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Traditional2Simplified</span>(<span class="params">sentence</span>):</span></span><br><span class="line">    </span><br><span class="line">    cc=opencc.OpenCC(<span class="string">&#x27;t2s&#x27;</span>)</span><br><span class="line">    sentence = cc.convert(sentence)</span><br><span class="line">    <span class="keyword">return</span> sentence</span><br><span class="line"></span><br><span class="line">q_zh_jian = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> q_zh:</span><br><span class="line">    q_zh_jian.append(Traditional2Simplified(line))</span><br><span class="line"></span><br><span class="line">print(q_zh_jian)</span><br><span class="line"><span class="comment"># [&#x27;请问京都议定书规定几个工业国家的二氧化碳排放量限制？&#x27;, &#x27;请问首位自费太空旅行的观光客为谁？&#x27;, &#x27;请问</span></span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;每晚陪伴你&#39;, &#39;時光再慢&#39;, &#39;相聚再久&#39;, &#39;總得散&#39;, &#39;幾十年後&#39;, &#39;當我離開人間&#39;, &#39;塵歸塵&#39;, &#39;土歸土&#39;, &#39;這個世間&#39;, &#39;從此沒有了你我&#39;, &#39;還有什麼化不開的恩怨&#39;, &#39;路的盡頭&#39;, &#39;還有路&#39;, &#39;生命的盡頭&#39;, &#39;能有啥&#39;, &#39;一個坑一抔土&#39;, &#39;沒了愛&#39;, &#39;再思念都無法陪伴&#39;, &#39;甚至連爭吵都成了奢求&#39;, &#39;今天亦安將和大家&#39;, &#39;分享的是&#39;, &#39;下次你路過&#39;, &#39;人間已無我&#39;, &#39;在開始今天的節目之前&#39;, &#39;能點撃訂閱和小鈴鐺&#39;, &#39;你的點贊和評論&#39;, &#39;是我最大的動力&#39;, &#39;感謝大家的喜歡&#39;, &#39;深夜讀書因你們而精彩&#39;, &#39;人的一生並不長&#39;, &#39;2歲蹣跚學步&#39;, &#39;20多歲讀書生涯結束&#39;, &#39;30歲成家立業&#39;, &#39;50歲時&#39;, &#39;孩子走你走過的路&#39;, &#39;一切都被安排得妥妥噹噹&#39;, &#39;人生既是失去&#39;, &#39;也是得到&#39;, &#39;我們在其中徘徊&#39;, &#39;在其中接受&#39;, &#39;最後葉落歸根&#39;, &#39;這一切&#39;, &#39;是否像一場夢&#39;, &#39;有人也曾在心底&#39;, &#39;反問過自己&#39;, &#39;這一生的顛沛流離&#39;, &#39;卻過著普通人的生活&#39;, &#39;真的值得嗎&#39;, &#39;曾經我也思考過這様的問題&#39;, &#39;那時剛成家立業&#39;, &#39;後來與爺爺的一次聊天中&#39;, &#39;他告訴我&#39;, &#39;人生的幸福&#39;, &#39;其實全憑個人內心&#39;, &#39;平凡中可以是福&#39;, &#39;落魄中也可以是福&#39;, &#39;如果一個人的內心不夠強大&#39;, &#39;即使腰纏萬貫&#39;, &#39;也不一定是福&#39;, &#39;要勇敢的學會&#39;, &#39;直面慘淡的人生&#39;, &#39;短暫的是時間&#39;, &#39;脆弱的是感情&#39;, &#39;聽過一段話&#39;, &#39;人的一生&#39;, &#39;遇到愛&#39;, &#39;遇到好感&#39;, &#39;都不稀奇&#39;, &#39;難得的是遇到珍惜你的人&#39;, &#39;這個世上&#39;, &#39;短暫的是時間&#39;, &#39;脆弱的是感情&#39;, &#39;生命中有一些人&#39;, &#39;與我們擦肩了&#39;, &#39;卻來不及遇見&#39;, &#39;遇見了&#39;, &#39;卻來不及相識&#39;, &#39;相識了&#39;, &#39;卻來不及熟悉&#39;, &#39;熟悉了卻還是要說再見&#39;, &#39;每個人生來唯一&#39;, &#39;不會再有第二個自己&#39;, &#39;每個人只活一次&#39;, &#39;憑什麼不能被珍惜&#39;, &#39;余光中有句話&#39;, &#39;下次你路過&#39;, &#39;人間已無我&#39;, &#39;人和人之間&#39;, &#39;也只有一次的緣分&#39;, &#39;無論相處多久&#39;, &#39;不管愛或不愛&#39;, &#39;有些人&#39;, &#39;下辈子都無法再遇見了&#39;, &#39;就用力愛&#39;, &#39;能珍惜的&#39;, &#39;就別不在意&#39;, &#39;余光中說過這様一句話&#39;, &#39;下次你路過&#39;, &#39;人間已無我&#39;, &#39;把人與人之間的關係&#39;, &#39;體現的淋漓盡致&#39;, &#39;人這一生&#39;, &#39;有幾輩子可以活&#39;, &#39;滿打滿算不過幾十年&#39;, &#39;加在一起不過三萬多天&#39;, &#39;真的不長&#39;, &#39;我們每一個人&#39;, &#39;都是獨一無二的&#39;, &#39;我們和人相伴&#39;, &#39;也許下一刻就是最後一刻&#39;, &#39;這一路走來&#39;, &#39;有多少人和我們擦肩&#39;, &#39;然後徹底的留在記憶&#39;, &#39;明明就是同一個城市&#39;, &#39;可卻幾十年不曾相遇&#39;, &#39;最讓人惋惜的&#39;, &#39;不是一開始就陌生&#39;, &#39;而是明明很熟悉&#39;, &#39;慢慢的變成了陌生人&#39;, &#39;通訊錄裡的名字&#39;, &#39;佈滿了灰塵&#39;, &#39;朋友圈裡的動態&#39;, &#39;從沒翻看過&#39;, &#39;失望攬夠了&#39;, &#39;便是離開的時候&#39;, &#39;知乎上有個問題&#39;, &#39;感情中&#39;, &#39;最遺憾的時刻&#39;, &#39;是什麼時候&#39;, &#39;其中有個高讚的回答&#39;, &#39;在一起時&#39;, &#39;沒有對她更溫柔&#39;, &#39;在一起時&#39;]
+[&#39;每晚陪伴你&#39;, &#39;时光再慢&#39;, &#39;相聚再久&#39;, &#39;总得散&#39;, &#39;几十年后&#39;, &#39;当我离开人间&#39;, &#39;尘归尘&#39;, &#39;土归土&#39;, &#39;这个世间&#39;, &#39;从此没有了你我&#39;, &#39;还有什么化不开的恩怨&#39;, &#39;路的尽头&#39;, &#39;还有路&#39;, &#39;生命的尽头&#39;, &#39;能有啥&#39;, &#39;一个坑一抔土&#39;, &#39;没了爱&#39;, &#39;再思念都无法陪伴&#39;, &#39;甚至连争吵都成了奢求&#39;, &#39;今天亦安将和大家&#39;, &#39;分享的是&#39;, &#39;下次你路过&#39;, &#39;人间已无我&#39;, &#39;在开始今天的节目之前&#39;, &#39;能点撃订阅和小铃铛&#39;, &#39;你的点赞和评论&#39;, &#39;是我最大的动力&#39;, &#39;感谢大家的喜欢&#39;, &#39;深夜读书因你们而精彩&#39;, &#39;人的一生并不长&#39;, &#39;2岁蹒跚学步&#39;, &#39;20多岁读书生涯结束&#39;, &#39;30岁成家立业&#39;, &#39;50岁时&#39;, &#39;孩子走你走过的路&#39;, &#39;一切都被安排得妥妥当当&#39;, &#39;人生既是失去&#39;, &#39;也是得到&#39;, &#39;我们在其中徘徊&#39;, &#39;在其中接受&#39;, &#39;最后叶落归根&#39;, &#39;这一切&#39;, &#39;是否像一场梦&#39;, &#39;有人也曾在心底&#39;, &#39;反问过自己&#39;, &#39;这一生的颠沛流离&#39;, &#39;却过著普通人的生活&#39;, &#39;真的值得吗&#39;, &#39;曾经我也思考过这様的问题&#39;, &#39;那时刚成家立业&#39;, &#39;后来与爷爷的一次聊天中&#39;, &#39;他告诉我&#39;, &#39;人生的幸福&#39;, &#39;其实全凭个人内心&#39;, &#39;平凡中可以是福&#39;, &#39;落魄中也可以是福&#39;, &#39;如果一个人的内心不够强大&#39;, &#39;即使腰缠万贯&#39;, &#39;也不一定是福&#39;, &#39;要勇敢的学会&#39;, &#39;直面惨淡的人生&#39;, &#39;短暂的是时间&#39;, &#39;脆弱的是感情&#39;, &#39;听过一段话&#39;, &#39;人的一生&#39;, &#39;遇到爱&#39;, &#39;遇到好感&#39;, &#39;都不稀奇&#39;, &#39;难得的是遇到珍惜你的人&#39;, &#39;这个世上&#39;, &#39;短暂的是时间&#39;, &#39;脆弱的是感情&#39;, &#39;生命中有一些人&#39;, &#39;与我们擦肩了&#39;, &#39;却来不及遇见&#39;, &#39;遇见了&#39;, &#39;却来不及相识&#39;, &#39;相识了&#39;, &#39;却来不及熟悉&#39;, &#39;熟悉了却还是要说再见&#39;, &#39;每个人生来唯一&#39;, &#39;不会再有第二个自己&#39;, &#39;每个人只活一次&#39;, &#39;凭什么不能被珍惜&#39;, &#39;余光中有句话&#39;, &#39;下次你路过&#39;, &#39;人间已无我&#39;, &#39;人和人之间&#39;, &#39;也只有一次的缘分&#39;, &#39;无论相处多久&#39;, &#39;不管爱或不爱&#39;, &#39;有些人&#39;, &#39;下辈子都无法再遇见了&#39;, &#39;就用力爱&#39;, &#39;能珍惜的&#39;, &#39;就别不在意&#39;, &#39;余光中说过这様一句话&#39;, &#39;下次你路过&#39;, &#39;人间已无我&#39;, &#39;把人与人之间的关系&#39;, &#39;体现的淋漓尽致&#39;, &#39;人这一生&#39;, &#39;有几辈子可以活&#39;, &#39;满打满算不过几十年&#39;, &#39;加在一起不过三万多天&#39;, &#39;真的不长&#39;, &#39;我们每一个人&#39;, &#39;都是独一无二的&#39;, &#39;我们和人相伴&#39;, &#39;也许下一刻就是最后一刻&#39;, &#39;这一路走来&#39;, &#39;有多少人和我们擦肩&#39;, &#39;然后彻底的留在记忆&#39;, &#39;明明就是同一个城市&#39;, &#39;可却几十年不曾相遇&#39;, &#39;最让人惋惜的&#39;, &#39;不是一开始就陌生&#39;, &#39;而是明明很熟悉&#39;, &#39;慢慢的变成了陌生人&#39;, &#39;通讯录里的名字&#39;, &#39;布满了灰尘&#39;, &#39;朋友圈里的动态&#39;, &#39;从没翻看过&#39;, &#39;失望揽够了&#39;, &#39;便是离开的时候&#39;, &#39;知乎上有个问题&#39;, &#39;感情中&#39;, &#39;最遗憾的时刻&#39;, &#39;是什么时候&#39;, &#39;其中有个高赞的回答&#39;, &#39;在一起时&#39;, &#39;没有对她更温柔&#39;, &#39;在一起时&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\t.txt&quot;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> question_labels <span class="keyword">in</span> f.readlines():</span><br><span class="line">        question_labels=question_labels.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        print(question_labels)</span><br></pre></td></tr></table></figure>
+<pre><code>請問京都議定書規定幾個工業國家的二氧化碳排放量限制？，
+請問首位自費太空旅行的觀光客為誰？
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3 实例：</span></span><br><span class="line"><span class="keyword">import</span> opencc</span><br><span class="line"><span class="comment"># 第一步打开文本文件，for 读取每句繁体</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\t.txt&quot;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    question_labels = f.readlines()</span><br><span class="line"></span><br><span class="line">q_zh = []  <span class="comment"># Data中问题的中文</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> question_labels:</span><br><span class="line">    line = line.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    q_zh.append(line)</span><br><span class="line"></span><br><span class="line">print(q_zh)</span><br><span class="line"><span class="comment"># [&#x27;請問京都議定書規定幾個工業國家的二氧化碳排放量限制？&#x27;, &#x27;請問首位自費太空旅行的觀光客為誰？&#x27;,]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二步转换</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Traditional2Simplified</span>(<span class="params">sentence</span>):</span></span><br><span class="line"></span><br><span class="line">    cc = opencc.OpenCC(<span class="string">&#x27;t2s&#x27;</span>)</span><br><span class="line">    sentence = cc.convert(sentence)</span><br><span class="line">    <span class="keyword">return</span> sentence</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">q_zh_jian = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> q_zh:</span><br><span class="line">    q_zh_jian.append(Traditional2Simplified(line))</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\t2s1.txt&quot;</span>, <span class="string">&#x27;a&#x27;</span>) <span class="keyword">as</span> w:</span><br><span class="line">    <span class="keyword">for</span> wr <span class="keyword">in</span> q_zh_jian:</span><br><span class="line">        w.write(wr+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(<span class="string">&#x27;转换已完成，请到设置目录查看！&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;每晚陪伴你&#39;, &#39;時光再慢&#39;, &#39;相聚再久&#39;, &#39;總得散&#39;, &#39;幾十年後&#39;, &#39;當我離開人間&#39;, &#39;塵歸塵&#39;, &#39;土歸土&#39;, &#39;這個世間&#39;, &#39;從此沒有了你我&#39;, &#39;還有什麼化不開的恩怨&#39;, &#39;路的盡頭&#39;, &#39;還有路&#39;, &#39;生命的盡頭&#39;, &#39;能有啥&#39;, &#39;一個坑一抔土&#39;, &#39;沒了愛&#39;, &#39;再思念都無法陪伴&#39;, &#39;甚至連爭吵都成了奢求&#39;, &#39;今天亦安將和大家&#39;, &#39;分享的是&#39;, &#39;下次你路過&#39;, &#39;人間已無我&#39;, &#39;在開始今天的節目之前&#39;, &#39;能點撃訂閱和小鈴鐺&#39;, &#39;你的點贊和評論&#39;, &#39;是我最大的動力&#39;, &#39;感謝大家的喜歡&#39;, &#39;深夜讀書因你們而精彩&#39;, &#39;人的一生並不長&#39;, &#39;2歲蹣跚學步&#39;, &#39;20多歲讀書生涯結束&#39;, &#39;30歲成家立業&#39;, &#39;50歲時&#39;, &#39;孩子走你走過的路&#39;, &#39;一切都被安排得妥妥噹噹&#39;, &#39;人生既是失去&#39;, &#39;也是得到&#39;, &#39;我們在其中徘徊&#39;, &#39;在其中接受&#39;, &#39;最後葉落歸根&#39;, &#39;這一切&#39;, &#39;是否像一場夢&#39;, &#39;有人也曾在心底&#39;, &#39;反問過自己&#39;, &#39;這一生的顛沛流離&#39;, &#39;卻過著普通人的生活&#39;, &#39;真的值得嗎&#39;, &#39;曾經我也思考過這様的問題&#39;, &#39;那時剛成家立業&#39;, &#39;後來與爺爺的一次聊天中&#39;, &#39;他告訴我&#39;, &#39;人生的幸福&#39;, &#39;其實全憑個人內心&#39;, &#39;平凡中可以是福&#39;, &#39;落魄中也可以是福&#39;, &#39;如果一個人的內心不夠強大&#39;, &#39;即使腰纏萬貫&#39;, &#39;也不一定是福&#39;, &#39;要勇敢的學會&#39;, &#39;直面慘淡的人生&#39;, &#39;短暫的是時間&#39;, &#39;脆弱的是感情&#39;, &#39;聽過一段話&#39;, &#39;人的一生&#39;, &#39;遇到愛&#39;, &#39;遇到好感&#39;, &#39;都不稀奇&#39;, &#39;難得的是遇到珍惜你的人&#39;, &#39;這個世上&#39;, &#39;短暫的是時間&#39;, &#39;脆弱的是感情&#39;, &#39;生命中有一些人&#39;, &#39;與我們擦肩了&#39;, &#39;卻來不及遇見&#39;, &#39;遇見了&#39;, &#39;卻來不及相識&#39;, &#39;相識了&#39;, &#39;卻來不及熟悉&#39;, &#39;熟悉了卻還是要說再見&#39;, &#39;每個人生來唯一&#39;, &#39;不會再有第二個自己&#39;, &#39;每個人只活一次&#39;, &#39;憑什麼不能被珍惜&#39;, &#39;余光中有句話&#39;, &#39;下次你路過&#39;, &#39;人間已無我&#39;, &#39;人和人之間&#39;, &#39;也只有一次的緣分&#39;, &#39;無論相處多久&#39;, &#39;不管愛或不愛&#39;, &#39;有些人&#39;, &#39;下辈子都無法再遇見了&#39;, &#39;就用力愛&#39;, &#39;能珍惜的&#39;, &#39;就別不在意&#39;, &#39;余光中說過這様一句話&#39;, &#39;下次你路過&#39;, &#39;人間已無我&#39;, &#39;把人與人之間的關係&#39;, &#39;體現的淋漓盡致&#39;, &#39;人這一生&#39;, &#39;有幾輩子可以活&#39;, &#39;滿打滿算不過幾十年&#39;, &#39;加在一起不過三萬多天&#39;, &#39;真的不長&#39;, &#39;我們每一個人&#39;, &#39;都是獨一無二的&#39;, &#39;我們和人相伴&#39;, &#39;也許下一刻就是最後一刻&#39;, &#39;這一路走來&#39;, &#39;有多少人和我們擦肩&#39;, &#39;然後徹底的留在記憶&#39;, &#39;明明就是同一個城市&#39;, &#39;可卻幾十年不曾相遇&#39;, &#39;最讓人惋惜的&#39;, &#39;不是一開始就陌生&#39;, &#39;而是明明很熟悉&#39;, &#39;慢慢的變成了陌生人&#39;, &#39;通訊錄裡的名字&#39;, &#39;佈滿了灰塵&#39;, &#39;朋友圈裡的動態&#39;, &#39;從沒翻看過&#39;, &#39;失望攬夠了&#39;, &#39;便是離開的時候&#39;, &#39;知乎上有個問題&#39;, &#39;感情中&#39;, &#39;最遺憾的時刻&#39;, &#39;是什麼時候&#39;, &#39;其中有個高讚的回答&#39;, &#39;在一起時&#39;, &#39;沒有對她更溫柔&#39;, &#39;在一起時&#39;]
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/29/%E6%89%93%E5%BC%80%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%90%8E%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E8%A1%8C%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/29/%E6%89%93%E5%BC%80%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%90%8E%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E5%8F%8A%E8%A1%8C%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">打开文本文件后读取方式及行后显示控制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-29 08:47:58 / 修改时间：01:25:27" itemprop="dateCreated datePublished" datetime="2021-08-29T08:47:58Z">2021-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="python-逐行读取文件内容的三种方法"><a href="#python-逐行读取文件内容的三种方法" class="headerlink" title="python 逐行读取文件内容的三种方法"></a>python 逐行读取文件内容的三种方法</h2><p>一、使用 open 打开文件后一定要记得调用文件对象的 close () 方法。比如可以用 try/finally 语句来确保最后能关闭文件。</p>
+<p>二、需要导入 import os</p>
+<p>三、下面是逐行读取文件内容的三种方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、第一种方法：</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>)               <span class="comment"># 返回一个文件对象 </span></span><br><span class="line">line = f.readline()               <span class="comment"># 调用文件的 readline()方法    </span></span><br><span class="line"><span class="keyword">while</span> line:</span><br><span class="line">    print(line,end=<span class="string">&#x27;&#x27;</span>)      <span class="comment"># 后面跟 &#x27;,&#x27; 将忽略换行符</span></span><br><span class="line">    line=f.readlines()</span><br><span class="line">    print(line)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+[&#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;]
+[&#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;][]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2、第二种方法：</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>): </span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+
+時光再慢
+
+相聚再久
+
+總得散
+
+幾十年後
+
+當我離開人間
+
+塵歸塵
+
+土歸土
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3、第三种方法：</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>,<span class="string">&quot;r&quot;</span>) </span><br><span class="line">lines = f.readlines()      <span class="comment">#读取全部内容 ，并以列表方式返回</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    print(line)  </span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+
+時光再慢
+
+相聚再久
+
+總得散
+
+幾十年後
+
+當我離開人間
+
+塵歸塵
+
+土歸土
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 四、一次性读取整个文件内容：</span></span><br><span class="line">file_object = <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    all_the_text = file_object.read()</span><br><span class="line">    print(all_the_text)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file_object.close()</span><br></pre></td></tr></table></figure>
+<pre><code>每晚陪伴你
+時光再慢
+相聚再久
+總得散
+幾十年後
+當我離開人間
+塵歸塵
+土歸土
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python 读取文件，如何去掉换行符 &quot;\n&quot;_</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.readlines()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read().splitlines()</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&quot;C:\Users\win\Desktop\test.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        line=line.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;每晚陪伴你\n&#39;, &#39;時光再慢\n&#39;, &#39;相聚再久\n&#39;, &#39;總得散\n&#39;, &#39;幾十年後\n&#39;, &#39;當我離開人間\n&#39;, &#39;塵歸塵\n&#39;, &#39;土歸土&#39;]
+[&#39;每晚陪伴你&#39;, &#39;時光再慢&#39;, &#39;相聚再久&#39;, &#39;總得散&#39;, &#39;幾十年後&#39;, &#39;當我離開人間&#39;, &#39;塵歸塵&#39;, &#39;土歸土&#39;]
+每晚陪伴你
+時光再慢
+相聚再久
+總得散
+幾十年後
+當我離開人間
+塵歸塵
+土歸土
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/29/%E5%88%A0%E9%99%A4%E7%BC%BA%E5%B0%91%E5%80%BC%E3%80%81%E7%A9%BA%E5%80%BC%E7%9A%84%E8%A1%8C%E5%88%97%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/29/%E5%88%A0%E9%99%A4%E7%BC%BA%E5%B0%91%E5%80%BC%E3%80%81%E7%A9%BA%E5%80%BC%E7%9A%84%E8%A1%8C%E5%88%97%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">删除缺少值、空值的行列数据</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-29 08:47:23 / 修改时间：01:46:13" itemprop="dateCreated datePublished" datetime="2021-08-29T08:47:23Z">2021-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data_dict=&#123;<span class="string">&#x27;name&#x27;</span>:[<span class="string">&#x27;mike&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;suzzi&#x27;</span>,<span class="string">&#x27;chang&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>],<span class="string">&#x27;place&#x27;</span>:[<span class="string">&#x27;china&#x27;</span>,<span class="string">&#x27;ireland&#x27;</span>,<span class="string">&#x27;japan&#x27;</span>,<span class="string">&#x27;china&#x27;</span>,</span><br><span class="line">                                                            <span class="string">&#x27;australia&#x27;</span>,<span class="string">&#x27;india&#x27;</span>],<span class="string">&#x27;phonenum&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;</span><br><span class="line">data_dict</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>&#123;&#39;name&#39;: [&#39;mike&#39;, &#39;&#39;, &#39;suzzi&#39;, &#39;chang&#39;, &#39;&#39;, &#39;&#39;],
+ &#39;place&#39;: [&#39;china&#39;, &#39;ireland&#39;, &#39;japan&#39;, &#39;china&#39;, &#39;australia&#39;, &#39;india&#39;],
+ &#39;phonenum&#39;: [1, 2, 3, 4, 5, 6]&#125;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">df=pd.DataFrame(data_dict)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td></td>
+      <td>ireland</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td></td>
+      <td>australia</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td></td>
+      <td>india</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df1=df.copy()</span><br><span class="line">df1</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td></td>
+      <td>ireland</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td></td>
+      <td>australia</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td></td>
+      <td>india</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df2=df1[df1.name==<span class="string">&#x27;&#x27;</span>]</span><br><span class="line">df2</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td></td>
+      <td>ireland</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td></td>
+      <td>australia</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td></td>
+      <td>india</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td></td>
+      <td>ireland</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td></td>
+      <td>australia</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td></td>
+      <td>india</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df3=df1[df1.name!=<span class="string">&#x27;&#x27;</span>]</span><br><span class="line">df3</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>如果在第一列中是 NaNs，请使用 ^{} 和指定要检查的列：</p>
+<p>df1 = df.dropna(subset=[‘Name’]) 删除 name 列中含有空值的整行，只保留全部没有空值的行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data_dict=&#123;<span class="string">&#x27;name&#x27;</span>:[<span class="string">&#x27;mike&#x27;</span>,np.nan,<span class="string">&#x27;suzzi&#x27;</span>,<span class="string">&#x27;chang&#x27;</span>,np.nan,np.nan],<span class="string">&#x27;place&#x27;</span>:[<span class="string">&#x27;china&#x27;</span>,<span class="string">&#x27;ireland&#x27;</span>,<span class="string">&#x27;japan&#x27;</span>,<span class="string">&#x27;china&#x27;</span>,</span><br><span class="line">                                                            <span class="string">&#x27;australia&#x27;</span>,<span class="string">&#x27;india&#x27;</span>],<span class="string">&#x27;phonenum&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;</span><br><span class="line">data_dict</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>&#123;&#39;name&#39;: [&#39;mike&#39;, nan, &#39;suzzi&#39;, &#39;chang&#39;, nan, nan],
+ &#39;place&#39;: [&#39;china&#39;, &#39;ireland&#39;, &#39;japan&#39;, &#39;china&#39;, &#39;australia&#39;, &#39;india&#39;],
+ &#39;phonenum&#39;: [1, 2, 3, 4, 5, 6]&#125;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dff=pd.DataFrame(data_dict)</span><br><span class="line">dff</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>ireland</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>australia</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>india</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dff1=dff.dropna(subset=[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">dff1</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果行中缺少任何值，DataFrame dropna（）方法将删除整行。 df1 = df.dropna()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data_dict=&#123;<span class="string">&#x27;name&#x27;</span>:[<span class="string">&#x27;mike&#x27;</span>,np.nan,<span class="string">&#x27;suzzi&#x27;</span>,<span class="string">&#x27;chang&#x27;</span>,np.nan,np.nan],<span class="string">&#x27;place&#x27;</span>:[<span class="string">&#x27;china&#x27;</span>,np.nan,<span class="string">&#x27;japan&#x27;</span>,<span class="string">&#x27;china&#x27;</span>,</span><br><span class="line">                                                            <span class="string">&#x27;australia&#x27;</span>,<span class="string">&#x27;india&#x27;</span>],<span class="string">&#x27;phonenum&#x27;</span>:[<span class="number">1</span>,np.nan,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;</span><br><span class="line">data_dict</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>&#123;&#39;name&#39;: [&#39;mike&#39;, nan, &#39;suzzi&#39;, &#39;chang&#39;, nan, nan],
+ &#39;place&#39;: [&#39;china&#39;, nan, &#39;japan&#39;, &#39;china&#39;, &#39;australia&#39;, &#39;india&#39;],
+ &#39;phonenum&#39;: [1, nan, 3, 4, 5, 6]&#125;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dk=pd.DataFrame(data_dict)</span><br><span class="line">dk</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>australia</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>india</td>
+      <td>6.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dfk=dk.dropna()</span><br><span class="line">dfk</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>place</th>
+      <th>phonenum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mike</td>
+      <td>china</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>suzzi</td>
+      <td>japan</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chang</td>
+      <td>china</td>
+      <td>4.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pandas 删除空数据行及列 dropna ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除含有空数据的全部行</span></span><br><span class="line"></span><br><span class="line">df4 = pd.read_csv(<span class="string">&#x27;4.csv&#x27;</span>,  encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df4 = df4.dropna()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以通过 axis 参数来删除含有空数据的全部列</span></span><br><span class="line"></span><br><span class="line">df4 = df4.dropna(axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以通过 subset 参数来删除在 age 和 sex 中含有空数据的全部行</span></span><br><span class="line"></span><br><span class="line">df4 = df4.dropna(subset=[<span class="string">&quot;age&quot;</span>, <span class="string">&quot;sex&quot;</span>])</span><br><span class="line"></span><br><span class="line">print(df4)</span><br><span class="line"></span><br><span class="line">df4 = df4.dropna(subset=[<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;body&#x27;</span>,<span class="string">&#x27;home.dest&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于 DataFrame:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># data.dropna (how = &#x27;all&#x27;)    # 传入这个参数后将只丢弃全为缺失值的那些行</span></span><br><span class="line"><span class="comment"># data.dropna (axis = 1)       # 丢弃有缺失值的列（一般不会这么做，这样会删掉一个特征）</span></span><br><span class="line"><span class="comment"># data.dropna (axis=1,how=&quot;all&quot;)   # 丢弃全为缺失值的那些列</span></span><br><span class="line"><span class="comment"># data.dropna (axis=0,subset = [&quot;Age&quot;, &quot;Sex&quot;])   # 丢弃‘Age’和‘Sex’这两列中有缺失值的行  </span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建 DataFrame 样例数据</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, np.nan,<span class="number">7</span>, <span class="number">9</span>], <span class="string">&#x27;b&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, np.nan, np.nan, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>], <span class="string">&#x27;c&#x27;</span>: [np.nan, <span class="number">0</span>, <span class="number">4</span>, np.nan, np.nan, <span class="number">5</span>], <span class="string">&#x27;d&#x27;</span>: [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]&#125;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>a</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>b</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.0</td>
+      <td>d</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>9.0</td>
+      <td>e</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna(axis=<span class="number">0</span>,how=<span class="string">&#x27;all&#x27;</span>)  <span class="comment"># 删除 NaN 所在行</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>a</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>b</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.0</td>
+      <td>d</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>9.0</td>
+      <td>e</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna(axis=<span class="number">0</span>,how=<span class="string">&#x27;any&#x27;</span>)  <span class="comment"># 删除表中含有任何 NaN 的行</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna(axis=<span class="number">1</span>, how=<span class="string">&#x27;all&#x27;</span>)<span class="comment"># 删除表中全部为 NaN 的列</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>a</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>b</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.0</td>
+      <td>d</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>9.0</td>
+      <td>e</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna(axis=<span class="number">1</span>, how=<span class="string">&#x27;any&#x27;</span>) <span class="comment"># 删除表中含有任何 NaN 的列</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+    </tr>
+    <tr>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>2</th>
+    </tr>
+    <tr>
+      <th>3</th>
+    </tr>
+    <tr>
+      <th>4</th>
+    </tr>
+    <tr>
+      <th>5</th>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pandas 中单元格数据处理之分割单元格信息</span></span><br><span class="line"><span class="comment"># 两总方法，一种是新建一个 dataframe，加上列标签，在用 concat 合并到一起。方法二比较简单，直接索引取数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">把一个“<span class="number">2000</span>-<span class="number">5000</span>”类型的数，分割为<span class="number">2000</span>与<span class="number">5000</span>两个，并分开显示</span><br><span class="line">s_min, s_max = df_clean.loc[: , <span class="string">&#x27;zwyx&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;-&#x27;</span>,<span class="number">1</span>).<span class="built_in">str</span></span><br><span class="line"><span class="comment">#split的参数1，则分割为两部分</span></span><br><span class="line">df_min = pd.DataFrame(s_min)</span><br><span class="line">df_min.columns = [<span class="string">&#x27;zwyx_min&#x27;</span>]</span><br><span class="line">df_max = pd.DataFrame(s_max)</span><br><span class="line">df_max.columns = [<span class="string">&#x27;zwyx_max&#x27;</span>]</span><br><span class="line"></span><br><span class="line">df_clean_concat = pd.concat([df_clean, df_min, df_max], axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># df_clean[&#x27;zwyx_min&#x27;].astype(int)</span></span><br><span class="line">df_clean_concat[<span class="string">&#x27;zwyx_min&#x27;</span>] = pd.to_numeric(df_clean_concat[<span class="string">&#x27;zwyx_min&#x27;</span>])</span><br><span class="line">df_clean_concat[<span class="string">&#x27;zwyx_max&#x27;</span>] = pd.to_numeric(df_clean_concat[<span class="string">&#x27;zwyx_max&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;key&#x27;</span>:[<span class="string">&#x27;a,b,c&#x27;</span>,<span class="string">&#x27;1,2,3&#x27;</span>,[<span class="string">&#x27;a,,,c&#x27;</span>],np.nan]&#125;)</span><br><span class="line">df[<span class="string">&#x27;v1&#x27;</span>] = df[<span class="string">&#x27;key&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;,&#x27;</span>).<span class="built_in">str</span>[<span class="number">0</span>]</span><br><span class="line">df[<span class="string">&#x27;v2&#x27;</span>] = df[<span class="string">&#x27;key&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;,&#x27;</span>).<span class="built_in">str</span>[<span class="number">1</span>]</span><br><span class="line">df[<span class="string">&#x27;v3&#x27;</span>] = df[<span class="string">&#x27;key&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;,&#x27;</span>).<span class="built_in">str</span>[<span class="number">2</span>]</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>v1</th>
+      <th>v2</th>
+      <th>v3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a,b,c</td>
+      <td>a</td>
+      <td>b</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1,2,3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[a,,,c]</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pandas 小技巧 —— 如何删除行或者列、根据条件删除指定行或者列</span></span><br><span class="line"><span class="comment"># 使用 df.drop</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">DataFrame.drop(labels=None, axis=0, index=None, columns=None, level=None, inplace=False, errors=‘raise’)</span></span><br><span class="line"><span class="string">1、labels：要删除的标签，一个或者多个 (以 list 形式)；</span></span><br><span class="line"><span class="string">2、axis：指定哪一个轴，=0 删除行，=1 删除列；</span></span><br><span class="line"><span class="string">3、columns：指定某一列或者多列 (以 list 形式)；</span></span><br><span class="line"><span class="string">4、level：索引等级，针对多重索引的情况；</span></span><br><span class="line"><span class="string">5、inplaces：是否替换原来的 dataframe，=True 代表直接替换原始 df，=False 代表不替换原始 df</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 1、直接删除指定行 / 列</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除列名为C的列，并替换原始df</span></span><br><span class="line">df.drop(columns=[<span class="string">&#x27;C&#x27;</span>], inplace=<span class="literal">True</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、根据条件删除指定行</span></span><br><span class="line"><span class="comment"># 删除符合条件的指定行，并替换原始df</span></span><br><span class="line">df.drop(df[(df.score &lt; <span class="number">50</span>) &amp; (df.score &gt; <span class="number">20</span>)].index， inplace=<span class="literal">True</span>) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dropna () 方法过滤任何含有缺失值的行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">pandas.DataFrame 里，如果一行数据有任意值为空，则过滤掉整行，这时候使用 dropna() 方法是合适的。下面的案例，任意列只要有一个为空数据，则整行都干掉。但是我们常常遇到的情况，是根据一个指标（一列）数据的情况，去过滤行数据，</span></span><br><span class="line"><span class="string">类似 Excel 里面的过滤漏斗，怎么办？</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.DataFrame([[<span class="number">1.</span>,<span class="number">6.5</span>,<span class="number">3.</span>],[<span class="number">1.</span>],[],[<span class="number">6.5</span>,<span class="number">3.</span>]],index=<span class="built_in">list</span>(<span class="string">&#x27;abcd&#x27;</span>),columns=<span class="built_in">list</span>(<span class="string">&#x27;def&#x27;</span>))</span><br><span class="line">data</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1.0</td>
+      <td>6.5</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna()</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1.0</td>
+      <td>6.5</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一：dropna () 其他参数解析</span></span><br><span class="line"><span class="comment"># DataFrame.dropna(axis=0, how=&#x27;any&#x27;, thresh=None, subset=None, inplace=False)</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">参数说明：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">axis:</span></span><br><span class="line"><span class="string">axis=0: 删除包含缺失值的行</span></span><br><span class="line"><span class="string">axis=1: 删除包含缺失值的列</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">how: 与 axis 配合使用</span></span><br><span class="line"><span class="string">how=‘any’ : 只要有缺失值出现，就删除该行货列</span></span><br><span class="line"><span class="string">how=‘all’: 所有的值都缺失，才删除行或列</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">thresh： axis 中至少有 thresh 个非缺失值，否则删除。比如 axis=0，thresh=10：标识如果该行中非缺失值的数量小于 10，将删除改行</span></span><br><span class="line"><span class="string">subset: list，在哪些列中查看是否有缺失值</span></span><br><span class="line"><span class="string">inplace: 是否在原数据上操作。如果为真，返回 None 否则返回新的 copy，去掉了缺失值</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna(axis=<span class="number">0</span>,subset=[<span class="string">&#x27;e&#x27;</span>]) <span class="comment">#axis=0,删除行，subset的列选择</span></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1.0</td>
+      <td>6.5</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">方法二：替换并删除，Python pandas 如果某列值为空，过滤删除所在行数据</span></span><br><span class="line"><span class="string">如上面的 data 数据，如果希望 “e” 列数值为空 NaN 时，删除对应行也就是 “b、c” 行数据，保留其他行，用 dropna() 似乎比较麻烦。 这个时候的思路是：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fillna() 给空值填充一个数值（如 999999）</span></span><br><span class="line"><span class="string">index.tolist() 找出值为填充值所在行的索引</span></span><br><span class="line"><span class="string">drop 根据索引干掉对应的行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">data[<span class="string">&#x27;e&#x27;</span>]=data[<span class="string">&#x27;e&#x27;</span>].fillna(<span class="number">999999</span>)</span><br><span class="line">find_index=data[(data.e==<span class="number">999999</span>)].index.tolist()</span><br><span class="line">find_index</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;b&#39;, &#39;c&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.drop(find_index)</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>e</th>
+      <th>f</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1.0</td>
+      <td>6.5</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pandas 缺失值与空值处理</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">1. 相关函数</span></span><br><span class="line"><span class="string">df.dropna()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">df.fillna()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">df.isnull()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">df.isna()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. 相关概念</span></span><br><span class="line"><span class="string">空值：在 pandas 中的空值是 &quot;&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">缺失值：在 dataframe 中为 nan 或者 naT（缺失时间），在 series 中为 none 或者 nan 即可</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3. 函数具体解释</span></span><br><span class="line"><span class="string">DataFrame.dropna(axis=0, how=&#x27;any&#x27;, thresh=None, subset=None, inplace=False)</span></span><br><span class="line"><span class="string">函数作用：删除含有空值的行或列</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">axis: 维度，axis=0 表示 index 行，axis=1 表示 columns 列，默认为 0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">how:&quot;all&quot; 表示这一行或列中的元素全部缺失（为 nan）才删除这一行或列，&quot;any&quot; 表示这一行或列中只要有元素缺失，就删除这一行或列</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">thresh: 一行或一列中至少出现了 thresh 个才删除。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">subset：在某些列的子集中选择出现了缺失值的列删除，不在子集中的含有缺失值得列或行不会删除（有 axis 决定是行还是列）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">inplace：刷选过缺失值得新数据是存为副本还是直接在原数据上进行修改。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">例子：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&quot;name&quot;</span>: [<span class="string">&#x27;Alfred&#x27;</span>, <span class="string">&#x27;Batman&#x27;</span>, <span class="string">&#x27;Catwoman&#x27;</span>],</span><br><span class="line">                <span class="string">&quot;toy&quot;</span>: [np.nan, <span class="string">&#x27;Batmobile&#x27;</span>, <span class="string">&#x27;Bullwhip&#x27;</span>],</span><br><span class="line">                  <span class="string">&quot;born&quot;</span>: [pd.NaT, pd.Timestamp(<span class="string">&quot;1940-04-25&quot;</span>),pd.NaT]&#125;)</span><br><span class="line"> </span><br><span class="line">df</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>toy</th>
+      <th>born</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alfred</td>
+      <td>NaN</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Batman</td>
+      <td>Batmobile</td>
+      <td>1940-04-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Catwoman</td>
+      <td>Bullwhip</td>
+      <td>NaT</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(df)</span><br><span class="line">print(<span class="string">&#x27;-----------------------------------------&#x27;</span>)</span><br><span class="line">print(df.dropna())</span><br></pre></td></tr></table></figure>
+<pre><code>       name        toy       born
+0    Alfred        NaN        NaT
+1    Batman  Batmobile 1940-04-25
+2  Catwoman   Bullwhip        NaT
+-----------------------------------------
+     name        toy       born
+1  Batman  Batmobile 1940-04-25
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&#x27;delete colums&#x27;</span>)</span><br><span class="line">print(df.dropna(axis=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>delete colums
+       name
+0    Alfred
+1    Batman
+2  Catwoman
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;所有值全为缺失值才删除&quot;</span>)</span><br><span class="line">print(df.dropna(how=<span class="string">&#x27;all&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>所有值全为缺失值才删除
+       name        toy       born
+0    Alfred        NaN        NaT
+1    Batman  Batmobile 1940-04-25
+2  Catwoman   Bullwhip        NaT
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;至少出现过两个缺失值才删除&quot;</span>)</span><br><span class="line">print(df.dropna(thresh=<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>至少出现过两个缺失值才删除
+       name        toy       born
+1    Batman  Batmobile 1940-04-25
+2  Catwoman   Bullwhip        NaT
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;删除这个subset中的含有缺失值的行或列&quot;</span>)</span><br><span class="line">print(df.dropna(subset=[<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;born&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>删除这个subset中的含有缺失值的行或列
+     name        toy       born
+1  Batman  Batmobile 1940-04-25
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">DataFrame.fillna(value=None, method=None, axis=None, inplace=False, limit=None, downcast=None, **kwargs)</span></span><br><span class="line"><span class="string">函数作用：填充缺失值</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">value: 需要用什么值去填充缺失值</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">axis: 确定填充维度，从行开始或是从列开始</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">method：ffill: 用缺失值前面的一个值代替缺失值，如果 axis =1，那么就是横向的前面的值替换后面的缺失值，如果 axis=0，那么则是上面的值替换下面的缺失值。backfill/bfill，缺失值后面的一个值代替前面的缺失值。注意这个参数不能与 value 同时出现</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">limit: 确定填充的个数，如果 limit=2，则只填充两个缺失值。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">示例：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">df = pd.DataFrame([[np.nan, <span class="number">2</span>, np.nan, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">3</span>, <span class="number">4</span>, np.nan, <span class="number">1</span>],</span><br><span class="line">                 [np.nan, np.nan, np.nan, <span class="number">5</span>],</span><br><span class="line">                [np.nan, <span class="number">3</span>, np.nan, <span class="number">4</span>]],</span><br><span class="line">                 columns=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>))</span><br><span class="line"> </span><br><span class="line">print(df)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;横向用缺失值前面的值替换缺失值&quot;</span>)</span><br><span class="line">print(df.fillna(axis=<span class="number">1</span>,method=<span class="string">&#x27;ffill&#x27;</span>))</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;纵向用缺失值上面的值替换缺失值&quot;</span>)</span><br><span class="line">print(df.fillna(axis=<span class="number">0</span>,method=<span class="string">&#x27;ffill&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         A    B   C  D</span><br><span class="line">    <span class="number">0</span>  NaN  <span class="number">2.0</span> NaN  <span class="number">0</span></span><br><span class="line">    <span class="number">1</span>  <span class="number">3.0</span>  <span class="number">4.0</span> NaN  <span class="number">1</span></span><br><span class="line">    <span class="number">2</span>  NaN  NaN NaN  <span class="number">5</span></span><br><span class="line">    <span class="number">3</span>  NaN  <span class="number">3.0</span> NaN  <span class="number">4</span></span><br><span class="line">    横向用缺失值前面的值替换缺失值</span><br><span class="line">         A    B    C    D</span><br><span class="line">    <span class="number">0</span>  NaN  <span class="number">2.0</span>  <span class="number">2.0</span>  <span class="number">0.0</span></span><br><span class="line">    <span class="number">1</span>  <span class="number">3.0</span>  <span class="number">4.0</span>  <span class="number">4.0</span>  <span class="number">1.0</span></span><br><span class="line">    <span class="number">2</span>  NaN  NaN  NaN  <span class="number">5.0</span></span><br><span class="line">    <span class="number">3</span>  NaN  <span class="number">3.0</span>  <span class="number">3.0</span>  <span class="number">4.0</span></span><br><span class="line">    纵向用缺失值上面的值替换缺失值</span><br><span class="line">         A    B   C  D</span><br><span class="line">    <span class="number">0</span>  NaN  <span class="number">2.0</span> NaN  <span class="number">0</span></span><br><span class="line">    <span class="number">1</span>  <span class="number">3.0</span>  <span class="number">4.0</span> NaN  <span class="number">1</span></span><br><span class="line">    <span class="number">2</span>  <span class="number">3.0</span>  <span class="number">4.0</span> NaN  <span class="number">5</span></span><br><span class="line">    <span class="number">3</span>  <span class="number">3.0</span>  <span class="number">3.0</span> NaN  <span class="number">4</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.fillna(<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>     A    B    C  D
+0  0.0  2.0  0.0  0
+1  3.0  4.0  0.0  1
+2  0.0  0.0  0.0  5
+3  0.0  3.0  0.0  4
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同的列用不同的值填充：</span></span><br><span class="line"></span><br><span class="line">values=&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">0</span>,<span class="string">&#x27;B&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;C&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;D&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">df.fillna(value=values)</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对每列出现的替换值有次数限制，此处限制为一次</span></span><br><span class="line">df.fillna(value=values,limit=<span class="number">1</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DataFrame.isna()</span></span><br><span class="line"><span class="comment"># 判断是不是缺失值：</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame([[np.nan, <span class="number">2</span>, np.nan, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">3</span>, <span class="number">4</span>, <span class="string">&quot;&quot;</span>, <span class="number">1</span>],</span><br><span class="line">                 [np.nan, np.nan, np.nan, <span class="number">5</span>],</span><br><span class="line">                [np.nan, <span class="number">3</span>, <span class="string">&quot;&quot;</span>, <span class="number">4</span>]],</span><br><span class="line">                 columns=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>))</span><br><span class="line"> </span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td></td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">如上，缺失值是 NAN，空值是没有显示。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">替换空值代码：需要把含有空值的那一列提出来单独处理，然后在放进去就好。</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">clean_z=df[<span class="string">&#x27;C&#x27;</span>].fillna(<span class="number">0</span>)</span><br><span class="line">clean_z[clean_z==<span class="string">&#x27;&#x27;</span>]=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line">df[<span class="string">&#x27;C&#x27;</span>]=clean_z</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>hello</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>hello</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isna()</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2 id="Pandas-对列进行重命名"><a href="#Pandas-对列进行重命名" class="headerlink" title="Pandas 对列进行重命名"></a>Pandas 对列进行重命名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pandas 对列进行重命名</span></span><br><span class="line"><span class="comment"># 在处理 DataFrame 数据的时候，经常需要对列进行重命名，我们现在看一下到底如何进行重命名操作。</span></span><br><span class="line"><span class="comment"># 首先生成一个 DataFrame。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">province=pd.DataFrame(&#123;<span class="string">&#x27;省份&#x27;</span>:[<span class="string">&#x27;广东&#x27;</span>,<span class="string">&#x27;广西&#x27;</span>,<span class="string">&#x27;福建&#x27;</span>,<span class="string">&#x27;福建省&#x27;</span>],</span><br><span class="line">                      <span class="string">&#x27;ID&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">                      <span class="string">&#x27;code&#x27;</span>:[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>]&#125;)</span><br><span class="line">province</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>省份</th>
+      <th>ID</th>
+      <th>code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>广东</td>
+      <td>1</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>广西</td>
+      <td>2</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>福建</td>
+      <td>3</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>福建省</td>
+      <td>4</td>
+      <td>d</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 然后把ID变成id，code变成编码。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法 1</span></span><br><span class="line"><span class="comment"># rename 的方式。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">province.rename(columns=&#123;<span class="string">&#x27;ID&#x27;</span>:<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;code&#x27;</span>:<span class="string">&#x27;编码&#x27;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>省份</th>
+      <th>id</th>
+      <th>编码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>广东</td>
+      <td>1</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>广西</td>
+      <td>2</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>福建</td>
+      <td>3</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>福建省</td>
+      <td>4</td>
+      <td>d</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法 2</span></span><br><span class="line"><span class="comment"># 直接改 DataFrame 的 columns</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p_col=[<span class="string">&#x27;省份&#x27;</span>,<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;编码&#x27;</span>]</span><br><span class="line">province.columns=p_col</span><br><span class="line">province</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>省份</th>
+      <th>id</th>
+      <th>编码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>广东</td>
+      <td>1</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>广西</td>
+      <td>2</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>福建</td>
+      <td>3</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>福建省</td>
+      <td>4</td>
+      <td>d</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法 3</span></span><br><span class="line"><span class="comment"># 重新生成一个新的列表，也可以用于在读取 Excel 或者 csv 的时候，进行列名更改</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p_col=[<span class="string">&#x27;省份&#x27;</span>,<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;编码&#x27;</span>]</span><br><span class="line">province_new=pd.DataFrame(province,columns=p_col)</span><br><span class="line">province_new</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>省份</th>
+      <th>id</th>
+      <th>编码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>广东</td>
+      <td>1</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>广西</td>
+      <td>2</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>福建</td>
+      <td>3</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>福建省</td>
+      <td>4</td>
+      <td>d</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">comany = pd.read_csv(<span class="string">&#x27;../data/public/year_report_train_sum.csv&#x27;</span>)</span><br><span class="line">comany.rename(columns=&#123;<span class="string">&#x27;净纳税总额利润&#x27;</span>:<span class="string">&#x27;净利润&#x27;</span>&#125;,inplace = <span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1711,578 +3861,6 @@ dtype: float64
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/os-startfile%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/22/os-startfile%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">os.startfile自动打开文件夹及文件的操作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-21 17:46:06 / 修改时间：09:46:47" itemprop="dateCreated datePublished" datetime="2021-08-21T17:46:06Z">2021-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="python-写入文件自动换行问题的方法"><a href="#python-写入文件自动换行问题的方法" class="headerlink" title="python 写入文件自动换行问题的方法"></a>python 写入文件自动换行问题的方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_result</span>(<span class="params"><span class="built_in">str</span></span>):</span></span><br><span class="line">    writeresult=<span class="built_in">open</span>(<span class="string">&#x27;C:/Users/win/Desktop/aa.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">    str1=writeresult.write(<span class="built_in">str</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    writeresult.close()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    a=<span class="built_in">input</span>(<span class="string">&#x27;enter some strs:&#x27;</span>)</span><br><span class="line">    write_result(a)</span><br></pre></td></tr></table></figure>
-<pre><code>enter some strs:12
-enter some strs:123
-enter some strs:1234
-enter some strs:12345
-enter some strs:123456
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">#print(os.startfile(r&#x27;D:\11&#x27;))</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_files_in_dir</span>(<span class="params">path</span>):</span></span><br><span class="line">	<span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">		filepath = os.path.join(path,file)</span><br><span class="line">		<span class="keyword">if</span> os.path.isdir(filepath):</span><br><span class="line">			open_files_in_dir(filepath)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			os.startfile(filepath)</span><br><span class="line">		</span><br><span class="line">path = <span class="string">r&#x27;D:\11&#x27;</span></span><br><span class="line">open_files_in_dir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>python 用什么打开文件_用 python 打开文件夹的三种方式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一、利用 explorer.exe</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 explorer.exe 执行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start_directory = r&#x27;C:\ 代码 \ 软件包&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># os.system(&quot;explorer.exe %s&quot; % start_directory)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二、用 os.startfile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># import os</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start_directory = r&#x27;C:\ 代码 \ 软件包&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># os.startfile(start_directory)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三、利用 subprocess</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 subprocess</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">startfile</span>(<span class="params">filename</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">        os.startfile(filename)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line"></span><br><span class="line">        subprocess.Popen([<span class="string">&#x27;xdg-open&#x27;</span>, filename])</span><br><span class="line"></span><br><span class="line">start_directory = <span class="string">&#x27;D:/11/9.jpg&#x27;</span></span><br><span class="line"></span><br><span class="line">startfile(start_directory)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AAExcel%E5%90%88%E5%B9%B6%E7%9A%84%E8%8A%B1%E5%BC%8F%E6%93%8D%E4%BD%9C%E8%A6%81%E6%B1%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/22/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AAExcel%E5%90%88%E5%B9%B6%E7%9A%84%E8%8A%B1%E5%BC%8F%E6%93%8D%E4%BD%9C%E8%A6%81%E6%B1%82/" class="post-title-link" itemprop="url">代码实现多个Excel合并的花式操作要求</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-21 17:44:31 / 修改时间：09:45:16" itemprop="dateCreated datePublished" datetime="2021-08-21T17:44:31Z">2021-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一、合并指定目录下的所有订单表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">files = Path(<span class="string">&quot;orders/orders1&quot;</span>).glob(<span class="string">&quot;*.xlsx&quot;</span>)</span><br><span class="line">dfs = [pd.read_excel(f) <span class="keyword">for</span> f <span class="keyword">in</span> files]</span><br><span class="line">df = pd.concat(dfs)</span><br><span class="line">df.to_excel(<span class="string">&quot;result2.xlsx&quot;</span>,index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二、合并指定目录下的指定订单表</span></span><br><span class="line"></span><br><span class="line">dfs = [pd.read_excel(f) <span class="keyword">for</span> f <span class="keyword">in</span> (<span class="string">&#x27;orders/orders1/order1.xlsx&#x27;</span>,<span class="string">&#x27;orders/orders1/order2.xlsx&#x27;</span>)]</span><br><span class="line">df = pd.concat(dfs)</span><br><span class="line">df.to_excel(<span class="string">&quot;result3.xlsx&quot;</span>,index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 三、合并指定目录指定订单表的指定字段</span></span><br><span class="line"></span><br><span class="line">table1 = pd.read_excel(<span class="string">&quot;orders/orders1/order1.xlsx&quot;</span>)</span><br><span class="line">table2 = pd.read_excel(<span class="string">&#x27;orders/orders1/order2.xlsx&#x27;</span>)</span><br><span class="line">part1 = table1.iloc[:,<span class="number">2</span>]  <span class="comment">#取order1.xlsx第3列的所有行</span></span><br><span class="line">part2 = table2.iloc[:,[<span class="number">8</span>,<span class="number">9</span>]]  <span class="comment">#取order2.xlsx的第9、10列的所有行</span></span><br><span class="line">result4 = pd.concat([part1,part2],axis = <span class="number">1</span> ) <span class="comment">#合并  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上注意axis=1表示横向合并。打印一下result4，长这样</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 四、合并所有目录下的所有订单表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">file_list = os.walk(<span class="string">&quot;./&quot;</span>)</span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> dir_path,dirs,files <span class="keyword">in</span> file_list:</span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        file_path = os.path.join(dir_path,f) <span class="comment">#重构文件路径</span></span><br><span class="line">        print(file_path)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;xlsx&#x27;</span> <span class="keyword">in</span> f:    <span class="comment">#只要xlsx文件</span></span><br><span class="line">            df = pd.read_excel(file_path) <span class="comment">#将Excel转成DataFrame</span></span><br><span class="line">            result.append(df)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line">df = pd.concat(result) <span class="comment">#多个DataFrame合成一个</span></span><br><span class="line">df.to_excel(<span class="string">&quot;result4.xlsx&quot;</span>,index=<span class="literal">False</span>) <span class="comment">#导入到一个新的Excel中</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_image_filepaths</span>(<span class="params">dataset_dir</span>):</span></span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(dataset_dir):</span><br><span class="line">        <span class="keyword">for</span> name <span class="keyword">in</span> files:</span><br><span class="line">            fp = os.path.join(root, name)</span><br><span class="line">            <span class="keyword">if</span> name.endswith(<span class="string">&quot;.jpg&quot;</span>):</span><br><span class="line">                result.append(fp)</span><br><span class="line">    <span class="keyword">return</span> result </span><br><span class="line"></span><br><span class="line">find_image_filepaths(<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 批量读取 excel</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line">path=<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span></span><br><span class="line">filename_list = os.listdir(<span class="string">r&quot;C:\Users\win\Desktop\1 - 副本&quot;</span>)</span><br><span class="line">train_data=[]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> filename_list:</span><br><span class="line">    train_data.append(pd.read_excel(path+<span class="string">&#x27;/&#x27;</span>+item))</span><br><span class="line">train_data=pd.concat(train_data)</span><br><span class="line">train_data</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E5%9C%A8Pandas%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/22/%E5%9C%A8Pandas%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">在Pandas中更改列的数据类型方法总结</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-21 17:41:04 / 修改时间：09:43:22" itemprop="dateCreated datePublished" datetime="2021-08-21T17:41:04Z">2021-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df= pd.DataFrame(a)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>0    object
-1    object
-2    object
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame (a, dtype=<span class="string">&#x27;float&#x27;</span>) <span class="comment">#示例 1</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>0     object
-1    float64
-2    float64
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame (data=a, dtype=np.int8) <span class="comment">#示例 2</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-<pre><code>0    object
-1    object
-2    object
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面是一个字符串 Seriess 的例子，它的 dtype 为 object：</span></span><br><span class="line"></span><br><span class="line">s = pd.Series([<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;4.7&#x27;</span>, <span class="string">&#x27;pandas&#x27;</span>, <span class="string">&#x27;10&#x27;</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>0         1
-1         2
-2       4.7
-3    pandas
-4        10
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 to_numeric 转为数值。默认情况下，它不能处理字母型的字符串 &#x27;pandas&#x27;：</span></span><br><span class="line"><span class="comment"># 如果遇到无效值，第三个选项就是忽略该操作：</span></span><br><span class="line">pd.to_numeric(s,errors=<span class="string">&#x27;coerce&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>0     1.0
-1     2.0
-2     4.7
-3     NaN
-4    10.0
-dtype: float64
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.to_numeric(s, errors=<span class="string">&#x27;ignore&#x27;</span>)<span class="comment">#the original Series is returned untouched</span></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>0         1
-1         2
-2       4.7
-3    pandas
-4        10
-dtype: object
-</code></pre>
-<p>对于多列或者整个 DataFrame</p>
-<p>如果想要将这个操作应用到多个列，依次处理每一列是非常繁琐的，所以可以使用 DataFrame.apply 处理每一列。</p>
-<p>对于某个 DataFrame：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line">df = pd.DataFrame(a, columns=[<span class="string">&#x27;col1&#x27;</span>,<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col1</th>
-      <th>col2</th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>a</td>
-      <td>1.2</td>
-      <td>4.2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>b</td>
-      <td>70</td>
-      <td>0.03</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>x</td>
-      <td>5</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>col1    object
-col2    object
-col3    object
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>]]=df[[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col3&#x27;</span>]].apply(pd.to_numeric)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>col1     object
-col2    float64
-col3    float64
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df</span><br></pre></td></tr></table></figure>
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col1</th>
-      <th>col2</th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>a</td>
-      <td>1.2</td>
-      <td>4.20</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>b</td>
-      <td>70.0</td>
-      <td>0.03</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>x</td>
-      <td>5.0</td>
-      <td>0.00</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 但是，可能不知道哪些列可以可靠地转换为数字类型。在这种情况下，设置参数：</span></span><br><span class="line"></span><br><span class="line">df.apply(pd.to_numeric, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后该函数将被应用于整个 DataFrame，可以转换为数字类型的列将被转换，而不能 (例如，它们包含非数字字符串或日期) 的列将被单独保留。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另外 pd.to_datetime 和 pd.to_timedelta 可将数据转换为日期和时间戳。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col1</th>
-      <th>col2</th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>a</td>
-      <td>1.2</td>
-      <td>4.20</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>b</td>
-      <td>70.0</td>
-      <td>0.03</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>x</td>
-      <td>5.0</td>
-      <td>0.00</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 软转换 —— 类型自动推断</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 版本 0.21.0 引入了 infer_objects () 方法，用于将具有对象数据类型的 DataFrame 的列转换为更具体的类型。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如，用两列对象类型创建一个 DataFrame，其中一个保存整数，另一个保存整数的字符串：</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>: [<span class="number">7</span>, <span class="number">1</span>, <span class="number">5</span>], <span class="string">&#x27;b&#x27;</span>: [<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;1&#x27;</span>]&#125;, dtype=<span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">df.dtypes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>a    object
-b    object
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 然后使用 infer_objects ()，可以将列 &#x27;a&#x27; 的类型更改为 int64：</span></span><br><span class="line"></span><br><span class="line">df =df.infer_objects()</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>a     int64
-b    object
-dtype: object
-</code></pre>
-<p>astype 强制转换</p>
-<p>如果试图强制将两列转换为整数类型，可以使用 df.astype (int)。</p>
-<p>示例如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1.2&#x27;</span>, <span class="string">&#x27;4.2&#x27;</span>], [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;0.03&#x27;</span>], [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">df= pd.DataFrame(a, columns=[<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>])</span><br><span class="line"></span><br><span class="line">df</span><br></pre></td></tr></table></figure>
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>one</th>
-      <th>two</th>
-      <th>three</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>a</td>
-      <td>1.2</td>
-      <td>4.2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>b</td>
-      <td>70</td>
-      <td>0.03</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>x</td>
-      <td>5</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>one      object
-two      object
-three    object
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[[<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]]=df[[<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>]].astype(<span class="built_in">float</span>)</span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>one       object
-two      float64
-three    float64
-dtype: object
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -2318,7 +3896,7 @@ dtype: object
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

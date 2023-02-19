@@ -364,6 +364,9 @@ Out[23]: 16
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
       <tags>
         <tag>Python基础</tag>
       </tags>
@@ -487,6 +490,9 @@ Out[23]: 16
 </ul>
 <p>此处 = 类似于 &lt;、&gt; 和 ^</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [127]: print(&#39;&#123;0:$&gt;10.2f&#125;\n&#123;1:$&#x3D;10.2f&#125;&#39;.format(math.pi, -math.pi))</span><br><span class="line">$$$$$$3.14</span><br><span class="line">-$$$$$3.14</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
       <tags>
         <tag>Python基础</tag>
       </tags>
@@ -2673,7 +2679,8 @@ Out[23]: 16
 <h3 id="自由输入求素数个数"><a href="#自由输入求素数个数" class="headerlink" title="自由输入求素数个数"></a>自由输入求素数个数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">is_notprime &#x3D; [] #定义空列表，存放非素数</span><br><span class="line">is_prime &#x3D; []    #定义空列表，存放素数</span><br><span class="line"></span><br><span class="line">num &#x3D; input(&#39;Enter some numbers:&#39;).split()  # 由键盘输入一些数字，并以空格分隔</span><br><span class="line"></span><br><span class="line">num_list &#x3D; [int(j) for j in num]      # 用列表推导式并加以强制类型转换把输入的字符数字转换成 int 类型数据</span><br><span class="line"></span><br><span class="line">for s in num_list:</span><br><span class="line">    for i in range(2, s):</span><br><span class="line">        if s % i &#x3D;&#x3D; 0:</span><br><span class="line">            is_notprime.append(s)    # 将非素数添加到非素数空列表</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        is_prime.append(s)   #将是素数的数字添加到素数列表</span><br><span class="line"></span><br><span class="line"># 输出非素数及素数</span><br><span class="line">print(f&#39;非素数的数字有:&#123;is_notprime&#125;&#39;)</span><br><span class="line">print(f&#39;素数的数字有:&#123;is_prime&#125;&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="格式化求阶乘法"><a href="#格式化求阶乘法" class="headerlink" title="格式化求阶乘法"></a>格式化求阶乘法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def jiecheng(n):</span><br><span class="line">    result &#x3D; 1</span><br><span class="line">    while n&gt;0:</span><br><span class="line">        result *&#x3D;n</span><br><span class="line">        n -&#x3D;1</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">for i in range(1,4):</span><br><span class="line">    re &#x3D; jiecheng(i)</span><br><span class="line">    print(f&#39;&#123;i&#125;的阶乘为:&#123;re&#125;&#39;)</span><br><span class="line">#     print()</span><br></pre></td></tr></table></figure>
 <h3 id="寻找素数"><a href="#寻找素数" class="headerlink" title="寻找素数"></a>寻找素数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">寻找素数</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def is_prime(n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    判断一个数是否是素数</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if n &lt;&#x3D; 1:</span><br><span class="line">        return False</span><br><span class="line">    for i in range(2, int(math.sqrt(n) + 1)):</span><br><span class="line">        if n % i &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    primes &#x3D; [i for i in range(2,100) if is_prime(i)]    #从 2 开始，因为 1 显然不是质数</span><br><span class="line">    print (primes)</span><br></pre></td></tr></table></figure>
-<h3 id="一元二次方程求解"><a href="#一元二次方程求解" class="headerlink" title="一元二次方程求解"></a>一元二次方程求解</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">solving a quadratic equation</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from __future__ import division</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def quadratic_equation(a,b,c):</span><br><span class="line">    delta &#x3D; b*b - 4*a*c</span><br><span class="line">    if delta&lt;0:</span><br><span class="line">        return False</span><br><span class="line">    elif delta&#x3D;&#x3D;0:</span><br><span class="line">        return -(b&#x2F;(2*a))</span><br><span class="line">    else:</span><br><span class="line">        sqrt_delta &#x3D; math.sqrt(delta)</span><br><span class="line">        x1 &#x3D; (-b + sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        x2 &#x3D; (-b - sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        return x1, x2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    print (&quot;a quadratic equation: x^2 + 2x + 1 &#x3D; 0&quot;)</span><br><span class="line">    coefficients &#x3D; []</span><br><span class="line">    a &#x3D; input(&#39;Enter some numbers:&#39;).split( )</span><br><span class="line">    for i in a:</span><br><span class="line">        coefficients.append(int(i))</span><br><span class="line">    roots &#x3D; quadratic_equation(*coefficients)</span><br><span class="line">    if roots:</span><br><span class="line">        print (&quot;the result is:&quot;,roots)</span><br><span class="line">    else:</span><br><span class="line">        print (&quot;this equation has no solution.&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="一元二次方程求解"><a href="#一元二次方程求解" class="headerlink" title="一元二次方程求解"></a>一元二次方程求解</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">solving a quadratic equation</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from __future__ import division</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">def quadratic_equation(a,b,c):</span><br><span class="line">    delta &#x3D; b*b - 4*a*c</span><br><span class="line">    if delta&lt;0:</span><br><span class="line">        return False</span><br><span class="line">    elif delta&#x3D;&#x3D;0:</span><br><span class="line">        return -(b&#x2F;(2*a))</span><br><span class="line">    else:</span><br><span class="line">        sqrt_delta &#x3D; math.sqrt(delta)</span><br><span class="line">        x1 &#x3D; (-b + sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        x2 &#x3D; (-b - sqrt_delta)&#x2F;(2*a)</span><br><span class="line">        return x1, x2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    print (&quot;a quadratic equation: x^2 + 2x + 1 &#x3D; 0&quot;)</span><br><span class="line">    coefficients &#x3D; []</span><br><span class="line">    a &#x3D; input(&#39;Enter some numbers:&#39;).split( )</span><br><span class="line">    for i in a:</span><br><span class="line">        coefficients.append(int(i))</span><br><span class="line">    roots &#x3D; quadratic_equation(*coefficients)</span><br><span class="line">    if roots:</span><br><span class="line">        print (&quot;the result is:&quot;,roots)</span><br><span class="line">    else:</span><br><span class="line">        print (&quot;this equation has no solution.&quot;)</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Python基础</category>
       </categories>
@@ -3964,7 +3971,7 @@ GUI：图形界面
 <ul>
 <li><p>1、为什么要创建虚拟环境。</p>
 <ul>
-<li>主要用于在一台电脑上需要安装不同版本的 python 虚拟环境来做项目，这种情况下，每个应用可能需要各自拥有一套 “独立” 的 Python 运行环境，virtualenv 就是用来为一个项目创建一套可以隔离的 Python 运行环境。</li>
+<li>主要用于在一台电脑上需要安装不同版本的 python 虚拟环境来做项目，不同工程，都有自己独有的依赖包，怎么才能实现环境的分割呢？Python 提供的虚拟环境就可以解决这个问题这种情况下，每个应用可能需要各自拥有一套 “独立” 的 Python 运行环境，virtualenv 就是用来为一个项目创建一套可以隔离的 Python 运行环境。</li>
 <li>实体机的 python 环境中，在学习 python 时会安装许多第三方库，打包时会将所有包都打包进去，而某些包对于此程序不是必要的，导致包很大。</li>
 <li>由于创建的虚拟环境与本机实际使用的环境相隔离，在创建时可以指定 Python 版本及程序所需要的第三方库，也可以使用命令 pip install 来安装所需要的库，按需安装，这样在用 Pyinstaller 打包程序时会大大减少程序包的大小。</li>
 </ul>
@@ -3980,14 +3987,17 @@ GUI：图形界面
 <ul>
 <li><p>1、创建虚拟环境过程</p>
 <ul>
-<li><p>创建目录</p>
-<p>新建文件夹 myproject 中打开 cmd，创建一个不依赖系统 python 包的虚拟环境，名为 venv。</p>
+<li><p>1、创建目录<br>为一个工程创建一个虚拟环境：</p>
+<p>首先：准备对哪个目录进行虚拟，就先进入到这个目录下（这里是 c:\PythonProject\nnblog ），然后运行命令：</p>
+<p><code>virtualenv -p c:\Python36\python.exe venv</code></p>
+<p>说明： -p 就是 python 的版本（需要带上路径） venv 就是虚拟的环境变量（目录名字）。</p>
+<p>如果不需要指定 python 版本，直接使用命令：<code>virtualenv  venv</code></p>
 <p>linux 的话 mkdir XXX_project</p>
 </li>
 <li><p>2、创建虚拟环境</p>
-<p>windows:进入 myproject\venv\Scripts，打开 cmd，执行命令 activate，激活虚拟环境</p>
+<p>windows:进入 myproject\venv\Scripts，打开 cmd，执行命令 activate，激活虚拟环境。如果记不清相应命令，输入命令的前两个字母，然后按 Tab 键即可自动补全。</p>
 <p>linux : <code>virtualenv -p /usr/bin/python3.5 myenv</code> 意为创建虚拟环境时指定 python 版本。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    C:\Users\acer\myproject\venv\Scripts&gt;activate</span><br><span class="line">返回</span><br><span class="line">(venv) C:\Users\acer\myproject\venv\Scripts&gt;  <span class="comment">#表明进入了虚拟环境venv</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">C:\Users\acer\myproject\venv\Scripts&gt;activate</span><br><span class="line">返回</span><br><span class="line">(venv) C:\Users\acer\myproject\venv\Scripts&gt;  <span class="comment">#表明进入了虚拟环境venv</span></span><br></pre></td></tr></table></figure></li>
 <li><p>3、安装各种依赖第三方库</p>
 <p>  在虚拟环境中安装 numpy 包。继续在 cmd 中键入。省略号指 numpy 包。其他库方法相同。从现在起，任何你使用pip安装的包将会放在 venv 文件夹中，与全局安装的 Python 隔绝开。</p>
 <p><code>(venv) C:\Users\acer\myproject\venv\Scripts&gt;pip install ...</code></p>
@@ -4002,13 +4012,16 @@ GUI：图形界面
 </ul>
 <ul>
 <li><p>6、编译及包装</p>
-<p>在.py 所在目录打开 cmd（在.py 所在窗口，按住 shift，同时右键，选择 ‘ 在此窗口打开命令窗口 ‘），键入</p>
+<p>在.py 所在目录打开 cmd（在.py 所在窗口，按住 shift，同时右键，选择 ‘ 在此窗口打开命令窗口 ‘），键入：</p>
 <p><code>pyinstaller -F --icon=my.ico xxx.py</code> </p>
 <p>-F 参数，直接编译会将.py 里面需要调用的文件放在一个文件夹里，文件夹里同时还有.exe 用来开始执行，而 - F 参数指将所有这些文件整合为一个文件，最终只有一个.exe 文件，双击即可执行文件。</p>
-<p>由于我用 PySimpeGUI 制作图形化界面，所以在打包时这样添加参数 <code>pyinstaller -F - w--icon=my.ico xxx.py</code>  待程序打包完成后，到虚拟环境目录 `venv\Scripts\dist’里即可找到成功打包好的 .exe 文件</p>
+<p>由于我用 PySimpeGUI 制作图形化界面，所以在打包时这样添加参数 <code>pyinstaller -F -w --icon=&quot;my.ico&quot; &quot;xxx.py&quot;</code> （按 Shift 键同时右键即可复制文件路径）</p>
+<p>例如:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pyinstaller -F -w --icon=<span class="string">&quot;D:\made\Excel 拆分与合并\Excel.ico&quot;</span> <span class="string">&quot;D:\ made\Excel 拆分与合并\表格拆分与合并工具.py&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>待程序打包完成后，到虚拟环境目录 <code>venv\Scripts\dist</code>里即可找到成功打包好的 .exe 文件</p>
 </li>
 <li><p>7、Pyinstaller 常用的参数用法:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--distpath &lt;path&gt;: 打包到哪个目录下</span><br><span class="line"></span><br><span class="line">-w: 指定生成 GUI 软件，也就是运行时不打开控制台</span><br><span class="line"></span><br><span class="line">-c: 运行时打开控制台</span><br><span class="line"></span><br><span class="line">-i &lt;Icon File&gt;: 指定打包后可执行文件的图标</span><br><span class="line"></span><br><span class="line">--clean: 在构建之前清理 PyInstaller 缓存并删除临时文件</span><br><span class="line"></span><br><span class="line">pyinstaller -h 来查看参数</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">--distpath &lt;path&gt;: 打包到哪个目录下</span><br><span class="line"></span><br><span class="line">-w: 指定生成 GUI 软件，也就是运行时不打开控制台</span><br><span class="line"></span><br><span class="line">-c: 运行时打开控制台</span><br><span class="line"></span><br><span class="line">-i &lt;Icon File&gt;: 指定打包后可执行文件的图标</span><br><span class="line"></span><br><span class="line">--clean: 在构建之前清理 PyInstaller 缓存并删除临时文件</span><br><span class="line"></span><br><span class="line">pyinstaller -h 来查看参数</span><br></pre></td></tr></table></figure></li>
 <li><p>关于打包成什么样，有两种选择：</p>
 <p>-D: 创建包含可执行文件的单文件夹包，同时会有一大堆依赖的 dll 文件，这是默认选项</p>
 <p>-F: 只生成一个 .exe 文件，如果项目比较小的话可以用这个，但比较大的话就不推荐</p>
@@ -4017,7 +4030,7 @@ GUI：图形界面
 <li><p>退出环境</p>
 <p><code>deactivate</code></p>
 </li>
-<li><p>只在打包独立的程序运行时，都应在虚拟环境中进行打包编译 .py 文件。</p>
+<li><p>只在打包独立的程序运行时，都应在虚拟环境中进行打包编译 .py 文件。如果记不清相应命令，输入命令的前两个字母，然后按 Tab 键即可自动补全。</p>
 </li>
 <li><p>删除虚拟环境</p>
 <p>要删除一个虚拟环境，只需删除它的文件夹即可。</p>
@@ -9846,6 +9859,97 @@ dtype: object
       </categories>
       <tags>
         <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Python】 杨辉三角素数等函数式编程</title>
+    <url>/2022/02/09/Python%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E7%B4%A0%E6%95%B0%E7%AD%89%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 杨辉三角形，由用户输入三角形层数，直到输入 q 退出程序</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def print_pyramid(level: int):</span></span><br><span class="line"><span class="string">    for i in range(level):</span></span><br><span class="line"><span class="string">        new_line_str = &#x27;&#x27;</span></span><br><span class="line"><span class="string">        new_line_str += &#x27; &#x27; * (level - 1 - i)</span></span><br><span class="line"><span class="string">        new_line_str += &#x27;*&#x27; * ((i+1) * 2 - 1)</span></span><br><span class="line"><span class="string">        print(new_line_str)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># input_level = int()</span></span><br><span class="line"><span class="string"># print_pyramid(input_level)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">while True:</span></span><br><span class="line"><span class="string">    input_level = input(&#x27;Enter a number:(q is quite)&#x27;)</span></span><br><span class="line"><span class="string">    if input_level == &#x27;q&#x27;:</span></span><br><span class="line"><span class="string">        break</span></span><br><span class="line"><span class="string">    else:</span></span><br><span class="line"><span class="string">        input_level = int(input_level)</span></span><br><span class="line"><span class="string">        print_pyramid(input_level)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># def yang(i, j):</span></span><br><span class="line"><span class="comment">#     if j == 0 or j == i:</span></span><br><span class="line"><span class="comment">#         return 1</span></span><br><span class="line"><span class="comment">#     else:</span></span><br><span class="line"><span class="comment">#         return yang(i-1, j)+yang(i-1, j-1)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for i in range(0, 10):</span></span><br><span class="line"><span class="comment">#     print()</span></span><br><span class="line"><span class="comment">#     for n in range(0, 10-i):</span></span><br><span class="line"><span class="comment">#         print(&quot;&quot;, end=&quot;&quot;)  # 控制每一行前面的空格</span></span><br><span class="line"><span class="comment">#     for j in range(0, i):</span></span><br><span class="line"><span class="comment">#         print(yang(i, j), &quot;&quot;, end=&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 传统的杨辉三角形实现</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def pascal(row):</span></span><br><span class="line"><span class="string">    result_list = [0] * (row * 2 + 1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    for row_loc in range(row):</span></span><br><span class="line"><span class="string">        base_loc = row - row_loc - 1</span></span><br><span class="line"><span class="string">        if row_loc == 0:</span></span><br><span class="line"><span class="string">            result_list[base_loc] = 1</span></span><br><span class="line"><span class="string">        else:</span></span><br><span class="line"><span class="string">            result_list[base_loc] = result_list[base_loc + 1]</span></span><br><span class="line"><span class="string">            for line_loc in range(row_loc):</span></span><br><span class="line"><span class="string">                now_loc = base_loc + (line_loc + 1) * 2</span></span><br><span class="line"><span class="string">                result_list[now_loc] = result_list[now_loc - 1] + \</span></span><br><span class="line"><span class="string">                    result_list[now_loc + 1]</span></span><br><span class="line"><span class="string">                result_list[now_loc - 1] = 0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        print(str(result_list)</span></span><br><span class="line"><span class="string">              .replace(&quot;]&quot;, &quot;,&quot;).replace(&quot; 0,&quot;, &quot;  &quot;).replace(&quot;,&quot;, &quot;&quot;).replace(&quot;[0&quot;, &quot;  &quot;).replace(&quot;[&quot;, &quot; &quot;))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">pascal(5)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用python列表迭代的实现</span></span><br><span class="line"><span class="comment"># 第二种：基于 python 的列表迭代的思路</span></span><br><span class="line"><span class="comment"># 这个实现利用 python 的列表处理特性来实现，代码比传统思路要简洁很多，也还算好懂。缺点是仍然不够简洁。</span></span><br><span class="line"><span class="comment"># 代码如下（来自于毛豆子，原文链接：http: // www.cnblogs.com/maodouzi/archive/2011/07/12/2104153.html）：</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def printLine(lineList, row):</span></span><br><span class="line"><span class="string">    lineList = [str(tmpNum) for tmpNum in lineList]</span></span><br><span class="line"><span class="string">    print(&quot;%s%s&quot; % (&quot; &quot; * (row - len(lineList)), &quot; &quot;.join(lineList)))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">def pascal(row):</span></span><br><span class="line"><span class="string">    for i in range(row):</span></span><br><span class="line"><span class="string">        if i &lt; 2:</span></span><br><span class="line"><span class="string">            yhList = [1] * (i + 1)</span></span><br><span class="line"><span class="string">        else:</span></span><br><span class="line"><span class="string">            yhList[1:-1] = [(tmpNum + yhList[j])</span></span><br><span class="line"><span class="string">                            for j, tmpNum in enumerate(yhList[1:])]</span></span><br><span class="line"><span class="string">        printLine(yhList, row)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">pascal(10)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">1、这种易理解</span></span><br><span class="line"><span class="string">L1 = []</span></span><br><span class="line"><span class="string">count = 0</span></span><br><span class="line"><span class="string">for x in range(1, 100):</span></span><br><span class="line"><span class="string">    n = 0</span></span><br><span class="line"><span class="string">    for y in range(1, x + 1):</span></span><br><span class="line"><span class="string">        if x % y == 0:</span></span><br><span class="line"><span class="string">            n = n + 1</span></span><br><span class="line"><span class="string">    if n == 2:</span></span><br><span class="line"><span class="string">        count += 1</span></span><br><span class="line"><span class="string">        L1.append(x)</span></span><br><span class="line"><span class="string">print(L1)</span></span><br><span class="line"><span class="string">print(count)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 2、计算 2-100 之间素数的个数，返回结果。格式化字符串，标准</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># def primeNum(f):</span></span><br><span class="line"><span class="comment">#     def f1():</span></span><br><span class="line"><span class="comment">#         sum_pri = 0</span></span><br><span class="line"><span class="comment">#         for i in range(2, 101):</span></span><br><span class="line"><span class="comment">#             for j in range(2, i):</span></span><br><span class="line"><span class="comment">#                 if i % j == 0:</span></span><br><span class="line"><span class="comment">#                     break</span></span><br><span class="line"><span class="comment">#                 elif j == i - 1:</span></span><br><span class="line"><span class="comment">#                     sum_pri += 1</span></span><br><span class="line"><span class="comment">#         return f(sum_pri+1)</span></span><br><span class="line"><span class="comment">#     return f1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># @primeNum</span></span><br><span class="line"><span class="comment"># def f(p):</span></span><br><span class="line"><span class="comment">#     print(&quot;2-100之间共有&#123;&#125;个素数&quot;.format(p))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># f()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l = []</span><br><span class="line">number = <span class="built_in">input</span>(<span class="string">&#x27;请输入数字以空格 隔开&gt;&gt;&gt;:&#x27;</span>).split()</span><br><span class="line">number = [<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> number]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> number:</span><br><span class="line">    i = i**<span class="number">2</span></span><br><span class="line">    l.append(i)</span><br><span class="line">print(l)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python基础</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【pandas】读取 excel 的行列内容，超详细</title>
+    <url>/2022/02/08/%E3%80%90pandas%E3%80%91%E8%AF%BB%E5%8F%96%20excel%20%E7%9A%84%E8%A1%8C%E5%88%97%E5%86%85%E5%AE%B9%EF%BC%8C%E8%B6%85%E8%AF%A6%E7%BB%86/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>  pandas  <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment">#1：读取指定行</span></span><br><span class="line">print(<span class="string">&quot;----读取指定的单行，数据会存在列表里面----&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)<span class="comment">#这个会直接默认读取到这个Excel的第一个表单</span></span><br><span class="line">data=df.loc[<span class="number">0</span>].values<span class="comment">#0表示第一行 这里读取数据并不包含表头，要注意哦！</span></span><br><span class="line">print(<span class="string">&quot;读取指定行的数据：\n&#123;0&#125;&quot;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n------读取指定的多行，数据会存在嵌套的列表里面----------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">data=df.loc[[<span class="number">1</span>,<span class="number">2</span>]].values<span class="comment">#读取指定多行的话，就要在loc[]里面嵌套列表指定行数</span></span><br><span class="line">print(<span class="string">&quot;读取指定行的数据：\n&#123;0&#125;&quot;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n----------------读取指定的行列-----------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">data=df.iloc[<span class="number">1</span>,<span class="number">2</span>]<span class="comment">#读取第一行第二列的值，这里不需要嵌套列表</span></span><br><span class="line">print(<span class="string">&quot;读取指定行的数据：\n&#123;0&#125;&quot;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n----------------读取指定的多行多列值-----------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">data=df.loc[[<span class="number">1</span>,<span class="number">2</span>],[<span class="string">&#x27;title&#x27;</span>,<span class="string">&#x27;data&#x27;</span>]].values<span class="comment">#读取第一行第二行的title以及data列的值，这里需要嵌套列表</span></span><br><span class="line">print(<span class="string">&quot;读取指定行的数据：\n&#123;0&#125;&quot;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n-----------获取所有行的指定列----------------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">data=df.loc[:,[<span class="string">&#x27;title&#x27;</span>,<span class="string">&#x27;data&#x27;</span>]].values<span class="comment">#读所有行的title以及data列的值，这里需要嵌套列表</span></span><br><span class="line">print(<span class="string">&quot;读取指定行的数据：\n&#123;0&#125;&quot;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n------------获取行号并打印输出---------------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;输出行号列表&quot;</span>,df.index.values)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n-------------获取列名并打印输出--------------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;输出列标题&quot;</span>,df.columns.values)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;\n------------获取指定行数的值---------------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;输出值&quot;</span>,df.sample(<span class="number">3</span>).values)<span class="comment">#这个方法类似于head()方法以及df.values方法</span></span><br><span class="line">print(<span class="string">&quot;\n-----------获取指定列的值----------------------------&quot;</span>)</span><br><span class="line">df=pd.read_excel(<span class="string">&#x27;测试.xlsx&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;输出值\n&quot;</span>,df[<span class="string">&#x27;data&#x27;</span>].values)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="强大的-apply-函数"><a href="#强大的-apply-函数" class="headerlink" title="强大的 apply 函数"></a>强大的 apply 函数</h3><br>
+
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220207171717.png" alt="20220207171717"></p>
+</div>]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UbuntuDocker相关配置信息</title>
+    <url>/2023/02/20/UbuntuDocker%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<p>同一个镜像文件可以创造出多个不同的容器，但要修改创造容器时的配置文件 如，name ，本地文件目录，端口号（2个或有个就要改几个），否则创造的容器都会是同一个配置文件，不好进行不同的容器不一样的配置。如下示例：</p>
+<p>heimdall 网址导航</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">内网配置：</span><br><span class="line"></span><br><span class="line">sudo docker run -itd \</span><br><span class="line">  --name&#x3D;heimdall \</span><br><span class="line">  -e PUID&#x3D;1000 \</span><br><span class="line">  -e PGID&#x3D;1000 \</span><br><span class="line">  -e TZ&#x3D;Europe&#x2F;London \</span><br><span class="line">  -p 808:80 \</span><br><span class="line">  -p 4433:443 \</span><br><span class="line">  -v &#x2F;path&#x2F;to&#x2F;appdata0&#x2F;config:&#x2F;config \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  lscr.io&#x2F;linuxserver&#x2F;heimdall:latest</span><br><span class="line"></span><br><span class="line">外网配置：</span><br><span class="line">sudo docker run -itd \</span><br><span class="line">  --name&#x3D;heimdall_net \</span><br><span class="line">  -e PUID&#x3D;1000 \</span><br><span class="line">  -e PGID&#x3D;1000 \</span><br><span class="line">  -e TZ&#x3D;Europe&#x2F;London \</span><br><span class="line">  -p 7089:80 \</span><br><span class="line">  -p 443:443 \</span><br><span class="line">  -v &#x2F;path&#x2F;to&#x2F;appdata&#x2F;config:&#x2F;config \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  lscr.io&#x2F;linuxserver&#x2F;heimdall:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/zeryter/p/11331811.html">https://www.cnblogs.com/zeryter/p/11331811.html</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo docker run -itd  -p 10000:8888 --name jupyter -e JUPYTER_ENABLE_LAB&#x3D;yes -v ~&#x2F;program&#x2F;jupyter:&#x2F;home&#x2F;jovyan&#x2F;work jupyter&#x2F;datascience-notebook:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>首次启动获取token：</p>
+<p>docker logs jupyter[指container 名]</p>
+<p>找到日志中类似<a href="http://127.0.0.1:8888/lab?token=3e94d48593f4f09985cc5e595e961d01da9314ca126ae9ca">http://127.0.0.1:8888/lab?token=3e94d48593f4f09985cc5e595e961d01da9314ca126ae9ca</a> 字段，其中token=后面的部分为jupyterlab登录token，你也可以复制整段，输入到浏览器地址栏来直接登录。</p>
+<p>token=05f8c0b83eba1dfb683cdfb932b5460fabc5bd15f876ee39</p>
+<p>Ubuntu: pip源更换为国内源</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.pip</span><br><span class="line"></span><br><span class="line">如果不存在.pip则创建目录</span><br><span class="line">mkdir ~&#x2F;.pip</span><br><span class="line">cd ~&#x2F;.pip</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">touch pip.conf</span><br><span class="line">sudo vi ~&#x2F;.pip&#x2F;pip.conf</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>在pip.conf中写入如下内容：即可 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple&#x2F; </span><br><span class="line">[install]</span><br><span class="line">trusted-host &#x3D; pypi.tuna.tsinghua.edu.cn</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在code-server中安装 python3及 python3-pip:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get update:更新安装列表</span><br><span class="line"></span><br><span class="line">apt-get upgrade:升级软件</span><br><span class="line"></span><br><span class="line">apt-get install software_name :安装软件</span><br><span class="line"></span><br><span class="line">sudo apt-get install python3-pip</span><br></pre></td></tr></table></figure>
+<h1 id="安装了Portainer，如何开机自动运行？"><a href="#安装了Portainer，如何开机自动运行？" class="headerlink" title="安装了Portainer，如何开机自动运行？"></a>安装了Portainer，如何开机自动运行？</h1><h3 id="先找到-ID："><a href="#先找到-ID：" class="headerlink" title="先找到 ID："></a>先找到 ID：</h3><p>sudo docker container ls</p>
+<h3 id="根据-ID-设置重启"><a href="#根据-ID-设置重启" class="headerlink" title="根据 ID 设置重启"></a>根据 ID 设置重启</h3><p>docker update –restart=always id    # id为你找到的 container id</p>
+<h1 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h1><p>docker search portainer/portainer</p>
+<h1 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h1><p>docker pull portainer/portainer</p>
+<h1 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 9000:9000 -v &#x2F;root&#x2F;portainer:&#x2F;data -v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock --name dev-portainer portainer&#x2F;portainer</span><br><span class="line">(我是用这行命令运行成功的)</span><br></pre></td></tr></table></figure>
+<p>1、直通独显GPU<br>nano /etc/pve/qemu-server/109.conf</p>
+<p>args: -device vfio-pci,host=00:02.0,addr=0x18,<br>x-igd-opregion=on</p>
+<p>vga: std</p>
+<p>2、切换root权限</p>
+<p>sudo -i</p>
+<p>3、查看核显信息</p>
+<p>ls /dev/dri </p>
+<p>4、建立jellyfin</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d --name jellyfin \</span><br><span class="line">-v &#x2F;volume1&#x2F;docker&#x2F;jellyfin&#x2F;config:&#x2F;config \</span><br><span class="line">-v &#x2F;volume1&#x2F;docker&#x2F;jellyfin&#x2F;cache:&#x2F;cache \</span><br><span class="line">-v &#x2F;volume1&#x2F;movie:&#x2F;video \</span><br><span class="line">-p 8096:8096 \</span><br><span class="line">-p 8920:8920 \</span><br><span class="line">--device&#x3D;&#x2F;dev&#x2F;dri&#x2F;renderD128 \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">jellyfin&#x2F;jellyfin</span><br></pre></td></tr></table></figure>
+<p>您可以使用以下 du 命令查看此缓存的大小：</p>
+<p>sudo du -sh /var/cache/apt</p>
+<p>如您所见，我有超过 500 Mb 的缓存存储。当您几乎没有空间时，这 500 Mb 可以带来很大的不同。</p>
+<p>sudo du -sh /var/cache/apt</p>
+<p>输出：581M /var/cache/apt</p>
+<p>现在，您有两种方法来处理缓存。</p>
+<p>要么只删除过时的软件包，例如最近更新所取代的软件包，就完全不需要它们。</p>
+<p>sudo apt-get autoclean</p>
+<p>或者完全清除缓存（释放更多磁盘空间）：</p>
+<p>sudo apt-get clean</p>
+<p>清除系统日志日志 [中级知识]</p>
+<p>每个 Linux 发行版都有一个日志记录机制，可以帮助您调查系统中正在发生的事情。在 Ubuntu 中，您将拥有内核日志记录数据，系统日志消息，标准输出以及各种服务的错误。<br>问题在于，随着时间的流逝，这些日志会占用大量的磁盘空间。您可以使用以下命令检查日志大小：</p>
+<p>journalctl –disk-usage</p>
+<p>现在，有一些方法可以清理系统日志日志。对您来说最简单的方法是清除早于特定日期的日志。</p>
+<p>sudo journalctl –vacuum-time=3d</p>
+<p>这是一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abhishek@linux265:~$ journalctl --disk-usage</span><br><span class="line">Archived and active journals take up 1.8G in the file system.</span><br><span class="line">abhishek@linux265:~$ sudo journalctl --vacuum-time&#x3D;3d</span><br><span class="line">Vacuuming done, freed 1.7G of archived journals from &#x2F;var&#x2F;log&#x2F;journal&#x2F;1b9ab93094fa2984beba73fd3c48a39c</span><br></pre></td></tr></table></figure>
+<p>删除旧版的 Snap 应用程序 [中级知识]<br>您可能已经知道 Snap 软件包的大小更大。最重要的是，Snap 至少存储了该应用程序的两个旧版本（以防您想返回到旧版本）。这会占用大量的空间。就我而言，它超过了 5 GB。</p>
+<p>du -h /var/lib/snapd/snaps</p>
+<p>4.0K /var/lib/snapd/snaps/partial</p>
+<p>5.6G /var/lib/snapd/snaps</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
 </search>
