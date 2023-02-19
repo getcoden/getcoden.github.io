@@ -262,6 +262,81 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Pandas%E4%B9%8B%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8-%E8%BE%93%E5%85%A5%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/06/Pandas%E4%B9%8B%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8-%E8%BE%93%E5%85%A5%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">Pandas之拆分工作表_输入到文件夹</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-05 19:56:19 / 修改时间：12:29:05" itemprop="dateCreated datePublished" datetime="2021-03-05T19:56:19Z">2021-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="拆分总表为单个-excel-文件至一个文件夹内"><a href="#拆分总表为单个-excel-文件至一个文件夹内" class="headerlink" title="拆分总表为单个 excel 文件至一个文件夹内"></a>拆分总表为单个 excel 文件至一个文件夹内</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line">data &#x3D; pd.read_excel(&#39;.&#x2F;五年级账号和密码.xls&#39;)		#读取数据</span><br><span class="line">data_list &#x3D; list(data[&#39;班级&#39;].drop_duplicates())        #去重处理</span><br><span class="line">longth &#x3D; len(data_list)		#计算共有多少数量</span><br><span class="line">path &#x3D; &#39;.&#x2F;SplitExcel&#39;</span><br><span class="line">if not os.path.exists(path):					#当前文件夹下是否有此文件夹</span><br><span class="line">    os.mkdir(path)					#创建此文件夹</span><br><span class="line">count &#x3D; 0</span><br><span class="line">for item in data_list:</span><br><span class="line">    data_select &#x3D; data[data[&#39;班级&#39;]&#x3D;&#x3D;item]		       #选出item对应的行</span><br><span class="line">    Bigzone &#x3D; data_select.iat[0,0]				#需要参与文件命名的值</span><br><span class="line">    Smallzone &#x3D; data_select.iat[0,1]</span><br><span class="line">    service_code &#x3D; data_select.iat[0,2]</span><br><span class="line">    data_select.to_excel(&#39;.&#x2F;SplitExcel&#x2F;&#123;0:&#125;-&#123;1:&#125;.xlsx&#39;.format(Bigzone,Smallzone),index&#x3D;False)	#按照对应的值生成EXCEL文件</span><br><span class="line">    count +&#x3D; 1</span><br><span class="line">    print(&#39;\rEXCEL表中共有 &#123;&#125; 个班级，正在拆分第 &#123;&#125; 个的数据，拆分进度：&#123;:.2%&#125;&#39;.format(longth, count, count &#x2F; longth),end&#x3D;&quot;&quot;)</span><br><span class="line">print(&#39;\n&#123;&#125;个名称已经全部拆分完毕，请前往SplitExcel文件夹下查看拆分后的各文件数据.&#39;.format(longth))</span><br></pre></td></tr></table></figure>
+<h3 id="拆分总表至一个新工作薄内的每个工作表"><a href="#拆分总表至一个新工作薄内的每个工作表" class="headerlink" title="拆分总表至一个新工作薄内的每个工作表"></a>拆分总表至一个新工作薄内的每个工作表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd			#调用pandas包</span><br><span class="line">import xlsxwriter  			#调用xlswriter包，用来生成表</span><br><span class="line"></span><br><span class="line">data&#x3D;pd.read_excel(&#39;.&#x2F;五年级账号和密码.xls&#39;) 	#读取存储路径在桌面的工作簿chaifengzb,编码格式为gbk</span><br><span class="line">area_list&#x3D;list(set(data[&quot;班级&quot;])) 	#按分公司字段分成列表</span><br><span class="line"></span><br><span class="line">writer&#x3D;pd.ExcelWriter(&#39;.&#x2F;chaifengzb1.xls&#39;) 	    #生成一个新 工作簿</span><br><span class="line"></span><br><span class="line">data.to_excel(writer,sheet_name&#x3D;&quot;班级&quot;,index&#x3D;False)      #将总表存到新工作簿中</span><br><span class="line"></span><br><span class="line">for j in area_list:</span><br><span class="line">    df&#x3D;data[data[&quot;班级&quot;]&#x3D;&#x3D;j]</span><br><span class="line">    df.to_excel(writer,sheet_name&#x3D;&#39;五&#39;+j,index&#x3D;False)   #按分成的列表中的分公司字段进行命名</span><br><span class="line">writer.save()  				                            #文件保存</span><br></pre></td></tr></table></figure>
+<h3 id="一种简洁高效的办法"><a href="#一种简洁高效的办法" class="headerlink" title="一种简洁高效的办法"></a>一种简洁高效的办法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df &#x3D;pd.read_excel(&#39;F:\\fxwnj五年级(2).xls&#39;,dtype&#x3D;str)</span><br><span class="line">class_list &#x3D; list(df[&#39;班级&#39;].drop_duplicates())</span><br><span class="line">for i in class_list:</span><br><span class="line">    banji &#x3D; df[df[&#39;班级&#39;]&#x3D;&#x3D;i]</span><br><span class="line">    banji.to_excel(&#39;%s.xlsx&#39;%(i),index &#x3D; False)</span><br><span class="line"></span><br><span class="line">print(&#39;拆分表格已完成，请到工作目录下查看！&#39;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/03/06/Pandas%E8%AF%BB%E5%8F%96Excel%E6%96%87%E4%BB%B6%E6%97%B6%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1040,107 +1115,6 @@
 
 <h3 id="根据导出的-pip-安装包表安装-pip-包"><a href="#根据导出的-pip-安装包表安装-pip-包" class="headerlink" title="根据导出的 pip 安装包表安装 pip 包"></a>根据导出的 pip 安装包表安装 pip 包</h3><p><code>pip install -r requirements.txt</code></p>
 <p>在进行恢复前，先修改 pip 安装源为国内源，之后进行安装时速度会快很多，键入命令后等待一会即可完成安装。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/16/Pandas%E5%9C%A8github%E4%B8%8A%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/16/Pandas%E5%9C%A8github%E4%B8%8A%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%9B%86/" class="post-title-link" itemprop="url">Pandas在github上获取原始数据集</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-02-16 12:16:58 / 修改时间：04:33:01" itemprop="dateCreated datePublished" datetime="2021-02-16T12:16:58Z">2021-02-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>GitHub repository 的文件地址后面直接加？raw=true</code></p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>1、文本类文件，小文件 (txt,xml,gif) 可以直接展示；</p>
-<p>2、压缩文件会提示下载，这就可以通过 github 升级程序。</p>
-<p>Sample：</p>
-<p>在github的文件地址后面直接加上(？raw=true)</p>
-<p>zip 提示 save</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/raw.zip?raw=true">https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/raw.zip?raw=true</a></p>
-<p>txt</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/rawTxt.txt?raw=true">https://github.com/Song2017/PersonalLab/blob/master/0_testRaw/rawTxt.txt?raw=true</a></p>
-<p>Pandas读取github上的数据集:</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210216122500.png" alt="20210216122500"></p>
-</div>
-
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在数据分析的过程里，你已经体会到 Python 生态系统的强大了吧？</p>
-<p>数据采集、整理、可视化、统计分析…… 一直到深度学习，都有相应的 Python 包支持。</p>
-<p>但是你会发现，没有任何一个 Python 软件包，是全能的。</p>
-<p>这是一种非常好的设计思维 —— 用优秀的工具，做专业的事儿；用许多优秀工具组成的系统，来有条不紊地处理复杂问题。</p>
-<p>所以，在这个过程中，你大概率会经常遇到数据的交换问题。</p>
-<p>有时候，是把分析结果存起来，下次读取回来继续使用。</p>
-<p>更重要的时候，是把一个工具的分析结果导出，导入到另一个工具包中。</p>
-<p>这些数据存取的功能，几乎分布在每一个 Python 数据科学软件包之内。</p>
-<p>但是，其中有一个最重要的枢纽，那就是 Pandas 。</p>
-<p>不止一次跟你提起过，学好 Pandas 的重要性。</p>
-<p>很多情况下，看似复杂的数据整理与可视化，Pandas 只需要一行语句就能搞定。</p>
-<p>回顾我们的教程里，也曾使用过各种不同的格式读取数据到 Pandas 进行处理。</p>
-<p>然而，当你需要自己独立面对软件包的格式要求时，也许仅仅是因为不了解如何正确生成或读取某种格式，结果导致出错，甚至会使你丧失探索的信心与兴趣。</p>
 
       
     </div>
