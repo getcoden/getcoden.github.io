@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,266 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/05/Pandas%E6%8E%92%E5%BA%8F%E7%AE%80%E5%8D%95%E6%8E%92%E5%A4%8D%E6%9D%82%E6%8E%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/05/Pandas%E6%8E%92%E5%BA%8F%E7%AE%80%E5%8D%95%E6%8E%92%E5%A4%8D%E6%9D%82%E6%8E%92/" class="post-title-link" itemprop="url">Pandas排序简单排复杂排</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-02-05 12:30:18 / 修改时间：04:40:05" itemprop="dateCreated datePublished" datetime="2021-02-05T12:30:18Z">2021-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">lists &#x3D; pd.read_excel(&quot;..&#x2F;007&#x2F;List.xlsx&quot;)</span><br><span class="line"></span><br><span class="line"># 按指定的一列排序</span><br><span class="line">lists.sort_values(by&#x3D;&quot;Price&quot;,inplace&#x3D;True,ascending&#x3D;False)</span><br><span class="line"></span><br><span class="line"># 指定多列排序(注意：对Worthy列升序，再对Price列降序)，ascending不指定的话，默认是True升序</span><br><span class="line">lists.sort_values(by&#x3D;[&quot;Worthy&quot;,&quot;Price&quot;],inplace&#x3D;True,ascending&#x3D;[True,False])</span><br><span class="line"></span><br><span class="line">print(lists)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123136.png" alt="20210205123136"></p>
+</div>
+
+<h3 id="Pandas-函数填充、计算列"><a href="#Pandas-函数填充、计算列" class="headerlink" title="Pandas_函数填充、计算列"></a>Pandas_函数填充、计算列</h3><h4 id="函数填充、计算列"><a href="#函数填充、计算列" class="headerlink" title="函数填充、计算列"></a>函数填充、计算列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">books &#x3D; pd.read_excel(&quot;..&#x2F;006&#x2F;Books.xlsx&quot;,index_col&#x3D;&quot;ID&quot;)</span><br><span class="line">print(books.dtypes)</span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123512.png" alt="20210205123512"></p>
+</div>
+
+<h4 id="一、将-“ListPrice”-列-和-“Discount”-列-相乘的值赋给-Price"><a href="#一、将-“ListPrice”-列-和-“Discount”-列-相乘的值赋给-Price" class="headerlink" title="一、将 “ListPrice” 列 和 “Discount” 列 相乘的值赋给 Price"></a>一、将 “ListPrice” 列 和 “Discount” 列 相乘的值赋给 Price</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 方法1：按列来运算</span><br><span class="line">books[&quot;Price&quot;] &#x3D; books[&quot;ListPrice&quot;]*books[&quot;Discount&quot;]</span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;]*8   </span><br><span class="line"></span><br><span class="line"># 方法2：按单元格来运算（类似excel里的操作）</span><br><span class="line">print(books.index)</span><br><span class="line">for i in books.index:</span><br><span class="line">    books[&quot;Price&quot;].at[i]&#x3D;books[&quot;ListPrice&quot;].at[i]*books[&quot;Discount&quot;].at[i] #一旦其中一个是指定到单元格的，其他列也要指定到单元格</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 一般我们需要对某几行操作运算时才会用方法2,比如，我们只对第5行到第15行之间的价格运算</span><br><span class="line">for i in range(5,15):</span><br><span class="line">    books[&quot;Price&quot;].at[i]&#x3D;books[&quot;ListPrice&quot;].at[i]*books[&quot;Discount&quot;].at[i]</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123821.png" alt="20210205123821"></p>
+</div>
+
+<h4 id="二、将-“ListPrice”-列-2-元-后-赋给-Price"><a href="#二、将-“ListPrice”-列-2-元-后-赋给-Price" class="headerlink" title="二、将 “ListPrice” 列 +2 元 后 赋给 Price"></a>二、将 “ListPrice” 列 +2 元 后 赋给 Price</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 方法1：直接加</span><br><span class="line">books[&quot;Price&quot;] &#x3D; books[&quot;ListPrice&quot;]+2</span><br><span class="line"></span><br><span class="line"># 方法2：用函数</span><br><span class="line">def add_2(x):</span><br><span class="line">    return x+2</span><br><span class="line"></span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;].apply(add_2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 方法3：用lambda</span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;].apply(lambda x:x+2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123940.png" alt="20210205123940"></p>
+</div>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/04/Pandas%E7%AD%9B%E9%80%89%E7%9A%84%E5%85%B7%E4%BD%93%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/04/Pandas%E7%AD%9B%E9%80%89%E7%9A%84%E5%85%B7%E4%BD%93%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">Pandas筛选的具体应用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-04 07:53:09" itemprop="dateCreated datePublished" datetime="2021-02-04T07:53:09Z">2021-02-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-05 04:28:53" itemprop="dateModified" datetime="2021-02-05T04:28:53Z">2021-02-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>stu.xlsx表里的数据如下：</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205120704.png" alt="20210205120704"></p>
+</div >
+
+<p>筛选出语文成绩在90以上,且数学成绩在80-120分之间的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stu1&#x3D;st.loc[st.语文.apply(lambda x:x&gt;&#x3D;90)].loc[st.数学.apply(lambda y:80&lt;&#x3D;y&lt;&#x3D;120)]</span><br><span class="line">stu1</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205120917.png" alt="20210205120917"></p>
+</div>
+
+<p>筛选出语文成绩在90以上,且数学成绩在80-120分之间的，英语成绩在60分以上的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stu2&#x3D;st.loc[st.语文.apply(lambda x:x&gt;&#x3D;90)].loc[st.数学.apply(lambda y:80&lt;&#x3D;y&lt;&#x3D;120)].loc[st.英语.apply(lambda z:z&gt;60)]</span><br><span class="line">stu2</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205121131.png" alt="20210205121131"></p>
+</div>
+
+<p>另一种方式是用函数来筛选，如筛选出英语成绩在90分以上的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def score_60(c):</span><br><span class="line">    return c&gt;90</span><br><span class="line">stu3&#x3D;st.loc[st.英语.apply(score_60)]</span><br><span class="line">stu3</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205121323.png" alt="20210205121323"></p>
+</div>
+
+<h3 id="Pandas-两表联合（类似-excel-的-vlookup-操作）"><a href="#Pandas-两表联合（类似-excel-的-vlookup-操作）" class="headerlink" title="Pandas_两表联合（类似 excel 的 vlookup 操作）"></a>Pandas_两表联合（类似 excel 的 vlookup 操作）</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wodexk/p/10803979.html">转自</a></p>
+<p>student 表：</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205121731.png" alt="20210205121731"></p>
+</div>
+
+<p>score 表：</p>
+<div align = center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205121826.png" alt="20210205121826"></p>
+</div>
+
+<h4 id="要求从-students-表里查出每个学生对应的成绩"><a href="#要求从-students-表里查出每个学生对应的成绩" class="headerlink" title="要求从 students 表里查出每个学生对应的成绩"></a>要求从 students 表里查出每个学生对应的成绩</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">students &#x3D; pd.read_excel(&quot;..&#x2F;016&#x2F;Student_Score.xlsx&quot;,sheet_name&#x3D;&quot;Students&quot;)</span><br><span class="line">scores &#x3D; pd.read_excel(&quot;..&#x2F;016&#x2F;Student_Score.xlsx&quot;,sheet_name&#x3D;&quot;Scores&quot;)</span><br><span class="line">print(students.dtypes)</span><br><span class="line">print(scores.dtypes)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 思路：将学生表和成绩表联合起来，即可查到每个学生对应的成绩，关联的列时ID列</span><br><span class="line"># tables &#x3D; students.merge(scores)    # 如果不设置连接的方式，则默认时内连接</span><br><span class="line"></span><br><span class="line"># 要求把学生表的所有学生都显示出来，包括那些没有成绩的学生:用左连接 how&#x3D;&quot;left&quot;</span><br><span class="line">tables &#x3D; students.merge(scores,how&#x3D;&quot;left&quot;,on&#x3D;&quot;ID&quot;)</span><br><span class="line"></span><br><span class="line"># 把没有匹配到的NaN 改为 0</span><br><span class="line"># tables &#x3D; students.merge(scores,how&#x3D;&quot;left&quot;,on&#x3D;&quot;ID&quot;).fillna(&quot;--&quot;)</span><br><span class="line">tables &#x3D; students.merge(scores,how&#x3D;&quot;left&quot;,on&#x3D;&quot;ID&quot;).fillna(0)</span><br><span class="line"></span><br><span class="line"># 将成绩列的浮点类型改为整数型</span><br><span class="line">tables &#x3D; students.merge(scores,how&#x3D;&quot;left&quot;,on&#x3D;&quot;ID&quot;).fillna(0)</span><br><span class="line">tables.Score &#x3D; tables.Score.astype(int)</span><br><span class="line"></span><br><span class="line">print(tables)</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205122009.png" alt="20210205122009"></p>
+</div>
+
+<h3 id="Pandas-对某列的内容分列"><a href="#Pandas-对某列的内容分列" class="headerlink" title="Pandas_对某列的内容分列"></a>Pandas_对某列的内容分列</h3><p>Employees 表：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205122142.png" alt="20210205122142"></p>
+</div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">employees &#x3D; pd.read_excel(&quot;..&#x2F;018&#x2F;Employees.xlsx&quot;,index_col&#x3D;&quot;ID&quot;)</span><br><span class="line">employees .head()</span><br></pre></td></tr></table></figure>
+<h4 id="对-Full-Name-进行切割分列："><a href="#对-Full-Name-进行切割分列：" class="headerlink" title="对 Full Name 进行切割分列："></a>对 Full Name 进行切割分列：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># df &#x3D; employees[&quot;Full Name&quot;].str.split()  # str.split()不写参数，会把分隔的内容放在一个列表里</span><br><span class="line"># df</span><br><span class="line"></span><br><span class="line">df &#x3D; employees[&quot;Full Name&quot;].str.split(expand&#x3D;True)  # expand&#x3D;True  可以把用分割的内容直接分列</span><br><span class="line">employees[&quot;FirstName&quot;]&#x3D;df[0]</span><br><span class="line">employees[&quot;LastName&quot;]&#x3D;df[1]</span><br><span class="line">print(employees)</span><br></pre></td></tr></table></figure>
+<p>部分结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205122250.png" alt="20210205122250"></p>
+</div>
+
+<h4 id="把分隔后的-FistName-都变成大写"><a href="#把分隔后的-FistName-都变成大写" class="headerlink" title="把分隔后的 FistName 都变成大写"></a>把分隔后的 FistName 都变成大写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">employees[&quot;FirstName&quot;]&#x3D;employees[&quot;FirstName&quot;].str.upper()</span><br><span class="line">print(employees)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205122330.png" alt="20210205122330"></p>
+</div>
+
+<h4 id="把分隔的-LastName-都变成小写"><a href="#把分隔的-LastName-都变成小写" class="headerlink" title="把分隔的 LastName 都变成小写"></a>把分隔的 LastName 都变成小写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">employees[&quot;LastName&quot;]&#x3D;employees[&quot;LastName&quot;].str.lower()</span><br><span class="line">print(employees)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205122404.png" alt="20210205122404"></p>
+</div>
+
+<h4 id="Series-str-spilt："><a href="#Series-str-spilt：" class="headerlink" title="Series.str.spilt："></a>Series.str.spilt：</h4><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205122456.png" alt="20210205122456"></p>
+</div>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1091,214 +1351,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/01/00-Pandas%20groupby%20%E4%BF%9D%E5%AD%98%E5%88%B0%20dataFrame/" class="post-title-link" itemprop="url">Pandas groupby 保存到 dataFrame</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-01 10:46:21" itemprop="dateCreated datePublished" datetime="2021-02-01T10:46:21Z">2021-02-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-06 00:58:05" itemprop="dateModified" datetime="2021-02-06T00:58:05Z">2021-02-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="直接使用-reset-index-方法删除原来索引"><a href="#直接使用-reset-index-方法删除原来索引" class="headerlink" title="直接使用 reset_index 方法删除原来索引"></a>直接使用 reset_index 方法删除原来索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,1,3,2],&#39;b&#39;:[1,4,6,9],&#39;c&#39;:[1,4,8,12]&#125;)</span><br><span class="line">g_df &#x3D;test_df[&#39;c&#39;].groupby([test_df[&#39;a&#39;], test_df[&#39;b&#39;]]).sum()</span><br><span class="line">c_df &#x3D; pd.DataFrame(g_df)</span><br><span class="line">c_df.reset_index(inplace&#x3D;True)</span><br></pre></td></tr></table></figure>
-<p>输入出结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201105347.png" alt="20210201105347"></p>
-<p>分组后的原生结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110100.png" alt="20210201110100"></p>
-<p>分组后转换为DataFrame的结果：<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110222.png" alt="20210201110222"></p>
-<p>使用 reset_index 方法删除原来索引后的结果:<br><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210201110629.png" alt="20210201110629"></p>
-<h3 id="将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式"><a href="#将由-DataFrame-组成的字典存储至-Excel-的不同-Sheet-中（不覆盖）—-以及将数据读取回原形式" class="headerlink" title="将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式"></a>将由 DataFrame 组成的字典存储至 Excel 的不同 Sheet 中（不覆盖）— 以及将数据读取回原形式</h3><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>&emsp;&emsp;当在 Excel 中存储多个 Sheet 时，不可以直接遍历字典，循环 df.to_excel ()，这样做的话前一个 Sheet 会不断被后一个 Sheet 覆盖，最后只存下来最后一个 Sheet。</p>
-<p>想要不被覆盖可以通过 pd.ExcelWriter () 进行如下操作，其中 dic 为存储 DataFrame 的字典，dic_key 对应每个 Sheet 名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with pd.ExcelWriter(&quot;excel_name.xlsx&quot;) as writer:</span><br><span class="line">    for dic_key in dic.keys():</span><br><span class="line">        print(&#39;Saving data of &#39; + str(detector))</span><br><span class="line">        dic[dic_key].to_excel(writer, sheet_name &#x3D; str(detector))</span><br><span class="line">        print(&#39;Done!&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>&emsp;&emsp;上一问题的对偶过程是将 Excel 各 Sheet 的数据读取成一个字典包含多个 DataFrame 的形式。可以先建立空字典（dic），读取 Excel 的 Sheet 名字（sheet_name）作为字典的键，再循环读取每个 Sheet 的数据。过程如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line"># 读取excel的Sheet名</span><br><span class="line">sheet_names &#x3D; pd.ExcelFile(&#39;excel_name.xlsx&#39;).sheet_names</span><br><span class="line">for sheet_name in sheet_names:</span><br><span class="line">    print(&#39;Loading data of Sheet &#39; + sheet_name + &#39;...&#39;)</span><br><span class="line">    dds[sheet_name] &#x3D; pd.read_excel(&#39;excel_name.xlsx&#39;, sheet_name&#x3D;sheet_name, index_col&#x3D;0)</span><br><span class="line">    print(&#39;Done!&#39;)</span><br></pre></td></tr></table></figure>
-<p>当然跟 open 文件一样，上面的 5 行代码也可以简写如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with pd.ExcelWriter(r&#39;C:\Users\数据\Desktop\data\test2.xls&#39;) as writer:</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;&#39;df1&#39;)</span><br><span class="line">    df2.to_excel(writer, sheet_name&#x3D;&#39;df2&#39;)</span><br></pre></td></tr></table></figure>
-<p>简单高效，不需要再单独写 save 和 close，自动完成。</p>
-<h2 id="将-groupby-之后的数据以及标签保存-excel"><a href="#将-groupby-之后的数据以及标签保存-excel" class="headerlink" title="将 groupby 之后的数据以及标签保存 excel"></a>将 groupby 之后的数据以及标签保存 excel</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 欢迎使用Markdown编辑器</span><br><span class="line">  packsort&#x3D;newpack.groupby([&#39;Stock&#39;, &#39;ReportPeriod&#39;])[&#39;EndShare&#39;].sum()</span><br><span class="line"></span><br><span class="line">  data &#x3D; pd.DataFrame()</span><br><span class="line"></span><br><span class="line">  data&#x3D;packsort.reset_index() ###记住reset</span><br><span class="line">  #print(data)</span><br><span class="line">  </span><br><span class="line">  data.to_csv(&quot;MPayHold.csv&quot;, index&#x3D;False, encoding&#x3D;&quot;utf_8_sig&quot;)</span><br></pre></td></tr></table></figure>
-<p>需要用到 packsort.reset_index () 重置索引，再转化为 dataframe 写入 excel</p>
-<h2 id="Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引"><a href="#Dataframeg-groupby-分组统计结果转换成-Dataframe，再修改其索引" class="headerlink" title="Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引"></a>Dataframeg groupby 分组统计结果转换成 Dataframe，再修改其索引</h2><p>pandas 提供了 groupby 函数可以对数据集按一个键或多个键进行分组统计。</p>
-<p>groupby 分组函数：返回一个重构的 dataframe，数据的原索引会保留，但数据的相对位置会发生变化。</p>
-<p>下面以一组数据为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"># 创建dataframe</span><br><span class="line">data &#x3D; pd.DataFrame(&#123;&quot;key&quot;: list(&quot;abbcaabac&quot;),</span><br><span class="line">                     &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;)</span><br><span class="line"></span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081228.png" alt="20210206081228"></p>
-</div>
-
-<p>下面按 key 进行分组:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 按key分组</span><br><span class="line">data_group &#x3D; data.groupby(data[&quot;key&quot;])</span><br><span class="line"># 分组后的结果不能直接输出</span><br><span class="line">print(data_group)    # 输出的是data_group的类型</span><br></pre></td></tr></table></figure>
-<p>可以使用循环对分组后的结果进行遍历</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for key, value in data_group:</span><br><span class="line">    print(key)</span><br><span class="line">    print(value)</span><br><span class="line">    print(type(value))</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081413.png" alt="20210206081413"></p>
-</div>
-
-<ul>
-<li>分组后的组名分别是 a, b, c；直接用类型转换 data_group 转变成 dataframe 不太容易。每一个 value 都是 dataframe 类型，可以把每个 value 进行拼接形成新的 dataframe，列名与原数据相同。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_data &#x3D; pd.DataFrame(columns&#x3D;[&quot;key&quot;, &quot;value&quot;])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>通过循环，对 value 进行拼接。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 循环拼接</span><br><span class="line">for key, value in data_group:</span><br><span class="line">    new_data &#x3D; pd.concat([new_data, value])</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081542.png" alt="20210206081542"></p>
-</div>
-
-<p>在原始数据上实现了分组，但是原索引得到了保留，可以通过以下代码改变索引。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_data.index &#x3D; np.arange(len(new_data.index))</span><br><span class="line">print(new_data)</span><br></pre></td></tr></table></figure>
-<p>结果可以看到数据变为有序：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210206081629.png" alt="20210206081629"></p>
-</div>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/01/30/%E6%B2%A1%E6%9C%89%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83%E5%8B%A4%E5%A5%8B%E9%83%BD%E6%98%AF%E6%89%AF%E6%B7%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/30/%E6%B2%A1%E6%9C%89%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83%E5%8B%A4%E5%A5%8B%E9%83%BD%E6%98%AF%E6%89%AF%E6%B7%A1/" class="post-title-link" itemprop="url">没有深度思考勤奋都是扯淡</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-01-29 17:19:04 / 修改时间：11:49:40" itemprop="dateCreated datePublished" datetime="2021-01-29T17:19:04Z">2021-01-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>&emsp;&emsp;在今天去看我们周遭的信息环境，不得不说移动互联网的普及让人对信息的摄取广度有了延展，却因此限制了我们摄取信息的深度。我们日常的视野中，总是充斥着碎片化信息之 “过” 的问题——即 99% 的东西，与我们一点关系都没有，或者说在 “浅尝辄止，浮于表面” 的思考模式下对我们没有任何价值。<br>&emsp;&emsp;麦克卢汉曾说：我们创造了工具，工具反过来塑造我们。放到现在来看，也是一样的：一旦你习惯了 “低成本、高回报” 的刺激，你就很难去做那些 “高投入” 的事情，因此成为“低效勤奋者”——看起来每天忙碌，到头来却一无所获。<br>&emsp;&emsp;为什么？因为战术上你很勤奋，实际上却刻意回避了真正困难却更有价值的部分——战略思维与战略决策。而这种 “战略思维懒惰” 的行为，最终会导致你战略决策失误，陷入了低成长的陷阱。<br>&emsp;&emsp;其实，人生最大的悲哀，莫过于将一辈子的聪明，都耗费在肢体的勤奋上。要想成为真正的 “高成长人群”，防止你与预期 “背道而驰”，就要学会并保持深度思考的能力。今天这篇文章，希望能对你有所启发。<br>&emsp;&emsp;许多人宁愿做 “低效勤奋者”也不愿意深度思考。以下这个故事，人们常常用来说明执行力的问题。其实是只知其一，不知其二。<br>&emsp;&emsp;张三和李四同时受雇于一家店铺，拿着同样的薪水。 一段时间后，张三升职加薪，李四却没有，于是李四找老板理论。老板对他说：“李四，你现在帮我到集市上去一下，看看今天早上有什么卖的。”不一会儿，李四从集市回来，向老板汇报：“只有一个农民拉了一车土豆在卖。” 老板问：“有多少？” 李四不知道，于是赶紧又跑到集市上，然后回来告诉老板：“一共 40 袋土豆。” 老板又问他：“价格呢？” 李四说：“您没有叫我打听价格啊。”<br>&emsp;&emsp;于是老板让李四先坐下休息，并把张三叫来，吩咐他说去做同一件事。 张三回来，向老板汇报：“今天集市上只有一个农民在卖土豆，一共 40 袋，价格是两毛五分钱一斤。我看了一下，这些土豆的质量不错，价格也便宜，根据我们以往的销量，40 袋土豆在一个星期左右就可以全部卖掉，一定能赚钱。”<br>&emsp;&emsp;此时老板转向了李四，说：“现在你知道为什么张三的薪水比你高了吧？”<br>&emsp;&emsp;从执行力角度看，是李四做事没有责任心；但再深入地分析，他的思维方式存在问题，他有两个方面不如张三：一是不愿多动脑筋深入思考，二是釆取低级思考方式，很多方面想不到。伯特兰 · 罗素说：“许多人宁愿死，也不愿思考，事实上他们也确实至死都没有思考。”观察我们身边不少看似勤奋的人，却混得不行，为什么？因为他们是 “低效勤奋者”。“低效勤奋者” 有两个特征：不愿深入思考，釆取低级思考。这就导致他们做事效率低，效能低，成长慢。“低效勤奋者” 之所以不愿深入思考与釆取低级思考，是因为这些人不会深度思考。学渣与学霸之间的差别就在于深度思考。普通员工与卓越员工之间的差别也在于深度思考。小老板与大老板之间的差别更在于深度思考。<br>&emsp;&emsp;从 “被动学习” 向“主动学习”升级深度思考，首先是从 “被动学习” 向“主动学习”升级。大多数人从学校开始，就习惯了被学校和老师的教学计划牵着鼻子走；到了工作单位后，被上级的指令与监督驱使着行动。这就是所谓的被动学习与被动思考。本文开头故事中的李四就是这么一个人。釆取这种被动的学习与工作方式的人，亦步亦趋，跟着别人的思维走，既没有偷着懒，一样的累得像狗；又做什么都做不好，做不到位，内心充满压力感。而主动学习不是这样的。我注意到那些学校中的一些学霸，他们有自己的学习计划与学习节奏，以自学为主。在他们眼里，学校统一的学习计划与老师，只是其中之一的辅助途径。我见过一位高中学霸，高一就学完了全部高中课程。我年轻时刚参加工作，就很纳闷：为什么我的上司文化程度不如我，但他批评我时，总能看到我看不到的问题，想出我想不到的办法。有同事解释说，因为领导比我经验丰富。我就不服这个邪，于是，我决定变被动为主动：首先，我强迫自己重视并安心本职工作。其次，在了解工作职责和部门目标的基础上制定自己的较高目标、专业能力体系化学习计划与工作计划。然后，自己找问题，并带着问题在部门內外、行业內外进行广泛的学习与专注思考。这个时候，关键是能够投入业余时间用在学习与工作上。这样一来，经过一段时间，我很快找到了感觉，看问题、想办法、做事情，都能踩到点子上了。在我负责的工作范围内，我所掌握的信息、知识与我的见解，都能走在领导的前面。这样不但使绩效明显提升，博得上司的赏识，而且自己也感到对工作有了发自内心的兴趣，还心情舒畅，不像过去一样有压力了。<br>&emsp;&emsp;人生最大的思想误区认为战略短板可以用战术的勤奋来弥补。<br>&emsp;&emsp;在前几年大众创业的热潮中，我认识的一位老乡，他三十来岁，也按奈不住心潮澎湃，说老子决定不打工了，创业当老板去。他拿出准备结婚买房的钱，加上找众多亲朋好友众筹的款子，共逾百万，开了一家餐馆。我是偶然去吃饭碰上他的。吃完之后，他问我，餐馆办得怎么样？我实话实说，你这个啊有两个战略上的问题：一个是地段偏僻了，另一个是菜品虽然有特色，口味也挺好，但根据我对周边人群的了解，你这定位有点不精准，高不成低不就。这老乡听了有点不高兴，跟我大谈什么工匠精神，要精益求精创一流莱品。最后他说，这地段偏是偏了点，但租金便宜，我可以把省下的资金，用来作广告，搞宣传，打响牌子，还是划算的。后来听说他在广告与促销上做了很大努力与很多动作，如微信宣传，店內有奖促销，优惠促销，派人在路口撒广告传单，到附近小区与写字楼贴广告。可以讲，凡营销教课书上提到的促销招术，他都几乎用了一遍。但最终还是无力回天，半年后便停业倒闭了。我发现，不少人有一个盲目的自信，以为战略上的短板，可以用正确的战术和增加战术资源投入，来弥补，来挽救。这实质上是在用战术上的勤奋，来掩盖战略上的懒惰。战术上你很勤奋，实际上却刻意回避了真正困难却更有价值的部分——战略思维与战略决策。而这种 “战略思维懒惰” 的行为，最终会导致你战略决策失误，结果可能是一失足成千古恨。前面所讲的选择 “低成长区” 还是选择“高成长区”，这都属于战术层面的思考，这些你选择对了，做对了，也还是不够的。比战术层面的深度思考更重要的，是战略层面的深度思考。你必须把决定事业全局与长久成败的战略决策视为头等大事，在战略上多学习，多动脑子，多花时间，多选择，多比较，不怕麻烦，力戒 “战略思维懒惰”。要能 “忍、等、准”，有耐心，时刻准备，创造机会，但勿因急躁而轻举妄动。如果你是公司老板，就须选择一个好的行业，好的商业模式，把握好机会，使机遇同自己的核心能力、关键资源、价值观相匹配。然后，制定公司的发展战略规划。<br>&emsp;&emsp;如果你是职场人士，在注重选好行业、公司平台时，更要选好职业，并且使这些选择与自己的专业、特质潜能、价值观相适合。然后，根据环境和公司未来发展趋势、未来机会制定自己的长远职业发展计划与新能力学习计划。<br>&emsp;&emsp;人生最大的悲伤，莫过于将一辈子的聪明都耗费在战术上。当你抬头一看，你精益求精的事情，它们所在的职业或行业己经衰落，或社会价值与个人价值都很低微，或前进的战略大方向错了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 

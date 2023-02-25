@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,183 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D%E8%B7%AF%E5%BE%84%E5%88%A4%E6%96%AD%E6%98%AF%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/" class="post-title-link" itemprop="url">获取路径下所有文件全名路径判断是路径目录文件是否存在</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:53:13 / 修改时间：09:54:23" itemprop="dateCreated datePublished" datetime="2021-08-21T17:53:13Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="comment"># print(root)  # 当前目录路径</span></span><br><span class="line">        print(dirs)  <span class="comment"># 当前路径下所有子目录</span></span><br><span class="line">        print(files)  <span class="comment"># 当前路径下所有非目录子文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_name</span>(<span class="params">file_dir</span>):</span></span><br><span class="line">    L = []</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(file_dir):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> os.path.splitext(file)[<span class="number">1</span>] == <span class="string">&#x27;.png&#x27;</span>:  <span class="comment"># 想要保存的文件格式</span></span><br><span class="line">                L.append(os.path.join(root, file))</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line">file_name(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#其中os.path.splitext()函数将路径拆分为文件名+扩展名</span></span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">dirpath = <span class="string">r&#x27;D:\Premiere\1&#x27;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirpath):</span><br><span class="line">	os.mksdir(dirpath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的目录和文件名（分开显示）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printPath</span>(<span class="params">path</span>):</span></span><br><span class="line">    dirList = []</span><br><span class="line">    fileList = []</span><br><span class="line"></span><br><span class="line">    dirFiles = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> dirFile <span class="keyword">in</span> dirFiles:</span><br><span class="line">        curPath = path + <span class="string">&#x27;/&#x27;</span> + dirFile</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(curPath):</span><br><span class="line">            <span class="comment"># 排除隐藏文件</span></span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                dirList.append(curPath)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">elif</span> os.path.isfile(curPath):</span><br><span class="line">            <span class="keyword">if</span> dirFile[<span class="number">0</span>] != <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                fileList.append(curPath)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&#x27;dirlist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> dir_ <span class="keyword">in</span> dirList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, dir_)</span><br><span class="line">    print(<span class="string">&#x27;filelist里有啥？&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> file_ <span class="keyword">in</span> fileList:</span><br><span class="line">        print(<span class="string">&#x27;t&#x27;</span>, file_)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">printPath(path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历指定目录，显示目录下的文件名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eachFile</span>(<span class="params">filepath</span>):</span></span><br><span class="line">    pathDir = os.listdir(filepath)</span><br><span class="line">    print(<span class="string">&#x27;pathDir:&#x27;</span>, pathDir)</span><br><span class="line">    <span class="keyword">for</span> allDir <span class="keyword">in</span> pathDir:</span><br><span class="line">        child = os.path.join(filepath, allDir)</span><br><span class="line">        print(child)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eachFile(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归获取路径下所有文件名</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listdir</span>(<span class="params">path, list_name</span>):</span>  <span class="comment"># 传入存储的list</span></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">        file_path = os.path.join(path, file)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(file_path):</span><br><span class="line">        	listdir(file_path, list_name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            list_name.append(file_path)</span><br><span class="line">    <span class="keyword">return</span> list_name</span><br><span class="line">listdir(<span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span>,list_name=[])</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>[&#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\20200706130733539.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本 (2).png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539 - 副本.png&#39;,
+ &#39;C:\\Users\\win\\Desktop\\ccc\\modify\\20200706130733539.png&#39;]
+</code></pre>
+<h2 id="怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在"><a href="#怎样使用-Python-来判断一个路径是否存在判断一个路径是文件还是目录-判断一个路径是否存在" class="headerlink" title="怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在"></a>怎样使用 Python 来判断一个路径是否存在判断一个路径是文件还是目录 判断一个路径是否存在</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.path.exists(path)     <span class="comment"># 判断一个路径是否存在，可以判断一个文件或目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)      <span class="comment"># 判断一个目录（文件夹）是否存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断一个路径是文件还是目录（文件夹）</span></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"></span><br><span class="line">os.path.isdir(path)   <span class="comment"># 返回 True 表示是目录（文件夹）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"></span><br><span class="line">os.path.isfile(path)   <span class="comment"># 返回 True 表示是文件</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/22/%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" class="post-title-link" itemprop="url">函数的实例应用去除图片水印</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-21 17:51:42 / 修改时间：09:52:17" itemprop="dateCreated datePublished" datetime="2021-08-21T17:51:42Z">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 PDF 文档 分割成图片</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> fitz</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pyMuPDF_fitz</span>(<span class="params">pdfPath, imagePath</span>):</span></span><br><span class="line">    startTime_pdf2img = datetime.datetime.now()  <span class="comment"># 开始时间</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;imagePath=&quot;</span>+imagePath)</span><br><span class="line">    pdfDoc = fitz.<span class="built_in">open</span>(pdfPath)</span><br><span class="line">    <span class="keyword">for</span> pg <span class="keyword">in</span> <span class="built_in">range</span>(pdfDoc.pageCount):</span><br><span class="line">        page = pdfDoc[pg]</span><br><span class="line">        rotate = <span class="built_in">int</span>(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 每个尺寸的缩放系数为1.3，这将为我们生成分辨率提高2.6的图像。</span></span><br><span class="line">        <span class="comment"># 此处若是不做设置，默认图片大小为：792X612, dpi=72</span></span><br><span class="line">        zoom_x = <span class="number">1.33333333</span>  <span class="comment"># (1.33333333--&gt;1056x816)   (2--&gt;1584x1224)</span></span><br><span class="line">        zoom_y = <span class="number">1.33333333</span></span><br><span class="line">        mat = fitz.Matrix(zoom_x, zoom_y).preRotate(rotate)</span><br><span class="line">        pix = page.getPixmap(matrix=mat, alpha=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(imagePath):  <span class="comment"># 判断存放图片的文件夹是否存在</span></span><br><span class="line">            os.makedirs(imagePath)  <span class="comment"># 若图片文件夹不存在就创建</span></span><br><span class="line"></span><br><span class="line">        pix.writePNG(imagePath+<span class="string">&#x27;/&#x27;</span>+<span class="string">&#x27;images_%s.png&#x27;</span> % pg)  <span class="comment"># 将图片写入指定的文件夹内</span></span><br><span class="line"></span><br><span class="line">    endTime_pdf2img = datetime.datetime.now()  <span class="comment"># 结束时间</span></span><br><span class="line">    print(<span class="string">&#x27;pdf2img时间=&#x27;</span>, (endTime_pdf2img - startTime_pdf2img).seconds)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    pdfPath = <span class="string">r&quot;D:\教学工具软件\冰点文库下载器 3.2.10 去广告版\冰点文库下载器 3.2.10 去广告版\kpdf\哪些人适合学Python培训，你在其中吗？.pdf&quot;</span></span><br><span class="line">    imagePath = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">    pyMuPDF_fitz(pdfPath, imagePath)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将图片去除水印，配合上一个程序使用</span></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> product</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># img = Image.open(r&quot;D:\1jieya\image\images_0.png&quot;)</span></span><br><span class="line"><span class="comment"># width, height = img.size</span></span><br><span class="line"><span class="comment"># for pos in product(range(width), range(height)):</span></span><br><span class="line"><span class="comment">#     if sum(img.getpixel(pos)[:3]) &gt; 600:</span></span><br><span class="line"><span class="comment">#         img.putpixel(pos, (255, 255, 255))</span></span><br><span class="line"><span class="comment"># img.save(r&quot;C:\Users\win\Desktop\removed_1.png&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = <span class="string">r&quot;D:\1jieya\image&quot;</span></span><br><span class="line">output = <span class="string">r&quot;D:\1jieya\remove&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(<span class="built_in">input</span>):</span><br><span class="line">        print(image_name)</span><br><span class="line">        img = Image.<span class="built_in">open</span>(os.path.join(<span class="built_in">input</span>, image_name))</span><br><span class="line">        width, height = img.size</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> product(<span class="built_in">range</span>(width), <span class="built_in">range</span>(height)):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span>(img.getpixel(pos)[:<span class="number">3</span>]) &gt; <span class="number">600</span>:</span><br><span class="line">                img.putpixel(pos, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">        img.save(os.path.join(output, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 批量将图片修改为指定大小</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter, ImageDraw</span><br><span class="line"></span><br><span class="line"><span class="comment"># im = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片的格式，大小，以及模式</span></span><br><span class="line"><span class="comment"># print(im.format, im.size, im.mode)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定图片的像素</span></span><br><span class="line"><span class="comment"># im.thumbnail((720, 1280))</span></span><br><span class="line"><span class="comment"># im.save(r&quot;C:\Users\win\Desktop\ccc\128_128.jpg&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 旋转图片的方向</span></span><br><span class="line"><span class="comment"># dest_im = im.rotate(90)</span></span><br><span class="line"><span class="comment"># dest_im.save(r&quot;C:\Users\win\Desktop\ccc\90.png&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给图片添加滤镜</span></span><br><span class="line"><span class="comment"># dest_im = im.filter(ImageFilter.GaussianBlur)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 图片反转</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_LEFT_RIGHT)</span></span><br><span class="line"><span class="comment"># dest_im = im.transpose(Image.FLIP_TOP_BOTTOM)</span></span><br><span class="line"><span class="comment"># dest_im.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片上写文字</span></span><br><span class="line"><span class="comment"># image = Image.open(r&quot;C:\Users\win\Desktop\ccc\20200706130733539.png&quot;)</span></span><br><span class="line"><span class="comment"># img_draw = ImageDraw.Draw(image)</span></span><br><span class="line"><span class="comment"># img_draw.text((1270, 1250), &#x27;hello world!&#x27;, fill=&#x27;green&#x27;)</span></span><br><span class="line"><span class="comment"># image.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量将图片的大小设置为指定大小</span></span><br><span class="line"></span><br><span class="line">in_path = <span class="string">r&quot;C:\Users\win\Desktop\ccc&quot;</span></span><br><span class="line">out_path = os.path.join(in_path, <span class="string">&#x27;modify&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(out_path):</span><br><span class="line">    os.makedirs(out_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span>():</span></span><br><span class="line">    <span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(in_path):</span><br><span class="line">        cur_dir = in_path + <span class="string">&#x27;/&#x27;</span> + image_name</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(cur_dir):</span><br><span class="line">            print(<span class="string">f&#x27;正在处理:<span class="subst">&#123;cur_dir&#125;</span>&#x27;</span>)</span><br><span class="line">            im = Image.<span class="built_in">open</span>(cur_dir)</span><br><span class="line">            im.thumbnail((<span class="number">1280</span>, <span class="number">720</span>))</span><br><span class="line">            im.save(os.path.join(out_path, image_name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    modify()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1306,277 +1483,8 @@ dtype: object
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/30/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%83%E4%B9%A0/" class="post-title-link" itemprop="url">正则表达式练习</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-30 10:40:37 / 修改时间：02:45:10" itemprop="dateCreated datePublished" datetime="2021-06-30T10:40:37Z">2021-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"># author : BJxo</span><br><span class="line"># date : 2021&#x2F;04&#x2F;30</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;(\(\d&#123;3&#125;\)) (\d&#123;3&#125;-\d&#123;3&#125;)&#39;)</span><br><span class="line"># mo &#x3D; phone_number_regex.search(&#39;My number is (415) 555-4242.&#39;)</span><br><span class="line"># print(&#39;Phone number found: &#39; + mo.group(1))</span><br><span class="line"># print(mo.groups())</span><br><span class="line"></span><br><span class="line"># bat_regex &#x3D; re.compile(r&#39;Bat(man|mobile|bat|copter)&#39;)</span><br><span class="line"># mo &#x3D; bat_regex.search(&#39;Batmobile lost a wheel&#39;)</span><br><span class="line"># print(mo.group())</span><br><span class="line"># print(mo.group(1))</span><br><span class="line"></span><br><span class="line"># &#39;?&#39; 在正则表达式内表示匹配 0 或 1 次，换句话说就是可选匹配，有就匹配，没有就不匹配。而 &#39;*&#39; 则表示匹配 0 次 或多次。</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">bat_regex1 &#x3D; re.compile(r&#39;Bat(wo)?man&#39;)</span><br><span class="line">mo1 &#x3D; bat_regex1.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line">print(mo1.group())</span><br><span class="line">mo2 &#x3D; bat_regex1.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># phone_regex &#x3D; re.compile(r&#39;(\d&#123;3&#125;-)?(\d&#123;3&#125;-\d&#123;4&#125;)&#39;)</span><br><span class="line"># mo1 &#x3D; phone_regex.search(&#39;My number is 415-555-4242&#39;)</span><br><span class="line"># print(mo1.group())</span><br><span class="line"># mo2 &#x3D; phone_regex.search(&#39;My number is 555-4242&#39;)</span><br><span class="line"># print(mo2.group())</span><br><span class="line"></span><br><span class="line"># 用星号匹配 0 次或 多次</span><br><span class="line"># bat_regex &#x3D; re.compile(r&#39;Bat(wo)*man&#39;)</span><br><span class="line"># mo1 &#x3D; bat_regex.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line"># print(mo1.group())</span><br><span class="line"></span><br><span class="line"># mo2 &#x3D; bat_regex.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line"># print(mo2.group())</span><br><span class="line"># mo3 &#x3D; bat_regex.search(&#39;The Adventures of Batwowowowoman&#39;)</span><br><span class="line"># print(mo3.group())</span><br><span class="line"></span><br><span class="line"># 用 &#39;+&#39; 号匹配 1 次或 多次</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">bat_regex &#x3D; re.compile(r&#39;Bat(wo)+man&#39;)</span><br><span class="line">mo1 &#x3D; bat_regex.search(&#39;The Adventures of Batman&#39;)</span><br><span class="line">print(mo1 &#x3D;&#x3D; None)</span><br><span class="line"></span><br><span class="line">mo2 &#x3D; bat_regex.search(&#39;The Adventures of Batwoman&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line">mo3 &#x3D; bat_regex.search(&#39;The Adventures of Batwowowowoman&#39;)</span><br><span class="line">print(mo3.group())</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># 贪心和非贪心匹配</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">greedy_ha_regex &#x3D; re.compile(r&#39;(ha)&#123;3,5&#125;&#39;)</span><br><span class="line">mo1 &#x3D; greedy_ha_regex.search(&#39;hahahahahaha&#39;)</span><br><span class="line">print(mo1.group())</span><br><span class="line"></span><br><span class="line">greedy_ha_regex &#x3D; re.compile(r&#39;(ha)&#123;3,5&#125;?&#39;)</span><br><span class="line">mo2 &#x3D; greedy_ha_regex.search(&#39;hahahahahaha&#39;)</span><br><span class="line">print(mo2.group())</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># findall() 方法 返回一组字符串，而 search 返回一个Match 对象，包含被查找字符串的‘第一次’匹配的文本</span><br><span class="line"></span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;&#39;)</span><br><span class="line"># mo &#x3D; phone_number_regex.search(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line"># print(mo.group())  # 只返回‘第一次’匹配的文本</span><br><span class="line"></span><br><span class="line"># findall() 返回一个字符串列表</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">phone_number_regex &#x3D; re.compile(r&#39;\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;&#39;)  # has no groups</span><br><span class="line">mo &#x3D; phone_number_regex.findall(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line">print(mo)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># phone_number_regex &#x3D; re.compile(r&#39;(\d&#123;3&#125;)-(\d&#123;3&#125;-\d&#123;4&#125;)&#39;)  # has groups</span><br><span class="line"># mo1 &#x3D; phone_number_regex.findall(&#39;cell:415-555-9999 work:212-555-0000&#39;)</span><br><span class="line"># print(mo1)</span><br><span class="line"></span><br><span class="line"># 建立自己的字符分类</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">vowel_regex &#x3D; re.compile(r&#39;[aeiouAEIOU]&#39;)</span><br><span class="line">print(vowel_regex.findall(&#39;Robocop eats baby food.ABY FOOD.&#39;))</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># ^ 加在左方括号后 表示将得到‘非字符类’，即不在这个字符类中的所有字符</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">vowel_regex &#x3D; re.compile(r&#39;[^aeiouAEIOU]&#39;)</span><br><span class="line">print(vowel_regex.findall(&#39;Robocop eats baby food.ABY FOOD.&#39;))</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># 插入字符和美元字符</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">begins_with_hello &#x3D; re.compile(r&#39;^hello&#39;)</span><br><span class="line">he &#x3D; begins_with_hello.search(&#39;hello world!&#39;)</span><br><span class="line">print(he)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># begins_with_hello &#x3D; re.compile(r&#39;^hello&#39;)</span><br><span class="line"># he &#x3D; begins_with_hello.search(&#39;hello world!&#39;)</span><br><span class="line"># print(begins_with_hello.search(&#39;he said hello&#39;) &#x3D;&#x3D; None)</span><br><span class="line"></span><br><span class="line"># 正则表达式 r&#39;\d$&#39; 匹配以数字 0 到 9 结束的字符串</span><br><span class="line"></span><br><span class="line"># endwith_number &#x3D; re.compile(r&#39;\d$&#39;)</span><br><span class="line"># num &#x3D; endwith_number.search(&#39;Your number is 43&#39;)</span><br><span class="line"></span><br><span class="line"># print(num)</span><br><span class="line"></span><br><span class="line"># 正则表达式 r&#39;^\d$&#39; 匹配从开始到结束都是数字的字符串</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">whole_string_isnum &#x3D; re.compile(r&#39;^\d+$&#39;)</span><br><span class="line">print(whole_string_isnum.search(&#39;12345670&#39;))</span><br><span class="line">print(whole_string_isnum.search(&#39;1234xy5670&#39;) &#x3D;&#x3D; None)</span><br><span class="line">print(whole_string_isnum.search(&#39;12 345670&#39;) &#x3D;&#x3D; None)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"># 通配符(.) 这个历害了，它匹配除了换行之外的所有字符</span><br><span class="line"></span><br><span class="line"># at_regex &#x3D; re.compile(r&#39;.at&#39;)</span><br><span class="line"># print(at_regex.findall(&#39;The cat in thd hat sat on the flat at.&#39;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 用 (.*) 匹配所有字符</span><br><span class="line"></span><br><span class="line">name_regex &#x3D; re.compile(r&#39;First Name:(.*) Last Name:(.*)&#39;)</span><br><span class="line">mo &#x3D; name_regex.search(&#39;First Name:Al Last Name:Sweigart&#39;)</span><br><span class="line">print(mo.group(1))</span><br><span class="line">print(mo.group(2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/26/Python%E7%89%B9%E6%80%A7%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">Python特性介绍</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-26 14:08:42 / 修改时间：06:27:42" itemprop="dateCreated datePublished" datetime="2021-06-26T14:08:42Z">2021-06-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>所谓变量，在我理解下来应该是用来装内容的名字，百度上说是这样的</strong></p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210618092121.png" alt="20210618092121"></p>
-</div>
-
-<p>在学 C 时，使用变量前都需要提前进行声明，而在python使用时不需要提前声明，只要想用就可以直接使用<br>举个栗子</p>
-<p>大部分了解过的人，应该都能看出来，<br>变量有一些需要注意的地方</p>
-<blockquote>
-<p>在使用变量之前，需要先进行赋值</p>
-<p>变量名可以用字母、数字、下划线，但不能用数字开头，这倒是和&gt; C一样</p>
-<p>字母大小写是不同的</p>
-<p>等号(＝)是赋值的意思，将右边的值赋给右边</p>
-<p>尽量将变量名与要表达的意思一致</p>
-</blockquote>
-<h2 id="人们为什么使用python"><a href="#人们为什么使用python" class="headerlink" title="人们为什么使用python"></a>人们为什么使用python</h2><h3 id="软件质量"><a href="#软件质量" class="headerlink" title="软件质量"></a>软件质量</h3><ul>
-<li>Python的设计侧重于代码的可读性，一致性和软件质量，这使得python与其他脚本语言区分开来。因Python强大的可读性，在维护性和重用性方面有很大的优势。Python也支持面向对象(OOP)，使得程序的重用性大大提升。</li>
-</ul>
-<h3 id="提高开发者的效率"><a href="#提高开发者的效率" class="headerlink" title="提高开发者的效率"></a>提高开发者的效率</h3><ul>
-<li>相对于一些静态编译语言，java，C++等，python的代码量往往只有他们的1/5~1/3，这种代码量就意味值python就更具维护性，更能提高开发者的效率。并且Python语言可以立即运行，不需要传统语言的编译和链接等步骤。进一步提高了程序员的效率。</li>
-</ul>
-<h3 id="程序的可移植性"><a href="#程序的可移植性" class="headerlink" title="程序的可移植性"></a>程序的可移植性</h3><ul>
-<li><p>Python程序可以在多个主流计算机平台运行，不需要修改代码。比如一些文件操作与管理等操作系统接口，在设计时，都考虑了程序的可移植性。</p>
-<h3 id="标准库的支持"><a href="#标准库的支持" class="headerlink" title="标准库的支持"></a>标准库的支持</h3></li>
-<li><p>Python有强大的标准库支持，这些标准库支持一系列的应用级编程任务。此外更多的还有很多python第三方支持工具，让Python有更强大的活力。</p>
-</li>
-</ul>
-<h3 id="组件集成"><a href="#组件集成" class="headerlink" title="组件集成"></a>组件集成</h3><ul>
-<li><p>python脚本可以灵活的与其他定制程序轻松地与应用程序的其他部分进行通信。这种集成可以让python成为名副其实的“胶水语言”，Python可以调用C，C++等程序，也可以被C,C++调用。</p>
-<h3 id="享受乐趣"><a href="#享受乐趣" class="headerlink" title="享受乐趣"></a>享受乐趣</h3></li>
-<li><p>应用级的编程享受，让开发者避免繁琐的编程工作，直接调用标准库或三方库，就能轻易完成自己的目标。</p>
-</li>
-</ul>
-<h2 id="Python是脚本语言吗？"><a href="#Python是脚本语言吗？" class="headerlink" title="Python是脚本语言吗？"></a>Python是脚本语言吗？</h2><p>Python是一种多用途的编程语言，时常在扮演脚本语言的角色。一般来说，Python可定义为面向对象的脚本语言。实际上，往往人们从以下几个“角色”来使用Python：</p>
-<ul>
-<li>shell工具</li>
-</ul>
-<p>这只用到了Python语言价值的其中一小部分，这里的python常常用来调用其他程序，或者当作一个脚本处理任务，比如处理文本等等</p>
-<ul>
-<li>控制语言</li>
-</ul>
-<p>Python的简洁，可以让他在各个场合充当一个控制角色，比如控制各个相关设备及程序之间的沟通和测试，或者是充当相关不同程序之间的“连接层”。</p>
-<ul>
-<li>使用快捷</li>
-</ul>
-<p>常常充当“脚本程序”的Python，就意味着它有脚本一样的快捷性，但是它的功能与能力远远超出脚本的范畴。它的灵活性和便捷能更快提高开发速度，更增加了探索研究与递增的开发编程模式的效率（这也是Python在机器学习上热门的原因）。</p>
-<h2 id="Python的缺点是什么？"><a href="#Python的缺点是什么？" class="headerlink" title="Python的缺点是什么？"></a>Python的缺点是什么？</h2><p>与C语言这类静态编译语言来说，Python的执行速度还不够快，目前的Python是将源码编译（或者说转化）为字节码，之后再将字节码解释出来，因为字节码是一种平台无关的格式，字节码就具有可移植性。python没有像C语言那样将代码编译成为二进制代码（可用于芯片的指令），所以Python没有静态编译语言的执行速度快。</p>
-<p>Python在发展过程中，一直对执行速度再做改进，比如在解释器内部，一些需要执行速度的操作，往往是由c语言在执行，他们都有C语言的执行速度（Numpy就是一个双语言混编策略的一个重要例子）。总得来说，Python在开发过程中带来的收益比执行效率上的损失更为重要，尤其是在如今计算机的处理速度下。</p>
-<h2 id="使用python能做些什么"><a href="#使用python能做些什么" class="headerlink" title="使用python能做些什么"></a>使用python能做些什么</h2><ul>
-<li><p>系统编程： 对操作系统服务的内置接口，使其成为编写可移植的系统管理的维护工具和组件的理想语言。</p>
-</li>
-<li><p>用户图形接口：python快速，简洁的开发模式，十分适合GUI程序，一些内置的TKinter的标准面向对象接口，可以让python生成本地观感的GUI,并且可以通过可移植性，在任何操作平台上运行。</p>
-</li>
-<li><p>Internet脚本：python提供许多的网络接口和标准Internet模块，使得python在网络的服务器端或是客户端都能发挥巨大的作用。还有许多强大的第三方工具，让python在处理网络时有更多选择。</p>
-</li>
-<li><p>组件集成：Python作为控制语言时，曾涉及它的组件集成的角色。Python可以通过C/C++系统进行扩展，并能够嵌套C/C++系统的特性，使其成为一种灵活的黏合语言。</p>
-</li>
-<li><p>数据库编程：Python提供了对所有主流数据库系统的接口。</p>
-</li>
-<li><p>数值计算和科学计算编程</p>
-</li>
-</ul>
-<h2 id="Python有哪些技术上的优点"><a href="#Python有哪些技术上的优点" class="headerlink" title="Python有哪些技术上的优点"></a>Python有哪些技术上的优点</h2><ul>
-<li>面向对象：支持面向对象编程</li>
-<li>免费开源</li>
-<li>可移植：几乎在所有主流的操作系统上都能运行python</li>
-<li>功能强大<ul>
-<li>动态类型</li>
-<li>自动内存管理：无需“垃圾回收”，Python能够代替你执行底层的内存管理</li>
-<li>大型程序支持</li>
-<li>内置对象类型</li>
-<li>内置工具和齐全的第三方库工具</li>
-<li>简单易用易学</li>
-</ul>
-</li>
-</ul>
-<h2 id="Python-编程快速上手，小白学习第一章课后习题1"><a href="#Python-编程快速上手，小白学习第一章课后习题1" class="headerlink" title="Python 编程快速上手，小白学习第一章课后习题1"></a>Python 编程快速上手，小白学习第一章课后习题1</h2><ul>
-<li><p>print()函数将括号内的字符串显示在屏幕上–输出</p>
-</li>
-<li><p>input()函数 等待用户在键盘上输入一些文本，并按下回车键–输入</p>
-</li>
-<li><p>len()函数接受一个字符串，并求值为该字符串中字符的数目</p>
-</li>
-<li><p>+操作符只能加两个整数，或连接两个字符串。不能让一个整数和一个字符</p>
-</li>
-<li><p>串相加，这不符合python的语法。</p>
-</li>
-<li><p>str()、int()、float()函数将分别求值为传入的字符串、整数和浮点数形式。 </p>
-</li>
-<li><p>这里写代码片# This program says hello and asks for my name.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">print(‘Hello world !’) #print()函数将括号内的字符串显示在屏幕上</span><br><span class="line"></span><br><span class="line">print(‘What is your name ?’) # ask for their name</span><br><span class="line"></span><br><span class="line">myName&#x3D;input() #input()函数 等待用户在键盘上输入一些文本，并按下回车键</span><br><span class="line"></span><br><span class="line">print(‘hai~ I love you , ‘+myName)</span><br><span class="line"></span><br><span class="line">print(‘The length of your name is:’)</span><br><span class="line"></span><br><span class="line">print(len(myName)) #len()函数求值为一个整型，即字符串中字符的个数</span><br><span class="line"></span><br><span class="line">print(‘What is your age ?’) # ask for their age</span><br><span class="line"></span><br><span class="line">myAge&#x3D;input()</span><br><span class="line"></span><br><span class="line">print(‘You will be ‘+str(int(myAge)+1)+’ in a year.’)</span><br></pre></td></tr></table></figure>
-<p>图示：</p>
-</li>
-</ul>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20210618095332.png" alt="20210618095332"></p>
-</div>
-
-
-<p>课后习题1</p>
-<p>1．下面哪些是操作符，哪些是值？</p>
-<p>‘hello’ -88.8 - / + 5<br>答：操作符包括 ：* 、-、/、+；值包括：’hello’、-88.8、5</p>
-<p>2．下面哪个是变量，哪个是字符串？</p>
-<p>spam（变量）</p>
-<p>‘spam’（字符串）</p>
-<p>3．说出 3 种数据类型。</p>
-<p>答：整形（int）、浮点型（float）、字符串(str)</p>
-<p>4．表达式由什么构成？所有表达式都做什么事？</p>
-<p>答：表达式含”值”和”操作符”，并且总是可以求值</p>
-<p>5．本章介绍了赋值语句，如 spam = 10。表达式和语句有什么区别？</p>
-<p>答： 表达式：表达是某件事</p>
-<p>语句：表达是做某件事</p>
-<p>赋值语句包含一个变量名，一个等号，以及存储的值。而表达式是求值</p>
-<p>8．为什么 eggs 是有效的变量名，而 100 是无效的？</p>
-<p>变量名规则</p>
-<p>遵从以下3条规则：</p>
-<p>1.只能是一个词</p>
-<p>2.只能包含字母 数字和下划线</p>
-<p>3.不能以数字开头</p>
-<p>100不满足第三条规则</p>
-<p>9．哪 3 个函数能分别取得一个值的整型、浮点型或字符串版本？<br>10．为什么这个表达式会导致错误？如何修复？</p>
-<p>答：需要转换类型’I have eaten ’ + str(99 )+ ’ burritos.’</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
