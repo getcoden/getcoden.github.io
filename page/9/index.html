@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,95 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/" class="post-title-link" itemprop="url">Python遍历文件实例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-14 19:15:55" itemprop="dateCreated datePublished" datetime="2021-02-14T19:15:55Z">2021-02-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-15 04:43:07" itemprop="dateModified" datetime="2021-02-15T04:43:07Z">2021-02-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="listdir-读取某一目录下面的所有文件"><a href="#listdir-读取某一目录下面的所有文件" class="headerlink" title="listdir 读取某一目录下面的所有文件"></a>listdir 读取某一目录下面的所有文件</h2><p>某一文件下面的.txt文本比较多，那么怎么才能讲该文件夹下面的所有的文件中的内容读取出来，这样就需要一个函数直接读取某一文件夹里面所有的文件。</p>
+<p>在python中listdir就可以实现上述的功能</p>
+<p>程序代码如下所示：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/15/Python%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1095,93 +1184,6 @@
 <p>运用 matplotlib 画时间序列图，重叠图</p>
 <p>画时间序列图<br>（如果要画重叠图，记得 x 要一样，y 可以不一样，然后用 plt.plot (x,y0,x,y1,x,y2) 即可画出重叠图）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib</span><br><span class="line">import datetime</span><br><span class="line">from statsmodels.graphics.factorplots import interaction_plot</span><br><span class="line">import xlsxwriter </span><br><span class="line">data&#x3D;pd.read_excel(&#39;C:&#x2F;math&#x2F;Problem_C_Data&#x2F;Exx.xlsx&#39;)</span><br><span class="line"># # create data </span><br><span class="line">s&#x3D;data[&#39;E&#39;]      #y轴</span><br><span class="line">e0&#x3D;s[2907:5043]</span><br><span class="line">t&#x3D;data[&#39;review_date&#39;] </span><br><span class="line">t0&#x3D;t[2907:5043]</span><br><span class="line">y0 &#x3D;e0.values.tolist()</span><br><span class="line">x0 &#x3D; pd.to_datetime(t0)     #x轴</span><br><span class="line"># # plot</span><br><span class="line">plt.plot(x0,y0)        </span><br><span class="line">plt.gcf().autofmt_xdate()</span><br><span class="line">plt.grid(ls &#x3D; &#39;--&#39;)      #设置背后的网格线</span><br><span class="line">plt.show()  #最后一定要show()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/02/05/Pandas%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E6%9D%A1%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/05/Pandas%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E6%9D%A1%E4%BB%B6%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">Pandas设置单元格条件格式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-05 12:42:50" itemprop="dateCreated datePublished" datetime="2021-02-05T12:42:50Z">2021-02-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-11 08:54:00" itemprop="dateModified" datetime="2021-02-11T08:54:00Z">2021-02-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Pandas-设置单元格条件格式-1——-指定值字体变色、指定值设置背景色"><a href="#Pandas-设置单元格条件格式-1——-指定值字体变色、指定值设置背景色" class="headerlink" title="Pandas_设置单元格条件格式 1—— 指定值字体变色、指定值设置背景色"></a>Pandas_设置单元格条件格式 1—— 指定值字体变色、指定值设置背景色</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wodexk/p/10801344.html">转载于</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/05/Pandas%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E6%9D%A1%E4%BB%B6%E6%A0%BC%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,329 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2022/01/26/%E3%80%90Photoshop%E3%80%91%E4%B8%ADRGB%E4%B8%89%E8%89%B2%E5%8E%9F%E7%90%86%E5%8F%8A%E9%A2%9C%E8%89%B2%E7%9B%B8%E5%8A%A0%E7%9B%B8%E5%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/26/%E3%80%90Photoshop%E3%80%91%E4%B8%ADRGB%E4%B8%89%E8%89%B2%E5%8E%9F%E7%90%86%E5%8F%8A%E9%A2%9C%E8%89%B2%E7%9B%B8%E5%8A%A0%E7%9B%B8%E5%87%8F/" class="post-title-link" itemprop="url">【Photoshop】中 RGB 三色原理及颜色相加相减</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-26 09:18:10" itemprop="dateCreated datePublished" datetime="2022-01-26T09:18:10Z">2022-01-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-30 12:10:45" itemprop="dateModified" datetime="2022-01-30T12:10:45Z">2022-01-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0-Photoshop/" itemprop="url" rel="index"><span itemprop="name">深入学习 Photoshop</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一、RGB三色原理</p>
+<p>&emsp;&emsp;在中学的物理课中我们可能做过棱镜的试验，白光通过棱镜后被分解成多种颜色逐渐过渡的色谱，颜色依次为红、橙、黄、绿、青、蓝、紫，这就是可见光谱。其中人眼对红、绿、蓝最为敏感，人的眼睛就像一个三色接收器的体系，大多数的颜色可以通过红、绿、蓝三色按照不同的比例合成产生。同样绝大多数单色光也可以分解成红绿蓝三种色光。这是色度学的最基本原理，即三基色原理。三种基色是相互独立的，任何一种基色都不能有其它两种颜色合成。红绿蓝是三基色，这三种颜色合成的颜色范围最为广泛。红绿蓝三基色按照不同的比例相加合成混色称为相加混色。</p>
+<p>　　红色+绿色=黄色</p>
+<p>　　绿色+蓝色=青色</p>
+<p>　　红色+蓝色=品红</p>
+<p>　　红色+绿色+蓝色=白色</p>
+<p>　　黄色、青色、品红都是由两种及色相混合而成，所以它们又称相加二次色。另外：</p>
+<p>　　红色+青色=白色</p>
+<p>　　绿色+品红=白色</p>
+<p>　　蓝色+黄色=白色</p>
+<p>&emsp;&emsp;所以青色、黄色、品红分别又是红色、蓝色、绿色的补色。由于每个人的眼睛对于相同的单色的感受有不同，所以，如果我们用相同强度的三基色混合时，假设得到白光的强度为100%，这时候人的主观感受是，绿光最亮，红光次之，蓝光最弱。</p>
+<p>&emsp;&emsp;除了相加混色法之外还有相减混色法。在白光照射下，青色颜料能吸收红色而反射青色，黄色颜料吸收蓝色而反射黄色，品红颜料吸收绿色而反射品红。也就是：</p>
+<p>　　白色-红色=青色</p>
+<p>　　白色-绿色=品红</p>
+<p>　　白色-蓝色=黄色</p>
+<p>另外，如果把青色和黄色两种颜料混合，在白光照射下，由于颜料吸收了红色和蓝色，而反射了绿色，对于颜料的混合我们表示如下：</p>
+<p>　　颜料(黄色+青色)=白色-红色-蓝色=绿色</p>
+<p>　　颜料(品红+青色)=白色-红色-绿色=蓝色</p>
+<p>　　颜料(黄色+品红)=白色-绿色-蓝色=红色</p>
+<p>&emsp;&emsp;以上的都是相减混色,相减混色就是以吸收三基色比例不同而形成不同的颜色的。所以有把青色、品红、黄色称为颜料三基色。颜料三基色的混色在绘画、印刷中得到广泛应用。在颜料三基色中，红绿蓝三色被称为相减二次色或颜料二次色。在相减二次色中有：</p>
+<p>　　(青色+黄色+品红)=白色-红色-蓝色-绿色=黑色</p>
+<p>&emsp;&emsp;用以上的相加混色三基色所表示的颜色模式称为RGB模式,而用相减混色三基色原理所表示的颜色模式称为CMYK模式,它们广泛运用于绘画和印刷领域。</p>
+<p>&emsp;&emsp;RGB模式是绘图软件最常用的一种颜色模式，在这种模式下，处理图像比较方便，而且，RGB存储的图像要比CMYK图像要小，可以节省内存和空间。</p>
+<p>&emsp;&emsp;CMYK模式是一种颜料模式,所以它属于印刷模式,但本质上与RGB模式没有区别,只是产生颜色的方式不同。RGB为相加混色模式，CMYK为相减混色模式。例如，显示器采用RGB模式，就是因为显示器是电子光束轰击荧光屏上的荧光材料发出亮光从而产生颜色。当没有光的时候为黑色，光线加到最大时为白色。而打印机呢？它的油墨不会自己发出光线。因而只有采用吸收特定光波而反射其它光的颜色，所以需要用减色法来解决。</p>
+<p>二、HLS(色相、亮度、饱和度)原理</p>
+<p>&emsp;&emsp;HLS 是Hue(色相)、Luminance(亮度)、Saturation(饱和度)。色相是颜色的一种属性，它实质上是色彩的基本颜色，即我们经常讲的红、橙、黄、绿、青、蓝、紫七种，每一种代表一种色相。色相的调整也就是改变它的颜色。</p>
+<p>&emsp;&emsp;亮度就是各种颜色的图形原色（如RGB图像的原色为R、G、B三种或各种自的色相）的明暗度，亮度调整也就是明暗度的调整。亮度范围从 0 到255，共分为256个等级。而我们通常讲的灰度图像，就是在纯白色和纯黑色之间划分了256个级别的亮度，也就是从白到灰，再转黑。同理，在RGB模式中则代表个原色的明暗度，即红绿蓝三原色的明暗度，从浅到深。</p>
+<p>&emsp;&emsp;饱和度是指图像颜色的彩度.对于每一种颜色都有一种人为规定的 标准颜色，饱和度就是用描述颜色与标准颜色之间的相近程度的物理量。调整饱和度就是调整图像的彩度。将一个图像的饱和度条为零时，图像则变成一个灰度图像，大家在电视机上可以试一式调整饱和度按钮。</p>
+<p>&emsp;&emsp;另外还有一个概念,就是对比度。对比度是指不同颜色之间的差异。对比度越大，两种颜色之间的相差越大，反之，就越接近。如，一幅灰度图像提高它的对比度会更加黑白分明，调到的极限时，变成黑白图像，反之，我们可以得到一幅灰色的画布。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/156766544_1_20190318061935832.jpg" alt="156766544_1_20190318061935832"></p>
+</div>
+
+
+
+<h3 id="经典色彩理论，让你轻松搞定色彩搭配难题"><a href="#经典色彩理论，让你轻松搞定色彩搭配难题" class="headerlink" title="经典色彩理论，让你轻松搞定色彩搭配难题"></a>经典色彩理论，让你轻松搞定色彩搭配难题</h3><p>一、色彩的力量<br>色彩在设计和日常生活中起着至关重要的作用。甚至可以通过一张照片吸引你的视线，唤起特定的情绪或情感。它甚至可以在不使用文字的情况下传达重要的信息，比如下图。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113532.png" alt="20220126113532"></p>
+</div>
+
+
+
+<p>那么，我们如何才能知道哪些颜色搭配起来比较好看，而哪些不好看？答案很简单：色彩理论。</p>
+<p>几个世纪以来，艺术家和设计师一直遵循着色彩理论，并且任何人都可以从中学习。色彩理论可以帮助你在许多不同的场合下正确使用色彩，无论是为设计选择颜色，或是简单的衣着搭配。有了一定的色彩洞察力，你将会以一种全新的方式来看待色彩。</p>
+<p>二、色彩基础知识<br>让我们从头开始，了解一些基础知识。还记得在学校学过的原色和二次色吗？那么，你已经有了一些色彩的常识。（Tips：二次色也称作间色）</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113555.png" alt="20220126113555"></p>
+</div>
+
+
+<p>二次色是由两种原色混合得来的。红色加黄色可得到橙色；黄色加蓝色可得到绿色；而蓝色加红色可得到紫色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113639.png" alt="20220126113639"></p>
+</div>
+
+<p>如果我们把这些颜色混合在一起，就会得到更多的中间色调，比如红橙色和黄绿色。总之，它们就形成了所谓的色轮。(你大概会明白它们的名字是怎么得来的。)</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113722.png" alt="20220126113722"></p>
+</div>
+
+
+<p>三、仔细观察色彩的细节<br>现在，你知道了什么是色轮，接下来就让我们进一步的了解色相、饱和度、和明度。这些是你在日常生活中可能不会遇到的术语，但它们是深入认识色彩细微差异的关键 —— 就像我们家装过程中的油漆配色一样。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113739.png" alt="20220126113739"></p>
+</div>
+
+
+<p>3.1 色相（Hue）</p>
+<p>色相是最简单的，他基本就是我们所说的 “颜色”。上在下面的例子中，你可能会把颜色描述为珊瑚粉色或浅红色，这取决于你的常识。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113754.png" alt="20220126113754"></p>
+</div>
+
+
+<p>3.2 饱和度（Saturation）</p>
+<p>饱和度，指的是色彩强度 —— 换句话说，颜色是否显得更稀薄或更浓郁的。高度饱和的颜色更加鲜艳或浓郁，而低饱和的颜色色料更少，因此显得更加素雅。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113807.png" alt="20220126113807"></p>
+</div>
+
+
+
+<p>3.3 明度（Value）</p>
+<p>明度与颜色的深浅有关系，从黑色到白色都有。正如你在下面看到的，这给我们提供了许多不同的色调，从深红棕色到淡粉色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113828.png" alt="20220126113828"></p>
+</div>
+四、制定色彩搭配方案
+那么，我们如何将这些色彩搭配起来，创造出专业的配色方案呢？实际上，有一些基于色彩调和的搭配公式是有据可循的，可以帮助到大家。
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113915.png" alt="20220126113915"></p>
+</div>
+
+
+<p>色彩调和，会用到色轮这个工具，给大家举例说明久经时间考验的颜色组合，下面我们将探讨一些最常见的色彩调和方案。</p>
+<p>4.1 单色（Monochromatic）</p>
+<p>最简单的色彩调和方式就是单色，因为它只使用一个颜色或色相。要创建单色配色方案，只需在色轮上选一个点，然后利用你的饱和度和明度来创造变化。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126113937.png" alt="20220126113937"></p>
+</div>
+
+<p>单色配色方案的最佳之处是，他们搭配在一起总是有保证的。颜色很适合彼此，因为它们都来自同一个家庭（色相）。</p>
+<p>4.2 相似色（Analogous）</p>
+<p>相似色搭配是使用色轮中彼此相邻的颜色，比如红色和橙色，或者蓝色和绿色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114001.png" alt="20220126114001"></p>
+</div>
+
+
+<p>不要害怕色彩搭配得不好，大胆的尝试调色，去创造出属于你的配色方案。这便是色彩调和的意义所在，这些公式仅仅是给你引导帮助和启发灵感的开始。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114019.png" alt="20220126114019"></p>
+</div>
+
+<p>4.3 互补色（Complementary）</p>
+<p>互补色在色轮上彼此相对，例如，蓝色和橙色，或者经典的红色和绿色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114035.png" alt="20220126114035"></p>
+</div>
+
+
+<p>为了避免互补配色方案过于单调，可以通过引入一些更浅、更暗，或不同饱和度的颜色，来增加色彩层次。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114049.png" alt="20220126114049"></p>
+</div>
+
+<p>4.4 分裂互补色（Split-complementary）</p>
+<p>分裂互补色组配色方案，是从色轮上选择一种颜色，再在色轮上找到其互补色两侧的颜色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114101.png" alt="20220126114101"></p>
+</div>
+
+
+<p>这与互补色配色方案有着相同的对比度，而且你有更多的颜色可以使用，还可能搭配出更加有趣的结果。</p>
+<p>4.5 三色组（Triadic）</p>
+<p>三色组配色方案，采用三种均匀分布的颜色，在色轮上形成一个完美的三角形。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114113.png" alt="20220126114113"></p>
+</div>
+
+<p>这些组合往往是非常引人注目的，尤其是当它们包含了原色或二次色时 —— 所以在你的工作中使用它们时，需要留意。</p>
+<p>4.6 四方补色（Tetradic）</p>
+<p>四方补色在色轮上形成了一个矩形，通过一组互补色两旁的颜色建立的色彩组合。让其中一种颜色作为主色，其余颜色用于辅色，这样的搭配效果是最好的。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114125.png" alt="20220126114125"></p>
+</div>
+
+
+<p>五、避免尝试性错误<br>色彩搭配，有一些经典的颜色行为准则。你是否遇到一些色彩搭配会特别的扎眼？</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114142.png" alt="20220126114142"></p>
+</div>
+
+<p>最简单的一个方法，就是想办法把色调降下来，从一种颜色开始，并尝试调整其亮度，暗度或饱和度。有时候，只需调整一点点对比度，就能满足你的画面需求。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114157.png" alt="20220126114157"></p>
+</div>
+
+<p>可读性，是任何设计的必备要素。你的颜色应该清晰悦目的，特别是处理文本类型的平面设计。</p>
+<p>有时候，你也不必在每个设计细节上都使用颜色。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114208.png" alt="20220126114208"></p>
+</div>
+
+<p>中性色，如黑色、白色和灰色可以帮助你平衡画面，所以当你使用颜色时，要确保它真的需要从信息流中脱颖而出。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114220.png" alt="20220126114220"></p>
+</div>
+
+<p>六、选择正确的颜色<br>每种颜色都会发出一个信息，重要的是要考虑到你的项目基调，并选择一个合理的配色方案。</p>
+<p>例如，明亮的颜色往往能带来有趣或者现代感的氛围。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114235.png" alt="20220126114235"></p>
+</div>
+
+
+<p>低饱和度的色彩搭配方案，往往出现在更加严肃或商务环境中。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114246.png" alt="20220126114246"></p>
+</div>
+
+<p>有时，配色还需要取决于具体的使用环境。在你有了一定的实践和创造力后，你能做什么就没有那么多限制了。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114302.png" alt="20220126114302"></p>
+</div>
+
+<p>6.1 寻找灵感</p>
+<p>你可以在各种各样有趣的地方寻找配色方案的灵感，比如：从商业广告到品牌文化，以及著名的艺术作品等。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114315.png" alt="20220126114315"></p>
+</div>
+
+<p>你也可以通过配色网站，获取到很多精美的配色方案。</p>
+<p>那些富有经验的设计师，也会经常从他们周围的世界去得到灵感。找到你喜欢的色彩搭配，并把它做成自己的设计作品，这并没有什么不对。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114327.png" alt="20220126114327"></p>
+</div>
+
+
+<p>七、总结<br>色彩无处不在，你大可不用畏惧配色，记住这些色彩基础理论，从而去发现更多精美的配色。很快，你就会对色彩搭配，游刃有余。</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/20220126114336.png" alt="20220126114336"></p>
+</div>
+
+
+<h2 id="颜色心理学（Color-Psychology）"><a href="#颜色心理学（Color-Psychology）" class="headerlink" title="颜色心理学（Color Psychology）"></a>颜色心理学（Color Psychology）</h2><div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures/2022-01-26_114539.png" alt="2022-01-26_114539"></p>
+</div>
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -3697,134 +4020,6 @@ dtype: float64
 <p>赚不到钱，那么他就会从心底产生“浪费生命”的感觉。</p>
 <p>所有的负面情绪，都跟“此时此刻自己没有在赚钱”这件事有关。</p>
 <p>而当你全身心投入到赚钱上之后，你会发觉时间过得飞快，生活很有味道，浑身充满能量。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/08/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A4%BE%E4%BC%9A%E4%B8%8A%E5%88%B0%E5%A4%84%E9%83%BD%E6%98%AF%E6%9C%89%E6%89%8D%E5%8D%8E%E7%9A%84%E7%A9%B7%E4%BA%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A4%BE%E4%BC%9A%E4%B8%8A%E5%88%B0%E5%A4%84%E9%83%BD%E6%98%AF%E6%9C%89%E6%89%8D%E5%8D%8E%E7%9A%84%E7%A9%B7%E4%BA%BA/" class="post-title-link" itemprop="url">为什么社会上到处都是有才华的穷人</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-24 08:51:26 / 修改时间：00:53:15" itemprop="dateCreated datePublished" datetime="2021-08-24T08:51:26Z">2021-08-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文章阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>社会上有很多才华横溢的穷人。</p>
-<p>比如，我见过有人在知乎上发表一篇文章，是讲转基因食品的优缺点，然后有个杠精就在底下提出反对意见，然后就跟作者在下面杠了几十条，来来回回的。</p>
-<p>最终就是一场骂战，而且骂的很难听。</p>
-<p>我点开他的头像，是xx大学的硕士。</p>
-<p>我就知道这个人肯定是个才华横溢的穷鬼。</p>
-<p>他每天都要花上几个小时在网上跟别人互喷，而且他自认为自己是有理有据的，懂科学，有文化，有学识，文笔好。</p>
-<p>只不过，粉丝很少，才一百多个。</p>
-<p>而且我能判断出来，他每天把这么多宝贵时间，这么多正面情绪，都投入到跟赚钱毫无关系的网络互喷当中，他一定很穷。</p>
-<p>这类人属于把宝贵的时间和情绪都白白浪费掉的畜生。这种人如果想要翻身，就先要夺回自己大脑的主权，重新拥有独立思考的能力。</p>
-<p>而不是每天看各种虚假的新闻和砖家的报道。</p>
-<p>你要知道，不论是支持转基因还是反对转基因的大V（包括崔Y元和白Y松），他们的目的都是为了聚集粉丝，然后赚钱。</p>
-<p>再比如那些房产大V，也分成两类，有一类是唱衰zg房地产的，每篇文章都会写这种字样：重磅，国家终于要对房地产下手了！明年房价必跌！</p>
-<p>还有一类大V，一直鼓吹房地产是最好的投资，一直发布利好消息。</p>
-<p>这两类人可以连续10年写文章支持自己的观点，而且他们都能赚的盆满钵满。</p>
-<p>是每年都能赚的盆满钵满。</p>
-<p>只有那些没有独立思考能力的傻狗，还在评论区里互喷，为大V源源不断地带去热度。</p>
-<p>以上是第一类有才华的穷人。</p>
-<p>第二类有才华的穷人，他们的执行力非常差。</p>
-<p>我之前有个朋友是某985大学的本科毕业生，大概在2019年的时候，我跟他讲了很多知乎和公众号的玩法，而且把教程都给他了。</p>
-<p>就在上周，他看我朋友圈发的收款截图，然后他跟我说，兄弟，你再跟我说说自媒体怎么做，我现在房贷快还不起了，我们单位又降薪了（国企）。</p>
-<p>我说，自从上次我跟你讲完之后，你写过多少篇文章了？</p>
-<p>他把知乎、公众号和抖音都给我看了一下，我发现他一共才发了不到10篇内容。</p>
-<p>我就问他，之前不是说的好好的吗，你一周发一篇，而且你的文笔也不错啊。</p>
-<p>然后他说，一直没有找准方向，而且感觉自己的写作方法需要训练，报过一个写作课，但是从来没有认真实践过……</p>
-<p>我就知道，他也是那种才华横溢的穷人。</p>
-<p>这种人看起来很有才华，也很有目标，但终其一生，他什么成就都不会有的。</p>
-<p>因为他永远只是“想做事”，永远都觉得条件不成熟，要等一等，再等一等。</p>
-<p>他们不知道，行动的最好时机就是现在，立刻，马上。</p>
-<p>条件永远是不成熟的，干着干着你就成熟了。</p>
-<p>很多人就是因为太“聪明”，什么事还没干就先把自己否定了。</p>
-<p>最后一类有才华的穷人，是受弱势文化荼毒太深的人，这种病很难治。</p>
-<p>比如，他们月薪过万，但是仍然用着千元机，经常卡顿影响自己的工作和体验。你让他换个5000元的iPhone, 比杀了他都难受，坚决不换。</p>
-<p>再比如，你跟他说，要偶尔买件贵的东西，偶尔坐一次头等舱奖励自己，他们听了之后会非常抵触，他们会拿出“艰苦奋斗”“不能铺张浪费”那套说辞。</p>
-<p>另外，这种人一般也非常自律，每天都有自己的读书计划，锻炼计划，早睡早起学英语。</p>
-<p>书上和励志故事里面，都会讲这些是大人物都应该具备的品质。</p>
-<p>我想说，这些都是忽悠穷鬼的说辞。</p>
-<p>你如果想稳定地上个班，一直打工到退休，月薪从几千涨到一万多，甚至两万多，这辈子就这样过了，那么完全没问题，你可以一直节俭下去，自律下去。</p>
-<p>但如果你想做一番事业，赚大钱的话，不是光靠艰苦奋斗和自律就能完成的。</p>
-<p>贪婪的人都比自律的人要有出息。</p>
-<p>因为自律是反人性的，真正的自律不是自虐，让自己受苦，而是应该调动更大的欲望，来征服眼前的小欲望。</p>
-<p>xx传统文化的本质，就是把人教成N隶的文化，把人教成废物的文化。</p>
-<p>比如，它会一直教你压制欲望，抵制欲望。</p>
-<p>但欲望这个东西是大自然赋予我们的，是刻在基因里面的，你怎么抵制？</p>
-<p>还不如适当的疏导，适当的享受，享受作为人的乐趣。</p>
-<p>一旦你体验过欲望满足的感觉，你才会有更大的奋斗激情，你的潜力也会慢慢被激发出来。</p>
-<p>很多人没有体验过“特权”和“权力”的感觉。</p>
-<p>你坐一次头等舱，你就知道“优先权”是什么感觉了，而且这种感觉会让人欲罢不能，很可能沾上就戒不掉了。</p>
-<p>戒不掉了怎么办？那就只能努力开拓更多的收入渠道，必须让头等舱成为自己出行的标配。</p>
-<p>这绝对是一种正向的激励机制，那些喜欢“艰苦奋斗文化”的人，会一直缺失这种激励机制。</p>
-<p>再比如，做自媒体的，你必须要体验“一呼百应”“众人追随”的感觉。</p>
-<p>我在写作群和VIP群一直跟大家说，无论你是做抖音的，还是做知乎的，你一定要想方设法获取一大批追随者。哪怕初期的内容全是抄袭的，复制的，改编的也行。</p>
-<p>总之呢，如果有几千、几万人关注你，留言支持你，为你打赏，为你买单，你就有了一点“呼风唤雨”的感觉，这种体验就是权力的感觉。</p>
-<p>一旦你体验过，就会上瘾的，从此就一发不可收拾。想要维持这种感觉，就只能继续深耕，继续修炼，让自己的影响力越来越大。</p>
-<p>最后你会发现，所有的成长，都是在尝到甜头之后发生的，而不是吃苦吃出来的。</p>
-<p>夸一个穷人如何节俭，就如同夸一个太监道德如何高尚、不乱搞女人一样残忍。</p>
 
       
     </div>

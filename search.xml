@@ -916,43 +916,6 @@ Out[23]: 16
       </tags>
   </entry>
   <entry>
-    <title>Pandas排序简单排复杂排</title>
-    <url>/2021/02/05/Pandas%E6%8E%92%E5%BA%8F%E7%AE%80%E5%8D%95%E6%8E%92%E5%A4%8D%E6%9D%82%E6%8E%92/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">lists &#x3D; pd.read_excel(&quot;..&#x2F;007&#x2F;List.xlsx&quot;)</span><br><span class="line"></span><br><span class="line"># 按指定的一列排序</span><br><span class="line">lists.sort_values(by&#x3D;&quot;Price&quot;,inplace&#x3D;True,ascending&#x3D;False)</span><br><span class="line"></span><br><span class="line"># 指定多列排序(注意：对Worthy列升序，再对Price列降序)，ascending不指定的话，默认是True升序</span><br><span class="line">lists.sort_values(by&#x3D;[&quot;Worthy&quot;,&quot;Price&quot;],inplace&#x3D;True,ascending&#x3D;[True,False])</span><br><span class="line"></span><br><span class="line">print(lists)</span><br></pre></td></tr></table></figure>
-<p>结果图：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123136.png" alt="20210205123136"></p>
-</div>
-
-<h3 id="Pandas-函数填充、计算列"><a href="#Pandas-函数填充、计算列" class="headerlink" title="Pandas_函数填充、计算列"></a>Pandas_函数填充、计算列</h3><h4 id="函数填充、计算列"><a href="#函数填充、计算列" class="headerlink" title="函数填充、计算列"></a>函数填充、计算列</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">books &#x3D; pd.read_excel(&quot;..&#x2F;006&#x2F;Books.xlsx&quot;,index_col&#x3D;&quot;ID&quot;)</span><br><span class="line">print(books.dtypes)</span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
-<p>结果图：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123512.png" alt="20210205123512"></p>
-</div>
-
-<h4 id="一、将-“ListPrice”-列-和-“Discount”-列-相乘的值赋给-Price"><a href="#一、将-“ListPrice”-列-和-“Discount”-列-相乘的值赋给-Price" class="headerlink" title="一、将 “ListPrice” 列 和 “Discount” 列 相乘的值赋给 Price"></a>一、将 “ListPrice” 列 和 “Discount” 列 相乘的值赋给 Price</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 方法1：按列来运算</span><br><span class="line">books[&quot;Price&quot;] &#x3D; books[&quot;ListPrice&quot;]*books[&quot;Discount&quot;]</span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;]*8   </span><br><span class="line"></span><br><span class="line"># 方法2：按单元格来运算（类似excel里的操作）</span><br><span class="line">print(books.index)</span><br><span class="line">for i in books.index:</span><br><span class="line">    books[&quot;Price&quot;].at[i]&#x3D;books[&quot;ListPrice&quot;].at[i]*books[&quot;Discount&quot;].at[i] #一旦其中一个是指定到单元格的，其他列也要指定到单元格</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 一般我们需要对某几行操作运算时才会用方法2,比如，我们只对第5行到第15行之间的价格运算</span><br><span class="line">for i in range(5,15):</span><br><span class="line">    books[&quot;Price&quot;].at[i]&#x3D;books[&quot;ListPrice&quot;].at[i]*books[&quot;Discount&quot;].at[i]</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123821.png" alt="20210205123821"></p>
-</div>
-
-<h4 id="二、将-“ListPrice”-列-2-元-后-赋给-Price"><a href="#二、将-“ListPrice”-列-2-元-后-赋给-Price" class="headerlink" title="二、将 “ListPrice” 列 +2 元 后 赋给 Price"></a>二、将 “ListPrice” 列 +2 元 后 赋给 Price</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 方法1：直接加</span><br><span class="line">books[&quot;Price&quot;] &#x3D; books[&quot;ListPrice&quot;]+2</span><br><span class="line"></span><br><span class="line"># 方法2：用函数</span><br><span class="line">def add_2(x):</span><br><span class="line">    return x+2</span><br><span class="line"></span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;].apply(add_2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 方法3：用lambda</span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;].apply(lambda x:x+2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123940.png" alt="20210205123940"></p>
-</div>
-
-]]></content>
-      <categories>
-        <category>Python库之Pandas</category>
-      </categories>
-      <tags>
-        <tag>Python库之Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pandas在github上获取原始数据集</title>
     <url>/2021/02/16/Pandas%E5%9C%A8github%E4%B8%8A%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%9B%86/</url>
     <content><![CDATA[<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>GitHub repository 的文件地址后面直接加？raw=true</code></p>
@@ -983,6 +946,43 @@ Out[23]: 16
 <p>很多情况下，看似复杂的数据整理与可视化，Pandas 只需要一行语句就能搞定。</p>
 <p>回顾我们的教程里，也曾使用过各种不同的格式读取数据到 Pandas 进行处理。</p>
 <p>然而，当你需要自己独立面对软件包的格式要求时，也许仅仅是因为不了解如何正确生成或读取某种格式，结果导致出错，甚至会使你丧失探索的信心与兴趣。</p>
+]]></content>
+      <categories>
+        <category>Python库之Pandas</category>
+      </categories>
+      <tags>
+        <tag>Python库之Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pandas排序简单排复杂排</title>
+    <url>/2021/02/05/Pandas%E6%8E%92%E5%BA%8F%E7%AE%80%E5%8D%95%E6%8E%92%E5%A4%8D%E6%9D%82%E6%8E%92/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">lists &#x3D; pd.read_excel(&quot;..&#x2F;007&#x2F;List.xlsx&quot;)</span><br><span class="line"></span><br><span class="line"># 按指定的一列排序</span><br><span class="line">lists.sort_values(by&#x3D;&quot;Price&quot;,inplace&#x3D;True,ascending&#x3D;False)</span><br><span class="line"></span><br><span class="line"># 指定多列排序(注意：对Worthy列升序，再对Price列降序)，ascending不指定的话，默认是True升序</span><br><span class="line">lists.sort_values(by&#x3D;[&quot;Worthy&quot;,&quot;Price&quot;],inplace&#x3D;True,ascending&#x3D;[True,False])</span><br><span class="line"></span><br><span class="line">print(lists)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123136.png" alt="20210205123136"></p>
+</div>
+
+<h3 id="Pandas-函数填充、计算列"><a href="#Pandas-函数填充、计算列" class="headerlink" title="Pandas_函数填充、计算列"></a>Pandas_函数填充、计算列</h3><h4 id="函数填充、计算列"><a href="#函数填充、计算列" class="headerlink" title="函数填充、计算列"></a>函数填充、计算列</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">books &#x3D; pd.read_excel(&quot;..&#x2F;006&#x2F;Books.xlsx&quot;,index_col&#x3D;&quot;ID&quot;)</span><br><span class="line">print(books.dtypes)</span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
+<p>结果图：</p>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123512.png" alt="20210205123512"></p>
+</div>
+
+<h4 id="一、将-“ListPrice”-列-和-“Discount”-列-相乘的值赋给-Price"><a href="#一、将-“ListPrice”-列-和-“Discount”-列-相乘的值赋给-Price" class="headerlink" title="一、将 “ListPrice” 列 和 “Discount” 列 相乘的值赋给 Price"></a>一、将 “ListPrice” 列 和 “Discount” 列 相乘的值赋给 Price</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 方法1：按列来运算</span><br><span class="line">books[&quot;Price&quot;] &#x3D; books[&quot;ListPrice&quot;]*books[&quot;Discount&quot;]</span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;]*8   </span><br><span class="line"></span><br><span class="line"># 方法2：按单元格来运算（类似excel里的操作）</span><br><span class="line">print(books.index)</span><br><span class="line">for i in books.index:</span><br><span class="line">    books[&quot;Price&quot;].at[i]&#x3D;books[&quot;ListPrice&quot;].at[i]*books[&quot;Discount&quot;].at[i] #一旦其中一个是指定到单元格的，其他列也要指定到单元格</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 一般我们需要对某几行操作运算时才会用方法2,比如，我们只对第5行到第15行之间的价格运算</span><br><span class="line">for i in range(5,15):</span><br><span class="line">    books[&quot;Price&quot;].at[i]&#x3D;books[&quot;ListPrice&quot;].at[i]*books[&quot;Discount&quot;].at[i]</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123821.png" alt="20210205123821"></p>
+</div>
+
+<h4 id="二、将-“ListPrice”-列-2-元-后-赋给-Price"><a href="#二、将-“ListPrice”-列-2-元-后-赋给-Price" class="headerlink" title="二、将 “ListPrice” 列 +2 元 后 赋给 Price"></a>二、将 “ListPrice” 列 +2 元 后 赋给 Price</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 方法1：直接加</span><br><span class="line">books[&quot;Price&quot;] &#x3D; books[&quot;ListPrice&quot;]+2</span><br><span class="line"></span><br><span class="line"># 方法2：用函数</span><br><span class="line">def add_2(x):</span><br><span class="line">    return x+2</span><br><span class="line"></span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;].apply(add_2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 方法3：用lambda</span><br><span class="line">books[&quot;Price&quot;]&#x3D;books[&quot;ListPrice&quot;].apply(lambda x:x+2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(books)</span><br></pre></td></tr></table></figure>
+<div align=center>
+
+<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo@master/blogs/pictures/20210205123940.png" alt="20210205123940"></p>
+</div>
+
 ]]></content>
       <categories>
         <category>Python库之Pandas</category>
@@ -5641,6 +5641,42 @@ shuru:
       </categories>
       <tags>
         <tag>视频工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>各插件安装方法</title>
+    <url>/2023/03/15/%E5%90%84%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>反向代理神器 ——Nginx Proxy Manager Docker 搭建方法：</p>
+<p>1.在服务器上新建一个文件夹用于存放一种服务 mkdir nginx</p>
+<p>2.进入 nginx 如，cd nginx，再新建 2 个文件夹 data 和 letsencrypt 用于文件映射</p>
+<p>3.新建 docker-compose.yml 文件，如, vi docker-compose.yml，即可新建并打开</p>
+<p>4.把内容 copy 上 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#39;jc21&#x2F;nginx-proxy-manager:latest&#39;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      # These ports are in format &lt;host-port&gt;:&lt;container-port&gt;</span><br><span class="line">      - &#39;80:80&#39; # Public HTTP Port</span><br><span class="line">      - &#39;443:443&#39; # Public HTTPS Port</span><br><span class="line">      - &#39;81:81&#39; # Admin Web Port</span><br><span class="line">      # Add any other Stream port you want to expose</span><br><span class="line">      # - &#39;21:21&#39; # FTP</span><br><span class="line">    environment:</span><br><span class="line">      DB_MYSQL_HOST: &quot;db&quot;</span><br><span class="line">      DB_MYSQL_PORT: 3306</span><br><span class="line">      DB_MYSQL_USER: &quot;npm&quot;</span><br><span class="line">      DB_MYSQL_PASSWORD: &quot;npm&quot;</span><br><span class="line">      DB_MYSQL_NAME: &quot;npm&quot;</span><br><span class="line">      # Uncomment this if IPv6 is not enabled on your host</span><br><span class="line">      # DISABLE_IPV6: &#39;true&#39;</span><br><span class="line">    volumes:</span><br><span class="line">      - .&#x2F;data:&#x2F;data</span><br><span class="line">      - .&#x2F;letsencrypt:&#x2F;etc&#x2F;letsencrypt</span><br><span class="line">    depends_on:</span><br><span class="line">      - db</span><br><span class="line"></span><br><span class="line">  db:</span><br><span class="line">    image: &#39;jc21&#x2F;mariadb-aria:latest&#39;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: &#39;npm&#39;</span><br><span class="line">      MYSQL_DATABASE: &#39;npm&#39;</span><br><span class="line">      MYSQL_USER: &#39;npm&#39;</span><br><span class="line">      MYSQL_PASSWORD: &#39;npm&#39;</span><br><span class="line">    volumes:</span><br><span class="line">      - .&#x2F;data&#x2F;mysql:&#x2F;var&#x2F;lib&#x2F;mysql</span><br><span class="line"></span><br><span class="line">5.按 ESC 退出编辑模式，输入 :wq 保存并退出</span><br><span class="line"></span><br><span class="line">6.再当前目录下执行命令 sudo docker compose up -d 即可开始下载并运行 nginx 容器</span><br></pre></td></tr></table></figure>
+<p>clouddrive2 网盘聚合工具 docker-compose 安装方式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &quot;2.1&quot;</span><br><span class="line">services:</span><br><span class="line">  cloudnas:</span><br><span class="line">    image: cloudnas&#x2F;clouddrive2-unstable</span><br><span class="line">    container_name: clouddrive2</span><br><span class="line">    environment:</span><br><span class="line">       - TZ&#x3D;Asia&#x2F;Shanghai</span><br><span class="line">       - CLOUDDRIVE_HOME&#x3D;&#x2F;Config</span><br><span class="line">    volumes:</span><br><span class="line">      - .&#x2F;clouddrive2:&#x2F;CloudNAS:shared</span><br><span class="line">      - .&#x2F;config:&#x2F;Config</span><br><span class="line">      - .&#x2F;local:&#x2F;media:shared #optional media path of host</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;fuse:&#x2F;dev&#x2F;fuse</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    pid: &quot;host&quot;</span><br><span class="line">    privileged: true #or you can try capp_add -SYS_ADMIN</span><br><span class="line">    #cap_add: #SYS_ADMIN cap may fail on some OSes, use privileged: true instead</span><br><span class="line">    # - SYS_ADMIN</span><br><span class="line">    network_mode: &quot;host&quot; #if network_mode doesn&#39;t work, use port mapping</span><br><span class="line">    #ports:</span><br><span class="line">    #   - 19798:19798</span><br></pre></td></tr></table></figure>
+
+<p>DS918：</p>
+<p>当在 NAS 里面用命令行安装 docker 应用时，必需先切换到 root 模式，方法为：</p>
+<p>1.开启 ssh 模式，从终端机和SNMP 选项卡里找，启动 SSH 功能</p>
+<p>2.用 SSH 工具连接 NAS 后 切换到 root 模式，方法为：sudo -i 然后输入 NAS 的密码 Or****123</p>
+<p>3.在命令行里帖上命令即可</p>
+<p>4.用完 ssh 后记得关闭该功能</p>
+<p>NAS 的 uid 和 gid:</p>
+<p>uid=1026(NAS) gid=100(users) groups=100(users),101(administrators)</p>
+<h3 id="Homeassistant-安装"><a href="#Homeassistant-安装" class="headerlink" title="Homeassistant 安装"></a>Homeassistant 安装</h3><p>HACS 应用插件的下载需要科学网络环境</p>
+<p><a href="https://github.com/alexbelgium/hassio-addons">https://github.com/alexbelgium/hassio-addons</a>      # 可以安装 filebrowser 文件管理工具</p>
+<p><a href="https://github.com/DBuit/Homekit-panel-card">https://github.com/DBuit/Homekit-panel-card</a></p>
+<h3 id="HACS-第三方必安装前端："><a href="#HACS-第三方必安装前端：" class="headerlink" title="HACS 第三方必安装前端："></a>HACS 第三方必安装前端：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">config-template-card</span><br><span class="line">mushroom</span><br><span class="line">simple-weather-card</span><br><span class="line">weather-card</span><br><span class="line">xiaomi-vacuum-map-card</span><br><span class="line">mini-media-player</span><br><span class="line">Kiosk-mode</span><br><span class="line">card-mod</span><br><span class="line">button-card</span><br><span class="line">mini-graph-card</span><br><span class="line">homekit-card</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># ping 检测</span><br><span class="line">device_tracker:</span><br><span class="line">  - platform: ping</span><br><span class="line">    hosts:</span><br><span class="line">      hostone: 192.168.1.202 # 手机的ip地址</span><br><span class="line">    interval_seconds: 10 # 每隔10秒检测一次</span><br><span class="line">    consider_home: 20 # 如果连续20秒内一直ping不通，那么这个设备就是离线状态</span><br></pre></td></tr></table></figure>
+<p>API 令牌</p>
+<p>编辑区域 DNS API 令牌已成功创建</p>
+<p>复制此令牌以访问 Cloudflare API。为安全起见，将不再显示此令牌。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>

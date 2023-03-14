@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,107 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/07/06/%E5%A4%9A%E5%B7%A5%E4%BD%9C%E8%A1%A8%E4%BF%9D%E5%AD%98%E8%87%B3%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E8%96%84%E5%86%85%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bitcode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bitcoder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/06/%E5%A4%9A%E5%B7%A5%E4%BD%9C%E8%A1%A8%E4%BF%9D%E5%AD%98%E8%87%B3%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E8%96%84%E5%86%85%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">多工作表保存至一个工作薄内问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-06 10:47:56" itemprop="dateCreated datePublished" datetime="2021-07-06T10:47:56Z">2021-07-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-07 09:20:36" itemprop="dateModified" datetime="2021-07-07T09:20:36Z">2021-07-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python%E5%BA%93%E4%B9%8BPandas/" itemprop="url" rel="index"><span itemprop="name">Python库之Pandas</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="pandas-将多个-dataframe-以多个-sheet-的形式保存到一个-excel-文件中"><a href="#pandas-将多个-dataframe-以多个-sheet-的形式保存到一个-excel-文件中" class="headerlink" title="pandas 将多个 dataframe 以多个 sheet 的形式保存到一个 excel 文件中"></a>pandas 将多个 dataframe 以多个 sheet 的形式保存到一个 excel 文件中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">writer &#x3D; pd.ExcelWriter(&#39;test.xlsx&#39;)</span><br><span class="line">data1.to_excel(writer,sheet_name&#x3D;&#39;sheet1&#39;)</span><br><span class="line">data2.to_excel(writer,sheet_name&#x3D;&#39;sheet2&#39;)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+<h3 id="上面的方法会将原来的-excel-文件覆盖掉，假如想要对已经存在的-excel-文件进行修改，可以使用开源工具包（anaconda-已附带）openpyxl"><a href="#上面的方法会将原来的-excel-文件覆盖掉，假如想要对已经存在的-excel-文件进行修改，可以使用开源工具包（anaconda-已附带）openpyxl" class="headerlink" title="上面的方法会将原来的 excel 文件覆盖掉，假如想要对已经存在的 excel 文件进行修改，可以使用开源工具包（anaconda 已附带）openpyxl"></a>上面的方法会将原来的 excel 文件覆盖掉，假如想要对已经存在的 excel 文件进行修改，可以使用开源工具包（anaconda 已附带）openpyxl</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from openpyxl import load_workbook  # 这一句必须写</span><br><span class="line"> </span><br><span class="line">writer &#x3D; pd.ExcelWriter(&#39;test.xlsx&#39;,engin&#x3D;&#39;openpyxl&#39;)</span><br><span class="line">book &#x3D; load_workbook(writer.path)</span><br><span class="line">writer.book &#x3D; book</span><br><span class="line">dataframe.to_excel(excel_writer&#x3D;writer,sheet_name&#x3D;&quot;info5&quot;)</span><br><span class="line">writer.save()</span><br><span class="line">writer.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="另一种高效的写法"><a href="#另一种高效的写法" class="headerlink" title="另一种高效的写法"></a>另一种高效的写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with pd.ExcelWriter(r&quot;D:\test1\result.xlsx&quot;, engine&#x3D;&#39;openpyxl&#39;) as writer:  # 这是一种高效的写法 from openpyxl import load_workbook 这一句必须写</span><br><span class="line">    book &#x3D; load_workbook(writer.path)</span><br><span class="line">    writer.book &#x3D; book</span><br><span class="line">    data1.to_excel(writer,sheet_name&#x3D;&#39;sheet1&#39;)</span><br><span class="line">    data2.to_excel(writer,sheet_name&#x3D;&#39;sheet2&#39;)</span><br></pre></td></tr></table></figure>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line">from openpyxl import load_workbook  # 必须导入的模块</span><br><span class="line"></span><br><span class="line">path &#x3D; r&quot;D:\test1\file_folder&quot;</span><br><span class="line">listing &#x3D; os.listdir(path)</span><br><span class="line">data_list &#x3D; [f for f in listing if f[-5:] &#x3D;&#x3D; &#39;.xlsx&#39;]  # 为了排除不是.xlsx的文件，避免程序报错</span><br><span class="line"></span><br><span class="line">with pd.ExcelWriter(r&quot;D:\test1\result.xlsx&quot;, engine&#x3D;&#39;openpyxl&#39;) as writer:  # 这是一种高效的写法</span><br><span class="line">    for i in data_list:</span><br><span class="line">        name &#x3D; i.split(&#39;.&#39;)[0]</span><br><span class="line">        df1 &#x3D; pd.read_excel(os.path.join(path, i))</span><br><span class="line">        df1.to_excel(writer, sheet_name&#x3D;name, index&#x3D;False)  # 程序的逻辑</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="获取工作薄所有工作表列表"><a href="#获取工作薄所有工作表列表" class="headerlink" title="获取工作薄所有工作表列表"></a>获取工作薄所有工作表列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">方法一</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.read_excel(path, sheet_name&#x3D;None)</span><br><span class="line">for i in df.keys():</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">方法二:</span><br><span class="line"></span><br><span class="line">df &#x3D; pd.read_excel(path, sheet_name&#x3D;None)</span><br><span class="line">sheet_name_list &#x3D; list(df)</span><br><span class="line">print(sheet_name_list)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 另一种写法</span><br><span class="line"></span><br><span class="line">writer &#x3D; pd.ExcelWriter(r&#39;result.xlsx&#39;)</span><br><span class="line"></span><br><span class="line">for i in os.listdir(r&#39;.&#x2F;file_folder&#39;):</span><br><span class="line">    name &#x3D; i.split(&#39;.&#39;)[0]</span><br><span class="line">    df1 &#x3D; pd.read_excel(os.path.join(r&#39;.&#x2F;file_folder&#39;, i))</span><br><span class="line">    df1.to_excel(writer, sheet_name&#x3D;name, index&#x3D;False)</span><br><span class="line">writer.save()  # 这2个操作不能忘记，否则文件只在缓存里，看不到直接的操作结果</span><br><span class="line">writer.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Python-pandas-如何向-excel-添加数据"><a href="#Python-pandas-如何向-excel-添加数据" class="headerlink" title="Python pandas 如何向 excel 添加数据"></a>Python pandas 如何向 excel 添加数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 创建一个空的excel文件</span><br><span class="line">nan_excle &#x3D; pd.DataFrame()</span><br><span class="line">nan_excel.to_excel(path + filename)</span><br><span class="line"></span><br><span class="line"># 打开excel</span><br><span class="line">writer &#x3D; pd.ExcelWriter(path + filename)</span><br><span class="line">#sheets是要写入的excel工作簿名称列表</span><br><span class="line">for sheet in sheets:</span><br><span class="line">　　output.to_excel(writer, sheet_name&#x3D;sheet)</span><br><span class="line"></span><br><span class="line"># 保存writer中的数据至excel</span><br><span class="line"># 如果省略该语句，则数据不会写入到上边创建的excel文件中</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+<h2 id="不同方法读取-excel-中的多个不同-sheet-表格性能比较"><a href="#不同方法读取-excel-中的多个不同-sheet-表格性能比较" class="headerlink" title="不同方法读取 excel 中的多个不同 sheet 表格性能比较"></a>不同方法读取 excel 中的多个不同 sheet 表格性能比较</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 方法1</span><br><span class="line">def read_excel(path):</span><br><span class="line">  df&#x3D;pd.read_excel(path,None)</span><br><span class="line">  print(df.keys())</span><br><span class="line">  # for k,v in df.items():</span><br><span class="line">  #   print(k)</span><br><span class="line">  #   print(v)</span><br><span class="line">  #   print(type(v))</span><br><span class="line">  return df</span><br><span class="line"> </span><br><span class="line"># 方法2</span><br><span class="line">def read_excel1(path):</span><br><span class="line">  data_xls &#x3D; pd.ExcelFile(path)</span><br><span class="line">  print(data_xls.sheet_names)</span><br><span class="line">  data&#x3D;&#123;&#125;</span><br><span class="line">  for name in data_xls.sheet_names:</span><br><span class="line">    df&#x3D;data_xls.parse(sheetname&#x3D;name,header&#x3D;None)</span><br><span class="line">    data[name]&#x3D;df</span><br><span class="line">    # print(df)</span><br><span class="line">    # print(name)</span><br><span class="line">  return data</span><br><span class="line"> </span><br><span class="line"># 方法3</span><br><span class="line">def read_excel2(path):</span><br><span class="line">  data_xls &#x3D; pd.io.excel.ExcelFile(path)</span><br><span class="line">  data&#x3D;&#123;&#125;</span><br><span class="line">  print(data_xls.sheet_names)</span><br><span class="line">  for name in data_xls.sheet_names:</span><br><span class="line">    df&#x3D;pd.read_excel(data_xls,sheetname&#x3D;name,header&#x3D;None)</span><br><span class="line">    data[name]&#x3D;df</span><br><span class="line">  return data</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h3 id="结论：若读取多个-sheet-表格时，方法-2-和方法-3-相对于方法-1-的效率较高。"><a href="#结论：若读取多个-sheet-表格时，方法-2-和方法-3-相对于方法-1-的效率较高。" class="headerlink" title="结论：若读取多个 sheet 表格时，方法 2 和方法 3 相对于方法 1 的效率较高。"></a>结论：若读取多个 sheet 表格时，方法 2 和方法 3 相对于方法 1 的效率较高。</h3><p>一、简介</p>
+<p>　　pandas 中的 ExcelFile () 和 ExcelWriter ()，是 pandas 中对 excel 表格文件进行读写相关操作非常方便快捷的类，尤其是在对含有多个 sheet 的 excel 文件进行操控时非常方便，本文就将针对这两个类的使用方法展开介绍；</p>
+<p>二、ExcelFile ()</p>
+<p>　　在使用 ExcelFile () 时需要传入目标 excel 文件所在路径及文件名称，下面是示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">demo_excel &#x3D; pd.ExcelFile(r&#39;D:\demo.xlsx&#39;)</span><br></pre></td></tr></table></figure>
+<p>接下来可以使用 ExcelFile () 中的方法来获取目标表格文件的相关信息：</p>
+<p>1、sheet_names</p>
+<p>使用 sheet_names 来查看当前表格中包含的所有 sheet 名称（按顺序）：</p>
+<p><code>print(demo_excel.sheet_names)</code></p>
+<p>　2、parse()</p>
+<p>　　使用 parse () 可以根据传入的 sheet 名称来提取对应的表格信息，下面是一个简单的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">table1 &#x3D; demo_excel.parse(sheet_name&#x3D;demo_excel.sheet_names[0])</span><br><span class="line"></span><br><span class="line">table2 &#x3D; demo_excel.parse(sheet_name&#x3D;demo_excel.sheet_names[1])</span><br><span class="line"></span><br><span class="line">table3 &#x3D; demo_excel.parse(sheet_name&#x3D;demo_excel.sheet_names[2])</span><br><span class="line"></span><br><span class="line">print(table1)</span><br><span class="line">print(table2)</span><br><span class="line">print(table3)</span><br></pre></td></tr></table></figure>
+<p>基于已创建的 writer 对象，可以利用 to_excel () 方法将不同的数据框及其对应的 sheet 名称写入该 writer 对象中，并在全部表格写入完成之后，使用 save () 方法来执行 writer 中内容向对应实体 excel 文件写入数据的过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;&#39;创建数据框1&#39;&#39;&#39;</span><br><span class="line">df1 &#x3D; pd.DataFrame(&#123;&#39;V1&#39;:np.random.rand(100),</span><br><span class="line">          &#39;V2 &#39;:np.random.rand(100),</span><br><span class="line">          &#39;V3&#39;:np.random.rand(100)&#125;)</span><br><span class="line">df1.to_excel(writer,sheet_name&#x3D;&#39;sheet1&#39;,index&#x3D;False)</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;创建数据框2&#39;&#39;&#39;</span><br><span class="line">df2 &#x3D; pd.DataFrame(&#123;&#39;V1&#39;:np.random.rand(100),</span><br><span class="line">          &#39;V2 &#39;:np.random.rand(100),</span><br><span class="line">          &#39;V3&#39;:np.random.rand(100)&#125;)</span><br><span class="line">df2.to_excel(writer,sheet_name&#x3D;&#39;sheet2&#39;,index&#x3D;False)</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;创建数据框3&#39;&#39;&#39;</span><br><span class="line">df3 &#x3D; pd.DataFrame(&#123;&#39;V1&#39;:np.random.rand(100),</span><br><span class="line">          &#39;V2 &#39;:np.random.rand(100),</span><br><span class="line">          &#39;V3&#39;:np.random.rand(100)&#125;)</span><br><span class="line">df3.to_excel(writer,sheet_name&#x3D;&#39;sheet3&#39;,index&#x3D;False)</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;数据写出到excel文件中&#39;&#39;&#39;</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1645,108 +1746,6 @@ GUI：图形界面
 <h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&quot;读文件&quot;:&#123;</span><br><span class="line">	&quot;prefix&quot;: &quot;files&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;with open($&#123;1:文件全路径&#125;) as 文件:&quot;,</span><br><span class="line">		&quot;\t内容 &#x3D; 文件.read()&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;读取某文件&quot;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">&quot;读所有文件&quot;:&#123;</span><br><span class="line">	&quot;prefix&quot;: &quot;allfiles&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;import os&quot;,</span><br><span class="line">		&quot;filepath &#x3D;&#39;.&#39;&quot;,</span><br><span class="line">		&quot;for filenames in os.listdir(filepath):&quot;,</span><br><span class="line">		&quot;\twith open(os.path.join(filepath,filenames)) as f:&quot;,</span><br><span class="line">		&quot;\t\twords &#x3D; f.read()&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;读取某目录下所有文件&quot;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure>
 <h3 id="一些常用片段"><a href="#一些常用片段" class="headerlink" title="一些常用片段"></a>一些常用片段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">&quot;Print with space lines&quot;: &#123;</span><br><span class="line">	&quot;prefix&quot;: &quot;pp&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;print(&#39;\\n&#39;*2, $1)&quot;,</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;Print with space lines&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">&#x2F;&#x2F;这是分隔线</span><br><span class="line"></span><br><span class="line">&quot;class init&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;class $1 $2&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;class $1(object):&quot;,</span><br><span class="line">		&quot;    def __init__(self$2):&quot;,</span><br><span class="line">		&quot;        self.&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto class init&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;class pass&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;classpass $1&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;class $1: pass&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto class pass&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;def pass&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;defpass $1&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;def $1(): pass&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto def pass&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;get path&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;import os&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;import os&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;def getScriptPath():&quot;,</span><br><span class="line">		&quot;    return os.path.split(os.path.realpath(__file__))[0]&quot;,</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto getScriptPath&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;env init&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;import sys&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;#!&#x2F;usr&#x2F;bin&#x2F;env python&quot;,</span><br><span class="line">		&quot;# coding:utf-8&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;import sys&quot;,</span><br><span class="line">		&quot;reload(sys)&quot;,</span><br><span class="line">		&quot;sys.setdefaultencoding(&#39;utf-8&#39;)&quot;,</span><br><span class="line">		&quot;&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto set utf8&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;logging&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;import logging $1&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;import logging&quot;,</span><br><span class="line">		&quot;&quot;</span><br><span class="line">		&quot;logger &#x3D; logging.getLogger(__name__)&quot;,</span><br><span class="line">		&quot;logger.setLevel(level&#x3D;logging.INFO)&quot;,</span><br><span class="line">		&quot;handler &#x3D; logging.FileHandler(&#39;$1&#39;)&quot;,</span><br><span class="line">		&quot;handler.setLevel(level&#x3D;logging.INFO)&quot;,</span><br><span class="line">		&quot;formatter &#x3D; logging.Formatter(&#39;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#39;)&quot;,</span><br><span class="line">		&quot;handler.setFormatter(formatter)&quot;,</span><br><span class="line">		&quot;logger.addHandler(handler)&quot;,</span><br><span class="line">		&quot;&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto logging&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;args&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;*a&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;*args, **kwargs&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto *args&quot;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">&quot;closure&quot;: &#123;</span><br><span class="line">	&quot;scope&quot;: &quot;python&quot;,</span><br><span class="line">	&quot;prefix&quot;: &quot;proxy $1 $2 $3&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;def $1(func):&quot;,</span><br><span class="line">		&quot;    def proxy(*args, **kwargs):&quot;,</span><br><span class="line">		&quot;        $2&quot;,</span><br><span class="line">		&quot;        result &#x3D; func(*args, **kwargs)&quot;,</span><br><span class="line">		&quot;        $3&quot;,</span><br><span class="line">		&quot;        return result&quot;,</span><br><span class="line">		&quot;    return proxy&quot;,</span><br><span class="line">		&quot;&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;auto closure&quot;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;Quick info&quot;: &#123;</span><br><span class="line">	&quot;prefix&quot;: &quot;info&quot;,</span><br><span class="line">	&quot;body&quot;: [</span><br><span class="line">		&quot;#! &#x2F;usr&#x2F;bin&#x2F;env python&quot;,</span><br><span class="line">		&quot;# author : BJxo&quot;,</span><br><span class="line">		&quot;# date : $CURRENT_YEAR&#x2F;$CURRENT_MONTH&#x2F;$CURRENT_DATE&quot;</span><br><span class="line">		&quot;\nimport os&quot;,</span><br><span class="line">		&quot;import sys&quot;,</span><br><span class="line">		&quot;import pandas&quot;,</span><br><span class="line">		&quot;from datetime import datetime&quot;,</span><br><span class="line">		&quot;$0&quot;,	</span><br><span class="line">	],</span><br><span class="line">	&quot;description&quot;: &quot;导入模块&quot;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://getcoden.github.io/2021/04/24/Python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bitcode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bitcoder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/24/Python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">Python环境搭建</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-24 12:15:32 / 修改时间：04:31:39" itemprop="dateCreated datePublished" datetime="2021-04-24T12:15:32Z">2021-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Python基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>其实 Python 已经是一个很老的编程语言了，到现在（2019 年） Python 已经高龄 28 岁，比很多程序员的年龄都大。现在之所以这么流行和社区、人工智能的发展，有很大的关系。</p>
-<p>千里之行始于足下，今天我们先来学习 Python 环境搭建。</p>
-<h2 id="Python-介绍"><a href="#Python-介绍" class="headerlink" title="Python 介绍"></a>Python 介绍</h2><p>Python（英国发音：/ˈpaɪθən/ 美国发音：/ˈpaɪθɑːn/）是一种广泛使用的解释型、高级编程、通用型编程语言，由吉多·范罗苏姆创造，第一版发布于 1991 年。可以视之为一种改良（加入一些其他编程语言的优点，如面向对象）的 LISP。</p>
-<p>Python 的设计哲学强调代码的可读性和简洁的语法（尤其是使用空格缩进划分代码块，而非使用大括号或者关键词）。相比于 C++ 或 Java，Python 让开发者能够用更少的代码表达想法。不管是小型还是大型程序，该语言都试图让程序的结构清晰明了。</p>
-<p>与 Scheme、Ruby、Perl、Tcl 等动态类型编程语言一样，Python 拥有动态类型系统和垃圾回收功能，能够自动管理内存使用，并且支持多种编程范式，包括面向对象、命令式、函数式和过程式编程。其本身拥有一个巨大而广泛的标准库。</p>
-<p>Python 解释器本身几乎可以在所有的操作系统中运行。Python 的其中一个解释器 CPython 是用 C 语言编写的、是一个由社群驱动的自由软件，当前由 Python 软件基金会管理。</p>
-<p>1989 年的圣诞节期间，由 Python 的创始人为吉多·范罗苏姆，业余时间开发。Python 的历史参考：人生苦短，我用 Python。</p>
-<p>注意：本系列教程基于 Python 3.X</p>
-<h2 id="Python-环境搭建"><a href="#Python-环境搭建" class="headerlink" title="Python 环境搭建"></a>Python 环境搭建</h2><h3 id="Win-安装"><a href="#Win-安装" class="headerlink" title="Win 安装"></a>Win 安装</h3><p>打开 Python 官网 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/%E9%80%89%E6%8B%A9%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD%EF%BC%8C%E6%88%96%E8%80%85%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%ACpython-374%EF%BC%88https://www.python.org/downloads/release/python-374/%EF%BC%89%E3%80%82">https://www.python.org/downloads/选择最新版本下载，或者直接打开对应的版本python-374（https://www.python.org/downloads/release/python-374/）。</a><br>打开页面会看到有一个列表，如下图：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures68579c3f12b9e7321a72454cb67e3861.jpg" alt="68579c3f12b9e7321a72454cb67e3861"></p>
-</div>
-
-<p>x86 是 32 位，x86-64 是 64 位。</p>
-<p>可以通过下面 3 种途径获取 python：</p>
-<ul>
-<li>web-based installer 是需要通过联网完成安装的</li>
-<li>executable installer 是可执行文件(*.exe)方- 式安装</li>
-<li>embeddable zip file 嵌入式版本，可以集成到其它应用中。</li>
-</ul>
-<p>Windows x86 选择下载 ：[Windows executable installer(<a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe">https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe</a>)</p>
-<p>下载完成，双击 exe 文件进行安装，如下图，并按照圈中区域进行设置，切记要勾选打钩的框，然后再点击 Customize installation 进入到下一步：</p>
-<div align=center>
-
-<p><img src="https://cdn.jsdelivr.net/gh/getcoden/picgo/blogs/pictures2e164557ffe9d9c976bb84642a738dfe.jpg" alt="2e164557ffe9d9c976bb84642a738dfe"></p>
-</div>
-
-<p>一路选择 Next，直至安装成功。</p>
-
       
     </div>
 
